@@ -14,6 +14,8 @@ public class OPCController {
 	@RequestMapping(value="/test")
 	public String goTest(HttpServletRequest request) {
 		
+		//localhost:8080/UWinOPCTjyx/opc/test
+		
 		return MODULE_NAME+"/test";
 	}
 }
