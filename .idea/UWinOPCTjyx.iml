@@ -28,15 +28,6 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar:///Library/Apache/tomcat/apache-tomcat-8.5.81/lib/servlet-api.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
           <root url="jar://$MODULE_DIR$/src/main/webapp/WEB-INF/lib/jackson-annotations-2.12.0.jar!/" />
         </CLASSES>
         <JAVADOC />
@@ -120,6 +111,15 @@
         <NATIVE>
           <root url="file://$MODULE_DIR$/src/main/webapp/WEB-INF/lib" />
         </NATIVE>
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://D:/apache-tomcat-8.5.57/lib/servlet-api.jar!/" />
+        </CLASSES>
+        <JAVADOC />
         <SOURCES />
       </library>
     </orderEntry>
