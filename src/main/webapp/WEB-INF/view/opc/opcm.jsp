@@ -12,35 +12,35 @@
 %>
 <html>
 <head>
+<link rel="stylesheet" href="<%=basePath%>resource/css/style.css">
 <script type="text/javascript" src="<%=basePath%>resource/js/jquery-3.3.1.js"></script>
 <title>Title</title>
-<link rel="stylesheet" href="<%=basePath%>resource/css/style.css">
 <script type="text/javascript">
-    function addSCJL() {
-       $.ajax({
-            url:"<%=basePath%>opc/addSCJL",
-            type:"post",
-            data:{
-                "scbh": $("#scbh_input").val(),
-                "fyfh": $("#fyfh_input").val(),
-                "kssj": $("#kssj_input").val(),
-                "jssj": $("#jssj_input").val(),
-                "scgs": $("#scgs_input").val(),
-                "scrq": $("#scrq_input").val(),
-                "ysd101": $("#ysd101_input").val(),
-                "ysd102": $("#ysd102_input").val(),
-                "ysd103": "2",
-                "dbczy":$("#dbczy_input").val(),
-                "jbczy":$("#jbczy_input").val(),
-                "lx": 2
-            },
-            // contentType:application/json,
-            success:function (response) {
-                close(response);
-                alert(response.message)
-            }
-        });
-    }
+var path='<%=basePath%>';
+
+function addSCJL() {
+	var scbh=$("#scbh_input").val();
+	var fyfh=$("#fyfh_input").val();
+	var kssj=$("#kssj_input").val();
+	var jssj=$("#jssj_input").val();
+	var scgs=$("#scgs_input").val();
+	var scrq=$("#scrq_input").val();
+	var ysd101=$("#ysd101_input").val();
+	var ysd102=$("#ysd102_input").val();
+	var ysd103="2";
+	var dbczy=$("#dbczy_input").val();
+	var jbczy=$("#jbczy_input").val();
+	var lx=2;
+	
+    $.post(path+"opc/addSCJL",
+    	{scbh:scbh,fyfh:fyfh,kssj:kssj,jssj:jssj,scgs:scgs,scrq:scrq,ysd101:ysd101,ysd102:ysd102,ysd103:ysd103,dbczy:dbczy,jbczy:jbczy,lx:lx},
+    	function(data){
+    		if(data.message=="ok"){
+    			alert(data.info);
+    		}
+    	}
+    ,"json");
+}
 </script>
 </head>
 <body>

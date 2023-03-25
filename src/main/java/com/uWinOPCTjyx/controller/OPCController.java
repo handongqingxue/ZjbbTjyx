@@ -48,23 +48,23 @@ public class OPCController {
 
 	@RequestMapping("/addSCJL")
 	@ResponseBody
-	public Map<String, Object> addCSJL(ShengChanJiLu shengChanJiLu){
+	public Map<String, Object> addSCJL(ShengChanJiLu shengChanJiLu){
 		System.out.println(shengChanJiLu+"-");
 		Map<String,Object> json=new HashMap<String, Object>();
-		int i = 0;
 		try {
-			i = shengChanJiLuService.addSCJL(shengChanJiLu);
+			int count = shengChanJiLuService.addSCJL(shengChanJiLu);
+			if (count>0){
+				json.put("message","ok");
+				json.put("info","添加成功");
+			}
+			else {
+				json.put("message","no");
+				json.put("info","添加失败");
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-		if (i>0){
-			System.out.println("添加成功");
-			json.put("message","yes");
-			return json;
-		}else {
-			System.out.println("添加失败");
-			json.put("message","no");
+		finally {
 			return json;
 		}
 	}
