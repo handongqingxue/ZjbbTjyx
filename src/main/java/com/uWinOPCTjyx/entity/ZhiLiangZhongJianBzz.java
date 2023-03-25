@@ -2,6 +2,15 @@ package com.uWinOPCTjyx.entity;
 
 public class ZhiLiangZhongJianBzz {
 
+<<<<<<< HEAD
+	private Integer id;//标准值id
+	private Integer zlx;//值类型
+	private Integer scjllx;//生产记录类型
+	private Double bzzsx;//标准值上限
+	private Double bzzxx;//标准值下限
+	private String dw;//单位
+	private Integer lx;//类型
+=======
 	private Integer id;
 	private Integer zlx;
 	private Integer scjllx;
@@ -9,6 +18,7 @@ public class ZhiLiangZhongJianBzz {
 	private Double bzzxx;
 	private String dw;
 	private Integer lx;
+>>>>>>> 491426194df694570c5cc7984958710382b102ad
 
 	public ZhiLiangZhongJianBzz() {
 	}

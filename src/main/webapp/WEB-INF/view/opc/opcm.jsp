@@ -16,10 +16,40 @@
     <title>Title</title>
     <link rel="stylesheet" href="<%=basePath%>resource/css/style.css">
     <script type="text/javascript">
+<<<<<<< HEAD
     $(function(){
     	hello();
     });
     
+=======
+<<<<<<< HEAD
+        function addSCJL() {
+           $.ajax(
+               {
+                   url:"<%=basePath%>opc/addSCJL",
+                   type:"post",
+                   data:{
+                       "scbh": $("scbh_input").innerText,
+                       "fyfh": $("scbh_input").innerText,
+                       "kssj": "2023-03-24 17:30:00",
+                       "jssj": "2023-03-25 17:30:00",
+                       "scgs": $("scbh_input").innerText,
+                       "scrq": "2023-03-24 17:30:00",
+                       "ysd101": $("scbh_input").innerText,
+                       "ysd102": $("scbh_input").innerText,
+                       "ysd103": "2",
+                       "dbczy":$("scbh_input").innerText,
+                       "jbczy":$("scbh_input").innerText,
+                       "lx": 2
+                   },
+                   // contentType:application/json,
+                   success:function (response) {
+                       close(response);
+                       alert(response.message)
+                       // var name=response.username
+                       // $("#dqczy_span").text(name)
+=======
+>>>>>>> 30cdf7278f365650f2d80d4bbb64f4823e82a7fc
         function hello() {
            $.ajax(
                {
@@ -28,6 +58,7 @@
                    success:function (response) {
                        var name=response.username
                        $("#dqczy_span").text(name)
+>>>>>>> 491426194df694570c5cc7984958710382b102ad
                    }
                }
            )
@@ -39,14 +70,71 @@
         <table class="tab" border="1px">
             <tr>
                 <td colspan="13">
+<<<<<<< HEAD
+                    <span class="onetd1">M类 （ ）胶 生产记录</span>
+                    <span class="onetd4">自动表单设计：张发 设计号：ZJZD20211225</span>
+                    <button onclick="addSCJL()">保存</button>
+=======
                     <button onclick="hello()">点</button>
                     <span class="onetd1">M类 （ ）胶 生产记录</span>
                     <span class="onetd4">自动表单设计：张发 设计号：ZJZD20211225</span>
+>>>>>>> 491426194df694570c5cc7984958710382b102ad
                 </td>
             </tr>
             <%--第二行--%>
             <tr>
                 <td>YSD101信息</td>
+<<<<<<< HEAD
+                <td class="blue">
+<%--                    甲醛厂家信息，可后期录入--%>
+                    <input type="text" id="ysd101_input">
+                </td>
+                <td>YSD102信息</td>
+                <td class="blue">
+                    <input type="text" id="ysd102_input">
+<%--                    三安厂家信息可后期录入--%>
+                </td>
+                <td></td>
+                <td colspan="2">当班操作员：
+
+                </td>
+                <td class="green" colspan="2">
+                    <input type="text" id="dbczy_input">
+<%--                    直接摘抄登录名--%>
+                </td>
+                <td colspan="2">接班操作员：</td>
+                <td class="green" colspan="2">
+                    <input type="text" id="jbczy_input">
+<%--                    直接摘抄登录名--%>
+                </td>
+            </tr>
+            <%--第三行--%>
+            <tr>
+                <td>生产编号
+
+                </td>
+                <td class="yellow">
+                    <input type="text" id="scbh_input">
+<%--                    每生产1釜加1--%>
+                </td>
+                <td>反应釜：</td>
+                <td class="green" colspan="2">
+<%--                    反应釜号--%>
+                    <input type="text" id="fyfh_input">
+                </td>
+                <td>开始时间</td>
+                <td class="green">
+                    <input type="date" id="kssj_input">
+<%--                    备料开始时间--%>
+                </td>
+                <td>结束时间</td>
+                <td class="green">冷却结束时间</td>
+                <td>生产工时</td>
+                <td class="yellow">
+                    <input type="text" id="scgs_input">
+<%--                    min--%>
+                </td>
+=======
                 <td class="blue">甲醛厂家信息，可后期录入</td>
                 <td>YSD102信息</td>
                 <td class="blue">三安厂家信息可后期录入</td>
@@ -70,6 +158,7 @@
                 <td class="green">冷却结束时间</td>
                 <td>生产工时</td>
                 <td class="yellow">min</td>
+>>>>>>> 491426194df694570c5cc7984958710382b102ad
                 <td>生产日期： </td>
                 <td class="green"></td>
             </tr>
