@@ -6,15 +6,11 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-<<<<<<< HEAD
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-=======
->>>>>>> 491426194df694570c5cc7984958710382b102ad
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.uWinOPCTjyx.entity.*;
@@ -52,18 +48,14 @@ public class OPCController {
 	@RequestMapping("/getUser")
 	@ResponseBody
 	public User getUser(){
-<<<<<<< HEAD
 		List<ShengChanJiLu> list = shengChanJiLuService.getList();
 		for (ShengChanJiLu shengChanJiLu : list) {
 			System.out.println(shengChanJiLu);
 		}
-=======
->>>>>>> 491426194df694570c5cc7984958710382b102ad
 		System.out.println("进来");
 		User user=new User(1,"张三");
 		return user;
 	}
-<<<<<<< HEAD
 
 	@RequestMapping("/addSCJL")
 	@ResponseBody
@@ -87,6 +79,4 @@ public class OPCController {
 			return json;
 		}
 	}
-=======
->>>>>>> 491426194df694570c5cc7984958710382b102ad
 }
