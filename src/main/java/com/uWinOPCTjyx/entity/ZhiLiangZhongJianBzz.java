@@ -11,6 +11,7 @@ public class ZhiLiangZhongJianBzz {
 	private Integer lx;//类型
 
 	public ZhiLiangZhongJianBzz() {
+		
 	}
 
 	public ZhiLiangZhongJianBzz(Integer id, Integer zlx, Integer scjllx, Double bzzsx, Double bzzxx, String dw, Integer lx) {

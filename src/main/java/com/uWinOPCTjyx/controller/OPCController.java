@@ -6,7 +6,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -66,16 +65,17 @@ public class OPCController {
 		int i = 0;
 		try {
 			i = shengChanJiLuService.addSCJL(shengChanJiLu);
-			if (i>0){
-				System.out.println("添加成功");
-				json.put("message","添加成功");
-			}else {
-				System.out.println("添加失败");
-				json.put("message","添加失败");
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		}
+
+		if (i>0){
+			System.out.println("添加成功");
+			json.put("message","yes");
+			return json;
+		}else {
+			System.out.println("添加失败");
+			json.put("message","no");
 			return json;
 		}
 	}

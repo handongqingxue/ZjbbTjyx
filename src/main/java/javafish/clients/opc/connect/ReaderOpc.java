@@ -61,8 +61,7 @@ public class ReaderOpc {
 		
 		OpcGroup group = new OpcGroup("反应釜1执行配方M[50]", true, 500, 0.0f);
 		
-		// new Opcitem("K1.Value",true,"");    "K1.Value"  表示要读取opc服务器中的变量名称的值。
-		group.addItem(new OpcItem("_85度PH4上限_PF1_AV", true, ""));      
+		group.addItem(new OpcItem("_85度PH4上限_PF1_AV", true, ""));
 		
 		jopc.addGroup(group);   //添加组
 		OpcGroup responseGroup;
