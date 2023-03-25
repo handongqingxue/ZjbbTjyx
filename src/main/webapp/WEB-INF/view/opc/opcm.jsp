@@ -16,6 +16,10 @@
     <title>Title</title>
     <link rel="stylesheet" href="<%=basePath%>resource/css/style.css">
     <script type="text/javascript">
+    $(function(){
+    	hello();
+    });
+    
         function hello() {
            $.ajax(
                {
