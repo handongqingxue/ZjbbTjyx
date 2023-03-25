@@ -16,60 +16,41 @@
 <title>Title</title>
 <link rel="stylesheet" href="<%=basePath%>resource/css/style.css">
 <script type="text/javascript">
-$(function(){
-	hello();
-});
-    
-function addSCJL() {
-   $.ajax({
-        url:"<%=basePath%>opc/addSCJL",
-        type:"post",
-        data:{
-            "scbh": $("scbh_input").innerText,
-            "fyfh": $("scbh_input").innerText,
-            "kssj": "2023-03-24 17:30:00",
-            "jssj": "2023-03-25 17:30:00",
-            "scgs": $("scbh_input").innerText,
-            "scrq": "2023-03-24 17:30:00",
-            "ysd101": $("scbh_input").innerText,
-            "ysd102": $("scbh_input").innerText,
-            "ysd103": "2",
-            "dbczy":$("scbh_input").innerText,
-            "jbczy":$("scbh_input").innerText,
-            "lx": 2
-        },
-        // contentType:application/json,
-        success:function (response) {
-            close(response);
-            alert(response.message)
-            // var name=response.username
-            // $("#dqczy_span").text(name)
-        }
-    });
-}
-        
-function hello() {
-   $.ajax(
-       {
-           url:"<%=basePath%>opc/getUser",
-           type:"post",
-           success:function (response) {
-               var name=response.username
-               $("#dqczy_span").text(name)
-           }
-       }
-   )
-}
+    function addSCJL() {
+       $.ajax({
+            url:"<%=basePath%>opc/addSCJL",
+            type:"post",
+            data:{
+                "scbh": $("#scbh_input").val(),
+                "fyfh": $("#fyfh_input").val(),
+                "kssj": $("#kssj_input").val(),
+                "jssj": $("#jssj_input").val(),
+                "scgs": $("#scgs_input").val(),
+                "scrq": $("#scrq_input").val(),
+                "ysd101": $("#ysd101_input").val(),
+                "ysd102": $("#ysd102_input").val(),
+                "ysd103": "2",
+                "dbczy":$("#dbczy_input").val(),
+                "jbczy":$("#jbczy_input").val(),
+                "lx": 2
+            },
+            // contentType:application/json,
+            success:function (response) {
+                close(response);
+                alert(response.message)
+            }
+        });
+    }
 </script>
 </head>
 <body>
 <div>
+    <button class="baocun" style="position: fixed;top: 20px;left: 1500px" onclick="addSCJL()">保存</button>
     <table class="tab" border="1px">
         <tr>
             <td colspan="13">
                 <span class="onetd1">M类 （ ）胶 生产记录</span>
                 <span class="onetd4">自动表单设计：张发 设计号：ZJZD20211225</span>
-                <button onclick="addSCJL()">保存</button>
             </td>
         </tr>
         <%--第二行--%>
@@ -77,51 +58,56 @@ function hello() {
             <td>YSD101信息</td>
             <td class="blue">
 				<%--甲醛厂家信息，可后期录入--%>
-                <input type="text" id="ysd101_input">
+                <input type="text" id="ysd101_input" placeholder="甲醛厂家信息"/>
             </td>
             <td>YSD102信息</td>
             <td class="blue">
-                <input type="text" id="ysd102_input">
-				<%--三安厂家信息可后期录入--%>
+                <%--三安厂家信息可后期录入--%>
+                <input type="text" id="ysd102_input" placeholder="三安厂家信息">
             </td>
             <td></td>
             <td colspan="2">当班操作员：</td>
             <td class="green" colspan="2">
-                <input type="text" id="dbczy_input">
 				<%--直接摘抄登录名--%>
+                <input type="text" id="dbczy_input" placeholder="登录名">
             </td>
             <td colspan="2">接班操作员：</td>
             <td class="green" colspan="2">
-                <input type="text" id="jbczy_input">
-				<%--直接摘抄登录名--%>
+                <%--直接摘抄登录名--%>
+                <input type="text" id="jbczy_input" placeholder="登录名">
             </td>
         </tr>
         <%--第三行--%>
         <tr>
             <td>生产编号</td>
             <td class="yellow">
-                <input type="text" id="scbh_input">
-				<%--每生产1釜加1--%>
+                <%--每生产1釜加1--%>
+                <input type="text" id="scbh_input" placeholder="生产编号">
             </td>
             <td>反应釜：</td>
             <td class="green" colspan="2">
 				<%--反应釜号--%>
-                <input type="text" id="fyfh_input">
+                <input type="text" id="fyfh_input" placeholder="反应釜号">
             </td>
             <td>开始时间</td>
             <td class="green">
-                <input type="date" id="kssj_input">
-				<%--备料开始时间--%>
+                <%--备料开始时间--%>
+                <input type="datetime-local" id="kssj_input">
             </td>
             <td>结束时间</td>
-            <td class="green">冷却结束时间</td>
+            <td class="green">
+                <%--冷却结束时间--%>
+                <input type="datetime-local" id="jssj_input">
+            </td>
             <td>生产工时</td>
             <td class="yellow">
-                <input type="text" id="scgs_input">
-				<%--min--%>
+                <%--min--%>
+                <input type="text" id="scgs_input" placeholder="min/分">
             </td>
             <td>生产日期： </td>
-            <td class="green"></td>
+            <td class="green">
+                <input type="date" id="scrq_input">
+            </td>
         </tr>
         <%--第四行--%>
         <tr>

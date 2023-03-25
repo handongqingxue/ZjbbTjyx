@@ -17,11 +17,36 @@
     <link rel="stylesheet" href="<%=basePath%>resource/css/style.css">
 
     <script type="text/javascript">
-
+        function addSCJL() {
+            $.ajax({
+                url:"<%=basePath%>opc/addSCJL",
+                type:"post",
+                data:{
+                    "scbh": $("#scbh_input").val(),
+                    "fyfh": $("#fyfh_input").val(),
+                    "kssj": $("#kssj_input").val(),
+                    "jssj": $("#jssj_input").val(),
+                    "scgs": $("#scgs_input").val(),
+                    "scrq": $("#scrq_input").val(),
+                    "ysd101": $("#ysd101_input").val(),
+                    "ysd102": $("#ysd102_input").val(),
+                    "ysd103": $("#ysd103_input").val(),
+                    "dbczy":$("#dbczy_input").val(),
+                    "jbczy":$("#jbczy_input").val(),
+                    "lx": 2
+                },
+                // contentType:application/json,
+                success:function (response) {
+                    close(response);
+                    alert(response.message)
+                }
+            });
+        }
     </script>
 </head>
 <body>
     <div>
+        <button class="baocun" style="position: fixed;top: 20px;left: 1500px" onclick="addSCJL()">保存</button>
         <table class="tab" border="1px">
             <tr>
                 <th colspan="13">
@@ -32,16 +57,31 @@
             <!--第二行-->
             <tr>
                 <td rowspan="2">YSD101</br>信息</td>
-                <td rowspan="2" class="blue">录入</td>
+                <td rowspan="2" class="blue">
+                    <%--录入--%>
+                    <input type="text" placeholder="ysd101信息" id="ysd101_input">
+                </td>
                 <td rowspan="2">YSD102</br>信息</td>
-                <td rowspan="2" class="blue">录入</td>
+                <td rowspan="2" class="blue">
+                    <%--录入--%>
+                    <input type="text" placeholder="ysd102信息" id="ysd102_input">
+                </td>
                 <td rowspan="2"></td>
                 <td rowspan="2">YSD103</br>信息</td>
-                <td rowspan="2" class="blue">录入</td>
+                <td rowspan="2" class="blue">
+                    <%--录入--%>
+                    <input type="text" placeholder="ysd103信息" id="ysd103_input">
+                </td>
                 <td rowspan="2">当班操作员：</td>
-                <td class="greens" rowspan="2">直接摘抄登录名</td>
+                <td class="greens" rowspan="2">
+                    <%--直接摘抄登录名--%>
+                    <input type="text" id="dbczy_input" placeholder="登录名">
+                </td>
                 <td rowspan="2">接班操作员：</td>
-                <td class="greens" rowspan="2" class="aa">直接摘抄登录名</td>
+                <td class="greens" rowspan="2" class="aa">
+                    <%--直接摘抄登录名--%>
+                    <input type="text" id="jbczy_input" placeholder="登录名">
+                </td>
                 <td rowspan="2" colspan="2"></td>
             </tr>
             <tr>
@@ -50,17 +90,34 @@
             <!--第三行-->
             <tr>
                 <td>生产编号</td>
-                <td class="yellow">#</td>
+                <td class="yellow">
+                    <%--每生产1釜加1--%>
+                    <input type="text" id="scbh_input" placeholder="生产编号">
+                </td>
                 <td>反应釜：</td>
-                <td colspan="2" class="green"></td>
+                <td colspan="2" class="green">
+                    <%--反应釜号--%>
+                    <input type="text" id="fyfh_input" placeholder="反应釜号">
+                </td>
                 <td>开始时间</td>
-                <td class="green">:</td>
+                <td class="green">
+                    <%--备料开始时间--%>
+                    <input type="datetime-local" id="kssj_input">
+                </td>
                 <td>结束时间</td>
-                <td class="green">:</td>
+                <td class="green">
+                    <%--冷却结束时间--%>
+                    <input type="datetime-local" id="jssj_input">
+                </td>
                 <td>生产工时</td>
-                <td class="yellow">min</td>
+                <td class="yellow">
+                    <%--min--%>
+                    <input type="text" id="scgs_input" placeholder="min/分">
+                </td>
                 <td>生产日期： </td>
-                <td>20  .  .</td>
+                <td>
+                    <input type="date" id="scrq_input">
+                </td>
             </tr>
             <!--第四行-->
             <tr>

@@ -45,17 +45,6 @@ public class OPCController {
 		return MODULE_NAME+"/opcm";
 	}
 
-	@RequestMapping("/getUser")
-	@ResponseBody
-	public User getUser(){
-		List<ShengChanJiLu> list = shengChanJiLuService.getList();
-		for (ShengChanJiLu shengChanJiLu : list) {
-			System.out.println(shengChanJiLu);
-		}
-		System.out.println("进来");
-		User user=new User(1,"张三");
-		return user;
-	}
 
 	@RequestMapping("/addSCJL")
 	@ResponseBody
