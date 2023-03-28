@@ -10,14 +10,14 @@ import com.uWinOPCTjyx.dao.*;
 import com.uWinOPCTjyx.service.*;
 
 @Service
-public class ZhiLiangZhongJianBzzServiceImpl implements ZhiLiangZhongJianBzzService {
+public class ZhiLiangZhongJianBzzUServiceImpl implements ZhiLiangZhongJianBzzUService {
 
 	@Autowired
-	private ZhiLiangZhongJianBzzMapper zhiLiangZhongJianBzzDao;
+	private ZhiLiangZhongJianBzzUMapper zhiLiangZhongJianBzzUDao;
 	
-	public List<ZhiLiangZhongJianBzz> getList() {
+	public List<ZhiLiangZhongJianBzzU> getList() {
 		// TODO Auto-generated method stub
-		return zhiLiangZhongJianBzzDao.getList();
+		return zhiLiangZhongJianBzzUDao.getList();
 	}
 
 }

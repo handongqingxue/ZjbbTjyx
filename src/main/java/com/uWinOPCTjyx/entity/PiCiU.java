@@ -1,6 +1,6 @@
 package com.uWinOPCTjyx.entity;
 
-public class ShengChanJiLu {
+public class PiCiU {
 
     private Integer id;//记录id
     private Integer scbh;//生产编号
@@ -12,9 +12,8 @@ public class ShengChanJiLu {
     private String ysd101;//YSD101信息
     private String ysd102;//YSD102信息
     private String ysd103;//YSD103信息
-    private String dbczy;//当班操作员
-    private String jbczy;//接班操作员
-    private Integer lx;//类型
+    private String dbczyBsh;//当班操作员
+    private String jbczyBsh;//接班操作员
 
     @Override
     public String toString() {
@@ -29,16 +28,15 @@ public class ShengChanJiLu {
                 ", ysd101='" + ysd101 + '\'' +
                 ", ysd102='" + ysd102 + '\'' +
                 ", ysd103='" + ysd103 + '\'' +
-                ", dbczy='" + dbczy + '\'' +
-                ", jbczy='" + jbczy + '\'' +
-                ", lx=" + lx +
+                ", dbczyBsh='" + dbczyBsh + '\'' +
+                ", jbczyBsh='" + jbczyBsh + '\'' +
                 '}';
     }
 
-    public ShengChanJiLu() {
+    public PiCiU() {
     }
 
-    public ShengChanJiLu(Integer id, Integer scbh, Integer fyfh, String kssj, String jssj, String scgs, String scrq, String ysd101, String ysd102, String ysd103, String dbczy, String jbczy, Integer lx) {
+    public PiCiU(Integer id, Integer scbh, Integer fyfh, String kssj, String jssj, String scgs, String scrq, String ysd101, String ysd102, String ysd103, String dbczyBsh, String jbczyBsh) {
         this.id = id;
         this.scbh = scbh;
         this.fyfh = fyfh;
@@ -49,9 +47,8 @@ public class ShengChanJiLu {
         this.ysd101 = ysd101;
         this.ysd102 = ysd102;
         this.ysd103 = ysd103;
-        this.dbczy = dbczy;
-        this.jbczy = jbczy;
-        this.lx = lx;
+        this.dbczyBsh = dbczyBsh;
+        this.jbczyBsh = jbczyBsh;
     }
 
     public Integer getId() {
@@ -127,34 +124,26 @@ public class ShengChanJiLu {
     }
 
     public String getYsd103() {
-        return ysd103;
+		return ysd103;
+	}
+
+	public void setYsd103(String ysd103) {
+		this.ysd103 = ysd103;
+	}
+
+	public String getDbczyBsh() {
+        return dbczyBsh;
     }
 
-    public void setYsd103(String ysd103) {
-        this.ysd103 = ysd103;
+    public void setDbczy(String dbczyBsh) {
+        this.dbczyBsh = dbczyBsh;
     }
 
-    public String getDbczy() {
-        return dbczy;
+    public String getJbczyBsh() {
+        return jbczyBsh;
     }
 
-    public void setDbczy(String dbczy) {
-        this.dbczy = dbczy;
-    }
-
-    public String getJbczy() {
-        return jbczy;
-    }
-
-    public void setJbczy(String jbczy) {
-        this.jbczy = jbczy;
-    }
-
-    public Integer getLx() {
-        return lx;
-    }
-
-    public void setLx(Integer lx) {
-        this.lx = lx;
+    public void setJbczy(String jbczyBsh) {
+        this.jbczyBsh = jbczyBsh;
     }
 }

@@ -18,7 +18,7 @@
 <script type="text/javascript">
 var path='<%=basePath%>';
 
-function addSCJL() {
+function addPiCiU() {
 	var scbh=$("#scbh_input").val();
 	var fyfh=$("#fyfh_input").val();
 	var kssj=$("#kssj_input").val();
@@ -28,12 +28,11 @@ function addSCJL() {
 	var ysd101=$("#ysd101_input").val();
 	var ysd102=$("#ysd102_input").val();
 	var ysd103="2";
-	var dbczy=$("#dbczy_input").val();
-	var jbczy=$("#jbczy_input").val();
-	var lx=2;
+	var dbczyBsh=$("#dbczyBsh_input").val();
+	var jbczyBsh=$("#jbczyBsh_input").val();
 	
-    $.post(path+"opc/addSCJL",
-    	{scbh:scbh,fyfh:fyfh,kssj:kssj,jssj:jssj,scgs:scgs,scrq:scrq,ysd101:ysd101,ysd102:ysd102,ysd103:ysd103,dbczy:dbczy,jbczy:jbczy,lx:lx},
+    $.post(path+"opc/addPiCiU",
+    	{scbh:scbh,fyfh:fyfh,kssj:kssj,jssj:jssj,scgs:scgs,scrq:scrq,ysd101:ysd101,ysd102:ysd102,ysd103:ysd103,dbczyBsh:dbczyBsh,jbczyBsh:jbczyBsh},
     	function(data){
     		if(data.message=="ok"){
     			alert(data.info);
@@ -45,7 +44,7 @@ function addSCJL() {
 </head>
 <body>
 <div>
-    <button class="baocun" style="position: fixed;top: 20px;left: 1500px" onclick="addSCJL()">保存</button>
+    <button class="baocun" style="position: fixed;top: 20px;left: 1500px" onclick="addPiCiU()">保存</button>
     <table class="tab" border="1px">
         <tr>
             <td colspan="13">
@@ -69,12 +68,12 @@ function addSCJL() {
             <td colspan="2">当班操作员：</td>
             <td class="green" colspan="2">
 				<%--直接摘抄登录名--%>
-                <input type="text" id="dbczy_input" placeholder="登录名">
+                <input type="text" id="dbczyBsh_input" placeholder="登录名">
             </td>
             <td colspan="2">接班操作员：</td>
             <td class="green" colspan="2">
                 <%--直接摘抄登录名--%>
-                <input type="text" id="jbczy_input" placeholder="登录名">
+                <input type="text" id="jbczyBsh_input" placeholder="登录名">
             </td>
         </tr>
         <%--第三行--%>

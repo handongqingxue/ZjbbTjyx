@@ -1,6 +1,6 @@
 package com.uWinOPCTjyx.entity;
 
-public class ZhiLiangZhongJianBzz {
+public class ZhiLiangZhongJianBzzU {
 
 	private Integer id;//标准值id
 	private Integer zlx;//值类型
@@ -8,20 +8,18 @@ public class ZhiLiangZhongJianBzz {
 	private Double bzzsx;//标准值上限
 	private Double bzzxx;//标准值下限
 	private String dw;//单位
-	private Integer lx;//类型
 
-	public ZhiLiangZhongJianBzz() {
+	public ZhiLiangZhongJianBzzU() {
 		
 	}
 
-	public ZhiLiangZhongJianBzz(Integer id, Integer zlx, Integer scjllx, Double bzzsx, Double bzzxx, String dw, Integer lx) {
+	public ZhiLiangZhongJianBzzU(Integer id, Integer zlx, Integer scjllx, Double bzzsx, Double bzzxx, String dw) {
 		this.id = id;
 		this.zlx = zlx;
 		this.scjllx = scjllx;
 		this.bzzsx = bzzsx;
 		this.bzzxx = bzzxx;
 		this.dw = dw;
-		this.lx = lx;
 	}
 
 	public Integer getId() {
@@ -70,13 +68,5 @@ public class ZhiLiangZhongJianBzz {
 
 	public void setDw(String dw) {
 		this.dw = dw;
-	}
-
-	public Integer getLx() {
-		return lx;
-	}
-
-	public void setLx(Integer lx) {
-		this.lx = lx;
 	}
 }

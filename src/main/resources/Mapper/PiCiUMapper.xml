@@ -2,13 +2,10 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.uWinOPCTjyx.dao.ShengChanJiLuMapper">
-	<insert id="addSCJL" parameterType="com.uWinOPCTjyx.entity.ShengChanJiLu">
-		insert into sheng_chan_ji_lu
+<mapper namespace="com.uWinOPCTjyx.dao.PiCiUMapper">
+	<insert id="add" parameterType="com.uWinOPCTjyx.entity.PiCiU">
+		insert into PiCiU
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="id!=null">
-				id,
-			</if>
 			<if test="scbh!=null">
 				scbh,
 			</if>
@@ -36,21 +33,15 @@
 			<if test="ysd103!=null">
 				ysd103,
 			</if>
-			<if test="dbczy!=null">
-				dbczy,
+			<if test="dbczyBsh!=null">
+				dbczyBsh,
 			</if>
-			<if test="jbczy!=null">
-				jbczy,
-			</if>
-			<if test="lx!=null">
-				lx,
+			<if test="jbczyBsh!=null">
+				jbczyBsh,
 			</if>
 		</trim>
 		values
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="id!=null">
-				#{id},
-			</if>
 			<if test="scbh!=null">
 				#{scbh},
 			</if>
@@ -78,20 +69,17 @@
 			<if test="ysd103!=null">
 				#{ysd103},
 			</if>
-			<if test="dbczy!=null">
-				#{dbczy},
+			<if test="dbczyBsh!=null">
+				#{dbczyBsh},
 			</if>
-			<if test="jbczy!=null">
-				#{jbczy},
-			</if>
-			<if test="lx!=null">
-				#{lx},
+			<if test="jbczyBsh!=null">
+				#{jbczyBsh},
 			</if>
 		</trim>
 	</insert>
 
-	<select id="getList" resultType="com.uWinOPCTjyx.entity.ShengChanJiLu">
-		select * from sheng_chan_ji_lu
+	<select id="getList" resultType="com.uWinOPCTjyx.entity.PiCiU">
+		select * from PiCiU
 	</select>
 
 </mapper>
