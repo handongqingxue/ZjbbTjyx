@@ -1,6 +1,9 @@
 package javafish.clients.opc.connect;
 
 import java.util.ArrayList;
+
+import com.uWinOPCTjyx.util.APIUtil;
+
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
 import javafish.clients.opc.JOpc;
@@ -48,20 +51,20 @@ public class ReaderOpc {
 		
 //		JOpc jopc = new JOpc("127.0.0.1", "UWinTech.UWinOPCS.1", "OPS3-PC");
 
-		/*
 		JOpc jopc = new JOpc("127.0.0.1", "Kepware.KEPServerEX.V6", "OPS3-PC");
 
 		OpcGroup group = new OpcGroup("_System", true, 500, 0.0f);
 		
 		// new Opcitem("K1.Value",true,"");    "K1.Value"  表示要读取opc服务器中的变量名称的值。
 		group.addItem(new OpcItem("_System._Time", true, ""));
-		*/
-		
+
+		/*
 		JOpc jopc = new JOpc("127.0.0.1", "UWinTech.UWinOPCS.1", "OPS3-PC");
 		
 		OpcGroup group = new OpcGroup("反应釜1执行配方M[50]", true, 500, 0.0f);
 		
 		group.addItem(new OpcItem("_85度PH4上限_PF1_AV", true, ""));
+		*/
 		
 		jopc.addGroup(group);   //添加组
 		OpcGroup responseGroup;
@@ -96,7 +99,10 @@ public class ReaderOpc {
 				ArrayList<OpcItem> opcItems = responseGroup.getItems();
 				for (OpcItem opcItem : opcItems) {
 					System.out.println("Item名:" + opcItem.getItemName()  +  "  Item值: " + opcItem.getValue());
+					APIUtil.addSCJL(opcItem.getValue().toString());
+					break;
 				}
+				break;
 			} catch (ComponentNotFoundException e) {
 				//logger.error(e.getMessage()); //获取responseGroup错误
 				JOpc.coUninitialize();     //错误关闭连接

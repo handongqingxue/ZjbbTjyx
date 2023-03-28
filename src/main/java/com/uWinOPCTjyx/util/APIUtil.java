@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -59,7 +60,23 @@ public class APIUtil {
 			String result = sbf.toString();
 			System.out.println("result==="+result);
 			resultJO = new JSONObject(result);
-		} catch (JSONException e) {
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally {
+			return resultJO;
+		}
+	}
+	
+	public static JSONObject addSCJL(String scrq) {
+		// TODO Auto-generated method stub
+		JSONObject resultJO = null;
+		try {
+			Map<String, Object> params = new HashMap<String, Object>();
+			params.put("scrq", scrq);
+	        resultJO = doHttp("addSCJL",params);
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
