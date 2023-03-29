@@ -2,6 +2,9 @@ package javafish.clients.opc.connect;
 
 import java.util.ArrayList;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import com.uWinOPCTjyx.util.APIUtil;
 
 //import org.slf4j.Logger;
@@ -15,6 +18,7 @@ import javafish.clients.opc.exception.ConnectivityException;
 import javafish.clients.opc.exception.SynchReadException;
 import javafish.clients.opc.exception.UnableAddGroupException;
 import javafish.clients.opc.exception.UnableAddItemException;
+import javafish.clients.opc.variant.Variant;
 /**
  * 读取opc服务端
  * @author Administrator
@@ -37,7 +41,6 @@ public class ReaderOpc {
 		 * KingView.View.1     opcService在系统注册表中的注册名,  组态王中的opcService默认名KingView.View.1,如果你不是使用组态王中的opcService那么请修改你要连接的注册名(opcService服务名称)
 		 * JOPC1						OPC客户端的用户名---按你喜欢来填
 		 */
-		/*
 		JOpc jopc = new JOpc("127.0.0.1", "Kepware.KEPServerEX.V6", "M3N881PM37O1M1D");
 		
 		OpcGroup group = new OpcGroup("chanel1.device1._System", true, 500, 0.0f);
@@ -47,18 +50,9 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("chanel1.device1._System._NoError", true, ""));
 		group.addItem(new OpcItem("chanel1.device1._System._ScanMode", true, ""));
 		group.addItem(new OpcItem("chanel1.device1._System._EncapsulationPort", true, ""));
-		*/
-		
-//		JOpc jopc = new JOpc("127.0.0.1", "UWinTech.UWinOPCS.1", "OPS3-PC");
-//
-//		JOpc jopc = new JOpc("127.0.0.1", "Kepware.KEPServerEX.V6", "OPS3-PC");
-//
-//		OpcGroup group = new OpcGroup("_System", true, 500, 0.0f);
-//
-//		// new Opcitem("K1.Value",true,"");    "K1.Value"  表示要读取opc服务器中的变量名称的值。
-//		group.addItem(new OpcItem("_System._Time", true, ""));
 
-
+		/*
+		//JOpc jopc = new JOpc("127.0.0.1", "Kepware.KEPServerEX.V6", "M3N881PM37O1M1D");
 		JOpc jopc = new JOpc("127.0.0.1", "UWinTech.UWinOPCS.1", "OPS3-PC");
 
 		OpcGroup group = new OpcGroup("反应釜1执行配方M[50]", true, 500, 0.0f);
@@ -118,6 +112,7 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("测量冰水雾点输入值_F1_AV", true, ""));
 
 		group.addItem(new OpcItem("测20雾点输入值_F1_AV", true, ""));
+		*/
 
 		jopc.addGroup(group);   //添加组
 		OpcGroup responseGroup;
@@ -146,15 +141,26 @@ public class ReaderOpc {
 		while (true) {
 			try {
 				synchronized(test) {
-					test.wait(5000);
+					test.wait(3000);
 				}
 				responseGroup = jopc.synchReadGroup(group);
+
+				JSONArray bodyParamJA=new JSONArray();
+				JSONObject bodyParamJO=null;
+				
 				ArrayList<OpcItem> opcItems = responseGroup.getItems();
 				for (OpcItem opcItem : opcItems) {
-					System.out.println("Item名:" + opcItem.getItemName() + "  Item值: " + opcItem.getValue());
-					//APIUtil.addPiCiU(opcItem.getValue().toString());
-					//break;
+					String itemName = opcItem.getItemName();
+					String value = opcItem.getValue().toString();
+					System.out.println("Item名:" + itemName + "  Item值: " + value);
+					
+					bodyParamJO=new JSONObject();
+					bodyParamJO.put("mc", itemName);
+					bodyParamJO.put("sz", value);
+					bodyParamJA.put(bodyParamJO);
 				}
+				JSONObject resultJO = APIUtil.doHttp("editOpcBianLiang",bodyParamJA);
+				System.out.println("resultJO==="+resultJO.toString());
 				break;
 			} catch (ComponentNotFoundException e) {
 				//logger.error(e.getMessage()); //获取responseGroup错误
