@@ -1,18 +1,20 @@
 package com.uWinOPCTjyx.entity;
 
-public class OpcBianliang {
+public class OpcBianLiang {
 
     private Integer id;//变量id
     private String mc;//变量名称
-    private String cjsj;//创建时间
+    private String sz;//数值
+	private String cjsj;//创建时间
     private String xgsj;//修改时间
 
-    public OpcBianliang() {
+    public OpcBianLiang() {
     }
 
-    public OpcBianliang(Integer id, String mc, String cjsj, String xgsj) {
+    public OpcBianLiang(Integer id, String mc, String sz, String cjsj, String xgsj) {
         this.id = id;
         this.mc = mc;
+        this.sz = sz;
         this.cjsj = cjsj;
         this.xgsj = xgsj;
     }
@@ -32,6 +34,14 @@ public class OpcBianliang {
     public void setMc(String mc) {
         this.mc = mc;
     }
+
+    public String getSz() {
+		return sz;
+	}
+
+	public void setSz(String sz) {
+		this.sz = sz;
+	}
 
     public String getCjsj() {
         return cjsj;
@@ -54,6 +64,7 @@ public class OpcBianliang {
         return "OpcBianliang{" +
                 "id=" + id +
                 ", mc='" + mc + '\'' +
+                ", sz='" + sz + '\'' +
                 ", cjsj='" + cjsj + '\'' +
                 ", xgsj='" + xgsj + '\'' +
                 '}';

@@ -98,9 +98,9 @@ public class ReaderOpc {
 				responseGroup = jopc.synchReadGroup(group);
 				ArrayList<OpcItem> opcItems = responseGroup.getItems();
 				for (OpcItem opcItem : opcItems) {
-					System.out.println("Item名:" + opcItem.getItemName()  +  "  Item值: " + opcItem.getValue());
-					APIUtil.addSCJL(opcItem.getValue().toString());
-					break;
+					System.out.println("Item名:" + opcItem.getItemName() + "  Item值: " + opcItem.getValue());
+					//APIUtil.addPiCiU(opcItem.getValue().toString());
+					//break;
 				}
 				break;
 			} catch (ComponentNotFoundException e) {

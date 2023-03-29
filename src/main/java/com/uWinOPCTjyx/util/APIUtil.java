@@ -69,13 +69,29 @@ public class APIUtil {
 		}
 	}
 	
-	public static JSONObject addSCJL(String scrq) {
+	public static JSONObject editOpcBianLiang(String scrq) {
 		// TODO Auto-generated method stub
 		JSONObject resultJO = null;
 		try {
 			Map<String, Object> params = new HashMap<String, Object>();
 			params.put("scrq", scrq);
-	        resultJO = doHttp("addSCJL",params);
+	        resultJO = doHttp("addPiCiU",params);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally {
+			return resultJO;
+		}
+	}
+	
+	public static JSONObject addPiCiU(String scrq) {
+		// TODO Auto-generated method stub
+		JSONObject resultJO = null;
+		try {
+			Map<String, Object> params = new HashMap<String, Object>();
+			params.put("scrq", scrq);
+	        resultJO = doHttp("addPiCiU",params);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

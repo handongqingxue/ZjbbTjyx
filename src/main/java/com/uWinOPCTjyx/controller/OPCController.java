@@ -23,9 +23,10 @@ public class OPCController {
 
 	@Autowired
 	private ZhiLiangZhongJianBzzUService zhiLiangZhongJianBzzUService;
-
 	@Autowired
 	private PiCiUService piCiUService;
+	@Autowired
+	private OpcBianLiangService opcBianLiangService;
 	public static final String MODULE_NAME="opc";
 	
 	@RequestMapping(value="/opcu")
@@ -43,6 +44,30 @@ public class OPCController {
 		List<ZhiLiangZhongJianBzzU> list = zhiLiangZhongJianBzzUService.getList();
 		System.out.println("size==="+list.size());
 		return MODULE_NAME+"/opcm";
+	}
+
+
+	@RequestMapping("/editOpcBianLiang")
+	@ResponseBody
+	public Map<String, Object> editOpcBianLiang(OpcBianLiang opcBianLiang){
+		
+		Map<String,Object> json=new HashMap<String, Object>();
+		try {
+			int count = opcBianLiangService.edit(opcBianLiang);
+			if (count>0){
+				json.put("message","ok");
+				json.put("info","编辑成功");
+			}
+			else {
+				json.put("message","no");
+				json.put("info","编辑失败");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			return json;
+		}
 	}
 
 
