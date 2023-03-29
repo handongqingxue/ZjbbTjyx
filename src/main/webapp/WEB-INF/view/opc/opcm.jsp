@@ -27,7 +27,7 @@ function addSCJL() {
 	var scrq=$("#scrq_input").val();
 	var ysd101=$("#ysd101_input").val();
 	var ysd102=$("#ysd102_input").val();
-	var ysd103="2";
+	var ysd103=null;
 	var dbczy=$("#dbczy_input").val();
 	var jbczy=$("#jbczy_input").val();
 	var lx=2;
