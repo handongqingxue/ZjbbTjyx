@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.uWinOPCTjyx.entity.*;
 
-public interface ZhiLiangZhongJianBzzService {
+public interface ZhiLiangZhongJianBzzUService {
 
-	List<ZhiLiangZhongJianBzz> getList();
+	List<ZhiLiangZhongJianBzzU> getList();
 }

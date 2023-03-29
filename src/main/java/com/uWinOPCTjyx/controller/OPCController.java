@@ -22,10 +22,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class OPCController {
 
 	@Autowired
-	private ZhiLiangZhongJianBzzService zhiLiangZhongJianBzzService;
+	private ZhiLiangZhongJianBzzUService zhiLiangZhongJianBzzUService;
 
 	@Autowired
-	private ShengChanJiLuService shengChanJiLuService;
+	private PiCiUService piCiUService;
 	public static final String MODULE_NAME="opc";
 	
 	@RequestMapping(value="/opcu")
@@ -40,19 +40,19 @@ public class OPCController {
 	public String goOpcM(HttpServletRequest request, Model model) {
 
 		//localhost:8080/UWinOPCTjyx/opc/test
-		List<ZhiLiangZhongJianBzz> list = zhiLiangZhongJianBzzService.getList();
+		List<ZhiLiangZhongJianBzzU> list = zhiLiangZhongJianBzzUService.getList();
 		System.out.println("size==="+list.size());
 		return MODULE_NAME+"/opcm";
 	}
 
 
-	@RequestMapping("/addSCJL")
+	@RequestMapping("/addPiCiU")
 	@ResponseBody
-	public Map<String, Object> addSCJL(ShengChanJiLu shengChanJiLu){
-		System.out.println(shengChanJiLu+"-");
+	public Map<String, Object> addPiCiU(PiCiU piCiU){
+		System.out.println(piCiU+"-");
 		Map<String,Object> json=new HashMap<String, Object>();
 		try {
-			int count = shengChanJiLuService.addSCJL(shengChanJiLu);
+			int count = piCiUService.add(piCiU);
 			if (count>0){
 				json.put("message","ok");
 				json.put("info","添加成功");
