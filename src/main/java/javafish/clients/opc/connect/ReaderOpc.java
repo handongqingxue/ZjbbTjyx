@@ -50,22 +50,75 @@ public class ReaderOpc {
 		*/
 		
 //		JOpc jopc = new JOpc("127.0.0.1", "UWinTech.UWinOPCS.1", "OPS3-PC");
+//
+//		JOpc jopc = new JOpc("127.0.0.1", "Kepware.KEPServerEX.V6", "OPS3-PC");
+//
+//		OpcGroup group = new OpcGroup("_System", true, 500, 0.0f);
+//
+//		// new Opcitem("K1.Value",true,"");    "K1.Value"  表示要读取opc服务器中的变量名称的值。
+//		group.addItem(new OpcItem("_System._Time", true, ""));
 
-		JOpc jopc = new JOpc("127.0.0.1", "Kepware.KEPServerEX.V6", "OPS3-PC");
 
-		OpcGroup group = new OpcGroup("_System", true, 500, 0.0f);
-		
-		// new Opcitem("K1.Value",true,"");    "K1.Value"  表示要读取opc服务器中的变量名称的值。
-		group.addItem(new OpcItem("_System._Time", true, ""));
-
-		/*
 		JOpc jopc = new JOpc("127.0.0.1", "UWinTech.UWinOPCS.1", "OPS3-PC");
-		
+
 		OpcGroup group = new OpcGroup("反应釜1执行配方M[50]", true, 500, 0.0f);
-		
+
 		group.addItem(new OpcItem("_85度PH4上限_PF1_AV", true, ""));
-		*/
-		
+
+		group.addItem(new OpcItem("备料开始_F1_AV", true, ""));
+
+		group.addItem(new OpcItem("降温完成_F1_AV", true, ""));
+
+		group.addItem(new OpcItem("甲醛实际进料重量_F1_AV", true, ""));
+
+		group.addItem(new OpcItem("甲醛备料开始_F1_AV", true, ""));
+
+		group.addItem(new OpcItem("甲醛放料完成_F1_AV", true, ""));
+
+		group.addItem(new OpcItem("反应釜1温度_AV", true, ""));
+
+		group.addItem(new OpcItem("加碱PH值正常_F1_AV", true, ""));
+
+		group.addItem(new OpcItem("加碱前PH输入值_F1_AV", true, ""));
+
+		group.addItem(new OpcItem("釜1称重_AV", true, ""));
+
+		group.addItem(new OpcItem("加碱量提示_PF1_AV", true, ""));
+
+		group.addItem(new OpcItem("加碱后PH输入值_F1_AV", true, ""));
+
+		group.addItem(new OpcItem("所有助剂加料完成1_F1_AV", true, ""));
+
+		group.addItem(new OpcItem("加粉料提醒_F1_AV", true, ""));
+
+		group.addItem(new OpcItem("粉料重量设定_PF1_AV", true, ""));
+
+		group.addItem(new OpcItem("釜1尿素放料阀_AV", true, ""));
+
+		group.addItem(new OpcItem("加粉料PH合格_F1_AV", true, ""));
+
+		group.addItem(new OpcItem("加粉料PH输入值_F1_AV", true, ""));
+
+		group.addItem(new OpcItem("升温开始_F1_AV", true, ""));
+
+		group.addItem(new OpcItem("温度85与二次投料提醒_F1_AV", true, ""));
+
+		group.addItem(new OpcItem("二次投料PH输入_F1_AV", true, ""));
+
+		group.addItem(new OpcItem("允许二次加助剂_F1_AV", true, ""));
+
+		group.addItem(new OpcItem("所有助剂加料完成2_F1_AV", true, ""));
+
+		group.addItem(new OpcItem("升温完成_F1_AV", true, ""));
+
+		group.addItem(new OpcItem("温度98PH合格_F1_AV", true, ""));
+
+		group.addItem(new OpcItem("测量冰水雾点提醒_F1_AV", true, ""));
+
+		group.addItem(new OpcItem("测量冰水雾点输入值_F1_AV", true, ""));
+
+		group.addItem(new OpcItem("测20雾点输入值_F1_AV", true, ""));
+
 		jopc.addGroup(group);   //添加组
 		OpcGroup responseGroup;
 
