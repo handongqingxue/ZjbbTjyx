@@ -41,8 +41,8 @@ public class OPCController {
 	public String goOpcM(HttpServletRequest request, Model model) {
 
 		//localhost:8080/UWinOPCTjyx/opc/test
-		List<ZhiLiangZhongJianBzzU> list = zhiLiangZhongJianBzzUService.getList();
-		System.out.println("size==="+list.size());
+//		List<ZhiLiangZhongJianBzzU> list = zhiLiangZhongJianBzzUService.getList();
+//		System.out.println("size==="+list.size());
 		return MODULE_NAME+"/opcm";
 	}
 
