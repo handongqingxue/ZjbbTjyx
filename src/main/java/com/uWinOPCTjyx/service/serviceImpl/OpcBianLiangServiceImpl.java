@@ -17,9 +17,9 @@ public class OpcBianLiangServiceImpl implements OpcBianLiangService {
     @Autowired
     private OpcBianLiangMapper opcBianLiangMapper;
 
-	public int edit(OpcBianLiang opcBianliang) {
+	public int edit(OpcBianLiang opcBianLiang) {
 		// TODO Auto-generated method stub
-		String mc = opcBianliang.getMc();
+		String mc = opcBianLiang.getMc();
 		int count=opcBianLiangMapper.getCountByMc(mc);
 		if(count==0) {
 			boolean existBsfM=false;
@@ -47,17 +47,63 @@ public class OpcBianLiangServiceImpl implements OpcBianLiangService {
 			}
 			
 			if(existBsfM) {
-				opcBianliang.setLx(OpcBianLiang.LX_M);
+				opcBianLiang.setLx(OpcBianLiang.LX_M);
 			}
 			else if(existBsfU) {
-				opcBianliang.setLx(OpcBianLiang.LX_U);
+				opcBianLiang.setLx(OpcBianLiang.LX_U);
 			}
 			
-			count=opcBianLiangMapper.add(opcBianliang);
+			count=opcBianLiangMapper.add(opcBianLiang);
 		}
 		else
-			count=opcBianLiangMapper.editByMc(opcBianliang);
+			count=opcBianLiangMapper.editByMc(opcBianLiang);
 		return count;
+	}
+
+	public int editFromList(List<OpcBianLiang> opcBianLiangList) {
+		// TODO Auto-generated method stub
+		int editCount=0;
+		for (OpcBianLiang opcBianLiang : opcBianLiangList) {
+			String mc = opcBianLiang.getMc();
+			int count=opcBianLiangMapper.getCountByMc(mc);
+			if(count==0) {
+				boolean existBsfM=false;
+				String[] bsfFMArr = Constant.BSF_F_M_ARR;
+				for (int i = 0; i < bsfFMArr.length; i++) {
+					int bsfStartLoc = mc.indexOf("_")+1;
+					int mcLength = mc.length();
+					String bsf = mc.substring(bsfStartLoc, mcLength-3);
+					if(bsf.equals(bsfFMArr[i])) {
+						existBsfM=true;
+						break;
+					}
+				}
+				
+				boolean existBsfU=false;
+				String[] bsfFUArr = Constant.BSF_F_U_ARR;
+				for (int i = 0; i < bsfFUArr.length; i++) {
+					int bsfStartLoc = mc.indexOf("_")+1;
+					int mcLength = mc.length();
+					String bsf = mc.substring(bsfStartLoc, mcLength-3);
+					if(bsf.equals(bsfFUArr[i])) {
+						existBsfU=true;
+						break;
+					}
+				}
+				
+				if(existBsfM) {
+					opcBianLiang.setLx(OpcBianLiang.LX_M);
+				}
+				else if(existBsfU) {
+					opcBianLiang.setLx(OpcBianLiang.LX_U);
+				}
+				
+				editCount+=opcBianLiangMapper.add(opcBianLiang);
+			}
+			else
+				editCount+=opcBianLiangMapper.editByMc(opcBianLiang);
+		}
+		return editCount;
 	}
 
 	public List<OpcBianLiang> getUpSzListByMcQz(String mcQz) {

@@ -13,6 +13,8 @@ public interface OpcBianLiangService {
      */
     int edit(OpcBianLiang opcBianliang);
 
+	int editFromList(List<OpcBianLiang> opcBianLiangList);
+
 	/**
 	 * 根据名称前缀获得上升数值列表
 	 * @param mcQz

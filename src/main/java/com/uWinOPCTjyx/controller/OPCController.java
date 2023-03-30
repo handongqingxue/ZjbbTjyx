@@ -1,12 +1,14 @@
 package com.uWinOPCTjyx.controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.alibaba.fastjson.JSON;
 import com.uWinOPCTjyx.entity.*;
 import com.uWinOPCTjyx.service.*;
 import com.uWinOPCTjyx.util.*;
@@ -52,15 +55,16 @@ public class OPCController {
 		return MODULE_NAME+"/opcm";
 	}
 
-	@RequestMapping(value = "/editOpcBianLiang", method = RequestMethod.POST)
+	@RequestMapping(value = "/editOpcBianLiangByReqBody", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> editOpcBianLiang(@RequestBody String bodyEnc){
-		
-		System.out.println("bodyEnc==="+bodyEnc);
+	public Map<String, Object> editOpcBianLiangByReqBody(@RequestBody String bodyStr){
 		
 		Map<String,Object> json=new HashMap<String, Object>();
+		
+		System.out.println("bodyStr==="+bodyStr);
+		List<OpcBianLiang> OpcBianLiangList = JSON.parseArray(bodyStr, OpcBianLiang.class);
 		try {
-			int count = 0;//opcBianLiangService.edit(opcBianLiang);
+			int count = opcBianLiangService.editFromList(OpcBianLiangList);
 			if (count>0){
 				json.put("message","ok");
 				json.put("info","编辑成功");
