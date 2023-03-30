@@ -63,6 +63,281 @@ public class ReaderOpc {
 
 		OpcGroup group = new OpcGroup("反应釜1执行配方M[50]", true, 500, 0.0f);
 
+		//备料开始变量(M类)
+		group.addItem(new OpcItem("备料开始_F1_AV", true, ""));
+		group.addItem(new OpcItem("备料开始_F2_AV", true, ""));
+		group.addItem(new OpcItem("备料开始_F4_AV", true, ""));
+		group.addItem(new OpcItem("备料开始_F5_AV", true, ""));
+		
+		//备料开始变量(U类)???(报表里好像没有)
+		
+		//降温完成(M类)
+		group.addItem(new OpcItem("降温完成_F1_AV", true, ""));
+		group.addItem(new OpcItem("降温完成_F2_AV", true, ""));
+		group.addItem(new OpcItem("降温完成_F3_AV", true, ""));
+		group.addItem(new OpcItem("降温完成_F4_AV", true, ""));
+		group.addItem(new OpcItem("降温完成_F5_AV", true, ""));
+
+		//降温完成(U类)
+		group.addItem(new OpcItem("降温完成_F1U_AV", true, ""));
+		group.addItem(new OpcItem("降温完成_F2U_AV", true, ""));
+		group.addItem(new OpcItem("降温完成_F3U_AV", true, ""));
+		group.addItem(new OpcItem("降温完成_F4U_AV", true, ""));
+		group.addItem(new OpcItem("降温完成_F5U_AV", true, ""));
+		
+		//罐用前、后重量???(报表里好像没有)
+		
+		//甲醛实际进料重量(M类)
+		group.addItem(new OpcItem("甲醛实际进料重量_F1_AV", true, ""));
+		group.addItem(new OpcItem("甲醛实际进料重量_F2_AV", true, ""));
+		group.addItem(new OpcItem("甲醛实际进料重量_F4_AV", true, ""));
+		group.addItem(new OpcItem("甲醛实际进料重量_F5_AV", true, ""));
+		
+		//甲醛实际进料重量(U类)???(报表里好像没有)
+		
+		//甲醛备料开始(M类)
+		group.addItem(new OpcItem("甲醛备料开始_F1_AV", true, ""));
+		group.addItem(new OpcItem("甲醛备料开始_F2_AV", true, ""));
+		group.addItem(new OpcItem("甲醛备料开始_F3_AV", true, ""));
+		group.addItem(new OpcItem("甲醛备料开始_F4_AV", true, ""));
+		group.addItem(new OpcItem("甲醛备料开始_F5_AV", true, ""));
+
+		//甲醛备料开始(U类)
+		group.addItem(new OpcItem("甲醛备料开始_F1U_AV", true, ""));
+		group.addItem(new OpcItem("甲醛备料开始_F2U_AV", true, ""));
+		group.addItem(new OpcItem("甲醛备料开始_F3U_AV", true, ""));
+		group.addItem(new OpcItem("甲醛备料开始_F4U_AV", true, ""));
+		group.addItem(new OpcItem("甲醛备料开始_F5U_AV", true, ""));
+
+		//甲醛放料开始(M类)(流程里暂时好像用不上)
+		group.addItem(new OpcItem("甲醛放料开始_F1_AV", true, ""));
+		group.addItem(new OpcItem("甲醛放料开始_F2_AV", true, ""));
+		group.addItem(new OpcItem("甲醛放料开始_F3_AV", true, ""));
+		group.addItem(new OpcItem("甲醛放料开始_F4_AV", true, ""));
+		group.addItem(new OpcItem("甲醛放料开始_F5_AV", true, ""));
+
+		//甲醛放料开始(U类)(流程里暂时好像用不上)
+		group.addItem(new OpcItem("甲醛放料开始_F1U_AV", true, ""));
+		group.addItem(new OpcItem("甲醛放料开始_F2U_AV", true, ""));
+		group.addItem(new OpcItem("甲醛放料开始_F3U_AV", true, ""));
+		group.addItem(new OpcItem("甲醛放料开始_F4U_AV", true, ""));
+		group.addItem(new OpcItem("甲醛放料开始_F5U_AV", true, ""));
+		
+		//甲醛放料完成(M类)
+		group.addItem(new OpcItem("甲醛放料完成_F1_AV", true, ""));
+		group.addItem(new OpcItem("甲醛放料完成_F2_AV", true, ""));
+		group.addItem(new OpcItem("甲醛放料完成_F3_AV", true, ""));
+		group.addItem(new OpcItem("甲醛放料完成_F4_AV", true, ""));
+		group.addItem(new OpcItem("甲醛放料完成_F5_AV", true, ""));
+
+		//甲醛放料完成(U类)
+		group.addItem(new OpcItem("甲醛放料完成_F1U_AV", true, ""));
+		group.addItem(new OpcItem("甲醛放料完成_F2U_AV", true, ""));
+		group.addItem(new OpcItem("甲醛放料完成_F3U_AV", true, ""));
+		group.addItem(new OpcItem("甲醛放料完成_F4U_AV", true, ""));
+		group.addItem(new OpcItem("甲醛放料完成_F5U_AV", true, ""));
+
+		//反应釜温度
+		group.addItem(new OpcItem("反应釜1温度_AV", true, ""));
+
+		//加碱PH值正常(M类)
+		group.addItem(new OpcItem("加碱PH值正常_F1_AV", true, ""));
+		group.addItem(new OpcItem("加碱PH值正常_F2_AV", true, ""));
+		group.addItem(new OpcItem("加碱PH值正常_F3_AV", true, ""));
+		group.addItem(new OpcItem("加碱PH值正常_F4_AV", true, ""));
+		group.addItem(new OpcItem("加碱PH值正常_F5_AV", true, ""));
+
+		//加碱PH值正常(U类)
+		group.addItem(new OpcItem("加碱PH值正常_F1U_AV", true, ""));
+		group.addItem(new OpcItem("加碱PH值正常_F2U_AV", true, ""));
+		group.addItem(new OpcItem("加碱PH值正常_F3U_AV", true, ""));
+		group.addItem(new OpcItem("加碱PH值正常_F4U_AV", true, ""));
+		group.addItem(new OpcItem("加碱PH值正常_F5U_AV", true, ""));
+
+		//加碱前PH输入值(M类)
+		group.addItem(new OpcItem("加碱前PH输入值_F1_AV", true, ""));
+		group.addItem(new OpcItem("加碱前PH输入值_F2_AV", true, ""));
+		group.addItem(new OpcItem("加碱前PH输入值_F3_AV", true, ""));
+		group.addItem(new OpcItem("加碱前PH输入值_F4_AV", true, ""));
+		group.addItem(new OpcItem("加碱前PH输入值_F5_AV", true, ""));
+
+		//加碱前PH输入值(U类)
+		group.addItem(new OpcItem("加碱前PH输入值_F1U_AV", true, ""));
+		group.addItem(new OpcItem("加碱前PH输入值_F2U_AV", true, ""));
+		group.addItem(new OpcItem("加碱前PH输入值_F3U_AV", true, ""));
+		group.addItem(new OpcItem("加碱前PH输入值_F4U_AV", true, ""));
+		group.addItem(new OpcItem("加碱前PH输入值_F5U_AV", true, ""));
+
+		//釜称重
+		group.addItem(new OpcItem("釜1称重_AV", true, ""));
+
+		//加碱量提示
+		group.addItem(new OpcItem("加碱量提示_PF1_AV", true, ""));
+		group.addItem(new OpcItem("加碱量提示_PF3_AV", true, ""));
+		group.addItem(new OpcItem("加碱量提示_PF4_AV", true, ""));
+		group.addItem(new OpcItem("加碱量提示_PF5_AV", true, ""));
+
+		//加碱后PH输入值(M类)
+		group.addItem(new OpcItem("加碱后PH输入值_F1_AV", true, ""));
+		group.addItem(new OpcItem("加碱后PH输入值_F2_AV", true, ""));
+		group.addItem(new OpcItem("加碱后PH输入值_F3_AV", true, ""));
+		group.addItem(new OpcItem("加碱后PH输入值_F4_AV", true, ""));
+		group.addItem(new OpcItem("加碱后PH输入值_F5_AV", true, ""));
+
+		//加碱后PH输入值(U类)
+		group.addItem(new OpcItem("加碱后PH输入值_F1U_AV", true, ""));
+		group.addItem(new OpcItem("加碱后PH输入值_F2U_AV", true, ""));
+		group.addItem(new OpcItem("加碱后PH输入值_F3U_AV", true, ""));
+		group.addItem(new OpcItem("加碱后PH输入值_F4U_AV", true, ""));
+		group.addItem(new OpcItem("加碱后PH输入值_F5U_AV", true, ""));
+		
+		//助剂计量罐1、2称重
+		group.addItem(new OpcItem("助剂计量罐1称重", true, ""));
+		group.addItem(new OpcItem("助剂计量罐2称重", true, ""));
+		
+		//允许一次加助剂(M类)
+		group.addItem(new OpcItem("允许一次加助剂_F1_AV", true, ""));
+		group.addItem(new OpcItem("允许一次加助剂_F2_AV", true, ""));
+		group.addItem(new OpcItem("允许一次加助剂_F3_AV", true, ""));
+		group.addItem(new OpcItem("允许一次加助剂_F4_AV", true, ""));
+		group.addItem(new OpcItem("允许一次加助剂_F5_AV", true, ""));
+
+		//允许一次加助剂(U类)
+		group.addItem(new OpcItem("允许一次加助剂_F1U_AV", true, ""));
+		group.addItem(new OpcItem("允许一次加助剂_F2U_AV", true, ""));
+		group.addItem(new OpcItem("允许一次加助剂_F3U_AV", true, ""));
+		group.addItem(new OpcItem("允许一次加助剂_F4U_AV", true, ""));
+		group.addItem(new OpcItem("允许一次加助剂_F5U_AV", true, ""));
+
+		//所有助剂加料完成(M类)
+		group.addItem(new OpcItem("所有助剂加料完成1_F1_AV", true, ""));
+		group.addItem(new OpcItem("所有助剂加料完成1_F2_AV", true, ""));
+		group.addItem(new OpcItem("所有助剂加料完成1_F3_AV", true, ""));
+		group.addItem(new OpcItem("所有助剂加料完成1_F4_AV", true, ""));
+		group.addItem(new OpcItem("所有助剂加料完成1_F5_AV", true, ""));
+
+		//所有助剂加料完成(U类)
+		group.addItem(new OpcItem("所有助剂加料完成1_F1U_AV", true, ""));
+		group.addItem(new OpcItem("所有助剂加料完成1_F2U_AV", true, ""));
+		group.addItem(new OpcItem("所有助剂加料完成1_F3U_AV", true, ""));
+		group.addItem(new OpcItem("所有助剂加料完成1_F4U_AV", true, ""));
+		group.addItem(new OpcItem("所有助剂加料完成1_F5U_AV", true, ""));
+
+		//加粉料提醒(M类)
+		group.addItem(new OpcItem("加粉料提醒_F1_AV", true, ""));
+		group.addItem(new OpcItem("加粉料提醒_F2_AV", true, ""));
+		group.addItem(new OpcItem("加粉料提醒_F3_AV", true, ""));
+		group.addItem(new OpcItem("加粉料提醒_F4_AV", true, ""));
+		group.addItem(new OpcItem("加粉料提醒_F5_AV", true, ""));
+
+		//加粉料提醒(U类)
+		group.addItem(new OpcItem("加粉料提醒_F1U_AV", true, ""));
+		group.addItem(new OpcItem("加粉料提醒_F2U_AV", true, ""));
+		group.addItem(new OpcItem("加粉料提醒_F3U_AV", true, ""));
+		group.addItem(new OpcItem("加粉料提醒_F4U_AV", true, ""));
+		group.addItem(new OpcItem("加粉料提醒_F5U_AV", true, ""));
+
+		//粉料重量设定
+		group.addItem(new OpcItem("粉料重量设定_PF1_AV", true, ""));
+		group.addItem(new OpcItem("粉料重量设定_PF2_AV", true, ""));
+		group.addItem(new OpcItem("粉料重量设定_PF3_AV", true, ""));
+		group.addItem(new OpcItem("粉料重量设定_PF4_AV", true, ""));
+		group.addItem(new OpcItem("粉料重量设定_PF5_AV", true, ""));
+
+		//釜尿素放料阀
+		group.addItem(new OpcItem("釜1尿素放料阀_AV", true, ""));
+		
+		//加粉料PH合格(M类)
+		group.addItem(new OpcItem("加粉料PH合格_F1_AV", true, ""));
+		group.addItem(new OpcItem("加粉料PH合格_F2_AV", true, ""));
+		group.addItem(new OpcItem("加粉料PH合格_F3_AV", true, ""));
+		group.addItem(new OpcItem("加粉料PH合格_F4_AV", true, ""));
+		group.addItem(new OpcItem("加粉料PH合格_F5_AV", true, ""));
+
+		//加粉料PH合格(U类)
+		group.addItem(new OpcItem("加粉料PH合格_F1U_AV", true, ""));
+		group.addItem(new OpcItem("加粉料PH合格_F2U_AV", true, ""));
+		group.addItem(new OpcItem("加粉料PH合格_F3U_AV", true, ""));
+		group.addItem(new OpcItem("加粉料PH合格_F4U_AV", true, ""));
+		group.addItem(new OpcItem("加粉料PH合格_F5U_AV", true, ""));
+
+		//加粉料PH输入值(M类)
+		group.addItem(new OpcItem("加粉料PH输入值_F1_AV", true, ""));
+		group.addItem(new OpcItem("加粉料PH输入值_F2_AV", true, ""));
+		group.addItem(new OpcItem("加粉料PH输入值_F3_AV", true, ""));
+		group.addItem(new OpcItem("加粉料PH输入值_F4_AV", true, ""));
+		group.addItem(new OpcItem("加粉料PH输入值_F5_AV", true, ""));
+
+		//加粉料PH输入值(U类)
+		group.addItem(new OpcItem("加粉料PH输入值_F1U_AV", true, ""));
+		group.addItem(new OpcItem("加粉料PH输入值_F2U_AV", true, ""));
+		group.addItem(new OpcItem("加粉料PH输入值_F3U_AV", true, ""));
+		group.addItem(new OpcItem("加粉料PH输入值_F4U_AV", true, ""));
+		group.addItem(new OpcItem("加粉料PH输入值_F5U_AV", true, ""));
+		
+		//升温开始(M类)
+		group.addItem(new OpcItem("升温开始_F1_AV", true, ""));
+		group.addItem(new OpcItem("升温开始_F2_AV", true, ""));
+		group.addItem(new OpcItem("升温开始_F3_AV", true, ""));
+		group.addItem(new OpcItem("升温开始_F4_AV", true, ""));
+		group.addItem(new OpcItem("升温开始_F5_AV", true, ""));
+
+		//升温开始(U类)
+		group.addItem(new OpcItem("升温开始_F1U_AV", true, ""));
+		group.addItem(new OpcItem("升温开始_F2U_AV", true, ""));
+		group.addItem(new OpcItem("升温开始_F3U_AV", true, ""));
+		group.addItem(new OpcItem("升温开始_F4U_AV", true, ""));
+		group.addItem(new OpcItem("升温开始_F5U_AV", true, ""));
+		
+		//蒸汽压力???(好像没有)
+		
+		//温度85与二次投料提醒(M类)
+		group.addItem(new OpcItem("温度85与二次投料提醒_F1_AV", true, ""));
+		group.addItem(new OpcItem("温度85与二次投料提醒_F2_AV", true, ""));
+		group.addItem(new OpcItem("温度85与二次投料提醒_F3_AV", true, ""));
+		group.addItem(new OpcItem("温度85与二次投料提醒_F4_AV", true, ""));
+		group.addItem(new OpcItem("温度85与二次投料提醒_F5_AV", true, ""));
+
+		//温度85与二次投料提醒(U类)
+		group.addItem(new OpcItem("温度85与二次投料提醒_F1U_AV", true, ""));
+		group.addItem(new OpcItem("温度85与二次投料提醒_F2U_AV", true, ""));
+		group.addItem(new OpcItem("温度85与二次投料提醒_F3U_AV", true, ""));
+		group.addItem(new OpcItem("温度85与二次投料提醒_F4U_AV", true, ""));
+		group.addItem(new OpcItem("温度85与二次投料提醒_F5U_AV", true, ""));
+
+		//二次投料PH输入(M类)
+		group.addItem(new OpcItem("二次投料PH输入_F1_AV", true, ""));
+		group.addItem(new OpcItem("二次投料PH输入_F2_AV", true, ""));
+		group.addItem(new OpcItem("二次投料PH输入_F3_AV", true, ""));
+		group.addItem(new OpcItem("二次投料PH输入_F4_AV", true, ""));
+		group.addItem(new OpcItem("二次投料PH输入_F5_AV", true, ""));
+
+		//二次投料PH输入(U类)
+		group.addItem(new OpcItem("二次投料PH输入_F1U_AV", true, ""));
+		group.addItem(new OpcItem("二次投料PH输入_F2U_AV", true, ""));
+		group.addItem(new OpcItem("二次投料PH输入_F3U_AV", true, ""));
+		group.addItem(new OpcItem("二次投料PH输入_F4U_AV", true, ""));
+		group.addItem(new OpcItem("二次投料PH输入_F5U_AV", true, ""));
+		
+		//助剂计量罐3-5称重
+		group.addItem(new OpcItem("助剂计量罐3称重", true, ""));
+		group.addItem(new OpcItem("助剂计量罐4称重", true, ""));
+		group.addItem(new OpcItem("助剂计量罐5称重", true, ""));
+		
+		//允许二次加助剂(M类)
+		group.addItem(new OpcItem("允许二次加助剂_F1_AV", true, ""));
+		group.addItem(new OpcItem("允许二次加助剂_F2_AV", true, ""));
+		group.addItem(new OpcItem("允许二次加助剂_F3_AV", true, ""));
+		group.addItem(new OpcItem("允许二次加助剂_F4_AV", true, ""));
+		group.addItem(new OpcItem("允许二次加助剂_F5_AV", true, ""));
+
+		//允许二次加助剂(U类)
+		group.addItem(new OpcItem("允许二次加助剂_F1U_AV", true, ""));
+		group.addItem(new OpcItem("允许二次加助剂_F2U_AV", true, ""));
+		group.addItem(new OpcItem("允许二次加助剂_F3U_AV", true, ""));
+		group.addItem(new OpcItem("允许二次加助剂_F4U_AV", true, ""));
+		group.addItem(new OpcItem("允许二次加助剂_F5U_AV", true, ""));
+
 		group.addItem(new OpcItem("_85度PH4上限_PF1_AV", true, ""));
 
 		group.addItem(new OpcItem("反应结束F1_AV", true, ""));
@@ -75,9 +350,6 @@ public class ReaderOpc {
 
 		group.addItem(new OpcItem("反应结束F5_AV", true, ""));
 
-		group.addItem(new OpcItem("备料开始_F1_AV", true, ""));
-
-		group.addItem(new OpcItem("降温完成_F1_AV", true, ""));
 		group.addItem(new OpcItem("二次助剂后测PH提醒_F1_AV", true, ""));
 		group.addItem(new OpcItem("反应釜1配方类型_AV", true, ""));
 		group.addItem(new OpcItem("反应釜1胶种类型_AV", true, ""));
@@ -94,51 +366,17 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("画面运行釜1_AV", true, ""));
 
 
-		group.addItem(new OpcItem("甲醛实际进料重量_F1_AV", true, ""));
 
-		group.addItem(new OpcItem("甲醛备料开始_F1_AV", true, ""));
-
-		group.addItem(new OpcItem("甲醛放料完成_F1_AV", true, ""));
-		group.addItem(new OpcItem("甲醛放料开始_F1_AV", true, ""));
 		group.addItem(new OpcItem("助剂一次放料开始_F1_AV", true, ""));
-
-		group.addItem(new OpcItem("反应釜1温度_AV", true, ""));
-
-		group.addItem(new OpcItem("加碱PH值正常_F1_AV", true, ""));
-		group.addItem(new OpcItem("允许一次加助剂_F1_AV", true, ""));
-
-		group.addItem(new OpcItem("加碱前PH输入值_F1_AV", true, ""));
-
-		group.addItem(new OpcItem("釜1称重_AV", true, ""));
-
-		group.addItem(new OpcItem("加碱量提示_PF1_AV", true, ""));
-
-		group.addItem(new OpcItem("加碱后PH输入值_F1_AV", true, ""));
-
-		group.addItem(new OpcItem("所有助剂加料完成1_F1_AV", true, ""));
-
-		group.addItem(new OpcItem("加粉料提醒_F1_AV", true, ""));
 		group.addItem(new OpcItem("加粉PH2_F1_AV", true, ""));
 
-		group.addItem(new OpcItem("粉料重量设定_PF1_AV", true, ""));
-
-		group.addItem(new OpcItem("釜1尿素放料阀_AV", true, ""));
-
-		group.addItem(new OpcItem("加粉料PH合格_F1_AV", true, ""));
 		group.addItem(new OpcItem("升温按钮_F1_AV", true, ""));
 
-		group.addItem(new OpcItem("加粉料PH输入值_F1_AV", true, ""));
-
-		group.addItem(new OpcItem("升温开始_F1_AV", true, ""));
 		group.addItem(new OpcItem("升温结束_F1_AV", true, ""));
 
-		group.addItem(new OpcItem("温度85与二次投料提醒_F1_AV", true, ""));
 		group.addItem(new OpcItem("温度98提醒_F1_AV", true, ""));
 		group.addItem(new OpcItem("二次投料PH合格_F1_AV", true, ""));
 
-		group.addItem(new OpcItem("二次投料PH输入_F1_AV", true, ""));
-
-		group.addItem(new OpcItem("允许二次加助剂_F1_AV", true, ""));
 		group.addItem(new OpcItem("二次投放助剂提醒_F1_AV", true, ""));
 		group.addItem(new OpcItem("所有助剂备料完成_F1_AV", true, ""));
 		group.addItem(new OpcItem("一次助剂备料开始_F1_AV", true, ""));
@@ -257,31 +495,11 @@ public class ReaderOpc {
 
 		group.addItem(new OpcItem("助剂5加料完成_F3_AV", true, ""));
 
-		group.addItem(new OpcItem("所有助剂加料完成1_F3_AV", true, ""));
-
 		group.addItem(new OpcItem("加碱操作提醒_F3_AV", true, ""));
-
-		group.addItem(new OpcItem("加碱后PH输入值_F3_AV", true, ""));
-
-		group.addItem(new OpcItem("加碱PH值正常_F3_AV", true, ""));
-
-		group.addItem(new OpcItem("允许一次加助剂_F3_AV", true, ""));
-
-		group.addItem(new OpcItem("加碱前PH输入值_F3_AV", true, ""));
-
-		group.addItem(new OpcItem("加粉料提醒_F3_AV", true, ""));
 
 		group.addItem(new OpcItem("加粉PH2_F3_AV", true, ""));
 
-		group.addItem(new OpcItem("加粉料PH输入值_F3_AV", true, ""));
-
-		group.addItem(new OpcItem("加粉料PH合格_F3_AV", true, ""));
-
-		group.addItem(new OpcItem("升温开始_F3_AV", true, ""));
-
 		group.addItem(new OpcItem("升温结束_F3_AV", true, ""));
-
-		group.addItem(new OpcItem("允许二次加助剂_F3_AV", true, ""));
 
 		group.addItem(new OpcItem("二次投放助剂提醒_F3_AV", true, ""));
 
@@ -289,19 +507,9 @@ public class ReaderOpc {
 
 		group.addItem(new OpcItem("一次助剂备料开始_F3_AV", true, ""));
 
-		group.addItem(new OpcItem("甲醛备料开始_F3_AV", true, ""));
-
-		group.addItem(new OpcItem("甲醛放料完成_F3_AV", true, ""));
-
-		group.addItem(new OpcItem("甲醛放料开始_F3_AV", true, ""));
-
 		group.addItem(new OpcItem("助剂一次放料开始_F3_AV", true, ""));
 
-		group.addItem(new OpcItem("温度85与二次投料提醒_F3_AV", true, ""));
-
 		group.addItem(new OpcItem("温度98提醒_F3_AV", true, ""));
-
-		group.addItem(new OpcItem("二次投料PH输入_F3_AV", true, ""));
 
 		group.addItem(new OpcItem("二次投料PH合格_F3_AV", true, ""));
 
@@ -392,8 +600,6 @@ public class ReaderOpc {
 
 		group.addItem(new OpcItem("升温完成_F3_AV", true, ""));
 
-		group.addItem(new OpcItem("降温完成_F3_AV", true, ""));
-
 		group.addItem(new OpcItem("二次助剂后测PH提醒_F3_AV", true, ""));
 
 		group.addItem(new OpcItem("终检水PH提醒_F3_AV", true, ""));
@@ -420,11 +626,7 @@ public class ReaderOpc {
 
 		group.addItem(new OpcItem("备料按钮_F4_AV", true, ""));
 
-		group.addItem(new OpcItem("备料开始_F4_AV", true, ""));
-
 		group.addItem(new OpcItem("备料完成_F4_AV", true, ""));
-
-		group.addItem(new OpcItem("甲醛实际进料重量_F4_AV", true, ""));
 
 		group.addItem(new OpcItem("助剂1实际进料_F4_AV", true, ""));
 
@@ -476,33 +678,13 @@ public class ReaderOpc {
 
 		group.addItem(new OpcItem("助剂5加料完成_F4_AV", true, ""));
 
-		group.addItem(new OpcItem("所有助剂加料完成1_F4_AV", true, ""));
-
 		group.addItem(new OpcItem("加碱操作提醒_F4_AV", true, ""));
-
-		group.addItem(new OpcItem("加碱后PH输入值_F4_AV", true, ""));
-
-		group.addItem(new OpcItem("加碱PH值正常_F4_AV", true, ""));
-
-		group.addItem(new OpcItem("允许一次加助剂_F4_AV", true, ""));
-
-		group.addItem(new OpcItem("加碱前PH输入值_F4_AV", true, ""));
-
-		group.addItem(new OpcItem("加粉料提醒_F4_AV", true, ""));
 
 		group.addItem(new OpcItem("加粉PH2_F4_AV", true, ""));
 
-		group.addItem(new OpcItem("加粉料PH输入值_F4_AV", true, ""));
-
-		group.addItem(new OpcItem("加粉料PH合格_F4_AV", true, ""));
-
 		group.addItem(new OpcItem("升温按钮_F4_AV", true, ""));
 
-		group.addItem(new OpcItem("升温开始_F4_AV", true, ""));
-
 		group.addItem(new OpcItem("升温结束_F4_AV", true, ""));
-
-		group.addItem(new OpcItem("允许二次加助剂_F4_AV", true, ""));
 
 		group.addItem(new OpcItem("二次投放助剂提醒_F4_AV", true, ""));
 
@@ -510,19 +692,9 @@ public class ReaderOpc {
 
 		group.addItem(new OpcItem("一次助剂备料开始_F4_AV", true, ""));
 
-		group.addItem(new OpcItem("甲醛备料开始_F4_AV", true, ""));
-
-		group.addItem(new OpcItem("甲醛放料完成_F4_AV", true, ""));
-
-		group.addItem(new OpcItem("甲醛放料开始_F4_AV", true, ""));
-
 		group.addItem(new OpcItem("助剂一次放料开始_F4_AV", true, ""));
 
-		group.addItem(new OpcItem("温度85与二次投料提醒_F4_AV", true, ""));
-
 		group.addItem(new OpcItem("温度98提醒_F4_AV", true, ""));
-
-		group.addItem(new OpcItem("二次投料PH输入_F4_AV", true, ""));
 
 		group.addItem(new OpcItem("二次投料PH合格_F4_AV", true, ""));
 
@@ -624,8 +796,6 @@ public class ReaderOpc {
 
 		group.addItem(new OpcItem("升温完成_F4_AV", true, ""));
 
-		group.addItem(new OpcItem("降温完成_F4_AV", true, ""));
-
 		group.addItem(new OpcItem("反应釜4配方类型_AV", true, ""));
 
 		group.addItem(new OpcItem("二次助剂后测PH提醒_F4_AV", true, ""));
@@ -654,11 +824,7 @@ public class ReaderOpc {
 
 		group.addItem(new OpcItem("备料按钮_F5_AV", true, ""));
 
-		group.addItem(new OpcItem("备料开始_F5_AV", true, ""));
-
 		group.addItem(new OpcItem("备料完成_F5_AV", true, ""));
-
-		group.addItem(new OpcItem("甲醛实际进料重量_F5_AV", true, ""));
 
 		group.addItem(new OpcItem("甲醛加注完成_F5_AV", true, ""));
 
@@ -702,33 +868,14 @@ public class ReaderOpc {
 
 		group.addItem(new OpcItem("助剂5加料完成_F5_AV", true, ""));
 
-		group.addItem(new OpcItem("所有助剂加料完成1_F5_AV", true, ""));
-
 		group.addItem(new OpcItem("加碱操作提醒_F5_AV", true, ""));
-
-		group.addItem(new OpcItem("加碱后PH输入值_F5_AV", true, ""));
-
-		group.addItem(new OpcItem("加碱PH值正常_F5_AV", true, ""));
-
-		group.addItem(new OpcItem("允许一次加助剂_F5_AV", true, ""));
-
-		group.addItem(new OpcItem("加碱前PH输入值_F5_AV", true, ""));
-
-		group.addItem(new OpcItem("加粉料提醒_F5_AV", true, ""));
 
 		group.addItem(new OpcItem("加粉PH2_F5_AV", true, ""));
 
-		group.addItem(new OpcItem("加粉料PH输入值_F5_AV", true, ""));
-
-		group.addItem(new OpcItem("加粉料PH合格_F5_AV", true, ""));
 
 		group.addItem(new OpcItem("升温按钮_F5_AV", true, ""));
 
-		group.addItem(new OpcItem("升温开始_F5_AV", true, ""));
-
 		group.addItem(new OpcItem("升温结束_F5_AV", true, ""));
-
-		group.addItem(new OpcItem("允许二次加助剂_F5_AV", true, ""));
 
 		group.addItem(new OpcItem("二次投放助剂提醒_F5_AV", true, ""));
 
@@ -736,19 +883,9 @@ public class ReaderOpc {
 
 		group.addItem(new OpcItem("一次助剂备料开始_F5_AV", true, ""));
 
-		group.addItem(new OpcItem("甲醛备料开始_F5_AV", true, ""));
-
-		group.addItem(new OpcItem("甲醛放料完成_F5_AV", true, ""));
-
-		group.addItem(new OpcItem("甲醛放料开始_F5_AV", true, ""));
-
 		group.addItem(new OpcItem("助剂一次放料开始_F5_AV", true, ""));
 
-		group.addItem(new OpcItem("温度85与二次投料提醒_F5_AV", true, ""));
-
 		group.addItem(new OpcItem("温度98提醒_F5_AV", true, ""));
-
-		group.addItem(new OpcItem("二次投料PH输入_F5_AV", true, ""));
 
 		group.addItem(new OpcItem("二次投料PH合格_F5_AV", true, ""));
 
@@ -824,7 +961,6 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("釜1底阀关闭提醒_F5_AV", true, ""));
 		group.addItem(new OpcItem("釜运行标记_F5_AV", true, ""));
 		group.addItem(new OpcItem("升温完成_F5_AV", true, ""));
-		group.addItem(new OpcItem("降温完成_F5_AV", true, ""));
 		group.addItem(new OpcItem("二次助剂后测PH提醒_F5_AV", true, ""));
 		group.addItem(new OpcItem("终检水PH提醒_F5_AV", true, ""));
 		group.addItem(new OpcItem("趋势图_F5_AV", true, ""));
@@ -848,30 +984,15 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("助剂4加料完成_F2U_AV", true, ""));
 		group.addItem(new OpcItem("助剂5加料完成_F2U_AV", true, ""));
 
-		group.addItem(new OpcItem("所有助剂加料完成1_F2U_AV", true, ""));
 		group.addItem(new OpcItem("加碱操作提醒_F2U_AV", true, ""));
-		group.addItem(new OpcItem("加碱后PH输入值_F2U_AV", true, ""));
-		group.addItem(new OpcItem("加碱PH值正常_F2U_AV", true, ""));
-		group.addItem(new OpcItem("允许一次加助剂_F2U_AV", true, ""));
-		group.addItem(new OpcItem("加碱前PH输入值_F2U_AV", true, ""));
-		group.addItem(new OpcItem("加粉料提醒_F2U_AV", true, ""));
 		group.addItem(new OpcItem("加粉PH2_F2U_AV", true, ""));
-		group.addItem(new OpcItem("加粉料PH输入值_F2U_AV", true, ""));
-		group.addItem(new OpcItem("加粉料PH合格_F2U_AV", true, ""));
 		group.addItem(new OpcItem("升温按钮_F2U_AV", true, ""));
-		group.addItem(new OpcItem("升温开始_F2U_AV", true, ""));
 		group.addItem(new OpcItem("升温结束_F2U_AV", true, ""));
-		group.addItem(new OpcItem("允许二次加助剂_F2U_AV", true, ""));
 		group.addItem(new OpcItem("二次投放助剂提醒_F2U_AV", true, ""));
 		group.addItem(new OpcItem("所有助剂备料完成_F2U_AV", true, ""));
 		group.addItem(new OpcItem("一次助剂备料开始_F2U_AV", true, ""));
-		group.addItem(new OpcItem("甲醛备料开始_F2U_AV", true, ""));
-		group.addItem(new OpcItem("甲醛放料完成_F2U_AV", true, ""));
-		group.addItem(new OpcItem("甲醛放料开始_F2U_AV", true, ""));
 		group.addItem(new OpcItem("助剂一次放料开始_F2U_AV", true, ""));
-		group.addItem(new OpcItem("温度85与二次投料提醒_F2U_AV", true, ""));
 		group.addItem(new OpcItem("温度98提醒_F2U_AV", true, ""));
-		group.addItem(new OpcItem("二次投料PH输入_F2U_AV", true, ""));
 		group.addItem(new OpcItem("二次投料PH合格_F2U_AV", true, ""));
 		group.addItem(new OpcItem("所有助剂加料完成2_F2U_AV", true, ""));
 		group.addItem(new OpcItem("加热启动_F2U_AV", true, ""));
@@ -940,7 +1061,6 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("釜1底阀关闭提醒_F2U_AV", true, ""));
 		group.addItem(new OpcItem("釜运行标记_F2U_AV", true, ""));
 		group.addItem(new OpcItem("升温完成_F2U_AV", true, ""));
-		group.addItem(new OpcItem("降温完成_F2U_AV", true, ""));
 		group.addItem(new OpcItem("第一次保温测量提醒_F2U_AV", true, ""));
 		group.addItem(new OpcItem("第一次保温PH输入1_F2U_AV", true, ""));
 		group.addItem(new OpcItem("第一次保温PH输入2_F2U_AV", true, ""));
@@ -973,30 +1093,15 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("助剂3加料完成_F3U_AV", true, ""));
 		group.addItem(new OpcItem("助剂4加料完成_F3U_AV", true, ""));
 		group.addItem(new OpcItem("助剂5加料完成_F3U_AV", true, ""));
-		group.addItem(new OpcItem("所有助剂加料完成1_F3U_AV", true, ""));
 		group.addItem(new OpcItem("加碱操作提醒_F3U_AV", true, ""));
-		group.addItem(new OpcItem("加碱后PH输入值_F3U_AV", true, ""));
-		group.addItem(new OpcItem("加碱PH值正常_F3U_AV", true, ""));
-		group.addItem(new OpcItem("允许一次加助剂_F3U_AV", true, ""));
-		group.addItem(new OpcItem("加碱前PH输入值_F3U_AV", true, ""));
-		group.addItem(new OpcItem("加粉料提醒_F3U_AV", true, ""));
 		group.addItem(new OpcItem("加粉PH2_F3U_AV", true, ""));
-		group.addItem(new OpcItem("加粉料PH输入值_F3U_AV", true, ""));
-		group.addItem(new OpcItem("加粉料PH合格_F3U_AV", true, ""));
 		group.addItem(new OpcItem("升温按钮_F3U_AV", true, ""));
-		group.addItem(new OpcItem("升温开始_F3U_AV", true, ""));
 		group.addItem(new OpcItem("升温结束_F3U_AV", true, ""));
-		group.addItem(new OpcItem("允许二次加助剂_F3U_AV", true, ""));
 		group.addItem(new OpcItem("二次投放助剂提醒_F3U_AV", true, ""));
 		group.addItem(new OpcItem("所有助剂备料完成_F3U_AV", true, ""));
 		group.addItem(new OpcItem("一次助剂备料开始_F3U_AV", true, ""));
-		group.addItem(new OpcItem("甲醛备料开始_F3U_AV", true, ""));
-		group.addItem(new OpcItem("甲醛放料完成_F3U_AV", true, ""));
-		group.addItem(new OpcItem("甲醛放料开始_F3U_AV", true, ""));
 		group.addItem(new OpcItem("助剂一次放料开始_F3U_AV", true, ""));
-		group.addItem(new OpcItem("温度85与二次投料提醒_F3U_AV", true, ""));
 		group.addItem(new OpcItem("温度98提醒_F3U_AV", true, ""));
-		group.addItem(new OpcItem("二次投料PH输入_F3U_AV", true, ""));
 		group.addItem(new OpcItem("二次投料PH合格_F3U_AV", true, ""));
 		group.addItem(new OpcItem("所有助剂加料完成2_F3U_AV", true, ""));
 		group.addItem(new OpcItem("加热启动_F3U_AV", true, ""));
@@ -1073,7 +1178,6 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("釜1底阀关闭提醒_F3U_AV", true, ""));
 		group.addItem(new OpcItem("釜运行标记_F3U_AV", true, ""));
 		group.addItem(new OpcItem("升温完成_F3U_AV", true, ""));
-		group.addItem(new OpcItem("降温完成_F3U_AV", true, ""));
 		group.addItem(new OpcItem("第一次保温测量提醒_F3U_AV", true, ""));
 		group.addItem(new OpcItem("第一次保温PH输入1_F3U_AV", true, ""));
 		group.addItem(new OpcItem("第一次保温PH输入2_F3U_AV", true, ""));
@@ -1107,30 +1211,15 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("助剂3加料完成_F4U_AV", true, ""));
 		group.addItem(new OpcItem("助剂4加料完成_F4U_AV", true, ""));
 		group.addItem(new OpcItem("助剂5加料完成_F4U_AV", true, ""));
-		group.addItem(new OpcItem("所有助剂加料完成1_F4U_AV", true, ""));
 		group.addItem(new OpcItem("加碱操作提醒_F4U_AV", true, ""));
-		group.addItem(new OpcItem("加碱后PH输入值_F4U_AV", true, ""));
-		group.addItem(new OpcItem("加碱PH值正常_F4U_AV", true, ""));
-		group.addItem(new OpcItem("允许一次加助剂_F4U_AV", true, ""));
-		group.addItem(new OpcItem("加碱前PH输入值_F4U_AV", true, ""));
-		group.addItem(new OpcItem("加粉料提醒_F4U_AV", true, ""));
 		group.addItem(new OpcItem("加粉PH2_F4U_AV", true, ""));
-		group.addItem(new OpcItem("加粉料PH输入值_F4U_AV", true, ""));
-		group.addItem(new OpcItem("加粉料PH合格_F4U_AV", true, ""));
 		group.addItem(new OpcItem("升温按钮_F4U_AV", true, ""));
-		group.addItem(new OpcItem("升温开始_F4U_AV", true, ""));
 		group.addItem(new OpcItem("升温结束_F4U_AV", true, ""));
-		group.addItem(new OpcItem("允许二次加助剂_F4U_AV", true, ""));
 		group.addItem(new OpcItem("二次投放助剂提醒_F4U_AV", true, ""));
 		group.addItem(new OpcItem("所有助剂备料完成_F4U_AV", true, ""));
 		group.addItem(new OpcItem("一次助剂备料开始_F4U_AV", true, ""));
-		group.addItem(new OpcItem("甲醛备料开始_F4U_AV", true, ""));
-		group.addItem(new OpcItem("甲醛放料完成_F4U_AV", true, ""));
-		group.addItem(new OpcItem("甲醛放料开始_F4U_AV", true, ""));
 		group.addItem(new OpcItem("助剂一次放料开始_F4U_AV", true, ""));
-		group.addItem(new OpcItem("温度85与二次投料提醒_F4U_AV", true, ""));
 		group.addItem(new OpcItem("温度98提醒_F4U_AV", true, ""));
-		group.addItem(new OpcItem("二次投料PH输入_F4U_AV", true, ""));
 		group.addItem(new OpcItem("二次投料PH合格_F4U_AV", true, ""));
 		group.addItem(new OpcItem("所有助剂加料完成2_F4U_AV", true, ""));
 		group.addItem(new OpcItem("加热启动_F4U_AV", true, ""));
@@ -1209,7 +1298,6 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("釜1底阀关闭提醒_F4U_AV", true, ""));
 		group.addItem(new OpcItem("釜运行标记_F4U_AV", true, ""));
 		group.addItem(new OpcItem("升温完成_F4U_AV", true, ""));
-		group.addItem(new OpcItem("降温完成_F4U_AV", true, ""));
 		group.addItem(new OpcItem("第一次保温测量提醒_F4U_AV", true, ""));
 		group.addItem(new OpcItem("第一次保温PH输入1_F4U_AV", true, ""));
 		group.addItem(new OpcItem("第一次保温PH输入2_F4U_AV", true, ""));
@@ -1243,30 +1331,15 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("助剂3加料完成_F5U_AV", true, ""));
 		group.addItem(new OpcItem("助剂4加料完成_F5U_AV", true, ""));
 		group.addItem(new OpcItem("助剂5加料完成_F5U_AV", true, ""));
-		group.addItem(new OpcItem("所有助剂加料完成1_F5U_AV", true, ""));
 		group.addItem(new OpcItem("加碱操作提醒_F5U_AV", true, ""));
-		group.addItem(new OpcItem("加碱后PH输入值_F5U_AV", true, ""));
-		group.addItem(new OpcItem("加碱PH值正常_F5U_AV", true, ""));
-		group.addItem(new OpcItem("允许一次加助剂_F5U_AV", true, ""));
-		group.addItem(new OpcItem("加碱前PH输入值_F5U_AV", true, ""));
-		group.addItem(new OpcItem("加粉料提醒_F5U_AV", true, ""));
 		group.addItem(new OpcItem("加粉PH2_F5U_AV", true, ""));
-		group.addItem(new OpcItem("加粉料PH输入值_F5U_AV", true, ""));
-		group.addItem(new OpcItem("加粉料PH合格_F5U_AV", true, ""));
 		group.addItem(new OpcItem("升温按钮_F5U_AV", true, ""));
-		group.addItem(new OpcItem("升温开始_F5U_AV", true, ""));
 		group.addItem(new OpcItem("升温结束_F5U_AV", true, ""));
-		group.addItem(new OpcItem("允许二次加助剂_F5U_AV", true, ""));
 		group.addItem(new OpcItem("二次投放助剂提醒_F5U_AV", true, ""));
 		group.addItem(new OpcItem("所有助剂备料完成_F5U_AV", true, ""));
 		group.addItem(new OpcItem("一次助剂备料开始_F5U_AV", true, ""));
-		group.addItem(new OpcItem("甲醛备料开始_F5U_AV", true, ""));
-		group.addItem(new OpcItem("甲醛放料完成_F5U_AV", true, ""));
-		group.addItem(new OpcItem("甲醛放料开始_F5U_AV", true, ""));
 		group.addItem(new OpcItem("助剂一次放料开始_F5U_AV", true, ""));
-		group.addItem(new OpcItem("温度85与二次投料提醒_F5U_AV", true, ""));
 		group.addItem(new OpcItem("温度98提醒_F5U_AV", true, ""));
-		group.addItem(new OpcItem("二次投料PH输入_F5U_AV", true, ""));
 		group.addItem(new OpcItem("二次投料PH合格_F5U_AV", true, ""));
 		group.addItem(new OpcItem("所有助剂加料完成2_F5U_AV", true, ""));
 		group.addItem(new OpcItem("加热启动_F5U_AV", true, ""));
@@ -1342,7 +1415,6 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("釜1底阀关闭提醒_F5U_AV", true, ""));
 		group.addItem(new OpcItem("釜运行标记_F5U_AV", true, ""));
 		group.addItem(new OpcItem("升温完成_F5U_AV", true, ""));
-		group.addItem(new OpcItem("降温完成_F5U_AV", true, ""));
 		group.addItem(new OpcItem("第一次保温测量提醒_F5U_AV", true, ""));
 		group.addItem(new OpcItem("第一次保温PH输入1_F5U_AV", true, ""));
 		group.addItem(new OpcItem("第一次保温PH输入2_F5U_AV", true, ""));
@@ -1443,13 +1515,11 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("水_PF1_AV", true, ""));
 		group.addItem(new OpcItem("PH1上限_PF1_AV", true, ""));
 		group.addItem(new OpcItem("PH1下限_PF1_AV", true, ""));
-		group.addItem(new OpcItem("加碱量提示_PF1_AV", true, ""));
 		group.addItem(new OpcItem("加碱量范围下限_PF1_AV", true, ""));
 		group.addItem(new OpcItem("PH2上限_PF1_AV", true, ""));
 		group.addItem(new OpcItem("PH2下限_PF1_AV", true, ""));
 		group.addItem(new OpcItem("助剂1_PF1_AV", true, ""));
 		group.addItem(new OpcItem("助剂2_PF1_AV", true, ""));
-		group.addItem(new OpcItem("粉料重量设定_PF1_AV", true, ""));
 		group.addItem(new OpcItem("PH3上限_PF1_AV", true, ""));
 		group.addItem(new OpcItem("PH3下限_PF1_AV", true, ""));
 		group.addItem(new OpcItem("最高温度设定_PF1_AV", true, ""));
@@ -1535,30 +1605,15 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("助剂3加料完成_F1U_AV", true, ""));
 		group.addItem(new OpcItem("助剂4加料完成_F1U_AV", true, ""));
 		group.addItem(new OpcItem("助剂5加料完成_F1U_AV", true, ""));
-		group.addItem(new OpcItem("所有助剂加料完成1_F1U_AV", true, ""));
 		group.addItem(new OpcItem("加碱操作提醒_F1U_AV", true, ""));
-		group.addItem(new OpcItem("加碱后PH输入值_F1U_AV", true, ""));
-		group.addItem(new OpcItem("加碱PH值正常_F1U_AV", true, ""));
-		group.addItem(new OpcItem("允许一次加助剂_F1U_AV", true, ""));
-		group.addItem(new OpcItem("加碱前PH输入值_F1U_AV", true, ""));
-		group.addItem(new OpcItem("加粉料提醒_F1U_AV", true, ""));
 		group.addItem(new OpcItem("加粉PH2_F1U_AV", true, ""));
-		group.addItem(new OpcItem("加粉料PH输入值_F1U_AV", true, ""));
-		group.addItem(new OpcItem("加粉料PH合格_F1U_AV", true, ""));
 		group.addItem(new OpcItem("升温按钮_F1U_AV", true, ""));
-		group.addItem(new OpcItem("升温开始_F1U_AV", true, ""));
 		group.addItem(new OpcItem("升温结束_F1U_AV", true, ""));
-		group.addItem(new OpcItem("允许二次加助剂_F1U_AV", true, ""));
 		group.addItem(new OpcItem("二次投放助剂提醒_F1U_AV", true, ""));
 		group.addItem(new OpcItem("所有助剂备料完成_F1U_AV", true, ""));
 		group.addItem(new OpcItem("一次助剂备料开始_F1U_AV", true, ""));
-		group.addItem(new OpcItem("甲醛备料开始_F1U_AV", true, ""));
-		group.addItem(new OpcItem("甲醛放料完成_F1U_AV", true, ""));
-		group.addItem(new OpcItem("甲醛放料开始_F1U_AV", true, ""));
 		group.addItem(new OpcItem("助剂一次放料开始_F1U_AV", true, ""));
-		group.addItem(new OpcItem("温度85与二次投料提醒_F1U_AV", true, ""));
 		group.addItem(new OpcItem("温度98提醒_F1U_AV", true, ""));
-		group.addItem(new OpcItem("二次投料PH输入_F1U_AV", true, ""));
 		group.addItem(new OpcItem("二次投料PH合格_F1U_AV", true, ""));
 		group.addItem(new OpcItem("所有助剂加料完成2_F1U_AV", true, ""));
 		group.addItem(new OpcItem("加热启动_F1U_AV", true, ""));
@@ -1635,7 +1690,6 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("釜1底阀关闭提醒_F1U_AV", true, ""));
 		group.addItem(new OpcItem("釜运行标记_F1U_AV", true, ""));
 		group.addItem(new OpcItem("升温完成_F1U_AV", true, ""));
-		group.addItem(new OpcItem("降温完成_F1U_AV", true, ""));
 		group.addItem(new OpcItem("第一次保温测量提醒_F1U_AV", true, ""));
 		group.addItem(new OpcItem("第一次保温PH输入1_F1U_AV", true, ""));
 		group.addItem(new OpcItem("第一次保温PH输入2_F1U_AV", true, ""));
@@ -1659,9 +1713,7 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("自检开始_F2_AV", true, ""));
 		group.addItem(new OpcItem("自检完成_F2_AV", true, ""));
 		group.addItem(new OpcItem("备料按钮_F2_AV", true, ""));
-		group.addItem(new OpcItem("备料开始_F2_AV", true, ""));
 		group.addItem(new OpcItem("备料完成_F2_AV", true, ""));
-		group.addItem(new OpcItem("甲醛实际进料重量_F2_AV", true, ""));
 		group.addItem(new OpcItem("助剂1实际进料_F2_AV", true, ""));
 		group.addItem(new OpcItem("助剂2实际进料_F2_AV", true, ""));
 		group.addItem(new OpcItem("助剂3实际进料_F2_AV", true, ""));
@@ -1691,30 +1743,15 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("助剂3加料完成_F2_AV", true, ""));
 		group.addItem(new OpcItem("助剂4加料完成_F2_AV", true, ""));
 		group.addItem(new OpcItem("助剂5加料完成_F2_AV", true, ""));
-		group.addItem(new OpcItem("所有助剂加料完成1_F2_AV", true, ""));
 		group.addItem(new OpcItem("加碱操作提醒_F2_AV", true, ""));
-		group.addItem(new OpcItem("加碱后PH输入值_F2_AV", true, ""));
-		group.addItem(new OpcItem("加碱PH值正常_F2_AV", true, ""));
-		group.addItem(new OpcItem("允许一次加助剂_F2_AV", true, ""));
-		group.addItem(new OpcItem("加碱前PH输入值_F2_AV", true, ""));
-		group.addItem(new OpcItem("加粉料提醒_F2_AV", true, ""));
 		group.addItem(new OpcItem("加粉PH2_F2_AV", true, ""));
-		group.addItem(new OpcItem("加粉料PH输入值_F2_AV", true, ""));
-		group.addItem(new OpcItem("加粉料PH合格_F2_AV", true, ""));
 		group.addItem(new OpcItem("升温按钮_F2_AV", true, ""));
-		group.addItem(new OpcItem("升温开始_F2_AV", true, ""));
 		group.addItem(new OpcItem("升温结束_F2_AV", true, ""));
-		group.addItem(new OpcItem("允许二次加助剂_F2_AV", true, ""));
 		group.addItem(new OpcItem("二次投放助剂提醒_F2_AV", true, ""));
 		group.addItem(new OpcItem("所有助剂备料完成_F2_AV", true, ""));
 		group.addItem(new OpcItem("一次助剂备料开始_F2_AV", true, ""));
-		group.addItem(new OpcItem("甲醛备料开始_F2_AV", true, ""));
-		group.addItem(new OpcItem("甲醛放料完成_F2_AV", true, ""));
-		group.addItem(new OpcItem("甲醛放料开始_F2_AV", true, ""));
 		group.addItem(new OpcItem("助剂一次放料开始_F2_AV", true, ""));
-		group.addItem(new OpcItem("温度85与二次投料提醒_F2_AV", true, ""));
 		group.addItem(new OpcItem("温度98提醒_F2_AV", true, ""));
-		group.addItem(new OpcItem("二次投料PH输入_F2_AV", true, ""));
 		group.addItem(new OpcItem("二次投料PH合格_F2_AV", true, ""));
 		group.addItem(new OpcItem("所有助剂加料完成2_F2_AV", true, ""));
 		group.addItem(new OpcItem("加热启动_F2_AV", true, ""));
@@ -1788,7 +1825,6 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("釜底阀关闭提醒_F2_AV", true, ""));
 		group.addItem(new OpcItem("釜运行标记_F2_AV", true, ""));
 		group.addItem(new OpcItem("升温完成_F2_AV", true, ""));
-		group.addItem(new OpcItem("降温完成_F2_AV", true, ""));
 		group.addItem(new OpcItem("反应釜2配方类型_AV", true, ""));
 		group.addItem(new OpcItem("二次助剂后测PH提醒_F2_AV", true, ""));
 		group.addItem(new OpcItem("终检水PH提醒_F2_AV", true, ""));
@@ -1810,7 +1846,6 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("PH2下限_PF2_AV", true, ""));
 		group.addItem(new OpcItem("助剂1_PF2_AV", true, ""));
 		group.addItem(new OpcItem("助剂2_PF2_AV", true, ""));
-		group.addItem(new OpcItem("粉料重量设定_PF2_AV", true, ""));
 		group.addItem(new OpcItem("PH3上限_PF2_AV", true, ""));
 		group.addItem(new OpcItem("PH3下限_PF2_AV", true, ""));
 		group.addItem(new OpcItem("最高温度设定_PF2_AV", true, ""));
@@ -1837,13 +1872,11 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("水_PF3_AV", true, ""));
 		group.addItem(new OpcItem("PH1上限_PF3_AV", true, ""));
 		group.addItem(new OpcItem("PH1下限_PF3_AV", true, ""));
-		group.addItem(new OpcItem("加碱量提示_PF3_AV", true, ""));
 		group.addItem(new OpcItem("加碱量范围下限_PF3_AV", true, ""));
 		group.addItem(new OpcItem("PH2上限_PF3_AV", true, ""));
 		group.addItem(new OpcItem("PH2下限_PF3_AV", true, ""));
 		group.addItem(new OpcItem("助剂1_PF3_AV", true, ""));
 		group.addItem(new OpcItem("助剂2_PF3_AV", true, ""));
-		group.addItem(new OpcItem("粉料重量设定_PF3_AV", true, ""));
 		group.addItem(new OpcItem("PH3上限_PF3_AV", true, ""));
 		group.addItem(new OpcItem("PH3下限_PF3_AV", true, ""));
 		group.addItem(new OpcItem("最高温度设定_PF3_AV", true, ""));
@@ -1870,13 +1903,11 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("水_PF4_AV", true, ""));
 		group.addItem(new OpcItem("PH1上限_PF4_AV", true, ""));
 		group.addItem(new OpcItem("PH1下限_PF4_AV", true, ""));
-		group.addItem(new OpcItem("加碱量提示_PF4_AV", true, ""));
 		group.addItem(new OpcItem("加碱量范围下限_PF4_AV", true, ""));
 		group.addItem(new OpcItem("PH2上限_PF4_AV", true, ""));
 		group.addItem(new OpcItem("PH2下限_PF4_AV", true, ""));
 		group.addItem(new OpcItem("助剂1_PF4_AV", true, ""));
 		group.addItem(new OpcItem("助剂2_PF4_AV", true, ""));
-		group.addItem(new OpcItem("粉料重量设定_PF4_AV", true, ""));
 		group.addItem(new OpcItem("PH3上限_PF4_AV", true, ""));
 		group.addItem(new OpcItem("PH3下限_PF4_AV", true, ""));
 		group.addItem(new OpcItem("最高温度设定_PF4_AV", true, ""));
@@ -1903,13 +1934,11 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("水_PF5_AV", true, ""));
 		group.addItem(new OpcItem("PH1上限_PF5_AV", true, ""));
 		group.addItem(new OpcItem("PH1下限_PF5_AV", true, ""));
-		group.addItem(new OpcItem("加碱量提示_PF5_AV", true, ""));
 		group.addItem(new OpcItem("加碱量范围下限_PF5_AV", true, ""));
 		group.addItem(new OpcItem("PH2上限_PF5_AV", true, ""));
 		group.addItem(new OpcItem("PH2下限_PF5_AV", true, ""));
 		group.addItem(new OpcItem("助剂1_PF5_AV", true, ""));
 		group.addItem(new OpcItem("助剂2_PF5_AV", true, ""));
-		group.addItem(new OpcItem("粉料重量设定_PF5_AV", true, ""));
 		group.addItem(new OpcItem("PH3上限_PF5_AV", true, ""));
 		group.addItem(new OpcItem("PH3下限_PF5_AV", true, ""));
 		group.addItem(new OpcItem("最高温度设定_PF5_AV", true, ""));
