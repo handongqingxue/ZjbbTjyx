@@ -208,7 +208,7 @@
       <workItem from="1678410422314" duration="4547000" />
       <workItem from="1678500499491" duration="272000" />
       <workItem from="1679634758256" duration="6731000" />
-      <workItem from="1679722462404" duration="48973000" />
+      <workItem from="1679722462404" duration="50769000" />
     </task>
     <task id="LOCAL-00001" summary="11">
       <created>1679725334951</created>
@@ -245,7 +245,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680068885149</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="11">
+      <created>1680145138731</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1680145138731</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -371,10 +378,10 @@
       <screen x="0" y="23" width="1280" height="710" />
     </state>
     <state x="128" y="83" key="MergeDialog/0.23.1280.710@0.23.1280.710" timestamp="1680054219100" />
-    <state x="278" y="146" key="MultipleFileMergeDialog" timestamp="1680054239465">
+    <state x="278" y="146" key="MultipleFileMergeDialog" timestamp="1680145162260">
       <screen x="0" y="23" width="1280" height="710" />
     </state>
-    <state x="278" y="146" key="MultipleFileMergeDialog/0.23.1280.710@0.23.1280.710" timestamp="1680054239465" />
+    <state x="278" y="146" key="MultipleFileMergeDialog/0.23.1280.710@0.23.1280.710" timestamp="1680145162260" />
     <state x="329" y="87" key="RollbackChangesDialog" timestamp="1679641532888">
       <screen x="0" y="23" width="1280" height="710" />
     </state>
@@ -385,18 +392,18 @@
     <state x="212" y="0" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1678410562516" />
     <state x="141" y="23" width="997" height="710" key="SettingsEditor/0.23.1280.710@0.23.1280.710" timestamp="1679878791352" />
     <state x="141" y="23" key="SettingsEditor/0.23.1280.725@0.23.1280.725" timestamp="1678331779017" />
-    <state x="240" y="118" key="Vcs.Push.Dialog.v2" timestamp="1680068900959">
+    <state x="240" y="118" key="Vcs.Push.Dialog.v2" timestamp="1680145226697">
       <screen x="0" y="23" width="1280" height="710" />
     </state>
-    <state x="240" y="118" key="Vcs.Push.Dialog.v2/0.23.1280.710@0.23.1280.710" timestamp="1680068900959" />
+    <state x="240" y="118" key="Vcs.Push.Dialog.v2/0.23.1280.710@0.23.1280.710" timestamp="1680145226697" />
     <state x="338" y="23" width="604" height="725" key="find.popup" timestamp="1678328866823">
       <screen x="0" y="23" width="1280" height="725" />
     </state>
     <state x="338" y="23" width="604" height="725" key="find.popup/0.23.1280.725@0.23.1280.725" timestamp="1678328866823" />
-    <state x="297" y="173" key="git4idea.merge.GitPullDialog" timestamp="1680069184250">
+    <state x="297" y="173" key="git4idea.merge.GitPullDialog" timestamp="1680145149063">
       <screen x="0" y="23" width="1280" height="710" />
     </state>
-    <state x="297" y="173" key="git4idea.merge.GitPullDialog/0.23.1280.710@0.23.1280.710" timestamp="1680069184250" />
+    <state x="297" y="173" key="git4idea.merge.GitPullDialog/0.23.1280.710@0.23.1280.710" timestamp="1680145149063" />
     <state x="305" y="57" width="670" height="676" key="search.everywhere.popup" timestamp="1680079076060">
       <screen x="0" y="23" width="1280" height="710" />
     </state>
