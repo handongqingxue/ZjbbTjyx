@@ -17,7 +17,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9bfab7cf-a4c1-4d31-9c53-df2a94b39f3e" name="Default Changelist" comment="11">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/javafish/clients/opc/connect/ReaderOpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javafish/clients/opc/connect/ReaderOpc.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +73,7 @@
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="editing.templates" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -208,7 +207,7 @@
       <workItem from="1678410422314" duration="4547000" />
       <workItem from="1678500499491" duration="272000" />
       <workItem from="1679634758256" duration="6731000" />
-      <workItem from="1679722462404" duration="50769000" />
+      <workItem from="1679722462404" duration="51979000" />
     </task>
     <task id="LOCAL-00001" summary="11">
       <created>1679725334951</created>
@@ -252,7 +251,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680145138731</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="11">
+      <created>1680146856705</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1680146856705</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -386,24 +392,28 @@
       <screen x="0" y="23" width="1280" height="710" />
     </state>
     <state x="329" y="87" key="RollbackChangesDialog/0.23.1280.710@0.23.1280.710" timestamp="1679641532888" />
-    <state x="141" y="23" width="997" height="710" key="SettingsEditor" timestamp="1679878791352">
+    <state x="141" y="23" width="997" height="710" key="SettingsEditor" timestamp="1680147044063">
       <screen x="0" y="23" width="1280" height="710" />
     </state>
     <state x="212" y="0" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1678410562516" />
-    <state x="141" y="23" width="997" height="710" key="SettingsEditor/0.23.1280.710@0.23.1280.710" timestamp="1679878791352" />
+    <state x="141" y="23" width="997" height="710" key="SettingsEditor/0.23.1280.710@0.23.1280.710" timestamp="1680147044063" />
     <state x="141" y="23" key="SettingsEditor/0.23.1280.725@0.23.1280.725" timestamp="1678331779017" />
-    <state x="240" y="118" key="Vcs.Push.Dialog.v2" timestamp="1680145226697">
+    <state x="240" y="118" key="Vcs.Push.Dialog.v2" timestamp="1680147386348">
       <screen x="0" y="23" width="1280" height="710" />
     </state>
-    <state x="240" y="118" key="Vcs.Push.Dialog.v2/0.23.1280.710@0.23.1280.710" timestamp="1680145226697" />
+    <state x="240" y="118" key="Vcs.Push.Dialog.v2/0.23.1280.710@0.23.1280.710" timestamp="1680147386348" />
+    <state x="428" y="299" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1680147123637">
+      <screen x="0" y="23" width="1280" height="710" />
+    </state>
+    <state x="428" y="299" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1280.710@0.23.1280.710" timestamp="1680147123637" />
     <state x="338" y="23" width="604" height="725" key="find.popup" timestamp="1678328866823">
       <screen x="0" y="23" width="1280" height="725" />
     </state>
     <state x="338" y="23" width="604" height="725" key="find.popup/0.23.1280.725@0.23.1280.725" timestamp="1678328866823" />
-    <state x="297" y="173" key="git4idea.merge.GitPullDialog" timestamp="1680145149063">
+    <state x="297" y="173" key="git4idea.merge.GitPullDialog" timestamp="1680147132201">
       <screen x="0" y="23" width="1280" height="710" />
     </state>
-    <state x="297" y="173" key="git4idea.merge.GitPullDialog/0.23.1280.710@0.23.1280.710" timestamp="1680145149063" />
+    <state x="297" y="173" key="git4idea.merge.GitPullDialog/0.23.1280.710@0.23.1280.710" timestamp="1680147132201" />
     <state x="305" y="57" width="670" height="676" key="search.everywhere.popup" timestamp="1680079076060">
       <screen x="0" y="23" width="1280" height="710" />
     </state>
