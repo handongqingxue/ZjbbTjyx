@@ -81,5 +81,4 @@
 	<select id="getList" resultType="com.uWinOPCTjyx.entity.PiCiU">
 		select * from PiCiU
 	</select>
-
 </mapper>
