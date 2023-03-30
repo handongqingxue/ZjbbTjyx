@@ -3,7 +3,8 @@ package com.uWinOPCTjyx.entity;
 public class PiCiU {
 
     private Integer id;//记录id
-    private Integer scbh;//生产编号
+    private Integer scnf;//生产年份
+	private Integer scbh;//生产编号
     private Integer fyfh;//反应釜号
     private String kssj;//开始时间
     private String jssj;//结束时间
@@ -19,6 +20,7 @@ public class PiCiU {
     public String toString() {
         return "ShengChanJiLu{" +
                 "id=" + id +
+                ", scnf=" + scnf +
                 ", scbh=" + scbh +
                 ", fyfh=" + fyfh +
                 ", kssj='" + kssj + '\'' +
@@ -36,8 +38,9 @@ public class PiCiU {
     public PiCiU() {
     }
 
-    public PiCiU(Integer id, Integer scbh, Integer fyfh, String kssj, String jssj, String scgs, String scrq, String ysd101, String ysd102, String ysd103, String dbczyBsh, String jbczyBsh) {
+    public PiCiU(Integer id, Integer scnf, Integer scbh, Integer fyfh, String kssj, String jssj, String scgs, String scrq, String ysd101, String ysd102, String ysd103, String dbczyBsh, String jbczyBsh) {
         this.id = id;
+        this.scnf = scnf;
         this.scbh = scbh;
         this.fyfh = fyfh;
         this.kssj = kssj;
@@ -58,6 +61,14 @@ public class PiCiU {
     public void setId(Integer id) {
         this.id = id;
     }
+    
+    public Integer getScnf() {
+		return scnf;
+	}
+
+	public void setScnf(Integer scnf) {
+		this.scnf = scnf;
+	}
 
     public Integer getScbh() {
         return scbh;
@@ -135,15 +146,16 @@ public class PiCiU {
         return dbczyBsh;
     }
 
-    public void setDbczy(String dbczyBsh) {
-        this.dbczyBsh = dbczyBsh;
-    }
+	public void setDbczyBsh(String dbczyBsh) {
+		this.dbczyBsh = dbczyBsh;
+	}
 
     public String getJbczyBsh() {
         return jbczyBsh;
     }
 
-    public void setJbczy(String jbczyBsh) {
-        this.jbczyBsh = jbczyBsh;
-    }
+	public void setJbczyBsh(String jbczyBsh) {
+		this.jbczyBsh = jbczyBsh;
+	}
+
 }

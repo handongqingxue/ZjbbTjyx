@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uWinOPCTjyx.dao.PiCiMMapper">
+	<insert id="add" parameterType="com.uWinOPCTjyx.entity.PiCiM">
+		insert into PiCiM
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="scbh!=null">
+				scbh,
+			</if>
+			<if test="fyfh!=null">
+				fyfh,
+			</if>
+			<if test="kssj!=null">
+				kssj,
+			</if>
+			<if test="jssj!=null">
+				jssj,
+			</if>
+			<if test="scgs!=null">
+				scgs,
+			</if>
+			<if test="scrq!=null">
+				scrq,
+			</if>
+			<if test="ysd101!=null">
+				ysd101,
+			</if>
+			<if test="ysd102!=null">
+				ysd102,
+			</if>
+			<if test="ysd103!=null">
+				ysd103,
+			</if>
+			<if test="dbczyBsh!=null">
+				dbczyBsh,
+			</if>
+			<if test="jbczyBsh!=null">
+				jbczyBsh,
+			</if>
+		</trim>
+		values
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="scbh!=null">
+				#{scbh},
+			</if>
+			<if test="fyfh!=null">
+				#{fyfh},
+			</if>
+			<if test="kssj!=null">
+				#{kssj},
+			</if>
+			<if test="jssj!=null">
+				#{jssj},
+			</if>
+			<if test="scgs!=null">
+				#{scgs},
+			</if>
+			<if test="scrq!=null">
+				#{scrq},
+			</if>
+			<if test="ysd101!=null">
+				#{ysd101},
+			</if>
+			<if test="ysd102!=null">
+				#{ysd102},
+			</if>
+			<if test="ysd103!=null">
+				#{ysd103},
+			</if>
+			<if test="dbczyBsh!=null">
+				#{dbczyBsh},
+			</if>
+			<if test="jbczyBsh!=null">
+				#{jbczyBsh},
+			</if>
+		</trim>
+	</insert>
+	<select id="getMaxScbhByScnf" resultType="java.lang.Integer">
+		 select max(scbh) from(
+		  select scnf,scbh from PiCiM
+		  union
+		  select scnf,scbh from PiCiU
+		 )t where t.scnf=#{scnf}
+	</select>
+</mapper>

@@ -1,5 +1,6 @@
 package com.uWinOPCTjyx.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,6 +27,8 @@ public class OPCController {
 
 	@Autowired
 	private ZhiLiangZhongJianBzzUService zhiLiangZhongJianBzzUService;
+	@Autowired
+	private PiCiMService piCiMService;
 	@Autowired
 	private PiCiUService piCiUService;
 	@Autowired
@@ -80,7 +83,20 @@ public class OPCController {
 
 		Map<String,Object> json=new HashMap<String, Object>();
 
-		List<OpcBianLiang> blskOBLList=opcBianLiangService.getUpSzListByMcQz(Constant.BEI_LIAO_KAI_SHI_TEXT);
+		List<OpcBianLiang> blksMOBLList=new ArrayList<OpcBianLiang>();
+		List<OpcBianLiang> blksUOBLList=new ArrayList<OpcBianLiang>();
+		List<OpcBianLiang> blksOBLList=opcBianLiangService.getUpSzListByMcQz(Constant.BEI_LIAO_KAI_SHI_TEXT);
+		for (OpcBianLiang blksOBL : blksOBLList) {
+			Integer lx = blksOBL.getLx();
+			if(OpcBianLiang.LX_M==lx) {
+				blksMOBLList.add(blksOBL);
+			}
+			else if(OpcBianLiang.LX_U==lx) {
+				blksUOBLList.add(blksOBL);
+			}
+		}
+		
+		int c=piCiMService.addByBlksOBLList(blksMOBLList);
 		
 		return json;
 	}
