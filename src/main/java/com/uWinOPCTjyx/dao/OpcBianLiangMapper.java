@@ -1,5 +1,7 @@
 package com.uWinOPCTjyx.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 import com.uWinOPCTjyx.entity.*;
@@ -25,5 +27,7 @@ public interface OpcBianLiangMapper {
 	 * @param mc
 	 * @return
 	 */
-	int getCountByMc(@Param("mc") String mc);
+	Integer getCountByMc(@Param("mc") String mc);
+
+	List<OpcBianLiang> getListByMcList(@Param("mcList") List<String> mcList);
 }

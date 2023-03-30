@@ -12,9 +12,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.uWinOPCTjyx.entity.*;
 import com.uWinOPCTjyx.service.*;
+import com.uWinOPCTjyx.util.*;
+
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -46,14 +49,15 @@ public class OPCController {
 		return MODULE_NAME+"/opcm";
 	}
 
-
-	@RequestMapping("/editOpcBianLiang")
+	@RequestMapping(value = "/editOpcBianLiang", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> editOpcBianLiang(OpcBianLiang opcBianLiang){
+	public Map<String, Object> editOpcBianLiang(@RequestBody String bodyEnc){
+		
+		System.out.println("bodyEnc==="+bodyEnc);
 		
 		Map<String,Object> json=new HashMap<String, Object>();
 		try {
-			int count = opcBianLiangService.edit(opcBianLiang);
+			int count = 0;//opcBianLiangService.edit(opcBianLiang);
 			if (count>0){
 				json.put("message","ok");
 				json.put("info","编辑成功");
@@ -70,6 +74,16 @@ public class OPCController {
 		}
 	}
 
+	@RequestMapping(value = "/keepWatchOnOpcBianLiang", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> keepWatchOnOpcBianLiang() {
+
+		Map<String,Object> json=new HashMap<String, Object>();
+
+		List<OpcBianLiang> blskOBLList=opcBianLiangService.getUpSzListByMcQz(Constant.BEI_LIAO_KAI_SHI_TEXT);
+		
+		return json;
+	}
 
 	@RequestMapping("/addPiCiU")
 	@ResponseBody

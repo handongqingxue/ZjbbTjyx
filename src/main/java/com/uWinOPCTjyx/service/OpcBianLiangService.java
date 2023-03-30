@@ -1,5 +1,7 @@
 package com.uWinOPCTjyx.service;
 
+import java.util.List;
+
 import com.uWinOPCTjyx.entity.*;
 
 public interface OpcBianLiangService {
@@ -10,4 +12,11 @@ public interface OpcBianLiangService {
      * @return
      */
     int edit(OpcBianLiang opcBianliang);
+
+	/**
+	 * 根据名称前缀获得上升数值列表
+	 * @param mcQz
+	 * @return
+	 */
+	List<OpcBianLiang> getUpSzListByMcQz(String mcQz);
 }
