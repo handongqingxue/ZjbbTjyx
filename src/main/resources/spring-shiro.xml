@@ -25,6 +25,7 @@
 		<property name="filterChainDefinitions">
 			<value>
 				/opc/**=anon
+				/demo/**=anon
 				/resource/**=anon
 				/**=authc
 			</value>

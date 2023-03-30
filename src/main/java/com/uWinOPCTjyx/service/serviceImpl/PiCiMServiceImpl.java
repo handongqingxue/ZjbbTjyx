@@ -18,28 +18,24 @@ public class PiCiMServiceImpl implements PiCiMService {
     private PiCiMMapper piCiMMapper;
 
 	public int addByBlksOBLList(List<OpcBianLiang> blksOBLList) {
-		// TODO Auto-generated method stub
-		int count=0;
-		PiCiM piCiM=null;
-		for (OpcBianLiang blksOBL : blksOBLList) {
-			Integer scnf = Integer.valueOf(DateUtil.getYYYY());
-			Integer scbh = piCiMMapper.getMaxScbhByScnf(scnf);
-			if(scbh==null)
+		int count=0;//计数器
+		PiCiM piCiM=null;//空对象
+		for (OpcBianLiang blksOBL : blksOBLList) {//遍历opc变量集合
+			Integer scnf = Integer.valueOf(DateUtil.getYYYY());//获取年份
+			Integer scbh = piCiMMapper.getMaxScbhByScnf(scnf);//记录生产编号：查询年份，找到最大的生产编号值；
+			if(scbh==null)//如果没有就等于是新的年份，生产编号要赋值为1，要从1重新开始记录生产编号
 				scbh=1;
 			else
-				scbh++;
-			
-			String mc = blksOBL.getMc();
-			int fyfhStartLoc = mc.indexOf("_")+1;
-			int fyfhEndLoc = mc.length();
+				scbh++;//如果是对象里面的年份(获取的当前年份)生产编号就+1以此类推
+			String mc = blksOBL.getMc();//获取变量名称
+			int fyfhStartLoc = mc.indexOf("_")+1;//找到变量名名中_后面的字符串的位置
+			int fyfhEndLoc = mc.length();//获取变量的长度
 			Integer fyfh=Integer.valueOf(mc.substring(fyfhStartLoc, fyfhEndLoc));
-			
-			piCiM=new PiCiM();
+			piCiM=new PiCiM();//创建对象给对象赋值
 			piCiM.setScnf(scnf);
 			piCiM.setScbh(scbh);
 			piCiM.setFyfh(fyfh);
-			
-			count+=piCiMMapper.add(piCiM);
+			count+=piCiMMapper.add(piCiM);//执行添加操作
 		}
 		return count;
 	}
