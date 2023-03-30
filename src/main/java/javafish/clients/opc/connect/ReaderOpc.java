@@ -338,6 +338,90 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("允许二次加助剂_F4U_AV", true, ""));
 		group.addItem(new OpcItem("允许二次加助剂_F5U_AV", true, ""));
 
+		//所有助剂加料完成2(M类)
+		group.addItem(new OpcItem("所有助剂加料完成2_F1_AV", true, ""));
+		group.addItem(new OpcItem("所有助剂加料完成2_F2_AV", true, ""));
+		group.addItem(new OpcItem("所有助剂加料完成2_F3_AV", true, ""));
+		group.addItem(new OpcItem("所有助剂加料完成2_F4_AV", true, ""));
+		group.addItem(new OpcItem("所有助剂加料完成2_F5_AV", true, ""));
+
+		//所有助剂加料完成2(U类)
+		group.addItem(new OpcItem("所有助剂加料完成2_F1U_AV", true, ""));
+		group.addItem(new OpcItem("所有助剂加料完成2_F2U_AV", true, ""));
+		group.addItem(new OpcItem("所有助剂加料完成2_F3U_AV", true, ""));
+		group.addItem(new OpcItem("所有助剂加料完成2_F4U_AV", true, ""));
+		group.addItem(new OpcItem("所有助剂加料完成2_F5U_AV", true, ""));
+
+		//升温完成(M类)
+		group.addItem(new OpcItem("升温完成_F1_AV", true, ""));
+		group.addItem(new OpcItem("升温完成_F2_AV", true, ""));
+		group.addItem(new OpcItem("升温完成_F3_AV", true, ""));
+		group.addItem(new OpcItem("升温完成_F4_AV", true, ""));
+		group.addItem(new OpcItem("升温完成_F5_AV", true, ""));
+
+		//升温完成(U类)
+		group.addItem(new OpcItem("升温完成_F1U_AV", true, ""));
+		group.addItem(new OpcItem("升温完成_F2U_AV", true, ""));
+		group.addItem(new OpcItem("升温完成_F3U_AV", true, ""));
+		group.addItem(new OpcItem("升温完成_F4U_AV", true, ""));
+		group.addItem(new OpcItem("升温完成_F5U_AV", true, ""));
+		
+		//温度98PH合格(M类)
+		group.addItem(new OpcItem("温度98PH合格_F1_AV", true, ""));
+		group.addItem(new OpcItem("温度98PH合格_F2_AV", true, ""));
+		group.addItem(new OpcItem("温度98PH合格_F3_AV", true, ""));
+		group.addItem(new OpcItem("温度98PH合格_F4_AV", true, ""));
+		group.addItem(new OpcItem("温度98PH合格_F5_AV", true, ""));
+
+		//温度98PH合格(U类)
+		group.addItem(new OpcItem("温度98PH合格_F1U_AV", true, ""));
+		group.addItem(new OpcItem("温度98PH合格_F2U_AV", true, ""));
+		group.addItem(new OpcItem("温度98PH合格_F3U_AV", true, ""));
+		group.addItem(new OpcItem("温度98PH合格_F4U_AV", true, ""));
+		group.addItem(new OpcItem("温度98PH合格_F5U_AV", true, ""));
+		
+		//温度98PH(M类)
+		group.addItem(new OpcItem("温度98PH_F1_AV", true, ""));
+		group.addItem(new OpcItem("温度98PH_F2_AV", true, ""));
+		group.addItem(new OpcItem("温度98PH_F3_AV", true, ""));
+		group.addItem(new OpcItem("温度98PH_F4_AV", true, ""));
+		group.addItem(new OpcItem("温度98PH_F5_AV", true, ""));
+
+		//温度98PH(U类)
+		group.addItem(new OpcItem("温度98PH_F1U_AV", true, ""));
+		group.addItem(new OpcItem("温度98PH_F2U_AV", true, ""));
+		group.addItem(new OpcItem("温度98PH_F3U_AV", true, ""));
+		group.addItem(new OpcItem("温度98PH_F4U_AV", true, ""));
+		group.addItem(new OpcItem("温度98PH_F5U_AV", true, ""));
+
+		//测量冰水雾点提醒(M类)
+		group.addItem(new OpcItem("测量冰水雾点提醒_F1_AV", true, ""));
+		group.addItem(new OpcItem("测量冰水雾点提醒_F2_AV", true, ""));
+		group.addItem(new OpcItem("测量冰水雾点提醒_F3_AV", true, ""));
+		group.addItem(new OpcItem("测量冰水雾点提醒_F4_AV", true, ""));
+		group.addItem(new OpcItem("测量冰水雾点提醒_F5_AV", true, ""));
+
+		//测量冰水雾点提醒(U类)
+		group.addItem(new OpcItem("测量冰水雾点提醒_F1U_AV", true, ""));
+		//???好像缺少F2U_AV
+		group.addItem(new OpcItem("测量冰水雾点提醒_F3U_AV", true, ""));
+		group.addItem(new OpcItem("测量冰水雾点提醒_F4U_AV", true, ""));
+		group.addItem(new OpcItem("测量冰水雾点提醒_F5U_AV", true, ""));
+
+		//测量冰水雾点输入值(M类)
+		group.addItem(new OpcItem("测量冰水雾点输入值_F1_AV", true, ""));
+		group.addItem(new OpcItem("测量冰水雾点输入值_F2_AV", true, ""));
+		group.addItem(new OpcItem("测量冰水雾点输入值_F3_AV", true, ""));
+		group.addItem(new OpcItem("测量冰水雾点输入值_F4_AV", true, ""));
+		group.addItem(new OpcItem("测量冰水雾点输入值_F5_AV", true, ""));
+
+		//测量冰水雾点输入值(U类)
+		group.addItem(new OpcItem("测量冰水雾点输入值_F1U_AV", true, ""));
+		group.addItem(new OpcItem("测量冰水雾点输入值_F3U_AV", true, ""));
+		group.addItem(new OpcItem("测量冰水雾点输入值_F4U_AV", true, ""));
+		group.addItem(new OpcItem("测量冰水雾点输入值_F5U_AV", true, ""));
+		
+		///////以下变量暂时用不到，不过也得分组。先留着以后可能用
 		group.addItem(new OpcItem("_85度PH4上限_PF1_AV", true, ""));
 
 		group.addItem(new OpcItem("反应结束F1_AV", true, ""));
@@ -381,13 +465,8 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("所有助剂备料完成_F1_AV", true, ""));
 		group.addItem(new OpcItem("一次助剂备料开始_F1_AV", true, ""));
 
-		group.addItem(new OpcItem("所有助剂加料完成2_F1_AV", true, ""));
 		group.addItem(new OpcItem("加热启动_F1_AV", true, ""));
-		group.addItem(new OpcItem("温度98PH_F1_AV", true, ""));
 
-		group.addItem(new OpcItem("升温完成_F1_AV", true, ""));
-
-		group.addItem(new OpcItem("温度98PH合格_F1_AV", true, ""));
 		group.addItem(new OpcItem("保温按钮_F1_AV", true, ""));
 		group.addItem(new OpcItem("保温启动_F1_AV", true, ""));
 		group.addItem(new OpcItem("保温完成_F1_AV", true, ""));
@@ -395,10 +474,6 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("蒸汽阀关次数_F1_AV", true, ""));
 		group.addItem(new OpcItem("测20雾点时间_F1_AV", true, ""));
 		group.addItem(new OpcItem("测20雾点提醒_F1_AV", true, ""));
-
-		group.addItem(new OpcItem("测量冰水雾点提醒_F1_AV", true, ""));
-
-		group.addItem(new OpcItem("测量冰水雾点输入值_F1_AV", true, ""));
 
 		group.addItem(new OpcItem("测20雾点输入值_F1_AV", true, ""));
 		group.addItem(new OpcItem("测水数时间_F1_AV", true, ""));
@@ -513,13 +588,10 @@ public class ReaderOpc {
 
 		group.addItem(new OpcItem("二次投料PH合格_F3_AV", true, ""));
 
-		group.addItem(new OpcItem("所有助剂加料完成2_F3_AV", true, ""));
 
 		group.addItem(new OpcItem("加热启动_F3_AV", true, ""));
 
-		group.addItem(new OpcItem("温度98PH_F3_AV", true, ""));
 
-		group.addItem(new OpcItem("温度98PH合格_F3_AV", true, ""));
 
 		group.addItem(new OpcItem("保温按钮_F3_AV", true, ""));
 
@@ -531,9 +603,7 @@ public class ReaderOpc {
 
 		group.addItem(new OpcItem("蒸汽阀关次数_F3_AV", true, ""));
 
-		group.addItem(new OpcItem("测量冰水雾点提醒_F3_AV", true, ""));
 
-		group.addItem(new OpcItem("测量冰水雾点输入值_F3_AV", true, ""));
 
 		group.addItem(new OpcItem("测20雾点时间_F3_AV", true, ""));
 
@@ -597,8 +667,6 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("釜1底阀关闭提醒_F3_AV", true, ""));
 
 		group.addItem(new OpcItem("釜运行标记_F3_AV", true, ""));
-
-		group.addItem(new OpcItem("升温完成_F3_AV", true, ""));
 
 		group.addItem(new OpcItem("二次助剂后测PH提醒_F3_AV", true, ""));
 
@@ -698,13 +766,9 @@ public class ReaderOpc {
 
 		group.addItem(new OpcItem("二次投料PH合格_F4_AV", true, ""));
 
-		group.addItem(new OpcItem("所有助剂加料完成2_F4_AV", true, ""));
-
 		group.addItem(new OpcItem("加热启动_F4_AV", true, ""));
 
-		group.addItem(new OpcItem("温度98PH_F4_AV", true, ""));
 
-		group.addItem(new OpcItem("温度98PH合格_F4_AV", true, ""));
 
 		group.addItem(new OpcItem("保温按钮_F4_AV", true, ""));
 
@@ -718,9 +782,7 @@ public class ReaderOpc {
 
 		group.addItem(new OpcItem("测量冰水雾点提醒时间_F4_AV", true, ""));
 
-		group.addItem(new OpcItem("测量冰水雾点提醒_F4_AV", true, ""));
 
-		group.addItem(new OpcItem("测量冰水雾点输入值_F4_AV", true, ""));
 
 		group.addItem(new OpcItem("测20雾点时间_F4_AV", true, ""));
 
@@ -793,8 +855,6 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("釜1底阀关闭提醒_F4_AV", true, ""));
 
 		group.addItem(new OpcItem("釜运行标记_F4_AV", true, ""));
-
-		group.addItem(new OpcItem("升温完成_F4_AV", true, ""));
 
 		group.addItem(new OpcItem("反应釜4配方类型_AV", true, ""));
 
@@ -889,13 +949,9 @@ public class ReaderOpc {
 
 		group.addItem(new OpcItem("二次投料PH合格_F5_AV", true, ""));
 
-		group.addItem(new OpcItem("所有助剂加料完成2_F5_AV", true, ""));
-
 		group.addItem(new OpcItem("加热启动_F5_AV", true, ""));
 
-		group.addItem(new OpcItem("温度98PH_F5_AV", true, ""));
 
-		group.addItem(new OpcItem("温度98PH合格_F5_AV", true, ""));
 
 		group.addItem(new OpcItem("保温按钮_F5_AV", true, ""));
 
@@ -909,9 +965,7 @@ public class ReaderOpc {
 
 		group.addItem(new OpcItem("测量冰水雾点提醒时间_F5_AV", true, ""));
 
-		group.addItem(new OpcItem("测量冰水雾点提醒_F5_AV", true, ""));
 
-		group.addItem(new OpcItem("测量冰水雾点输入值_F5_AV", true, ""));
 
 		group.addItem(new OpcItem("测20雾点时间_F5_AV", true, ""));
 
@@ -960,7 +1014,6 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("Date_176_F5_AV", true, ""));
 		group.addItem(new OpcItem("釜1底阀关闭提醒_F5_AV", true, ""));
 		group.addItem(new OpcItem("釜运行标记_F5_AV", true, ""));
-		group.addItem(new OpcItem("升温完成_F5_AV", true, ""));
 		group.addItem(new OpcItem("二次助剂后测PH提醒_F5_AV", true, ""));
 		group.addItem(new OpcItem("终检水PH提醒_F5_AV", true, ""));
 		group.addItem(new OpcItem("趋势图_F5_AV", true, ""));
@@ -994,10 +1047,7 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("助剂一次放料开始_F2U_AV", true, ""));
 		group.addItem(new OpcItem("温度98提醒_F2U_AV", true, ""));
 		group.addItem(new OpcItem("二次投料PH合格_F2U_AV", true, ""));
-		group.addItem(new OpcItem("所有助剂加料完成2_F2U_AV", true, ""));
 		group.addItem(new OpcItem("加热启动_F2U_AV", true, ""));
-		group.addItem(new OpcItem("温度98PH_F2U_AV", true, ""));
-		group.addItem(new OpcItem("温度98PH合格_F2U_AV", true, ""));
 		group.addItem(new OpcItem("保温按钮_F2U_AV", true, ""));
 		group.addItem(new OpcItem("保温启动_F2U_AV", true, ""));
 		group.addItem(new OpcItem("保温完成_F2U_AV", true, ""));
@@ -1060,7 +1110,6 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("第一次降温启动_F2U_AV", true, ""));
 		group.addItem(new OpcItem("釜1底阀关闭提醒_F2U_AV", true, ""));
 		group.addItem(new OpcItem("釜运行标记_F2U_AV", true, ""));
-		group.addItem(new OpcItem("升温完成_F2U_AV", true, ""));
 		group.addItem(new OpcItem("第一次保温测量提醒_F2U_AV", true, ""));
 		group.addItem(new OpcItem("第一次保温PH输入1_F2U_AV", true, ""));
 		group.addItem(new OpcItem("第一次保温PH输入2_F2U_AV", true, ""));
@@ -1103,10 +1152,7 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("助剂一次放料开始_F3U_AV", true, ""));
 		group.addItem(new OpcItem("温度98提醒_F3U_AV", true, ""));
 		group.addItem(new OpcItem("二次投料PH合格_F3U_AV", true, ""));
-		group.addItem(new OpcItem("所有助剂加料完成2_F3U_AV", true, ""));
 		group.addItem(new OpcItem("加热启动_F3U_AV", true, ""));
-		group.addItem(new OpcItem("温度98PH_F3U_AV", true, ""));
-		group.addItem(new OpcItem("温度98PH合格_F3U_AV", true, ""));
 
 		group.addItem(new OpcItem("保温按钮_F3U_AV", true, ""));
 		group.addItem(new OpcItem("保温启动_F3U_AV", true, ""));
@@ -1134,8 +1180,6 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("保温提醒PH记录4_F3U_AV", true, ""));
 		group.addItem(new OpcItem("保温提醒PH记录5_F3U_AV", true, ""));
 		group.addItem(new OpcItem("测量冰水雾点提醒时间_F3U_AV", true, ""));
-		group.addItem(new OpcItem("测量冰水雾点提醒_F3U_AV", true, ""));
-		group.addItem(new OpcItem("测量冰水雾点输入值_F3U_AV", true, ""));
 		group.addItem(new OpcItem("测20雾点时间_F3U_AV", true, ""));
 		group.addItem(new OpcItem("测20雾点提醒_F3U_AV", true, ""));
 		group.addItem(new OpcItem("测20雾点输入值_F3U_AV", true, ""));
@@ -1177,7 +1221,6 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("第一次降温启动_F3U_AV", true, ""));
 		group.addItem(new OpcItem("釜1底阀关闭提醒_F3U_AV", true, ""));
 		group.addItem(new OpcItem("釜运行标记_F3U_AV", true, ""));
-		group.addItem(new OpcItem("升温完成_F3U_AV", true, ""));
 		group.addItem(new OpcItem("第一次保温测量提醒_F3U_AV", true, ""));
 		group.addItem(new OpcItem("第一次保温PH输入1_F3U_AV", true, ""));
 		group.addItem(new OpcItem("第一次保温PH输入2_F3U_AV", true, ""));
@@ -1221,10 +1264,7 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("助剂一次放料开始_F4U_AV", true, ""));
 		group.addItem(new OpcItem("温度98提醒_F4U_AV", true, ""));
 		group.addItem(new OpcItem("二次投料PH合格_F4U_AV", true, ""));
-		group.addItem(new OpcItem("所有助剂加料完成2_F4U_AV", true, ""));
 		group.addItem(new OpcItem("加热启动_F4U_AV", true, ""));
-		group.addItem(new OpcItem("温度98PH_F4U_AV", true, ""));
-		group.addItem(new OpcItem("温度98PH合格_F4U_AV", true, ""));
 		group.addItem(new OpcItem("保温按钮_F4U_AV", true, ""));
 		group.addItem(new OpcItem("保温启动_F4U_AV", true, ""));
 		group.addItem(new OpcItem("保温完成_F4U_AV", true, ""));
@@ -1251,8 +1291,6 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("保温提醒PH记录4_F4U_AV", true, ""));
 		group.addItem(new OpcItem("保温提醒PH记录5_F4U_AV", true, ""));
 		group.addItem(new OpcItem("测量冰水雾点提醒时间_F4U_AV", true, ""));
-		group.addItem(new OpcItem("测量冰水雾点提醒_F4U_AV", true, ""));
-		group.addItem(new OpcItem("测量冰水雾点输入值_F4U_AV", true, ""));
 		group.addItem(new OpcItem("测20雾点时间_F4U_AV", true, ""));
 		group.addItem(new OpcItem("测20雾点提醒_F4U_AV", true, ""));
 		group.addItem(new OpcItem("测20雾点输入值_F4U_AV", true, ""));
@@ -1297,7 +1335,6 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("第一次降温启动_F4U_AV", true, ""));
 		group.addItem(new OpcItem("釜1底阀关闭提醒_F4U_AV", true, ""));
 		group.addItem(new OpcItem("釜运行标记_F4U_AV", true, ""));
-		group.addItem(new OpcItem("升温完成_F4U_AV", true, ""));
 		group.addItem(new OpcItem("第一次保温测量提醒_F4U_AV", true, ""));
 		group.addItem(new OpcItem("第一次保温PH输入1_F4U_AV", true, ""));
 		group.addItem(new OpcItem("第一次保温PH输入2_F4U_AV", true, ""));
@@ -1341,10 +1378,7 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("助剂一次放料开始_F5U_AV", true, ""));
 		group.addItem(new OpcItem("温度98提醒_F5U_AV", true, ""));
 		group.addItem(new OpcItem("二次投料PH合格_F5U_AV", true, ""));
-		group.addItem(new OpcItem("所有助剂加料完成2_F5U_AV", true, ""));
 		group.addItem(new OpcItem("加热启动_F5U_AV", true, ""));
-		group.addItem(new OpcItem("温度98PH_F5U_AV", true, ""));
-		group.addItem(new OpcItem("温度98PH合格_F5U_AV", true, ""));
 		group.addItem(new OpcItem("保温按钮_F5U_AV", true, ""));
 		group.addItem(new OpcItem("保温启动_F5U_AV", true, ""));
 		group.addItem(new OpcItem("保温完成_F5U_AV", true, ""));
@@ -1371,8 +1405,6 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("保温提醒PH记录4_F5U_AV", true, ""));
 		group.addItem(new OpcItem("保温提醒PH记录5_F5U_AV", true, ""));
 		group.addItem(new OpcItem("测量冰水雾点提醒时间_F5U_AV", true, ""));
-		group.addItem(new OpcItem("测量冰水雾点提醒_F5U_AV", true, ""));
-		group.addItem(new OpcItem("测量冰水雾点输入值_F5U_AV", true, ""));
 		group.addItem(new OpcItem("测20雾点时间_F5U_AV", true, ""));
 		group.addItem(new OpcItem("测20雾点提醒_F5U_AV", true, ""));
 		group.addItem(new OpcItem("测20雾点输入值_F5U_AV", true, ""));
@@ -1414,7 +1446,6 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("第一次降温启动_F5U_AV", true, ""));
 		group.addItem(new OpcItem("釜1底阀关闭提醒_F5U_AV", true, ""));
 		group.addItem(new OpcItem("釜运行标记_F5U_AV", true, ""));
-		group.addItem(new OpcItem("升温完成_F5U_AV", true, ""));
 		group.addItem(new OpcItem("第一次保温测量提醒_F5U_AV", true, ""));
 		group.addItem(new OpcItem("第一次保温PH输入1_F5U_AV", true, ""));
 		group.addItem(new OpcItem("第一次保温PH输入2_F5U_AV", true, ""));
@@ -1615,10 +1646,7 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("助剂一次放料开始_F1U_AV", true, ""));
 		group.addItem(new OpcItem("温度98提醒_F1U_AV", true, ""));
 		group.addItem(new OpcItem("二次投料PH合格_F1U_AV", true, ""));
-		group.addItem(new OpcItem("所有助剂加料完成2_F1U_AV", true, ""));
 		group.addItem(new OpcItem("加热启动_F1U_AV", true, ""));
-		group.addItem(new OpcItem("温度98PH_F1U_AV", true, ""));
-		group.addItem(new OpcItem("温度98PH合格_F1U_AV", true, ""));
 		group.addItem(new OpcItem("保温按钮_F1U_AV", true, ""));
 		group.addItem(new OpcItem("保温启动_F1U_AV", true, ""));
 		group.addItem(new OpcItem("保温完成_F1U_AV", true, ""));
@@ -1645,8 +1673,6 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("保温提醒PH记录4_F1U_AV", true, ""));
 		group.addItem(new OpcItem("保温提醒PH记录5_F1U_AV", true, ""));
 		group.addItem(new OpcItem("测量冰水雾点提醒时间_F1U_AV", true, ""));
-		group.addItem(new OpcItem("测量冰水雾点提醒_F1U_AV", true, ""));
-		group.addItem(new OpcItem("测量冰水雾点输入值_F1U_AV", true, ""));
 		group.addItem(new OpcItem("测20雾点时间_F1U_AV", true, ""));
 		group.addItem(new OpcItem("测20雾点提醒_F1U_AV", true, ""));
 		group.addItem(new OpcItem("测20雾点输入值_F1U_AV", true, ""));
@@ -1689,7 +1715,6 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("第一次降温启动_F1U_AV", true, ""));
 		group.addItem(new OpcItem("釜1底阀关闭提醒_F1U_AV", true, ""));
 		group.addItem(new OpcItem("釜运行标记_F1U_AV", true, ""));
-		group.addItem(new OpcItem("升温完成_F1U_AV", true, ""));
 		group.addItem(new OpcItem("第一次保温测量提醒_F1U_AV", true, ""));
 		group.addItem(new OpcItem("第一次保温PH输入1_F1U_AV", true, ""));
 		group.addItem(new OpcItem("第一次保温PH输入2_F1U_AV", true, ""));
@@ -1753,10 +1778,7 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("助剂一次放料开始_F2_AV", true, ""));
 		group.addItem(new OpcItem("温度98提醒_F2_AV", true, ""));
 		group.addItem(new OpcItem("二次投料PH合格_F2_AV", true, ""));
-		group.addItem(new OpcItem("所有助剂加料完成2_F2_AV", true, ""));
 		group.addItem(new OpcItem("加热启动_F2_AV", true, ""));
-		group.addItem(new OpcItem("温度98PH_F2_AV", true, ""));
-		group.addItem(new OpcItem("温度98PH合格_F2_AV", true, ""));
 		group.addItem(new OpcItem("保温按钮_F2_AV", true, ""));
 		group.addItem(new OpcItem("保温启动_F2_AV", true, ""));
 		group.addItem(new OpcItem("保温完成_F2_AV", true, ""));
@@ -1783,8 +1805,6 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("保温提醒PH记录4_F2_AV", true, ""));
 		group.addItem(new OpcItem("保温提醒PH记录5_F2_AV", true, ""));
 		group.addItem(new OpcItem("测量冰水雾点提醒时间_F2_AV", true, ""));
-		group.addItem(new OpcItem("测量冰水雾点提醒_F2_AV", true, ""));
-		group.addItem(new OpcItem("测量冰水雾点输入值_F2_AV", true, ""));
 		group.addItem(new OpcItem("测20雾点时间_F2_AV", true, ""));
 		group.addItem(new OpcItem("测20雾点提醒_F2_AV", true, ""));
 		group.addItem(new OpcItem("测20雾点输入值_F2_AV", true, ""));
@@ -1824,7 +1844,6 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("Date_176_F2_AV", true, ""));
 		group.addItem(new OpcItem("釜底阀关闭提醒_F2_AV", true, ""));
 		group.addItem(new OpcItem("釜运行标记_F2_AV", true, ""));
-		group.addItem(new OpcItem("升温完成_F2_AV", true, ""));
 		group.addItem(new OpcItem("反应釜2配方类型_AV", true, ""));
 		group.addItem(new OpcItem("二次助剂后测PH提醒_F2_AV", true, ""));
 		group.addItem(new OpcItem("终检水PH提醒_F2_AV", true, ""));
