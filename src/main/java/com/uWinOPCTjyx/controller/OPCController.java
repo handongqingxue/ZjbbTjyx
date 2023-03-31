@@ -87,6 +87,7 @@ public class OPCController {
 
 		Map<String,Object> json=new HashMap<String, Object>();
 
+		//检测备料开始上升沿
 		List<OpcBianLiang> blksMOBLList=new ArrayList<OpcBianLiang>();
 		List<OpcBianLiang> blksUOBLList=new ArrayList<OpcBianLiang>();
 		List<String> blksMcList=new ArrayList<String>();
@@ -110,6 +111,28 @@ public class OPCController {
 			piCiUService.addByBlksOBLList(blksUOBLList);
 		if(blksMcList.size()>0)
 			opcBianLiangService.updateSzyssByMcList(OpcBianLiang.YSS,blksMcList);
+		
+
+		//检测甲醛备料开始上升沿
+		List<OpcBianLiang> jqblksMOBLList=new ArrayList<OpcBianLiang>();
+		List<OpcBianLiang> jqblksUOBLList=new ArrayList<OpcBianLiang>();
+		List<String> jqblksMcList=new ArrayList<String>();
+		List<OpcBianLiang> jqblksOBLList=opcBianLiangService.getUpSzListByMcQz(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI_TEXT);
+		for (OpcBianLiang jqblksOBL : jqblksOBLList) {
+			Integer lx = jqblksOBL.getLx();
+			if(OpcBianLiang.LX_M==lx) {
+				jqblksMOBLList.add(jqblksOBL);
+			}
+			else if(OpcBianLiang.LX_U==lx) {
+				jqblksUOBLList.add(jqblksOBL);
+			}
+			
+			String mc = jqblksOBL.getMc();
+			jqblksMcList.add(mc);
+		}
+		
+		//if(jqblksMOBLList.size()>0)
+			//a
 		
 		return json;
 	}
