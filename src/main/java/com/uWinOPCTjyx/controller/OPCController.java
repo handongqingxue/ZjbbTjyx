@@ -35,6 +35,10 @@ public class OPCController {
 	@Autowired
 	private PiCiUService piCiUService;
 	@Autowired
+	private PiCiJiLuMService piCiJiLuMService;
+	@Autowired
+	private JiLuShiJianMService jiLuShiJianMService;
+	@Autowired
 	private OpcBianLiangService opcBianLiangService;
 	public static final String MODULE_NAME="opc";
 	
@@ -86,6 +90,8 @@ public class OPCController {
 	public Map<String, Object> keepWatchOnOpcBianLiang() {
 
 		Map<String,Object> json=new HashMap<String, Object>();
+		
+		List<Map<String,Integer>> jlsjIdMList=jiLuShiJianMService.getIdMapListByMcList();
 
 		//检测备料开始上升沿
 		List<OpcBianLiang> blksMOBLList=new ArrayList<OpcBianLiang>();
@@ -111,6 +117,7 @@ public class OPCController {
 		if(blksMOBLList.size()>0) {
 			piCiMService.addByBlksOBLList(blksMOBLList);
 			List<Integer> blksPcIdMList=piCiMService.getIdListByFyfhList(blksFyfhList);
+			//piCiJiLuMService.add();
 		}
 		if(blksUOBLList.size()>0)
 			piCiUService.addByBlksOBLList(blksUOBLList);
