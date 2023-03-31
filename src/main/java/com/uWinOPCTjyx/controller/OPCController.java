@@ -89,6 +89,7 @@ public class OPCController {
 
 		List<OpcBianLiang> blksMOBLList=new ArrayList<OpcBianLiang>();
 		List<OpcBianLiang> blksUOBLList=new ArrayList<OpcBianLiang>();
+		List<String> blksMcList=new ArrayList<String>();
 		List<OpcBianLiang> blksOBLList=opcBianLiangService.getUpSzListByMcQz(Constant.BEI_LIAO_KAI_SHI_TEXT);
 		for (OpcBianLiang blksOBL : blksOBLList) {
 			Integer lx = blksOBL.getLx();
@@ -98,9 +99,17 @@ public class OPCController {
 			else if(OpcBianLiang.LX_U==lx) {
 				blksUOBLList.add(blksOBL);
 			}
+			
+			String mc = blksOBL.getMc();
+			blksMcList.add(mc);
 		}
 		
-		int c=piCiMService.addByBlksOBLList(blksMOBLList);
+		if(blksMOBLList.size()>0)
+			piCiMService.addByBlksOBLList(blksMOBLList);
+		if(blksUOBLList.size()>0)
+			piCiUService.addByBlksOBLList(blksUOBLList);
+		if(blksMcList.size()>0)
+			opcBianLiangService.updateSzyssByMcList(OpcBianLiang.YSS,blksMcList);
 		
 		return json;
 	}

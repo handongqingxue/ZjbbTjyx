@@ -5,7 +5,7 @@ public class PiCiU {
     private Integer id;//记录id
     private Integer scnf;//生产年份
 	private Integer scbh;//生产编号
-    private Integer fyfh;//反应釜号
+    private String fyfh;//反应釜号
     private String kssj;//开始时间
     private String jssj;//结束时间
     private String scgs;//生产工时
@@ -38,7 +38,7 @@ public class PiCiU {
     public PiCiU() {
     }
 
-    public PiCiU(Integer id, Integer scnf, Integer scbh, Integer fyfh, String kssj, String jssj, String scgs, String scrq, String ysd101, String ysd102, String ysd103, String dbczyBsh, String jbczyBsh) {
+    public PiCiU(Integer id, Integer scnf, Integer scbh, String fyfh, String kssj, String jssj, String scgs, String scrq, String ysd101, String ysd102, String ysd103, String dbczyBsh, String jbczyBsh) {
         this.id = id;
         this.scnf = scnf;
         this.scbh = scbh;
@@ -78,11 +78,11 @@ public class PiCiU {
         this.scbh = scbh;
     }
 
-    public Integer getFyfh() {
+    public String getFyfh() {
         return fyfh;
     }
 
-    public void setFyfh(Integer fyfh) {
+    public void setFyfh(String fyfh) {
         this.fyfh = fyfh;
     }
 

@@ -21,4 +21,6 @@ public interface OpcBianLiangService {
 	 * @return
 	 */
 	List<OpcBianLiang> getUpSzListByMcQz(String mcQz);
+
+	int updateSzyssByMcList(int szyss, List<String> mcList);
 }

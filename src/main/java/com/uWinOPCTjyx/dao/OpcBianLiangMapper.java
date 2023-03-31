@@ -30,4 +30,6 @@ public interface OpcBianLiangMapper {
 	Integer getCountByMc(@Param("mc") String mc);
 
 	List<OpcBianLiang> getListByMcList(@Param("mcList") List<String> mcList);
+
+	int updateSzyssByMcList(@Param("szyss") int szyss, @Param("mcList") List<String> mcList);
 }
