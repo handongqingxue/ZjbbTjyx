@@ -117,6 +117,7 @@ public class OPCController {
 		List<OpcBianLiang> jqblksMOBLList=new ArrayList<OpcBianLiang>();
 		List<OpcBianLiang> jqblksUOBLList=new ArrayList<OpcBianLiang>();
 		List<String> jqblksMcList=new ArrayList<String>();
+		List<String> jqblksFyfhList=new ArrayList<String>();
 		List<OpcBianLiang> jqblksOBLList=opcBianLiangService.getUpSzListByMcQz(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI_TEXT);
 		for (OpcBianLiang jqblksOBL : jqblksOBLList) {
 			Integer lx = jqblksOBL.getLx();
@@ -128,11 +129,14 @@ public class OPCController {
 			}
 			
 			String mc = jqblksOBL.getMc();
+			String fyfh = jqblksOBL.getFyfh();
 			jqblksMcList.add(mc);
+			jqblksFyfhList.add(fyfh);
 		}
 		
-		//if(jqblksMOBLList.size()>0)
-			//a
+		if(jqblksMOBLList.size()>0) {
+			List<Integer> jqblksPcIdMList=piCiMService.getIdListByFyfhList(jqblksFyfhList);
+		}
 		
 		return json;
 	}

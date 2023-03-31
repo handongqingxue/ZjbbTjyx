@@ -23,7 +23,8 @@ public class OpcBianLiang {
     private Integer id;//变量id
     private String mc;//变量名称
     private String sz;//数值
-    private Integer lx;//1 M类  2 U类
+	private String fyfh;//反应釜号
+	private Integer lx;//1 M类  2 U类
 	private String cjsj;//创建时间
     private String xgsj;//修改时间
     private Boolean szyss;//数值已上升
@@ -32,10 +33,11 @@ public class OpcBianLiang {
     	
     }
 
-    public OpcBianLiang(Integer id, String mc, String sz, Integer lx, String cjsj, String xgsj) {
+    public OpcBianLiang(Integer id, String mc, String sz, String fyfh, Integer lx, String cjsj, String xgsj) {
         this.id = id;
         this.mc = mc;
         this.sz = sz;
+        this.fyfh = fyfh;
         this.lx = lx;
         this.cjsj = cjsj;
         this.xgsj = xgsj;
@@ -63,6 +65,14 @@ public class OpcBianLiang {
 
 	public void setSz(String sz) {
 		this.sz = sz;
+	}
+	
+    public String getFyfh() {
+		return fyfh;
+	}
+
+	public void setFyfh(String fyfh) {
+		this.fyfh = fyfh;
 	}
 
 	public Integer getLx() {
@@ -103,6 +113,7 @@ public class OpcBianLiang {
                 "id=" + id +
                 ", mc='" + mc + '\'' +
                 ", sz='" + sz + '\'' +
+                ", fyfh='" + fyfh + '\'' +
                 ", lx='" + lx + '\'' +
                 ", cjsj='" + cjsj + '\'' +
                 ", xgsj='" + xgsj + '\'' +

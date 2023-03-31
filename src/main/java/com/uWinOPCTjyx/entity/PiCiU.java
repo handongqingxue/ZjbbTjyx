@@ -2,7 +2,7 @@ package com.uWinOPCTjyx.entity;
 
 public class PiCiU {
 
-    private Integer id;//记录id
+    private Integer id;//批次id
     private Integer scnf;//生产年份
 	private Integer scbh;//生产编号
     private String fyfh;//反应釜号

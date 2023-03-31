@@ -75,6 +75,7 @@ public class OpcBianLiangServiceImpl implements OpcBianLiangService {
 					String bsf = mc.substring(bsfStartLoc, mcLength-3);
 					if(bsf.equals(bsfFMArr[i])) {
 						existBsfM=true;
+						opcBianLiang.setFyfh(bsf);
 						break;
 					}
 				}
@@ -87,6 +88,7 @@ public class OpcBianLiangServiceImpl implements OpcBianLiangService {
 					String bsf = mc.substring(bsfStartLoc, mcLength-3);
 					if(bsf.equals(bsfFUArr[i])) {
 						existBsfU=true;
+						opcBianLiang.setFyfh(bsf);
 						break;
 					}
 				}

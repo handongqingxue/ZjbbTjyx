@@ -12,6 +12,9 @@
 			<if test="sz!=null">
 				sz,
 			</if>
+			<if test="fyfh!=null">
+				fyfh,
+			</if>
 			<if test="lx!=null">
 				lx,
 			</if>
@@ -24,6 +27,9 @@
 			</if>
 			<if test="sz!=null">
 				#{sz},
+			</if>
+			<if test="fyfh!=null">
+				#{fyfh},
 			</if>
 			<if test="lx!=null">
 				#{lx},

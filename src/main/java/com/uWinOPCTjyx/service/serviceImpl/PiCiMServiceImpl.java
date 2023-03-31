@@ -39,4 +39,9 @@ public class PiCiMServiceImpl implements PiCiMService {
 		}
 		return count;
 	}
+
+	public List<Integer> getIdListByFyfhList(List<String> fyfhList) {
+		// TODO Auto-generated method stub
+		return piCiMMapper.getIdListByFyfhList(fyfhList);
+	}
 }
