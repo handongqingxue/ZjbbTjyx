@@ -57,4 +57,8 @@ public class Constant {
 	 * 备料开始文字
 	 */
 	public static final String BEI_LIAO_KAI_SHI_TEXT="备料开始";
+	/**
+	 * 甲醛备料开始文字
+	 */
+	public static final String JIA_QUAN_BEI_LIAO_KAI_SHI_TEXT="甲醛备料开始";
 }

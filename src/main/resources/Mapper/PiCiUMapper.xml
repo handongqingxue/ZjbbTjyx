@@ -12,9 +12,7 @@
 			<if test="fyfh!=null">
 				fyfh,
 			</if>
-			<if test="kssj!=null">
 				kssj,
-			</if>
 			<if test="jssj!=null">
 				jssj,
 			</if>
@@ -48,9 +46,7 @@
 			<if test="fyfh!=null">
 				#{fyfh},
 			</if>
-			<if test="kssj!=null">
-				#{kssj},
-			</if>
+				GETDATE(),
 			<if test="jssj!=null">
 				#{jssj},
 			</if>

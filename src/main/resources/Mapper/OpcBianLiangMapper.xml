@@ -12,6 +12,9 @@
 			<if test="sz!=null">
 				sz,
 			</if>
+			<if test="fyfh!=null">
+				fyfh,
+			</if>
 			<if test="lx!=null">
 				lx,
 			</if>
@@ -24,6 +27,9 @@
 			</if>
 			<if test="sz!=null">
 				#{sz},
+			</if>
+			<if test="fyfh!=null">
+				#{fyfh},
 			</if>
 			<if test="lx!=null">
 				#{lx},
@@ -38,9 +44,15 @@
 		select count(*) from OpcBianLiang where mc=#{mc}
 	</select>
 	<select id="getListByMcList" resultType="com.uWinOPCTjyx.entity.OpcBianLiang">
-		select * from OpcBianLiang where 1=1
+		select * from OpcBianLiang where szyss!=${@com.uWinOPCTjyx.entity.OpcBianLiang@YSS}
 		<foreach collection="mcList" item="mc" open=" and cast(mc as char) in (" separator="," close=")">
 		#{mc}
 		</foreach>
 	</select>
+	<update id="updateSzyssByMcList">
+		update OpcBianLiang set szyss=${szyss} where 1=1
+		<foreach collection="mcList" item="mc" open=" and cast(mc as char) in (" separator="," close=")">
+		#{mc}
+		</foreach>
+	</update>
 </mapper>

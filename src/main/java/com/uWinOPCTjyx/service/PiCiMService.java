@@ -13,4 +13,11 @@ public interface PiCiMService {
 	 */
 	int addByBlksOBLList(List<OpcBianLiang> blksOBLList);
 
+	/**
+	 * 根据反应釜号集合，获取批次id集合
+	 * @param fyfhList
+	 * @return
+	 */
+	List<Integer> getIdListByFyfhList(List<String> fyfhList);
+
 }

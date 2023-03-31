@@ -6,15 +6,16 @@
 	<insert id="add" parameterType="com.uWinOPCTjyx.entity.PiCiM">
 		insert into PiCiM
 		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="scnf!=null">
+				scnf,
+			</if>
 			<if test="scbh!=null">
 				scbh,
 			</if>
 			<if test="fyfh!=null">
 				fyfh,
 			</if>
-			<if test="kssj!=null">
 				kssj,
-			</if>
 			<if test="jssj!=null">
 				jssj,
 			</if>
@@ -30,9 +31,6 @@
 			<if test="ysd102!=null">
 				ysd102,
 			</if>
-			<if test="ysd103!=null">
-				ysd103,
-			</if>
 			<if test="dbczyBsh!=null">
 				dbczyBsh,
 			</if>
@@ -42,15 +40,16 @@
 		</trim>
 		values
 		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="scnf!=null">
+				#{scnf},
+			</if>
 			<if test="scbh!=null">
 				#{scbh},
 			</if>
 			<if test="fyfh!=null">
 				#{fyfh},
 			</if>
-			<if test="kssj!=null">
-				#{kssj},
-			</if>
+				GETDATE(),
 			<if test="jssj!=null">
 				#{jssj},
 			</if>
@@ -66,9 +65,6 @@
 			<if test="ysd102!=null">
 				#{ysd102},
 			</if>
-			<if test="ysd103!=null">
-				#{ysd103},
-			</if>
 			<if test="dbczyBsh!=null">
 				#{dbczyBsh},
 			</if>
@@ -83,5 +79,11 @@
 		  union
 		  select scnf,scbh from PiCiU
 		 )t where t.scnf=#{scnf}
+	</select>
+	<select id="getIdListByFyfhList" resultType="java.lang.Integer">
+		select id from PiCiM where 1=1
+		<foreach collection="fyfhList" item="fyfh" open=" and cast(fyfh as char) in (" separator="," close=")">
+		#{fyfh}
+		</foreach>
 	</select>
 </mapper>

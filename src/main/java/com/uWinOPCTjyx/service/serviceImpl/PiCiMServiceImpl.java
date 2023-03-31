@@ -28,9 +28,9 @@ public class PiCiMServiceImpl implements PiCiMService {
 			else
 				scbh++;//如果是对象里面的年份(获取的当前年份)生产编号就+1以此类推
 			String mc = blksOBL.getMc();//获取变量名称
-			int fyfhStartLoc = mc.indexOf("_")+1;//找到变量名名中_后面的字符串的位置
-			int fyfhEndLoc = mc.length();//获取变量的长度
-			Integer fyfh=Integer.valueOf(mc.substring(fyfhStartLoc, fyfhEndLoc));
+			int fyfhStartLoc = mc.indexOf("_")+1;//找到变量名名中_的字符串的位置
+			int fyfhEndLoc = mc.indexOf("_AV");//找到变量名名中_AV的字符串的位置
+			String fyfh = mc.substring(fyfhStartLoc, fyfhEndLoc);
 			piCiM=new PiCiM();//创建对象给对象赋值
 			piCiM.setScnf(scnf);
 			piCiM.setScbh(scbh);
@@ -38,5 +38,10 @@ public class PiCiMServiceImpl implements PiCiMService {
 			count+=piCiMMapper.add(piCiM);//执行添加操作
 		}
 		return count;
+	}
+
+	public List<Integer> getIdListByFyfhList(List<String> fyfhList) {
+		// TODO Auto-generated method stub
+		return piCiMMapper.getIdListByFyfhList(fyfhList);
 	}
 }
