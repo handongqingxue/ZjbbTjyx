@@ -4,5 +4,7 @@ import com.uWinOPCTjyx.entity.*;
 
 public interface PiCiJiLuUMapper {
 
-    int add(PiCiJiLuU piCiJiLuU);
+    int
+
+    add(PiCiJiLuU piCiJiLuU);
 }
