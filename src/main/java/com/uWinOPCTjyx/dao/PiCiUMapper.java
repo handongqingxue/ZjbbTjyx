@@ -10,4 +10,6 @@ public interface PiCiUMapper {
     int add(PiCiU piCiU);
 
     List<PiCiU> getList();
+
+    List<PiCiU> getListByFyfhList(@Param("fyfhList") List<String> fyfhList);
 }

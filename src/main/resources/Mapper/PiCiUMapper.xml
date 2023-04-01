@@ -77,4 +77,11 @@
 	<select id="getList" resultType="com.uWinOPCTjyx.entity.PiCiU">
 		select * from PiCiU
 	</select>
+
+	<select id="getListByFyfhList" resultType="com.uWinOPCTjyx.entity.PiCiU">
+		select * from PiCiU where 1=1
+		<foreach collection="fyfhList" item="fyfh" open=" and cast(fyfh as char) in (" separator="," close=")">
+			#{fyfh}
+		</foreach>
+	</select>
 </mapper>

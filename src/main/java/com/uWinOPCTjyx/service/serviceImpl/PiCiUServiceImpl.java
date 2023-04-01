@@ -51,4 +51,14 @@ public class PiCiUServiceImpl implements PiCiUService {
         }
         return count;
     }
+
+    public List<Integer> getIdListByFyfhList(List<String> fyfhList) {
+        // TODO Auto-generated method stub
+        return piCiMMapper.getIdListByFyfhList(fyfhList);
+    }
+
+    public List<PiCiU> getListByFyfhList(List<String> fyfhList) {
+        // TODO Auto-generated method stub
+        return piCiUMapper.getListByFyfhList(fyfhList);
+    }
 }
