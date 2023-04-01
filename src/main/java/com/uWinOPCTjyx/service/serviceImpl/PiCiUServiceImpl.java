@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -29,8 +31,9 @@ public class PiCiUServiceImpl implements PiCiUService {
     public int addByBlksOBLList(List<OpcBianLiang> blksOBLList) {
         int count=0;//计数器
         PiCiU piCiU=null;//空对象
+		Date date = new Date();
         for (OpcBianLiang blksOBL : blksOBLList) {//遍历opc变量集合
-            Integer scnf = Integer.valueOf(DateUtil.getYYYY());//获取年份
+            Integer scnf = Integer.valueOf(DateUtil.getTimeStrByFormatStr(date,DateUtil.YEAR));//获取年份
             Integer scbh = piCiMMapper.getMaxScbhByScnf(scnf);//记录生产编号：查询年份，找到最大的生产编号值；
             if(scbh==null)//如果没有就等于是新的年份，生产编号要赋值为1，要从1重新开始记录生产编号
                 scbh=1;

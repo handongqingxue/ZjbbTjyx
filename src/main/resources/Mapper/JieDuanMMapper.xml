@@ -6,4 +6,7 @@
 	<select id="getIdByMc" resultType="java.lang.Integer">
 		select id from JieDuanM where mc=#{mc}
 	</select>
+	<select id="getList" resultType="com.uWinOPCTjyx.entity.JieDuanM">
+		select id,mc from JieDuanM
+	</select>
 </mapper>

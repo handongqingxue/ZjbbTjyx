@@ -39,6 +39,8 @@ public class OPCController {
 	@Autowired
 	private JiLuShiJianMService jiLuShiJianMService;
 	@Autowired
+	private JieDuanMService jieDuanMService;
+	@Autowired
 	private OpcBianLiangService opcBianLiangService;
 	public static final String MODULE_NAME="opc";
 	
@@ -91,7 +93,11 @@ public class OPCController {
 
 		Map<String,Object> json=new HashMap<String, Object>();
 		
-		List<Map<String,Integer>> jlsjIdMList=jiLuShiJianMService.getIdMapListByMcList();
+		//M类
+		Map<String,Integer> jlsjIdMMap=jiLuShiJianMService.getIdMap();
+		Map<String,Integer> jieDuanIdMMap=jieDuanMService.getIdMap();
+		
+		//U类
 
 		//检测备料开始上升沿
 		List<OpcBianLiang> blksMOBLList=new ArrayList<OpcBianLiang>();
@@ -115,12 +121,16 @@ public class OPCController {
 		}
 		
 		if(blksMOBLList.size()>0) {
+			//M类
 			piCiMService.addByBlksOBLList(blksMOBLList);
-			List<Integer> blksPcIdMList=piCiMService.getIdListByFyfhList(blksFyfhList);
-			//piCiJiLuMService.add();
+			List<Integer> blksPcIdMList=piCiMService.getIdListByFyfhList(blksFyfhList);//根据备料开始变量里的反应釜号获取批次id列表
+			Integer pcJlsjId = Integer.valueOf(jlsjIdMMap.get(JiLuShiJianM.PI_CI_TEXT).toString());//获取批次记录事件id
+			piCiJiLuMService.addPcgcFromPcIdList(blksPcIdMList,pcJlsjId);//添加批次过程记录
 		}
-		if(blksUOBLList.size()>0)
+		if(blksUOBLList.size()>0) {
+			//U类
 			piCiUService.addByBlksOBLList(blksUOBLList);
+		}
 		if(blksMcList.size()>0)
 			opcBianLiangService.updateSzyssByMcList(OpcBianLiang.YSS,blksMcList);
 		
@@ -143,11 +153,20 @@ public class OPCController {
 			String mc = jqblksOBL.getMc();
 			String fyfh = jqblksOBL.getFyfh();
 			jqblksMcList.add(mc);
-			jqblksFyfhList.add(fyfh);
+			jqblksFyfhList.add(fyfh);//添加甲醛备料开始反应釜号
 		}
 		
 		if(jqblksMOBLList.size()>0) {
-			List<Integer> jqblksPcIdMList=piCiMService.getIdListByFyfhList(jqblksFyfhList);
+			//M类
+			List<PiCiM> jqblksPcMList=piCiMService.getListByFyfhList(jqblksFyfhList);//根据甲醛备料开始变量里的反应釜号获取批次列表
+			
+			//添加与M类批次相关的加甲醛时间差阶段批次记录
+			Integer sjcJlsjId = Integer.valueOf(jlsjIdMMap.get(JiLuShiJianM.SHI_JIAN_CHA_TEXT).toString());//获取时间差记录事件id
+			Integer jjqJieDuanId = Integer.valueOf(jieDuanIdMMap.get(JieDuanM.JIA_JIA_QUAN_TEXT).toString());
+			piCiJiLuMService.addJdgcFromPcList(jqblksPcMList,sjcJlsjId,JiLuShiJianM.SHI_JIAN_CHA_TEXT,jjqJieDuanId);//添加加甲醛阶段过程记录
+		}
+		if(jqblksUOBLList.size()>0) {
+			//U类
 		}
 		
 		return json;

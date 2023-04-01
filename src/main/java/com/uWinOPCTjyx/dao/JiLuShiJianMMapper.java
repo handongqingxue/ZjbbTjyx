@@ -10,5 +10,5 @@ public interface JiLuShiJianMMapper {
 
 	Integer getIdByMc(@Param("mc") String mc);
 
-	List<JiLuShiJianM> getListByMcList(List<String> mcList);
+	List<JiLuShiJianM> getList();
 }

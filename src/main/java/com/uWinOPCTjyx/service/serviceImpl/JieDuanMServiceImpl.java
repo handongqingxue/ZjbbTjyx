@@ -13,19 +13,19 @@ import com.uWinOPCTjyx.dao.*;
 import com.uWinOPCTjyx.service.*;
 
 @Service
-public class JiLuShiJianMServiceImpl implements JiLuShiJianMService {
+public class JieDuanMServiceImpl implements JieDuanMService {
 
     @Autowired
-    private JiLuShiJianMMapper jiLuShiJianMMapper;
+    private JieDuanMMapper jieDuanMMapper;
 
 	public Map<String, Integer> getIdMap() {
 		// TODO Auto-generated method stub
-		List<JiLuShiJianM> jlsjList=jiLuShiJianMMapper.getList();
+		List<JieDuanM> jieDuanList=jieDuanMMapper.getList();
 		
 		Map<String, Integer> idMap=new HashMap<String, Integer>();
-		for (JiLuShiJianM jlsj : jlsjList) {
-			Integer id = jlsj.getId();
-			String mc = jlsj.getMc();
+		for (JieDuanM jieDuan : jieDuanList) {
+			Integer id = jieDuan.getId();
+			String mc = jieDuan.getMc();
 			
 			idMap.put(mc, id);
 		}

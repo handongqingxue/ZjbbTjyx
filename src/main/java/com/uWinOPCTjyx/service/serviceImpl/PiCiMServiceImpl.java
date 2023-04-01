@@ -1,5 +1,6 @@
 package com.uWinOPCTjyx.service.serviceImpl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.uWinOPCTjyx.entity.*;
 import com.uWinOPCTjyx.dao.*;
 import com.uWinOPCTjyx.service.*;
-import com.uWinOPCTjyx.util.DateUtil;
+import com.uWinOPCTjyx.util.*;
 
 @Service
 public class PiCiMServiceImpl implements PiCiMService {
@@ -20,8 +21,9 @@ public class PiCiMServiceImpl implements PiCiMService {
 	public int addByBlksOBLList(List<OpcBianLiang> blksOBLList) {
 		int count=0;//计数器
 		PiCiM piCiM=null;//空对象
+		Date date = new Date();
 		for (OpcBianLiang blksOBL : blksOBLList) {//遍历opc变量集合
-			Integer scnf = Integer.valueOf(DateUtil.getYYYY());//获取年份
+			Integer scnf = Integer.valueOf(DateUtil.getTimeStrByFormatStr(date,DateUtil.YEAR));//获取年份
 			Integer scbh = piCiMMapper.getMaxScbhByScnf(scnf);//记录生产编号：查询年份，找到最大的生产编号值；
 			if(scbh==null)//如果没有就等于是新的年份，生产编号要赋值为1，要从1重新开始记录生产编号
 				scbh=1;
@@ -43,5 +45,10 @@ public class PiCiMServiceImpl implements PiCiMService {
 	public List<Integer> getIdListByFyfhList(List<String> fyfhList) {
 		// TODO Auto-generated method stub
 		return piCiMMapper.getIdListByFyfhList(fyfhList);
+	}
+
+	public List<PiCiM> getListByFyfhList(List<String> fyfhList) {
+		// TODO Auto-generated method stub
+		return piCiMMapper.getListByFyfhList(fyfhList);
 	}
 }

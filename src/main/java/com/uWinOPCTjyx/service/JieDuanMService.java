@@ -1,10 +1,8 @@
 package com.uWinOPCTjyx.service;
 
-import java.util.List;
 import java.util.Map;
 
-public interface JiLuShiJianMService {
+public interface JieDuanMService {
 
 	Map<String, Integer> getIdMap();
-
 }

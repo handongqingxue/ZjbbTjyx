@@ -13,4 +13,6 @@ public interface PiCiMMapper {
 	Integer getMaxScbhByScnf(@Param("scnf") Integer scnf);
 
 	List<Integer> getIdListByFyfhList(@Param("fyfhList") List<String> fyfhList);
+
+	List<PiCiM> getListByFyfhList(@Param("fyfhList") List<String> fyfhList);
 }

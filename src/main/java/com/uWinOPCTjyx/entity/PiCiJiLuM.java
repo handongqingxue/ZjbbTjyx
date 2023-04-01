@@ -2,6 +2,23 @@ package com.uWinOPCTjyx.entity;
 
 public class PiCiJiLuM {
 
+	/**
+	 * 工艺参数记录
+	 */
+	public static final int GONG_YI_CAN_SHU_JI_LU=1;
+	/**
+	 * 原料进料记录
+	 */
+	public static final int YUAN_LIAO_JIN_LIAO_JI_LU=2;
+	/**
+	 * 阶段过程记录
+	 */
+	public static final int JIE_DUAN_GUO_CHENG_JI_LU=3;
+	/**
+	 * 批次过程记录
+	 */
+	public static final int PI_CI_GUO_CHENG_JI_LU=4;
+	
     private Integer id;//批次记录id
     private Integer pcId;//批次id
     private Integer csId;//参数id

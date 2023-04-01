@@ -20,4 +20,11 @@ public interface PiCiMService {
 	 */
 	List<Integer> getIdListByFyfhList(List<String> fyfhList);
 
+	/**
+	 * 根据反应釜号集合，获取批次集合
+	 * @param fyfhList
+	 * @return
+	 */
+	List<PiCiM> getListByFyfhList(List<String> fyfhList);
+
 }
