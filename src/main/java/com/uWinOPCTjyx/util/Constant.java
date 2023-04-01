@@ -61,6 +61,14 @@ public class Constant {
 	 * 甲醛备料开始文字
 	 */
 	public static final String JIA_QUAN_BEI_LIAO_KAI_SHI_TEXT="甲醛备料开始";
+	/**
+	 * 甲醛放料完成文字
+	 */
+	public static final String JIA_QUAN_FANG_LIAO_WAN_CHENG_TEXT="甲醛放料完成";
+	/**
+	 * 甲醛实际进料重量文字
+	 */
+	public static final String JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG_TEXT="甲醛实际进料重量";
 	
 	/**
 	 * 百分号文字

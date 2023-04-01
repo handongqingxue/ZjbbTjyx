@@ -80,4 +80,13 @@ public class PiCiJiLuMServiceImpl implements PiCiJiLuMService {
 		}
 		return count;
 	}
+
+	public int addCsjl(List<PiCiM> pcList, String csXx, Integer jlsjId, String jlsjMc) {
+		// TODO Auto-generated method stub
+		int count=0;
+		PiCiJiLuM piCiJiLuM=null;
+		
+		List<OpcBianLiang> jqsjjlzlOBLList=null;
+		return 0;
+	}
 }
