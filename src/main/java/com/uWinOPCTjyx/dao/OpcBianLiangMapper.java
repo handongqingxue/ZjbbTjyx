@@ -40,4 +40,11 @@ public interface OpcBianLiangMapper {
 	 * @return
 	 */
 	List<OpcBianLiang> getFczListByFyfhList(@Param("mc") String mc, @Param("fyfhList") List<String> fyfhList);
+
+	/**
+	 * 根据名称集合，获取甲醛实际进料重量信息列表
+	 * @param mcList
+	 * @return
+	 */
+	List<OpcBianLiang> getJqsjjlzlByFyMcList(@Param("mcList") List<String> mcList);
 }

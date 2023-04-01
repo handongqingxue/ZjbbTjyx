@@ -86,7 +86,12 @@ public class PiCiJiLuMServiceImpl implements PiCiJiLuMService {
 		int count=0;
 		PiCiJiLuM piCiJiLuM=null;
 		
-		List<OpcBianLiang> jqsjjlzlOBLList=null;
+		List<String> mcList=new ArrayList<String>();
+		String[] bsfFMArr = Constant.BSF_F_M_ARR;
+		for (int i = 0; i < bsfFMArr.length; i++) {
+			mcList.add(Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG_TEXT+"_"+bsfFMArr[i]+"_AV");
+		}
+		List<OpcBianLiang> jqsjjlzlOBLList=opcBianLiangMapper.getJqsjjlzlByFyMcList(mcList);
 		return 0;
 	}
 }
