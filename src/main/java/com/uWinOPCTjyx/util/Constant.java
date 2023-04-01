@@ -61,4 +61,18 @@ public class Constant {
 	 * 甲醛备料开始文字
 	 */
 	public static final String JIA_QUAN_BEI_LIAO_KAI_SHI_TEXT="甲醛备料开始";
+	
+	/**
+	 * 百分号文字
+	 */
+	public static final String BAI_FEN_HAO_TEXT="%";
+	
+	/**
+	 * 釜文字
+	 */
+	public static final String FU_TEXT="釜";
+	/**
+	 * 称重文字
+	 */
+	public static final String CHENG_ZHONG_TEXT="称重";
 }
