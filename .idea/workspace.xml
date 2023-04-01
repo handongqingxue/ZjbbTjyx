@@ -16,13 +16,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9bfab7cf-a4c1-4d31-9c53-df2a94b39f3e" name="Default Changelist" comment="11">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_fastjson_1_2_9.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/dao/PiCiJiLuUMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/entity/PiCiJiLuU.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/UWinOPCTjyx.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/UWinOPCTjyx.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/UWinOPCTjyx_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/UWinOPCTjyx_war_exploded.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/connect/ReaderOpc.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/connect/ReaderOpc.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/dao/PiCiJiLuUMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/dao/PiCiJiLuUMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/javafish/clients/opc/connect/ReaderOpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javafish/clients/opc/connect/ReaderOpc.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,7 +211,7 @@
       <workItem from="1678500499491" duration="272000" />
       <workItem from="1679634758256" duration="6731000" />
       <workItem from="1679722462404" duration="66383000" />
-      <workItem from="1680227753216" duration="20829000" />
+      <workItem from="1680227753216" duration="30709000" />
     </task>
     <task id="LOCAL-00001" summary="11">
       <created>1679725334951</created>
@@ -287,7 +283,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680254089707</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="11">
+      <created>1680255046205</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1680255046205</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -427,10 +430,10 @@
     <state x="212" y="0" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1678410562516" />
     <state x="141" y="23" width="997" height="710" key="SettingsEditor/0.23.1280.710@0.23.1280.710" timestamp="1680147044063" />
     <state x="141" y="23" key="SettingsEditor/0.23.1280.725@0.23.1280.725" timestamp="1678331779017" />
-    <state x="240" y="118" key="Vcs.Push.Dialog.v2" timestamp="1680254552778">
+    <state x="240" y="118" key="Vcs.Push.Dialog.v2" timestamp="1680255127937">
       <screen x="0" y="23" width="1280" height="710" />
     </state>
-    <state x="240" y="118" key="Vcs.Push.Dialog.v2/0.23.1280.710@0.23.1280.710" timestamp="1680254552778" />
+    <state x="240" y="118" key="Vcs.Push.Dialog.v2/0.23.1280.710@0.23.1280.710" timestamp="1680255127937" />
     <state x="428" y="299" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1680147123637">
       <screen x="0" y="23" width="1280" height="710" />
     </state>
@@ -443,10 +446,10 @@
       <screen x="0" y="23" width="1280" height="710" />
     </state>
     <state x="297" y="173" key="git4idea.merge.GitPullDialog/0.23.1280.710@0.23.1280.710" timestamp="1680254098878" />
-    <state x="305" y="57" width="670" height="676" key="search.everywhere.popup" timestamp="1680079076060">
+    <state x="305" y="57" width="670" height="676" key="search.everywhere.popup" timestamp="1680316151970">
       <screen x="0" y="23" width="1280" height="710" />
     </state>
-    <state x="305" y="57" width="670" height="676" key="search.everywhere.popup/0.23.1280.710@0.23.1280.710" timestamp="1680079076060" />
+    <state x="305" y="57" width="670" height="676" key="search.everywhere.popup/0.23.1280.710@0.23.1280.710" timestamp="1680316151970" />
     <state x="682" y="431" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1678500760336">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
