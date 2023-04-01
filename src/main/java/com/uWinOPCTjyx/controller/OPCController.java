@@ -187,10 +187,15 @@ public class OPCController {
 			//U类
 			List<PiCiU> jqblksPcUList=piCiUService.getListByFyfhList(jqblksFyfhList);//根据甲醛备料开始变量里的反应釜号获取批次列表
 
+			Integer jjqJieDuanId = Integer.valueOf(jieDuanIdUMap.get(JieDuanU.JIA_JIA_QUAN_TEXT).toString());
+
 			//添加与U类批次相关的加甲醛时间差阶段批次记录
 			Integer sjcJlsjId = Integer.valueOf(jlsjIdUMap.get(JiLuShiJianU.SHI_JIAN_CHA_TEXT).toString());//获取时间差记录事件id
-			Integer jjqJieDuanId = Integer.valueOf(jieDuanIdUMap.get(JieDuanU.JIA_JIA_QUAN_TEXT).toString());
 			piCiJiLuUService.addJdgcFromPcList(jqblksPcUList,sjcJlsjId,JiLuShiJianU.SHI_JIAN_CHA_TEXT,jjqJieDuanId);//添加加甲醛阶段过程记录
+
+			//添加与U类批次相关的加甲醛重量差阶段批次记录
+			Integer zlcJlsjId = Integer.valueOf(jlsjIdUMap.get(JiLuShiJianU.ZHONG_LIANG_CHA_TEXT).toString());//获取重量差记录事件id
+			piCiJiLuUService.addJdgcFromPcList(jqblksPcUList,zlcJlsjId,JiLuShiJianU.ZHONG_LIANG_CHA_TEXT,jjqJieDuanId);//添加加甲醛重量差阶段过程记录
 		}
 		
 		return json;
