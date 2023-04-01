@@ -6,4 +6,10 @@
 	<select id="getIdByMc" resultType="java.lang.Integer">
 		select id from JiLuShiJianM where mc=#{mc}
 	</select>
+	<select id="getListByMcList" resultType="com.uWinOPCTjyx.entity.JiLuShiJianM">
+		select id,mc from JiLuShiJianM where 1=1
+		<foreach collection="mcList" item="mc" open=" and cast(mc as char) in (" separator="," close=")">
+		#{mc}
+		</foreach>
+	</select>
 </mapper>
