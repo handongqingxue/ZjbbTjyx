@@ -5,6 +5,10 @@ import java.util.Map;
 
 public interface JiLuShiJianMService {
 
+	/**
+	 * 获取记录事件名称、id键值对
+	 * @return
+	 */
 	Map<String, Integer> getIdMap();
 
 }
