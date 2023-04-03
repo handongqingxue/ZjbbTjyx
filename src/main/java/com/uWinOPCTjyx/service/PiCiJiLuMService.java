@@ -10,4 +10,6 @@ public interface PiCiJiLuMService {
 
 	int addJdgcFromPcList(List<PiCiM> pcList, Integer jlsjId, String jlsjMc, Integer jieDuanId);
 
+	int addCsjl(List<PiCiM> pcList, String csXx, Integer jlsjId, String jlsjMc);
+
 }

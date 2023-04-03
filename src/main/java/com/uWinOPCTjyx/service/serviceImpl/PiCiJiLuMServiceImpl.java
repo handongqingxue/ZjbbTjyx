@@ -80,4 +80,18 @@ public class PiCiJiLuMServiceImpl implements PiCiJiLuMService {
 		}
 		return count;
 	}
+
+	public int addCsjl(List<PiCiM> pcList, String csXx, Integer jlsjId, String jlsjMc) {
+		// TODO Auto-generated method stub
+		int count=0;
+		PiCiJiLuM piCiJiLuM=null;
+		
+		List<String> mcList=new ArrayList<String>();
+		String[] bsfFMArr = Constant.BSF_F_M_ARR;
+		for (int i = 0; i < bsfFMArr.length; i++) {
+			mcList.add(Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG_TEXT+"_"+bsfFMArr[i]+"_AV");
+		}
+		List<OpcBianLiang> jqsjjlzlOBLList=opcBianLiangMapper.getJqsjjlzlByFyMcList(mcList);
+		return 0;
+	}
 }
