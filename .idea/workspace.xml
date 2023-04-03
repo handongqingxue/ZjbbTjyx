@@ -16,6 +16,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9bfab7cf-a4c1-4d31-9c53-df2a94b39f3e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_protobuf_protobuf_java_2_6_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_8_0_11.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/UWinOPCTjyx.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/UWinOPCTjyx.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/UWinOPCTjyx_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/UWinOPCTjyx_war_exploded.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/javafish/clients/opc/connect/ReaderOpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javafish/clients/opc/connect/ReaderOpc.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/JCustomOpc.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/JCustomOpc.class" afterDir="false" />
@@ -110,6 +114,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="C:/Program Files (x86)/Java/jdk1.8.0_131" />
@@ -298,6 +303,8 @@
       <workItem from="1679362073480" duration="2632000" />
       <workItem from="1679449408230" duration="1990000" />
       <workItem from="1679534464992" duration="1298000" />
+      <workItem from="1679882091517" duration="3941000" />
+      <workItem from="1679964877301" duration="2605000" />
     </task>
     <servers />
   </component>
