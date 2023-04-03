@@ -4,6 +4,6 @@ import java.util.Map;
 
 public interface CanShuMService {
 
-	Map<String, String> getIdMap();
+	Map<String, Map<String, Object>> getMap();
 
 }

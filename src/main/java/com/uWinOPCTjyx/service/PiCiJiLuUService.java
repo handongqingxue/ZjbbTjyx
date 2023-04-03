@@ -1,13 +1,13 @@
 package com.uWinOPCTjyx.service;
 
-import com.uWinOPCTjyx.entity.PiCiM;
-import com.uWinOPCTjyx.entity.PiCiU;
+import com.uWinOPCTjyx.entity.*;
 
 import java.util.List;
+import java.util.Map;
 
 public interface PiCiJiLuUService {
 
-    int addPcgcFromPcIdList(List<Integer> pcIdList, Integer jlsjId);
+    int addPcgcFromPcIdList(List<Integer> pcIdList, Map<String, Object> jlsjMap);
 
-    int addJdgcFromPcList(List<PiCiU> pcList, Integer jlsjId, String jlsjMc, Integer jieDuanId);
+    int addJdgcFromPcList(List<PiCiU> pcList, Map<String, Object> jlsjMap, Integer jieDuanId);
 }

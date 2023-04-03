@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class PiCiJiLuUServiceImpl implements PiCiJiLuUService {
@@ -16,10 +17,11 @@ public class PiCiJiLuUServiceImpl implements PiCiJiLuUService {
     @Autowired
     private PiCiJiLuUMapper piCiJiLuUMapper;
 
-    public int addPcgcFromPcIdList(List<Integer> pcIdList, Integer jlsjId) {
+    public int addPcgcFromPcIdList(List<Integer> pcIdList, Map<String, Object> jlsjMap) {
         // TODO Auto-generated method stub
         int count=0;
         PiCiJiLuU piCiJiLuU=null;
+        Integer jlsjId = Integer.valueOf(jlsjMap.get("id").toString());
         Date date = new Date();
         for (Integer pcId : pcIdList) {
             piCiJiLuU=new PiCiJiLuU();
@@ -33,10 +35,12 @@ public class PiCiJiLuUServiceImpl implements PiCiJiLuUService {
         return count;
     }
 
-    public int addJdgcFromPcList(List<PiCiU> pcList, Integer jlsjId, String jlsjMc, Integer jieDuanId) {
+    public int addJdgcFromPcList(List<PiCiU> pcList, Map<String, Object> jlsjMap, Integer jieDuanId) {
         // TODO Auto-generated method stub
         int count=0;
         PiCiJiLuU piCiJiLuU=null;
+        Integer jlsjId = Integer.valueOf(jlsjMap.get("id").toString());
+        String jlsjMc = jlsjMap.get("mc").toString();
         Date date = new Date();
         for (PiCiU pc : pcList) {
             piCiJiLuU=new PiCiJiLuU();

@@ -19,6 +19,15 @@ public class CanShuM {
 	 */
 	public static final String JIA_JIAN_QIAN_PH_TEXT="加碱前PH";
 	
+	/**
+	 * 物料参数
+	 */
+	public static final int WU_LIAO_CAN_SHU=1;
+	/**
+	 * 工艺参数
+	 */
+	public static final int GONG_YI_CAN_SHU=2;
+	
 	private Integer id;//参数id
 	private String mc;//名称
 	private String dw;//单位

@@ -18,17 +18,22 @@ public class JieDuanMServiceImpl implements JieDuanMService {
     @Autowired
     private JieDuanMMapper jieDuanMMapper;
 
-	public Map<String, Integer> getIdMap() {
+	public Map<String, Map<String, Object>> getMap() {
 		// TODO Auto-generated method stub
 		List<JieDuanM> jieDuanList=jieDuanMMapper.getList();
 		
-		Map<String, Integer> idMap=new HashMap<String, Integer>();
+		Map<String, Map<String, Object>> xxMap=new HashMap<String, Map<String, Object>>();
+		Map<String, Object> valMap=null;
 		for (JieDuanM jieDuan : jieDuanList) {
+			valMap=new HashMap<String, Object>();
 			Integer id = jieDuan.getId();
 			String mc = jieDuan.getMc();
+
+			valMap.put("id", id);
+			valMap.put("mc", mc);
 			
-			idMap.put(mc, id);
+			xxMap.put(mc, valMap);
 		}
-		return idMap;
+		return xxMap;
 	}
 }
