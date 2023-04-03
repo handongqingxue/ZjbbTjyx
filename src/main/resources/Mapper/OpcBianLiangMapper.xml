@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uWinOPCTjyx.dao.OpcBianLiangMapper">
+	<insert id="add" parameterType="com.uWinOPCTjyx.entity.OpcBianLiang">
+		insert into OpcBianLiang
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="mc!=null">
+				mc,
+			</if>
+			<if test="sz!=null">
+				sz,
+			</if>
+			<if test="fyfh!=null">
+				fyfh,
+			</if>
+			<if test="lx!=null">
+				lx,
+			</if>
+				cjsj
+		</trim>
+		values
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="mc!=null">
+				#{mc},
+			</if>
+			<if test="sz!=null">
+				#{sz},
+			</if>
+			<if test="fyfh!=null">
+				#{fyfh},
+			</if>
+			<if test="lx!=null">
+				#{lx},
+			</if>
+				getdate()
+		</trim>
+	</insert>
+	<update id="editByMc">
+		update OpcBianLiang set sz=#{sz},xgsj=getdate() where mc=#{mc}
+	</update>
+	<select id="getCountByMc" resultType="java.lang.Integer">
+		select count(*) from OpcBianLiang where mc=#{mc}
+	</select>
+	<select id="getListByMcList" resultType="com.uWinOPCTjyx.entity.OpcBianLiang">
+		select * from OpcBianLiang where szyss!=${@com.uWinOPCTjyx.entity.OpcBianLiang@YSS}
+		<foreach collection="mcList" item="mc" open=" and cast(mc as char) in (" separator="," close=")">
+		#{mc}
+		</foreach>
+	</select>
+	<update id="updateSzyssByMcList">
+		update OpcBianLiang set szyss=${szyss} where 1=1
+		<foreach collection="mcList" item="mc" open=" and cast(mc as char) in (" separator="," close=")">
+		#{mc}
+		</foreach>
+	</update>
+	<select id="getFczListByFyfhList" resultType="com.uWinOPCTjyx.entity.OpcBianLiang">
+		select * from OpcBianLiang where mc like#{mc}
+		<foreach collection="fyfhList" item="fyfh" open=" and cast(fyfh as char) in (" separator="," close=")">
+		#{fyfh}
+		</foreach>
+	</select>
+	<select id="getJqsjjlzlByFyMcList" resultType="com.uWinOPCTjyx.entity.OpcBianLiang">
+		select * from OpcBianLiang where 1=1
+		<foreach collection="mcList" item="mc" open=" and cast(mc as char) in (" separator="," close=")">
+		#{mc}
+		</foreach>
+	</select>
+</mapper>

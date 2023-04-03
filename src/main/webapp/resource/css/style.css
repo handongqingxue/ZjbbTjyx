@@ -49,3 +49,8 @@ tr>td{
 .grey{
     background-color: #aeaaaa;
 }
+
+.input_yangshi{
+    border-color: transparent;/*透明边框*/
+    background-color:rgba(0,0,0,0);/*透明背景*/
+}

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uWinOPCTjyx.dao.PiCiMMapper">
+	<insert id="add" parameterType="com.uWinOPCTjyx.entity.PiCiM">
+		insert into PiCiM
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="scnf!=null">
+				scnf,
+			</if>
+			<if test="scbh!=null">
+				scbh,
+			</if>
+			<if test="fyfh!=null">
+				fyfh,
+			</if>
+				kssj,
+			<if test="jssj!=null">
+				jssj,
+			</if>
+			<if test="scgs!=null">
+				scgs,
+			</if>
+			<if test="scrq!=null">
+				scrq,
+			</if>
+			<if test="ysd101!=null">
+				ysd101,
+			</if>
+			<if test="ysd102!=null">
+				ysd102,
+			</if>
+			<if test="dbczyBsh!=null">
+				dbczyBsh,
+			</if>
+			<if test="jbczyBsh!=null">
+				jbczyBsh,
+			</if>
+		</trim>
+		values
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="scnf!=null">
+				#{scnf},
+			</if>
+			<if test="scbh!=null">
+				#{scbh},
+			</if>
+			<if test="fyfh!=null">
+				#{fyfh},
+			</if>
+				GETDATE(),
+			<if test="jssj!=null">
+				#{jssj},
+			</if>
+			<if test="scgs!=null">
+				#{scgs},
+			</if>
+			<if test="scrq!=null">
+				#{scrq},
+			</if>
+			<if test="ysd101!=null">
+				#{ysd101},
+			</if>
+			<if test="ysd102!=null">
+				#{ysd102},
+			</if>
+			<if test="dbczyBsh!=null">
+				#{dbczyBsh},
+			</if>
+			<if test="jbczyBsh!=null">
+				#{jbczyBsh},
+			</if>
+		</trim>
+	</insert>
+	<select id="getMaxScbhByScnf" resultType="java.lang.Integer">
+		 select max(scbh) from(
+		  select scnf,scbh from PiCiM
+		  union
+		  select scnf,scbh from PiCiU
+		 )t where t.scnf=#{scnf}
+	</select>
+	<select id="getIdListByFyfhList" resultType="java.lang.Integer">
+		select id from PiCiM where 1=1
+		<foreach collection="fyfhList" item="fyfh" open=" and cast(fyfh as char) in (" separator="," close=")">
+		#{fyfh}
+		</foreach>
+	</select>
+	<select id="getListByFyfhList" resultType="com.uWinOPCTjyx.entity.PiCiM">
+		select * from PiCiM where 1=1
+		<foreach collection="fyfhList" item="fyfh" open=" and cast(fyfh as char) in (" separator="," close=")">
+		#{fyfh}
+		</foreach>
+	</select>
+</mapper>

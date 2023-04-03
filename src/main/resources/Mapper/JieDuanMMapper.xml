@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uWinOPCTjyx.dao.JieDuanMMapper">
+	<select id="getIdByMc" resultType="java.lang.Integer">
+		select id from JieDuanM where mc=#{mc}
+	</select>
+	<select id="getList" resultType="com.uWinOPCTjyx.entity.JieDuanM">
+		select id,mc from JieDuanM
+	</select>
+</mapper>
