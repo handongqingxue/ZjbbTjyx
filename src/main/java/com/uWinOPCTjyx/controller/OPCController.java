@@ -95,7 +95,7 @@ public class OPCController {
 			return json;
 		}
 	}
-
+	
 	@RequestMapping(value = "/keepWatchOnOpcBianLiang", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> keepWatchOnOpcBianLiang() {
