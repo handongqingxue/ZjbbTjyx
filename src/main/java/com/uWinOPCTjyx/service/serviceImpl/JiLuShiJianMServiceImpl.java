@@ -18,17 +18,22 @@ public class JiLuShiJianMServiceImpl implements JiLuShiJianMService {
     @Autowired
     private JiLuShiJianMMapper jiLuShiJianMMapper;
 
-	public Map<String, Integer> getIdMap() {
+	public Map<String, Map<String, Object>> getMap() {
 		// TODO Auto-generated method stub
 		List<JiLuShiJianM> jlsjList=jiLuShiJianMMapper.getList();
 		
-		Map<String, Integer> idMap=new HashMap<String, Integer>();
+		Map<String, Map<String, Object>> xxMap=new HashMap<String, Map<String, Object>>();
+		Map<String, Object> valMap=null;
 		for (JiLuShiJianM jlsj : jlsjList) {
+			valMap=new HashMap<String, Object>();
 			Integer id = jlsj.getId();
 			String mc = jlsj.getMc();
+
+			valMap.put("id", id);
+			valMap.put("mc", mc);
 			
-			idMap.put(mc, id);
+			xxMap.put(mc, valMap);
 		}
-		return idMap;
+		return xxMap;
 	}
 }

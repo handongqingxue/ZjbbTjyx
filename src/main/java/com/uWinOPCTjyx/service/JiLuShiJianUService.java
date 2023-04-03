@@ -4,5 +4,5 @@ import java.util.Map;
 
 public interface JiLuShiJianUService {
 
-    Map<String, Integer> getIdMap();
+    Map<String, Map<String, Object>> getMap();
 }

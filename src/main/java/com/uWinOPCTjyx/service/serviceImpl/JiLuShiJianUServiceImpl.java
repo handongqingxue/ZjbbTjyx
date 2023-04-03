@@ -16,16 +16,21 @@ public class JiLuShiJianUServiceImpl implements JiLuShiJianUService {
     @Autowired
     private JiLuShiJianUMapper jiLuShiJianUMapper;
 
-    public Map<String, Integer> getIdMap() {
+    public Map<String, Map<String, Object>> getMap() {
         List<JiLuShiJianU> jlsjList=jiLuShiJianUMapper.getList();
 
-        Map<String, Integer> idMap=new HashMap<String, Integer>();
+        Map<String, Map<String, Object>> xxMap=new HashMap<String, Map<String, Object>>();
+		Map<String, Object> valMap=null;
         for (JiLuShiJianU jlsj : jlsjList) {
+			valMap=new HashMap<String, Object>();
             Integer id = jlsj.getId();
             String mc = jlsj.getMc();
 
-            idMap.put(mc, id);
+			valMap.put("id", id);
+			valMap.put("mc", mc);
+			
+			xxMap.put(mc, valMap);
         }
-        return idMap;
+        return xxMap;
     }
 }
