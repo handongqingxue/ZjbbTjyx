@@ -31,8 +31,6 @@ public interface OpcBianLiangMapper {
 
 	List<OpcBianLiang> getListByMcList(@Param("mcList") List<String> mcList);
 
-	int updateSzyssByMcList(@Param("szyss") int szyss, @Param("mcList") List<String> mcList);
-
 	/**
 	 * 根据反应釜号集合，获取釜称重信息列表
 	 * @param mc
