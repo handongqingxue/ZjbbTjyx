@@ -9,5 +9,5 @@ public interface PiCiJiLuUService {
 
     int addPcgcFromPcIdList(List<Integer> pcIdList, Map<String, Object> jlsjMap);
 
-    int addJdgcFromPcList(List<PiCiU> pcList, Map<String, Object> jlsjMap, Integer jieDuanId);
+    int addJdgcFromPcList(List<PiCiU> pcList, Map<String, Object> jlsjMap,Map<String, Object> jieDuanMap);
 }
