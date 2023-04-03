@@ -27,7 +27,6 @@ public class OpcBianLiang {
 	private Integer lx;//1 M类  2 U类
 	private String cjsj;//创建时间
     private String xgsj;//修改时间
-    private Boolean szyss;//数值已上升
 
 	public OpcBianLiang() {
     	
@@ -98,14 +97,6 @@ public class OpcBianLiang {
     public void setXgsj(String xgsj) {
         this.xgsj = xgsj;
     }
-    
-    public Boolean getSzyss() {
-		return szyss;
-	}
-
-	public void setSzyss(Boolean szyss) {
-		this.szyss = szyss;
-	}
 
     @Override
     public String toString() {

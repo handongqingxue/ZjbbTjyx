@@ -131,9 +131,4 @@ public class OpcBianLiangServiceImpl implements OpcBianLiangService {
 		}
 		return upSzOblList;
 	}
-
-	public int updateSzyssByMcList(int szyss, List<String> mcList) {
-		// TODO Auto-generated method stub
-		return opcBianLiangMapper.updateSzyssByMcList(szyss,mcList);
-	}
 }
