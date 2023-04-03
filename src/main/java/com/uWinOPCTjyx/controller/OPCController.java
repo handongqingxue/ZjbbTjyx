@@ -64,10 +64,7 @@ public class OPCController {
 
 	@RequestMapping(value="/opcm")
 	public String goOpcM(HttpServletRequest request, Model model) {
-
-		//localhost:8080/UWinOPCTjyx/opc/test
-//		List<ZhiLiangZhongJianBzzU> list = zhiLiangZhongJianBzzUService.getList();
-//		System.out.println("size==="+list.size());
+		//访问opcm的web页面
 		return MODULE_NAME+"/opcm";
 	}
 
@@ -101,7 +98,7 @@ public class OPCController {
 	@ResponseBody
 	public Map<String, Object> keepWatchOnOpcBianLiang() {
 
-		Map<String,Object> json=new HashMap<String, Object>();
+		Map<String,Object> json=new HashMap<String, Object>();//return
 		
 		//M类
 		Map<String,Integer> jlsjIdMMap=jiLuShiJianMService.getIdMap();//获取名称、id键值对，下面的逻辑里关联id时要用

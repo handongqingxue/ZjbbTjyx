@@ -64,7 +64,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/opc" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/util" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -78,19 +78,19 @@
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/webapp" />
       <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/opc" />
-      <recent name="$PROJECT_DIR$/src/main/resources" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx" />
-      <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib" />
-      <recent name="$PROJECT_DIR$/src/main" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.uWinOPCTjyx.filter" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/webapp" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/util" />
       <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/opc" />
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx" />
+      <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib" />
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 8.5.81">
@@ -210,7 +210,7 @@
       <workItem from="1678500499491" duration="272000" />
       <workItem from="1679634758256" duration="6731000" />
       <workItem from="1679722462404" duration="66383000" />
-      <workItem from="1680227753216" duration="54894000" />
+      <workItem from="1680227753216" duration="63150000" />
     </task>
     <task id="LOCAL-00001" summary="11">
       <created>1679725334951</created>
@@ -317,7 +317,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680489570777</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="11">
+      <created>1680501772716</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1680501772716</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -470,10 +477,10 @@
       <screen x="0" y="23" width="1280" height="725" />
     </state>
     <state x="338" y="23" width="604" height="725" key="find.popup/0.23.1280.725@0.23.1280.725" timestamp="1678328866823" />
-    <state x="297" y="173" key="git4idea.merge.GitPullDialog" timestamp="1680501752428">
+    <state x="297" y="173" key="git4idea.merge.GitPullDialog" timestamp="1680501777205">
       <screen x="0" y="23" width="1280" height="709" />
     </state>
-    <state x="297" y="173" key="git4idea.merge.GitPullDialog/0.23.1280.709@0.23.1280.709" timestamp="1680501752428" />
+    <state x="297" y="173" key="git4idea.merge.GitPullDialog/0.23.1280.709@0.23.1280.709" timestamp="1680501777205" />
     <state x="297" y="173" key="git4idea.merge.GitPullDialog/0.23.1280.710@0.23.1280.710" timestamp="1680340938793" />
     <state x="305" y="57" width="670" height="676" key="search.everywhere.popup" timestamp="1680328874596">
       <screen x="0" y="23" width="1280" height="710" />
