@@ -364,7 +364,7 @@ function addPiCiU() {
             <td class="green">允许排胶时间</td>
             <td class="green">排胶完成时间</td>
             <td class="yellow">排胶时间差</td>
-            <td>打入胶罐1：/td>
+            <td>打入胶罐1：</td>
             <td class="green">罐号1</td>
             <td class="green">之前重量</td>
             <td class="green">之后重量 </td>

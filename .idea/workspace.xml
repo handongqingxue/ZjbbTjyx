@@ -18,6 +18,58 @@
     <list default="true" id="9bfab7cf-a4c1-4d31-9c53-df2a94b39f3e" name="Default Changelist" comment="11">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/controller/OPCController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/controller/OPCController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/util/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/util/Constant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/opc/opcm.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/opc/opcm.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/JCustomOpc.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/JCustomOpc.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/JEasyOpc.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/JEasyOpc.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/JOpc.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/JOpc.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/SynchReadItemExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/SynchReadItemExample.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/asynch/AsynchEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/asynch/AsynchEvent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/asynch/OpcAsynchGroupListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/asynch/OpcAsynchGroupListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/browser/JOpcBrowser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/browser/JOpcBrowser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/component/OpcGroup.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/component/OpcGroup.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/component/OpcItem.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/component/OpcItem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/connect/ReaderOpc.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/connect/ReaderOpc.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/connect/WriterOpc.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/connect/WriterOpc.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/Asynch10ReadException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/Asynch10ReadException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/Asynch10UnadviseException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/Asynch10UnadviseException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/Asynch20ReadException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/Asynch20ReadException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/Asynch20UnadviseException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/Asynch20UnadviseException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/CoInitializeException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/CoInitializeException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/CoUninitializeException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/CoUninitializeException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/ComponentNotFoundException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/ComponentNotFoundException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/ConnectivityException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/ConnectivityException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/GroupActivityException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/GroupActivityException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/GroupExistsException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/GroupExistsException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/GroupUpdateTimeException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/GroupUpdateTimeException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/HostException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/HostException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/ItemActivityException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/ItemActivityException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/ItemExistsException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/ItemExistsException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/NotFoundServersException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/NotFoundServersException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/OpcActivityException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/OpcActivityException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/OpcAsynchException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/OpcAsynchException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/OpcBrowserException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/OpcBrowserException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/OpcException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/OpcException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/OpcExistsException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/OpcExistsException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/OpcRuntimeException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/OpcRuntimeException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/OpcSignException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/OpcSignException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/OpcSynchException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/OpcSynchException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/SynchReadException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/SynchReadException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/SynchWriteException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/SynchWriteException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/UnableAddGroupException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/UnableAddGroupException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/UnableAddItemException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/UnableAddItemException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/UnableBrowseBranchException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/UnableBrowseBranchException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/UnableBrowseLeafException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/UnableBrowseLeafException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/UnableIBrowseException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/UnableIBrowseException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/UnableRemoveGroupException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/UnableRemoveGroupException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/UnableRemoveItemException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/UnableRemoveItemException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/VariantInternalException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/VariantInternalException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/VariantTypeException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/VariantTypeException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/lang/Translate.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/lang/Translate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/property/PropertyLoader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/property/PropertyLoader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/variant/Variant.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/variant/Variant.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/variant/VariantList.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/variant/VariantList.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/variant/VariantTypes.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/variant/VariantTypes.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +116,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/opc" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/service/serviceImpl" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -78,19 +130,19 @@
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/webapp" />
       <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/opc" />
-      <recent name="$PROJECT_DIR$/src/main/resources" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx" />
-      <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib" />
-      <recent name="$PROJECT_DIR$/src/main" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.uWinOPCTjyx.filter" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/webapp" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/service/serviceImpl" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/util" />
       <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/opc" />
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx" />
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 8.5.81">
@@ -210,7 +262,7 @@
       <workItem from="1678500499491" duration="272000" />
       <workItem from="1679634758256" duration="6731000" />
       <workItem from="1679722462404" duration="66383000" />
-      <workItem from="1680227753216" duration="44609000" />
+      <workItem from="1680227753216" duration="77961000" />
     </task>
     <task id="LOCAL-00001" summary="11">
       <created>1679725334951</created>
@@ -303,7 +355,63 @@
       <option name="project" value="LOCAL" />
       <updated>1680332839981</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="11">
+      <created>1680340721954</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1680340721954</updated>
+    </task>
+    <task id="LOCAL-00015" summary="11">
+      <created>1680489570777</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1680489570777</updated>
+    </task>
+    <task id="LOCAL-00016" summary="11">
+      <created>1680501772716</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1680501772716</updated>
+    </task>
+    <task id="LOCAL-00017" summary="11">
+      <created>1680511257805</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1680511257805</updated>
+    </task>
+    <task id="LOCAL-00018" summary="11">
+      <created>1680513026843</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1680513026843</updated>
+    </task>
+    <task id="LOCAL-00019" summary="11">
+      <created>1680573298553</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1680573298553</updated>
+    </task>
+    <task id="LOCAL-00020" summary="11">
+      <created>1680574519755</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1680574519755</updated>
+    </task>
+    <task id="LOCAL-00021" summary="11">
+      <created>1680577083841</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1680577083841</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -353,85 +461,98 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="601" y="112" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1678419145789" />
-    <state width="846" height="289" key="GridCell.Tab.0.bottom" timestamp="1680228652811">
-      <screen x="0" y="23" width="1280" height="710" />
+    <state width="846" height="288" key="GridCell.Tab.0.bottom" timestamp="1680585955697">
+      <screen x="0" y="23" width="1280" height="709" />
     </state>
     <state width="1293" height="454" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1678500719178" />
+    <state width="846" height="288" key="GridCell.Tab.0.bottom/0.23.1280.709@0.23.1280.709" timestamp="1680585955697" />
     <state width="846" height="289" key="GridCell.Tab.0.bottom/0.23.1280.710@0.23.1280.710" timestamp="1680228652811" />
     <state width="846" height="406" key="GridCell.Tab.0.bottom/0.23.1280.725@0.23.1280.725" timestamp="1678332552537" />
-    <state width="846" height="289" key="GridCell.Tab.0.center" timestamp="1680228652810">
-      <screen x="0" y="23" width="1280" height="710" />
+    <state width="846" height="288" key="GridCell.Tab.0.center" timestamp="1680585955697">
+      <screen x="0" y="23" width="1280" height="709" />
     </state>
     <state width="1293" height="454" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1678500719178" />
+    <state width="846" height="288" key="GridCell.Tab.0.center/0.23.1280.709@0.23.1280.709" timestamp="1680585955697" />
     <state width="846" height="289" key="GridCell.Tab.0.center/0.23.1280.710@0.23.1280.710" timestamp="1680228652810" />
     <state width="846" height="406" key="GridCell.Tab.0.center/0.23.1280.725@0.23.1280.725" timestamp="1678332552536" />
-    <state width="846" height="289" key="GridCell.Tab.0.left" timestamp="1680228652809">
-      <screen x="0" y="23" width="1280" height="710" />
+    <state width="846" height="288" key="GridCell.Tab.0.left" timestamp="1680585955696">
+      <screen x="0" y="23" width="1280" height="709" />
     </state>
     <state width="1293" height="454" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1678500719177" />
+    <state width="846" height="288" key="GridCell.Tab.0.left/0.23.1280.709@0.23.1280.709" timestamp="1680585955696" />
     <state width="846" height="289" key="GridCell.Tab.0.left/0.23.1280.710@0.23.1280.710" timestamp="1680228652809" />
     <state width="846" height="406" key="GridCell.Tab.0.left/0.23.1280.725@0.23.1280.725" timestamp="1678332552536" />
-    <state width="846" height="289" key="GridCell.Tab.0.right" timestamp="1680228652811">
-      <screen x="0" y="23" width="1280" height="710" />
+    <state width="846" height="288" key="GridCell.Tab.0.right" timestamp="1680585955697">
+      <screen x="0" y="23" width="1280" height="709" />
     </state>
     <state width="1293" height="454" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1678500719178" />
+    <state width="846" height="288" key="GridCell.Tab.0.right/0.23.1280.709@0.23.1280.709" timestamp="1680585955697" />
     <state width="846" height="289" key="GridCell.Tab.0.right/0.23.1280.710@0.23.1280.710" timestamp="1680228652811" />
     <state width="846" height="406" key="GridCell.Tab.0.right/0.23.1280.725@0.23.1280.725" timestamp="1678332552537" />
-    <state width="846" height="289" key="GridCell.Tab.1.bottom" timestamp="1680228652812">
-      <screen x="0" y="23" width="1280" height="710" />
+    <state width="846" height="288" key="GridCell.Tab.1.bottom" timestamp="1680585955698">
+      <screen x="0" y="23" width="1280" height="709" />
     </state>
     <state width="1293" height="454" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1678500719179" />
+    <state width="846" height="288" key="GridCell.Tab.1.bottom/0.23.1280.709@0.23.1280.709" timestamp="1680585955698" />
     <state width="846" height="289" key="GridCell.Tab.1.bottom/0.23.1280.710@0.23.1280.710" timestamp="1680228652812" />
     <state width="846" height="406" key="GridCell.Tab.1.bottom/0.23.1280.725@0.23.1280.725" timestamp="1678332552538" />
-    <state width="846" height="289" key="GridCell.Tab.1.center" timestamp="1680228652812">
-      <screen x="0" y="23" width="1280" height="710" />
+    <state width="846" height="288" key="GridCell.Tab.1.center" timestamp="1680585955698">
+      <screen x="0" y="23" width="1280" height="709" />
     </state>
     <state width="1293" height="454" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1678500719179" />
+    <state width="846" height="288" key="GridCell.Tab.1.center/0.23.1280.709@0.23.1280.709" timestamp="1680585955698" />
     <state width="846" height="289" key="GridCell.Tab.1.center/0.23.1280.710@0.23.1280.710" timestamp="1680228652812" />
     <state width="846" height="406" key="GridCell.Tab.1.center/0.23.1280.725@0.23.1280.725" timestamp="1678332552538" />
-    <state width="846" height="289" key="GridCell.Tab.1.left" timestamp="1680228652812">
-      <screen x="0" y="23" width="1280" height="710" />
+    <state width="846" height="288" key="GridCell.Tab.1.left" timestamp="1680585955698">
+      <screen x="0" y="23" width="1280" height="709" />
     </state>
     <state width="1293" height="454" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1678500719178" />
+    <state width="846" height="288" key="GridCell.Tab.1.left/0.23.1280.709@0.23.1280.709" timestamp="1680585955698" />
     <state width="846" height="289" key="GridCell.Tab.1.left/0.23.1280.710@0.23.1280.710" timestamp="1680228652812" />
     <state width="846" height="406" key="GridCell.Tab.1.left/0.23.1280.725@0.23.1280.725" timestamp="1678332552537" />
-    <state width="846" height="289" key="GridCell.Tab.1.right" timestamp="1680228652812">
-      <screen x="0" y="23" width="1280" height="710" />
+    <state width="846" height="288" key="GridCell.Tab.1.right" timestamp="1680585955698">
+      <screen x="0" y="23" width="1280" height="709" />
     </state>
     <state width="1293" height="454" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1678500719179" />
+    <state width="846" height="288" key="GridCell.Tab.1.right/0.23.1280.709@0.23.1280.709" timestamp="1680585955698" />
     <state width="846" height="289" key="GridCell.Tab.1.right/0.23.1280.710@0.23.1280.710" timestamp="1680228652812" />
     <state width="846" height="406" key="GridCell.Tab.1.right/0.23.1280.725@0.23.1280.725" timestamp="1678332552538" />
-    <state width="846" height="289" key="GridCell.Tab.2.bottom" timestamp="1680228652813">
-      <screen x="0" y="23" width="1280" height="710" />
+    <state width="846" height="288" key="GridCell.Tab.2.bottom" timestamp="1680585955699">
+      <screen x="0" y="23" width="1280" height="709" />
     </state>
     <state width="1293" height="454" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1678500719179" />
+    <state width="846" height="288" key="GridCell.Tab.2.bottom/0.23.1280.709@0.23.1280.709" timestamp="1680585955699" />
     <state width="846" height="289" key="GridCell.Tab.2.bottom/0.23.1280.710@0.23.1280.710" timestamp="1680228652813" />
     <state width="846" height="406" key="GridCell.Tab.2.bottom/0.23.1280.725@0.23.1280.725" timestamp="1678332552539" />
-    <state width="846" height="289" key="GridCell.Tab.2.center" timestamp="1680228652813">
-      <screen x="0" y="23" width="1280" height="710" />
+    <state width="846" height="288" key="GridCell.Tab.2.center" timestamp="1680585955699">
+      <screen x="0" y="23" width="1280" height="709" />
     </state>
     <state width="1293" height="454" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1678500719179" />
+    <state width="846" height="288" key="GridCell.Tab.2.center/0.23.1280.709@0.23.1280.709" timestamp="1680585955699" />
     <state width="846" height="289" key="GridCell.Tab.2.center/0.23.1280.710@0.23.1280.710" timestamp="1680228652813" />
     <state width="846" height="406" key="GridCell.Tab.2.center/0.23.1280.725@0.23.1280.725" timestamp="1678332552539" />
-    <state width="846" height="289" key="GridCell.Tab.2.left" timestamp="1680228652812">
-      <screen x="0" y="23" width="1280" height="710" />
+    <state width="846" height="288" key="GridCell.Tab.2.left" timestamp="1680585955699">
+      <screen x="0" y="23" width="1280" height="709" />
     </state>
     <state width="1293" height="454" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1678500719179" />
+    <state width="846" height="288" key="GridCell.Tab.2.left/0.23.1280.709@0.23.1280.709" timestamp="1680585955699" />
     <state width="846" height="289" key="GridCell.Tab.2.left/0.23.1280.710@0.23.1280.710" timestamp="1680228652812" />
     <state width="846" height="406" key="GridCell.Tab.2.left/0.23.1280.725@0.23.1280.725" timestamp="1678332552538" />
-    <state width="846" height="289" key="GridCell.Tab.2.right" timestamp="1680228652813">
-      <screen x="0" y="23" width="1280" height="710" />
+    <state width="846" height="288" key="GridCell.Tab.2.right" timestamp="1680585955699">
+      <screen x="0" y="23" width="1280" height="709" />
     </state>
     <state width="1293" height="454" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1678500719179" />
+    <state width="846" height="288" key="GridCell.Tab.2.right/0.23.1280.709@0.23.1280.709" timestamp="1680585955699" />
     <state width="846" height="289" key="GridCell.Tab.2.right/0.23.1280.710@0.23.1280.710" timestamp="1680228652813" />
     <state width="846" height="406" key="GridCell.Tab.2.right/0.23.1280.725@0.23.1280.725" timestamp="1678332552539" />
     <state x="128" y="83" key="MergeDialog" timestamp="1680054219100">
       <screen x="0" y="23" width="1280" height="710" />
     </state>
     <state x="128" y="83" key="MergeDialog/0.23.1280.710@0.23.1280.710" timestamp="1680054219100" />
-    <state x="278" y="146" key="MultipleFileMergeDialog" timestamp="1680145162260">
-      <screen x="0" y="23" width="1280" height="710" />
+    <state x="278" y="146" key="MultipleFileMergeDialog" timestamp="1680574534338">
+      <screen x="0" y="23" width="1280" height="709" />
     </state>
+    <state x="278" y="146" key="MultipleFileMergeDialog/0.23.1280.709@0.23.1280.709" timestamp="1680574534338" />
     <state x="278" y="146" key="MultipleFileMergeDialog/0.23.1280.710@0.23.1280.710" timestamp="1680145162260" />
     <state x="329" y="87" key="RollbackChangesDialog" timestamp="1679641532888">
       <screen x="0" y="23" width="1280" height="710" />
@@ -443,9 +564,10 @@
     <state x="212" y="0" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1678410562516" />
     <state x="141" y="23" width="997" height="710" key="SettingsEditor/0.23.1280.710@0.23.1280.710" timestamp="1680147044063" />
     <state x="141" y="23" key="SettingsEditor/0.23.1280.725@0.23.1280.725" timestamp="1678331779017" />
-    <state x="240" y="118" key="Vcs.Push.Dialog.v2" timestamp="1680332989727">
-      <screen x="0" y="23" width="1280" height="710" />
+    <state x="240" y="118" key="Vcs.Push.Dialog.v2" timestamp="1680341268758">
+      <screen x="0" y="23" width="1280" height="709" />
     </state>
+    <state x="240" y="118" key="Vcs.Push.Dialog.v2/0.23.1280.709@0.23.1280.709" timestamp="1680341268758" />
     <state x="240" y="118" key="Vcs.Push.Dialog.v2/0.23.1280.710@0.23.1280.710" timestamp="1680332989727" />
     <state x="428" y="299" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1680147123637">
       <screen x="0" y="23" width="1280" height="710" />
@@ -455,10 +577,11 @@
       <screen x="0" y="23" width="1280" height="725" />
     </state>
     <state x="338" y="23" width="604" height="725" key="find.popup/0.23.1280.725@0.23.1280.725" timestamp="1678328866823" />
-    <state x="297" y="173" key="git4idea.merge.GitPullDialog" timestamp="1680332954701">
-      <screen x="0" y="23" width="1280" height="710" />
+    <state x="297" y="173" key="git4idea.merge.GitPullDialog" timestamp="1680577089355">
+      <screen x="0" y="23" width="1280" height="709" />
     </state>
-    <state x="297" y="173" key="git4idea.merge.GitPullDialog/0.23.1280.710@0.23.1280.710" timestamp="1680332954701" />
+    <state x="297" y="173" key="git4idea.merge.GitPullDialog/0.23.1280.709@0.23.1280.709" timestamp="1680577089355" />
+    <state x="297" y="173" key="git4idea.merge.GitPullDialog/0.23.1280.710@0.23.1280.710" timestamp="1680340938793" />
     <state x="305" y="57" width="670" height="676" key="search.everywhere.popup" timestamp="1680328874596">
       <screen x="0" y="23" width="1280" height="710" />
     </state>
