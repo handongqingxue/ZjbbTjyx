@@ -50,7 +50,7 @@ public class OPCController {
 	private JiLuShiJianUService jiLuShiJianUService;
 	@Autowired
 	private CanShuMService canShuMService;
-	private List<Map<String, Object>> opcBLScszList=new ArrayList<Map<String, Object>>();
+	private List<Map<String, Object>> opcBLScszList=new ArrayList<Map<String, Object>>();//opc变量上次数值集合
 
 	public static final String MODULE_NAME="opc";
 	
@@ -101,9 +101,9 @@ public class OPCController {
 		Map<String,Object> json=new HashMap<String, Object>();//return
 		
 		//M类
-		Map<String,Map<String, Object>> jlsjMMap=jiLuShiJianMService.getMap();//获取名称、id键值对，下面的逻辑里关联id时要用
-		Map<String,Map<String, Object>> jieDuanMMap=jieDuanMService.getMap();
-		Map<String,Map<String, Object>> canShuMMap=canShuMService.getMap();
+		Map<String,Map<String, Object>> jlsjMMap=jiLuShiJianMService.getMap();//M类记录事件参数map集合，获取名称、id键值对，下面的逻辑里关联id时要用
+		Map<String,Map<String, Object>> jieDuanMMap=jieDuanMService.getMap();//M类阶段参数map集合
+		Map<String,Map<String, Object>> canShuMMap=canShuMService.getMap();//M类参数map集合
 		
 		//U类
 		Map<String, Map<String, Object>> jlsjUMap = jiLuShiJianUService.getMap();
@@ -116,9 +116,9 @@ public class OPCController {
 		List<OpcBianLiang> blksOBLList=opcBianLiangService.getListByMcQz(Constant.BEI_LIAO_KAI_SHI_TEXT);//不管变量值有没有上升都获取，为下面存储为上一次数值提供变量集合
 		List<OpcBianLiang> upSzBlksOBLList=getUpSzListFromList(blksOBLList);//从所有备料开始有关的变量里获取备料开始上升沿集合
 		for (OpcBianLiang upSzBlksOBL : upSzBlksOBLList) {
-			String mc = upSzBlksOBL.getMc();
+			String mc = upSzBlksOBL.getMc();//获取变量的名称
 			if(opcBLScszList.size()==0) {
-				Integer lx = upSzBlksOBL.getLx();
+				Integer lx = upSzBlksOBL.getLx();//获取类型
 				if(OpcBianLiang.LX_M==lx) {//根据类型判断是M类还是U类，往对应的集合里放
 					blksMOBLList.add(upSzBlksOBL);
 				}
@@ -126,8 +126,8 @@ public class OPCController {
 					blksUOBLList.add(upSzBlksOBL);
 				}
 				
-				String fyfh = upSzBlksOBL.getFyfh();
-				blksFyfhList.add(fyfh);
+				String fyfh = upSzBlksOBL.getFyfh();//获取反应釜号
+				blksFyfhList.add(fyfh);//添加到反应釜号集合
 			}
 			else {
 				for (Map<String, Object> opcBLScszMap : opcBLScszList) {//遍历opc变量上次数值集合
