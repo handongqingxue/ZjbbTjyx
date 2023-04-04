@@ -110,7 +110,7 @@ public class OPCController {
 		
 		//U类
 		Map<String, Map<String, Object>> jlsjUMap = jiLuShiJianUService.getMap();
-		Map<String, Integer> jieDuanIdUMap = jieDuanUService.getIdMap();
+		Map<String, Map<String, Object>> jieDuanUMap = jieDuanUService.getMap();
 
 		//检测备料开始上升沿
 		List<OpcBianLiang> blksMOBLList=new ArrayList<OpcBianLiang>();//备料开始M类opc变量集合
@@ -208,15 +208,15 @@ public class OPCController {
 			//U类
 			List<PiCiU> jqblksPcUList=piCiUService.getListByFyfhList(jqblksFyfhList);//根据甲醛备料开始变量里的反应釜号获取批次列表
 			
-			Integer jjqJieDuanId = Integer.valueOf(jieDuanIdUMap.get(JieDuanU.JIA_JIA_QUAN_TEXT).toString());
+			Map<String, Object> jjqJieDuanMap = (Map<String, Object>)jieDuanUMap.get(JieDuanU.JIA_JIA_QUAN_TEXT);
 
 			//添加与U类批次相关的加甲醛时间差阶段批次记录
 			Map<String, Object> sjcJlsjMap = (Map<String, Object>)jlsjUMap.get(JiLuShiJianU.SHI_JIAN_CHA_TEXT);//获取时间差记录事件信息
-			piCiJiLuUService.addJdgcFromPcList(jqblksPcUList,sjcJlsjMap,jjqJieDuanId);//添加加甲醛阶段过程记录
+			piCiJiLuUService.addJdgcFromPcList(jqblksPcUList,sjcJlsjMap,jjqJieDuanMap);//添加加甲醛阶段过程记录
 
 			//添加与U类批次相关的加甲醛重量差阶段批次记录
 			Map<String, Object> zlcJlsjMap = (Map<String, Object>)jlsjUMap.get(JiLuShiJianU.ZHONG_LIANG_CHA_TEXT);//获取重量差记录事件信息
-			piCiJiLuUService.addJdgcFromPcList(jqblksPcUList,zlcJlsjMap,jjqJieDuanId);//添加加甲醛重量差阶段过程记录
+			piCiJiLuUService.addJdgcFromPcList(jqblksPcUList,zlcJlsjMap,jjqJieDuanMap);//添加加甲醛重量差阶段过程记录
 		}
 		if(jqblksMcList.size()>0) {
 			for (String jqblksMc : jqblksMcList) {

@@ -35,12 +35,13 @@ public class PiCiJiLuUServiceImpl implements PiCiJiLuUService {
         return count;
     }
 
-    public int addJdgcFromPcList(List<PiCiU> pcList, Map<String, Object> jlsjMap, Integer jieDuanId) {
+    public int addJdgcFromPcList(List<PiCiU> pcList, Map<String, Object> jlsjMap, Map<String, Object> jieDuanMap) {
         // TODO Auto-generated method stub
         int count=0;
         PiCiJiLuU piCiJiLuU=null;
         Integer jlsjId = Integer.valueOf(jlsjMap.get("id").toString());
         String jlsjMc = jlsjMap.get("mc").toString();
+        Integer jieDuanId = Integer.valueOf(jieDuanMap.get("id").toString());
         Date date = new Date();
         for (PiCiU pc : pcList) {
             piCiJiLuU=new PiCiJiLuU();
@@ -50,6 +51,7 @@ public class PiCiJiLuUServiceImpl implements PiCiJiLuUService {
             if(JiLuShiJianU.SHI_JIAN_CHA_TEXT.equals(jlsjMc))
                 piCiJiLuU.setJlkssj(DateUtil.getTimeStrByFormatStr(date,DateUtil.YEAR_TO_SECOND));
             piCiJiLuU.setJllx(PiCiJiLuM.JIE_DUAN_GUO_CHENG_JI_LU);
+			piCiJiLuU.setJdId(jieDuanId);
 
             count+=piCiJiLuUMapper.add(piCiJiLuU);
         }
