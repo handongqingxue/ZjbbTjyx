@@ -338,6 +338,13 @@ public class OPCController {
 		
 		
 		////剩余逻辑在这里写
+		//加碱PH值正常上升沿
+		
+		
+		//允许一次加助剂上升沿
+		
+		
+		//所有助剂加料完成1上升沿
 		
 		return json;
 	}
