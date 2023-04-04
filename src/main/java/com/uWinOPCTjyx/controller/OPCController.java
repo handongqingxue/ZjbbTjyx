@@ -180,21 +180,22 @@ public class OPCController {
 		List<String> jqblksMcList=new ArrayList<String>();//创建甲醛备料开始的名称集合(不管是M类还是U类都放进去)
 		List<String> jqblksFyfhList=new ArrayList<String>();//创建甲醛备料开始的反应釜号集合(不管是M类还是U类都放进去)
 		List<OpcBianLiang> jqblksOBLList=opcBianLiangService.getListByMcQz(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI_TEXT);//获取甲醛备料开始上升沿集合
-		for (OpcBianLiang jqblksOBL : jqblksOBLList) {
-			String mc = jqblksOBL.getMc();
+		List<OpcBianLiang> upSzJqBlksOBLList=getUpSzListFromList(jqblksOBLList);
+		for (OpcBianLiang upSzJqblksOBL : upSzJqBlksOBLList) {
+			String mc = upSzJqblksOBL.getMc();
 			for (Map<String, Object> opcBLScszMap : opcBLScszList) {
 				String scmc = opcBLScszMap.get("mc").toString();
 				Boolean scsz = Boolean.valueOf(opcBLScszMap.get("sz").toString());
 				if(mc.equals(scmc)&&!scsz) {
-					Integer lx = jqblksOBL.getLx();
+					Integer lx = upSzJqblksOBL.getLx();
 					if(OpcBianLiang.LX_M==lx) {//根据类型判断是M类还是U类，往对应的集合里放
-						jqblksMOBLList.add(jqblksOBL);
+						jqblksMOBLList.add(upSzJqblksOBL);
 					}
 					else if(OpcBianLiang.LX_U==lx) {
-						jqblksUOBLList.add(jqblksOBL);
+						jqblksUOBLList.add(upSzJqblksOBL);
 					}
 					
-					String fyfh = jqblksOBL.getFyfh();
+					String fyfh = upSzJqblksOBL.getFyfh();
 					jqblksMcList.add(mc);//不管是M类还是U类，都往集合里放
 					jqblksFyfhList.add(fyfh);//添加甲醛备料开始反应釜号
 				}
@@ -244,21 +245,22 @@ public class OPCController {
 		List<String> jqflwcMcList=new ArrayList<String>();
 		List<String> jqflwcFyfhList=new ArrayList<String>();//创建甲醛放料完成的反应釜号集合(不管是M类还是U类都放进去)
 		List<OpcBianLiang> jqflwcOBLList=opcBianLiangService.getListByMcQz(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG_TEXT);//获取甲醛放料完成上升沿集合
-		for (OpcBianLiang jqflwcOBL : jqflwcOBLList) {
-			String mc = jqflwcOBL.getMc();
+		List<OpcBianLiang> upSzJqflwcOBLList=getUpSzListFromList(jqflwcOBLList);//
+			for (OpcBianLiang upSzJqflwcOBL : upSzJqflwcOBLList) {
+			String mc = upSzJqflwcOBL.getMc();
 			for (Map<String, Object> opcBLScszMap : opcBLScszList) {
 				String scmc = opcBLScszMap.get("mc").toString();
 				Boolean scsz = Boolean.valueOf(opcBLScszMap.get("sz").toString());
 				if(mc.equals(scmc)&&!scsz) {
-					Integer lx = jqflwcOBL.getLx();
+					Integer lx = upSzJqflwcOBL.getLx();
 					if(OpcBianLiang.LX_M==lx) {//根据类型判断是M类还是U类，往对应的集合里放
-						jqflwcMOBLList.add(jqflwcOBL);
+						jqflwcMOBLList.add(upSzJqflwcOBL);
 					}
 					else if(OpcBianLiang.LX_U==lx) {
-						jqflwcUOBLList.add(jqflwcOBL);
+						jqflwcUOBLList.add(upSzJqflwcOBL);
 					}
 					
-					String fyfh = jqflwcOBL.getFyfh();
+					String fyfh = upSzJqflwcOBL.getFyfh();
 					jqflwcMcList.add(mc);
 					jqflwcFyfhList.add(fyfh);//添加甲醛放料完成反应釜号
 				}
