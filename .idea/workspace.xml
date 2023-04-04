@@ -209,7 +209,7 @@
       <workItem from="1678500499491" duration="272000" />
       <workItem from="1679634758256" duration="6731000" />
       <workItem from="1679722462404" duration="66383000" />
-      <workItem from="1680227753216" duration="67745000" />
+      <workItem from="1680227753216" duration="68922000" />
     </task>
     <task id="LOCAL-00001" summary="11">
       <created>1679725334951</created>
@@ -337,7 +337,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680513026843</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="11">
+      <created>1680573298553</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1680573298553</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -491,10 +498,10 @@
       <screen x="0" y="23" width="1280" height="725" />
     </state>
     <state x="338" y="23" width="604" height="725" key="find.popup/0.23.1280.725@0.23.1280.725" timestamp="1678328866823" />
-    <state x="297" y="173" key="git4idea.merge.GitPullDialog" timestamp="1680573095024">
+    <state x="297" y="173" key="git4idea.merge.GitPullDialog" timestamp="1680573303870">
       <screen x="0" y="23" width="1280" height="709" />
     </state>
-    <state x="297" y="173" key="git4idea.merge.GitPullDialog/0.23.1280.709@0.23.1280.709" timestamp="1680573095024" />
+    <state x="297" y="173" key="git4idea.merge.GitPullDialog/0.23.1280.709@0.23.1280.709" timestamp="1680573303870" />
     <state x="297" y="173" key="git4idea.merge.GitPullDialog/0.23.1280.710@0.23.1280.710" timestamp="1680340938793" />
     <state x="305" y="57" width="670" height="676" key="search.everywhere.popup" timestamp="1680328874596">
       <screen x="0" y="23" width="1280" height="710" />
