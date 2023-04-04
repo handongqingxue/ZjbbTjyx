@@ -16,10 +16,10 @@ public interface OpcBianLiangService {
 	int editFromList(List<OpcBianLiang> opcBianLiangList);
 
 	/**
-	 * 根据名称前缀获得上升数值列表
+	 * 根据名称前缀获得数值列表
 	 * @param mcQz
 	 * @return
 	 */
-	List<OpcBianLiang> getUpSzListByMcQz(String mcQz);
+	List<OpcBianLiang> getListByMcQz(String mcQz);
 
 }

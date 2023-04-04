@@ -108,7 +108,7 @@ public class OpcBianLiangServiceImpl implements OpcBianLiangService {
 		return editCount;
 	}
 
-	public List<OpcBianLiang> getUpSzListByMcQz(String mcQz) {
+	public List<OpcBianLiang> getListByMcQz(String mcQz) {
 		// TODO Auto-generated method stub
 		List<String> mcList=new ArrayList<String>();
 		String[] bsfFMArr = Constant.BSF_F_M_ARR;
@@ -121,14 +121,7 @@ public class OpcBianLiangServiceImpl implements OpcBianLiangService {
 			mcList.add(mcQz+"_"+bsfFUArr[i]+"_AV");
 		}
 		
-		List<OpcBianLiang> upSzOblList=new ArrayList<OpcBianLiang>();
 		List<OpcBianLiang> opcBianLiangList=opcBianLiangMapper.getListByMcList(mcList);
-		for (OpcBianLiang opcBianLiang : opcBianLiangList) {
-			boolean sz = Boolean.parseBoolean(opcBianLiang.getSz());
-			if(sz) {
-				upSzOblList.add(opcBianLiang);
-			}
-		}
-		return upSzOblList;
+		return opcBianLiangList;
 	}
 }

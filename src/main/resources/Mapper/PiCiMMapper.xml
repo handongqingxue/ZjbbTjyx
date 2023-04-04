@@ -81,7 +81,7 @@
 		 )t where t.scnf=#{scnf}
 	</select>
 	<select id="getIdListByFyfhList" resultType="java.lang.Integer">
-		select id from PiCiM where 1=1
+		select id from PiCiM where jssj is null
 		<foreach collection="fyfhList" item="fyfh" open=" and cast(fyfh as char) in (" separator="," close=")">
 		#{fyfh}
 		</foreach>
