@@ -83,4 +83,13 @@ public class Constant {
 	 * 称重文字
 	 */
 	public static final String CHENG_ZHONG_TEXT="称重";
+	
+	/**
+	 * 反应釜文字
+	 */
+	public static final String FAN_YING_FU_TEXT="反应釜";
+	/**
+	 * 温度文字
+	 */
+	public static final String WEN_DU_TEXT="温度";
 }
