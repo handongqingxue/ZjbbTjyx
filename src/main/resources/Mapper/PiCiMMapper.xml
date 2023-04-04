@@ -87,7 +87,7 @@
 		</foreach>
 	</select>
 	<select id="getListByFyfhList" resultType="com.uWinOPCTjyx.entity.PiCiM">
-		select * from PiCiM where 1=1
+		select * from PiCiM where jssj is null
 		<foreach collection="fyfhList" item="fyfh" open=" and cast(fyfh as char) in (" separator="," close=")">
 		#{fyfh}
 		</foreach>
