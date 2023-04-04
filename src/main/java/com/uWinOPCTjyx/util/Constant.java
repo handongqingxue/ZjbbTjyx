@@ -69,6 +69,34 @@ public class Constant {
 	 * 甲醛实际进料重量文字
 	 */
 	public static final String JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG_TEXT="甲醛实际进料重量";
+	/**
+	 * 加碱PH值正常文字
+	 */
+	public static final String JIA_JIAN_PH_ZHI_ZHENG_CHANG_TEXT="加碱PH值正常";
+	/**
+	 * 加碱前PH输入值文字
+	 */
+	public static final String JIA_JIAN_QIAN_PH_SHU_RU_ZHI_TEXT="加碱前PH输入值";
+	/**
+	 * 加碱量提示文字
+	 */
+	public static final String JIA_JIAN_LIANG_TI_SHI_TEXT="加碱量提示";
+	/**
+	 * 加碱后PH输入值文字
+	 */
+	public static final String JIA_JIAN_HOU_PH_SHU_RU_ZHI_TEXT="加碱后PH输入值";
+	/**
+	 * 助剂计量罐文字
+	 */
+	public static final String ZHU_JI_JI_LIANG_GUAN_TEXT="助剂计量罐";
+	/**
+	 * 允许一次加助剂文字
+	 */
+	public static final String YUN_XU_YI_CI_JIA_ZHU_JI_TEXT="允许一次加助剂";
+	/**
+	 * 所有助剂加料完成1
+	 */
+	public static final String SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1_TEXT="所有助剂加料完成1";
 	
 	/**
 	 * 百分号文字
