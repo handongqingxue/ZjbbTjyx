@@ -50,7 +50,7 @@
 		</foreach>
 	</select>
 	<select id="getListByFyfhList" resultType="com.uWinOPCTjyx.entity.OpcBianLiang">
-		select * from OpcBianLiang where mc like#{mc}
+		select * from OpcBianLiang where mc like #{mc}
 		<foreach collection="fyfhList" item="fyfh" open=" and cast(fyfh as char) in (" separator="," close=")">
 		#{fyfh}
 		</foreach>

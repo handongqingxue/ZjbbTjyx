@@ -98,8 +98,7 @@ public class PiCiJiLuMServiceImpl implements PiCiJiLuMService {
 		List<String> mcList=new ArrayList<String>();
         String csmc = csMap.get("mc").toString();
 		if(CanShuM.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG_TEXT.equals(csmc)
-			||CanShuM.JIA_SHUI_SHI_JI_ZHONG_LIANG_TEXT.equals(csmc)
-			||CanShuM.JIA_JIAN_QIAN_PH_TEXT.equals(csmc)) {
+			||CanShuM.JIA_SHUI_SHI_JI_ZHONG_LIANG_TEXT.equals(csmc)) {
 			String[] bsfFMArr = Constant.BSF_F_M_ARR;
 			for (int i = 0; i < bsfFMArr.length; i++) {
 				mcList.add(csmc+"_"+bsfFMArr[i]+"_AV");
@@ -131,9 +130,9 @@ public class PiCiJiLuMServiceImpl implements PiCiJiLuMService {
 			
 			String fyfh = pc.getFyfh();
 			String jlnr = null;
-			for (OpcBianLiang jqsjjlzlOBL : opcBLList) {
-				if(fyfh.equals(jqsjjlzlOBL.getFyfh())) {
-					jlnr = Float.valueOf(jqsjjlzlOBL.getSz())+csdw;
+			for (OpcBianLiang opcBL : opcBLList) {
+				if(fyfh.equals(opcBL.getFyfh())) {
+					jlnr = Float.valueOf(opcBL.getSz())+csdw;
 					break;
 				}
 			}
