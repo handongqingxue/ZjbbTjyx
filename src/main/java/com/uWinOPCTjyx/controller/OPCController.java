@@ -232,12 +232,14 @@ public class OPCController {
 			Map<String, Object> zlcJlsjMap = (Map<String, Object>)jlsjUMap.get(JiLuShiJianU.ZHONG_LIANG_CHA_TEXT);//获取重量差记录事件信息
 			piCiJiLuUService.addJdgcFromPcList(jqblksPcUList,zlcJlsjMap,jjqJieDuanMap);//添加加甲醛重量差阶段过程记录
 		}
-		if(jqblksMcList.size()>0) {
-			for (String jqblksMc : jqblksMcList) {
-				addOpcBLScszInList(OpcBianLiang.YSS+"",jqblksMc);
+
+		if(jqblksOBLList.size()>0) {
+			for (OpcBianLiang jqblksOBL : jqblksOBLList) {//循环备料开始集合
+				String jqblksMc = jqblksOBL.getMc();
+				String jqblksSz = jqblksOBL.getSz();
+				addOpcBLScszInList(jqblksSz,jqblksMc);//根据甲醛备料开始名称更新数值,存入上次数值集合里,作为上次变量数值.下次就不会再被检索到了
 			}
 		}
-		
 		
 		//检测甲醛放料完成上升沿
 		List<OpcBianLiang> jqflwcMOBLList=new ArrayList<OpcBianLiang>();//创建存放M类甲醛放料完成的变量集合
@@ -316,11 +318,13 @@ public class OPCController {
 			//U类
 			
 		}
-		if(jqflwcMcList.size()>0) {
-			for (String jqflwcMc : jqflwcMcList) {
-				addOpcBLScszInList(OpcBianLiang.YSS+"",jqflwcMc);
+			if(jqflwcOBLList.size()>0) {
+				for (OpcBianLiang jqflwcOBL : jqflwcOBLList) {//循环备料开始集合
+					String jqflwcMc = jqflwcOBL.getMc();
+					String jqflwcSz = jqflwcOBL.getSz();
+					addOpcBLScszInList(jqflwcSz,jqflwcMc);//根据甲醛备料开始名称更新数值,存入上次数值集合里,作为上次变量数值.下次就不会再被检索到了
+				}
 			}
-		}
 		}
 		
 		return json;
