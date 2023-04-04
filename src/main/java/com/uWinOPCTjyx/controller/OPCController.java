@@ -293,7 +293,7 @@ public class OPCController {
 			
 			
 			
-			
+			////备料开始、完成这些上面都已经判断了，这里不需要写了。其他上升沿判断在下面写而不是在这里写
 			//甲醛备料开始参数
 			Map<String, Object> jqblksCsMap = (Map<String, Object>)canShuMMap.get(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI_TEXT);//获取甲醛备料开始参数信息
 			//甲醛放料完成参数
@@ -335,6 +335,9 @@ public class OPCController {
 			}
 		}
 		}
+		
+		
+		////剩余逻辑在这里写
 		
 		return json;
 	}
