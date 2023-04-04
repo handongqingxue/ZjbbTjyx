@@ -259,14 +259,40 @@ public class OPCController {
 			
 			//加水实际重量
 			Map<String, Object> jssjzlCsMap = (Map<String, Object>)canShuMMap.get(CanShuM.JIA_SHUI_SHI_JI_ZHONG_LIANG_TEXT);//获取加水实际重量参数信息
-			//反应釜温度
-			Map<String, Object> fyfwdCsMap = (Map<String, Object>)canShuMMap.get(CanShuM.FAN_YING_FU_WEN_DU_TEXT);//获取反应釜温度参数信息
+			//反应釜1温度
+			Map<String, Object> fyfwdCsMap = (Map<String, Object>)canShuMMap.get(Constant.FAN_YING_FU_TEXT+"1"+Constant.WEN_DU_TEXT);//获取反应釜1温度参数信息
 			//加碱前PH参数
-			Map<String, Object> jjqPHCsMap = (Map<String, Object>)canShuMMap.get(CanShuM.JIA_JIAN_QIAN_PH_TEXT);//获取加碱前PH参数信息
-
+			Map<String, Object> jjqPHCsMap = (Map<String, Object>)canShuMMap.get(Constant.JIA_JIAN_QIAN_PH_SHU_RU_ZHI_TEXT);//获取加碱前PH参数信息
+			//甲醛备料开始参数
+			Map<String, Object> jqblksCsMap = (Map<String, Object>)canShuMMap.get(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI_TEXT);//获取甲醛备料开始参数信息
+			//甲醛放料完成参数
+			Map<String, Object> jqflwcCsMap = (Map<String, Object>)canShuMMap.get(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG_TEXT);//获取甲醛放料完成参数信息
+			//釜1称重参数
+			Map<String, Object> f1czCsMap = (Map<String, Object>)canShuMMap.get(Constant.FU_TEXT+"1"+Constant.CHENG_ZHONG_TEXT);//获取釜1称重参数信息
+			//加碱PH值正常参数
+			Map<String, Object> jjPHzzcCsMap = (Map<String, Object>)canShuMMap.get(Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG_TEXT);//获取加碱PH值正常参数信息
+			//加碱量提示参数
+			Map<String, Object> jjltsCsMap = (Map<String, Object>)canShuMMap.get(Constant.JIA_JIAN_LIANG_TI_SHI_TEXT);//获取加碱量提示参数信息
+			//加碱后PH输入参数
+			Map<String, Object> jjhPHsrCsMap = (Map<String, Object>)canShuMMap.get(Constant.JIA_JIAN_HOU_PH_SHU_RU_ZHI_TEXT);//获取加碱后PH输入参数信息
+			//助剂计量罐1称重参数
+			Map<String, Object> zjjlg1czCsMap = (Map<String, Object>)canShuMMap.get(Constant.ZHU_JI_JI_LIANG_GUAN_TEXT+"1"+Constant.CHENG_ZHONG_TEXT);//获取助剂计量罐1称重参数信息
+			//允许二次加助剂参数
+			Map<String, Object> yxecjzjCsMap = (Map<String, Object>)canShuMMap.get(Constant.YUN_XU_ER_CI_JIA_ZHU_JI_TEXT);//获取允许二次加助剂参数信息
+			//所有助剂加料完成1参数
+			Map<String, Object> syzjjlwcCsMap = (Map<String, Object>)canShuMMap.get(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1_TEXT);//获取所有助剂加料完成1参数信息
 			piCiJiLuMService.addCsjl(jqflwcPcMList,jssjzlCsMap,jllJlsjMap);//添加甲醛实际进料重量参数记录
-			piCiJiLuMService.addCsjl(jqflwcPcMList,fyfwdCsMap,jllJlsjMap);//添加反应釜温度参数记录
+			piCiJiLuMService.addCsjl(jqflwcPcMList,fyfwdCsMap,jllJlsjMap);//添加反应釜1温度参数记录
 			piCiJiLuMService.addCsjl(jqflwcPcMList,jjqPHCsMap,jllJlsjMap);//添加加碱前PH参数参数记录
+			piCiJiLuMService.addCsjl(jqflwcPcMList,jqblksCsMap,jllJlsjMap);//添加甲醛备料开始参数记录
+			piCiJiLuMService.addCsjl(jqflwcPcMList,jqflwcCsMap,jllJlsjMap);//添加甲醛放料完成参数记录
+			piCiJiLuMService.addCsjl(jqflwcPcMList,f1czCsMap,jllJlsjMap);//添加釜1称重参数记录
+			piCiJiLuMService.addCsjl(jqflwcPcMList,jjPHzzcCsMap,jllJlsjMap);//添加加碱PH值正常参数记录
+			piCiJiLuMService.addCsjl(jqflwcPcMList,jjltsCsMap,jllJlsjMap);//添加加碱量提示参数记录
+			piCiJiLuMService.addCsjl(jqflwcPcMList,jjhPHsrCsMap,jllJlsjMap);//添加加碱后PH输入参数记录
+			piCiJiLuMService.addCsjl(jqflwcPcMList,zjjlg1czCsMap,jllJlsjMap);//添加助剂计量罐1称重参数记录
+			piCiJiLuMService.addCsjl(jqflwcPcMList,yxecjzjCsMap,jllJlsjMap);//添加允许二次加助剂参数记录
+			piCiJiLuMService.addCsjl(jqflwcPcMList,syzjjlwcCsMap,jllJlsjMap);//添加所有助剂加料完成1参数记录
 		}
 		if(jqflwcUOBLList.size()>0) {
 			//U类

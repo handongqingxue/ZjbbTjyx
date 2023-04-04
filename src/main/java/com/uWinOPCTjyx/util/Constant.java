@@ -93,6 +93,12 @@ public class Constant {
 	 * 允许一次加助剂文字
 	 */
 	public static final String YUN_XU_YI_CI_JIA_ZHU_JI_TEXT="允许一次加助剂";
+
+	/**
+	 * 允许二次加助剂文字
+	 */
+	public static final String YUN_XU_ER_CI_JIA_ZHU_JI_TEXT="允许二次加助剂";
+
 	/**
 	 * 所有助剂加料完成1
 	 */
