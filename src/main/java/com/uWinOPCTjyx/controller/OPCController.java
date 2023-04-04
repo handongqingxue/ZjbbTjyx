@@ -259,7 +259,14 @@ public class OPCController {
 			
 			//加水实际重量
 			Map<String, Object> jssjzlCsMap = (Map<String, Object>)canShuMMap.get(CanShuM.JIA_SHUI_SHI_JI_ZHONG_LIANG_TEXT);//获取加水实际重量参数信息
+			//反应釜温度
+			Map<String, Object> fyfwdCsMap = (Map<String, Object>)canShuMMap.get(CanShuM.FAN_YING_FU_WEN_DU_TEXT);//获取反应釜温度参数信息
+			//加碱前PH参数
+			Map<String, Object> jjqPHCsMap = (Map<String, Object>)canShuMMap.get(CanShuM.JIA_JIAN_QIAN_PH_TEXT);//获取加碱前PH参数信息
+
 			piCiJiLuMService.addCsjl(jqflwcPcMList,jssjzlCsMap,jllJlsjMap);//添加甲醛实际进料重量参数记录
+			piCiJiLuMService.addCsjl(jqflwcPcMList,fyfwdCsMap,jllJlsjMap);//添加反应釜温度参数记录
+			piCiJiLuMService.addCsjl(jqflwcPcMList,jjqPHCsMap,jllJlsjMap);//添加加碱前PH参数参数记录
 		}
 		if(jqflwcUOBLList.size()>0) {
 			//U类
