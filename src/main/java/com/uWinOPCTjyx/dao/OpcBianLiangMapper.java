@@ -32,17 +32,17 @@ public interface OpcBianLiangMapper {
 	List<OpcBianLiang> getListByMcList(@Param("mcList") List<String> mcList);
 
 	/**
-	 * 根据反应釜号集合，获取釜称重信息列表
+	 * 根据反应釜号集合，获取变量信息列表(多用于中间间断式变量名查询)
 	 * @param mc
 	 * @param fyfhList
 	 * @return
 	 */
-	List<OpcBianLiang> getFczListByFyfhList(@Param("mc") String mc, @Param("fyfhList") List<String> fyfhList);
+	List<OpcBianLiang> getListByFyfhList(@Param("mc") String mc, @Param("fyfhList") List<String> fyfhList);
 
 	/**
-	 * 根据名称集合，获取甲醛实际进料重量信息列表
+	 * 根据名称集合，获取变量信息列表(多用于非中间间断式变量名查询)
 	 * @param mcList
 	 * @return
 	 */
-	List<OpcBianLiang> getJqsjjlzlByFyMcList(@Param("mcList") List<String> mcList);
+	List<OpcBianLiang> getListByFyMcList(@Param("mcList") List<String> mcList);
 }

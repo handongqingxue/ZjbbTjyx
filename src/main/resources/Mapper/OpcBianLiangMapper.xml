@@ -49,13 +49,13 @@
 		#{mc}
 		</foreach>
 	</select>
-	<select id="getFczListByFyfhList" resultType="com.uWinOPCTjyx.entity.OpcBianLiang">
+	<select id="getListByFyfhList" resultType="com.uWinOPCTjyx.entity.OpcBianLiang">
 		select * from OpcBianLiang where mc like#{mc}
 		<foreach collection="fyfhList" item="fyfh" open=" and cast(fyfh as char) in (" separator="," close=")">
 		#{fyfh}
 		</foreach>
 	</select>
-	<select id="getJqsjjlzlByFyMcList" resultType="com.uWinOPCTjyx.entity.OpcBianLiang">
+	<select id="getListByFyMcList" resultType="com.uWinOPCTjyx.entity.OpcBianLiang">
 		select * from OpcBianLiang where 1=1
 		<foreach collection="mcList" item="mc" open=" and cast(mc as char) in (" separator="," close=")">
 		#{mc}

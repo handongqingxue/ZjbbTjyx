@@ -47,16 +47,16 @@ public class PiCiJiLuMServiceImpl implements PiCiJiLuMService {
         Integer jlsjId = Integer.valueOf(jlsjMap.get("id").toString());
         String jlsjMc = jlsjMap.get("mc").toString();
         Integer jieDuanId = Integer.valueOf(jieDuanMap.get("id").toString());
-		List<OpcBianLiang> fczOBLList=null;
+		List<OpcBianLiang> opcBLList=null;
 		if(JiLuShiJianM.ZHONG_LIANG_CHA_TEXT.equals(jlsjMc)) {//重量差的事件类型需要根据反应釜号获取重量
-			String fczMc=Constant.FU_TEXT+Constant.BAI_FEN_HAO_TEXT+Constant.CHENG_ZHONG_TEXT+"_AV";//釜称重名称
+			String mc=Constant.FU_TEXT+Constant.BAI_FEN_HAO_TEXT+Constant.CHENG_ZHONG_TEXT+"_AV";//釜称重名称
 			List<String> fyfhList=new ArrayList<String>();
 			for (PiCiM pc : pcList) {
 				String fyfh = pc.getFyfh();
 				fyfhList.add(fyfh);
 			}
 			
-			fczOBLList=opcBianLiangMapper.getFczListByFyfhList(fczMc,fyfhList);
+			opcBLList=opcBianLiangMapper.getListByFyfhList(mc,fyfhList);
 		}
 		
 		for (PiCiM pc : pcList) {
@@ -65,7 +65,7 @@ public class PiCiJiLuMServiceImpl implements PiCiJiLuMService {
 			Float zqzl=null;
 			if(JiLuShiJianM.ZHONG_LIANG_CHA_TEXT.equals(jlsjMc)) {
 				String fyfh = pc.getFyfh();
-				for (OpcBianLiang fczOBL : fczOBLList) {
+				for (OpcBianLiang fczOBL : opcBLList) {
 					if(fyfh.equals(fczOBL.getFyfh())) {
 						zqzl=Float.valueOf(fczOBL.getSz());//因为是刚开始添加的阶段过程记录，设置重量为之前重量
 						break;
@@ -89,22 +89,36 @@ public class PiCiJiLuMServiceImpl implements PiCiJiLuMService {
 		return count;
 	}
 
-	public int addCsjl(List<PiCiM> pcList, Map<String, Object> jqsjjlzlCsMap, Map<String, Object> jlsjMap) {
+	public int addCsjl(List<PiCiM> pcList, Map<String, Object> csMap, Map<String, Object> jlsjMap) {
 		// TODO Auto-generated method stub
 		int count=0;
 		PiCiJiLuM piCiJiLuM=null;
 		
+		List<OpcBianLiang> opcBLList=null;
 		List<String> mcList=new ArrayList<String>();
-		String[] bsfFMArr = Constant.BSF_F_M_ARR;
-		String csmc = jqsjjlzlCsMap.get("mc").toString();
-		for (int i = 0; i < bsfFMArr.length; i++) {
-			mcList.add(csmc+"_"+bsfFMArr[i]+"_AV");
+        String csmc = csMap.get("mc").toString();
+		if(CanShuM.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG_TEXT.equals(csmc)
+			||CanShuM.JIA_SHUI_SHI_JI_ZHONG_LIANG_TEXT.equals(csmc)) {
+			String[] bsfFMArr = Constant.BSF_F_M_ARR;
+			for (int i = 0; i < bsfFMArr.length; i++) {
+				mcList.add(csmc+"_"+bsfFMArr[i]+"_AV");
+			}
+			opcBLList=opcBianLiangMapper.getListByFyMcList(mcList);
 		}
-		List<OpcBianLiang> jqsjjlzlOBLList=opcBianLiangMapper.getJqsjjlzlByFyMcList(mcList);
+		else if(CanShuM.FAN_YING_FU_WEN_DU_TEXT.equals(csmc)) {
+			String mc=Constant.FAN_YING_FU_TEXT+Constant.BAI_FEN_HAO_TEXT+Constant.WEN_DU_TEXT+"_AV";
+			List<String> fyfhList=new ArrayList<String>();
+			for (PiCiM pc : pcList) {
+				String fyfh = pc.getFyfh();
+				fyfhList.add(fyfh);
+			}
+			
+			opcBLList=opcBianLiangMapper.getListByFyfhList(mc,fyfhList);
+		}
 		
-		Integer csId = Integer.valueOf(jqsjjlzlCsMap.get("id").toString());//参数id
-		String csdw = jqsjjlzlCsMap.get("dw").toString();//参数单位
-		Integer cslx = Integer.valueOf(jqsjjlzlCsMap.get("lx").toString());//参数类型
+		Integer csId = Integer.valueOf(csMap.get("id").toString());//参数id
+		String csdw = csMap.get("dw").toString();//参数单位
+		Integer cslx = Integer.valueOf(csMap.get("lx").toString());//参数类型
 		Integer jlsjId = Integer.valueOf(jlsjMap.get("id").toString());//记录事件id
 		
 		for (PiCiM pc : pcList) {
@@ -116,7 +130,7 @@ public class PiCiJiLuMServiceImpl implements PiCiJiLuMService {
 			
 			String fyfh = pc.getFyfh();
 			String jlnr = null;
-			for (OpcBianLiang jqsjjlzlOBL : jqsjjlzlOBLList) {
+			for (OpcBianLiang jqsjjlzlOBL : opcBLList) {
 				if(fyfh.equals(jqsjjlzlOBL.getFyfh())) {
 					jlnr = Float.valueOf(jqsjjlzlOBL.getSz())+csdw;
 					break;
