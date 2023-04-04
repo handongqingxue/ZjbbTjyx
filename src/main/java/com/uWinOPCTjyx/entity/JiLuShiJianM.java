@@ -7,6 +7,7 @@ public class JiLuShiJianM {
 	public static final String ZHONG_LIANG_CHA_TEXT="重量差";
 	public static final String PI_CI_TEXT="批次";
 	public static final String WEN_DU_TEXT="温度";
+	public static final String PH_ZHI_TEXT="Ph值";
 	
 	private Integer id;//事件id
 	private String mc;//名称

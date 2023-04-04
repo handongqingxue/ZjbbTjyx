@@ -272,17 +272,28 @@ public class OPCController {
 		if(jqflwcMOBLList.size()>0) {
 			//M类
 			List<PiCiM> jqflwcPcMList=piCiMService.getListByFyfhList(jqflwcFyfhList);//根据甲醛放料完成变量里的反应釜号获取批次列表
+			Map<String, Object> jllJlsjMap = (Map<String, Object>)jlsjMMap.get(JiLuShiJianM.JIA_LIAO_LIANG_TEXT);//获取加料量记录事件id
 			
 			Map<String, Object> jqsjjlzlCsMap = (Map<String, Object>)canShuMMap.get(CanShuM.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG_TEXT);//获取甲醛实际进料重量参数信息
-			Map<String, Object> jllJlsjMap = (Map<String, Object>)jlsjMMap.get(JiLuShiJianM.JIA_LIAO_LIANG_TEXT);//获取加料量记录事件id
 			piCiJiLuMService.addCsjl(jqflwcPcMList,jqsjjlzlCsMap,jllJlsjMap);//添加甲醛实际进料重量参数记录
 			
 			//加水实际重量
 			Map<String, Object> jssjzlCsMap = (Map<String, Object>)canShuMMap.get(CanShuM.JIA_SHUI_SHI_JI_ZHONG_LIANG_TEXT);//获取加水实际重量参数信息
-			//反应釜1温度
-			Map<String, Object> fyfwdCsMap = (Map<String, Object>)canShuMMap.get(Constant.FAN_YING_FU_TEXT+"1"+Constant.WEN_DU_TEXT);//获取反应釜1温度参数信息
+			piCiJiLuMService.addCsjl(jqflwcPcMList,jssjzlCsMap,jllJlsjMap);//添加甲醛实际进料重量参数记录
+			
+			//反应釜温度
+			Map<String, Object> fyfwdCsMap = (Map<String, Object>)canShuMMap.get(CanShuM.FAN_YING_FU_WEN_DU_TEXT);//获取反应釜温度参数信息 //Constant.FAN_YING_FU_TEXT+"1"+Constant.WEN_DU_TEXT
+			piCiJiLuMService.addCsjl(jqflwcPcMList,fyfwdCsMap,jllJlsjMap);//添加反应釜温度参数记录
+
+			Map<String, Object> phzJlsjMap = (Map<String, Object>)jlsjMMap.get(JiLuShiJianM.PH_ZHI_TEXT);//获取ph值记录事件id
+			
 			//加碱前PH参数
-			Map<String, Object> jjqPHCsMap = (Map<String, Object>)canShuMMap.get(Constant.JIA_JIAN_QIAN_PH_SHU_RU_ZHI_TEXT);//获取加碱前PH参数信息
+			Map<String, Object> jjqPhCsMap = (Map<String, Object>)canShuMMap.get(CanShuM.JIA_JIAN_QIAN_PH_TEXT);//获取加碱前PH参数信息   //Constant.JIA_JIAN_QIAN_PH_SHU_RU_ZHI_TEXT
+			piCiJiLuMService.addCsjl(jqflwcPcMList,jjqPhCsMap,phzJlsjMap);//添加加碱前PH输入值参数记录
+			
+			
+			
+			
 			//甲醛备料开始参数
 			Map<String, Object> jqblksCsMap = (Map<String, Object>)canShuMMap.get(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI_TEXT);//获取甲醛备料开始参数信息
 			//甲醛放料完成参数
@@ -301,9 +312,7 @@ public class OPCController {
 			Map<String, Object> yxecjzjCsMap = (Map<String, Object>)canShuMMap.get(Constant.YUN_XU_ER_CI_JIA_ZHU_JI_TEXT);//获取允许二次加助剂参数信息
 			//所有助剂加料完成1参数
 			Map<String, Object> syzjjlwcCsMap = (Map<String, Object>)canShuMMap.get(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1_TEXT);//获取所有助剂加料完成1参数信息
-			piCiJiLuMService.addCsjl(jqflwcPcMList,jssjzlCsMap,jllJlsjMap);//添加甲醛实际进料重量参数记录
-			piCiJiLuMService.addCsjl(jqflwcPcMList,fyfwdCsMap,jllJlsjMap);//添加反应釜1温度参数记录
-			piCiJiLuMService.addCsjl(jqflwcPcMList,jjqPHCsMap,jllJlsjMap);//添加加碱前PH参数参数记录
+			
 			piCiJiLuMService.addCsjl(jqflwcPcMList,jqblksCsMap,jllJlsjMap);//添加甲醛备料开始参数记录
 			piCiJiLuMService.addCsjl(jqflwcPcMList,jqflwcCsMap,jllJlsjMap);//添加甲醛放料完成参数记录
 			piCiJiLuMService.addCsjl(jqflwcPcMList,f1czCsMap,jllJlsjMap);//添加釜1称重参数记录
@@ -318,13 +327,13 @@ public class OPCController {
 			//U类
 			
 		}
-			if(jqflwcOBLList.size()>0) {
-				for (OpcBianLiang jqflwcOBL : jqflwcOBLList) {//循环备料开始集合
-					String jqflwcMc = jqflwcOBL.getMc();
-					String jqflwcSz = jqflwcOBL.getSz();
-					addOpcBLScszInList(jqflwcSz,jqflwcMc);//根据甲醛备料开始名称更新数值,存入上次数值集合里,作为上次变量数值.下次就不会再被检索到了
-				}
+		if(jqflwcOBLList.size()>0) {
+			for (OpcBianLiang jqflwcOBL : jqflwcOBLList) {//循环放料完成集合
+				String jqflwcMc = jqflwcOBL.getMc();
+				String jqflwcSz = jqflwcOBL.getSz();
+				addOpcBLScszInList(jqflwcSz,jqflwcMc);//根据甲醛放料完成名称更新数值,存入上次数值集合里,作为上次变量数值.下次就不会再被检索到了
 			}
+		}
 		}
 		
 		return json;
