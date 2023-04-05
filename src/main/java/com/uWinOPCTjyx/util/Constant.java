@@ -45,6 +45,48 @@ public class Constant {
 	public static final String BSF_F5U="F5U";
 	
 	/**
+	 * 1号反应釜Ph值(M类)
+	 */
+	public static final String BSF_PF1="PF1";
+	/**
+	 * 2号反应釜Ph值(M类)
+	 */
+	public static final String BSF_PF2="PF2";
+	/**
+	 * 3号反应釜Ph值(M类)
+	 */
+	public static final String BSF_PF3="PF3";
+	/**
+	 * 4号反应釜Ph值(M类)
+	 */
+	public static final String BSF_PF4="PF4";
+	/**
+	 * 5号反应釜Ph值(M类)
+	 */
+	public static final String BSF_PF5="PF5";
+	
+	/**
+	 * 助剂计量罐1(M类)
+	 */
+	public static final int BSF_ZJJLG1=1;
+	/**
+	 * 助剂计量罐2(M类)
+	 */
+	public static final int BSF_ZJJLG2=2;
+	/**
+	 * 助剂计量罐3(M类)
+	 */
+	public static final int BSF_ZJJLG3=3;
+	/**
+	 * 助剂计量罐4(M类)
+	 */
+	public static final int BSF_ZJJLG4=4;
+	/**
+	 * 助剂计量罐5(M类)
+	 */
+	public static final int BSF_ZJJLG5=5;
+	
+	/**
 	 * 反应釜标识符数组(M类)
 	 */
 	public static final String[] BSF_F_M_ARR=new String[] {BSF_F1,BSF_F2,BSF_F3,BSF_F4,BSF_F5};
@@ -52,6 +94,20 @@ public class Constant {
 	 * 反应釜标识符数组(U类)
 	 */
 	public static final String[] BSF_F_U_ARR=new String[] {BSF_F1U,BSF_F2U,BSF_F3U,BSF_F4U,BSF_F5U};
+	
+	/**
+	 * 反应釜Ph标识符数组(M类)
+	 */
+	public static final String[] BSF_PF_M_ARR=new String[] {BSF_PF1,BSF_PF2,BSF_PF3,BSF_PF4,BSF_PF5};
+	
+	/**
+	 * 助剂计量罐1-2标识符数组(M类)
+	 */
+	public static final Integer[] BSF_ZJJLG_1_2_M_ARR=new Integer[] {BSF_ZJJLG1,BSF_ZJJLG2};
+	/**
+	 * 助剂计量罐3-5标识符数组(M类)
+	 */
+	public static final Integer[] BSF_ZJJLG_3_5_M_ARR=new Integer[] {BSF_ZJJLG3,BSF_ZJJLG4,BSF_ZJJLG5};
 	
 	/**
 	 * 备料开始文字

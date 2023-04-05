@@ -2,6 +2,7 @@ package com.uWinOPCTjyx.service.serviceImpl;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -176,6 +177,47 @@ public class PiCiJiLuMServiceImpl implements PiCiJiLuMService {
 				mcList.add(csmc+"_"+bsfFMArr[i]+"_AV");
 			}
 			opcBLList=opcBianLiangMapper.getListByFyMcList(mcList);
+		}
+		else if(CanShuM.JIA_JIAN_QIAN_PH_TEXT.equals(csmc)) {
+			String[] bsfFMArr = Constant.BSF_F_M_ARR;
+			for (int i = 0; i < bsfFMArr.length; i++) {
+				mcList.add(Constant.JIA_JIAN_QIAN_PH_SHU_RU_ZHI_TEXT+"_"+bsfFMArr[i]+"_AV");
+			}
+			opcBLList=opcBianLiangMapper.getListByFyMcList(mcList);
+		}
+		else if(CanShuM.JIA_JIAN_LIANG_TEXT.equals(csmc)) {
+			String[] bsfPFMArr = Constant.BSF_PF_M_ARR;
+			for (int i = 0; i < bsfPFMArr.length; i++) {
+				mcList.add(Constant.JIA_JIAN_LIANG_TI_SHI_TEXT+"_"+bsfPFMArr[i]+"_AV");
+			}
+			opcBLList=opcBianLiangMapper.getListByFyMcList(mcList);
+		}
+		else if(CanShuM.JIA_JIAN_HOU_PH_TEXT.equals(csmc)) {
+			String[] bsfFMArr = Constant.BSF_F_M_ARR;
+			for (int i = 0; i < bsfFMArr.length; i++) {
+				mcList.add(Constant.JIA_JIAN_HOU_PH_SHU_RU_ZHI_TEXT+"_"+bsfFMArr[i]+"_AV");
+			}
+			opcBLList=opcBianLiangMapper.getListByFyMcList(mcList);
+		}
+		else if(CanShuM.ZHU_JI_JI_LIANG_GUAN_1_2_CHENG_ZHONG.equals(csmc)) {
+			String mc=Constant.ZHU_JI_JI_LIANG_GUAN_TEXT+Constant.BAI_FEN_HAO_TEXT+Constant.CHENG_ZHONG_TEXT+"_AV";
+			List<String> zjjlghList=new ArrayList<String>();
+			Integer[] zjjlgMArr = Constant.BSF_ZJJLG_1_2_M_ARR;
+			for (int i = 0; i < zjjlgMArr.length; i++) {
+				zjjlghList.add(zjjlgMArr[i]+"");
+			}
+			
+			opcBLList=opcBianLiangMapper.getListByFyfhList(mc,zjjlghList);
+		}
+		else if(CanShuM.ZHU_JI_JI_LIANG_GUAN_3_5_CHENG_ZHONG.equals(csmc)) {
+			String mc=Constant.ZHU_JI_JI_LIANG_GUAN_TEXT+Constant.BAI_FEN_HAO_TEXT+Constant.CHENG_ZHONG_TEXT+"_AV";
+			List<String> zjjlghList=new ArrayList<String>();
+			Integer[] zjjlgMArr = Constant.BSF_ZJJLG_3_5_M_ARR;
+			for (int i = 0; i < zjjlgMArr.length; i++) {
+				zjjlghList.add(zjjlgMArr[i]+"");
+			}
+			
+			opcBLList=opcBianLiangMapper.getListByFyfhList(mc,zjjlghList);
 		}
 		else if(CanShuM.FAN_YING_FU_WEN_DU_TEXT.equals(csmc)) {
 			String mc=Constant.FAN_YING_FU_TEXT+Constant.BAI_FEN_HAO_TEXT+Constant.WEN_DU_TEXT+"_AV";
