@@ -97,9 +97,8 @@ public class PiCiJiLuMServiceImpl implements PiCiJiLuMService {
 	public int editJdgcFromPcList(List<PiCiM> pcList, Map<String, Object> jlsjMap, Map<String, Object> jieDuanMap) {
 		// TODO Auto-generated method stub
 		int count=0;
-		PiCiJiLuM piCiJiLuM=null;
 
-        Integer jlsjId = Integer.valueOf(jlsjMap.get("id").toString());
+		Integer jlsjId = Integer.valueOf(jlsjMap.get("id").toString());
         String jlsjMc = jlsjMap.get("mc").toString();
         Integer jieDuanId = Integer.valueOf(jieDuanMap.get("id").toString());
         
@@ -123,11 +122,19 @@ public class PiCiJiLuMServiceImpl implements PiCiJiLuMService {
         
         List<PiCiJiLuM> jdgcList=piCiJiLuMMapper.getJdgcListByPcIdList(pcIdList,jlsjId,jieDuanId);
         for (PiCiJiLuM jdgc : jdgcList) {
-        	Integer jdgcId = jdgc.getId();
         	String jljssj=null;
 			Float zhzl=null;
 			String jlnr=null;
-			if(JiLuShiJianM.ZHONG_LIANG_CHA_TEXT.equals(jlsjMc)) {
+			if(JiLuShiJianM.SHI_JIAN_CHA_TEXT.equals(jlsjMc)) {
+				Date date = new Date();
+				String jlkssj = jdgc.getJlkssj();
+				jljssj=DateUtil.getTimeStrByFormatStr(date,DateUtil.YEAR_TO_SECOND);
+				
+				Long jlkssjTime = DateUtil.convertStrToLong(jlkssj);
+				Long jljssjTime = DateUtil.convertStrToLong(jljssj);
+				jlnr=DateUtil.betweenTime(jlkssjTime, jljssjTime, DateUtil.FEN)+"Min";
+			}
+			else if(JiLuShiJianM.ZHONG_LIANG_CHA_TEXT.equals(jlsjMc)) {
 				String fyfh = jdgc.getFyfh();
 				for (OpcBianLiang opcBL : opcBLList) {
 					if(fyfh.equals(opcBL.getFyfh())) {
@@ -140,17 +147,18 @@ public class PiCiJiLuMServiceImpl implements PiCiJiLuMService {
 			}
 			
 			if(JiLuShiJianM.SHI_JIAN_CHA_TEXT.equals(jlsjMc)) {
-				String jlkssj = jdgc.getJlkssj();
-				Date date = new Date();
-				jdgc.setJlkssj(DateUtil.getTimeStrByFormatStr(date,DateUtil.YEAR_TO_SECOND));
+				jdgc.setJljssj(jljssj);
+				jdgc.setJlnr(jlnr);
 			}
 			else if(JiLuShiJianM.ZHONG_LIANG_CHA_TEXT.equals(jlsjMc)) {
 				jdgc.setZhzl(zhzl);
 				jdgc.setJlnr(jlnr);
 			}
+			
+			count+=piCiJiLuMMapper.edit(jdgc);
 		}
         
-		return 0;
+		return count;
 	}
 
 	public int addCsjl(List<PiCiM> pcList, Map<String, Object> csMap, Map<String, Object> jlsjMap) {

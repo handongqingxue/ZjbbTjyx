@@ -10,5 +10,8 @@ public interface PiCiJiLuMMapper {
 
     int add(PiCiJiLuM piCiJiLuM);
 
+	int edit(PiCiJiLuM piCiJiLuM);
+
 	List<PiCiJiLuM> getJdgcListByPcIdList(@Param("pcIdList") List<Integer> pcIdList, @Param("jlsjId") Integer jlsjId, @Param("jdId") Integer jdId);
+	
 }
