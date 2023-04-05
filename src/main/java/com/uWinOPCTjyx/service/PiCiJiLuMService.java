@@ -11,6 +11,8 @@ public interface PiCiJiLuMService {
 
 	int addJdgcFromPcList(List<PiCiM> pcList, Map<String, Object> jlsjMap, Map<String, Object> jieDuanMap);
 
+	int editJdgcFromPcList(List<PiCiM> pcMList, Map<String, Object> jlsjMap, Map<String, Object> jieDuanMap);
+
 	int addCsjl(List<PiCiM> pcList, Map<String, Object> jqsjjlzlCsMap, Map<String, Object> jlsjMap);
 
 }

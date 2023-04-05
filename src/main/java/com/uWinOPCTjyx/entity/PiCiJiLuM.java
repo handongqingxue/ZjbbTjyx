@@ -30,6 +30,7 @@ public class PiCiJiLuM {
 	private Float zhzl;//之后重量
     private Integer jllx;//记录类型
     private Integer jdId;//阶段id
+	private String fyfh;//反应釜号
 	public Integer getId() {
 		return id;
 	}
@@ -95,5 +96,11 @@ public class PiCiJiLuM {
 	}
 	public void setJdId(Integer jdId) {
 		this.jdId = jdId;
+	}
+	public String getFyfh() {
+		return fyfh;
+	}
+	public void setFyfh(String fyfh) {
+		this.fyfh = fyfh;
 	}
 }

@@ -57,7 +57,7 @@ public class OPCController {
 	@RequestMapping(value="/opcu")
 	public String goOpcU(HttpServletRequest request) {
 		
-		//localhost:8080/UWinOPCTjyx/opc/test
+		//localhost:8080/UWinOPCTjyx/opc/opcm
 		
 		return MODULE_NAME+"/opcu";
 	}
@@ -233,6 +233,7 @@ public class OPCController {
 			Map<String, Object> zlcJlsjMap = (Map<String, Object>)jlsjMMap.get(JiLuShiJianM.ZHONG_LIANG_CHA_TEXT);//获取重量差记录事件信息
 			piCiJiLuMService.addJdgcFromPcList(jqblksPcMList,zlcJlsjMap,jjqJieDuanMap);//添加加甲醛重量差阶段过程记录
 
+			a
 			
 		}
 		if(jqblksUOBLList.size()>0) {
@@ -325,7 +326,12 @@ public class OPCController {
 			Map<String, Object> fyfwdCsMap = (Map<String, Object>)canShuMMap.get(CanShuM.FAN_YING_FU_WEN_DU_TEXT);//获取反应釜温度参数信息 //Constant.FAN_YING_FU_TEXT+"1"+Constant.WEN_DU_TEXT
 			//piCiJiLuMService.addCsjl(jqflwcPcMList,fyfwdCsMap,wdJlsjMap);//添加反应釜温度参数记录
 			
+			//a
+			Map<String, Object> jjqJieDuanMap = (Map<String, Object>)jieDuanMMap.get(JieDuanM.JIA_JIA_QUAN_TEXT);//获取加甲醛阶段信息
 			
+			//编辑与M类批次相关的加甲醛时间差阶段批次记录(填充结束时间、时间差)
+			Map<String, Object> sjcJlsjMap = (Map<String, Object>)jlsjMMap.get(JiLuShiJianM.SHI_JIAN_CHA_TEXT);//获取时间差记录事件信息
+			int c=piCiJiLuMService.editJdgcFromPcList(jqflwcPcMList,sjcJlsjMap,jjqJieDuanMap);//编辑加甲醛时间差阶段过程记录
 			
 			
 			if(false) {

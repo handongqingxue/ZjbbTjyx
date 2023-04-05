@@ -59,4 +59,11 @@
 			</if>
 		</trim>
 	</insert>
+	<select id="getJdgcListByPcIdList" resultType="com.uWinOPCTjyx.entity.PiCiJiLuM">
+		select pcjl.*,pc.fyfh from PiCiJiLuM pcjl,PiCiM pc where pcjl.pcId=pc.id
+		<foreach collection="pcIdList" item="pcId" open=" and cast(pcjl.pcId as char) in (" separator="," close=")">
+		#{pcId}
+		</foreach>
+		and pcjl.jlsjId=#{jlsjId} and pcjl.jdId=#{jdId} and pcjl.jllx=${@com.uWinOPCTjyx.entity.PiCiJiLuM@JIE_DUAN_GUO_CHENG_JI_LU}
+	</select>
 </mapper>
