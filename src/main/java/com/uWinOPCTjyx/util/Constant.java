@@ -156,9 +156,13 @@ public class Constant {
 	public static final String YUN_XU_ER_CI_JIA_ZHU_JI_TEXT="允许二次加助剂";
 
 	/**
-	 * 所有助剂加料完成1
+	 * 所有助剂加料完成1文字
 	 */
 	public static final String SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1_TEXT="所有助剂加料完成1";
+	/**
+	 * 加粉料提醒文字
+	 */
+	public static final String JIA_FEN_LIAO_TI_XING_TEXT="加粉料提醒";
 	
 	/**
 	 * 百分号文字
