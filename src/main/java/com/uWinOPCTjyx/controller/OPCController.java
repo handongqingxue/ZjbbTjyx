@@ -411,15 +411,59 @@ public class OPCController {
 			piCiJiLuMService.addCsjl(jjphzzcPcMList,zjjlgczCsMap,czJlsjMap);//添加助剂计量罐1-2称重参数记录
 
 		}
-		
-		
-		
-		
-		
+
 		//允许一次加助剂上升沿(这是往批次记录表里插入阶段数据，前面有例子)
-		
-		
-		
+		List<OpcBianLiang> yxycjzjMOBLList = new ArrayList<OpcBianLiang>();//创建M类允许一次加助剂的变量集合
+		List<OpcBianLiang> yxycjzjUOBLList = new ArrayList<OpcBianLiang>();//创建U类允许一次加助剂的变量集合
+		List<String> yxycjzjFyfhList = new ArrayList<String>();//创建允许一次加助剂的反应釜号集合(不管是M类还是U类都放进去)
+		List<OpcBianLiang> yxycjzjOBLList=opcBianLiangService.getListByMcQz(Constant.YUN_XU_YI_CI_JIA_ZHU_JI_TEXT);//获取允许一次加助剂上升沿集合
+		List<OpcBianLiang> upSzYxycjzjOBLList=getUpSzListFromList(yxycjzjOBLList);//
+		for (OpcBianLiang upSzYxycjzjOBL : upSzYxycjzjOBLList) {
+			String mc = upSzYxycjzjOBL.getMc();
+			if(opcBLScszList.size()==0) {
+				Integer lx = upSzYxycjzjOBL.getLx();
+				if(OpcBianLiang.LX_M==lx) {//根据类型判断是M类还是U类，往对应的集合里放
+					yxycjzjMOBLList.add(upSzYxycjzjOBL);
+				}
+				else if(OpcBianLiang.LX_U==lx) {
+					yxycjzjUOBLList.add(upSzYxycjzjOBL);
+				}
+
+				String fyfh = upSzYxycjzjOBL.getFyfh();
+				yxycjzjFyfhList.add(fyfh);//添加允许一次加助剂反应釜号
+			}
+			else {
+				for (Map<String, Object> opcBLScszMap : opcBLScszList) {
+					String scmc = opcBLScszMap.get("mc").toString();
+					Boolean scsz = Boolean.valueOf(opcBLScszMap.get("sz").toString());
+					if(mc.equals(scmc)&&!scsz) {
+						Integer lx = upSzYxycjzjOBL.getLx();
+						if(OpcBianLiang.LX_M==lx) {//根据类型判断是M类还是U类，往对应的集合里放
+							yxycjzjMOBLList.add(upSzYxycjzjOBL);
+						}
+						else if(OpcBianLiang.LX_U==lx) {
+							yxycjzjUOBLList.add(upSzYxycjzjOBL);
+						}
+
+						String fyfh = upSzYxycjzjOBL.getFyfh();
+						yxycjzjFyfhList.add(fyfh);//添加允许一次加助剂反应釜号
+					}
+				}
+			}
+		}
+		if(yxycjzjMOBLList.size()>0) {
+			//M类
+			List<PiCiM> jjphzzcPcMList=piCiMService.getListByFyfhList(yxycjzjFyfhList);//根据允许一次加助剂里的反应釜号获取批次列表
+
+			Map<String, Object> ycjzjJieDuanMap = (Map<String, Object>)jieDuanMMap.get(JieDuanM.YI_CI_JIA_ZHU_JI_TEXT);//获取一次加助剂信息
+
+			Map<String,Object> zlcJlsjMap = (Map<String, Object>)jlsjMMap.get(JiLuShiJianM.ZHONG_LIANG_CHA_TEXT);//获取重量差记录事件id
+			piCiJiLuMService.addJdgcFromPcList(jjphzzcPcMList,zlcJlsjMap,ycjzjJieDuanMap);//添加重量差阶段过程记录
+
+			Map<String,Object> sjcJlsjsjMap = (Map<String, Object>)jlsjMMap.get(JiLuShiJianM.SHI_JIAN_CHA_TEXT);//获取时间差记录事件id
+			piCiJiLuMService.addJdgcFromPcList(jjphzzcPcMList,sjcJlsjsjMap,ycjzjJieDuanMap);//添加时间差阶段过程记录
+
+		}
 		//所有助剂加料完成1上升沿(这是更新批次记录表里插入阶段数据，前面有例子)
 		
 		
