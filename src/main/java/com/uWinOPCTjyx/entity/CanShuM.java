@@ -38,6 +38,18 @@ public class CanShuM {
 	 * 粉料重量参数名称
 	 */
 	public static final String FEN_LIAO_ZHONG_LIANG_TEXT="粉料重量";
+	/**
+	 * 加粉料PH参数名称
+	 */
+	public static final String JIA_FEN_LIAO_PH_TEXT="加粉料PH";
+	/**
+	 * 蒸汽压力参数名称
+	 */
+	public static final String ZHENG_QI_YA_LI_TEXT="蒸汽压力";
+	/**
+	 * 二次投料PH参数名称
+	 */
+	public static final String ER_CI_TOU_LIAO_PH_TEXT="二次投料PH";
 	
 	/**
 	 * 物料参数

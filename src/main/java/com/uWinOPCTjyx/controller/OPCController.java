@@ -258,7 +258,6 @@ public class OPCController {
 		//}
 
 
-		aaaaaaaaa
 		//if(false) {
 		//检测甲醛放料完成上升沿
 		List<OpcBianLiang> jqflwcMOBLList=new ArrayList<OpcBianLiang>();//创建存放M类甲醛放料完成的变量集合
@@ -299,7 +298,7 @@ public class OPCController {
 				}
 			}
 		}
-		
+
 		if(jqflwcMOBLList.size()>0) {
 			//M类
 			List<PiCiM> jqflwcPcMList=piCiMService.getListByFyfhList(jqflwcFyfhList);//根据甲醛放料完成变量里的反应釜号获取批次列表
@@ -598,42 +597,64 @@ public class OPCController {
 		List<OpcBianLiang> jflphhzMOBLList=new ArrayList<OpcBianLiang>();//创建存放M类加粉料ph合格的变量集合
 		List<OpcBianLiang> jflphhzUOBLList=new ArrayList<OpcBianLiang>();//创建存放U类加粉料ph合格的变量集合
 		List<String> jflphhzFyfhList=new ArrayList<String>();//创建加粉料ph合格的反应釜号集合(不管是M类还是U类都放进去)
-		List<OpcBianLiang> jqflwcOBLList=opcBianLiangService.getListByMcQz(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG_TEXT);//获取甲醛放料完成上升沿集合
-		List<OpcBianLiang> upSzJqflwcOBLList=getUpSzListFromList(jqflwcOBLList);//
-		for (OpcBianLiang upSzJqflwcOBL : upSzJqflwcOBLList) {
-			String mc = upSzJqflwcOBL.getMc();
+		List<OpcBianLiang> jflphhzOBLList=opcBianLiangService.getListByMcQz(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG_TEXT);//获取加粉料ph合格上升沿集合
+		List<OpcBianLiang> upSzJflphhzOBLList=getUpSzListFromList(jflphhzOBLList);//
+		for (OpcBianLiang upSzJflphhzOBL : upSzJflphhzOBLList) {
+			String mc = upSzJflphhzOBL.getMc();
 			if(opcBLScszList.size()==0) {
-				Integer lx = upSzJqflwcOBL.getLx();
+				Integer lx = upSzJflphhzOBL.getLx();
 				if(OpcBianLiang.LX_M==lx) {//根据类型判断是M类还是U类，往对应的集合里放
-					jqflwcMOBLList.add(upSzJqflwcOBL);
+					jflphhzMOBLList.add(upSzJflphhzOBL);
 				}
 				else if(OpcBianLiang.LX_U==lx) {
-					jqflwcUOBLList.add(upSzJqflwcOBL);
+					jflphhzMOBLList.add(upSzJflphhzOBL);
 				}
 				
-				String fyfh = upSzJqflwcOBL.getFyfh();
-				jqflwcFyfhList.add(fyfh);//添加甲醛放料完成反应釜号
+				String fyfh = upSzJflphhzOBL.getFyfh();
+				jflphhzFyfhList.add(fyfh);//添加加粉料ph合格反应釜号
 			}
 			else {
 				for (Map<String, Object> opcBLScszMap : opcBLScszList) {
 					String scmc = opcBLScszMap.get("mc").toString();
 					Boolean scsz = Boolean.valueOf(opcBLScszMap.get("sz").toString());
 					if(mc.equals(scmc)&&!scsz) {
-						Integer lx = upSzJqflwcOBL.getLx();
+						Integer lx = upSzJflphhzOBL.getLx();
 						if(OpcBianLiang.LX_M==lx) {//根据类型判断是M类还是U类，往对应的集合里放
-							jqflwcMOBLList.add(upSzJqflwcOBL);
+							jflphhzMOBLList.add(upSzJflphhzOBL);
 						}
 						else if(OpcBianLiang.LX_U==lx) {
-							jqflwcUOBLList.add(upSzJqflwcOBL);
+							jflphhzUOBLList.add(upSzJflphhzOBL);
 						}
 						
-						String fyfh = upSzJqflwcOBL.getFyfh();
-						jqflwcFyfhList.add(fyfh);//添加甲醛放料完成反应釜号
+						String fyfh = upSzJflphhzOBL.getFyfh();
+						jflphhzFyfhList.add(fyfh);//添加加粉料ph合格反应釜号
 					}
 				}
 			}
 		}
-		aaaaaaaaaaaa
+		
+		if(jflphhzMOBLList.size()>0) {
+			//M类
+			List<PiCiM> jflphhzPcMList=piCiMService.getListByFyfhList(jflphhzFyfhList);//根据加粉料ph合格变量里的反应釜号获取批次列表
+			Map<String, Object> phzJlsjMap = (Map<String, Object>)jlsjMMap.get(JiLuShiJianM.PH_ZHI_TEXT);//获取加料量记录事件id
+
+			//加粉料PH
+			Map<String, Object> jflphCsMap = (Map<String, Object>)canShuMMap.get(CanShuM.JIA_FEN_LIAO_PH_TEXT);//获取加粉料PH参数信息
+			piCiJiLuMService.addCsjl(jflphhzPcMList,jflphCsMap,phzJlsjMap);//添加加粉料PH参数记录
+		}
+		
+		
+		//检测升温开始上升沿
+		//1.记录蒸汽压力参数
+		
+		
+		//检测温度85与二次投料提醒上升沿
+		//1.记录反应釜1温度参数
+		
+		
+		//检测二次助剂后测PH提醒上升沿
+		//1.记录二次投料PH参数
+		
 		
 		return json;
 	}

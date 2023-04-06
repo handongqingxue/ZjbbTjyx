@@ -229,6 +229,13 @@ public class PiCiJiLuMServiceImpl implements PiCiJiLuMService {
 			
 			opcBLList=opcBianLiangMapper.getListByFyfhList(mc,fyfhList);
 		}
+		else if(CanShuM.JIA_FEN_LIAO_PH_TEXT.equals(csmc)) {
+			String[] bsfFMArr = Constant.BSF_F_M_ARR;
+			for (int i = 0; i < bsfFMArr.length; i++) {
+				mcList.add(Constant.JIA_FEN_LIAO_PH_SHU_RU_ZHI_TEXT+"_"+bsfFMArr[i]+"_AV");
+			}
+			opcBLList=opcBianLiangMapper.getListByFyMcList(mcList);
+		}
 		
 		Integer csId = Integer.valueOf(csMap.get("id").toString());//参数id
 		String csdw = csMap.get("dw").toString();//参数单位
@@ -248,7 +255,8 @@ public class PiCiJiLuMServiceImpl implements PiCiJiLuMService {
 			   CanShuM.JIA_JIAN_QIAN_PH_TEXT.equals(csmc)||
 			   CanShuM.JIA_JIAN_LIANG_TEXT.equals(csmc)||
 			   CanShuM.JIA_JIAN_HOU_PH_TEXT.equals(csmc)||
-			   CanShuM.FAN_YING_FU_WEN_DU_TEXT.equals(csmc)) {
+			   CanShuM.FAN_YING_FU_WEN_DU_TEXT.equals(csmc)||
+			   CanShuM.JIA_FEN_LIAO_PH_TEXT.equals(csmc)) {
 				String fyfh = pc.getFyfh();
 				for (OpcBianLiang opcBL : opcBLList) {
 					if(fyfh.equals(opcBL.getFyfh())) {

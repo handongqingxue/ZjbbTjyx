@@ -171,6 +171,22 @@ public class Constant {
 	 * 加粉料PH合格文字
 	 */
 	public static final String JIA_FEN_LIAO_PH_HE_GE_TEXT="加粉料PH合格";
+	/**
+	 * 加粉料PH输入值文字
+	 */
+	public static final String JIA_FEN_LIAO_PH_SHU_RU_ZHI_TEXT="加粉料PH输入值";
+	/**
+	 * 升温开始文字
+	 */
+	public static final String SHENG_WEN_KAI_SHI_TEXT="升温开始";
+	/**
+	 * 温度85与二次投料提醒文字
+	 */
+	public static final String WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING_TEXT="温度85与二次投料提醒";
+	/**
+	 * 二次助剂后测PH提醒文字
+	 */
+	public static final String ER_CI_ZHU_JI_HOU_CE_PH_TI_XING_TEXT="二次助剂后测PH提醒";
 	
 	/**
 	 * 百分号文字
