@@ -55,6 +55,12 @@
 		#{fyfh}
 		</foreach>
 	</select>
+	<select id="getListByJlghList" resultType="com.uWinOPCTjyx.entity.OpcBianLiang">
+		select * from OpcBianLiang where mc like #{mc}
+		<foreach collection="jlghList" item="jlgh" open=" and cast(jlgh as char) in (" separator="," close=")">
+		#{jlgh}
+		</foreach>
+	</select>
 	<select id="getListByFyMcList" resultType="com.uWinOPCTjyx.entity.OpcBianLiang">
 		select * from OpcBianLiang where 1=1
 		<foreach collection="mcList" item="mc" open=" and cast(mc as char) in (" separator="," close=")">

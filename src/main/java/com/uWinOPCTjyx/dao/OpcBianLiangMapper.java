@@ -40,6 +40,14 @@ public interface OpcBianLiangMapper {
 	List<OpcBianLiang> getListByFyfhList(@Param("mc") String mc, @Param("fyfhList") List<String> fyfhList);
 
 	/**
+	 * 根据计量罐号集合，获取变量信息列表(多用于中间间断式变量名查询)
+	 * @param mc
+	 * @param jlghList
+	 * @return
+	 */
+	List<OpcBianLiang> getListByJlghList(@Param("mc") String mc, @Param("jlghList") List<Integer> jlghList);
+
+	/**
 	 * 根据名称集合，获取变量信息列表(多用于非中间间断式变量名查询)
 	 * @param mcList
 	 * @return

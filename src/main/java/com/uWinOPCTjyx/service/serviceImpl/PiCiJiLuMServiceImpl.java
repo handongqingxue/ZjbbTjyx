@@ -201,23 +201,23 @@ public class PiCiJiLuMServiceImpl implements PiCiJiLuMService {
 		}
 		else if(CanShuM.ZHU_JI_JI_LIANG_GUAN_1_2_CHENG_ZHONG.equals(csmc)) {
 			String mc=Constant.ZHU_JI_JI_LIANG_GUAN_TEXT+Constant.BAI_FEN_HAO_TEXT+Constant.CHENG_ZHONG_TEXT+"_AV";
-			List<String> zjjlghList=new ArrayList<String>();
+			List<Integer> zjjlghList=new ArrayList<Integer>();
 			Integer[] zjjlgMArr = Constant.BSF_ZJJLG_1_2_M_ARR;
 			for (int i = 0; i < zjjlgMArr.length; i++) {
-				zjjlghList.add(zjjlgMArr[i]+"");
+				zjjlghList.add(zjjlgMArr[i]);
 			}
 			
-			opcBLList=opcBianLiangMapper.getListByFyfhList(mc,zjjlghList);
+			opcBLList=opcBianLiangMapper.getListByJlghList(mc,zjjlghList);
 		}
 		else if(CanShuM.ZHU_JI_JI_LIANG_GUAN_3_5_CHENG_ZHONG.equals(csmc)) {
 			String mc=Constant.ZHU_JI_JI_LIANG_GUAN_TEXT+Constant.BAI_FEN_HAO_TEXT+Constant.CHENG_ZHONG_TEXT+"_AV";
-			List<String> zjjlghList=new ArrayList<String>();
+			List<Integer> zjjlghList=new ArrayList<Integer>();
 			Integer[] zjjlgMArr = Constant.BSF_ZJJLG_3_5_M_ARR;
 			for (int i = 0; i < zjjlgMArr.length; i++) {
-				zjjlghList.add(zjjlgMArr[i]+"");
+				zjjlghList.add(zjjlgMArr[i]);
 			}
 			
-			opcBLList=opcBianLiangMapper.getListByFyfhList(mc,zjjlghList);
+			opcBLList=opcBianLiangMapper.getListByJlghList(mc,zjjlghList);
 		}
 		else if(CanShuM.FAN_YING_FU_WEN_DU_TEXT.equals(csmc)) {
 			String mc=Constant.FAN_YING_FU_TEXT+Constant.BAI_FEN_HAO_TEXT+Constant.WEN_DU_TEXT+"_AV";
@@ -242,13 +242,23 @@ public class PiCiJiLuMServiceImpl implements PiCiJiLuMService {
 			piCiJiLuM.setCsId(csId);
 			piCiJiLuM.setJlsjId(jlsjId);
 			
-			String fyfh = pc.getFyfh();
 			String jlnr = null;
-			for (OpcBianLiang opcBL : opcBLList) {
-				if(fyfh.equals(opcBL.getFyfh())) {
-					jlnr = Float.valueOf(opcBL.getSz())+csdw;
-					break;
+			if(!CanShuM.ZHU_JI_JI_LIANG_GUAN_1_2_CHENG_ZHONG.equals(csmc)&&
+			   !CanShuM.ZHU_JI_JI_LIANG_GUAN_3_5_CHENG_ZHONG.equals(csmc)) {
+				String fyfh = pc.getFyfh();
+				for (OpcBianLiang opcBL : opcBLList) {
+					if(fyfh.equals(opcBL.getFyfh())) {
+						jlnr = Float.valueOf(opcBL.getSz())+csdw;
+						break;
+					}
 				}
+			}
+			else {
+				float zjjlgcz=0;
+				for (OpcBianLiang opcBL : opcBLList) {
+					zjjlgcz += Float.valueOf(opcBL.getSz());//把所有计量罐重量加起来
+				}
+				jlnr = zjjlgcz+csdw;
 			}
 			piCiJiLuM.setJlnr(jlnr);
 			
