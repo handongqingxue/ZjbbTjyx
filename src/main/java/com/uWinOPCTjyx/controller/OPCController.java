@@ -692,13 +692,103 @@ public class OPCController {
 			Map<String, Object> zqylCsMap = (Map<String, Object>)canShuMMap.get(CanShuM.ZHENG_QI_YA_LI_TEXT);//获取蒸汽压力参数参数信息
 			piCiJiLuMService.addCsjl(jflphhzPcMList,zqylCsMap,wdJlsjMap);//添加蒸汽压力参数记录
 		}
+
+
 		//检测温度85与二次投料提醒上升沿
 		//1.记录反应釜1温度参数
-		
+		List<OpcBianLiang> wd85yectltxMOBLList = new ArrayList<OpcBianLiang>();//创建存放M类温度85与二次投料提醒变量集合
+		List<OpcBianLiang> wd85yectltxUOBLList = new ArrayList<OpcBianLiang>();//创建存放U类温度85与二次投料提醒变量集合
+		List<String> wd85yectltxFyfhList = new ArrayList<String>();//创建温度85与二次投料提醒的反应釜号集合(不管是M类还是U类都放进去)
+		List<OpcBianLiang> wd85yectltxOBLList=opcBianLiangService.getListByMcQz(Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING_TEXT);//获取温度85与二次投料提醒上升沿集合
+		List<OpcBianLiang> upWd85yectltxOBLList=getUpSzListFromList(wd85yectltxOBLList);//
+		for (OpcBianLiang upWd85yectltxOBL : upWd85yectltxOBLList) {
+			String mc = upWd85yectltxOBL.getMc();
+			if(opcBLScszList.size()==0) {
+				Integer lx = upWd85yectltxOBL.getLx();
+				if(OpcBianLiang.LX_M==lx) {//根据类型判断是M类还是U类，往对应的集合里放
+					wd85yectltxMOBLList.add(upWd85yectltxOBL);
+				}
+				else if(OpcBianLiang.LX_U==lx) {
+					wd85yectltxUOBLList.add(upWd85yectltxOBL);
+				}
+				String fyfh = upWd85yectltxOBL.getFyfh();
+				wd85yectltxFyfhList.add(fyfh);//添加温度85与二次投料提醒反应釜号
+			}
+			else {
+				for (Map<String, Object> opcBLScszMap : opcBLScszList) {
+					String scmc = opcBLScszMap.get("mc").toString();
+					Boolean scsz = Boolean.valueOf(opcBLScszMap.get("sz").toString());
+					if(mc.equals(scmc)&&!scsz) {
+						Integer lx = upWd85yectltxOBL.getLx();
+						if(OpcBianLiang.LX_M==lx) {//根据类型判断是M类还是U类，往对应的集合里放
+							wd85yectltxMOBLList.add(upWd85yectltxOBL);
+						}
+						else if(OpcBianLiang.LX_U==lx) {
+							wd85yectltxUOBLList.add(upWd85yectltxOBL);
+						}
+						String fyfh = upWd85yectltxOBL.getFyfh();
+						wd85yectltxFyfhList.add(fyfh);//添加温度85与二次投料提醒反应釜号
+					}
+				}
+			}
+		}
+		if(wd85yectltxMOBLList.size()>0) {
+			//M类
+			List<PiCiM> wd85yectltxPcMList=piCiMService.getListByFyfhList(wd85yectltxFyfhList);//根据温度85与二次投料提醒变量里的反应釜号获取批次列表
+			Map<String, Object> wd85yectltxJlsjMap = (Map<String, Object>)jlsjMMap.get(JiLuShiJianM.WEN_DU_TEXT);//获取温度记录事件id
+
+			//反应釜温度参数
+			Map<String, Object> wd85yectltxCsMap = (Map<String, Object>)canShuMMap.get(CanShuM.FAN_YING_FU_WEN_DU_TEXT);//获取反应釜温度参数参数信息
+			piCiJiLuMService.addCsjl(wd85yectltxPcMList,wd85yectltxCsMap,wd85yectltxJlsjMap);//添加反应釜温度参数记录
+		}
 		
 		//检测二次助剂后测PH提醒上升沿
 		//1.记录二次投料PH参数
-		
+		List<OpcBianLiang> eczjhcphtxMOBLList = new ArrayList<OpcBianLiang>();//创建存放M类二次助剂后测PH提醒变量集合
+		List<OpcBianLiang> eczjhcphtxUOBLList = new ArrayList<OpcBianLiang>();//创建存放U类二次助剂后测PH提醒变量集合
+		List<String> eczjhcphtxFyfhList = new ArrayList<String>();//创建二次助剂后测PH提醒的反应釜号集合(不管是M类还是U类都放进去)
+		List<OpcBianLiang> eczjhcphtxOBLList=opcBianLiangService.getListByMcQz(Constant.ER_CI_ZHU_JI_HOU_CE_PH_TI_XING_TEXT);//获取二次助剂后测PH提醒上升沿集合
+		List<OpcBianLiang> upEczjhcphtxOBLList=getUpSzListFromList(eczjhcphtxOBLList);//
+		for (OpcBianLiang upEczjhcphtxOBL : upEczjhcphtxOBLList) {
+			String mc = upEczjhcphtxOBL.getMc();
+			if(opcBLScszList.size()==0) {
+				Integer lx = upEczjhcphtxOBL.getLx();
+				if(OpcBianLiang.LX_M==lx) {//根据类型判断是M类还是U类，往对应的集合里放
+					eczjhcphtxMOBLList.add(upEczjhcphtxOBL);
+				}
+				else if(OpcBianLiang.LX_U==lx) {
+					eczjhcphtxUOBLList.add(upEczjhcphtxOBL);
+				}
+				String fyfh = upEczjhcphtxOBL.getFyfh();
+				eczjhcphtxFyfhList.add(fyfh);//添加二次助剂后测PH提醒反应釜号
+			}
+			else {
+				for (Map<String, Object> opcBLScszMap : opcBLScszList) {
+					String scmc = opcBLScszMap.get("mc").toString();
+					Boolean scsz = Boolean.valueOf(opcBLScszMap.get("sz").toString());
+					if(mc.equals(scmc)&&!scsz) {
+						Integer lx = upEczjhcphtxOBL.getLx();
+						if(OpcBianLiang.LX_M==lx) {//根据类型判断是M类还是U类，往对应的集合里放
+							eczjhcphtxMOBLList.add(upEczjhcphtxOBL);
+						}
+						else if(OpcBianLiang.LX_U==lx) {
+							eczjhcphtxUOBLList.add(upEczjhcphtxOBL);
+						}
+						String fyfh = upEczjhcphtxOBL.getFyfh();
+						eczjhcphtxFyfhList.add(fyfh);//添加二次助剂后测PH提醒反应釜号
+					}
+				}
+			}
+		}
+		if(eczjhcphtxMOBLList.size()>0) {
+			//M类
+			List<PiCiM> eczjhcphtxPcMList=piCiMService.getListByFyfhList(eczjhcphtxFyfhList);//根据二次助剂后测PH提醒变量里的反应釜号获取批次列表
+			Map<String, Object> eczjhcphtxJlsjMap = (Map<String, Object>)jlsjMMap.get(JiLuShiJianM.PH_ZHI_TEXT);//获取PH值记录事件id
+
+			//二次投料PH参数名称
+			Map<String, Object> eczjhcphtxCsMap = (Map<String, Object>)canShuMMap.get(CanShuM.ER_CI_TOU_LIAO_PH_TEXT);//获取二次投料PH参数信息
+			piCiJiLuMService.addCsjl(eczjhcphtxPcMList,eczjhcphtxCsMap,eczjhcphtxJlsjMap);//添加二次投料PH参数记录
+		}
 		
 		return json;
 	}
