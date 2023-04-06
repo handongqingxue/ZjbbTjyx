@@ -167,6 +167,10 @@ public class Constant {
 	 * 粉料重量设定文字
 	 */
 	public static final String FEN_LIAO_ZHONG_LIANG_SHE_DING_TEXT="粉料重量设定";
+	/**
+	 * 加粉料PH合格文字
+	 */
+	public static final String JIA_FEN_LIAO_PH_HE_GE_TEXT="加粉料PH合格";
 	
 	/**
 	 * 百分号文字
