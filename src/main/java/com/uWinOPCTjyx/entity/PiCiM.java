@@ -17,7 +17,7 @@ public class PiCiM {
 
 	@Override
     public String toString() {
-        return "ShengChanJiLu{" +
+        return "PiCiM{" +
                 "id=" + id +
                 ", scnf=" + scnf +
                 ", scbh=" + scbh +

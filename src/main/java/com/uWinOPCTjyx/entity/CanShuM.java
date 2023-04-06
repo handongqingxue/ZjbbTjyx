@@ -18,6 +18,22 @@ public class CanShuM {
 	 * 加碱前PH参数名称
 	 */
 	public static final String JIA_JIAN_QIAN_PH_TEXT="加碱前PH";
+	/**
+	 * 加碱量参数名称
+	 */
+	public static final String JIA_JIAN_LIANG_TEXT="加碱量";
+	/**
+	 * 加碱后PH参数名称
+	 */
+	public static final String JIA_JIAN_HOU_PH_TEXT="加碱后PH";
+	/**
+	 * 助剂计量罐1-2称重参数名称
+	 */
+	public static final String ZHU_JI_JI_LIANG_GUAN_1_2_CHENG_ZHONG="助剂计量罐1-2称重";
+	/**
+	 * 助剂计量罐3-5称重参数名称
+	 */
+	public static final String ZHU_JI_JI_LIANG_GUAN_3_5_CHENG_ZHONG="助剂计量罐3-5称重";
 	
 	/**
 	 * 物料参数

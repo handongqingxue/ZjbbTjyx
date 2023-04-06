@@ -2,6 +2,7 @@ package com.uWinOPCTjyx.service.serviceImpl;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -47,6 +48,7 @@ public class PiCiJiLuMServiceImpl implements PiCiJiLuMService {
         Integer jlsjId = Integer.valueOf(jlsjMap.get("id").toString());
         String jlsjMc = jlsjMap.get("mc").toString();
         Integer jieDuanId = Integer.valueOf(jieDuanMap.get("id").toString());
+        
 		List<OpcBianLiang> opcBLList=null;
 		if(JiLuShiJianM.ZHONG_LIANG_CHA_TEXT.equals(jlsjMc)) {//重量差的事件类型需要根据反应釜号获取重量
 			String mc=Constant.FU_TEXT+Constant.BAI_FEN_HAO_TEXT+Constant.CHENG_ZHONG_TEXT+"_AV";//釜称重名称
@@ -62,12 +64,17 @@ public class PiCiJiLuMServiceImpl implements PiCiJiLuMService {
 		for (PiCiM pc : pcList) {
 			piCiJiLuM=new PiCiJiLuM();
 			Integer pcId = pc.getId();
+			String jlkssj=null;
 			Float zqzl=null;
-			if(JiLuShiJianM.ZHONG_LIANG_CHA_TEXT.equals(jlsjMc)) {
+			if(JiLuShiJianM.SHI_JIAN_CHA_TEXT.equals(jlsjMc)) {
+				Date date = new Date();
+				jlkssj=DateUtil.getTimeStrByFormatStr(date,DateUtil.YEAR_TO_SECOND);
+			}
+			else if(JiLuShiJianM.ZHONG_LIANG_CHA_TEXT.equals(jlsjMc)) {
 				String fyfh = pc.getFyfh();
-				for (OpcBianLiang fczOBL : opcBLList) {
-					if(fyfh.equals(fczOBL.getFyfh())) {
-						zqzl=Float.valueOf(fczOBL.getSz());//因为是刚开始添加的阶段过程记录，设置重量为之前重量
+				for (OpcBianLiang opcBL : opcBLList) {
+					if(fyfh.equals(opcBL.getFyfh())) {
+						zqzl=Float.valueOf(opcBL.getSz());//因为是刚开始添加的阶段过程记录，设置重量为之前重量
 						break;
 					}
 				}
@@ -76,8 +83,7 @@ public class PiCiJiLuMServiceImpl implements PiCiJiLuMService {
 			piCiJiLuM.setPcId(pcId);
 			piCiJiLuM.setJlsjId(jlsjId);
 			if(JiLuShiJianM.SHI_JIAN_CHA_TEXT.equals(jlsjMc)) {
-				Date date = new Date();
-				piCiJiLuM.setJlkssj(DateUtil.getTimeStrByFormatStr(date,DateUtil.YEAR_TO_SECOND));
+				piCiJiLuM.setJlkssj(jlkssj);
 			}
 			else if(JiLuShiJianM.ZHONG_LIANG_CHA_TEXT.equals(jlsjMc))//重量差的事件类型需要设置之前重量
 				piCiJiLuM.setZqzl(zqzl);
@@ -86,6 +92,73 @@ public class PiCiJiLuMServiceImpl implements PiCiJiLuMService {
 			
 			count+=piCiJiLuMMapper.add(piCiJiLuM);
 		}
+		return count;
+	}
+
+	public int editJdgcFromPcList(List<PiCiM> pcList, Map<String, Object> jlsjMap, Map<String, Object> jieDuanMap) {
+		// TODO Auto-generated method stub
+		int count=0;
+
+		Integer jlsjId = Integer.valueOf(jlsjMap.get("id").toString());
+        String jlsjMc = jlsjMap.get("mc").toString();
+        Integer jieDuanId = Integer.valueOf(jieDuanMap.get("id").toString());
+        
+		List<OpcBianLiang> opcBLList=null;
+		if(JiLuShiJianM.ZHONG_LIANG_CHA_TEXT.equals(jlsjMc)) {//重量差的事件类型需要根据反应釜号获取重量
+			String mc=Constant.FU_TEXT+Constant.BAI_FEN_HAO_TEXT+Constant.CHENG_ZHONG_TEXT+"_AV";//釜称重名称
+			List<String> fyfhList=new ArrayList<String>();
+			for (PiCiM pc : pcList) {
+				String fyfh = pc.getFyfh();
+				fyfhList.add(fyfh);
+			}
+			
+			opcBLList=opcBianLiangMapper.getListByFyfhList(mc,fyfhList);
+		}
+        
+        List<Integer> pcIdList=new ArrayList<Integer>();
+        for (PiCiM pc : pcList) {
+			Integer pcId = pc.getId();
+			pcIdList.add(pcId);
+        }
+        
+        List<PiCiJiLuM> jdgcList=piCiJiLuMMapper.getJdgcListByPcIdList(pcIdList,jlsjId,jieDuanId);
+        for (PiCiJiLuM jdgc : jdgcList) {
+        	String jljssj=null;
+			Float zhzl=null;
+			String jlnr=null;
+			if(JiLuShiJianM.SHI_JIAN_CHA_TEXT.equals(jlsjMc)) {
+				Date date = new Date();
+				String jlkssj = jdgc.getJlkssj();
+				jljssj=DateUtil.getTimeStrByFormatStr(date,DateUtil.YEAR_TO_SECOND);
+				
+				Long jlkssjTime = DateUtil.convertStrToLong(jlkssj);
+				Long jljssjTime = DateUtil.convertStrToLong(jljssj);
+				jlnr=DateUtil.betweenTime(jlkssjTime, jljssjTime, DateUtil.FEN)+"Min";
+			}
+			else if(JiLuShiJianM.ZHONG_LIANG_CHA_TEXT.equals(jlsjMc)) {
+				String fyfh = jdgc.getFyfh();
+				for (OpcBianLiang opcBL : opcBLList) {
+					if(fyfh.equals(opcBL.getFyfh())) {
+			        	Float zqzl = jdgc.getZqzl();
+						zhzl=Float.valueOf(opcBL.getSz());//因为是刚开始添加的阶段过程记录，设置重量为之前重量
+						jlnr=(zqzl-zhzl)+"kg";
+						break;
+					}
+				}
+			}
+			
+			if(JiLuShiJianM.SHI_JIAN_CHA_TEXT.equals(jlsjMc)) {
+				jdgc.setJljssj(jljssj);
+				jdgc.setJlnr(jlnr);
+			}
+			else if(JiLuShiJianM.ZHONG_LIANG_CHA_TEXT.equals(jlsjMc)) {
+				jdgc.setZhzl(zhzl);
+				jdgc.setJlnr(jlnr);
+			}
+			
+			count+=piCiJiLuMMapper.edit(jdgc);
+		}
+        
 		return count;
 	}
 
@@ -104,6 +177,47 @@ public class PiCiJiLuMServiceImpl implements PiCiJiLuMService {
 				mcList.add(csmc+"_"+bsfFMArr[i]+"_AV");
 			}
 			opcBLList=opcBianLiangMapper.getListByFyMcList(mcList);
+		}
+		else if(CanShuM.JIA_JIAN_QIAN_PH_TEXT.equals(csmc)) {
+			String[] bsfFMArr = Constant.BSF_F_M_ARR;
+			for (int i = 0; i < bsfFMArr.length; i++) {
+				mcList.add(Constant.JIA_JIAN_QIAN_PH_SHU_RU_ZHI_TEXT+"_"+bsfFMArr[i]+"_AV");
+			}
+			opcBLList=opcBianLiangMapper.getListByFyMcList(mcList);
+		}
+		else if(CanShuM.JIA_JIAN_LIANG_TEXT.equals(csmc)) {
+			String[] bsfPFMArr = Constant.BSF_PF_M_ARR;
+			for (int i = 0; i < bsfPFMArr.length; i++) {
+				mcList.add(Constant.JIA_JIAN_LIANG_TI_SHI_TEXT+"_"+bsfPFMArr[i]+"_AV");
+			}
+			opcBLList=opcBianLiangMapper.getListByFyMcList(mcList);
+		}
+		else if(CanShuM.JIA_JIAN_HOU_PH_TEXT.equals(csmc)) {
+			String[] bsfFMArr = Constant.BSF_F_M_ARR;
+			for (int i = 0; i < bsfFMArr.length; i++) {
+				mcList.add(Constant.JIA_JIAN_HOU_PH_SHU_RU_ZHI_TEXT+"_"+bsfFMArr[i]+"_AV");
+			}
+			opcBLList=opcBianLiangMapper.getListByFyMcList(mcList);
+		}
+		else if(CanShuM.ZHU_JI_JI_LIANG_GUAN_1_2_CHENG_ZHONG.equals(csmc)) {
+			String mc=Constant.ZHU_JI_JI_LIANG_GUAN_TEXT+Constant.BAI_FEN_HAO_TEXT+Constant.CHENG_ZHONG_TEXT+"_AV";
+			List<String> zjjlghList=new ArrayList<String>();
+			Integer[] zjjlgMArr = Constant.BSF_ZJJLG_1_2_M_ARR;
+			for (int i = 0; i < zjjlgMArr.length; i++) {
+				zjjlghList.add(zjjlgMArr[i]+"");
+			}
+			
+			opcBLList=opcBianLiangMapper.getListByFyfhList(mc,zjjlghList);
+		}
+		else if(CanShuM.ZHU_JI_JI_LIANG_GUAN_3_5_CHENG_ZHONG.equals(csmc)) {
+			String mc=Constant.ZHU_JI_JI_LIANG_GUAN_TEXT+Constant.BAI_FEN_HAO_TEXT+Constant.CHENG_ZHONG_TEXT+"_AV";
+			List<String> zjjlghList=new ArrayList<String>();
+			Integer[] zjjlgMArr = Constant.BSF_ZJJLG_3_5_M_ARR;
+			for (int i = 0; i < zjjlgMArr.length; i++) {
+				zjjlghList.add(zjjlgMArr[i]+"");
+			}
+			
+			opcBLList=opcBianLiangMapper.getListByFyfhList(mc,zjjlghList);
 		}
 		else if(CanShuM.FAN_YING_FU_WEN_DU_TEXT.equals(csmc)) {
 			String mc=Constant.FAN_YING_FU_TEXT+Constant.BAI_FEN_HAO_TEXT+Constant.WEN_DU_TEXT+"_AV";
