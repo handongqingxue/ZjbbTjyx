@@ -384,7 +384,26 @@ public class OPCController {
 				}
 			}
 		}
+		if(jjphzzcMOBLList.size()>0) {
+			//M类
+			List<PiCiM> jjphzzcPcMList=piCiMService.getListByFyfhList(jjphzzcFyfhList);//根据加碱PH值正常里的反应釜号获取批次列表
+			Map<String, Object> jllJlsjMap = (Map<String, Object>)jlsjMMap.get(JiLuShiJianM.JIA_LIAO_LIANG_TEXT);//获取加料量记录事件id
 
+			Map<String,Object> phzJlsjMap = (Map<String, Object>)jlsjMMap.get(JiLuShiJianM.PH_ZHI_TEXT);//获取Ph值记录事件id
+
+			//加碱前PH值
+			Map<String, Object> jjqphCsMap = (Map<String, Object>)canShuMMap.get(CanShuM.JIA_JIAN_QIAN_PH_TEXT);//获取加碱前ph参数信息
+			piCiJiLuMService.addCsjl(jjphzzcPcMList,jjqphCsMap,phzJlsjMap);//添加加碱前ph参数记录
+
+			//加碱量提示
+			Map<String, Object> jjltsCsMap = (Map<String, Object>)canShuMMap.get(CanShuM.JIA_JIAN_LIANG_TEXT);//获取加碱量提示参数信息
+			piCiJiLuMService.addCsjl(jjphzzcPcMList,jjltsCsMap,jllJlsjMap);//添加加碱量提示参数记录
+
+			//加碱后PH值
+			Map<String, Object> jjhphCsMap = (Map<String, Object>)canShuMMap.get(CanShuM.JIA_JIAN_HOU_PH_TEXT);//获取加碱后PH值参数信息
+			piCiJiLuMService.addCsjl(jjphzzcPcMList,jjhphCsMap,phzJlsjMap);//添加加碱后PH值参数记录
+
+		}
 		//1.根据加碱前ph值参数
 		
 		
