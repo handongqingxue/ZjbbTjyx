@@ -15,9 +15,13 @@ public class JieDuanM {
 	 */
 	public static final String JIA_FEN_TEXT="加粉";
 	/**
-	 * 升温阶段名称
+	 * 升温开始至85度阶段名称
 	 */
-	public static final String SHENG_WEN_TEXT="升温";
+	public static final String SHENG_WEN_KAI_SHI_ZHI_85_DU_TEXT="升温开始至85度";
+	/**
+	 * 升温开始至完成阶段名称
+	 */
+	public static final String SHENG_WEN_KAI_SHI_ZHI_WAN_CHENG_TEXT="升温开始至完成";
 	/**
 	 * 二次加助剂阶段名称
 	 */
