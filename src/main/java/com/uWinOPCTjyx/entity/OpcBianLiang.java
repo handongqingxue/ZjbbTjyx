@@ -24,6 +24,7 @@ public class OpcBianLiang {
     private String mc;//变量名称
     private String sz;//数值
 	private String fyfh;//反应釜号
+	private Integer jlgh;//计量罐号
 	private Integer lx;//1 M类  2 U类
 	private String cjsj;//创建时间
     private String xgsj;//修改时间
@@ -72,6 +73,14 @@ public class OpcBianLiang {
 
 	public void setFyfh(String fyfh) {
 		this.fyfh = fyfh;
+	}
+
+	public Integer getJlgh() {
+		return jlgh;
+	}
+
+	public void setJlgh(Integer jlgh) {
+		this.jlgh = jlgh;
 	}
 
 	public Integer getLx() {

@@ -232,9 +232,6 @@ public class OPCController {
 			//添加与M类批次相关的加甲醛重量差阶段批次记录
 			Map<String, Object> zlcJlsjMap = (Map<String, Object>)jlsjMMap.get(JiLuShiJianM.ZHONG_LIANG_CHA_TEXT);//获取重量差记录事件信息
 			piCiJiLuMService.addJdgcFromPcList(jqblksPcMList,zlcJlsjMap,jjqJieDuanMap);//添加加甲醛重量差阶段过程记录
-
-			//aaaaaaaaaa
-			
 		}
 		if(jqblksUOBLList.size()>0) {
 			//U类
@@ -319,11 +316,11 @@ public class OPCController {
 
 			Map<String, Object> wdJlsjMap = (Map<String, Object>)jlsjMMap.get(JiLuShiJianM.WEN_DU_TEXT);//获取温度记录事件id
 			
+			//a
 			//反应釜温度
-			Map<String, Object> fyfwdCsMap = (Map<String, Object>)canShuMMap.get(CanShuM.FAN_YING_FU_WEN_DU_TEXT);//获取反应釜温度参数信息 //Constant.FAN_YING_FU_TEXT+"1"+Constant.WEN_DU_TEXT
+			Map<String, Object> fyfwdCsMap = (Map<String, Object>)canShuMMap.get(CanShuM.FAN_YING_FU_WEN_DU_TEXT);//获取反应釜温度参数信息 
 			piCiJiLuMService.addCsjl(jqflwcPcMList,fyfwdCsMap,wdJlsjMap);//添加反应釜温度参数记录
 			
-			//aaaaaaa
 			Map<String, Object> jjqJieDuanMap = (Map<String, Object>)jieDuanMMap.get(JieDuanM.JIA_JIA_QUAN_TEXT);//获取加甲醛阶段信息
 			
 			//编辑与M类批次相关的加甲醛时间差阶段批次记录(填充结束时间、时间差)
@@ -333,44 +330,6 @@ public class OPCController {
 			//编辑与M类批次相关的加甲醛重量差阶段批次记录(填充之后重量、重量差)
 			Map<String, Object> zlcJlsjMap = (Map<String, Object>)jlsjMMap.get(JiLuShiJianM.ZHONG_LIANG_CHA_TEXT);//获取重量差记录事件信息
 			piCiJiLuMService.addJdgcFromPcList(jqflwcPcMList,zlcJlsjMap,jjqJieDuanMap);//编辑加甲醛重量差阶段过程记录
-
-			
-			
-			if(false) {
-			////备料开始、完成这些上面都已经判断了，这里不需要写了。其他上升沿判断在下面写而不是在这里写
-			Map<String, Object> phzJlsjMap = (Map<String, Object>)jlsjMMap.get(JiLuShiJianM.PH_ZHI_TEXT);//获取ph值记录事件id
-			//加碱前PH参数
-			Map<String, Object> jjqPhCsMap = (Map<String, Object>)canShuMMap.get(CanShuM.JIA_JIAN_QIAN_PH_TEXT);//获取加碱前PH参数信息   //Constant.JIA_JIAN_QIAN_PH_SHU_RU_ZHI_TEXT
-			piCiJiLuMService.addCsjl(jqflwcPcMList,jjqPhCsMap,phzJlsjMap);//添加加碱前PH输入值参数记录
-			//甲醛备料开始参数
-			Map<String, Object> jqblksCsMap = (Map<String, Object>)canShuMMap.get(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI_TEXT);//获取甲醛备料开始参数信息
-			//甲醛放料完成参数
-			Map<String, Object> jqflwcCsMap = (Map<String, Object>)canShuMMap.get(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG_TEXT);//获取甲醛放料完成参数信息
-			//釜1称重参数
-			Map<String, Object> f1czCsMap = (Map<String, Object>)canShuMMap.get(Constant.FU_TEXT+"1"+Constant.CHENG_ZHONG_TEXT);//获取釜1称重参数信息
-			//加碱PH值正常参数
-			Map<String, Object> jjPHzzcCsMap = (Map<String, Object>)canShuMMap.get(Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG_TEXT);//获取加碱PH值正常参数信息
-			//加碱量提示参数
-			Map<String, Object> jjltsCsMap = (Map<String, Object>)canShuMMap.get(Constant.JIA_JIAN_LIANG_TI_SHI_TEXT);//获取加碱量提示参数信息
-			//加碱后PH输入参数
-			Map<String, Object> jjhPHsrCsMap = (Map<String, Object>)canShuMMap.get(Constant.JIA_JIAN_HOU_PH_SHU_RU_ZHI_TEXT);//获取加碱后PH输入参数信息
-			//助剂计量罐1称重参数
-			Map<String, Object> zjjlg1czCsMap = (Map<String, Object>)canShuMMap.get(Constant.ZHU_JI_JI_LIANG_GUAN_TEXT+"1"+Constant.CHENG_ZHONG_TEXT);//获取助剂计量罐1称重参数信息
-			//允许二次加助剂参数
-			Map<String, Object> yxecjzjCsMap = (Map<String, Object>)canShuMMap.get(Constant.YUN_XU_ER_CI_JIA_ZHU_JI_TEXT);//获取允许二次加助剂参数信息
-			//所有助剂加料完成1参数
-			Map<String, Object> syzjjlwcCsMap = (Map<String, Object>)canShuMMap.get(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1_TEXT);//获取所有助剂加料完成1参数信息
-			
-			piCiJiLuMService.addCsjl(jqflwcPcMList,jqblksCsMap,jllJlsjMap);//添加甲醛备料开始参数记录
-			piCiJiLuMService.addCsjl(jqflwcPcMList,jqflwcCsMap,jllJlsjMap);//添加甲醛放料完成参数记录
-			piCiJiLuMService.addCsjl(jqflwcPcMList,f1czCsMap,jllJlsjMap);//添加釜1称重参数记录
-			piCiJiLuMService.addCsjl(jqflwcPcMList,jjPHzzcCsMap,jllJlsjMap);//添加加碱PH值正常参数记录
-			piCiJiLuMService.addCsjl(jqflwcPcMList,jjltsCsMap,jllJlsjMap);//添加加碱量提示参数记录
-			piCiJiLuMService.addCsjl(jqflwcPcMList,jjhPHsrCsMap,jllJlsjMap);//添加加碱后PH输入参数记录
-			piCiJiLuMService.addCsjl(jqflwcPcMList,zjjlg1czCsMap,jllJlsjMap);//添加助剂计量罐1称重参数记录
-			piCiJiLuMService.addCsjl(jqflwcPcMList,yxecjzjCsMap,jllJlsjMap);//添加允许二次加助剂参数记录
-			piCiJiLuMService.addCsjl(jqflwcPcMList,syzjjlwcCsMap,jllJlsjMap);//添加所有助剂加料完成1参数记录
-			}
 		}
 		if(jqflwcUOBLList.size()>0) {
 			//U类
@@ -395,6 +354,59 @@ public class OPCController {
 		//3.根据加减后ph值参数和反应釜号，获取对应的ph值并插入数据表
 		
 		//4.计算助剂计量罐1、2重量之和，插入数据库(这个逻辑有点复杂，我来写)
+		//检测加碱PH值正常上升沿
+		List<OpcBianLiang> jjphzzcMOBLList=new ArrayList<OpcBianLiang>();//创建存放M类加碱PH值正常的变量集合
+		List<OpcBianLiang> jjphzzcUOBLList=new ArrayList<OpcBianLiang>();//创建存放U类加碱PH值正常的变量集合
+		List<String> jjphzzcFyfhList=new ArrayList<String>();//创建加碱PH值正常的反应釜号集合(不管是M类还是U类都放进去)
+		List<OpcBianLiang> jjphzzcOBLList=opcBianLiangService.getListByMcQz(Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG_TEXT);//获取加碱PH值正常上升沿集合
+		List<OpcBianLiang> upSzJjphzzcOBLList=getUpSzListFromList(jjphzzcOBLList);
+		for (OpcBianLiang upSzJjphzzcOBL : upSzJjphzzcOBLList) {
+			String mc = upSzJjphzzcOBL.getMc();
+			if(opcBLScszList.size()==0) {
+				Integer lx = upSzJjphzzcOBL.getLx();
+				if(OpcBianLiang.LX_M==lx) {//根据类型判断是M类还是U类，往对应的集合里放
+					jjphzzcMOBLList.add(upSzJjphzzcOBL);
+				}
+				else if(OpcBianLiang.LX_U==lx) {
+					jjphzzcUOBLList.add(upSzJjphzzcOBL);
+				}
+				
+				String fyfh = upSzJjphzzcOBL.getFyfh();
+				jjphzzcFyfhList.add(fyfh);//添加加碱PH值正常反应釜号
+			}
+			else {
+				for (Map<String, Object> opcBLScszMap : opcBLScszList) {
+					String scmc = opcBLScszMap.get("mc").toString();
+					Boolean scsz = Boolean.valueOf(opcBLScszMap.get("sz").toString());
+					if(mc.equals(scmc)&&!scsz) {
+						Integer lx = upSzJjphzzcOBL.getLx();
+						if(OpcBianLiang.LX_M==lx) {//根据类型判断是M类还是U类，往对应的集合里放
+							jjphzzcMOBLList.add(upSzJjphzzcOBL);
+						}
+						else if(OpcBianLiang.LX_U==lx) {
+							jjphzzcUOBLList.add(upSzJjphzzcOBL);
+						}
+						
+						String fyfh = upSzJjphzzcOBL.getFyfh();
+						jjphzzcFyfhList.add(fyfh);//添加加碱PH值正常反应釜号
+					}
+				}
+			}
+		}
+		
+		if(jjphzzcMOBLList.size()>0) {
+			//M类
+			List<PiCiM> jjphzzcPcMList=piCiMService.getListByFyfhList(jjphzzcFyfhList);//根据加碱PH值正常变量里的反应釜号获取批次列表
+			
+			//助剂计量罐1-2称重
+			Map<String, Object> zjjlgczCsMap = (Map<String, Object>)canShuMMap.get(CanShuM.ZHU_JI_JI_LIANG_GUAN_1_2_CHENG_ZHONG);//获取助剂计量罐1-2称重参数信息
+			
+			Map<String, Object> czJlsjMap = (Map<String, Object>)jlsjMMap.get(JiLuShiJianM.CHENG_ZHONG_TEXT);//获取称重记录事件id 
+			
+			piCiJiLuMService.addCsjl(jjphzzcPcMList,zjjlgczCsMap,czJlsjMap);//添加助剂计量罐1-2称重参数记录
+			
+		}
+		//a
 		
 		
 		//允许一次加助剂上升沿
