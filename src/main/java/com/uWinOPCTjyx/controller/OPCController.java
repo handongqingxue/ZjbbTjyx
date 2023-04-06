@@ -607,7 +607,7 @@ public class OPCController {
 					jflphhzMOBLList.add(upSzJflphhzOBL);
 				}
 				else if(OpcBianLiang.LX_U==lx) {
-					jflphhzMOBLList.add(upSzJflphhzOBL);
+					jflphhzUOBLList.add(upSzJflphhzOBL);
 				}
 				
 				String fyfh = upSzJflphhzOBL.getFyfh();
@@ -646,8 +646,52 @@ public class OPCController {
 		
 		//检测升温开始上升沿
 		//1.记录蒸汽压力参数
-		
-		
+		List<OpcBianLiang> swksMOBLList = new ArrayList<OpcBianLiang>();//创建存放M类升温开始变量集合
+		List<OpcBianLiang> swksUOBLList = new ArrayList<OpcBianLiang>();//创建存放U类升温开始变量集合
+		List<String> swksFyfhList = new ArrayList<String>();//创建升温开始的反应釜号集合(不管是M类还是U类都放进去)
+		List<OpcBianLiang> swksOBLList=opcBianLiangService.getListByMcQz(Constant.SHENG_WEN_KAI_SHI_TEXT);//获取升温开始上升沿集合
+		List<OpcBianLiang> upSwksOBLList=getUpSzListFromList(swksOBLList);//
+		for (OpcBianLiang upSwksOBL : upSwksOBLList) {
+			String mc = upSwksOBL.getMc();
+			if(opcBLScszList.size()==0) {
+				Integer lx = upSwksOBL.getLx();
+				if(OpcBianLiang.LX_M==lx) {//根据类型判断是M类还是U类，往对应的集合里放
+					swksMOBLList.add(upSwksOBL);
+				}
+				else if(OpcBianLiang.LX_U==lx) {
+					swksUOBLList.add(upSwksOBL);
+				}
+				String fyfh = upSwksOBL.getFyfh();
+				swksFyfhList.add(fyfh);//添加升温开始反应釜号
+			}
+			else {
+				for (Map<String, Object> opcBLScszMap : opcBLScszList) {
+					String scmc = opcBLScszMap.get("mc").toString();
+					Boolean scsz = Boolean.valueOf(opcBLScszMap.get("sz").toString());
+					if(mc.equals(scmc)&&!scsz) {
+						Integer lx = upSwksOBL.getLx();
+						if(OpcBianLiang.LX_M==lx) {//根据类型判断是M类还是U类，往对应的集合里放
+							swksMOBLList.add(upSwksOBL);
+						}
+						else if(OpcBianLiang.LX_U==lx) {
+							swksUOBLList.add(upSwksOBL);
+						}
+						String fyfh = upSwksOBL.getFyfh();
+						swksFyfhList.add(fyfh);//添加升温开始反应釜号
+					}
+				}
+			}
+		}
+
+		if(swksMOBLList.size()>0) {
+			//M类
+			List<PiCiM> jflphhzPcMList=piCiMService.getListByFyfhList(swksFyfhList);//根据加升温开始变量里的反应釜号获取批次列表
+			Map<String, Object> wdJlsjMap = (Map<String, Object>)jlsjMMap.get(JiLuShiJianM.WEN_DU_TEXT);//获取温度记录事件id
+
+			//蒸汽压力
+			Map<String, Object> zqylCsMap = (Map<String, Object>)canShuMMap.get(CanShuM.ZHENG_QI_YA_LI_TEXT);//获取蒸汽压力参数参数信息
+			piCiJiLuMService.addCsjl(jflphhzPcMList,zqylCsMap,wdJlsjMap);//添加蒸汽压力参数记录
+		}
 		//检测温度85与二次投料提醒上升沿
 		//1.记录反应釜1温度参数
 		
