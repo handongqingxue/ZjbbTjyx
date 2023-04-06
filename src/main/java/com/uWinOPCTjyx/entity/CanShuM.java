@@ -29,11 +29,15 @@ public class CanShuM {
 	/**
 	 * 助剂计量罐1-2称重参数名称
 	 */
-	public static final String ZHU_JI_JI_LIANG_GUAN_1_2_CHENG_ZHONG="助剂计量罐1-2称重";
+	public static final String ZHU_JI_JI_LIANG_GUAN_1_2_CHENG_ZHONG_TEXT="助剂计量罐1-2称重";
 	/**
 	 * 助剂计量罐3-5称重参数名称
 	 */
-	public static final String ZHU_JI_JI_LIANG_GUAN_3_5_CHENG_ZHONG="助剂计量罐3-5称重";
+	public static final String ZHU_JI_JI_LIANG_GUAN_3_5_CHENG_ZHONG_TEXT="助剂计量罐3-5称重";
+	/**
+	 * 粉料重量参数名称
+	 */
+	public static final String FEN_LIAO_ZHONG_LIANG_TEXT="粉料重量";
 	
 	/**
 	 * 物料参数

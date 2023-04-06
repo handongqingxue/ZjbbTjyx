@@ -199,7 +199,7 @@ public class PiCiJiLuMServiceImpl implements PiCiJiLuMService {
 			}
 			opcBLList=opcBianLiangMapper.getListByFyMcList(mcList);
 		}
-		else if(CanShuM.ZHU_JI_JI_LIANG_GUAN_1_2_CHENG_ZHONG.equals(csmc)) {
+		else if(CanShuM.ZHU_JI_JI_LIANG_GUAN_1_2_CHENG_ZHONG_TEXT.equals(csmc)) {
 			String mc=Constant.ZHU_JI_JI_LIANG_GUAN_TEXT+Constant.BAI_FEN_HAO_TEXT+Constant.CHENG_ZHONG_TEXT+"_AV";
 			List<Integer> zjjlghList=new ArrayList<Integer>();
 			Integer[] zjjlgMArr = Constant.BSF_ZJJLG_1_2_M_ARR;
@@ -209,7 +209,7 @@ public class PiCiJiLuMServiceImpl implements PiCiJiLuMService {
 			
 			opcBLList=opcBianLiangMapper.getListByJlghList(mc,zjjlghList);
 		}
-		else if(CanShuM.ZHU_JI_JI_LIANG_GUAN_3_5_CHENG_ZHONG.equals(csmc)) {
+		else if(CanShuM.ZHU_JI_JI_LIANG_GUAN_3_5_CHENG_ZHONG_TEXT.equals(csmc)) {
 			String mc=Constant.ZHU_JI_JI_LIANG_GUAN_TEXT+Constant.BAI_FEN_HAO_TEXT+Constant.CHENG_ZHONG_TEXT+"_AV";
 			List<Integer> zjjlghList=new ArrayList<Integer>();
 			Integer[] zjjlgMArr = Constant.BSF_ZJJLG_3_5_M_ARR;
@@ -257,8 +257,8 @@ public class PiCiJiLuMServiceImpl implements PiCiJiLuMService {
 					}
 				}
 			}
-			else if(CanShuM.ZHU_JI_JI_LIANG_GUAN_1_2_CHENG_ZHONG.equals(csmc)||
-					CanShuM.ZHU_JI_JI_LIANG_GUAN_3_5_CHENG_ZHONG.equals(csmc)) {
+			else if(CanShuM.ZHU_JI_JI_LIANG_GUAN_1_2_CHENG_ZHONG_TEXT.equals(csmc)||
+					CanShuM.ZHU_JI_JI_LIANG_GUAN_3_5_CHENG_ZHONG_TEXT.equals(csmc)) {
 				float zjjlgcz=0;
 				for (OpcBianLiang opcBL : opcBLList) {
 					zjjlgcz += Float.valueOf(opcBL.getSz());//把所有计量罐重量加起来

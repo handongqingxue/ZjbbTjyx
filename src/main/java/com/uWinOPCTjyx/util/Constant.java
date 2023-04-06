@@ -163,6 +163,10 @@ public class Constant {
 	 * 加粉料提醒文字
 	 */
 	public static final String JIA_FEN_LIAO_TI_XING_TEXT="加粉料提醒";
+	/**
+	 * 粉料重量设定文字
+	 */
+	public static final String FEN_LIAO_ZHONG_LIANG_SHE_DING_TEXT="粉料重量设定";
 	
 	/**
 	 * 百分号文字

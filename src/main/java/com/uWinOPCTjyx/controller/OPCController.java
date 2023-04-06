@@ -231,7 +231,6 @@ public class OPCController {
 			piCiJiLuMService.addJdgcFromPcList(jqblksPcMList,sjcJlsjMap,jjqJieDuanMap);//添加加甲醛时间差阶段过程记录
 
 
-			//aaaaaaaaaa
 
 		}
 		if(jqblksUOBLList.size()>0) {
@@ -258,6 +257,7 @@ public class OPCController {
 		}
 		//}
 
+		
 		//if(false) {
 		//检测甲醛放料完成上升沿
 		List<OpcBianLiang> jqflwcMOBLList=new ArrayList<OpcBianLiang>();//创建存放M类甲醛放料完成的变量集合
@@ -265,7 +265,7 @@ public class OPCController {
 		List<String> jqflwcFyfhList=new ArrayList<String>();//创建甲醛放料完成的反应釜号集合(不管是M类还是U类都放进去)
 		List<OpcBianLiang> jqflwcOBLList=opcBianLiangService.getListByMcQz(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG_TEXT);//获取甲醛放料完成上升沿集合
 		List<OpcBianLiang> upSzJqflwcOBLList=getUpSzListFromList(jqflwcOBLList);//
-			for (OpcBianLiang upSzJqflwcOBL : upSzJqflwcOBLList) {
+		for (OpcBianLiang upSzJqflwcOBL : upSzJqflwcOBLList) {
 			String mc = upSzJqflwcOBL.getMc();
 			if(opcBLScszList.size()==0) {
 				Integer lx = upSzJqflwcOBL.getLx();
@@ -299,6 +299,7 @@ public class OPCController {
 			}
 		}
 		
+		//aaaaaaaaa
 		if(jqflwcMOBLList.size()>0) {
 			//M类
 			List<PiCiM> jqflwcPcMList=piCiMService.getListByFyfhList(jqflwcFyfhList);//根据甲醛放料完成变量里的反应釜号获取批次列表
@@ -405,7 +406,7 @@ public class OPCController {
 			piCiJiLuMService.addCsjl(jjphzzcPcMList,jjhphCsMap,phzJlsjMap);//添加加碱后PH值参数记录
 			
 			//计算助剂计量罐1、2重量之和
-			Map<String, Object> zjjlgczCsMap = (Map<String, Object>)canShuMMap.get(CanShuM.ZHU_JI_JI_LIANG_GUAN_1_2_CHENG_ZHONG);//获取助剂计量罐1-2称重参数信息
+			Map<String, Object> zjjlgczCsMap = (Map<String, Object>)canShuMMap.get(CanShuM.ZHU_JI_JI_LIANG_GUAN_1_2_CHENG_ZHONG_TEXT);//获取助剂计量罐1-2称重参数信息
 			
 			piCiJiLuMService.addCsjl(jjphzzcPcMList,zjjlgczCsMap,czJlsjMap);//添加助剂计量罐1-2称重参数记录
 
@@ -422,7 +423,46 @@ public class OPCController {
 		//所有助剂加料完成1上升沿(这是更新批次记录表里插入阶段数据，前面有例子)
 		
 		
-		//加粉料提醒(我来写)
+		//检测加粉料提醒上升沿(我来写)
+		List<OpcBianLiang> jfltxMOBLList=new ArrayList<OpcBianLiang>();//创建存放M类加粉料提醒的变量集合
+		List<OpcBianLiang> jfltxUOBLList=new ArrayList<OpcBianLiang>();//创建存放U类加粉料提醒的变量集合
+		List<String> jfltxFyfhList=new ArrayList<String>();//创建加粉料提醒的反应釜号集合(不管是M类还是U类都放进去)
+		List<OpcBianLiang> jfltxOBLList=opcBianLiangService.getListByMcQz(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG_TEXT);//获取加粉料提醒上升沿集合
+		List<OpcBianLiang> upSzJfltxOBLList=getUpSzListFromList(jfltxOBLList);//
+		for (OpcBianLiang upSzJfltxOBL : upSzJfltxOBLList) {
+			String mc = upSzJfltxOBL.getMc();
+			if(opcBLScszList.size()==0) {
+				Integer lx = upSzJfltxOBL.getLx();
+				if(OpcBianLiang.LX_M==lx) {//根据类型判断是M类还是U类，往对应的集合里放
+					jfltxMOBLList.add(upSzJfltxOBL);
+				}
+				else if(OpcBianLiang.LX_U==lx) {
+					jfltxUOBLList.add(upSzJfltxOBL);
+				}
+				
+				String fyfh = upSzJfltxOBL.getFyfh();
+				jfltxFyfhList.add(fyfh);//添加加粉料提醒反应釜号
+			}
+			else {
+				for (Map<String, Object> opcBLScszMap : opcBLScszList) {
+					String scmc = opcBLScszMap.get("mc").toString();
+					Boolean scsz = Boolean.valueOf(opcBLScszMap.get("sz").toString());
+					if(mc.equals(scmc)&&!scsz) {
+						Integer lx = upSzJfltxOBL.getLx();
+						if(OpcBianLiang.LX_M==lx) {//根据类型判断是M类还是U类，往对应的集合里放
+							jfltxMOBLList.add(upSzJfltxOBL);
+						}
+						else if(OpcBianLiang.LX_U==lx) {
+							jfltxUOBLList.add(upSzJfltxOBL);
+						}
+						
+						String fyfh = upSzJfltxOBL.getFyfh();
+						jfltxFyfhList.add(fyfh);//添加加粉料提醒反应釜号
+					}
+				}
+			}
+		}
+		//aaaaaaaaaaaa
 		
 		return json;
 	}
