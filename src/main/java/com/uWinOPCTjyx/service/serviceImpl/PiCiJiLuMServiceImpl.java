@@ -167,6 +167,7 @@ public class PiCiJiLuMServiceImpl implements PiCiJiLuMService {
 		int count=0;
 		PiCiJiLuM piCiJiLuM=null;
 		
+		OpcBianLiang opcBL=null;
 		List<OpcBianLiang> opcBLList=null;
 		List<String> mcList=new ArrayList<String>();
         String csmc = csMap.get("mc").toString();
@@ -176,28 +177,28 @@ public class PiCiJiLuMServiceImpl implements PiCiJiLuMService {
 			for (int i = 0; i < bsfFMArr.length; i++) {
 				mcList.add(csmc+"_"+bsfFMArr[i]+"_AV");
 			}
-			opcBLList=opcBianLiangMapper.getListByFyMcList(mcList);
+			opcBLList=opcBianLiangMapper.getListByMcList(mcList);
 		}
 		else if(CanShuM.JIA_JIAN_QIAN_PH_TEXT.equals(csmc)) {
 			String[] bsfFMArr = Constant.BSF_F_M_ARR;
 			for (int i = 0; i < bsfFMArr.length; i++) {
 				mcList.add(Constant.JIA_JIAN_QIAN_PH_SHU_RU_ZHI_TEXT+"_"+bsfFMArr[i]+"_AV");
 			}
-			opcBLList=opcBianLiangMapper.getListByFyMcList(mcList);
+			opcBLList=opcBianLiangMapper.getListByMcList(mcList);
 		}
 		else if(CanShuM.JIA_JIAN_LIANG_TEXT.equals(csmc)) {
 			String[] bsfPFMArr = Constant.BSF_PF_M_ARR;
 			for (int i = 0; i < bsfPFMArr.length; i++) {
 				mcList.add(Constant.JIA_JIAN_LIANG_TI_SHI_TEXT+"_"+bsfPFMArr[i]+"_AV");
 			}
-			opcBLList=opcBianLiangMapper.getListByFyMcList(mcList);
+			opcBLList=opcBianLiangMapper.getListByMcList(mcList);
 		}
 		else if(CanShuM.JIA_JIAN_HOU_PH_TEXT.equals(csmc)) {
 			String[] bsfFMArr = Constant.BSF_F_M_ARR;
 			for (int i = 0; i < bsfFMArr.length; i++) {
 				mcList.add(Constant.JIA_JIAN_HOU_PH_SHU_RU_ZHI_TEXT+"_"+bsfFMArr[i]+"_AV");
 			}
-			opcBLList=opcBianLiangMapper.getListByFyMcList(mcList);
+			opcBLList=opcBianLiangMapper.getListByMcList(mcList);
 		}
 		else if(CanShuM.ZHU_JI_JI_LIANG_GUAN_1_2_CHENG_ZHONG_TEXT.equals(csmc)) {
 			String mc=Constant.ZHU_JI_JI_LIANG_GUAN_TEXT+Constant.BAI_FEN_HAO_TEXT+Constant.CHENG_ZHONG_TEXT+"_AV";
@@ -234,7 +235,10 @@ public class PiCiJiLuMServiceImpl implements PiCiJiLuMService {
 			for (int i = 0; i < bsfFMArr.length; i++) {
 				mcList.add(Constant.JIA_FEN_LIAO_PH_SHU_RU_ZHI_TEXT+"_"+bsfFMArr[i]+"_AV");
 			}
-			opcBLList=opcBianLiangMapper.getListByFyMcList(mcList);
+			opcBLList=opcBianLiangMapper.getListByMcList(mcList);
+		}
+		else if(CanShuM.ZHENG_QI_YA_LI_TEXT.equals(csmc)) {
+			opcBL=opcBianLiangMapper.getByMc(csmc);
 		}
 		
 		Integer csId = Integer.valueOf(csMap.get("id").toString());//参数id
@@ -258,9 +262,9 @@ public class PiCiJiLuMServiceImpl implements PiCiJiLuMService {
 			   CanShuM.FAN_YING_FU_WEN_DU_TEXT.equals(csmc)||
 			   CanShuM.JIA_FEN_LIAO_PH_TEXT.equals(csmc)) {
 				String fyfh = pc.getFyfh();
-				for (OpcBianLiang opcBL : opcBLList) {
-					if(fyfh.equals(opcBL.getFyfh())) {
-						jlnr = Float.valueOf(opcBL.getSz())+csdw;
+				for (OpcBianLiang opcBLItem : opcBLList) {
+					if(fyfh.equals(opcBLItem.getFyfh())) {
+						jlnr = Float.valueOf(opcBLItem.getSz())+csdw;
 						break;
 					}
 				}
@@ -268,10 +272,13 @@ public class PiCiJiLuMServiceImpl implements PiCiJiLuMService {
 			else if(CanShuM.ZHU_JI_JI_LIANG_GUAN_1_2_CHENG_ZHONG_TEXT.equals(csmc)||
 					CanShuM.ZHU_JI_JI_LIANG_GUAN_3_5_CHENG_ZHONG_TEXT.equals(csmc)) {
 				float zjjlgcz=0;
-				for (OpcBianLiang opcBL : opcBLList) {
-					zjjlgcz += Float.valueOf(opcBL.getSz());//把所有计量罐重量加起来
+				for (OpcBianLiang opcBLItem : opcBLList) {
+					zjjlgcz += Float.valueOf(opcBLItem.getSz());//把所有计量罐重量加起来
 				}
 				jlnr = zjjlgcz+csdw;
+			}
+			else if(CanShuM.ZHENG_QI_YA_LI_TEXT.equals(csmc)) {
+				jlnr = Float.valueOf(opcBL.getSz())+csdw;
 			}
 			piCiJiLuM.setJlnr(jlnr);
 			

@@ -29,6 +29,18 @@ public interface OpcBianLiangMapper {
 	 */
 	Integer getCountByMc(@Param("mc") String mc);
 
+	/**
+	 * 根据名称获取变量信息
+	 * @param mc
+	 * @return
+	 */
+	OpcBianLiang getByMc(@Param("mc") String mc);
+
+	/**
+	 * 根据名称集合，获取变量信息列表(多用于非中间间断式变量名查询)
+	 * @param mcList
+	 * @return
+	 */
 	List<OpcBianLiang> getListByMcList(@Param("mcList") List<String> mcList);
 
 	/**
@@ -46,11 +58,4 @@ public interface OpcBianLiangMapper {
 	 * @return
 	 */
 	List<OpcBianLiang> getListByJlghList(@Param("mc") String mc, @Param("jlghList") List<Integer> jlghList);
-
-	/**
-	 * 根据名称集合，获取变量信息列表(多用于非中间间断式变量名查询)
-	 * @param mcList
-	 * @return
-	 */
-	List<OpcBianLiang> getListByFyMcList(@Param("mcList") List<String> mcList);
 }
