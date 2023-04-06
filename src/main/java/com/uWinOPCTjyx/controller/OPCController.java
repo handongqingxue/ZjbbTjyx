@@ -387,9 +387,10 @@ public class OPCController {
 		if(jjphzzcMOBLList.size()>0) {
 			//M类
 			List<PiCiM> jjphzzcPcMList=piCiMService.getListByFyfhList(jjphzzcFyfhList);//根据加碱PH值正常里的反应釜号获取批次列表
-			Map<String, Object> jllJlsjMap = (Map<String, Object>)jlsjMMap.get(JiLuShiJianM.JIA_LIAO_LIANG_TEXT);//获取加料量记录事件id
 
 			Map<String,Object> phzJlsjMap = (Map<String, Object>)jlsjMMap.get(JiLuShiJianM.PH_ZHI_TEXT);//获取Ph值记录事件id
+			Map<String, Object> jllJlsjMap = (Map<String, Object>)jlsjMMap.get(JiLuShiJianM.JIA_LIAO_LIANG_TEXT);//获取加料量记录事件id
+			Map<String, Object> czJlsjMap = (Map<String, Object>)jlsjMMap.get(JiLuShiJianM.CHENG_ZHONG_TEXT);//获取称重记录事件id 
 
 			//加碱前PH值
 			Map<String, Object> jjqphCsMap = (Map<String, Object>)canShuMMap.get(CanShuM.JIA_JIAN_QIAN_PH_TEXT);//获取加碱前ph参数信息
@@ -402,38 +403,26 @@ public class OPCController {
 			//加碱后PH值
 			Map<String, Object> jjhphCsMap = (Map<String, Object>)canShuMMap.get(CanShuM.JIA_JIAN_HOU_PH_TEXT);//获取加碱后PH值参数信息
 			piCiJiLuMService.addCsjl(jjphzzcPcMList,jjhphCsMap,phzJlsjMap);//添加加碱后PH值参数记录
-
-		}
-		//1.根据加碱前ph值参数
-		
-		
-		
-		//2.根据加减量提示参数插入数据表
-		
-		//3.根据加减后ph值参数插入数据表
-		
-		
-		//4.计算助剂计量罐1、2重量之和，插入数据库(这个逻辑有点复杂，我来写)
-		//检测加碱PH值正常上升沿
-		
-		if(jjphzzcMOBLList.size()>0) {
-			//M类
-			List<PiCiM> jjphzzcPcMList=piCiMService.getListByFyfhList(jjphzzcFyfhList);//根据加碱PH值正常变量里的反应釜号获取批次列表
 			
-			//助剂计量罐1-2称重
+			//计算助剂计量罐1、2重量之和
 			Map<String, Object> zjjlgczCsMap = (Map<String, Object>)canShuMMap.get(CanShuM.ZHU_JI_JI_LIANG_GUAN_1_2_CHENG_ZHONG);//获取助剂计量罐1-2称重参数信息
 			
-			Map<String, Object> czJlsjMap = (Map<String, Object>)jlsjMMap.get(JiLuShiJianM.CHENG_ZHONG_TEXT);//获取称重记录事件id 
-			
 			piCiJiLuMService.addCsjl(jjphzzcPcMList,zjjlgczCsMap,czJlsjMap);//添加助剂计量罐1-2称重参数记录
-			
+
 		}
 		
 		
-		//允许一次加助剂上升沿
 		
 		
-		//所有助剂加料完成1上升沿
+		
+		//允许一次加助剂上升沿(这是往批次记录表里插入阶段数据，前面有例子)
+		
+		
+		
+		//所有助剂加料完成1上升沿(这是更新批次记录表里插入阶段数据，前面有例子)
+		
+		
+		//加粉料提醒(我来写)
 		
 		return json;
 	}

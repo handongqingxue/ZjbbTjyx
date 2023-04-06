@@ -243,8 +243,12 @@ public class PiCiJiLuMServiceImpl implements PiCiJiLuMService {
 			piCiJiLuM.setJlsjId(jlsjId);
 			
 			String jlnr = null;
-			if(!CanShuM.ZHU_JI_JI_LIANG_GUAN_1_2_CHENG_ZHONG.equals(csmc)&&
-			   !CanShuM.ZHU_JI_JI_LIANG_GUAN_3_5_CHENG_ZHONG.equals(csmc)) {
+			if(CanShuM.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG_TEXT.equals(csmc)||
+			   CanShuM.JIA_SHUI_SHI_JI_ZHONG_LIANG_TEXT.equals(csmc)||
+			   CanShuM.JIA_JIAN_QIAN_PH_TEXT.equals(csmc)||
+			   CanShuM.JIA_JIAN_LIANG_TEXT.equals(csmc)||
+			   CanShuM.JIA_JIAN_HOU_PH_TEXT.equals(csmc)||
+			   CanShuM.FAN_YING_FU_WEN_DU_TEXT.equals(csmc)) {
 				String fyfh = pc.getFyfh();
 				for (OpcBianLiang opcBL : opcBLList) {
 					if(fyfh.equals(opcBL.getFyfh())) {
@@ -253,7 +257,8 @@ public class PiCiJiLuMServiceImpl implements PiCiJiLuMService {
 					}
 				}
 			}
-			else {
+			else if(CanShuM.ZHU_JI_JI_LIANG_GUAN_1_2_CHENG_ZHONG.equals(csmc)||
+					CanShuM.ZHU_JI_JI_LIANG_GUAN_3_5_CHENG_ZHONG.equals(csmc)) {
 				float zjjlgcz=0;
 				for (OpcBianLiang opcBL : opcBLList) {
 					zjjlgcz += Float.valueOf(opcBL.getSz());//把所有计量罐重量加起来
