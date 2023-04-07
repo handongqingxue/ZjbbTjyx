@@ -98,7 +98,7 @@ public class OPCController {
 	@ResponseBody
 	public Map<String, Object> keepWatchOnOpcBianLiang() {
 
-		Map<String,Object> json=new HashMap<String, Object>();//return
+		Map<String,Object> json=new HashMap<String, Object>();
 		
 		//M类
 		Map<String,Map<String, Object>> jlsjMMap=jiLuShiJianMService.getMap();//M类记录事件参数map集合，获取名称、id键值对，下面的逻辑里关联id时要用
@@ -109,27 +109,28 @@ public class OPCController {
 		Map<String, Map<String, Object>> jlsjUMap = jiLuShiJianUService.getMap();
 		Map<String, Map<String, Object>> jieDuanUMap = jieDuanUService.getMap();
 
-		if(false) {
-			//检测备料开始上升沿
-			List<OpcBianLiang> blksMOBLList=new ArrayList<OpcBianLiang>();//备料开始M类opc变量集合
-			List<OpcBianLiang> blksUOBLList=new ArrayList<OpcBianLiang>();//备料开始U类opc变量集合
-			List<String> blksFyfhList=new ArrayList<String>();//备料开始反应釜号集合(不管是M类还是U类都放进去)
-			List<OpcBianLiang> blksOBLList=opcBianLiangService.getListByMcQz(Constant.BEI_LIAO_KAI_SHI_TEXT);//不管变量值有没有上升都获取，为下面存储为上一次数值提供变量集合
-			List<OpcBianLiang> upSzBlksOBLList=getUpSzListFromList(blksOBLList);//从所有备料开始有关的变量里获取备料开始上升沿集合
-			for (OpcBianLiang upSzBlksOBL : upSzBlksOBLList) {
-				String mc = upSzBlksOBL.getMc();//获取变量的名称
-				if(opcBLScszList.size()==0) {
-					Integer lx = upSzBlksOBL.getLx();//获取类型
-					if(OpcBianLiang.LX_M==lx) {//根据类型判断是M类还是U类，往对应的集合里放
-						blksMOBLList.add(upSzBlksOBL);
-					}
-					else if(OpcBianLiang.LX_U==lx) {
-						blksUOBLList.add(upSzBlksOBL);
-					}
-					String fyfh = upSzBlksOBL.getFyfh();//获取反应釜号
-					blksFyfhList.add(fyfh);//添加到反应釜号集合
+		//if(false) {
+		//检测备料开始上升沿
+		List<OpcBianLiang> blksMOBLList=new ArrayList<OpcBianLiang>();//备料开始M类opc变量集合
+		List<OpcBianLiang> blksUOBLList=new ArrayList<OpcBianLiang>();//备料开始U类opc变量集合
+		List<String> blksFyfhList=new ArrayList<String>();//备料开始反应釜号集合(不管是M类还是U类都放进去)
+		List<OpcBianLiang> blksOBLList=opcBianLiangService.getListByMcQz(Constant.BEI_LIAO_KAI_SHI_TEXT);//不管变量值有没有上升都获取，为下面存储为上一次数值提供变量集合
+		List<OpcBianLiang> upSzBlksOBLList=getUpSzListFromList(blksOBLList);//从所有备料开始有关的变量里获取备料开始上升沿集合
+		for (OpcBianLiang upSzBlksOBL : upSzBlksOBLList) {
+			String mc = upSzBlksOBL.getMc();//获取变量的名称
+			if(opcBLScszList.size()==0) {
+				Integer lx = upSzBlksOBL.getLx();//获取类型
+				if(OpcBianLiang.LX_M==lx) {//根据类型判断是M类还是U类，往对应的集合里放
+					blksMOBLList.add(upSzBlksOBL);
 				}
-				else {
+				else if(OpcBianLiang.LX_U==lx) {
+					blksUOBLList.add(upSzBlksOBL);
+				}
+				String fyfh = upSzBlksOBL.getFyfh();//获取反应釜号
+				blksFyfhList.add(fyfh);//添加到反应釜号集合
+			}
+			else {
+				if(checkOpcBLIfExistInScszList(mc)) {
 					for (Map<String, Object> opcBLScszMap : opcBLScszList) {//遍历opc变量上次数值集合
 						String scmc = opcBLScszMap.get("mc").toString();
 						Boolean scsz = Boolean.valueOf(opcBLScszMap.get("sz").toString());
@@ -141,37 +142,50 @@ public class OPCController {
 							else if(OpcBianLiang.LX_U==lx) {
 								blksUOBLList.add(upSzBlksOBL);
 							}
-
+	
 							String fyfh = upSzBlksOBL.getFyfh();
 							blksFyfhList.add(fyfh);
 						}
 					}
 				}
-			}
+				else {
+					Integer lx = upSzBlksOBL.getLx();
+					if(OpcBianLiang.LX_M==lx) {//根据类型判断是M类还是U类，往对应的集合里放
+						blksMOBLList.add(upSzBlksOBL);
+					}
+					else if(OpcBianLiang.LX_U==lx) {
+						blksUOBLList.add(upSzBlksOBL);
+					}
 
-			if(blksMOBLList.size()>0) {//若opc变量表M类里有上升沿数据，就开始创建M类批次
-				//M类
-				piCiMService.addByBlksOBLList(blksMOBLList);
-				List<Integer> blksPcIdMList=piCiMService.getIdListByFyfhList(blksFyfhList);//根据备料开始变量里的反应釜号获取批次idM类列表
-				Map<String, Object> pcJlsjMap = (Map<String, Object>)jlsjMMap.get(JiLuShiJianM.PI_CI_TEXT);//获取批次记录事件信息
-				piCiJiLuMService.addPcgcFromPcIdList(blksPcIdMList,pcJlsjMap);//添加批次过程记录
-			}
-			if(blksUOBLList.size()>0) {
-				//U类
-				piCiUService.addByBlksOBLList(blksUOBLList);
-				List<Integer> blksPcIdUList=piCiUService.getIdListByFyfhList(blksFyfhList);//根据备料开始变量里的反应釜号获取批次id列表
-				Map<String, Object> pcJlsjMap = (Map<String, Object>)jlsjMMap.get(JiLuShiJianM.PI_CI_TEXT);//获取批次记录事件id
-				piCiJiLuUService.addPcgcFromPcIdList(blksPcIdUList,pcJlsjMap);//添加批次过程记录
-
-			}
-			if(blksOBLList.size()>0) {
-				for (OpcBianLiang blksOBL : blksOBLList) {//循环备料开始集合
-					String blksMc = blksOBL.getMc();
-					String blksSz = blksOBL.getSz();
-					addOpcBLScszInList(blksSz,blksMc);//根据备料开始名称更新数值,存入上次数值集合里,作为上次变量数值.下次就不会再被检索到了
+					String fyfh = upSzBlksOBL.getFyfh();
+					blksFyfhList.add(fyfh);
 				}
 			}
 		}
+
+		if(blksMOBLList.size()>0) {//若opc变量表M类里有上升沿数据，就开始创建M类批次
+			//M类
+			piCiMService.addByBlksOBLList(blksMOBLList);
+			List<Integer> blksPcIdMList=piCiMService.getIdListByFyfhList(blksFyfhList);//根据备料开始变量里的反应釜号获取批次idM类列表
+			Map<String, Object> pcJlsjMap = (Map<String, Object>)jlsjMMap.get(JiLuShiJianM.PI_CI_TEXT);//获取批次记录事件信息
+			piCiJiLuMService.addPcgcFromPcIdList(blksPcIdMList,pcJlsjMap);//添加批次过程记录
+		}
+		if(blksUOBLList.size()>0) {
+			//U类
+			piCiUService.addByBlksOBLList(blksUOBLList);
+			List<Integer> blksPcIdUList=piCiUService.getIdListByFyfhList(blksFyfhList);//根据备料开始变量里的反应釜号获取批次id列表
+			Map<String, Object> pcJlsjMap = (Map<String, Object>)jlsjMMap.get(JiLuShiJianM.PI_CI_TEXT);//获取批次记录事件id
+			piCiJiLuUService.addPcgcFromPcIdList(blksPcIdUList,pcJlsjMap);//添加批次过程记录
+
+		}
+		if(blksOBLList.size()>0) {
+			for (OpcBianLiang blksOBL : blksOBLList) {//循环备料开始集合
+				String blksMc = blksOBL.getMc();
+				String blksSz = blksOBL.getSz();
+				addOpcBLScszInList(blksSz,blksMc);//根据备料开始名称更新数值,存入上次数值集合里,作为上次变量数值.下次就不会再被检索到了
+			}
+		}
+		//}
 		
 		
 
@@ -197,21 +211,35 @@ public class OPCController {
 				jqblksFyfhList.add(fyfh);//添加甲醛备料开始反应釜号
 			}
 			else {
-				for (Map<String, Object> opcBLScszMap : opcBLScszList) {
-					String scmc = opcBLScszMap.get("mc").toString();
-					Boolean scsz = Boolean.valueOf(opcBLScszMap.get("sz").toString());
-					if(mc.equals(scmc)&&!scsz) {
-						Integer lx = upSzJqblksOBL.getLx();
-						if(OpcBianLiang.LX_M==lx) {//根据类型判断是M类还是U类，往对应的集合里放
-							jqblksMOBLList.add(upSzJqblksOBL);
+				if(checkOpcBLIfExistInScszList(mc)) {
+					for (Map<String, Object> opcBLScszMap : opcBLScszList) {
+						String scmc = opcBLScszMap.get("mc").toString();
+						Boolean scsz = Boolean.valueOf(opcBLScszMap.get("sz").toString());
+						if(mc.equals(scmc)&&!scsz) {
+							Integer lx = upSzJqblksOBL.getLx();
+							if(OpcBianLiang.LX_M==lx) {//根据类型判断是M类还是U类，往对应的集合里放
+								jqblksMOBLList.add(upSzJqblksOBL);
+							}
+							else if(OpcBianLiang.LX_U==lx) {
+								jqblksUOBLList.add(upSzJqblksOBL);
+							}
+	
+							String fyfh = upSzJqblksOBL.getFyfh();
+							jqblksFyfhList.add(fyfh);//添加甲醛备料开始反应釜号
 						}
-						else if(OpcBianLiang.LX_U==lx) {
-							jqblksUOBLList.add(upSzJqblksOBL);
-						}
-
-						String fyfh = upSzJqblksOBL.getFyfh();
-						jqblksFyfhList.add(fyfh);//添加甲醛备料开始反应釜号
 					}
+				}
+				else {
+					Integer lx = upSzJqblksOBL.getLx();
+					if(OpcBianLiang.LX_M==lx) {//根据类型判断是M类还是U类，往对应的集合里放
+						jqblksMOBLList.add(upSzJqblksOBL);
+					}
+					else if(OpcBianLiang.LX_U==lx) {
+						jqblksUOBLList.add(upSzJqblksOBL);
+					}
+
+					String fyfh = upSzJqblksOBL.getFyfh();
+					jqblksFyfhList.add(fyfh);//添加甲醛备料开始反应釜号
 				}
 			}
 		}
@@ -280,21 +308,35 @@ public class OPCController {
 				jqflwcFyfhList.add(fyfh);//添加甲醛放料完成反应釜号
 			}
 			else {
-				for (Map<String, Object> opcBLScszMap : opcBLScszList) {
-					String scmc = opcBLScszMap.get("mc").toString();
-					Boolean scsz = Boolean.valueOf(opcBLScszMap.get("sz").toString());
-					if(mc.equals(scmc)&&!scsz) {
-						Integer lx = upSzJqflwcOBL.getLx();
-						if(OpcBianLiang.LX_M==lx) {//根据类型判断是M类还是U类，往对应的集合里放
-							jqflwcMOBLList.add(upSzJqflwcOBL);
+				if(checkOpcBLIfExistInScszList(mc)) {
+					for (Map<String, Object> opcBLScszMap : opcBLScszList) {
+						String scmc = opcBLScszMap.get("mc").toString();
+						Boolean scsz = Boolean.valueOf(opcBLScszMap.get("sz").toString());
+						if(mc.equals(scmc)&&!scsz) {
+							Integer lx = upSzJqflwcOBL.getLx();
+							if(OpcBianLiang.LX_M==lx) {//根据类型判断是M类还是U类，往对应的集合里放
+								jqflwcMOBLList.add(upSzJqflwcOBL);
+							}
+							else if(OpcBianLiang.LX_U==lx) {
+								jqflwcUOBLList.add(upSzJqflwcOBL);
+							}
+							
+							String fyfh = upSzJqflwcOBL.getFyfh();
+							jqflwcFyfhList.add(fyfh);//添加甲醛放料完成反应釜号
 						}
-						else if(OpcBianLiang.LX_U==lx) {
-							jqflwcUOBLList.add(upSzJqflwcOBL);
-						}
-						
-						String fyfh = upSzJqflwcOBL.getFyfh();
-						jqflwcFyfhList.add(fyfh);//添加甲醛放料完成反应釜号
 					}
+				}
+				else {
+					Integer lx = upSzJqflwcOBL.getLx();
+					if(OpcBianLiang.LX_M==lx) {//根据类型判断是M类还是U类，往对应的集合里放
+						jqflwcMOBLList.add(upSzJqflwcOBL);
+					}
+					else if(OpcBianLiang.LX_U==lx) {
+						jqflwcUOBLList.add(upSzJqflwcOBL);
+					}
+					
+					String fyfh = upSzJqflwcOBL.getFyfh();
+					jqflwcFyfhList.add(fyfh);//添加甲醛放料完成反应釜号
 				}
 			}
 		}
@@ -344,7 +386,7 @@ public class OPCController {
 		//}
 		
 		
-		////剩余逻辑在这里写
+		//if(false) {
 		//加碱PH值正常上升沿
 		List<OpcBianLiang> jjphzzcMOBLList=new ArrayList<OpcBianLiang>();//创建存放M类加碱PH值正常的变量集合
 		List<OpcBianLiang> jjphzzcUOBLList=new ArrayList<OpcBianLiang>();//创建存放U类加碱PH值正常的变量集合
@@ -366,21 +408,35 @@ public class OPCController {
 				jjphzzcFyfhList.add(fyfh);//添加加碱PH值正常反应釜号
 			}
 			else {
-				for (Map<String, Object> opcBLScszMap : opcBLScszList) {
-					String scmc = opcBLScszMap.get("mc").toString();
-					Boolean scsz = Boolean.valueOf(opcBLScszMap.get("sz").toString());
-					if(mc.equals(scmc)&&!scsz) {
-						Integer lx = upSzJjphzzcOBL.getLx();
-						if(OpcBianLiang.LX_M==lx) {//根据类型判断是M类还是U类，往对应的集合里放
-							jjphzzcMOBLList.add(upSzJjphzzcOBL);
+				if(checkOpcBLIfExistInScszList(mc)) {
+					for (Map<String, Object> opcBLScszMap : opcBLScszList) {
+						String scmc = opcBLScszMap.get("mc").toString();
+						Boolean scsz = Boolean.valueOf(opcBLScszMap.get("sz").toString());
+						if(mc.equals(scmc)&&!scsz) {
+							Integer lx = upSzJjphzzcOBL.getLx();
+							if(OpcBianLiang.LX_M==lx) {//根据类型判断是M类还是U类，往对应的集合里放
+								jjphzzcMOBLList.add(upSzJjphzzcOBL);
+							}
+							else if(OpcBianLiang.LX_U==lx) {
+								jjphzzcUOBLList.add(upSzJjphzzcOBL);
+							}
+							
+							String fyfh = upSzJjphzzcOBL.getFyfh();
+							jjphzzcFyfhList.add(fyfh);//添加加碱PH值正常反应釜号
 						}
-						else if(OpcBianLiang.LX_U==lx) {
-							jjphzzcUOBLList.add(upSzJjphzzcOBL);
-						}
-						
-						String fyfh = upSzJjphzzcOBL.getFyfh();
-						jjphzzcFyfhList.add(fyfh);//添加加碱PH值正常反应釜号
 					}
+				}
+				else {
+					Integer lx = upSzJjphzzcOBL.getLx();
+					if(OpcBianLiang.LX_M==lx) {//根据类型判断是M类还是U类，往对应的集合里放
+						jjphzzcMOBLList.add(upSzJjphzzcOBL);
+					}
+					else if(OpcBianLiang.LX_U==lx) {
+						jjphzzcUOBLList.add(upSzJjphzzcOBL);
+					}
+					
+					String fyfh = upSzJjphzzcOBL.getFyfh();
+					jjphzzcFyfhList.add(fyfh);//添加加碱PH值正常反应釜号
 				}
 			}
 		}
@@ -417,7 +473,11 @@ public class OPCController {
 				addOpcBLScszInList(jjphzzcSz,jjphzzcMc);
 			}
 		}
+		//}
 
+		
+		//以下逻辑待测试
+		if(false) {
 		//允许一次加助剂上升沿(这是往批次记录表里插入阶段数据，前面有例子)
 		List<OpcBianLiang> yxycjzjMOBLList = new ArrayList<OpcBianLiang>();//创建M类允许一次加助剂的变量集合
 		List<OpcBianLiang> yxycjzjUOBLList = new ArrayList<OpcBianLiang>();//创建U类允许一次加助剂的变量集合
@@ -477,7 +537,10 @@ public class OPCController {
 				addOpcBLScszInList(yxycjzjSz,yxycjzjMc);
 			}
 		}
+		}
+		
 
+		if(false) {
 		//所有助剂加料完成1上升沿(这是更新批次记录表里插入阶段数据，调用editJdgcFromPcList前面有例子)
 		List<OpcBianLiang> syzjjlwc1MOBLList = new ArrayList<OpcBianLiang>();//创建所有助剂加料完成1M类变量集合
 		List<OpcBianLiang> syzjjlwc1UOBLList = new ArrayList<OpcBianLiang>();//创建所有助剂加料完成1U类变量集合
@@ -642,8 +705,11 @@ public class OPCController {
 			Map<String, Object> jflphCsMap = (Map<String, Object>)canShuMMap.get(CanShuM.JIA_FEN_LIAO_PH_TEXT);//获取加粉料PH参数信息
 			piCiJiLuMService.addCsjl(jflphhzPcMList,jflphCsMap,phzJlsjMap);//添加加粉料PH参数记录
 		}
+		}
 		
 		
+		
+		if(false) {
 		//检测升温开始上升沿
 		//1.记录蒸汽压力参数
 		List<OpcBianLiang> swksMOBLList = new ArrayList<OpcBianLiang>();//创建存放M类升温开始变量集合
@@ -692,8 +758,12 @@ public class OPCController {
 			Map<String, Object> zqylCsMap = (Map<String, Object>)canShuMMap.get(CanShuM.ZHENG_QI_YA_LI_TEXT);//获取蒸汽压力参数参数信息
 			piCiJiLuMService.addCsjl(jflphhzPcMList,zqylCsMap,wdJlsjMap);//添加蒸汽压力参数记录
 		}
+		}
 
 
+		
+
+		if(false) {
 		//检测温度85与二次投料提醒上升沿
 		//1.记录反应釜1温度参数
 		List<OpcBianLiang> wd85yectltxMOBLList = new ArrayList<OpcBianLiang>();//创建存放M类温度85与二次投料提醒变量集合
@@ -788,6 +858,7 @@ public class OPCController {
 			//二次投料PH参数名称
 			Map<String, Object> eczjhcphtxCsMap = (Map<String, Object>)canShuMMap.get(CanShuM.ER_CI_TOU_LIAO_PH_TEXT);//获取二次投料PH参数信息
 			piCiJiLuMService.addCsjl(eczjhcphtxPcMList,eczjhcphtxCsMap,eczjhcphtxJlsjMap);//添加二次投料PH参数记录
+		}
 		}
 		
 		return json;
