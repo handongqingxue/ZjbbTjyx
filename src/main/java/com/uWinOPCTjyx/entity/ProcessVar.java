@@ -3,6 +3,16 @@ package com.uWinOPCTjyx.entity;
 public class ProcessVar {
 
 	private Integer Id;
+	private String VarName;
+	private Float VarValue;
+	private String Unit;
+	private String RecType;
+	private Integer DealBz;
+	private String UpdateTime;
+	private Integer ParaType;
+	private Integer FId;
+	private String Desc;
+
 	public Integer getId() {
 		return Id;
 	}
@@ -63,13 +73,4 @@ public class ProcessVar {
 	public void setDesc(String desc) {
 		Desc = desc;
 	}
-	private String VarName;
-	private Float VarValue;
-	private String Unit;
-	private String RecType;
-	private Integer DealBz;
-	private String UpdateTime;
-	private Integer ParaType;
-	private Integer FId;
-	private String Desc;
 }
