@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.uWinOPCTjyx.entity.*;
 
-public interface ZhiLiangZhongJianBzzUService {
+public interface TriggerVarService {
 
-	List<ZhiLiangZhongJianBzzU> getList();
+	int editFromList(List<TriggerVar> triggerVarList);
 }
