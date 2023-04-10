@@ -16,11 +16,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9bfab7cf-a4c1-4d31-9c53-df2a94b39f3e" name="Default Changelist" comment="11">
-      <change afterPath="$PROJECT_DIR$/src/main/java/javafish/clients/opc/connect/ReaderWriterOpc.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/util/APIUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/util/APIUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/javafish/clients/opc/connect/ReaderOpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javafish/clients/opc/connect/ReaderOpc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/connect/ReaderOpc.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/connect/ReaderOpc.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,7 +212,7 @@
       <workItem from="1679722462404" duration="66383000" />
       <workItem from="1680227753216" duration="126811000" />
       <workItem from="1680844614091" duration="6981000" />
-      <workItem from="1681110599781" duration="4331000" />
+      <workItem from="1681110599781" duration="5280000" />
     </task>
     <task id="LOCAL-00001" summary="11">
       <created>1679725334951</created>
@@ -448,7 +445,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681110692832</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="11">
+      <created>1681115179602</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1681115179602</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -664,13 +668,13 @@
       <screen x="0" y="23" width="1280" height="725" />
     </state>
     <state x="338" y="23" width="604" height="725" key="find.popup/0.23.1280.725@0.23.1280.725" timestamp="1678328866823" />
-    <state x="297" y="176" key="git4idea.merge.GitPullDialog" timestamp="1681110706569">
+    <state x="297" y="176" key="git4idea.merge.GitPullDialog" timestamp="1681115189792">
       <screen x="0" y="23" width="1280" height="723" />
     </state>
     <state x="297" y="173" key="git4idea.merge.GitPullDialog/0.23.1280.709@0.23.1280.709" timestamp="1680744207757" />
     <state x="297" y="173" key="git4idea.merge.GitPullDialog/0.23.1280.710@0.23.1280.710" timestamp="1680340938793" />
     <state x="297" y="176" key="git4idea.merge.GitPullDialog/0.23.1280.721@0.23.1280.721" timestamp="1680773889677" />
-    <state x="297" y="176" key="git4idea.merge.GitPullDialog/0.23.1280.723@0.23.1280.723" timestamp="1681110706569" />
+    <state x="297" y="176" key="git4idea.merge.GitPullDialog/0.23.1280.723@0.23.1280.723" timestamp="1681115189792" />
     <state x="305" y="57" width="670" height="676" key="search.everywhere.popup" timestamp="1680328874596">
       <screen x="0" y="23" width="1280" height="710" />
     </state>

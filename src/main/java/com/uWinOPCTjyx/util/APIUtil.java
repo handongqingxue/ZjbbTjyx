@@ -1,9 +1,6 @@
 package com.uWinOPCTjyx.util;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -22,10 +19,11 @@ public class APIUtil {
 	public static final String SERVICE_URL="http://localhost:8080/UWinOPCTjyx/opc/";
 
 	public static JSONObject doHttp(String method, List<OpcItem> params) {
+		OutputStreamWriter writer = null;
+		BufferedReader reader = null;
 		JSONObject resultJO = null;
+		String result = "";
 		try {
-
-			String strRead = null;
 			URL url = new URL(SERVICE_URL+method);
 			HttpURLConnection connection = (HttpURLConnection)url.openConnection();
 			connection.setRequestMethod("POST");//请求post方式
@@ -35,30 +33,36 @@ public class APIUtil {
 			//connection.setRequestProperty("key", "value");
 			connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
 			connection.connect();
-
-			OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream(),"UTF-8");
+			//获取URLConnection对象对应的输出流
+			writer = new OutputStreamWriter(connection.getOutputStream(),"UTF-8");
 			//OutputStream writer = connection.getOutputStream();
-			writer.write(paramsSB.toString());
+			//发送请求参数
+			writer.write(params.toString());
+			// flush输出流的缓冲
 			writer.flush();
-			InputStream is = connection.getInputStream();
-			BufferedReader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+			// 定义BufferedReader输入流来读取URL的响应
+			reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"));
+			String strRead = null;
 			while ((strRead = reader.readLine()) != null) {
-				sbf.append(strRead);
-				sbf.append("\r\n");
+				result += strRead;
 			}
-			reader.close();
-
-			connection.disconnect();
-			String result = sbf.toString();
-			System.out.println("result==="+result);
-			resultJO = new JSONObject(result);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		finally {
-			return resultJO;
+			try{
+				if(writer!=null){
+					writer.close();
+				}
+				if(reader!=null){
+					reader.close();
+				}
+			}
+			catch(IOException ex){
+				ex.printStackTrace();
+			}
 		}
+		return resultJO;
 	}
 
 	public static JSONObject doHttp(String method, Map<String, Object> params) {
