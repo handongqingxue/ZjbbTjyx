@@ -151,11 +151,6 @@ public class Constant {
 	public static final String YUN_XU_YI_CI_JIA_ZHU_JI_TEXT="允许一次加助剂";
 
 	/**
-	 * 允许二次加助剂文字
-	 */
-	public static final String YUN_XU_ER_CI_JIA_ZHU_JI_TEXT="允许二次加助剂";
-
-	/**
 	 * 所有助剂加料完成1文字
 	 */
 	public static final String SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1_TEXT="所有助剂加料完成1";
@@ -187,6 +182,10 @@ public class Constant {
 	 * 二次助剂后测PH提醒文字
 	 */
 	public static final String ER_CI_ZHU_JI_HOU_CE_PH_TI_XING_TEXT="二次助剂后测PH提醒";
+	/**
+	 * 允许二次加助剂文字
+	 */
+	public static final String YUN_XU_ER_CI_JIA_ZHU_JI_TEXT="允许二次加助剂";
 	
 	/**
 	 * 百分号文字
