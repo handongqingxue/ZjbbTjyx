@@ -40,12 +40,36 @@ function addPiCiU() {
     	}
     ,"json");
 }
+
+function base64 (content) {
+    return window.btoa(unescape(encodeURIComponent(content)));
+}
+
+function exportExcel() {
+    var table = $("#opcMTable");
+    var excelContent = table[0].innerHTML;
+    var excelFile = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:x='urn:schemas-microsoft-com:office:excel' xmlns='http://www.w3.org/TR/REC-html40'>";
+    excelFile += "<head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head>";
+    excelFile += "<body><table>";
+    excelFile += excelContent;
+    excelFile += "</table></body>";
+    excelFile += "</html>";
+    var link = "data:application/vnd.ms-excel;base64," + base64(excelFile);
+    var a = document.createElement("a");
+    a.download = "M类()胶生产记录.xlsx";
+    a.href = link;
+    a.click();
+}
+
 </script>
 </head>
 <body>
 <div>
-    <button class="baocun" style="position: fixed;top: 20px;left: 1500px" onclick="addPiCiU()">保存</button>
-    <table class="tab" border="1px">
+    <div style="margin: 10px 0; float: right; ">
+        <button class="dcfxjg_style" onclick="exportExcel()">导出分析结果</button>
+        <button class="bc_style" onclick="addPiCiU()">保存</button>
+    </div>
+    <table class="tab" border="1px" id="opcMTable">
         <tr>
             <td colspan="13">
                 <span class="onetd1">M类 （ ）胶 生产记录</span>

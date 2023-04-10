@@ -56,14 +56,14 @@ public class OPCController {
 	
 	@RequestMapping(value="/opcu")
 	public String goOpcU(HttpServletRequest request) {
-		
-		//localhost:8080/UWinOPCTjyx/opc/opcm
-		
+		//localhost:8080/UWinOPCTjyx/opc/opcu
+		//访问opcu的web页面
 		return MODULE_NAME+"/opcu";
 	}
 
 	@RequestMapping(value="/opcm")
-	public String goOpcM(HttpServletRequest request, Model model) {
+	public String goOpcM(HttpServletRequest request) {
+		//localhost:8080/UWinOPCTjyx/opc/opcm
 		//访问opcm的web页面
 		return MODULE_NAME+"/opcm";
 	}
