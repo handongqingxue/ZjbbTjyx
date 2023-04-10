@@ -30,6 +30,7 @@ public class OPCController {
 
 	@Autowired
 	private TriggerVarService triggerVarService;
+	private Map<String,Object> f1Map,f2Map,f3Map,f4Map,f5Map;
 
 	public static final String MODULE_NAME="opc";
 	
@@ -73,11 +74,27 @@ public class OPCController {
 		}
 	}
 	
-	@RequestMapping(value = "/keepWatchOnOpcBianLiang", method = RequestMethod.POST)
+	@RequestMapping(value = "/initFMap", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> keepWatchOnOpcBianLiang() {
+	public Map<String, Object> initFMap(@RequestBody String bodyStr) {
 
 		Map<String,Object> json=new HashMap<String, Object>();
+		
+		//初始化run标识位、M类哈希表、U类哈希表
+		f1Map=new HashMap<String, Object>();
+		f1Map.put("run",false);
+		
+		return json;
+	}
+	
+	@RequestMapping(value = "/keepWatchOnTriggerVar", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> keepWatchOnTriggerVar() {
+
+		Map<String,Object> json=new HashMap<String, Object>();
+		
+		boolean run = Boolean.parseBoolean(f1Map.get("run").toString());
+		System.out.println("run==="+run);
 		
 		return json;
 	}
