@@ -186,6 +186,10 @@ public class Constant {
 	 * 允许二次加助剂文字
 	 */
 	public static final String YUN_XU_ER_CI_JIA_ZHU_JI_TEXT="允许二次加助剂";
+	/**
+	 * 降温完成文字
+	 */
+	public static final String JIANG_WEN_WAN_CHENG_TEXT="降温完成";
 	
 	/**
 	 * 百分号文字

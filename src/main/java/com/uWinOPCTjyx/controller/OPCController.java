@@ -29,6 +29,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class OPCController {
 
 	@Autowired
+	private ERecordService eRecordService;
+	@Autowired
 	private TriggerVarService triggerVarService;
 	private Map<String,Object> f1Map,f2Map,f3Map,f4Map,f5Map;
 
@@ -93,8 +95,39 @@ public class OPCController {
 
 		Map<String,Object> json=new HashMap<String, Object>();
 		
-		boolean run = Boolean.parseBoolean(f1Map.get("run").toString());
-		System.out.println("run==="+run);
+		List<String> fIdList=new ArrayList<String>();
+		
+		boolean runF1 = Boolean.parseBoolean(f1Map.get("run").toString());
+		System.out.println("runF1==="+runF1);
+		if(runF1) {
+			fIdList.add(Constant.BSF_F1);
+		}
+		
+		boolean runF2 = Boolean.parseBoolean(f2Map.get("run").toString());
+		System.out.println("runF2==="+runF2);
+		if(runF2) {
+			fIdList.add(Constant.BSF_F2);
+		}
+		
+		boolean runF3 = Boolean.parseBoolean(f3Map.get("run").toString());
+		System.out.println("runF3==="+runF3);
+		if(runF3) {
+			fIdList.add(Constant.BSF_F3);
+		}
+		
+		boolean runF4 = Boolean.parseBoolean(f4Map.get("run").toString());
+		System.out.println("runF4==="+runF4);
+		if(runF4) {
+			fIdList.add(Constant.BSF_F4);
+		}
+		
+		boolean runF5 = Boolean.parseBoolean(f5Map.get("run").toString());
+		System.out.println("runF5==="+runF5);
+		if(runF5) {
+			fIdList.add(Constant.BSF_F5);
+		}
+		
+		List<TriggerVar> jwwcTVList=triggerVarService.getListByVarNameQzFIdList(Constant.JIANG_WEN_WAN_CHENG_TEXT,fIdList);
 		
 		return json;
 	}
