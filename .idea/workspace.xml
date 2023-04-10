@@ -17,7 +17,11 @@
   <component name="ChangeListManager">
     <list default="true" id="9bfab7cf-a4c1-4d31-9c53-df2a94b39f3e" name="Default Changelist" comment="11">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/controller/OPCController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/controller/OPCController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/entity/ProcessVar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/entity/ProcessVar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/util/APIUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/util/APIUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/javafish/clients/opc/component/OpcItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javafish/clients/opc/component/OpcItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/javafish/clients/opc/connect/ReaderWriterOpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javafish/clients/opc/connect/ReaderWriterOpc.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,7 +216,7 @@
       <workItem from="1679722462404" duration="66383000" />
       <workItem from="1680227753216" duration="126811000" />
       <workItem from="1680844614091" duration="6981000" />
-      <workItem from="1681110599781" duration="5280000" />
+      <workItem from="1681110599781" duration="9002000" />
     </task>
     <task id="LOCAL-00001" summary="11">
       <created>1679725334951</created>
@@ -452,7 +456,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681115179602</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="11">
+      <created>1681116055371</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1681116055371</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -481,10 +492,11 @@
     <state x="156" y="32" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1678343057660" />
     <state x="104" y="45" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1280.710@0.23.1280.710" timestamp="1680068102457" />
     <state x="104" y="45" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1280.725@0.23.1280.725" timestamp="1678329032204" />
-    <state x="453" y="101" key="#com.intellij.ide.util.MemberChooser" timestamp="1680329846428">
-      <screen x="0" y="23" width="1280" height="710" />
+    <state x="453" y="102" key="#com.intellij.ide.util.MemberChooser" timestamp="1681118075408">
+      <screen x="0" y="23" width="1280" height="723" />
     </state>
     <state x="453" y="101" key="#com.intellij.ide.util.MemberChooser/0.23.1280.710@0.23.1280.710" timestamp="1680329846428" />
+    <state x="453" y="102" key="#com.intellij.ide.util.MemberChooser/0.23.1280.723@0.23.1280.723" timestamp="1681118075408" />
     <state x="543" y="9" key="#com.intellij.j2ee.appServerIntegrations.ApplicationServersConfigurable" timestamp="1678341704257">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -668,13 +680,17 @@
       <screen x="0" y="23" width="1280" height="725" />
     </state>
     <state x="338" y="23" width="604" height="725" key="find.popup/0.23.1280.725@0.23.1280.725" timestamp="1678328866823" />
-    <state x="297" y="176" key="git4idea.merge.GitPullDialog" timestamp="1681115189792">
+    <state x="297" y="176" key="git4idea.merge.GitPullDialog" timestamp="1681116061188">
       <screen x="0" y="23" width="1280" height="723" />
     </state>
     <state x="297" y="173" key="git4idea.merge.GitPullDialog/0.23.1280.709@0.23.1280.709" timestamp="1680744207757" />
     <state x="297" y="173" key="git4idea.merge.GitPullDialog/0.23.1280.710@0.23.1280.710" timestamp="1680340938793" />
     <state x="297" y="176" key="git4idea.merge.GitPullDialog/0.23.1280.721@0.23.1280.721" timestamp="1680773889677" />
-    <state x="297" y="176" key="git4idea.merge.GitPullDialog/0.23.1280.723@0.23.1280.723" timestamp="1681115189792" />
+    <state x="297" y="176" key="git4idea.merge.GitPullDialog/0.23.1280.723@0.23.1280.723" timestamp="1681116061188" />
+    <state x="474" y="164" key="refactoring.ChangeSignatureDialog" timestamp="1681117831403">
+      <screen x="0" y="23" width="1280" height="723" />
+    </state>
+    <state x="474" y="164" key="refactoring.ChangeSignatureDialog/0.23.1280.723@0.23.1280.723" timestamp="1681117831403" />
     <state x="305" y="57" width="670" height="676" key="search.everywhere.popup" timestamp="1680328874596">
       <screen x="0" y="23" width="1280" height="710" />
     </state>

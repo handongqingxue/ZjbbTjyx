@@ -1,13 +1,18 @@
 package javafish.clients.opc.connect;
 
-import java.util.HashMap;
-import java.util.Map;
+import com.uWinOPCTjyx.util.APIUtil;
+import javafish.clients.opc.component.OpcItem;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ReaderWriterOpc {
 
     public void writerOpc(){
-        Map<String,Object> map = new HashMap<String, Object>();
+        List<OpcItem> params = new ArrayList<OpcItem>();
 
+
+        APIUtil.addTrigger(params);
     }
 
 }

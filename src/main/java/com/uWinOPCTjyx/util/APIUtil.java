@@ -22,7 +22,7 @@ public class APIUtil {
 		OutputStreamWriter writer = null;
 		BufferedReader reader = null;
 		JSONObject resultJO = null;
-		String result = "";
+		String sbf = "";
 		try {
 			URL url = new URL(SERVICE_URL+method);
 			HttpURLConnection connection = (HttpURLConnection)url.openConnection();
@@ -44,12 +44,15 @@ public class APIUtil {
 			reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"));
 			String strRead = null;
 			while ((strRead = reader.readLine()) != null) {
-				result += strRead;
+				sbf += strRead;
 			}
+			resultJO = new JSONObject(sbf.toString());
+			connection.disconnect();//关闭http连接
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		finally {
+
 			try{
 				if(writer!=null){
 					writer.close();
@@ -175,13 +178,11 @@ public class APIUtil {
 		}
 	}
 
-	public static JSONObject addTrigger(List triggerList) {
-		// TODO Auto-generated method stub
+	public static JSONObject addTrigger(List<OpcItem> triggerList) {
 		JSONObject resultJO = null;
 		try {
 			resultJO = doHttp("addPiCiU",triggerList);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		finally {

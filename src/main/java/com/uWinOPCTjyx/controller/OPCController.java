@@ -79,11 +79,51 @@ public class OPCController {
 	public Map<String, Object> initFMap(@RequestBody String bodyStr) {
 
 		Map<String,Object> json=new HashMap<String, Object>();
-		
+		//1号釜
+		Map<String,Object> f1MMap=new HashMap<String, Object>();
+		Map<String,Object> f1UMap=new HashMap<String, Object>();
 		//初始化run标识位、M类哈希表、U类哈希表
 		f1Map=new HashMap<String, Object>();
 		f1Map.put("run",false);
-		
+		f1Map.put("f1MMap",f1MMap);
+		f1Map.put("f1UMap",f1UMap);
+
+		//2号釜
+		Map<String,Object> f2MMap=new HashMap<String, Object>();
+		Map<String,Object> f2UMap=new HashMap<String, Object>();
+		//初始化run标识位、M类哈希表、U类哈希表
+		f2Map=new HashMap<String, Object>();
+		f2Map.put("run",false);
+		f2Map.put("f2MMap",f1MMap);
+		f2Map.put("f2UMap",f1UMap);
+
+
+		//3号釜
+		Map<String,Object> f3MMap=new HashMap<String, Object>();
+		Map<String,Object> f3UMap=new HashMap<String, Object>();
+		//初始化run标识位、M类哈希表、U类哈希表
+		f3Map=new HashMap<String, Object>();
+		f3Map.put("run",false);
+		f3Map.put("f3MMap",f1MMap);
+		f3Map.put("f3UMap",f1UMap);
+
+		//4号釜
+		Map<String,Object> f4MMap=new HashMap<String, Object>();
+		Map<String,Object> f4UMap=new HashMap<String, Object>();
+		//初始化run标识位、M类哈希表、U类哈希表
+		f4Map=new HashMap<String, Object>();
+		f4Map.put("run",false);
+		f4Map.put("f4MMap",f1MMap);
+		f4Map.put("f4UMap",f1UMap);
+
+		//5号釜
+		Map<String,Object> f5MMap=new HashMap<String, Object>();
+		Map<String,Object> f5UMap=new HashMap<String, Object>();
+		//初始化run标识位、M类哈希表、U类哈希表
+		f5Map=new HashMap<String, Object>();
+		f5Map.put("run",false);
+		f5Map.put("f5MMap",f1MMap);
+		f5Map.put("f5UMap",f1UMap);
 		return json;
 	}
 	
