@@ -50,6 +50,13 @@ public class ReaderOpc {
 		*/
 		
 //		JOpc jopc = new JOpc("127.0.0.1", "UWinTech.UWinOPCS.1", "OPS3-PC");
+
+		//JOpc jopc = new JOpc("127.0.0.1", "Kepware.KEPServerEX.V6", "OPS3-PC");
+
+	//	JOpc jopc = new JOpc("127.0.0.1", "Kepware.KEPServerEX.V6", "OPS3-PC");
+
+		// OpcGroup group = new OpcGroup("_System", true, 500, 0.0f);
+
 //
 //		JOpc jopc = new JOpc("127.0.0.1", "Kepware.KEPServerEX.V6", "OPS3-PC");
 //
@@ -86,9 +93,11 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("备料开始_F2_AV", true, ""));
 		group.addItem(new OpcItem("备料开始_F4_AV", true, ""));
 		group.addItem(new OpcItem("备料开始_F5_AV", true, ""));
-		
+
+
 		//备料开始变量(U类)???(报表里好像没有)
-		
+
+
 		//降温完成(M类)
 		group.addItem(new OpcItem("降温完成_F1_AV", true, ""));
 		group.addItem(new OpcItem("降温完成_F2_AV", true, ""));
@@ -102,17 +111,17 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("降温完成_F3U_AV", true, ""));
 		group.addItem(new OpcItem("降温完成_F4U_AV", true, ""));
 		group.addItem(new OpcItem("降温完成_F5U_AV", true, ""));
-		
+
 		//罐用前、后重量???(报表里好像没有)
-		
+
 		//甲醛实际进料重量(M类)
 		group.addItem(new OpcItem("甲醛实际进料重量_F1_AV", true, ""));
 		group.addItem(new OpcItem("甲醛实际进料重量_F2_AV", true, ""));
 		group.addItem(new OpcItem("甲醛实际进料重量_F4_AV", true, ""));
 		group.addItem(new OpcItem("甲醛实际进料重量_F5_AV", true, ""));
-		
+
 		//甲醛实际进料重量(U类)???(报表里好像没有)
-		
+
 		//甲醛备料开始(M类)
 		group.addItem(new OpcItem("甲醛备料开始_F1_AV", true, ""));
 		group.addItem(new OpcItem("甲醛备料开始_F2_AV", true, ""));
@@ -140,7 +149,7 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("甲醛放料开始_F3U_AV", true, ""));
 		group.addItem(new OpcItem("甲醛放料开始_F4U_AV", true, ""));
 		group.addItem(new OpcItem("甲醛放料开始_F5U_AV", true, ""));
-		
+
 		//甲醛放料完成(M类)
 		group.addItem(new OpcItem("甲醛放料完成_F1_AV", true, ""));
 		group.addItem(new OpcItem("甲醛放料完成_F2_AV", true, ""));
@@ -202,11 +211,11 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("加碱后PH输入值_F3U_AV", true, ""));
 		group.addItem(new OpcItem("加碱后PH输入值_F4U_AV", true, ""));
 		group.addItem(new OpcItem("加碱后PH输入值_F5U_AV", true, ""));
-		
+
 		//助剂计量罐1、2称重
 		group.addItem(new OpcItem("助剂计量罐1称重", true, ""));
 		group.addItem(new OpcItem("助剂计量罐2称重", true, ""));
-		
+
 		//允许一次加助剂(M类)
 		group.addItem(new OpcItem("允许一次加助剂_F1_AV", true, ""));
 		group.addItem(new OpcItem("允许一次加助剂_F2_AV", true, ""));
@@ -283,7 +292,7 @@ public class ReaderOpc {
 		group.addItem(new OpcItem("加粉料PH输入值_F3U_AV", true, ""));
 		group.addItem(new OpcItem("加粉料PH输入值_F4U_AV", true, ""));
 		group.addItem(new OpcItem("加粉料PH输入值_F5U_AV", true, ""));
-		
+
 		//升温开始(M类)
 		group.addItem(new OpcItem("升温开始_F1_AV", true, ""));
 		group.addItem(new OpcItem("升温开始_F2_AV", true, ""));
