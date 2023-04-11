@@ -2572,9 +2572,9 @@ public class ReaderOpc {
 				responseGroup = jopc.synchReadGroup(group);
 //				ArrayList<OpcItem> opcItems = responseGroup.getItems();
 				List<OpcItem> opcItems = new ArrayList<OpcItem>();
-				OpcItem opcItem1 = new OpcItem("aaa",true,"111");
-				OpcItem opcItem2 = new OpcItem("bbb",true,"111");
-				OpcItem opcItem3 = new OpcItem("ccc",true,"111");
+				OpcItem opcItem1 = new OpcItem("备料开始_F1_AV",false,"111");
+				OpcItem opcItem2 = new OpcItem("降温完成_F1_AV",false,"111");
+				OpcItem opcItem3 = new OpcItem("降温完成_F2_AV",false,"111");
 				opcItems.add(opcItem1);
 				opcItems.add(opcItem2);
 				opcItems.add(opcItem3);
@@ -2583,8 +2583,8 @@ public class ReaderOpc {
 					//APIUtil.addPiCiU(opcItem.getValue().toString());
 					//break;
 				}
-				APIUtil.addTrigger(opcItems);
-				//break;
+				APIUtil.addTriggerVarFromOpc(opcItems);
+				break;
 			} catch (ComponentNotFoundException e) {
 				//logger.error(e.getMessage()); //获取responseGroup错误
 				JOpc.coUninitialize();     //错误关闭连接

@@ -20,7 +20,7 @@ public class APIUtil {
 
 	public static final String SERVICE_URL="http://localhost:8080/UWinOPCTjyx/opc/";
 
-	public static void doHttp1(String method,List<OpcItem> params) {
+	public static void doHttp(String method,List<OpcItem> params) {
 		System.out.println(params.toString()+"_-------------------------------------------------------");
 		OutputStreamWriter out = null;
 		BufferedReader in = null;
@@ -180,10 +180,23 @@ public class APIUtil {
 		}
 	}
 
-	public static void addTrigger(List<OpcItem> triggerList) {
+	public static void addTriggerVarFromOpc(List<OpcItem> opcItemList) {
 
 		try {
-			doHttp1("addTrigger",triggerList);
+			JSONArray ja=new JSONArray();
+			JSONObject jo=null;
+			for (OpcItem opcItem : opcItemList) {
+				String itemName = opcItem.getItemName();
+				String value = opcItem.getValue().toString();
+				jo=new JSONObject();
+				
+				jo.put("varName", itemName);
+				jo.put("varValue", value);
+				
+				ja.put(jo);
+			}
+			System.out.println("ja==="+ja);
+			doHttp("addTriggerVarFromOpc",ja);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
