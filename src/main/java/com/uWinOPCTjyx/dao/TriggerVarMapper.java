@@ -14,5 +14,5 @@ public interface TriggerVarMapper {
 
 	int editByVarName(TriggerVar triggerVar);
 	
-	List<TriggerVar> getListByVarNameQzFIdList(@Param("varNameQz") String varNameQz, @Param("runFIdList") List<Integer> runFIdList);
+	List<TriggerVar> getListByFIdList(@Param("varNameQz") String varNameQz, @Param("runFIdList") List<Integer> runFIdList);
 }

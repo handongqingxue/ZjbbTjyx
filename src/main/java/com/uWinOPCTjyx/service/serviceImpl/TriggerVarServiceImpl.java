@@ -30,9 +30,9 @@ public class TriggerVarServiceImpl implements TriggerVarService {
 		return editCount;
 	}
 
-	public List<TriggerVar> getListByVarNameQzFIdList(String varNameQz, List<Integer> runFIdList) {
+	public List<TriggerVar> getListByFIdList(String varNameQz, List<Integer> runFIdList) {
 		// TODO Auto-generated method stub
-		return triggerVarMapper.getListByVarNameQzFIdList(varNameQz,runFIdList);
+		return triggerVarMapper.getListByFIdList(varNameQz,runFIdList);
 	}
 
 }

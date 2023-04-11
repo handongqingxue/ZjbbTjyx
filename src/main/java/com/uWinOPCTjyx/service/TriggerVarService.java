@@ -8,5 +8,5 @@ public interface TriggerVarService {
 
 	int editFromList(List<TriggerVar> triggerVarList);
 
-	List<TriggerVar> getListByVarNameQzFIdList(String varNameQz, List<Integer> runFIdList);
+	List<TriggerVar> getListByFIdList(String varNameQz, List<Integer> runFIdList);
 }

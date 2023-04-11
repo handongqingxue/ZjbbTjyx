@@ -176,7 +176,7 @@ public class OPCController {
 		
 
 		List<Integer> jwwcFIdList=new ArrayList<Integer>();//降温完成反应釜号集合(M类和U类共用)
-		List<TriggerVar> jwwcTVList=triggerVarService.getListByVarNameQzFIdList(Constant.JIANG_WEN_WAN_CHENG_TEXT,runFIdList);//先获取所有反应釜降温完成触发量,不管是否是上升沿
+		List<TriggerVar> jwwcTVList=triggerVarService.getListByFIdList(Constant.JIANG_WEN_WAN_CHENG_TEXT,runFIdList);//先获取所有反应釜降温完成触发量,不管是否是上升沿
 		List<TriggerVar> upJwwcTVList = getUpDownVarValueListFromList(jwwcTVList,TriggerVar.UP);//获取上升的降温完成变量
 		for (TriggerVar upJwwcTV : upJwwcTVList) {
 			Integer upFId = upJwwcTV.getFId();
