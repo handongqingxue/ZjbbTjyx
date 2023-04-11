@@ -9,6 +9,7 @@ import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.alibaba.fastjson.JSONObject;
 import javafish.clients.opc.component.OpcItem;
 import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -210,11 +211,15 @@ public class OPCController {
 	@RequestMapping(value = "/addTriggerVarFromOpc", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> addTriggerVarFromOpc(@RequestBody String bodyStr){
-		
-		Map<String,Object> json=new HashMap<String, Object>();
-		
 		System.out.println("进来");
 
+		Map<String,Object> json=new HashMap<String, Object>();
+		List<TriggerVar> triggerVarList=com.alibaba.fastjson.JSONArray.parseArray(bodyStr,TriggerVar.class);
+		System.out.println(triggerVarList.size());
+
+		for (TriggerVar triggerVar : triggerVarList) {
+			System.out.println(triggerVar.getVarName());
+		}
 		System.out.println(bodyStr);
 		
 		return json;
