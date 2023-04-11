@@ -9,6 +9,7 @@ import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.alibaba.fastjson.JSONObject;
 import javafish.clients.opc.component.OpcItem;
 import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -100,8 +101,8 @@ public class OPCController {
 		//初始化run标识位、M类哈希表、U类哈希表
 		f2Map=new HashMap<String, Object>();
 		f2Map.put("run",false);
-		f2Map.put("f2MMap",f1MMap);
-		f2Map.put("f2UMap",f1UMap);
+		f2Map.put("f2MMap",f2MMap);
+		f2Map.put("f2UMap",f2UMap);
 
 
 		//3号釜
@@ -110,8 +111,8 @@ public class OPCController {
 		//初始化run标识位、M类哈希表、U类哈希表
 		f3Map=new HashMap<String, Object>();
 		f3Map.put("run",false);
-		f3Map.put("f3MMap",f1MMap);
-		f3Map.put("f3UMap",f1UMap);
+		f3Map.put("f3MMap",f3MMap);
+		f3Map.put("f3UMap",f3UMap);
 
 		//4号釜
 		HashMap<String,Object> f4MMap=new HashMap<String, Object>();
@@ -119,8 +120,8 @@ public class OPCController {
 		//初始化run标识位、M类哈希表、U类哈希表
 		f4Map=new HashMap<String, Object>();
 		f4Map.put("run",false);
-		f4Map.put("f4MMap",f1MMap);
-		f4Map.put("f4UMap",f1UMap);
+		f4Map.put("f4MMap",f4MMap);
+		f4Map.put("f4UMap",f4UMap);
 
 		//5号釜
 		HashMap<String,Object> f5MMap=new HashMap<String, Object>();
@@ -128,8 +129,8 @@ public class OPCController {
 		//初始化run标识位、M类哈希表、U类哈希表
 		f5Map=new HashMap<String, Object>();
 		f5Map.put("run",false);
-		f5Map.put("f5MMap",f1MMap);
-		f5Map.put("f5UMap",f1UMap);
+		f5Map.put("f5MMap",f5MMap);
+		f5Map.put("f5UMap",f5UMap);
 		return json;
 	}
 	
@@ -280,14 +281,26 @@ public class OPCController {
 	@RequestMapping(value = "/addTriggerVarFromOpc", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> addTriggerVarFromOpc(@RequestBody String bodyStr){
-		
-		Map<String,Object> json=new HashMap<String, Object>();
-		
-		System.out.println("进来");
-
 		System.out.println(bodyStr);
-		
-		return json;
+		Map<String,Object> json=new HashMap<String, Object>();
+		//List<TriggerVar> triggerVarList = JSON.parseArray(bodyStr, TriggerVar.class);
+		List<TriggerVar> triggerVarList=com.alibaba.fastjson.JSONArray.parseArray(bodyStr,TriggerVar.class);
+		try {
+			int count = triggerVarService.editFromList(triggerVarList);
+			if (count>0){
+				json.put("message","ok");
+				json.put("info","编辑成功");
+			}
+			else {
+				json.put("message","no");
+				json.put("info","编辑失败");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			return json;
+		}
 	}
 	
 	/**
