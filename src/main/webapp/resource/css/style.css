@@ -13,6 +13,20 @@ tr>td{
     width: 150px;
 }
 
+.dcfxjg_style{
+    font: normal 400 18px '微软雅黑';
+    position: fixed;
+    top: 25px;
+    left: 1610px;
+}
+
+.bc_style{
+    position: fixed;
+    top: 25px;
+    left: 1550px;
+    font: normal 400 18px '微软雅黑';
+}
+
 .onetd1{
     font: normal 600 24px"宋体";
 }

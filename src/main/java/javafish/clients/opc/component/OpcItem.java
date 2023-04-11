@@ -200,7 +200,7 @@ public class OpcItem implements Cloneable, Serializable {
     }
     return item;
   }
-  
+
   @Override
   public String toString() {
     StringBuffer sb = new StringBuffer();
@@ -212,7 +212,9 @@ public class OpcItem implements Cloneable, Serializable {
     sb.append("timeStamp = " + (timeStamp == null ? "" : timeStamp.getTime()) + "; ");
     sb.append("itemValue = " + itemValue + "; ");
     sb.append("itemQuality = " + itemQuality + "; ");
-    
+
+
+
     return sb.toString();
   }
   

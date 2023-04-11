@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uWinOPCTjyx.dao.TriggerVarMapper">
+	<insert id="add" parameterType="com.uWinOPCTjyx.entity.TriggerVar">
+		insert into TriggerVar
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="VarName!=null">
+				VarName,
+			</if>
+			<if test="VarValue!=null">
+				VarValue,
+			</if>
+			<if test="RecType!=null">
+				RecType,
+			</if>
+			<if test="FId!=null">
+				FId,
+			</if>
+			<if test="Desc!=null">
+				Desc,
+			</if>
+		</trim>
+		values
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="VarName!=null">
+				#{VarName},
+			</if>
+			<if test="VarValue!=null">
+				#{VarValue},
+			</if>
+			<if test="RecType!=null">
+				#{RecType},
+			</if>
+			<if test="FId!=null">
+				#{FId},
+			</if>
+			<if test="Desc!=null">
+				#{Desc},
+			</if>
+		</trim>
+	</insert>
+	<update id="editByVarName">
+		update TriggerVar set VarValue=#{VarValue} where VarName=#{VarName}
+	</update>
+	<select id="getCountByVarName" resultType="java.lang.Integer">
+		select count(*) from TriggerVar where VarName=#{varName}
+	</select>
+</mapper>
