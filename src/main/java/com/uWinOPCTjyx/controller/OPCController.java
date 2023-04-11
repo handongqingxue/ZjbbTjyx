@@ -176,8 +176,11 @@ public class OPCController {
 		HashMap<String,Object> preValueF1UMap=(HashMap<String,Object>)f1Map.get("f1UMap");
 		
 
+		List<TriggerVar> triggerVarList = triggerVarService.getListByFIdList(runFIdList);//先获取所有反应釜触发量,不管是否是上升沿
+		Map<String,List<TriggerVar>> triggerVarMap=getTriVarListGroupMap(triggerVarList);
+		
 		List<Integer> jwwcFIdList=new ArrayList<Integer>();//降温完成反应釜号集合(M类和U类共用)
-		List<TriggerVar> jwwcTVList=triggerVarService.getListByFIdList(Constant.JIANG_WEN_WAN_CHENG_TEXT,runFIdList);//先获取所有反应釜降温完成触发量,不管是否是上升沿
+		List<TriggerVar> jwwcTVList=(List<TriggerVar>)triggerVarMap.get(Constant.JIANG_WEN_WAN_CHENG_TEXT);//先获取所有反应釜降温完成触发量,不管是否是上升沿
 		List<TriggerVar> upJwwcTVList = getUpDownVarValueListFromList(jwwcTVList,TriggerVar.UP);//获取上升的降温完成变量
 		for (TriggerVar upJwwcTV : upJwwcTVList) {
 			Integer upFId = upJwwcTV.getFId();
@@ -201,11 +204,70 @@ public class OPCController {
 			}
 		}
 		
-		updateProTVListByCurrList(jwwcTVList);
+		updateProTVListByCurrList(jwwcTVList);//这个方法用来存储本次变量值，作为下次检索里的上次变量值来使用。每次检索结束后都要记录一下
 		
 		
 		
 		return json;
+	}
+
+	/**
+	 * 根据不同变量给触发器变量集合分组(备料开始、甲醛备料开始这些变量组)
+	 * @param triggerVarList
+	 * @return
+	 */
+	private Map<String, List<TriggerVar>> getTriVarListGroupMap(List<TriggerVar> triggerVarList) {
+		// TODO Auto-generated method stub
+		Map<String, List<TriggerVar>> tvGroupMap=new HashMap<String, List<TriggerVar>>();
+		List<TriggerVar> jwwcTVList=new ArrayList<TriggerVar>();
+		
+		for (TriggerVar triggerVar : triggerVarList) {
+			String varName = triggerVar.getVarName();
+			String recType = triggerVar.getRecType();
+			
+			String fyfh=null;
+			Integer fId = triggerVar.getFId();
+			switch (fId) {
+			case Constant.F1_ID:
+				if(TriggerVar.M.equals(recType))
+					fyfh=Constant.BSF_F1;
+				else if(TriggerVar.U.equals(recType))
+					fyfh=Constant.BSF_F1U;
+				break;
+			case Constant.F2_ID:
+				if(TriggerVar.M.equals(recType))
+					fyfh=Constant.BSF_F2;
+				else if(TriggerVar.U.equals(recType))
+					fyfh=Constant.BSF_F2U;
+				break;
+			case Constant.F3_ID:
+				if(TriggerVar.M.equals(recType))
+					fyfh=Constant.BSF_F3;
+				else if(TriggerVar.U.equals(recType))
+					fyfh=Constant.BSF_F3U;
+				break;
+			case Constant.F4_ID:
+				if(TriggerVar.M.equals(recType))
+					fyfh=Constant.BSF_F4;
+				else if(TriggerVar.U.equals(recType))
+					fyfh=Constant.BSF_F4U;
+				break;
+			case Constant.F5_ID:
+				if(TriggerVar.M.equals(recType))
+					fyfh=Constant.BSF_F5;
+				else if(TriggerVar.U.equals(recType))
+					fyfh=Constant.BSF_F5U;
+				break;
+			}
+			
+			if((Constant.JIANG_WEN_WAN_CHENG_TEXT+"_"+fyfh+"_AV").equals(varName)) {
+				jwwcTVList.add(triggerVar);
+			}
+		}
+		
+		tvGroupMap.put(Constant.JIANG_WEN_WAN_CHENG_TEXT, jwwcTVList);
+		
+		return tvGroupMap;
 	}
 
 	@RequestMapping(value = "/addTriggerVarFromOpc", method = RequestMethod.POST)
@@ -225,6 +287,10 @@ public class OPCController {
 		return json;
 	}
 	
+	/**
+	 * 记录当前触发器变量数值，作为下次检索时的上次变量使用
+	 * @param currTVList
+	 */
 	private void updateProTVListByCurrList(List<TriggerVar> currTVList) {
 		for (TriggerVar currTV : currTVList) {
 			String varName = currTV.getVarName();
