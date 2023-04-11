@@ -45,6 +45,18 @@ public class ERecord {
 	public void setPtnValue(String ptnValue) {
 		PtnValue = ptnValue;
 	}
+	public String getRecType() {
+		return RecType;
+	}
+	public void setRecType(String recType) {
+		RecType = recType;
+	}
+	public Integer getFId() {
+		return FId;
+	}
+	public void setFId(Integer fId) {
+		FId = fId;
+	}
 	public String getRecordTime() {
 		return RecordTime;
 	}
@@ -75,6 +87,8 @@ public class ERecord {
 	private String PreValue;
 	private String NxtValue;
 	private String PtnValue;
+	private String RecType;
+	private Integer FId;
 	private String RecordTime;
 	private String BatchID;
 	private String PhaseName;

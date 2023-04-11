@@ -234,4 +234,8 @@ public class Constant {
 	 * 温度文字
 	 */
 	public static final String WEN_DU_TEXT="温度";
+	/**
+	 * 千克单位文字
+	 */
+	public static final String KG="kg";
 }

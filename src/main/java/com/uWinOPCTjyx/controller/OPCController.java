@@ -209,7 +209,8 @@ public class OPCController {
 		}
 		
 		if(jwwcFIdList.size()>0) {//若有需要处理的降温完成节点的反应釜，说明这些反应釜的批次执行完成，就从过程变量表(ProcessVar)里读取已采集好的变量，经过加工处理存入批记录表(ERecord)里
-			List<ProcessVar> proVarList=processVarService.getUnDealListByFIdList(jwwcFIdList);
+			List<ProcessVar> udProVarList=processVarService.getUnDealListByFIdList(jwwcFIdList);
+			int c=eRecordService.addFromProVarList(udProVarList);
 		}
 		
 		updateProTVListByCurrList(jwwcTVList);//这个方法用来存储本次变量值，作为下次检索里的上次变量值来使用。每次检索结束后都要记录一下
