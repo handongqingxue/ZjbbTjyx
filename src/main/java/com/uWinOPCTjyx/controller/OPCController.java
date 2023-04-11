@@ -9,6 +9,8 @@ import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
+import javafish.clients.opc.component.OpcItem;
+import org.apache.poi.hssf.record.formula.functions.T;
 import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -204,6 +206,14 @@ public class OPCController {
 		
 		
 		return json;
+	}
+
+	@RequestMapping(value = "/addTrigger", method = RequestMethod.POST)
+	@ResponseBody
+	public void addTrigger(@RequestBody String list){
+		System.out.println("进来");
+
+		System.out.println(list);
 	}
 	
 	private void updateProTVListByCurrList(List<TriggerVar> currTVList) {

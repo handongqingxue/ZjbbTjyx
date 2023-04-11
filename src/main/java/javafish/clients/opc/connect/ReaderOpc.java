@@ -1,6 +1,7 @@
 package javafish.clients.opc.connect;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.uWinOPCTjyx.util.APIUtil;
 
@@ -50,20 +51,26 @@ public class ReaderOpc {
 		*/
 		
 //		JOpc jopc = new JOpc("127.0.0.1", "UWinTech.UWinOPCS.1", "OPS3-PC");
-//
-//		JOpc jopc = new JOpc("127.0.0.1", "Kepware.KEPServerEX.V6", "OPS3-PC");
-//
-//		OpcGroup group = new OpcGroup("_System", true, 500, 0.0f);
-//
-//		// new Opcitem("K1.Value",true,"");    "K1.Value"  表示要读取opc服务器中的变量名称的值。
-//		group.addItem(new OpcItem("_System._Time", true, ""));
 
+		//JOpc jopc = new JOpc("127.0.0.1", "Kepware.KEPServerEX.V6", "OPS3-PC");
 
-		JOpc jopc = new JOpc("127.0.0.1", "UWinTech.UWinOPCS.1", "OPS3-PC");
+	//	JOpc jopc = new JOpc("127.0.0.1", "Kepware.KEPServerEX.V6", "OPS3-PC");
 
-		OpcGroup group = new OpcGroup("反应釜1执行配方M[50]", true, 500, 0.0f);
+		// OpcGroup group = new OpcGroup("_System", true, 500, 0.0f);
 
 //
+		JOpc jopc = new JOpc("127.0.0.1", "Kepware.KEPServerEX.V6", "OPS3-PC");
+
+		OpcGroup group = new OpcGroup("_System", true, 500, 0.0f);
+
+		// new Opcitem("K1.Value",true,"");    "K1.Value"  表示要读取opc服务器中的变量名称的值。
+		group.addItem(new OpcItem("_System._Date", true, ""));
+		group.addItem(new OpcItem("_System._Date_Day", true, ""));
+//-----------------------------------------------------------------------------------------------------
+//		JOpc jopc = new JOpc("127.0.0.1", "UWinTech.UWinOPCS.1", "OPS3-PC");
+//
+//		OpcGroup group = new OpcGroup("反应釜1执行配方M[50]", true, 500, 0.0f);
+
 //		//胶罐选择
 //		group.addItem(new OpcItem("胶罐选择1_F2_AV", true, ""));
 //
@@ -88,7 +95,9 @@ public class ReaderOpc {
 //		group.addItem(new OpcItem("备料开始_F4_AV", true, ""));
 //		group.addItem(new OpcItem("备料开始_F5_AV", true, ""));
 //
+//
 //		//备料开始变量(U类)???(报表里好像没有)
+//
 //
 //		//降温完成(M类)
 //		group.addItem(new OpcItem("降温完成_F1_AV", true, ""));
@@ -2561,13 +2570,21 @@ public class ReaderOpc {
 					test.wait(5000);
 				}
 				responseGroup = jopc.synchReadGroup(group);
-				ArrayList<OpcItem> opcItems = responseGroup.getItems();
+//				ArrayList<OpcItem> opcItems = responseGroup.getItems();
+				List<OpcItem> opcItems = new ArrayList<OpcItem>();
+				OpcItem opcItem1 = new OpcItem("aaa",true,"111");
+				OpcItem opcItem2 = new OpcItem("bbb",true,"111");
+				OpcItem opcItem3 = new OpcItem("ccc",true,"111");
+				opcItems.add(opcItem1);
+				opcItems.add(opcItem2);
+				opcItems.add(opcItem3);
 				for (OpcItem opcItem : opcItems) {
 					System.out.println("Item名:" + opcItem.getItemName() + "  Item值: " + opcItem.getValue());
 					//APIUtil.addPiCiU(opcItem.getValue().toString());
 					//break;
 				}
-				break;
+				APIUtil.addTrigger(opcItems);
+				//break;
 			} catch (ComponentNotFoundException e) {
 				//logger.error(e.getMessage()); //获取responseGroup错误
 				JOpc.coUninitialize();     //错误关闭连接

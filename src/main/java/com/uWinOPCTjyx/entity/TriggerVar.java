@@ -21,6 +21,12 @@ public class TriggerVar {
 	public static final String U="U";
 	
 	private Integer Id;
+	private String VarName;
+	private Float VarValue;
+	private String RecType;
+	private Integer FId;
+	private String Desc;
+
 	public Integer getId() {
 		return Id;
 	}
@@ -57,9 +63,4 @@ public class TriggerVar {
 	public void setDesc(String desc) {
 		Desc = desc;
 	}
-	private String VarName;
-	private Float VarValue;
-	private String RecType;
-	private Integer FId;
-	private String Desc;
 }
