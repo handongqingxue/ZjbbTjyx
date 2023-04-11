@@ -50,7 +50,7 @@
 	<select id="getListByFIdList" resultType="com.uWinOPCTjyx.entity.TriggerVar">
 		select * from TriggerVar where 1=1
 		<foreach collection="runFIdList" item="runFId" open=" and cast(FId as char) in (" separator="," close=")">
-		#{runFId}
+			#{runFId}
 		</foreach>
 	</select>
 </mapper>

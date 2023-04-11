@@ -106,7 +106,12 @@ public class Constant {
 	 * 助剂计量罐5(M类)
 	 */
 	public static final int BSF_ZJJLG5=5;
-	
+
+	/**
+	 * 反应釜号数组
+	 */
+	public static final Integer[] F_ID_ARR=new Integer[]{F1_ID,F2_ID,F3_ID,F4_ID,F5_ID};
+
 	/**
 	 * 反应釜标识符数组(M类)
 	 */

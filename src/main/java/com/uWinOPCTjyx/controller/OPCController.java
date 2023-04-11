@@ -84,8 +84,16 @@ public class OPCController {
 	@RequestMapping(value = "/initFMap", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> initFMap(@RequestBody String bodyStr) {
-
 		HashMap<String,Object> json=new HashMap<String, Object>();
+		List<Integer> fIdList=new ArrayList<Integer>();//创建反应釜号集合，用来存储反应釜号
+		for (Integer fId : Constant.F_ID_ARR) {
+			fIdList.add(fId);
+		}
+		List<TriggerVar> triggerVarList = triggerVarService.getListByFIdList(fIdList);//查询全部触发器变量
+		for (TriggerVar triggerVar : triggerVarList) {
+			System.out.println(triggerVar+";");
+		}
+
 		//1号釜
 		HashMap<String,Object> f1MMap=new HashMap<String, Object>();
 		HashMap<String,Object> f1UMap=new HashMap<String, Object>();
@@ -133,8 +141,7 @@ public class OPCController {
 		f5Map.put("f5UMap",f5UMap);
 		return json;
 	}
-	
-	@SuppressWarnings("unchecked")
+
 	@RequestMapping(value = "/keepWatchOnTriggerVar", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> keepWatchOnTriggerVar() {

@@ -70,6 +70,7 @@ abstract public class JCustomOpc {
     // load native library OPC Client
    // System.loadLibrary(props.getProperty("library.path"));
     System.load("D:\\opcapp\\JCustomOpc.dll");
+
   }
 
   /**
