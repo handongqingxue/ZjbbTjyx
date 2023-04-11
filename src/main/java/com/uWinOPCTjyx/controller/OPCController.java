@@ -135,41 +135,77 @@ public class OPCController {
 
 		Map<String,Object> json=new HashMap<String, Object>();
 		
-		List<String> fIdList=new ArrayList<String>();
+		List<Integer> runFIdList=new ArrayList<Integer>();
 		
+		//判断反应釜是否在运行
 		boolean runF1 = Boolean.parseBoolean(f1Map.get("run").toString());
 		System.out.println("runF1==="+runF1);
 		if(runF1) {
-			fIdList.add(Constant.BSF_F1);
+			runFIdList.add(Constant.F1_ID);
 		}
 		
 		boolean runF2 = Boolean.parseBoolean(f2Map.get("run").toString());
 		System.out.println("runF2==="+runF2);
 		if(runF2) {
-			fIdList.add(Constant.BSF_F2);
+			runFIdList.add(Constant.F2_ID);
 		}
 		
 		boolean runF3 = Boolean.parseBoolean(f3Map.get("run").toString());
 		System.out.println("runF3==="+runF3);
 		if(runF3) {
-			fIdList.add(Constant.BSF_F3);
+			runFIdList.add(Constant.F3_ID);
 		}
 		
 		boolean runF4 = Boolean.parseBoolean(f4Map.get("run").toString());
 		System.out.println("runF4==="+runF4);
 		if(runF4) {
-			fIdList.add(Constant.BSF_F4);
+			runFIdList.add(Constant.F4_ID);
 		}
 		
 		boolean runF5 = Boolean.parseBoolean(f5Map.get("run").toString());
 		System.out.println("runF5==="+runF5);
 		if(runF5) {
-			fIdList.add(Constant.BSF_F5);
+			runFIdList.add(Constant.F5_ID);
+		}
+
+		List<Integer> jwwcFIdList=new ArrayList<Integer>();//降温完成反应釜号集合(M类和U类共用)
+		List<TriggerVar> jwwcTVList=triggerVarService.getListByVarNameQzFIdList(Constant.JIANG_WEN_WAN_CHENG_TEXT,runFIdList);//先获取所有反应釜降温完成触发量,不管是否是上升沿
+		List<TriggerVar> upJwwcTVList = getUpDownVarValueListFromList(jwwcTVList,TriggerVar.UP);//获取上升的降温完成变量
+		for (TriggerVar upJwwcTV : upJwwcTVList) {
+			Integer upFId = upJwwcTV.getFId();
+			String upVarName = upJwwcTV.getVarName();
+			switch (upFId) {
+			case Constant.F1_ID:
+				Map<String,Object> preValueF1MMap=(Map<String,Object>)f1Map.get("f1MMap");
+				Float preValue = Float.valueOf(preValueF1MMap.get(upVarName).toString());
+				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
+					jwwcFIdList.add(upFId);
+				}
+				break;
+			}
 		}
 		
-		List<TriggerVar> jwwcTVList=triggerVarService.getListByVarNameQzFIdList(Constant.JIANG_WEN_WAN_CHENG_TEXT,fIdList);
+		
+		
 		
 		return json;
+	}
+	
+	/**
+	 * 根据标识符获取上升或下降变量集合
+	 * @param triggerVarList
+	 * @param flag
+	 * @return
+	 */
+	private List<TriggerVar> getUpDownVarValueListFromList(List<TriggerVar> triggerVarList,int flag) {
+		List<TriggerVar> upDownVarValueTVList=new ArrayList<TriggerVar>();
+		for (TriggerVar triggerVar : triggerVarList) {
+			Float varValue = triggerVar.getVarValue();
+			if(varValue==flag) {
+				upDownVarValueTVList.add(triggerVar);
+			}
+		}
+		return upDownVarValueTVList;
 	}
 	
 }

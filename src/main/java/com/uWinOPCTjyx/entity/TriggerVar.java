@@ -2,6 +2,15 @@ package com.uWinOPCTjyx.entity;
 
 public class TriggerVar {
 
+	/**
+	 * 已上升
+	 */
+	public static final int UP=1;
+	/**
+	 * 已下降
+	 */
+	public static final int DOWN=0;
+	
 	private Integer Id;
 	public Integer getId() {
 		return Id;

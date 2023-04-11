@@ -3,6 +3,27 @@ package com.uWinOPCTjyx.util;
 public class Constant {
 
 	/**
+	 * 1号反应釜id
+	 */
+	public static final int F1_ID=1;
+	/**
+	 * 2号反应釜id
+	 */
+	public static final int F2_ID=2;
+	/**
+	 * 3号反应釜id
+	 */
+	public static final int F3_ID=3;
+	/**
+	 * 4号反应釜id
+	 */
+	public static final int F4_ID=4;
+	/**
+	 * 5号反应釜id
+	 */
+	public static final int F5_ID=5;
+	
+	/**
 	 * 1号反应釜(M类)
 	 */
 	public static final String BSF_F1="F1";
