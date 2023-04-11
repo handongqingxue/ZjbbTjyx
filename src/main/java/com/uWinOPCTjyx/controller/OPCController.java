@@ -209,13 +209,13 @@ public class OPCController {
 
 	@RequestMapping(value = "/addTriggerVarFromOpc", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> addTriggerVarFromOpc(@RequestBody String list){
+	public Map<String, Object> addTriggerVarFromOpc(@RequestBody String bodyStr){
 		
 		Map<String,Object> json=new HashMap<String, Object>();
 		
 		System.out.println("进来");
 
-		System.out.println(list);
+		System.out.println(bodyStr);
 		
 		return json;
 	}
