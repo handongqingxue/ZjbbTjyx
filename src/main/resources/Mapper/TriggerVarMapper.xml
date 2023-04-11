@@ -47,8 +47,8 @@
 	<select id="getCountByVarName" resultType="java.lang.Integer">
 		select count(*) from TriggerVar where VarName=#{varName}
 	</select>
-	<select id="getListByVarNameQzFIdList" resultType="com.uWinOPCTjyx.entity.TriggerVar">
-		select * from TriggerVar where VarName like #{varNameQz}+'%'
+	<select id="getListByFIdList" resultType="com.uWinOPCTjyx.entity.TriggerVar">
+		select * from TriggerVar where 1=1
 		<foreach collection="runFIdList" item="runFId" open=" and cast(FId as char) in (" separator="," close=")">
 		#{runFId}
 		</foreach>
