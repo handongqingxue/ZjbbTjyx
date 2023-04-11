@@ -8,4 +8,11 @@ import com.uWinOPCTjyx.entity.*;
 
 public interface ProcessVarMapper {
 
+	/**
+	 * 根据反应釜id
+	 * @param fIdList
+	 * @return
+	 */
+	List<ProcessVar> getUnDealListByFIdList(List<Integer> fIdList);
+
 }

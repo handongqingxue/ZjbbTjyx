@@ -1,6 +1,15 @@
 package com.uWinOPCTjyx.entity;
 
 public class ProcessVar {
+	
+	/**
+	 * 已处理
+	 */
+	public static final int YCL=1;
+	/**
+	 * 未处理
+	 */
+	public static final int WCL=0;
 
 	private Integer Id;
 	private String VarName;

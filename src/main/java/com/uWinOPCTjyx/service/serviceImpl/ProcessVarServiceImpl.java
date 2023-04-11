@@ -15,4 +15,9 @@ public class ProcessVarServiceImpl implements ProcessVarService {
     @Autowired
     private ProcessVarMapper processVarMapper;
 
+	public List<ProcessVar> getUnDealListByFIdList(List<Integer> fIdList) {
+		// TODO Auto-generated method stub
+		return processVarMapper.getUnDealListByFIdList(fIdList);
+	}
+
 }

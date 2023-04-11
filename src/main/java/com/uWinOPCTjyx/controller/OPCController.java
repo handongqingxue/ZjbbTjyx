@@ -35,6 +35,8 @@ public class OPCController {
 	private ERecordService eRecordService;
 	@Autowired
 	private TriggerVarService triggerVarService;
+	@Autowired
+	private ProcessVarService processVarService;
 	private Map<String,Object> f1Map,f2Map,f3Map,f4Map,f5Map;
 
 	public static final String MODULE_NAME="opc";
@@ -99,8 +101,8 @@ public class OPCController {
 		//初始化run标识位、M类哈希表、U类哈希表
 		f2Map=new HashMap<String, Object>();
 		f2Map.put("run",false);
-		f2Map.put("f2MMap",f1MMap);
-		f2Map.put("f2UMap",f1UMap);
+		f2Map.put("f2MMap",f2MMap);
+		f2Map.put("f2UMap",f2UMap);
 
 
 		//3号釜
@@ -109,8 +111,8 @@ public class OPCController {
 		//初始化run标识位、M类哈希表、U类哈希表
 		f3Map=new HashMap<String, Object>();
 		f3Map.put("run",false);
-		f3Map.put("f3MMap",f1MMap);
-		f3Map.put("f3UMap",f1UMap);
+		f3Map.put("f3MMap",f3MMap);
+		f3Map.put("f3UMap",f3UMap);
 
 		//4号釜
 		HashMap<String,Object> f4MMap=new HashMap<String, Object>();
@@ -118,8 +120,8 @@ public class OPCController {
 		//初始化run标识位、M类哈希表、U类哈希表
 		f4Map=new HashMap<String, Object>();
 		f4Map.put("run",false);
-		f4Map.put("f4MMap",f1MMap);
-		f4Map.put("f4UMap",f1UMap);
+		f4Map.put("f4MMap",f4MMap);
+		f4Map.put("f4UMap",f4UMap);
 
 		//5号釜
 		HashMap<String,Object> f5MMap=new HashMap<String, Object>();
@@ -127,8 +129,8 @@ public class OPCController {
 		//初始化run标识位、M类哈希表、U类哈希表
 		f5Map=new HashMap<String, Object>();
 		f5Map.put("run",false);
-		f5Map.put("f5MMap",f1MMap);
-		f5Map.put("f5UMap",f1UMap);
+		f5Map.put("f5MMap",f5MMap);
+		f5Map.put("f5UMap",f5UMap);
 		return json;
 	}
 	
@@ -176,16 +178,18 @@ public class OPCController {
 		HashMap<String,Object> preValueF1UMap=(HashMap<String,Object>)f1Map.get("f1UMap");
 		
 
+		//每次检索只获取一次所有的触发量就行，下面的逻辑里会根据不同的变量从反应釜列表里读取
 		List<TriggerVar> triggerVarList = triggerVarService.getListByFIdList(runFIdList);//先获取所有反应釜触发量,不管是否是上升沿
 		Map<String,List<TriggerVar>> triggerVarMap=getTriVarListGroupMap(triggerVarList);
 		
+		//降温完成
 		List<Integer> jwwcFIdList=new ArrayList<Integer>();//降温完成反应釜号集合(M类和U类共用)
 		List<TriggerVar> jwwcTVList=(List<TriggerVar>)triggerVarMap.get(Constant.JIANG_WEN_WAN_CHENG_TEXT);//先获取所有反应釜降温完成触发量,不管是否是上升沿
 		List<TriggerVar> upJwwcTVList = getUpDownVarValueListFromList(jwwcTVList,TriggerVar.UP);//获取上升的降温完成变量
 		for (TriggerVar upJwwcTV : upJwwcTVList) {
 			Integer upFId = upJwwcTV.getFId();
 			String upRecType = upJwwcTV.getRecType();
-			String upVarName = upJwwcTV.getVarName();
+			String upVarName = upJwwcTV.getVarName();//上次变量名和本次变量名其实是一致的
 			switch (upFId) {
 			case Constant.F1_ID:
 				if(TriggerVar.M.equals(upRecType)) {
@@ -202,6 +206,10 @@ public class OPCController {
 				}
 				break;
 			}
+		}
+		
+		if(jwwcFIdList.size()>0) {//若有需要处理的降温完成节点的反应釜，说明这些反应釜的批次执行完成，就从过程变量表(ProcessVar)里读取已采集好的变量，经过加工处理存入批记录表(ERecord)里
+			List<ProcessVar> proVarList=processVarService.getUnDealListByFIdList(jwwcFIdList);
 		}
 		
 		updateProTVListByCurrList(jwwcTVList);//这个方法用来存储本次变量值，作为下次检索里的上次变量值来使用。每次检索结束后都要记录一下
