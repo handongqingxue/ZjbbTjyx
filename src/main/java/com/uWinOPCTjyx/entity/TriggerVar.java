@@ -11,6 +11,15 @@ public class TriggerVar {
 	 */
 	public static final int DOWN=0;
 	
+	/**
+	 * M类配方类型
+	 */
+	public static final String M="M";
+	/**
+	 * U类配方类型
+	 */
+	public static final String U="U";
+	
 	private Integer Id;
 	public Integer getId() {
 		return Id;
