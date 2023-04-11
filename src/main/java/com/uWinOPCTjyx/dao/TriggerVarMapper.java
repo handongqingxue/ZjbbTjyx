@@ -13,5 +13,6 @@ public interface TriggerVarMapper {
 	int add(TriggerVar triggerVar);
 
 	int editByVarName(TriggerVar triggerVar);
-
+	
+	List<TriggerVar> getListByVarNameQzFIdList(@Param("varNameQz") String varNameQz, @Param("runFIdList") List<Integer> runFIdList);
 }
