@@ -195,7 +195,6 @@ public class APIUtil {
 				
 				ja.put(jo);
 			}
-			System.out.println("ja==="+ja);
 			doHttp("addTriggerVarFromOpc",ja);
 		} catch (Exception e) {
 			e.printStackTrace();

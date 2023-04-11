@@ -17,13 +17,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9bfab7cf-a4c1-4d31-9c53-df2a94b39f3e" name="Default Changelist" comment="111">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/controller/OPCController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/controller/OPCController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/entity/TriggerVar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/entity/TriggerVar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/util/APIUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/util/APIUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/javafish/clients/opc/connect/ReaderOpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/javafish/clients/opc/connect/ReaderOpc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/component/OpcItem.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/component/OpcItem.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/connect/ReaderOpc.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/connect/ReaderOpc.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/property/PropertyLoader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/property/PropertyLoader.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
