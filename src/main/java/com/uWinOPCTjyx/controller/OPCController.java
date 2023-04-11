@@ -273,18 +273,26 @@ public class OPCController {
 	@RequestMapping(value = "/addTriggerVarFromOpc", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> addTriggerVarFromOpc(@RequestBody String bodyStr){
-		System.out.println("进来");
-
-		Map<String,Object> json=new HashMap<String, Object>();
-		List<TriggerVar> triggerVarList=com.alibaba.fastjson.JSONArray.parseArray(bodyStr,TriggerVar.class);
-		System.out.println(triggerVarList.size());
-
-		for (TriggerVar triggerVar : triggerVarList) {
-			System.out.println(triggerVar.getVarName());
-		}
 		System.out.println(bodyStr);
-		
-		return json;
+		Map<String,Object> json=new HashMap<String, Object>();
+		//List<TriggerVar> triggerVarList = JSON.parseArray(bodyStr, TriggerVar.class);
+		List<TriggerVar> triggerVarList=com.alibaba.fastjson.JSONArray.parseArray(bodyStr,TriggerVar.class);
+		try {
+			int count = triggerVarService.editFromList(triggerVarList);
+			if (count>0){
+				json.put("message","ok");
+				json.put("info","编辑成功");
+			}
+			else {
+				json.put("message","no");
+				json.put("info","编辑失败");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			return json;
+		}
 	}
 	
 	/**
