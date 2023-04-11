@@ -3,6 +3,27 @@ package com.uWinOPCTjyx.util;
 public class Constant {
 
 	/**
+	 * 1号反应釜id
+	 */
+	public static final int F1_ID=1;
+	/**
+	 * 2号反应釜id
+	 */
+	public static final int F2_ID=2;
+	/**
+	 * 3号反应釜id
+	 */
+	public static final int F3_ID=3;
+	/**
+	 * 4号反应釜id
+	 */
+	public static final int F4_ID=4;
+	/**
+	 * 5号反应釜id
+	 */
+	public static final int F5_ID=5;
+	
+	/**
 	 * 1号反应釜(M类)
 	 */
 	public static final String BSF_F1="F1";
@@ -186,6 +207,10 @@ public class Constant {
 	 * 允许二次加助剂文字
 	 */
 	public static final String YUN_XU_ER_CI_JIA_ZHU_JI_TEXT="允许二次加助剂";
+	/**
+	 * 降温完成文字
+	 */
+	public static final String JIANG_WEN_WAN_CHENG_TEXT="降温完成";
 	
 	/**
 	 * 百分号文字

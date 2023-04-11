@@ -9,63 +9,65 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.alibaba.fastjson.JSON;
 import javafish.clients.opc.component.OpcItem;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import com.alibaba.fastjson.JSON;
 
 public class APIUtil {
 
 	public static final String SERVICE_URL="http://localhost:8080/UWinOPCTjyx/opc/";
 
-	public static JSONObject doHttp(String method, List<OpcItem> params) {
-		OutputStreamWriter writer = null;
-		BufferedReader reader = null;
-		JSONObject resultJO = null;
-		String sbf = "";
+	public static void doHttp(String method,List<OpcItem> params) {
+		System.out.println(params.toString()+"_-------------------------------------------------------");
+		OutputStreamWriter out = null;
+		BufferedReader in = null;
+		StringBuffer result = new StringBuffer();
 		try {
-			URL url = new URL(SERVICE_URL+method);
-			HttpURLConnection connection = (HttpURLConnection)url.openConnection();
-			connection.setRequestMethod("POST");//请求post方式
-			connection.setDoInput(true);
-			connection.setDoOutput(true);
-			//header内的的参数在这里set
-			//connection.setRequestProperty("key", "value");
-			connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-			connection.connect();
-			//获取URLConnection对象对应的输出流
-			writer = new OutputStreamWriter(connection.getOutputStream(),"UTF-8");
-			//OutputStream writer = connection.getOutputStream();
-			//发送请求参数
-			writer.write(params.toString());
+			URL realUrl = new URL(SERVICE_URL+method);
+			HttpURLConnection conn = null;
+			conn = (HttpURLConnection) realUrl.openConnection();
+			// 打开和URL之间的连接
+			// 发送POST请求必须设置如下两行
+			conn.setDoOutput(true);
+			conn.setDoInput(true);
+			conn.setRequestMethod("POST");    // POST方法
+			// 设置通用的请求属性
+			conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+			conn.connect();
+			// 获取URLConnection对象对应的输出流
+			out = new OutputStreamWriter(conn.getOutputStream(), "UTF-8");
+			// 发送请求参数
+			out.write(params.toString());
 			// flush输出流的缓冲
-			writer.flush();
+			out.flush();
 			// 定义BufferedReader输入流来读取URL的响应
-			reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"));
-			String strRead = null;
-			while ((strRead = reader.readLine()) != null) {
-				sbf += strRead;
+			in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+			String line;
+			while ((line = in.readLine()) != null) {
+				result.append(line);
+				result.append("\r\n");
 			}
-			resultJO = new JSONObject(sbf.toString());
-			connection.disconnect();//关闭http连接
 		} catch (Exception e) {
+			System.out.println("发送 POST 请求出现异常！"+e);
 			e.printStackTrace();
 		}
-		finally {
-
+		//使用finally块来关闭输出流、输入流
+		finally{
 			try{
-				if(writer!=null){
-					writer.close();
+				if(out!=null){
+					out.close();
 				}
-				if(reader!=null){
-					reader.close();
+				if(in!=null){
+					in.close();
 				}
 			}
 			catch(IOException ex){
 				ex.printStackTrace();
 			}
 		}
-		return resultJO;
 	}
 
 	public static JSONObject doHttp(String method, Map<String, Object> params) {
@@ -178,15 +180,26 @@ public class APIUtil {
 		}
 	}
 
-	public static JSONObject addTrigger(List<OpcItem> triggerList) {
-		JSONObject resultJO = null;
+	public static void addTriggerVarFromOpc(List<OpcItem> opcItemList) {
+
 		try {
-			resultJO = doHttp("addPiCiU",triggerList);
+			JSONArray ja=new JSONArray();
+			JSONObject jo=null;
+			for (OpcItem opcItem : opcItemList) {
+				String itemName = opcItem.getItemName();
+				String value = opcItem.getValue().toString();
+				jo=new JSONObject();
+				
+				jo.put("varName", itemName);
+				jo.put("varValue", value);
+				
+				ja.put(jo);
+			}
+			System.out.println("ja==="+ja);
+			doHttp("addTriggerVarFromOpc",ja);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		finally {
-			return resultJO;
-		}
+
 	}
 }

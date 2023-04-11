@@ -2,7 +2,31 @@ package com.uWinOPCTjyx.entity;
 
 public class TriggerVar {
 
+	/**
+	 * 已上升
+	 */
+	public static final int UP=1;
+	/**
+	 * 已下降
+	 */
+	public static final int DOWN=0;
+	
+	/**
+	 * M类配方类型
+	 */
+	public static final String M="M";
+	/**
+	 * U类配方类型
+	 */
+	public static final String U="U";
+	
 	private Integer Id;
+	private String VarName;
+	private Float VarValue;
+	private String RecType;
+	private Integer FId;
+	private String Desc;
+
 	public Integer getId() {
 		return Id;
 	}
@@ -39,9 +63,4 @@ public class TriggerVar {
 	public void setDesc(String desc) {
 		Desc = desc;
 	}
-	private String VarName;
-	private Float VarValue;
-	private String RecType;
-	private Integer FId;
-	private String Desc;
 }
