@@ -16,6 +16,8 @@ import javafish.clients.opc.exception.ConnectivityException;
 import javafish.clients.opc.exception.SynchReadException;
 import javafish.clients.opc.exception.UnableAddGroupException;
 import javafish.clients.opc.exception.UnableAddItemException;
+import javafish.clients.opc.variant.Variant;
+
 /**
  * 读取opc服务端
  * @author Administrator
@@ -2573,8 +2575,11 @@ public class ReaderOpc {
 //				ArrayList<OpcItem> opcItems = responseGroup.getItems();
 				List<OpcItem> opcItems = new ArrayList<OpcItem>();
 				OpcItem opcItem1 = new OpcItem("备料开始_F1_AV",false,"111");
+				opcItem1.setValue(new Variant("0"));
 				OpcItem opcItem2 = new OpcItem("降温完成_F1_AV",false,"111");
+				opcItem2.setValue(new Variant("0"));
 				OpcItem opcItem3 = new OpcItem("降温完成_F2_AV",false,"111");
+				opcItem3.setValue(new Variant("0"));
 				opcItems.add(opcItem1);
 				opcItems.add(opcItem2);
 				opcItems.add(opcItem3);
