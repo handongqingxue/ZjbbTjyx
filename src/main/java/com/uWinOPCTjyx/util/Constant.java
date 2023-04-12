@@ -172,21 +172,9 @@ public class Constant {
 	 */
 	public static final String JIA_QUAN_BEI_LIAO_KAI_SHI_TEXT="甲醛备料开始";
 	/**
-	 * 甲醛备料开始时间文字
-	 */
-	public static final String JIA_QUAN_BEI_LIAO_KAI_SHI_SHI_JIAN_TEXT="甲醛备料开始时间";
-	/**
 	 * 甲醛放料完成文字
 	 */
 	public static final String JIA_QUAN_FANG_LIAO_WAN_CHENG_TEXT="甲醛放料完成";
-	/**
-	 * 甲醛放料完成时间文字
-	 */
-	public static final String JIA_QUAN_FANG_LIAO_WAN_CHENG_SHI_JIAN_TEXT="甲醛放料完成时间";
-	/**
-	 * 甲醛备料开始到结束时间文字
-	 */
-	public static final String JIA_QUAN_BEI_LIAO_KAI_SHI_DAO_JIE_SHU_SHI_JIAN_TEXT="甲醛备料开始到结束时间";
 	/**
 	 * 加碱PH值正常文字
 	 */
@@ -275,6 +263,14 @@ public class Constant {
 	 * 温度文字
 	 */
 	public static final String WEN_DU_TEXT="温度";
+	/**
+	 * 到文字
+	 */
+	public static final String DAO_TEXT="到";
+	/**
+	 * 时间文字
+	 */
+	public static final String SHI_JIAN_TEXT="时间";
 	/**
 	 * 千克单位文字
 	 */
