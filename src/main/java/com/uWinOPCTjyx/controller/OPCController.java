@@ -227,6 +227,10 @@ public class OPCController {
 		List<TriggerVar> triggerVarList = triggerVarService.getListByFIdList(runFIdList);//先获取所有反应釜触发量,不管是否是上升沿
 		Map<String,List<TriggerVar>> triggerVarMap=getTriVarListGroupMap(triggerVarList);
 		
+		//李工的代码逻辑从这里开始写
+		//备料开始触发量
+		
+		
 		//降温完成
 		List<Integer> jwwcFIdList=new ArrayList<Integer>();//降温完成反应釜号集合(M类和U类共用)
 		List<TriggerVar> jwwcTVList=(List<TriggerVar>)triggerVarMap.get(Constant.JIANG_WEN_WAN_CHENG_TEXT);//先获取所有反应釜降温完成触发量,不管是否是上升沿
