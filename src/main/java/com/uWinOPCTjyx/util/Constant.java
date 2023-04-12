@@ -140,6 +140,10 @@ public class Constant {
 	public static final Integer[] BSF_ZJJLG_3_5_M_ARR=new Integer[] {BSF_ZJJLG3,BSF_ZJJLG4,BSF_ZJJLG5};
 	
 	/**
+	 * 开始到结束时间文字
+	 */
+	public static final String KAI_SHI_DAO_JIE_SHU_SHI_JIAN_TEXT="开始到结束时间";
+	/**
 	 * 备料开始文字
 	 */
 	public static final String BEI_LIAO_KAI_SHI_TEXT="备料开始";
@@ -160,17 +164,29 @@ public class Constant {
 	 */
 	public static final String SHENG_CHAN_RI_QI_TEXT="生产日期";
 	/**
+	 * 甲醛实际进料重量文字
+	 */
+	public static final String JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG_TEXT="甲醛实际进料重量";
+	/**
 	 * 甲醛备料开始文字
 	 */
 	public static final String JIA_QUAN_BEI_LIAO_KAI_SHI_TEXT="甲醛备料开始";
+	/**
+	 * 甲醛备料开始时间文字
+	 */
+	public static final String JIA_QUAN_BEI_LIAO_KAI_SHI_SHI_JIAN_TEXT="甲醛备料开始时间";
 	/**
 	 * 甲醛放料完成文字
 	 */
 	public static final String JIA_QUAN_FANG_LIAO_WAN_CHENG_TEXT="甲醛放料完成";
 	/**
-	 * 甲醛实际进料重量文字
+	 * 甲醛放料完成时间文字
 	 */
-	public static final String JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG_TEXT="甲醛实际进料重量";
+	public static final String JIA_QUAN_FANG_LIAO_WAN_CHENG_SHI_JIAN_TEXT="甲醛放料完成时间";
+	/**
+	 * 甲醛备料开始到结束时间文字
+	 */
+	public static final String JIA_QUAN_BEI_LIAO_KAI_SHI_DAO_JIE_SHU_SHI_JIAN_TEXT="甲醛备料开始到结束时间";
 	/**
 	 * 加碱PH值正常文字
 	 */
@@ -263,9 +279,13 @@ public class Constant {
 	 * 千克单位文字
 	 */
 	public static final String KG="kg";
-	
+
+	/**
+	 * 生产编号阶段文字
+	 */
+	public static final String SHENG_CHAN_BIAN_HAO_TEXT="生产编号";
 	/**
 	 * 甲醛阶段文字
 	 */
-	public static final String YSD101="YSD101";
+	public static final String YSD101_TEXT="YSD101";
 }
