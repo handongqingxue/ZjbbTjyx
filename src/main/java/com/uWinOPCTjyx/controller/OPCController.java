@@ -194,6 +194,10 @@ public class OPCController {
 		List<TriggerVar> triggerVarList = triggerVarService.getListByFIdList(runFIdList);//先获取所有反应釜触发量,不管是否是上升沿
 		Map<String,List<TriggerVar>> triggerVarMap=getTriVarListGroupMap(triggerVarList);
 		
+		//李工的代码逻辑从这里开始写
+		//备料开始触发量
+		
+		
 		//降温完成
 		List<Integer> jwwcFIdList=new ArrayList<Integer>();//降温完成反应釜号集合(M类和U类共用)
 		List<TriggerVar> jwwcTVList=(List<TriggerVar>)triggerVarMap.get(Constant.JIANG_WEN_WAN_CHENG_TEXT);//先获取所有反应釜降温完成触发量,不管是否是上升沿
@@ -221,7 +225,8 @@ public class OPCController {
 		}
 		
 		if(jwwcFIdList.size()>0) {//若有需要处理的降温完成节点的反应釜，说明这些反应釜的批次执行完成，就从过程变量表(ProcessVar)里读取已采集好的变量，经过加工处理存入批记录表(ERecord)里
-			List<ProcessVar> proVarList=processVarService.getUnDealListByFIdList(jwwcFIdList);
+			List<ProcessVar> udProVarList=processVarService.getUnDealListByFIdList(jwwcFIdList);
+			int c=eRecordService.addFromProVarList(udProVarList);
 		}
 		
 		updateProTVListByCurrList(jwwcTVList);//这个方法用来存储本次变量值，作为下次检索里的上次变量值来使用。每次检索结束后都要记录一下

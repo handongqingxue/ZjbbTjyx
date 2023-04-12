@@ -140,6 +140,22 @@ public class Constant {
 	 */
 	public static final String BEI_LIAO_KAI_SHI_TEXT="备料开始";
 	/**
+	 * 备料开始时间文字
+	 */
+	public static final String BEI_LIAO_KAI_SHI_SHI_JIAN_TEXT="备料开始时间";
+	/**
+	 * 反应结束文字
+	 */
+	public static final String FAN_YING_JIE_SHU_TEXT="反应结束";
+	/**
+	 * 反应结束时间文字
+	 */
+	public static final String FAN_YING_JIE_SHU_SHI_JIAN_TEXT="反应结束时间";
+	/**
+	 * 生产日期文字
+	 */
+	public static final String SHENG_CHAN_RI_QI_TEXT="生产日期";
+	/**
 	 * 甲醛备料开始文字
 	 */
 	public static final String JIA_QUAN_BEI_LIAO_KAI_SHI_TEXT="甲醛备料开始";
@@ -239,4 +255,13 @@ public class Constant {
 	 * 温度文字
 	 */
 	public static final String WEN_DU_TEXT="温度";
+	/**
+	 * 千克单位文字
+	 */
+	public static final String KG="kg";
+	
+	/**
+	 * 甲醛阶段文字
+	 */
+	public static final String YSD101="YSD101";
 }
