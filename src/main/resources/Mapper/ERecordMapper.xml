@@ -83,4 +83,7 @@
 			</if>
 		</trim>
 	</insert>
+	<select id="getMaxBatchNumByYear" resultType="java.lang.Integer">
+		select max(right(BatchID,8)) from ERecord where year(RecordTime)=#{year}
+	</select>
 </mapper>
