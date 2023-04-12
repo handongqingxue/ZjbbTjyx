@@ -82,6 +82,7 @@ public class PropertyLoader {
     	System.out.println("propsName======"+propsName);
     	System.out.println("name======"+name);
     	
+    	//路径问题参考链接:https://blog.csdn.net/weixin_41489022/article/details/113522628
     	Class<OpcUtil> clazz = OpcUtil.class;
     	String filePath = clazz.getResource("/"+name).getPath();
     	//clazz.getResource("/javafish/clients/opc/JCustomOpc.properties").getPath();
