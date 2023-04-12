@@ -144,6 +144,11 @@ public class OPCController {
 		f5Map.put("f5MMap",f5MMap);
 		f5Map.put("f5UMap",f5UMap);
 
+		System.out.println("1"+f1Map.toString());
+		System.out.println("2"+f2Map.toString());
+		System.out.println("3"+f3Map.toString());
+		System.out.println(f4Map.toString());
+		System.out.println(f5Map.toString());
 		return json;
 	}
 
