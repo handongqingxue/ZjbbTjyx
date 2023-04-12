@@ -1,7 +1,11 @@
 package javafish.clients.opc.property;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.Properties;
+
+import com.uWinOPCTjyx.util.OpcUtil;
 
 /**
  * Properties loader
@@ -77,7 +81,16 @@ public class PropertyLoader {
     	String name = propsName.replace('.', '/').concat(".properties");      // propsName    javafish/clients/opc/JCustomOpc.properties
     	System.out.println("propsName======"+propsName);
     	System.out.println("name======"+name);
-	    in = cl.getResourceAsStream(name);
+    	
+    	Class<OpcUtil> clazz = OpcUtil.class;
+    	String filePath = clazz.getResource("/"+name).getPath();
+    	//clazz.getResource("/javafish/clients/opc/JCustomOpc.properties").getPath();
+    	System.out.println(filePath);
+    	
+    	//File file = new File("D:/eclipse-workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/UWinOPCTjyx/WEB-INF/classes/javafish/clients/opc/JCustomOpc.properties");
+    	
+    	in = new FileInputStream(new File(filePath));
+    	//in = cl.getResourceAsStream(name);
 	    //in = cl.getResourceAsStream("configBf2.properties");
     	System.out.println("in======"+in);
         if (in != null) {
