@@ -271,6 +271,10 @@ public class Constant {
 	 * 千克单位文字
 	 */
 	public static final String KG="kg";
+	/**
+	 * 温度单位符号
+	 */
+	public static final String WEN_DU_DAN_WEI_SIGN="°C";
 
 	/**
 	 * 生产编号阶段文字
@@ -280,4 +284,8 @@ public class Constant {
 	 * 甲醛阶段文字
 	 */
 	public static final String YSD101_TEXT="YSD101";
+	/**
+	 * YSD109阶段文字
+	 */
+	public static final String YSD109_TEXT="YSD109";
 }

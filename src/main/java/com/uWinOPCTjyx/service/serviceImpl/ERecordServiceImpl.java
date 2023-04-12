@@ -105,12 +105,12 @@ public class ERecordServiceImpl implements ERecordService {
 				String batchID = batchIDMap.get(pvFId).toString();
 				String updateTime = processVar.getUpdateTime();
 				
-				eRecord=getFromList(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI_TEXT+Constant.DAO_TEXT+Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG_TEXT, batchID, eRecordList);
+				eRecord=getFromList(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI_TEXT+Constant.DAO_TEXT+Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG_TEXT+Constant.SHI_JIAN_TEXT, batchID, eRecordList);
 				if(eRecord==null) {
 					String pvRecType = processVar.getRecType();
 					
 					eRecord=new ERecord();
-					eRecord.setVarName(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI_TEXT+Constant.DAO_TEXT+Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG_TEXT);
+					eRecord.setVarName(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI_TEXT+Constant.DAO_TEXT+Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG_TEXT+Constant.SHI_JIAN_TEXT);
 					eRecord.setRecType(pvRecType);
 					eRecord.setFId(pvFId);
 					eRecord.setRecordTime(recordTime);
@@ -137,6 +137,46 @@ public class ERecordServiceImpl implements ERecordService {
 					eRecord.setPhaseName(Constant.YSD101_TEXT);
 				}
 				eRecord.setNxtValue(updateTime);
+			}
+			else if(pvVarName.contains(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG_TEXT+Constant.FAN_YING_FU_TEXT+Constant.WEN_DU_TEXT)) {//甲醛放料完成反应釜温度
+				Float pvVarValue = processVar.getVarValue();
+				String pvRecType = processVar.getRecType();
+				Integer pvFId = processVar.getFId();
+				String batchID = batchIDMap.get(pvFId).toString();
+
+				eRecord=new ERecord();
+				eRecord.setVarName(pvVarName);
+				eRecord.setVarValue(pvVarValue+"");
+				eRecord.setUnit(Constant.WEN_DU_DAN_WEI_SIGN);
+				eRecord.setRecType(pvRecType);
+				eRecord.setFId(pvFId);
+				eRecord.setRecordTime(recordTime);
+				eRecord.setBatchID(batchID);
+				eRecord.setPhaseName(Constant.YSD101_TEXT);
+			}
+			else if(pvVarName.contains(Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG_TEXT+Constant.JIA_JIAN_QIAN_PH_SHU_RU_ZHI_TEXT)) {
+				Float pvVarValue = processVar.getVarValue();
+				String pvRecType = processVar.getRecType();
+				Integer pvFId = processVar.getFId();
+				String batchID = batchIDMap.get(pvFId).toString();
+
+				eRecord=new ERecord();
+				eRecord.setVarName(pvVarName);
+				eRecord.setVarValue(pvVarValue+"");
+				eRecord.setRecType(pvRecType);
+				eRecord.setFId(pvFId);
+				eRecord.setRecordTime(recordTime);
+				eRecord.setBatchID(batchID);
+				eRecord.setPhaseName(Constant.YSD101_TEXT);
+			}
+			else if(pvVarName.contains(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI_TEXT+Constant.FU_TEXT+Constant.CHENG_ZHONG_TEXT)) {//甲醛备料开始釜称重
+				
+			}
+			else if(pvVarName.contains(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG_TEXT+Constant.FU_TEXT+Constant.CHENG_ZHONG_TEXT)) {//甲醛放料完成釜称重
+				
+			}
+			else if(pvVarName.contains(Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG_TEXT+Constant.JIA_JIAN_LIANG_TI_SHI_TEXT)) {//加碱PH值正常加碱量提示
+				
 			}
 			eRecordList.add(eRecord);
 		}
