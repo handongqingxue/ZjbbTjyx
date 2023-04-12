@@ -100,17 +100,17 @@ public class ERecordServiceImpl implements ERecordService {
 				eRecord.setBatchID(batchID);
 				eRecord.setPhaseName(Constant.YSD101_TEXT);
 			}
-			else if(pvVarName.contains(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI_SHI_JIAN_TEXT)) {//甲醛备料开始时间
+			else if(pvVarName.contains(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI_TEXT+Constant.SHI_JIAN_TEXT)) {//甲醛备料开始时间
 				Integer pvFId = processVar.getFId();
 				String batchID = batchIDMap.get(pvFId).toString();
 				String updateTime = processVar.getUpdateTime();
 				
-				eRecord=getFromList(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI_DAO_JIE_SHU_SHI_JIAN_TEXT, batchID, eRecordList);
+				eRecord=getFromList(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI_TEXT+Constant.DAO_TEXT+Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG_TEXT, batchID, eRecordList);
 				if(eRecord==null) {
 					String pvRecType = processVar.getRecType();
 					
 					eRecord=new ERecord();
-					eRecord.setVarName(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI_DAO_JIE_SHU_SHI_JIAN_TEXT);
+					eRecord.setVarName(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI_TEXT+Constant.DAO_TEXT+Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG_TEXT);
 					eRecord.setRecType(pvRecType);
 					eRecord.setFId(pvFId);
 					eRecord.setRecordTime(recordTime);
@@ -119,8 +119,24 @@ public class ERecordServiceImpl implements ERecordService {
 				}
 				eRecord.setPreValue(updateTime);
 			}
-			else if(pvVarName.contains(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG_SHI_JIAN_TEXT)) {//甲醛放料完成时间
-				
+			else if(pvVarName.contains(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG_TEXT+Constant.SHI_JIAN_TEXT)) {//甲醛放料完成时间
+				Integer pvFId = processVar.getFId();
+				String batchID = batchIDMap.get(pvFId).toString();
+				String updateTime = processVar.getUpdateTime();
+
+				eRecord=getFromList(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI_TEXT+Constant.DAO_TEXT+Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG_TEXT+Constant.SHI_JIAN_TEXT, batchID, eRecordList);
+				if(eRecord==null) {
+					String pvRecType = processVar.getRecType();
+					
+					eRecord=new ERecord();
+					eRecord.setVarName(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI_TEXT+Constant.DAO_TEXT+Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG_TEXT+Constant.SHI_JIAN_TEXT);
+					eRecord.setRecType(pvRecType);
+					eRecord.setFId(pvFId);
+					eRecord.setRecordTime(recordTime);
+					eRecord.setBatchID(batchID);
+					eRecord.setPhaseName(Constant.YSD101_TEXT);
+				}
+				eRecord.setNxtValue(updateTime);
 			}
 			eRecordList.add(eRecord);
 		}
