@@ -85,13 +85,17 @@ public class OPCController {
 	@ResponseBody
 	public Map<String, Object> initFMap(@RequestBody String bodyStr) {
 		HashMap<String,Object> json=new HashMap<String, Object>();
+
 		List<Integer> fIdList=new ArrayList<Integer>();//创建反应釜号集合，用来存储反应釜号
 		for (Integer fId : Constant.F_ID_ARR) {
 			fIdList.add(fId);
 		}
 		List<TriggerVar> triggerVarList = triggerVarService.getListByFIdList(fIdList);//查询全部触发器变量
 		for (TriggerVar triggerVar : triggerVarList) {
-			System.out.println(triggerVar+";");
+			if (triggerVar.getRecType()==TriggerVar.M) {
+
+			}
+			System.out.println(triggerVar.getVarName()+":"+triggerVar.getVarValue()+":"+triggerVar.getFId()+":"+triggerVar.getRecType());
 		}
 
 		//1号釜
@@ -139,6 +143,7 @@ public class OPCController {
 		f5Map.put("run",false);
 		f5Map.put("f5MMap",f5MMap);
 		f5Map.put("f5UMap",f5UMap);
+
 		return json;
 	}
 
