@@ -9,4 +9,67 @@
 		#{fId}
 		</foreach>
 	</select>
+
+	<insert id="addProcessVar" parameterType="com.uWinOPCTjyx.entity.ProcessVar">
+			insert into ProcessVar
+			<trim prefix="(" suffix=")" suffixOverrides=",">
+				<if test="VarName!=null">
+					VarName,
+				</if>
+				<if test="VarValue!=null">
+					VarValue,
+				</if>
+				<if test="Unit!=null">
+					Unit,
+				</if>
+				<if test="RecType!=null">
+					RecType,
+				</if>
+				<if test="DealBz!=null">
+					DealBz,
+				</if>
+				<if test="UpdateTime!=null">
+					UpdateTime,
+				</if>
+				<if test="ParaType!=null">
+					ParaType,
+				</if>
+				<if test="FId!=null">
+					FId,
+				</if>
+				<if test="Desc!=null">
+					Desc,
+				</if>
+			</trim>
+			values
+			<trim prefix="(" suffix=")" suffixOverrides=",">
+				<if test="VarName!=null">
+					#{VarName},
+				</if>
+				<if test="VarValue!=null">
+					#{VarValue},
+				</if>
+				<if test="Unit!=null">
+					#{Unit},
+				</if>
+				<if test="RecType!=null">
+					#{RecType},
+				</if>
+				<if test="DealBz!=null">
+					#{DealBz},
+				</if>
+				<if test="UpdateTime!=null">
+					#{UpdateTime},
+				</if>
+				<if test="ParaType!=null">
+					#{ParaType},
+				</if>
+				<if test="FId!=null">
+					#{FId},
+				</if>
+				<if test="Desc!=null">
+					#{Desc},
+				</if>
+			</trim>
+		</insert>
 </mapper>

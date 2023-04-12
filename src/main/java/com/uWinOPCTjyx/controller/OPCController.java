@@ -1,11 +1,6 @@
 package com.uWinOPCTjyx.controller;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -37,6 +32,7 @@ public class OPCController {
 	private TriggerVarService triggerVarService;
 	@Autowired
 	private ProcessVarService processVarService;
+
 	private Map<String,Object> f1Map,f2Map,f3Map,f4Map,f5Map;
 
 	public static final String MODULE_NAME="opc";
@@ -229,8 +225,60 @@ public class OPCController {
 		
 		//李工的代码逻辑从这里开始写
 		//备料开始触发量
-		
-		
+		List<Integer> blksFIdList=new ArrayList<Integer>();
+		List<TriggerVar> blksTVList = (List<TriggerVar>)triggerVarMap.get(Constant.BEI_LIAO_KAI_SHI_TEXT);//获取备料开始触发变量,不管是否是上升沿
+		List<TriggerVar> upBlksTVList = getUpDownVarValueListFromList(blksTVList, TriggerVar.UP);//获取上升的备料开始变量
+		for (TriggerVar upBlksTV : upBlksTVList) {
+			Integer upFId = upBlksTV.getFId();
+			String upRecType = upBlksTV.getRecType();
+			String upVarName = upBlksTV.getVarName();//上次变量名和本次变量名其实是一致的
+			switch (upFId) {
+				case Constant.F1_ID:
+					if(TriggerVar.M.equals(upRecType)) {
+						Float preValue = Float.valueOf(preValueF1MMap.get(upVarName).toString());
+						if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
+							Date date = new Date();
+							String currentTime = DateUtil.getTimeStrByFormatStr(date, DateUtil.YEAR_TO_SECOND);
+							System.out.println("当前系统时间:"+currentTime);
+
+							ProcessVar processVar=new ProcessVar();
+							processVar.setVarName(upVarName);//设置变量名称
+							processVar.setRecType(upRecType);//设置配方类型
+							processVar.setDealBz(ProcessVar.WCL);//设置处理标志
+							processVar.setUpdateTime(currentTime);//设置更新时间
+							processVar.setFId(Constant.F1_ID);//设置反应釜ID
+
+							int i = processVarService.addProcessVar(processVar);//调用添加过程接口
+
+						}
+					}
+					else if(TriggerVar.U.equals(upRecType)) {
+						Float preValue = Float.valueOf(preValueF1UMap.get(upVarName).toString());
+						if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
+							Date date = new Date();
+							String currentTime = DateUtil.getTimeStrByFormatStr(date, DateUtil.YEAR_TO_SECOND);
+							System.out.println("当前系统时间:"+currentTime);
+
+							ProcessVar processVar=new ProcessVar();
+							processVar.setVarName(upVarName);//设置变量名称
+							processVar.setRecType(upRecType);//设置配方类型
+							processVar.setDealBz(ProcessVar.WCL);//设置处理标志
+							processVar.setUpdateTime(currentTime);//设置更新时间
+							processVar.setFId(Constant.F1_ID);//设置反应釜ID
+
+							int i = processVarService.addProcessVar(processVar);//调用添加过程接口
+						}
+					}
+					break;
+			}
+		}
+
+		//甲醛放料完成
+		List<Integer> jqflwcFIdList=new ArrayList<Integer>();
+		List<TriggerVar> jqflwcTVList = (List<TriggerVar>)triggerVarMap.get(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG_TEXT);//获取甲醛放料完成变量,不管是否是上升沿
+		List<TriggerVar> upJqflwcTVList = getUpDownVarValueListFromList(jqflwcTVList, TriggerVar.UP);//获取上升的甲醛放料完成变量
+
+
 		//降温完成
 		List<Integer> jwwcFIdList=new ArrayList<Integer>();//降温完成反应釜号集合(M类和U类共用)
 		List<TriggerVar> jwwcTVList=(List<TriggerVar>)triggerVarMap.get(Constant.JIANG_WEN_WAN_CHENG_TEXT);//先获取所有反应釜降温完成触发量,不管是否是上升沿

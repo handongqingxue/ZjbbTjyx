@@ -50,6 +50,7 @@ public class DateUtil {
 	}
 	
 	public static void main(String[] args) {
+
 		Date d1,d2;
 		try {
 			d1 = timeSDF.parse("1997-07-01 00:00:00");
