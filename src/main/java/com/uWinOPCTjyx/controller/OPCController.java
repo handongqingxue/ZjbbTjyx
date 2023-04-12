@@ -406,7 +406,8 @@ public class OPCController {
 	@RequestMapping("/readerOpc")
 	public void readerOpc(){
 		List<String> list=new ArrayList<String>();
-		list.add(Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG_TEXT);
+		//list.add(Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG_TEXT);
+		list.add("_System._Date");
 		String s = OpcUtil.readerOpc(list);
 		System.out.println(s);
 
