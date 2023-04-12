@@ -90,9 +90,6 @@ public class OPCController {
 			fIdList.add(fId);
 		}
 		List<TriggerVar> triggerVarList = triggerVarService.getListByFIdList(fIdList);//查询全部触发器变量
-		for (TriggerVar triggerVar : triggerVarList) {
-			System.out.println(triggerVar+";");
-		}
 
 		//1号釜
 		HashMap<String,Object> f1MMap=new HashMap<String, Object>();
@@ -111,7 +108,6 @@ public class OPCController {
 		f2Map.put("run",false);
 		f2Map.put("f2MMap",f2MMap);
 		f2Map.put("f2UMap",f2UMap);
-
 
 		//3号釜
 		HashMap<String,Object> f3MMap=new HashMap<String, Object>();
@@ -139,6 +135,48 @@ public class OPCController {
 		f5Map.put("run",false);
 		f5Map.put("f5MMap",f5MMap);
 		f5Map.put("f5UMap",f5UMap);
+
+		for (TriggerVar triggerVar : triggerVarList) {
+			switch (triggerVar.getFId()){
+				case 1:
+					if (triggerVar.getRecType()==TriggerVar.M){
+						f1MMap.put(triggerVar.getVarName(),Constant.FYF_CSZ);
+
+					}else if (triggerVar.getRecType()==TriggerVar.U){
+						f1UMap.put(triggerVar.getVarName(),Constant.FYF_CSZ);
+					}
+					break;
+				case 2:
+					if (triggerVar.getRecType()==TriggerVar.M){
+						f2MMap.put(triggerVar.getVarName(),Constant.FYF_CSZ);
+					}else if (triggerVar.getRecType()==TriggerVar.U){
+						f2UMap.put(triggerVar.getVarName(),Constant.FYF_CSZ);
+					}
+					break;
+				case 3:
+					if (triggerVar.getRecType()==TriggerVar.M){
+						f3MMap.put(triggerVar.getVarName(),Constant.FYF_CSZ);
+					}else if (triggerVar.getRecType()==TriggerVar.U){
+						f3UMap.put(triggerVar.getVarName(),Constant.FYF_CSZ);
+					}
+					break;
+				case 4:
+					if (triggerVar.getRecType()==TriggerVar.M){
+						f4MMap.put(triggerVar.getVarName(),Constant.FYF_CSZ);
+					}else if (triggerVar.getRecType()==TriggerVar.U){
+						f4UMap.put(triggerVar.getVarName(),Constant.FYF_CSZ);
+					}
+					break;
+				case 5:
+					if (triggerVar.getRecType()==TriggerVar.M){
+						f5MMap.put(triggerVar.getVarName(),Constant.FYF_CSZ);
+					}else if (triggerVar.getRecType()==TriggerVar.U){
+						f5UMap.put(triggerVar.getVarName(),Constant.FYF_CSZ);
+					}
+					break;
+			}
+
+		}
 		return json;
 	}
 
