@@ -63,4 +63,7 @@ public class TriggerVar {
 	public void setDesc(String desc) {
 		Desc = desc;
 	}
+
+
+
 }

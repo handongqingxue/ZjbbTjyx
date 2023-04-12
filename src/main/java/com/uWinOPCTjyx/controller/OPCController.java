@@ -81,8 +81,9 @@ public class OPCController {
 	@ResponseBody
 	public Map<String, Object> initFMap(@RequestBody String bodyStr) {
 		HashMap<String,Object> json=new HashMap<String, Object>();
+
 		List<Integer> fIdList=new ArrayList<Integer>();//创建反应釜号集合，用来存储反应釜号
-		for (Integer fId : Constant.F_ID_ARR) {
+		for (Integer fId : Constant.F_ID_ARR) {//遍历出所有的反应釜号
 			fIdList.add(fId);
 		}
 		List<TriggerVar> triggerVarList = triggerVarService.getListByFIdList(fIdList);//查询全部触发器变量
@@ -171,7 +172,6 @@ public class OPCController {
 					}
 					break;
 			}
-
 		}
 		return json;
 	}
@@ -182,7 +182,7 @@ public class OPCController {
 
 		Map<String,Object> json=new HashMap<String, Object>();
 		
-		List<Integer> runFIdList=new ArrayList<Integer>();
+		List<Integer> runFIdList=new ArrayList<Integer>();//用于存放运行的反应釜号的集合
 		
 		//判断反应釜是否在运行
 		boolean runF1 = Boolean.parseBoolean(f1Map.get("run").toString());
@@ -215,8 +215,8 @@ public class OPCController {
 			runFIdList.add(Constant.F5_ID);
 		}
 		
-		HashMap<String,Object> preValueF1MMap=(HashMap<String,Object>)f1Map.get("f1MMap");
-		HashMap<String,Object> preValueF1UMap=(HashMap<String,Object>)f1Map.get("f1UMap");
+		HashMap<String,Object> preValueF1MMap=(HashMap<String,Object>)f1Map.get("f1MMap");//获取1号釜M类
+		HashMap<String,Object> preValueF1UMap=(HashMap<String,Object>)f1Map.get("f1UMap");//获取1号釜U类
 		
 
 		//每次检索只获取一次所有的触发量就行，下面的逻辑里会根据不同的变量从反应釜列表里读取
