@@ -140,181 +140,185 @@ public class Constant {
 	public static final Integer[] BSF_ZJJLG_3_5_M_ARR=new Integer[] {BSF_ZJJLG3,BSF_ZJJLG4,BSF_ZJJLG5};
 	
 	/**
-	 * 开始到结束时间文字
+	 * 开始到结束时间
 	 */
-	public static final String KAI_SHI_DAO_JIE_SHU_SHI_JIAN_TEXT="开始到结束时间";
+	public static final String KAI_SHI_DAO_JIE_SHU_SHI_JIAN="开始到结束时间";
 	/**
-	 * 备料开始文字
+	 * 备料开始
 	 */
-	public static final String BEI_LIAO_KAI_SHI_TEXT="备料开始";
+	public static final String BEI_LIAO_KAI_SHI="备料开始";
 	/**
-	 * 备料开始时间文字
+	 * 备料开始时间
 	 */
-	public static final String BEI_LIAO_KAI_SHI_SHI_JIAN_TEXT="备料开始时间";
+	public static final String BEI_LIAO_KAI_SHI_SHI_JIAN="备料开始时间";
 	/**
-	 * 反应结束文字
+	 * 反应结束
 	 */
-	public static final String FAN_YING_JIE_SHU_TEXT="反应结束";
+	public static final String FAN_YING_JIE_SHU="反应结束";
 	/**
-	 * 反应结束时间文字
+	 * 反应结束时间
 	 */
-	public static final String FAN_YING_JIE_SHU_SHI_JIAN_TEXT="反应结束时间";
+	public static final String FAN_YING_JIE_SHU_SHI_JIAN="反应结束时间";
 	/**
-	 * 生产日期文字
+	 * 生产日期
 	 */
-	public static final String SHENG_CHAN_RI_QI_TEXT="生产日期";
+	public static final String SHENG_CHAN_RI_QI="生产日期";
 	/**
-	 * 甲醛实际进料重量文字
+	 * 甲醛实际进料重量
 	 */
-	public static final String JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG_TEXT="甲醛实际进料重量";
+	public static final String JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG="甲醛实际进料重量";
 	/**
-	 * 甲醛备料开始文字
+	 * 甲醛备料开始
 	 */
-	public static final String JIA_QUAN_BEI_LIAO_KAI_SHI_TEXT="甲醛备料开始";
+	public static final String JIA_QUAN_BEI_LIAO_KAI_SHI="甲醛备料开始";
 	/**
-	 * 甲醛放料完成文字
+	 * 甲醛放料完成
 	 */
-	public static final String JIA_QUAN_FANG_LIAO_WAN_CHENG_TEXT="甲醛放料完成";
+	public static final String JIA_QUAN_FANG_LIAO_WAN_CHENG="甲醛放料完成";
 	/**
-	 * 加碱PH值正常文字
+	 * 加碱PH值正常
 	 */
-	public static final String JIA_JIAN_PH_ZHI_ZHENG_CHANG_TEXT="加碱PH值正常";
+	public static final String JIA_JIAN_PH_ZHI_ZHENG_CHANG="加碱PH值正常";
 	/**
-	 * 加碱前PH输入值文字
+	 * 加碱前PH输入值
 	 */
-	public static final String JIA_JIAN_QIAN_PH_SHU_RU_ZHI_TEXT="加碱前PH输入值";
+	public static final String JIA_JIAN_QIAN_PH_SHU_RU_ZHI="加碱前PH输入值";
 	/**
-	 * 加碱量提示文字
+	 * 加碱量提示
 	 */
-	public static final String JIA_JIAN_LIANG_TI_SHI_TEXT="加碱量提示";
+	public static final String JIA_JIAN_LIANG_TI_SHI="加碱量提示";
 	/**
-	 * 加碱后PH输入值文字
+	 * 加碱后PH输入值
 	 */
-	public static final String JIA_JIAN_HOU_PH_SHU_RU_ZHI_TEXT="加碱后PH输入值";
+	public static final String JIA_JIAN_HOU_PH_SHU_RU_ZHI="加碱后PH输入值";
 	/**
-	 * 助剂计量罐文字
+	 * 助剂计量罐
 	 */
-	public static final String ZHU_JI_JI_LIANG_GUAN_TEXT="助剂计量罐";
+	public static final String ZHU_JI_JI_LIANG_GUAN="助剂计量罐";
 	/**
-	 * 允许一次加助剂文字
+	 * 允许一次加助剂
 	 */
-	public static final String YUN_XU_YI_CI_JIA_ZHU_JI_TEXT="允许一次加助剂";
+	public static final String YUN_XU_YI_CI_JIA_ZHU_JI="允许一次加助剂";
 
 	/**
-	 * 所有助剂加料完成1文字
+	 * 所有助剂加料完成1
 	 */
-	public static final String SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1_TEXT="所有助剂加料完成1";
+	public static final String SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1="所有助剂加料完成1";
 	/**
-	 * 加粉料提醒文字
+	 * 加粉料提醒
 	 */
-	public static final String JIA_FEN_LIAO_TI_XING_TEXT="加粉料提醒";
+	public static final String JIA_FEN_LIAO_TI_XING="加粉料提醒";
 	/**
-	 * 粉料重量设定文字
+	 * 粉料重量设定
 	 */
-	public static final String FEN_LIAO_ZHONG_LIANG_SHE_DING_TEXT="粉料重量设定";
+	public static final String FEN_LIAO_ZHONG_LIANG_SHE_DING="粉料重量设定";
 	/**
-	 * 加粉料PH合格文字
+	 * 尿素放料阀
 	 */
-	public static final String JIA_FEN_LIAO_PH_HE_GE_TEXT="加粉料PH合格";
+	public static final String NIAO_SU_FANG_LIAO_FA="尿素放料阀";
 	/**
-	 * 加粉料PH输入值文字
+	 * 加粉料PH合格
 	 */
-	public static final String JIA_FEN_LIAO_PH_SHU_RU_ZHI_TEXT="加粉料PH输入值";
+	public static final String JIA_FEN_LIAO_PH_HE_GE="加粉料PH合格";
 	/**
-	 * 升温开始文字
+	 * 加粉料PH输入值
 	 */
-	public static final String SHENG_WEN_KAI_SHI_TEXT="升温开始";
+	public static final String JIA_FEN_LIAO_PH_SHU_RU_ZHI="加粉料PH输入值";
 	/**
-	 * 温度85与二次投料提醒文字
+	 * 升温开始
 	 */
-	public static final String WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING_TEXT="温度85与二次投料提醒";
+	public static final String SHENG_WEN_KAI_SHI="升温开始";
 	/**
-	 * 二次助剂后测PH提醒文字
+	 * 温度85与二次投料提醒
 	 */
-	public static final String ER_CI_ZHU_JI_HOU_CE_PH_TI_XING_TEXT="二次助剂后测PH提醒";
+	public static final String WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING="温度85与二次投料提醒";
 	/**
-	 * 允许二次加助剂文字
+	 * 二次助剂后测PH提醒
 	 */
-	public static final String YUN_XU_ER_CI_JIA_ZHU_JI_TEXT="允许二次加助剂";
+	public static final String ER_CI_ZHU_JI_HOU_CE_PH_TI_XING="二次助剂后测PH提醒";
 	/**
-	 * 所有助剂加料完成2文字
+	 * 允许二次加助剂
 	 */
-	public static final String SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2_TEXT="所有助剂加料完成2";
+	public static final String YUN_XU_ER_CI_JIA_ZHU_JI="允许二次加助剂";
 	/**
-	 * 升温完成文字
+	 * 所有助剂加料完成2
 	 */
-	public static final String SHENG_WEN_WAN_CHENG_TEXT="升温完成";
+	public static final String SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2="所有助剂加料完成2";
 	/**
-	 * 最高温PH录入值文字
+	 * 升温完成
 	 */
-	public static final String ZUI_GAO_WEN_PH_LRZ_TEXT="最高温PH录入值";
+	public static final String SHENG_WEN_WAN_CHENG="升温完成";
 	/**
-	 * 温度98PH文字
+	 * 最高温PH录入值
 	 */
-	public static final String WEN_DU_98_PH_TEXT="温度98PH";
+	public static final String ZUI_GAO_WEN_PH_LRZ="最高温PH录入值";
 	/**
-	 * 测量冰水雾点输入值文字
+	 * 温度98PH
 	 */
-	public static final String CE_LIANG_BSWD_SRZ_TEXT="测量冰水雾点输入值";
+	public static final String WEN_DU_98_PH="温度98PH";
 	/**
-	 * 测20雾点输入值文字
+	 * 测量冰水雾点输入值
 	 */
-	public static final String CE_20_WU_DIAN_SRZ_TEXT="测20雾点输入值";
+	public static final String CE_LIANG_BSWD_SRZ="测量冰水雾点输入值";
 	/**
-	 * 聚合终点文字
+	 * 测20雾点输入值
 	 */
-	public static final String JU_HE_ZHONG_DIAN_TEXT="聚合终点";
+	public static final String CE_20_WU_DIAN_SRZ="测20雾点输入值";
 	/**
-	 * 测水数提醒文字
+	 * 聚合终点
 	 */
-	public static final String CE_SHUI_SHU_TI_XING_TEXT="测水数提醒";
+	public static final String JU_HE_ZHONG_DIAN="聚合终点";
 	/**
-	 * 停热降温水数输入值文字
+	 * 测水数提醒
 	 */
-	public static final String TING_RE_JIANG_WEN_SHUI_SHU_SRZ_TEXT="停热降温水数输入值";
+	public static final String CE_SHUI_SHU_TI_XING="测水数提醒";
 	/**
-	 * 降温完成文字
+	 * 停热降温水数输入值
 	 */
-	public static final String JIANG_WEN_WAN_CHENG_TEXT="降温完成";
+	public static final String TING_RE_JIANG_WEN_SHUI_SHU_SRZ="停热降温水数输入值";
+	/**
+	 * 降温完成
+	 */
+	public static final String JIANG_WEN_WAN_CHENG="降温完成";
 	
 	/**
-	 * 百分号文字
+	 * 百分号
 	 */
-	public static final String BAI_FEN_HAO_TEXT="%";
+	public static final String BAI_FEN_HAO="%";
 	
 	/**
-	 * 釜文字
+	 * 釜
 	 */
-	public static final String FU_TEXT="釜";
+	public static final String FU="釜";
 	/**
-	 * 称重文字
+	 * 称重
 	 */
-	public static final String CHENG_ZHONG_TEXT="称重";
+	public static final String CHENG_ZHONG="称重";
 	
 	/**
-	 * 反应釜文字
+	 * 反应釜
 	 */
-	public static final String FAN_YING_FU_TEXT="反应釜";
+	public static final String FAN_YING_FU="反应釜";
 	/**
-	 * 温度文字
+	 * 温度
 	 */
-	public static final String WEN_DU_TEXT="温度";
+	public static final String WEN_DU="温度";
 	/**
-	 * 到文字
+	 * 到
 	 */
-	public static final String DAO_TEXT="到";
+	public static final String DAO="到";
 	/**
-	 * 时间文字
+	 * 时间
 	 */
-	public static final String SHI_JIAN_TEXT="时间";
+	public static final String SHI_JIAN="时间";
 	/**
-	 * 重量文字
+	 * 重量
 	 */
-	public static final String ZHONG_LIANG_TEXT="重量";
+	public static final String ZHONG_LIANG="重量";
 	/**
-	 * 差文字
+	 * 差
 	 */
-	public static final String CHA_TEXT="差";
+	public static final String CHA="差";
 	/**
 	 * 千克单位文字
 	 */
@@ -323,25 +327,34 @@ public class Constant {
 	 * 温度单位符号
 	 */
 	public static final String WEN_DU_DAN_WEI_SIGN="°C";
+	
+	/**
+	 * 上升沿
+	 */
+	public static final String SHANG_SHENG_YAN="上升沿";
+	/**
+	 * 下降沿
+	 */
+	public static final String XIA_JIANG_YAN="下降沿";
 
 	/**
-	 * 生产编号阶段文字
+	 * 生产编号阶段
 	 */
-	public static final String SHENG_CHAN_BIAN_HAO_TEXT="生产编号";
+	public static final String SHENG_CHAN_BIAN_HAO="生产编号";
 	/**
-	 * 甲醛阶段文字
+	 * 甲醛阶段
 	 */
-	public static final String YSD101_TEXT="YSD101";
+	public static final String YSD101="YSD101";
 	/**
-	 * YSD109阶段文字
+	 * YSD109阶段
 	 */
-	public static final String YSD109_TEXT="YSD109";
+	public static final String YSD109="YSD109";
 	/**
-	 * YSD106阶段文字
+	 * YSD106阶段
 	 */
-	public static final String YSD106_TEXT="YSD106";
+	public static final String YSD106="YSD106";
 	/**
-	 * YSD102阶段文字
+	 * YSD102阶段
 	 */
-	public static final String YSD102_TEXT="YSD102";
+	public static final String YSD102="YSD102";
 }
