@@ -179,15 +179,6 @@ public class OPCController {
 		return json;
 	}
 
-	/*
-	@RequestMapping(value = "/addProcessVar",method = RequestMethod.POST)
-	@ResponseBody
-	public void addProcessVar(@RequestBody String bodyStr){
-
-		System.out.println("接收到的参数:"+bodyStr);
-	}
-	*/
-
 	@RequestMapping(value = "/keepWatchOnTriggerVar", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> keepWatchOnTriggerVar() {
@@ -304,7 +295,8 @@ public class OPCController {
 			rOpcTVList.add(upJqflwcTV);
 			Map<String, Object> proVarMap = OpcUtil.readerOpcProVarByTVList(rOpcTVList);
 			List<ProcessVar> proVarList = (List<ProcessVar>)proVarMap.get("proVarList");
-			processVarService.addProcessVarList(proVarList);
+			int i = processVarService.addProcessVarList(proVarList);
+			System.out.println("添加"+i+"条");
 
 		}
 
