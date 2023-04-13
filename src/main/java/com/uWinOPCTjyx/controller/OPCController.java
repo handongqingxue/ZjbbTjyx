@@ -179,12 +179,14 @@ public class OPCController {
 		return json;
 	}
 
+	/*
 	@RequestMapping(value = "/addProcessVar",method = RequestMethod.POST)
 	@ResponseBody
 	public void addProcessVar(@RequestBody String bodyStr){
 
 		System.out.println("接收到的参数:"+bodyStr);
 	}
+	*/
 
 	@RequestMapping(value = "/keepWatchOnTriggerVar", method = RequestMethod.POST)
 	@ResponseBody
@@ -296,9 +298,13 @@ public class OPCController {
 			System.out.println("进来");
 			//开始读取opc里的甲醛实际进料量
 			List<String> varNameList=new ArrayList<String>();
-			varNameList.add(Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG_TEXT+"_"+upJqflwcTV.getFId()+"_AV");
+			//varNameList.add(Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG_TEXT+"_"+upJqflwcTV.getFId()+"_AV");
 			System.out.println("调用读写操作");
-			String readerOpc = OpcUtil.readerWriterOpc(varNameList);
+			List<TriggerVar> rOpcTVList=new ArrayList<TriggerVar>();//只有检索是上升沿时才往集合里存，因为可能要根据两个上升沿变量获取过程变量(ProVar)，得用集合存放
+			rOpcTVList.add(upJqflwcTV);
+			Map<String, Object> proVarMap = OpcUtil.readerOpcProVarByTVList(rOpcTVList);
+			List<ProcessVar> proVarList = (List<ProcessVar>)proVarMap.get("proVarList");
+			processVarService.addProcessVarList(proVarList);
 
 		}
 

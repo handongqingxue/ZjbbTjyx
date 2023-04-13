@@ -8,7 +8,13 @@ import javafish.clients.opc.exception.*;
 import javafish.clients.opc.variant.Variant;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import com.uWinOPCTjyx.entity.*;
+
 public class OpcUtil {
 	
 	private static SynchReadItemExample test = null;
@@ -70,8 +76,10 @@ public class OpcUtil {
         System.out.println(opcItems.toString());
     }
     
-    public static String readerWriterOpc(List<String> varNameList){
+    public static Map<String, Object> readerOpcProVarByTVList(List<TriggerVar> triggerVarList){
 
+    	Map<String,Object> json=new HashMap<String, Object>();
+    	
     	/*
         SynchReadItemExample test = new SynchReadItemExample();
 
@@ -81,13 +89,46 @@ public class OpcUtil {
         */
         
         OpcGroup group = new OpcGroup("_System", true, 500, 0.0f);
+        
+        TriggerVar triggerVar1 = null;//第一个触发器变量，可能是上升沿，也可能是下降沿
+        TriggerVar triggerVar2 = null;//第二个触发器变量，可能是上升沿，也可能是下降沿
+        for (int i = 0; i < triggerVarList.size(); i++) {
+            TriggerVar triggerVar = triggerVarList.get(i);
+			if(i==0)
+				triggerVar1 = triggerVar;
+			else if(i==1)
+				triggerVar2 = triggerVar;
+		}
+        
 
-        if (varNameList.size()>0){
-            for (String varName : varNameList) {
-                // new Opcitem("K1.Value",true,"");  "K1.Value" 表示要读取opc服务器中的变量名称的值。
-                group.addItem(new OpcItem( varName, true, ""));
-            }
+        List<String> opcVarNameList=new ArrayList<String>();
+        String varName1 = triggerVar1.getVarName();
+        if(varName1.contains(Constant.BEI_LIAO_KAI_SHI_TEXT+"_")) {
+        	String sysTime = DateUtil.getTimeStrByFormatStr(new Date(),DateUtil.YEAR_TO_SECOND);//系统时间
+        	opcVarNameList.add(sysTime);
         }
+        else if(varName1.contains(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG_TEXT+"_")) {
+        	String jqsjjlzlPvVarNameQz=Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG_TEXT;//过程变量名前缀
+        	
+        	Integer tvFId = triggerVar1.getFId();
+        	String tvRecType = triggerVar1.getRecType();
+        	String opcFName=getFNameByFIdRecType(tvFId,tvRecType);
+        	String jqsjjlzlOpcVarName = jqsjjlzlPvVarNameQz+opcFName+"_AV";
+        	
+        	String sysTime = DateUtil.getTimeStrByFormatStr(new Date(),DateUtil.YEAR_TO_SECOND);//系统时间
+        	
+        	opcVarNameList.add(jqsjjlzlOpcVarName);
+        	opcVarNameList.add(sysTime);
+        }
+
+    	
+
+        /*
+        for (String proVarName : proVarNameList) {
+            // new Opcitem("K1.Value",true,"");  "K1.Value" 表示要读取opc服务器中的变量名称的值。
+            group.addItem(new OpcItem( proVarName, true, ""));
+        }
+        */
         jopc.addGroup(group);   //添加组
 
         OpcGroup responseGroup;
@@ -113,14 +154,48 @@ public class OpcUtil {
             }
         }
 //		ArrayList<OpcItem> opcItems = responseGroup.getItems();
+        
+        List<ProcessVar> proVarList=new ArrayList<ProcessVar>();
+        
         List<OpcItem> opcItems = new ArrayList<OpcItem>();
         OpcItem opcItem1 = new OpcItem("甲醛实际进料重量_F1_AV",false,"111");
         opcItem1.setValue(new Variant("0"));
         opcItems.add(opcItem1);
-        for (OpcItem opcItem : opcItems) {
-            System.out.println("Item名:" + opcItem.getItemName() + "  Item值: " + opcItem.getValue());
+        
+        ProcessVar proVar=null;
+        for (OpcItem opcItem : opcItems) {//一个触发变量可能会查询多个过程变量，得用集合存储
+        	proVar=new ProcessVar();
+        	String itemName = opcItem.getItemName();
+        	String value = opcItem.getValue().toString();
+        	proVarList.add(proVar);
+        	
+            System.out.println("Item名:" + itemName + "  Item值: " + value);
         }
-        APIUtil.addVar("addProcessVar",opcItems);
-        return opcItems.toString();
+        //APIUtil.addVar("addProcessVar",opcItems);
+        //return opcItems.toString();
+        
+        json.put("status", "ok");
+        json.put("proVarList", proVarList);
+        
+        return json;
     }
+    
+    /**
+     * 根据釜id和胶类型获取釜名
+     * @param fId
+     * @param recType
+     * @return
+     */
+    private static String getFNameByFIdRecType(Integer fId,String recType) {
+    	String fName=null;
+    	switch (fId) {
+		case Constant.F1_ID:
+			if(TriggerVar.M.equals(recType))
+				fName=Constant.BSF_F1;
+			else if(TriggerVar.U.equals(recType))
+				fName=Constant.BSF_F1U;
+			break;
+		}
+    	return fName;
+	}
 }
