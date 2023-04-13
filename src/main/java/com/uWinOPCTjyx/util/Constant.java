@@ -233,6 +233,42 @@ public class Constant {
 	 */
 	public static final String YUN_XU_ER_CI_JIA_ZHU_JI_TEXT="允许二次加助剂";
 	/**
+	 * 所有助剂加料完成2文字
+	 */
+	public static final String SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2_TEXT="所有助剂加料完成2";
+	/**
+	 * 升温完成文字
+	 */
+	public static final String SHENG_WEN_WAN_CHENG_TEXT="升温完成";
+	/**
+	 * 最高温PH录入值文字
+	 */
+	public static final String ZUI_GAO_WEN_PH_LRZ_TEXT="最高温PH录入值";
+	/**
+	 * 温度98PH文字
+	 */
+	public static final String WEN_DU_98_PH_TEXT="温度98PH";
+	/**
+	 * 测量冰水雾点输入值文字
+	 */
+	public static final String CE_LIANG_BSWD_SRZ_TEXT="测量冰水雾点输入值";
+	/**
+	 * 测20雾点输入值文字
+	 */
+	public static final String CE_20_WU_DIAN_SRZ_TEXT="测20雾点输入值";
+	/**
+	 * 聚合终点文字
+	 */
+	public static final String JU_HE_ZHONG_DIAN_TEXT="聚合终点";
+	/**
+	 * 测水数提醒文字
+	 */
+	public static final String CE_SHUI_SHU_TI_XING_TEXT="测水数提醒";
+	/**
+	 * 停热降温水数输入值文字
+	 */
+	public static final String TING_RE_JIANG_WEN_SHUI_SHU_SRZ_TEXT="停热降温水数输入值";
+	/**
 	 * 降温完成文字
 	 */
 	public static final String JIANG_WEN_WAN_CHENG_TEXT="降温完成";
@@ -267,6 +303,14 @@ public class Constant {
 	 * 时间文字
 	 */
 	public static final String SHI_JIAN_TEXT="时间";
+	/**
+	 * 重量文字
+	 */
+	public static final String ZHONG_LIANG_TEXT="重量";
+	/**
+	 * 差文字
+	 */
+	public static final String CHA_TEXT="差";
 	/**
 	 * 千克单位文字
 	 */
