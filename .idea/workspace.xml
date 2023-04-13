@@ -18,8 +18,8 @@
     <list default="true" id="9bfab7cf-a4c1-4d31-9c53-df2a94b39f3e" name="Default Changelist" comment="111">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/controller/OPCController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/controller/OPCController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/util/APIUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/util/APIUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/connect/ReaderOpc.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/connect/ReaderOpc.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/util/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/util/Constant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/util/OpcUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/util/OpcUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +55,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/dao" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/controller" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -70,11 +70,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\eclipse-workspace\UWinOPCTjyx\src\main\java\com\uWinOPCTjyx\controller" />
       <recent name="E:\eclipse-workspace\UWinOPCTjyx\src\main\java\com\uWinOPCTjyx\dao" />
       <recent name="E:\eclipse-workspace\UWinOPCTjyx\src\main\java\com\uWinOPCTjyx\service\serviceImpl" />
       <recent name="E:\eclipse-workspace\UWinOPCTjyx\src\main\resources\Mapper" />
       <recent name="E:\eclipse-workspace\UWinOPCTjyx\src\main\java\com\uWinOPCTjyx\service" />
-      <recent name="E:\eclipse-workspace\UWinOPCTjyx\src\main\java\com\uWinOPCTjyx\util" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.uWinOPCTjyx.filter" />
@@ -264,7 +264,7 @@
       <workItem from="1681262154531" duration="3587000" />
       <workItem from="1681269160360" duration="9144000" />
       <workItem from="1681348302701" duration="1269000" />
-      <workItem from="1681349699973" duration="18637000" />
+      <workItem from="1681349699973" duration="21806000" />
     </task>
     <task id="LOCAL-00001" summary="111">
       <created>1680484662444</created>
@@ -336,7 +336,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681369665262</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="111">
+      <created>1681374124051</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1681374124051</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -483,10 +490,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1293" height="419" key="GridCell.Tab.3.right/0.0.1920.1040@0.0.1920.1040" timestamp="1681262913292" />
-    <state x="595" y="280" key="MultipleFileMergeDialog" timestamp="1681177590356">
+    <state x="595" y="280" key="MultipleFileMergeDialog" timestamp="1681374170928">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="595" y="280" key="MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1681177590356" />
+    <state x="595" y="280" key="MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1681374170928" />
     <state x="212" y="0" key="SettingsEditor" timestamp="1681352975802">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -501,10 +508,10 @@
       <screen x="0" y="23" width="1280" height="725" />
     </state>
     <state x="338" y="23" width="604" height="725" key="find.popup/0.23.1280.725@0.23.1280.725" timestamp="1678328866823" />
-    <state x="632" y="306" key="git4idea.merge.GitPullDialog" timestamp="1681369948500">
+    <state x="632" y="306" key="git4idea.merge.GitPullDialog" timestamp="1681374286137">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="632" y="306" key="git4idea.merge.GitPullDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1681369948500" />
+    <state x="632" y="306" key="git4idea.merge.GitPullDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1681374286137" />
     <state x="421" y="236" key="git4idea.merge.GitPullDialog/0.23.1280.723@0.23.1280.723" timestamp="1681204233102" />
     <state x="682" y="431" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1678500760336">
       <screen x="0" y="0" width="1920" height="1040" />

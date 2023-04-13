@@ -75,8 +75,23 @@ public class OpcUtil {
         }
         System.out.println(opcItems.toString());
     }
-    
+
+
+
+
+
+
+
+
+
+
+
+
     public static Map<String, Object> readerOpcProVarByTVList(List<TriggerVar> triggerVarList){
+
+        System.out.println("正在调用OpcUtil方法");
+
+        System.out.println(triggerVarList.toString());
 
     	Map<String,Object> json=new HashMap<String, Object>();
     	
@@ -108,16 +123,26 @@ public class OpcUtil {
         	opcVarNameList.add(sysTime);
         }
         else if(varName1.contains(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG_TEXT+"_")) {
-        	String jqsjjlzlPvVarNameQz=Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG_TEXT;//过程变量名前缀
-        	
-        	Integer tvFId = triggerVar1.getFId();
-        	String tvRecType = triggerVar1.getRecType();
-        	String opcFName=getFNameByFIdRecType(tvFId,tvRecType);
+            Integer tvFId = triggerVar1.getFId();
+            String tvRecType = triggerVar1.getRecType();
+            String opcFName=getFNameByFIdRecType(tvFId,tvRecType);
+
+        	String jqsjjlzlPvVarNameQz=Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG_TEXT;//甲醛实际进料重量文字
         	String jqsjjlzlOpcVarName = jqsjjlzlPvVarNameQz+opcFName+"_AV";
+
+
+            String jssjzlPvVarNameQz=Constant.JIA_SHUI_SHI_JI_ZHONG_LIANG_TEXT;//加水实际重量文字
+            String jssjzlOpcVarName = jssjzlPvVarNameQz+opcFName+"_AV";
+
+            String f1czPvVarNameQz=Constant.FU_TEXT+Constant.F1_ID+Constant.CHENG_ZHONG_TEXT;
+            String f1czOpcVarName = f1czPvVarNameQz+opcFName+"_AV";
         	
         	String sysTime = DateUtil.getTimeStrByFormatStr(new Date(),DateUtil.YEAR_TO_SECOND);//系统时间
         	
         	opcVarNameList.add(jqsjjlzlOpcVarName);
+            opcVarNameList.add(jssjzlOpcVarName);
+            opcVarNameList.add(f1czOpcVarName);
+
         	opcVarNameList.add(sysTime);
         }
 
@@ -159,8 +184,14 @@ public class OpcUtil {
         
         List<OpcItem> opcItems = new ArrayList<OpcItem>();
         OpcItem opcItem1 = new OpcItem("甲醛实际进料重量_F1_AV",false,"111");
-        opcItem1.setValue(new Variant("0"));
+        OpcItem opcItem2 = new OpcItem("加水实际重量_F1_AV",false,"111");
+        OpcItem opcItem3 = new OpcItem("釜1称重_F1_AV",false,"111");
+        opcItem1.setValue(new Variant("10"));
+        opcItem2.setValue(new Variant("20"));
+        opcItem3.setValue(new Variant("30"));
         opcItems.add(opcItem1);
+        opcItems.add(opcItem2);
+        opcItems.add(opcItem3);
         
         ProcessVar proVar=null;
         for (OpcItem opcItem : opcItems) {//一个触发变量可能会查询多个过程变量，得用集合存储
