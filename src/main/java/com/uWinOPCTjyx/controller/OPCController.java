@@ -292,9 +292,13 @@ public class OPCController {
 		List<Integer> jqflwcFIdList=new ArrayList<Integer>();
 		List<TriggerVar> jqflwcTVList = (List<TriggerVar>)triggerVarMap.get(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG_TEXT);//获取甲醛放料完成变量,不管是否是上升沿
 		List<TriggerVar> upJqflwcTVList = getUpDownVarValueListFromList(jqflwcTVList, TriggerVar.UP);//获取上升的甲醛放料完成变量
+		System.out.println(upJqflwcTVList.size());
+		System.out.println(upJqflwcTVList.toString()+"ssssss");
 		for (TriggerVar upJqflwcTV : upJqflwcTVList) {
 			System.out.println("进来");
 			//开始读取opc里的甲醛实际进料量
+			List<String> varNameList=new ArrayList<String>();
+			//varNameList.add(Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG_TEXT+"_"+upJqflwcTV.getFId()+"_AV");
 			System.out.println("调用读写操作");
 			List<TriggerVar> rOpcTVList=new ArrayList<TriggerVar>();//只有检索是上升沿时才往集合里存，因为可能要根据两个上升沿变量获取过程变量(ProVar)，得用集合存放
 			rOpcTVList.add(upJqflwcTV);
