@@ -61,7 +61,6 @@ public class APIUtil {
 
 			connection.disconnect();
 			String result = sbf.toString();
-			System.out.println("result==="+result);
 			resultJO = new JSONObject(result);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
