@@ -63,4 +63,16 @@ public class TriggerVar {
 	public void setDesc(String desc) {
 		Desc = desc;
 	}
+
+	@Override
+	public String toString() {
+		return "TriggerVar{" +
+				"Id=" + Id +
+				", VarName='" + VarName + '\'' +
+				", VarValue=" + VarValue +
+				", RecType='" + RecType + '\'' +
+				", FId=" + FId +
+				", Desc='" + Desc + '\'' +
+				'}';
+	}
 }

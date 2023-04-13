@@ -15,4 +15,11 @@ public interface ProcessVarMapper {
 	 */
 	List<ProcessVar> getUnDealListByFIdList(List<Integer> fIdList);
 
+	/**
+	 * 添加工艺过程
+	 * @param processVar
+	 * @return
+	 */
+	int addProcessVar(ProcessVar processVar);
+
 }

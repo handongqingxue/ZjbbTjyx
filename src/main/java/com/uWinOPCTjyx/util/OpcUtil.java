@@ -1,14 +1,11 @@
 package com.uWinOPCTjyx.util;
 
-import com.uWinOPCTjyx.service.ProcessVarService;
 import javafish.clients.opc.JOpc;
 import javafish.clients.opc.SynchReadItemExample;
 import javafish.clients.opc.component.OpcGroup;
 import javafish.clients.opc.component.OpcItem;
 import javafish.clients.opc.exception.*;
 import javafish.clients.opc.variant.Variant;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,7 +70,7 @@ public class OpcUtil {
         System.out.println(opcItems.toString());
     }
     
-    public static String readerOpc(List<String> varNameList){
+    public static String readerWriterOpc(List<String> varNameList){
 
     	/*
         SynchReadItemExample test = new SynchReadItemExample();
@@ -117,13 +114,13 @@ public class OpcUtil {
         }
 //		ArrayList<OpcItem> opcItems = responseGroup.getItems();
         List<OpcItem> opcItems = new ArrayList<OpcItem>();
-        OpcItem opcItem1 = new OpcItem("'甲醛实际进料重量_F1_AV",false,"111");
+        OpcItem opcItem1 = new OpcItem("甲醛实际进料重量_F1_AV",false,"111");
         opcItem1.setValue(new Variant("0"));
         opcItems.add(opcItem1);
         for (OpcItem opcItem : opcItems) {
             System.out.println("Item名:" + opcItem.getItemName() + "  Item值: " + opcItem.getValue());
         }
-
+        APIUtil.addVar("addProcessVar",opcItems);
         return opcItems.toString();
     }
 }

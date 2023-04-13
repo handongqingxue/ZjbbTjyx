@@ -13,4 +13,17 @@ public interface ProcessVarService {
 	 */
 	List<ProcessVar> getUnDealListByFIdList(List<Integer> fIdList);
 
+	/**
+	 * 添加工艺过程
+	 * @param processVar
+	 * @return
+	 */
+	int addProcessVar(ProcessVar processVar);
+
+	/**
+	 * 添加工艺过程(集合)
+	 * @param processVarList
+	 * @return
+	 */
+	int addProcessVarList(List<ProcessVar> processVarList);
 }
