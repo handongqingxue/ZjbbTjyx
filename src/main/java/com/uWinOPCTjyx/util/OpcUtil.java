@@ -103,21 +103,28 @@ public class OpcUtil {
 
         List<String> opcVarNameList=new ArrayList<String>();
         String varName1 = triggerVar1.getVarName();
-        if(varName1.contains(Constant.BEI_LIAO_KAI_SHI_TEXT+"_")) {
+        if(varName1.contains(Constant.BEI_LIAO_KAI_SHI+"_")) {
         	String sysTime = DateUtil.getTimeStrByFormatStr(new Date(),DateUtil.YEAR_TO_SECOND);//系统时间
         	opcVarNameList.add(sysTime);
         }
-        else if(varName1.contains(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG_TEXT+"_")) {
-        	String jqsjjlzlPvVarNameQz=Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG_TEXT;//过程变量名前缀
-        	
+        else if(varName1.contains(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+"_")) {
+
+
         	Integer tvFId = triggerVar1.getFId();
         	String tvRecType = triggerVar1.getRecType();
         	String opcFName=getFNameByFIdRecType(tvFId,tvRecType);
-        	String jqsjjlzlOpcVarName = jqsjjlzlPvVarNameQz+opcFName+"_AV";
+            String jqsjjlzlPvVarNameQz=Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG;//过程变量名前缀
+            String jqsjjlzlOpcVarName = jqsjjlzlPvVarNameQz+opcFName+"_AV";
+
+            String f1czPvVarNameQz=Constant.FU+Constant.F1_ID+Constant.CHENG_ZHONG;//甲醛备料开始上升沿釜1称重
+            String f1czOpcVarName=f1czPvVarNameQz+"_AV";
+
         	
         	String sysTime = DateUtil.getTimeStrByFormatStr(new Date(),DateUtil.YEAR_TO_SECOND);//系统时间
-        	
-        	opcVarNameList.add(jqsjjlzlOpcVarName);
+
+            opcVarNameList.add(jqsjjlzlOpcVarName);
+            opcVarNameList.add(f1czOpcVarName);
+
         	opcVarNameList.add(sysTime);
         }
 
