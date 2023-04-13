@@ -336,4 +336,12 @@ public class Constant {
 	 * YSD109阶段文字
 	 */
 	public static final String YSD109_TEXT="YSD109";
+	/**
+	 * YSD106阶段文字
+	 */
+	public static final String YSD106_TEXT="YSD106";
+	/**
+	 * YSD102阶段文字
+	 */
+	public static final String YSD102_TEXT="YSD102";
 }
