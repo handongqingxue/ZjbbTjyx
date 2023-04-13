@@ -3,6 +3,10 @@ package com.uWinOPCTjyx.util;
 public class Constant {
 
 	/**
+	 * 反应釜初始值
+	 */
+	public static final int FYF_CSZ=0;
+	/**
 	 * 1号反应釜id
 	 */
 	public static final int F1_ID=1;
