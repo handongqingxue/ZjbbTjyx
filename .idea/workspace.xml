@@ -16,9 +16,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9bfab7cf-a4c1-4d31-9c53-df2a94b39f3e" name="Default Changelist" comment="11">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/dao/OpcVarTestMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/entity/OpcVarTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/service/OpcVarTestService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/service/serviceImpl/OpcVarTestServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Mapper/OpcVarTestMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/controller/OPCController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/controller/OPCController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/util/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/util/Constant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/util/OpcUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/util/OpcUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,6 +36,8 @@
         <option value="jsf" />
         <option value="Jsp File" />
         <option value="CSS File" />
+        <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -266,7 +272,7 @@
       <workItem from="1681348302701" duration="1269000" />
       <workItem from="1681349699973" duration="24483000" />
       <workItem from="1681438272117" duration="13156000" />
-      <workItem from="1681457233657" duration="4609000" />
+      <workItem from="1681457233657" duration="8018000" />
     </task>
     <task id="LOCAL-00001" summary="111">
       <created>1680484662444</created>
@@ -394,7 +400,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681455014898</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="11">
+      <created>1681461918384</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1681461918384</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -432,10 +445,10 @@
     <state x="156" y="32" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1681208249054" />
     <state x="104" y="45" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1280.723@0.23.1280.723" timestamp="1681204487093" />
     <state x="104" y="45" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1280.725@0.23.1280.725" timestamp="1678329032204" />
-    <state x="710" y="220" key="#com.intellij.ide.util.MemberChooser" timestamp="1681291536478">
+    <state x="710" y="220" key="#com.intellij.ide.util.MemberChooser" timestamp="1681464856560">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="710" y="220" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1681291536478" />
+    <state x="710" y="220" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1681464856560" />
     <state x="543" y="9" key="#com.intellij.j2ee.appServerIntegrations.ApplicationServersConfigurable" timestamp="1678341704257">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -555,18 +568,18 @@
     <state x="212" y="0" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1681352975802" />
     <state x="141" y="23" key="SettingsEditor/0.23.1280.723@0.23.1280.723" timestamp="1681207824907" />
     <state x="141" y="23" key="SettingsEditor/0.23.1280.725@0.23.1280.725" timestamp="1678331779017" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1681453012352">
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1681462028638">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1681453012352" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1681462028638" />
     <state x="338" y="23" width="604" height="725" key="find.popup" timestamp="1678328866823">
       <screen x="0" y="23" width="1280" height="725" />
     </state>
     <state x="338" y="23" width="604" height="725" key="find.popup/0.23.1280.725@0.23.1280.725" timestamp="1678328866823" />
-    <state x="632" y="306" key="git4idea.merge.GitPullDialog" timestamp="1681455022477">
+    <state x="632" y="306" key="git4idea.merge.GitPullDialog" timestamp="1681462836798">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="632" y="306" key="git4idea.merge.GitPullDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1681455022477" />
+    <state x="632" y="306" key="git4idea.merge.GitPullDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1681462836798" />
     <state x="421" y="236" key="git4idea.merge.GitPullDialog/0.23.1280.723@0.23.1280.723" timestamp="1681204233102" />
     <state x="682" y="431" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1678500760336">
       <screen x="0" y="0" width="1920" height="1040" />
