@@ -176,6 +176,10 @@ public class Constant {
 	 */
 	public static final String JIA_QUAN_FANG_LIAO_WAN_CHENG="甲醛放料完成";
 	/**
+	 * 加水实际重量
+	 */
+	public static final String JIA_SHUI_SHI_JI_ZHONG_LIANG="加水实际重量";
+	/**
 	 * 加碱PH值正常
 	 */
 	public static final String JIA_JIAN_PH_ZHI_ZHENG_CHANG="加碱PH值正常";
