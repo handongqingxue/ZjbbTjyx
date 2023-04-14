@@ -224,11 +224,13 @@ public class OPCController {
 		}
 
 		Map<String,List<TriggerVar>> triggerVarMap=getTriVarListGroupMap(triggerVarList);//将获取的变量分组
-		System.out.println("------------------------------");
+		System.out.println("-------------分好组的map-----------------");
 		System.out.println(triggerVarMap.toString());
+
 		//李工的代码逻辑从这里开始写
 		//备料开始触发量
 		List<Integer> blksFIdList=new ArrayList<Integer>();
+		System.out.println("检测备料开始...");
 		List<TriggerVar> blksTVList = (List<TriggerVar>)triggerVarMap.get(Constant.BEI_LIAO_KAI_SHI);//获取备料开始触发变量,不管是否是上升沿
 		System.out.println("备料开始==="+blksTVList.toString());
 		List<TriggerVar> upBlksTVList = getUpDownVarValueListFromList(blksTVList, TriggerVar.UP);//获取上升的备料开始变量
@@ -264,6 +266,7 @@ public class OPCController {
 
 
 		//甲醛放料完成
+		System.out.println("检测甲醛放料完成...");
 		List<Integer> jqflwcFIdList=new ArrayList<Integer>();
 		List<TriggerVar> jqflwcTVList = (List<TriggerVar>)triggerVarMap.get(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG);//获取甲醛放料完成变量,不管是否是上升沿
 		List<TriggerVar> upJqflwcTVList = getUpDownVarValueListFromList(jqflwcTVList, TriggerVar.UP);//获取上升的甲醛放料完成变量
@@ -277,33 +280,11 @@ public class OPCController {
 			int i = processVarService.addProcessVarList(proVarList);
 			System.out.println("添加"+i+"条");
 		}
+
 		//甲醛备料开始
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		System.out.println("执行甲醛备料开始...");
+		List<TriggerVar> jqblksTVList = (List<TriggerVar>) triggerVarMap.get(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI);//获取甲醛备料开始变量,不管是否是上升沿
+		List<TriggerVar> upJqblksTVList = getUpDownVarValueListFromList(jqblksTVList, TriggerVar.UP);//获取上升的甲醛备料开始
 
 
 
