@@ -102,10 +102,11 @@ public class OpcUtil {
 
         List<String> opcVarNameList=new ArrayList<String>();//要读取的opc变量集合
         String varName1 = triggerVar1.getVarName();
+        //甲醛放料完成
         if(varName1.contains(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+"_")) {//甲醛放料完成要记录(甲醛实际进料重量、加水实际重量、釜1称重、反应釜1温度)
         	Integer tvFId = triggerVar1.getFId();
         	String tvRecType = triggerVar1.getRecType();
-        	String opcFName=getFNameByFIdRecType(tvFId,tvRecType);
+        	String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
         	//甲醛实际进料重量
             String jqsjjlzlPvVarNameQz=Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG;
             String jqsjjlzlOpcVarName = jqsjjlzlPvVarNameQz+"_"+opcFName+"_AV";
@@ -120,14 +121,34 @@ public class OpcUtil {
             
             //釜(反应釜号)称重
             String f1czPvVarNameQz=Constant.FU+tvFId+Constant.CHENG_ZHONG;
-            String f1czOpcVarName=f1czPvVarNameQz+"_AV";
+            String fhczOpcVarName=f1czPvVarNameQz+"_AV";
 
             opcVarNameList.add(jqsjjlzlOpcVarName);
             opcVarNameList.add(jssjzlOpcVarName);
             opcVarNameList.add(fyfwdOpcVarName);
-            opcVarNameList.add(f1czOpcVarName);
+            opcVarNameList.add(fhczOpcVarName);
         }
+        //甲醛备料完成
+        if (varName1.contains(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+"_")){//甲醛备料完成要记录(釜(号)称重)
+            Integer tvFId = triggerVar1.getFId();
+            String tvRecType = triggerVar1.getRecType();
+            String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
 
+            //釜(反应釜号)称重
+            String f1czPvVarNameQz=Constant.FU+tvFId+Constant.CHENG_ZHONG;
+            String fhczOpcVarName=f1czPvVarNameQz+"_AV";
+
+            opcVarNameList.add(fhczOpcVarName);
+        }
+        //加碱PH值正常
+        if (varName1.contains(Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+"_")){//加碱PH值正常要记录(加碱量提示、加碱后PH输入值、助剂计量罐
+            Integer tvFId = triggerVar1.getFId();
+            String tvRecType = triggerVar1.getRecType();
+            String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
+
+
+
+        }
         if(false){
             //要要读取的值循环添加到group里面
             for (String opcVarName : opcVarNameList) {
@@ -173,35 +194,53 @@ public class OpcUtil {
         for (OpcItem opcItem : opcItems) {//一个触发变量可能会查询多个过程变量，得用集合存储
         	String itemName = opcItem.getItemName();
         	Float value = Float.valueOf(opcItem.getValue().toString());
-        	
+        	String unit=null;
+        	//判断单位
+        	if (itemName.contains(Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG)||
+                    itemName.contains(Constant.JIA_SHUI_SHI_JI_ZHONG_LIANG)
+            ){
+                unit=Constant.KG;//kg
+            }
+        	if (itemName.contains("")){
+        	    unit=Constant.WEN_DU_DAN_WEI_SIGN;//°C
+            }
         	proVar=new ProcessVar();
         	proVar.setVarName(itemName);
         	proVar.setVarValue(value);
+        	proVar.setDealBz(ProcessVar.WCL);
+        	proVar.setRecType(triggerVar1.getRecType());
+        	proVar.setUnit(unit);
         	proVarList.add(proVar);
-        	
             System.out.println("Item名:" + itemName + "  Item值: " + value);
         }
 
         //以下是报表里所需的系统时间，opc上没有这些变量，就得根据服务器的系统时间获取，再存入集合里
+        //备料开始
         if(varName1.contains(Constant.BEI_LIAO_KAI_SHI+"_")) {
         	String varName = Constant.BEI_LIAO_KAI_SHI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
         	String sysTime = DateUtil.getTimeStrByFormatStr(new Date(),DateUtil.YEAR_TO_SECOND);//系统时间
-
         	proVar=new ProcessVar();
         	proVar.setVarName(varName);
         	proVar.setUpdateTime(sysTime);
-        	
         	proVarList.add(proVar);
         }
+        //甲醛放料完成
         else if(varName1.contains(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+"_")) {
         	String varName = Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
         	String sysTime = DateUtil.getTimeStrByFormatStr(new Date(),DateUtil.YEAR_TO_SECOND);//系统时间
-
         	proVar=new ProcessVar();
         	proVar.setVarName(varName);
         	proVar.setUpdateTime(sysTime);
-        	
         	proVarList.add(proVar);
+        }
+        //甲醛备料完成
+        else if (varName1.contains(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+"_")){
+            String varName = Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+            String sysTime = DateUtil.getTimeStrByFormatStr(new Date(),DateUtil.YEAR_TO_SECOND);//系统时间
+            proVar=new ProcessVar();
+            proVar.setVarName(varName);
+            proVar.setUpdateTime(sysTime);
+            proVarList.add(proVar);
         }
         
         json.put("status", "ok");
