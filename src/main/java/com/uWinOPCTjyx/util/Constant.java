@@ -68,7 +68,12 @@ public class Constant {
 	 * 5号反应釜(U类)
 	 */
 	public static final String BSF_F5U="F5U";
-	
+
+	/**
+	 * 反应釜号Ph值(M类)
+	 */
+	public static final String BSF_PF="PF";
+
 	/**
 	 * 1号反应釜Ph值(M类)
 	 */
