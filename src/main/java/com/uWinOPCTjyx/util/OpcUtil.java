@@ -216,32 +216,31 @@ public class OpcUtil {
         }
 
         //以下是报表里所需的系统时间，opc上没有这些变量，就得根据服务器的系统时间获取，再存入集合里
+        String varName = null;
         //备料开始
         if(varName1.contains(Constant.BEI_LIAO_KAI_SHI+"_")) {
-        	String varName = Constant.BEI_LIAO_KAI_SHI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
-        	String sysTime = DateUtil.getTimeStrByFormatStr(new Date(),DateUtil.YEAR_TO_SECOND);//系统时间
-        	proVar=new ProcessVar();
-        	proVar.setVarName(varName);
-        	proVar.setUpdateTime(sysTime);
-        	proVarList.add(proVar);
+        	varName = Constant.BEI_LIAO_KAI_SHI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
         }
         //甲醛放料完成
         else if(varName1.contains(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+"_")) {
-        	String varName = Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+        	varName = Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+        }
+        //甲醛备料完成
+        else if (varName1.contains(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+"_")){
+            varName = Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+        }
+        
+        
+        //触发器变量1在满足以上几种情况时，说明需要添加系统时间，就调用下面这个逻辑。若加在上面代码量太多，就简化一下加在下面
+        if(varName1.contains(Constant.BEI_LIAO_KAI_SHI+"_")||
+           varName1.contains(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+"_")||
+           varName1.contains(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+"_")) {
         	String sysTime = DateUtil.getTimeStrByFormatStr(new Date(),DateUtil.YEAR_TO_SECOND);//系统时间
+        	
         	proVar=new ProcessVar();
         	proVar.setVarName(varName);
         	proVar.setUpdateTime(sysTime);
         	proVarList.add(proVar);
-        }
-        //甲醛备料完成
-        else if (varName1.contains(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+"_")){
-            String varName = Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
-            String sysTime = DateUtil.getTimeStrByFormatStr(new Date(),DateUtil.YEAR_TO_SECOND);//系统时间
-            proVar=new ProcessVar();
-            proVar.setVarName(varName);
-            proVar.setUpdateTime(sysTime);
-            proVarList.add(proVar);
         }
         
         json.put("status", "ok");
