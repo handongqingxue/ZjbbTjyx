@@ -347,6 +347,10 @@ public class Constant {
 	 * 温度单位符号
 	 */
 	public static final String WEN_DU_DAN_WEI_SIGN="°C";
+	/**
+	 * MPa
+	 */
+	public static final String MPA="MPa";
 	
 	/**
 	 * 上升沿
@@ -377,4 +381,16 @@ public class Constant {
 	 * YSD102阶段
 	 */
 	public static final String YSD102="YSD102";
+	/**
+	 * 开始升温
+	 */
+	public static final String KAI_SHI_SHENG_WEN="开始升温";
+	/**
+	 * PH检测
+	 */
+	public static final String PH_JIAN_CE="PH检测";
+	/**
+	 * YSD104阶段
+	 */
+	public static final String YSD104="YSD104";
 }

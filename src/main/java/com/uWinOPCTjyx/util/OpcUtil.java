@@ -177,8 +177,8 @@ public class OpcUtil {
         	proVar=new ProcessVar();
         	proVar.setVarName(itemName);
         	proVar.setVarValue(value);
-        	proVarList.add(proVar);
         	
+        	proVarList.add(proVar);
             System.out.println("Item名:" + itemName + "  Item值: " + value);
         }
 
