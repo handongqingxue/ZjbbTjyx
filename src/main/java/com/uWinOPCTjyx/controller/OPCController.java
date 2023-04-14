@@ -247,7 +247,11 @@ public class OPCController {
 							Float preValue = Float.valueOf(preValueF1MMap.get(upVarName).toString());
 							if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
 
-								//int i = processVarService.addProcessVar(processVar);//调用添加过程接口
+								List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
+								opcTVList.add(upBlksTV);//根据备料开始触发变量从opc端查找对应的过程变量
+								Map<String, Object> blksMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);
+								List<ProcessVar> blksMResPVList = (List<ProcessVar>)blksMResMap.get("proVarList");
+								int i = processVarService.addFromList(blksMResPVList);//调用添加过程接口
 								//System.out.println("添加"+i);
 							}
 						}

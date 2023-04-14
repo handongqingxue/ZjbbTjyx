@@ -15,15 +15,15 @@ public interface ProcessVarService {
 
 	/**
 	 * 添加工艺过程
-	 * @param processVar
+	 * @param proVar
 	 * @return
 	 */
-	int addProcessVar(ProcessVar processVar);
+	int add(ProcessVar proVar);
 
 	/**
 	 * 添加工艺过程(集合)
-	 * @param processVarList
+	 * @param proVarList
 	 * @return
 	 */
-	int addProcessVarList(List<ProcessVar> processVarList);
+	int addFromList(List<ProcessVar> proVarList);
 }
