@@ -20,17 +20,14 @@ public class ProcessVarServiceImpl implements ProcessVarService {
 		return processVarMapper.getUnDealListByFIdList(fIdList);
 	}
 
-	public int addProcessVar(ProcessVar processVar) {
-		return processVarMapper.addProcessVar(processVar);
+	public int add(ProcessVar proVar) {
+		return processVarMapper.add(proVar);
 	}
 
-	public int addProcessVarList(List<ProcessVar> processVarList) {
+	public int addFromList(List<ProcessVar> proVarList) {
 		int count = 0;
-		if (processVarList.size()>0){
-			for (ProcessVar processVar : processVarList) {
-				processVarMapper.addProcessVar(processVar);
-				count++;
-			}
+		for (ProcessVar proVar : proVarList) {
+			count+=processVarMapper.add(proVar);
 		}
 		return count;
 	}
