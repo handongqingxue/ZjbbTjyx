@@ -126,6 +126,7 @@ public class OpcUtil {
 
             opcVarNameList.add(jqsjjlzlOpcVarName);
             opcVarNameList.add(f1czOpcVarName);
+            opcVarNameList.add(fyfwdOpcVarName);
 
         	opcVarNameList.add(sysTime);
         }
