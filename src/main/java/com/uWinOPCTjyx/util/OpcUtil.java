@@ -107,23 +107,26 @@ public class OpcUtil {
         	String sysTime = DateUtil.getTimeStrByFormatStr(new Date(),DateUtil.YEAR_TO_SECOND);//系统时间
         	opcVarNameList.add(sysTime);
         }
-        else if(varName1.contains(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+"_")) {
-
-
+        else if(varName1.contains(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+"_")) {//甲醛放料完成要记录(甲醛实际进料重量、加水实际重量、釜1称重、反应釜1温度)
         	Integer tvFId = triggerVar1.getFId();
         	String tvRecType = triggerVar1.getRecType();
         	String opcFName=getFNameByFIdRecType(tvFId,tvRecType);
-            String jqsjjlzlPvVarNameQz=Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG;//过程变量名前缀
+        	//甲醛实际进料重量
+            String jqsjjlzlPvVarNameQz=Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG;
             String jqsjjlzlOpcVarName = jqsjjlzlPvVarNameQz+opcFName+"_AV";
 
-            String f1czPvVarNameQz=Constant.FU+Constant.F1_ID+Constant.CHENG_ZHONG;//甲醛备料开始上升沿釜1称重
+            //反应釜(反应釜号)温度
+            String fyfwdPvVarNameQz=Constant.FAN_YING_FU+Constant.F1_ID+Constant.WEN_DU;
+            String fyfwdOpcVarName=fyfwdPvVarNameQz+"_AV";
+            //釜(反应釜号)称重
+            String f1czPvVarNameQz=Constant.FU+Constant.F1_ID+Constant.CHENG_ZHONG;
             String f1czOpcVarName=f1czPvVarNameQz+"_AV";
 
-        	
         	String sysTime = DateUtil.getTimeStrByFormatStr(new Date(),DateUtil.YEAR_TO_SECOND);//系统时间
 
             opcVarNameList.add(jqsjjlzlOpcVarName);
             opcVarNameList.add(f1czOpcVarName);
+            opcVarNameList.add(fyfwdOpcVarName);
 
         	opcVarNameList.add(sysTime);
         }
