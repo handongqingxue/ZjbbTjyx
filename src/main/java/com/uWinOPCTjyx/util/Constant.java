@@ -233,6 +233,10 @@ public class Constant {
 	 */
 	public static final String SHENG_WEN_KAI_SHI="升温开始";
 	/**
+	 * 蒸汽压力
+	 */
+	public static final String ZHENG_QI_YA_LI="蒸汽压力";
+	/**
 	 * 温度85与二次投料提醒
 	 */
 	public static final String WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING="温度85与二次投料提醒";
@@ -240,6 +244,10 @@ public class Constant {
 	 * 二次助剂后测PH提醒
 	 */
 	public static final String ER_CI_ZHU_JI_HOU_CE_PH_TI_XING="二次助剂后测PH提醒";
+	/**
+	 * 二次投料PH输入值
+	 */
+	public static final String ER_CI_TOU_LIAO_PH_SHU_RU_ZHI="二次投料PH输入值";
 	/**
 	 * 允许二次加助剂
 	 */
@@ -284,6 +292,14 @@ public class Constant {
 	 * 降温完成
 	 */
 	public static final String JIANG_WEN_WAN_CHENG="降温完成";
+	/**
+	 * 开始降温
+	 */
+	public static final String KAI_SHI_JIANG_WEN="开始降温";
+	/**
+	 * 停止降温
+	 */
+	public static final String TING_ZHI_JIANG_WEN="停止降温";
 	
 	/**
 	 * 百分号
