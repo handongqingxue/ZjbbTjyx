@@ -5,6 +5,8 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.Properties;
 
+import com.uWinOPCTjyx.util.*;
+
 /**
  * Properties loader
  * <p>
