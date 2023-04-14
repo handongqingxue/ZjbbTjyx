@@ -244,15 +244,7 @@ public class OPCController {
 						if(TriggerVar.M.equals(upRecType)) {
 							Float preValue = Float.valueOf(preValueF1MMap.get(upVarName).toString());
 							if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-								Date date = new Date();
-								String currentTime = DateUtil.getTimeStrByFormatStr(date, DateUtil.YEAR_TO_SECOND);
-								System.out.println("当前系统时间:"+currentTime);
-								ProcessVar processVar=new ProcessVar();
-								processVar.setVarName(upVarName);//设置变量名称
-								processVar.setRecType(upRecType);//设置配方类型
-								processVar.setDealBz(ProcessVar.WCL);//设置处理标志
-								processVar.setUpdateTime(currentTime);//设置更新时间
-								processVar.setFId(Constant.F1_ID);//设置反应釜ID
+
 								//int i = processVarService.addProcessVar(processVar);//调用添加过程接口
 								//System.out.println("添加"+i);
 							}
@@ -260,15 +252,7 @@ public class OPCController {
 						else if(TriggerVar.U.equals(upRecType)) {
 							Float preValue = Float.valueOf(preValueF1UMap.get(upVarName).toString());
 							if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-								Date date = new Date();
-								String currentTime = DateUtil.getTimeStrByFormatStr(date, DateUtil.YEAR_TO_SECOND);
-								System.out.println("当前系统时间:"+currentTime);
-								ProcessVar processVar=new ProcessVar();
-								processVar.setVarName(upVarName);//设置变量名称
-								processVar.setRecType(upRecType);//设置配方类型
-								processVar.setDealBz(ProcessVar.WCL);//设置处理标志
-								processVar.setUpdateTime(currentTime);//设置更新时间
-								processVar.setFId(Constant.F1_ID);//设置反应釜ID
+
 								//int i = processVarService.addProcessVar(processVar);//调用添加过程接口
 								//System.out.println("添加"+i);
 							}
@@ -285,8 +269,6 @@ public class OPCController {
 		List<TriggerVar> upJqflwcTVList = getUpDownVarValueListFromList(jqflwcTVList, TriggerVar.UP);//获取上升的甲醛放料完成变量
 		for (TriggerVar upJqflwcTV : upJqflwcTVList) {
 			//开始读取opc里的甲醛实际进料量
-			List<String> varNameList=new ArrayList<String>();
-			//varNameList.add(Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG+"_"+upJqflwcTV.getFId()+"_AV");
 			System.out.println("调用读写操作");
 			List<TriggerVar> rOpcTVList=new ArrayList<TriggerVar>();//只有检索是上升沿时才往集合里存，因为可能要根据两个上升沿变量获取过程变量(ProVar)，得用集合存放
 			rOpcTVList.add(upJqflwcTV);
@@ -294,9 +276,33 @@ public class OPCController {
 			List<ProcessVar> proVarList = (List<ProcessVar>)proVarMap.get("proVarList");
 			int i = processVarService.addProcessVarList(proVarList);
 			System.out.println("添加"+i+"条");
-
 		}
 		//甲醛备料开始
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -99,9 +99,8 @@ public class OpcUtil {
 			else if(i==1)
 				triggerVar2 = triggerVar;
 		}
-        
 
-        List<String> opcVarNameList=new ArrayList<String>();
+        List<String> opcVarNameList=new ArrayList<String>();//要读取的opc变量集合
         String varName1 = triggerVar1.getVarName();
         if(varName1.contains(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+"_")) {//甲醛放料完成要记录(甲醛实际进料重量、加水实际重量、釜1称重、反应釜1温度)
         	Integer tvFId = triggerVar1.getFId();
@@ -110,6 +109,10 @@ public class OpcUtil {
         	//甲醛实际进料重量
             String jqsjjlzlPvVarNameQz=Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG;
             String jqsjjlzlOpcVarName = jqsjjlzlPvVarNameQz+"_"+opcFName+"_AV";
+
+            //加水实际重量
+            String jssjzlPvVarNameQz=Constant.JIA_SHUI_SHI_JI_ZHONG_LIANG;
+            String jssjzlOpcVarName=jssjzlPvVarNameQz+"_"+opcFName+"_AV";
 
             //反应釜(反应釜号)温度
             String fyfwdPvVarNameQz=Constant.FAN_YING_FU+tvFId+Constant.WEN_DU;
@@ -120,18 +123,19 @@ public class OpcUtil {
             String f1czOpcVarName=f1czPvVarNameQz+"_AV";
 
             opcVarNameList.add(jqsjjlzlOpcVarName);
-            opcVarNameList.add(f1czOpcVarName);
+            opcVarNameList.add(jssjzlOpcVarName);
             opcVarNameList.add(fyfwdOpcVarName);
+            opcVarNameList.add(f1czOpcVarName);
         }
 
-    	
-
-        /*
-        for (String opcVarName : opcVarNameList) {
-            // new Opcitem("K1.Value",true,"");  "K1.Value" 表示要读取opc服务器中的变量名称的值。
-            group.addItem(new OpcItem( opcVarName, true, ""));
+        if(false){
+            //要要读取的值循环添加到group里面
+            for (String opcVarName : opcVarNameList) {
+                // new Opcitem("K1.Value",true,"");  "K1.Value" 表示要读取opc服务器中的变量名称的值。
+                group.addItem(new OpcItem( opcVarName, true, ""));
+            }
         }
-        */
+
         jopc.addGroup(group);   //添加组
 
         OpcGroup responseGroup;
