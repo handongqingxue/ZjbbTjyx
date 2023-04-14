@@ -135,20 +135,40 @@ public class OpcUtil {
             String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
 
             //釜(反应釜号)称重
-            String f1czPvVarNameQz=Constant.FU+tvFId+Constant.CHENG_ZHONG;
-            String fhczOpcVarName=f1czPvVarNameQz+"_AV";
+            String fhczPvVarNameQz=Constant.FU+tvFId+Constant.CHENG_ZHONG;
+            String fhczOpcVarName=fhczPvVarNameQz+"_AV";
 
             opcVarNameList.add(fhczOpcVarName);
         }
         //加碱PH值正常
-        if (varName1.contains(Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+"_")){//加碱PH值正常要记录(加碱量提示、加碱后PH输入值、助剂计量罐
+        if (varName1.contains(Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+"_")){//加碱PH值正常要记录(加碱量提示、加碱后PH输入值、助剂计量罐1称重、助剂计量罐2称重)
             Integer tvFId = triggerVar1.getFId();
             String tvRecType = triggerVar1.getRecType();
             String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
 
+            //加碱量提示
+            String jjltsPvVarNameQz= Constant.JIA_JIAN_LIANG_TI_SHI;
+            String jjltsOpcVarName=jjltsPvVarNameQz+"_"+Constant.BSF_PF+tvFId+"_AV";
 
+            //加碱后PH输入值
+            String jjhsrzPvVarName=Constant.JIA_JIAN_HOU_PH_SHU_RU_ZHI;
+            String jjhsrzOpcVarName=jjhsrzPvVarName+"_"+opcFName+"_AV";
 
+            //助剂计量罐1称重
+            String zjjlg1czPvVarName=Constant.ZHU_JI_JI_LIANG_GUAN+Constant.BSF_ZJJLG1+Constant.CHENG_ZHONG;
+            String zjjlg1czOpcVarName=zjjlg1czPvVarName+"_AV";
+
+            //助剂计量罐2称重
+            String zjjlg2czPvVarName=Constant.ZHU_JI_JI_LIANG_GUAN+Constant.BSF_ZJJLG2+Constant.CHENG_ZHONG;
+            String zjjlg2czOpcVarName=zjjlg2czPvVarName+"_AV";
+
+            opcVarNameList.add(jjltsOpcVarName);
+            opcVarNameList.add(jjhsrzOpcVarName);
+            opcVarNameList.add(zjjlg1czOpcVarName);
+            opcVarNameList.add(zjjlg2czOpcVarName);
         }
+
+        
         if(false){
             //要要读取的值循环添加到group里面
             for (String opcVarName : opcVarNameList) {
