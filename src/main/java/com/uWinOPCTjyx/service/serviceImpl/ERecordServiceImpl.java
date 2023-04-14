@@ -188,7 +188,7 @@ public class ERecordServiceImpl implements ERecordService {
 				}
 				eRecord.setPreValue(varValue+"");
 			}
-			else if(pvVarName.contains(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.FU+Constant.CHENG_ZHONG)) {//甲醛放料完成釜称重
+			else if(pvVarName.contains(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG)) {//甲醛放料完成上升沿釜称重
 				Integer pvFId = processVar.getFId();
 				String batchID = batchIDMap.get(pvFId).toString();
 				Float varValue = processVar.getVarValue();
@@ -209,21 +209,26 @@ public class ERecordServiceImpl implements ERecordService {
 			}
 			else if(pvVarName.contains(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+Constant.DAO+Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.FU+Constant.ZHONG_LIANG+Constant.CHA)) {//从甲醛备料开始到甲醛放料完成釜重量差
 				Float pvVarValue = processVar.getVarValue();
-				String pvRecType = processVar.getRecType();
 				Integer pvFId = processVar.getFId();
 				String batchID = batchIDMap.get(pvFId).toString();
+				Float varValue = processVar.getVarValue();
 
-				eRecord=new ERecord();
-				eRecord.setVarName(pvVarName);
-				eRecord.setVarValue(pvVarValue+"");
-				eRecord.setUnit(Constant.KG);
-				eRecord.setRecType(pvRecType);
-				eRecord.setFId(pvFId);
-				eRecord.setRecordTime(recordTime);
-				eRecord.setBatchID(batchID);
-				eRecord.setPhaseName(Constant.YSD101);
+				eRecord=getFromList(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+Constant.DAO+Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.FU+Constant.ZHONG_LIANG+Constant.CHA, batchID, eRecordList);
+				if(eRecord==null) {
+					String pvRecType = processVar.getRecType();
+					
+					eRecord=new ERecord();
+					eRecord.setVarName(pvVarName);
+					eRecord.setUnit(Constant.KG);
+					eRecord.setRecType(pvRecType);
+					eRecord.setFId(pvFId);
+					eRecord.setRecordTime(recordTime);
+					eRecord.setBatchID(batchID);
+					eRecord.setPhaseName(Constant.YSD101);
+				}
+				eRecord.setPtnValue(varValue+"");
 			}
-			else if(pvVarName.contains(Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+Constant.JIA_JIAN_LIANG_TI_SHI)) {//加碱PH值正常加碱量提示
+			else if(pvVarName.contains(Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+Constant.SHANG_SHENG_YAN+Constant.JIA_JIAN_LIANG_TI_SHI)) {//加碱PH值正常上升沿加碱量提示
 				Float pvVarValue = processVar.getVarValue();
 				String pvRecType = processVar.getRecType();
 				Integer pvFId = processVar.getFId();
@@ -239,7 +244,7 @@ public class ERecordServiceImpl implements ERecordService {
 				eRecord.setBatchID(batchID);
 				eRecord.setPhaseName(Constant.YSD109);
 			}
-			else if(pvVarName.contains(Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+Constant.JIA_JIAN_HOU_PH_SHU_RU_ZHI)) {//加碱PH值正常加碱后PH输入值
+			else if(pvVarName.contains(Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+Constant.SHANG_SHENG_YAN+Constant.JIA_JIAN_HOU_PH_SHU_RU_ZHI)) {//加碱PH值正常上升沿加碱后PH输入值
 				Float pvVarValue = processVar.getVarValue();
 				String pvRecType = processVar.getRecType();
 				Integer pvFId = processVar.getFId();
@@ -254,7 +259,7 @@ public class ERecordServiceImpl implements ERecordService {
 				eRecord.setBatchID(batchID);
 				eRecord.setPhaseName(Constant.YSD109);
 			}
-			else if(pvVarName.contains(Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+Constant.ZHU_JI_JI_LIANG_GUAN+Constant.CHENG_ZHONG)) {//加碱PH值正常助剂计量罐称重
+			else if(pvVarName.contains(Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+Constant.SHANG_SHENG_YAN+Constant.ZHU_JI_JI_LIANG_GUAN+Constant.CHENG_ZHONG)) {//加碱PH值正常上升沿助剂计量罐称重
 				Float pvVarValue = processVar.getVarValue();
 				String pvRecType = processVar.getRecType();
 				Integer pvFId = processVar.getFId();
@@ -270,7 +275,7 @@ public class ERecordServiceImpl implements ERecordService {
 				eRecord.setBatchID(batchID);
 				eRecord.setPhaseName(Constant.YSD106);
 			}
-			else if(pvVarName.contains(Constant.YUN_XU_YI_CI_JIA_ZHU_JI+Constant.SHI_JIAN)) {//允许一次加助剂时间
+			else if(pvVarName.contains(Constant.YUN_XU_YI_CI_JIA_ZHU_JI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN)) {//允许一次加助剂上升沿时间
 				Integer pvFId = processVar.getFId();
 				String batchID = batchIDMap.get(pvFId).toString();
 				String updateTime = processVar.getUpdateTime();
@@ -289,7 +294,7 @@ public class ERecordServiceImpl implements ERecordService {
 				}
 				eRecord.setPreValue(updateTime);
 			}
-			else if(pvVarName.contains(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.SHI_JIAN)) {//所有助剂加料完成1时间
+			else if(pvVarName.contains(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN)) {//所有助剂加料完成1上升沿时间
 				Integer pvFId = processVar.getFId();
 				String batchID = batchIDMap.get(pvFId).toString();
 				String updateTime = processVar.getUpdateTime();
@@ -308,7 +313,7 @@ public class ERecordServiceImpl implements ERecordService {
 				}
 				eRecord.setNxtValue(updateTime);
 			}
-			else if(pvVarName.contains(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.FAN_YING_FU+Constant.WEN_DU)) {//所有助剂加料完成1反应釜温度
+			else if(pvVarName.contains(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU)) {//所有助剂加料完成1上升沿反应釜温度
 				Float pvVarValue = processVar.getVarValue();
 				String pvRecType = processVar.getRecType();
 				Integer pvFId = processVar.getFId();
@@ -324,7 +329,7 @@ public class ERecordServiceImpl implements ERecordService {
 				eRecord.setBatchID(batchID);
 				eRecord.setPhaseName(Constant.YSD106);
 			}
-			else if(pvVarName.contains(Constant.YUN_XU_YI_CI_JIA_ZHU_JI+Constant.FU+Constant.CHENG_ZHONG)) {//允许一次加助剂釜称重
+			else if(pvVarName.contains(Constant.YUN_XU_YI_CI_JIA_ZHU_JI+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG)) {//允许一次加助剂上升沿釜称重
 				Integer pvFId = processVar.getFId();
 				String batchID = batchIDMap.get(pvFId).toString();
 				Float varValue = processVar.getVarValue();
@@ -343,7 +348,7 @@ public class ERecordServiceImpl implements ERecordService {
 				}
 				eRecord.setPreValue(varValue+"");
 			}
-			else if(pvVarName.contains(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.FU+Constant.CHENG_ZHONG)) {//所有助剂加料完成1釜称重
+			else if(pvVarName.contains(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG)) {//所有助剂加料完成1上升沿釜称重
 				Integer pvFId = processVar.getFId();
 				String batchID = batchIDMap.get(pvFId).toString();
 				Float varValue = processVar.getVarValue();
@@ -416,7 +421,28 @@ public class ERecordServiceImpl implements ERecordService {
 				eRecord.setBatchID(batchID);
 				eRecord.setPhaseName(Constant.YSD102);
 			}
-			else if(pvVarName.contains(Constant.JIA_FEN_LIAO_TI_XING)) {
+			else if(pvVarName.contains(Constant.FU+Constant.NIAO_SU_FANG_LIAO_FA+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN)) {//釜尿素放料阀上升沿时间
+				
+			}
+			else if(pvVarName.contains(Constant.FU+Constant.NIAO_SU_FANG_LIAO_FA+Constant.XIA_JIANG_YAN+Constant.SHI_JIAN)) {//釜尿素放料阀下降沿时间
+				
+			}
+			else if(pvVarName.contains(Constant.FU+Constant.NIAO_SU_FANG_LIAO_FA+Constant.XIA_JIANG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU)) {//釜尿素放料阀下降沿反应釜温度
+				
+			}
+			else if(pvVarName.contains(Constant.JIA_FEN_LIAO_PH_SHU_RU_ZHI)) {//加粉料PH输入值
+				
+			}
+			else if(pvVarName.contains(Constant.FU+Constant.NIAO_SU_FANG_LIAO_FA+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG)) {//釜尿素放料阀上升沿釜称重
+				
+			}
+			else if(pvVarName.contains(Constant.FU+Constant.NIAO_SU_FANG_LIAO_FA+Constant.XIA_JIANG_YAN+Constant.FU+Constant.CHENG_ZHONG)) {//釜尿素放料阀下降沿釜称重
+				
+			}
+			else if(pvVarName.contains(Constant.FU+Constant.NIAO_SU_FANG_LIAO_FA+Constant.ZHONG_LIANG+Constant.CHA)) {//釜尿素放料阀重量差
+				
+			}
+			else if(pvVarName.contains(Constant.FU+Constant.NIAO_SU_FANG_LIAO_FA+Constant.SHI_JIAN+Constant.CHA)) {//釜尿素放料阀时间差
 				
 			}
 			else if(pvVarName.contains(Constant.SHENG_WEN_WAN_CHENG+Constant.SHI_JIAN)) {//升温完成时间???????
