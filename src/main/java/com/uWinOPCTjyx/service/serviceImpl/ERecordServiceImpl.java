@@ -36,7 +36,7 @@ public class ERecordServiceImpl implements ERecordService {
 		for (ProcessVar processVar : processVarList) {
 			String pvVarName = processVar.getVarName();
 			
-			if(pvVarName.contains(Constant.BEI_LIAO_KAI_SHI_SHI_JIAN+Constant.SHANG_SHENG_YAN)) {//备料开始上升沿时间
+			if(pvVarName.contains(Constant.BEI_LIAO_KAI_SHI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN)) {//备料开始上升沿时间
 				Integer pvFId = processVar.getFId();
 				String batchID = batchIDMap.get(pvFId).toString();
 				String updateTime = processVar.getUpdateTime();
