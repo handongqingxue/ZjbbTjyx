@@ -257,6 +257,7 @@ public class OpcUtil {
         for (OpcItem opcItem : opcItems) {//一个触发变量可能会查询多个过程变量，得用集合存储
         	String itemName = opcItem.getItemName();
         	Float value = Float.valueOf(opcItem.getValue().toString());
+        	String sysTime = DateUtil.getTimeStrByFormatStr(new Date(),DateUtil.YEAR_TO_SECOND);//系统时间
         	String unit=null;
         	//判断单位
         	if (itemName.contains(Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG)||
@@ -264,13 +265,16 @@ public class OpcUtil {
             ){
                 unit=Constant.KG;//kg
             }
+        	/*
         	if (itemName.contains("")){
         	    unit=Constant.WEN_DU_DAN_WEI_SIGN;//°C
             }
+            */
         	proVar=new ProcessVar();
         	proVar.setVarName(itemName);
         	proVar.setVarValue(value);
         	proVar.setDealBz(ProcessVar.WCL);
+        	proVar.setUpdateTime(sysTime);
         	proVar.setRecType(triggerVar1.getRecType());
         	proVar.setUnit(unit);
         	
@@ -280,8 +284,11 @@ public class OpcUtil {
 
         //以下是报表里所需的系统时间，opc上没有这些变量，就得根据服务器的系统时间获取，再存入集合里
         String varName = null;
-        if(varName1.contains(Constant.BEI_LIAO_KAI_SHI+"_")) {//备料开始
+        if(varName1.startsWith(Constant.BEI_LIAO_KAI_SHI+"_")) {//备料开始
         	varName = Constant.BEI_LIAO_KAI_SHI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+        }
+        else if(varName1.startsWith(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+"_")) {//甲醛备料开始
+        	varName = Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
         }
         else if(varName1.contains(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+"_")) { //甲醛放料完成
         	varName = Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
@@ -298,7 +305,8 @@ public class OpcUtil {
         
         
         //触发器变量1在满足以上几种情况时，说明需要添加系统时间，就调用下面这个逻辑。若加在上面代码量太多，就简化一下加在下面
-        if(varName1.contains(Constant.BEI_LIAO_KAI_SHI+"_")||
+        if(varName1.startsWith(Constant.BEI_LIAO_KAI_SHI+"_")||
+           varName1.startsWith(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+"_")||
            varName1.contains(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+"_")||
            varName1.contains(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+"_")||
            varName1.contains(Constant.YUN_XU_YI_CI_JIA_ZHU_JI+"_")||

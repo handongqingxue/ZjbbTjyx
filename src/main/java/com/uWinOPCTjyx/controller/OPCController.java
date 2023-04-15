@@ -229,6 +229,7 @@ public class OPCController {
 		System.out.println("------------------------------");
 		System.out.println(triggerVarMap.toString());
 		//李工的代码逻辑从这里开始写
+		if(false) {
 		//备料开始触发量
 		List<Integer> blksFIdList=new ArrayList<Integer>();
 		List<TriggerVar> blksTVList = (List<TriggerVar>)triggerVarMap.get(Constant.BEI_LIAO_KAI_SHI);//获取备料开始触发变量,不管是否是上升沿
@@ -268,6 +269,7 @@ public class OPCController {
 						break;
 				}
 			}
+		}
 		}
 
 
@@ -604,6 +606,7 @@ public class OPCController {
 		Map<String, List<TriggerVar>> tvGroupMap=new HashMap<String, List<TriggerVar>>();
 		List<TriggerVar> jwwcTVList=new ArrayList<TriggerVar>();//降温完成新集合,用来存放对象
 		List<TriggerVar> blksTVList=new ArrayList<TriggerVar>();//备料开始新集合,用来存放对象
+		List<TriggerVar> jqblksTVList=new ArrayList<TriggerVar>();//甲醛备料开始新集合,用来存放对象
 		List<TriggerVar> jqflwcTVList=new ArrayList<TriggerVar>();//甲醛放料完成新集合,用来存放对象
 
 
@@ -645,19 +648,24 @@ public class OPCController {
 					fyfh=Constant.BSF_F5U;
 				break;
 			}
-			if((Constant.BEI_LIAO_KAI_SHI+"_"+fyfh+"_AV").equals(varName)) {
+			if((Constant.BEI_LIAO_KAI_SHI+"_"+fyfh+"_AV").equals(varName)) {//备料开始
 				blksTVList.add(triggerVar);
 			}
-			if((Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+"_"+fyfh+"_AV").equals(varName)){
+			else if((Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+"_"+fyfh+"_AV").equals(varName)) {//甲醛备料开始
+				jqblksTVList.add(triggerVar);
+			}
+			else if((Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+"_"+fyfh+"_AV").equals(varName)){//甲醛放料完成
 				jqflwcTVList.add(triggerVar);
 			}
-			if((Constant.JIANG_WEN_WAN_CHENG+"_"+fyfh+"_AV").equals(varName)) {
+			else if((Constant.JIANG_WEN_WAN_CHENG+"_"+fyfh+"_AV").equals(varName)) {//降温完成
 				jwwcTVList.add(triggerVar);
 			}
 		}
+		
+		tvGroupMap.put(Constant.BEI_LIAO_KAI_SHI, blksTVList);
+		tvGroupMap.put(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI, jqblksTVList);
 		tvGroupMap.put(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG,jqflwcTVList);
 		tvGroupMap.put(Constant.JIANG_WEN_WAN_CHENG, jwwcTVList);
-		tvGroupMap.put(Constant.BEI_LIAO_KAI_SHI, blksTVList);
 
 		return tvGroupMap;
 	}
@@ -739,10 +747,12 @@ public class OPCController {
 	private List<TriggerVar> getUpDownVarValueListFromList(List<TriggerVar> triggerVarList,int flag) {
 		System.out.println("获取上升沿的方法");
 		List<TriggerVar> upDownVarValueTVList=new ArrayList<TriggerVar>();
-		for (TriggerVar triggerVar : triggerVarList) {
-			Float varValue = triggerVar.getVarValue();
-			if(varValue==flag) {
-				upDownVarValueTVList.add(triggerVar);
+		if(triggerVarList!=null) {
+			for (TriggerVar triggerVar : triggerVarList) {
+				Float varValue = triggerVar.getVarValue();
+				if(varValue==flag) {
+					upDownVarValueTVList.add(triggerVar);
+				}
 			}
 		}
 		return upDownVarValueTVList;
