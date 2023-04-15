@@ -287,7 +287,7 @@ public class OpcUtil {
         	proVar.setVarValue(value);
         	proVar.setDealBz(ProcessVar.WCL);
         	proVar.setUpdateTime(sysTime);
-        	proVar.setId(triggerVar1.getFId());
+        	proVar.setFId(triggerVar1.getFId());
         	proVar.setRecType(triggerVar1.getRecType());
         	proVar.setUnit(unit);
         	
@@ -305,9 +305,6 @@ public class OpcUtil {
         }
         else if(varName1.startsWith(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+"_")) { //甲醛放料完成
         	varName = Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
-        }
-        else if (varName1.startsWith(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+"_")){//甲醛备料完成
-            varName = Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
         }
         else if(varName1.startsWith(Constant.YUN_XU_YI_CI_JIA_ZHU_JI+"_")) {//允许一次加助剂
             varName = Constant.YUN_XU_YI_CI_JIA_ZHU_JI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
@@ -328,7 +325,8 @@ public class OpcUtil {
            varName1.startsWith(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+"_")||
            varName1.startsWith(Constant.YUN_XU_YI_CI_JIA_ZHU_JI+"_")||
            varName1.startsWith(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1)||
-           varName1.startsWith(Constant.SHENG_WEN_KAI_SHI+"_")
+           varName1.startsWith(Constant.SHENG_WEN_KAI_SHI+"_")||
+           varName1.startsWith(Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING)
         ) {
         	String sysTime = DateUtil.getTimeStrByFormatStr(new Date(),DateUtil.YEAR_TO_SECOND);//系统时间
         	
