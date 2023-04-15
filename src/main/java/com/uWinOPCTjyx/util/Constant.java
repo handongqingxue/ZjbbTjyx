@@ -274,6 +274,10 @@ public class Constant {
 	 */
 	public static final String WEN_DU_98_PH="温度98PH";
 	/**
+	 * 合格
+	 */
+	public static final String HE_GE="合格";
+	/**
 	 * 测量冰水雾点输入值
 	 */
 	public static final String CE_LIANG_BSWD_SRZ="测量冰水雾点输入值";
