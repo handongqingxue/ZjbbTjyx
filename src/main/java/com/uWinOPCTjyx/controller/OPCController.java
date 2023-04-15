@@ -135,7 +135,7 @@ public class OPCController {
 
 		for (TriggerVar triggerVar : triggerVarList) {
 			switch (triggerVar.getFId()){
-				case 1:
+				case Constant.F1_ID:
 					if (triggerVar.getRecType()==TriggerVar.M){
 						f1MMap.put(triggerVar.getVarName(),Constant.FYF_CSZ);
 
@@ -143,28 +143,28 @@ public class OPCController {
 						f1UMap.put(triggerVar.getVarName(),Constant.FYF_CSZ);
 					}
 					break;
-				case 2:
+				case Constant.F2_ID:
 					if (triggerVar.getRecType()==TriggerVar.M){
 						f2MMap.put(triggerVar.getVarName(),Constant.FYF_CSZ);
 					}else if (triggerVar.getRecType()==TriggerVar.U){
 						f2UMap.put(triggerVar.getVarName(),Constant.FYF_CSZ);
 					}
 					break;
-				case 3:
+				case Constant.F3_ID:
 					if (triggerVar.getRecType()==TriggerVar.M){
 						f3MMap.put(triggerVar.getVarName(),Constant.FYF_CSZ);
 					}else if (triggerVar.getRecType()==TriggerVar.U){
 						f3UMap.put(triggerVar.getVarName(),Constant.FYF_CSZ);
 					}
 					break;
-				case 4:
+				case Constant.F4_ID:
 					if (triggerVar.getRecType()==TriggerVar.M){
 						f4MMap.put(triggerVar.getVarName(),Constant.FYF_CSZ);
 					}else if (triggerVar.getRecType()==TriggerVar.U){
 						f4UMap.put(triggerVar.getVarName(),Constant.FYF_CSZ);
 					}
 					break;
-				case 5:
+				case Constant.F5_ID:
 					if (triggerVar.getRecType()==TriggerVar.M){
 						f5MMap.put(triggerVar.getVarName(),Constant.FYF_CSZ);
 					}else if (triggerVar.getRecType()==TriggerVar.U){
@@ -220,7 +220,7 @@ public class OPCController {
 		
 
 		//每次检索只获取一次所有的触发量就行，下面的逻辑里会根据不同的变量从反应釜列表里读取
-		List<TriggerVar> triggerVarList = triggerVarService.getListByFIdList(runFIdList);//先获取所有反应釜触发量,不管是否是上升沿
+		List<TriggerVar> triggerVarList = triggerVarService.getListByFIdList(runFIdList);//先获取所有运行的反应釜触发量,不管是否是上升沿
 		Map<String,List<TriggerVar>> triggerVarMap=getTriVarListGroupMap(triggerVarList);
 		
 		//李工的代码逻辑从这里开始写
@@ -277,6 +277,10 @@ public class OPCController {
 		List<Integer> jqflwcFIdList=new ArrayList<Integer>();
 		List<TriggerVar> jqflwcTVList = (List<TriggerVar>)triggerVarMap.get(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG_TEXT);//获取甲醛放料完成变量,不管是否是上升沿
 		List<TriggerVar> upJqflwcTVList = getUpDownVarValueListFromList(jqflwcTVList, TriggerVar.UP);//获取上升的甲醛放料完成变量
+		//检测OPC变量
+		List<String> triggerVars=new ArrayList<String>();
+		triggerVars.add(Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG_TEXT);//读取甲醛实际进料重量
+		String readerOpc = OpcUtil.readerOpc(triggerVars);
 
 
 		//降温完成
@@ -325,11 +329,12 @@ public class OPCController {
 	private Map<String, List<TriggerVar>> getTriVarListGroupMap(List<TriggerVar> triggerVarList) {
 		// TODO Auto-generated method stub
 		Map<String, List<TriggerVar>> tvGroupMap=new HashMap<String, List<TriggerVar>>();
-		List<TriggerVar> jwwcTVList=new ArrayList<TriggerVar>();
-		
-		for (TriggerVar triggerVar : triggerVarList) {
-			String varName = triggerVar.getVarName();
-			String recType = triggerVar.getRecType();
+		List<TriggerVar> jwwcTVList=new ArrayList<TriggerVar>();//新集合,用来存放对象
+		List<TriggerVar> blksTVList=new ArrayList<TriggerVar>();//新集合,用来存放对象
+
+		for (TriggerVar triggerVar : triggerVarList) {//遍历全部变量对象
+			String varName = triggerVar.getVarName();//获取变量名称
+			String recType = triggerVar.getRecType();//获取配方类型
 			
 			String fyfh=null;
 			Integer fId = triggerVar.getFId();
@@ -365,12 +370,14 @@ public class OPCController {
 					fyfh=Constant.BSF_F5U;
 				break;
 			}
-			
+			if((Constant.BEI_LIAO_KAI_SHI_TEXT+"_"+fyfh+"_AV").equals(varName)) {
+				blksTVList.add(triggerVar);
+			}
 			if((Constant.JIANG_WEN_WAN_CHENG_TEXT+"_"+fyfh+"_AV").equals(varName)) {
 				jwwcTVList.add(triggerVar);
 			}
 		}
-		
+		tvGroupMap.put(Constant.BEI_LIAO_KAI_SHI_TEXT, blksTVList);
 		tvGroupMap.put(Constant.JIANG_WEN_WAN_CHENG_TEXT, jwwcTVList);
 		
 		return tvGroupMap;
