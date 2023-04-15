@@ -285,14 +285,21 @@ public class OpcUtil {
         	String unit=null;
         	//判断单位
         	if (itemName.startsWith(Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG)||
-                itemName.startsWith(Constant.JIA_SHUI_SHI_JI_ZHONG_LIANG)){
+                itemName.startsWith(Constant.JIA_SHUI_SHI_JI_ZHONG_LIANG)||
+                itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)||
+                itemName.startsWith(Constant.ZHU_JI_JI_LIANG_GUAN+Constant.BSF_ZJJLG1+Constant.CHENG_ZHONG)||
+                itemName.startsWith(Constant.ZHU_JI_JI_LIANG_GUAN+Constant.BSF_ZJJLG2+Constant.CHENG_ZHONG)||
+                itemName.startsWith(Constant.ZHU_JI_JI_LIANG_GUAN+Constant.BSF_ZJJLG3+Constant.CHENG_ZHONG)||
+                itemName.startsWith(Constant.ZHU_JI_JI_LIANG_GUAN+Constant.BSF_ZJJLG4+Constant.CHENG_ZHONG)||
+                itemName.startsWith(Constant.ZHU_JI_JI_LIANG_GUAN+Constant.BSF_ZJJLG5+Constant.CHENG_ZHONG)){
                 unit=Constant.KG;//kg
             }
-        	/*
-        	if (itemName.contains("")){
+        	else if (itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)){
         	    unit=Constant.WEN_DU_DAN_WEI_SIGN;//°C
             }
-            */
+        	else if (itemName.startsWith(Constant.ZHENG_QI_YA_LI)){
+        	    unit=Constant.MPA;//MPa
+            }
         	proVar=new ProcessVar();
         	proVar.setVarName(varName);
         	proVar.setVarValue(value);

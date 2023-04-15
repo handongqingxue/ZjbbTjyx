@@ -18,6 +18,8 @@ import com.uWinOPCTjyx.util.*;
 public class ERecordServiceImpl implements ERecordService {
 
     @Autowired
+    private ProcessVarMapper processVarMapper;
+    @Autowired
     private ERecordMapper eRecordMapper;
 
 	public int addFromProVarList(List<ProcessVar> processVarList) {
@@ -32,9 +34,12 @@ public class ERecordServiceImpl implements ERecordService {
 		List<Map<String,Object>> fMapList=getFMapListFromProVarList(processVarList);
 		HashMap<Integer,String> batchIDMap=getBatchIDMap(date,fMapList);
 		
-		
+		List<Integer> pvIdList=new ArrayList<Integer>();
 		for (ProcessVar processVar : processVarList) {
+			Integer pvId = processVar.getId();
 			String pvVarName = processVar.getVarName();
+			
+			pvIdList.add(pvId);
 			
 			if(pvVarName.contains(Constant.BEI_LIAO_KAI_SHI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN)) {//备料开始上升沿时间
 				Integer pvFId = processVar.getFId();
@@ -908,6 +913,11 @@ public class ERecordServiceImpl implements ERecordService {
 		for (ERecord eRecordItem : eRecordList) {
 			count+=eRecordMapper.add(eRecordItem);
 		}
+		
+		if(pvIdList.size()>0) {
+			processVarMapper.updateDealBzByIdList(ProcessVar.YCL,pvIdList);
+		}
+		
 		return count;
 	}
 	
@@ -925,11 +935,11 @@ public class ERecordServiceImpl implements ERecordService {
 			for (Map<String,Object> fMapItem : fMapList) {
 				Integer fId = Integer.valueOf(fMapItem.get("fId").toString());
 				if(fId==pvFId) {
-					exist=false;
+					exist=true;
 					break;
 				}
 			}
-			if(exist) {
+			if(!exist) {
 				Integer fId = proVar.getFId();
 				String recType = proVar.getRecType();
 				
@@ -953,6 +963,7 @@ public class ERecordServiceImpl implements ERecordService {
 		HashMap<Integer,String> batchIDMap=new HashMap<Integer,String>();
 		String year=DateUtil.getTimeStrByFormatStr(date, DateUtil.YEAR);
 		Integer maxBatchNum = eRecordMapper.getMaxBatchNumByYear(year);
+		maxBatchNum=maxBatchNum==null?0:maxBatchNum;
 		for (int i = 0; i < fMapList.size(); i++) {
 			Map<String, Object> fMap = fMapList.get(i);
 			Integer fId = Integer.valueOf(fMap.get("fId").toString());

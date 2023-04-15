@@ -38,6 +38,7 @@ public class OPCController {
 	private Map<String,Object> f1Map,f2Map,f3Map,f4Map,f5Map;
 
 	public static final String MODULE_NAME="opc";
+	private boolean initFMap=false;
 	
 	@RequestMapping(value="/opcu")
 	public String goOpcU(HttpServletRequest request) {
@@ -184,6 +185,11 @@ public class OPCController {
 	@RequestMapping(value = "/keepWatchOnTriggerVar", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> keepWatchOnTriggerVar() {
+		if(!initFMap) {
+			System.out.println("初始化反应釜Map........");
+			initFMap("");
+			initFMap=true;
+		}
 
 		Map<String,Object> json=new HashMap<String, Object>();
 		List<Integer> runFIdList=new ArrayList<Integer>();//用于存放运行的反应釜号的集合
@@ -651,39 +657,39 @@ public class OPCController {
 
 
 
-		if(false) {
-			//降温完成
-			List<Integer> jwwcFIdList = new ArrayList<Integer>();//降温完成反应釜号集合(M类和U类共用)
-			List<TriggerVar> jwwcTVList = (List<TriggerVar>) triggerVarMap.get(Constant.JIANG_WEN_WAN_CHENG);//先获取所有反应釜降温完成触发量,不管是否是上升沿
-			List<TriggerVar> upJwwcTVList = getUpDownVarValueListFromList(jwwcTVList, TriggerVar.UP);//获取上升的降温完成变量
-			for (TriggerVar upJwwcTV : upJwwcTVList) {
-				Integer upFId = upJwwcTV.getFId();
-				String upRecType = upJwwcTV.getRecType();
-				String upVarName = upJwwcTV.getVarName();//上次变量名和本次变量名其实是一致的
-				switch (upFId) {
-					case Constant.F1_ID:
-						if (TriggerVar.M.equals(upRecType)) {
-							Float preValue = Float.valueOf(preValueF1MMap.get(upVarName).toString());
-							if (preValue == TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-								jwwcFIdList.add(upFId);
-							}
-						} else if (TriggerVar.U.equals(upRecType)) {
-							Float preValue = Float.valueOf(preValueF1UMap.get(upVarName).toString());
-							if (preValue == TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-								jwwcFIdList.add(upFId);
-							}
+		//if(false) {
+		//降温完成
+		List<Integer> jwwcFIdList = new ArrayList<Integer>();//降温完成反应釜号集合(M类和U类共用)
+		List<TriggerVar> jwwcTVList = (List<TriggerVar>) triggerVarMap.get(Constant.JIANG_WEN_WAN_CHENG);//先获取所有反应釜降温完成触发量,不管是否是上升沿
+		List<TriggerVar> upJwwcTVList = getUpDownVarValueListFromList(jwwcTVList, TriggerVar.UP);//获取上升的降温完成变量
+		for (TriggerVar upJwwcTV : upJwwcTVList) {
+			Integer upFId = upJwwcTV.getFId();
+			String upRecType = upJwwcTV.getRecType();
+			String upVarName = upJwwcTV.getVarName();//上次变量名和本次变量名其实是一致的
+			switch (upFId) {
+				case Constant.F1_ID:
+					if (TriggerVar.M.equals(upRecType)) {
+						Float preValue = Float.valueOf(preValueF1MMap.get(upVarName).toString());
+						if (preValue == TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
+							jwwcFIdList.add(upFId);
 						}
-						break;
-				}
+					} else if (TriggerVar.U.equals(upRecType)) {
+						Float preValue = Float.valueOf(preValueF1UMap.get(upVarName).toString());
+						if (preValue == TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
+							jwwcFIdList.add(upFId);
+						}
+					}
+					break;
 			}
-
-			if (jwwcFIdList.size() > 0) {//若有需要处理的降温完成节点的反应釜，说明这些反应釜的批次执行完成，就从过程变量表(ProcessVar)里读取已采集好的变量，经过加工处理存入批记录表(ERecord)里
-				List<ProcessVar> udProVarList = processVarService.getUnDealListByFIdList(jwwcFIdList);
-				int c = eRecordService.addFromProVarList(udProVarList);
-			}
-
-			updateProTVListByCurrList(jwwcTVList);//这个方法用来存储本次变量值，作为下次检索里的上次变量值来使用。每次检索结束后都要记录一下
 		}
+
+		if (jwwcFIdList.size() > 0) {//若有需要处理的降温完成节点的反应釜，说明这些反应釜的批次执行完成，就从过程变量表(ProcessVar)里读取已采集好的变量，经过加工处理存入批记录表(ERecord)里
+			List<ProcessVar> udProVarList = processVarService.getUnDealListByFIdList(jwwcFIdList);
+			int c = eRecordService.addFromProVarList(udProVarList);
+		}
+		//}
+
+		updateProTVListByCurrList(triggerVarList);//这个方法用来存储本次变量值，作为下次检索里的上次变量值来使用。每次检索结束后都要记录一下
 		
 		
 		
