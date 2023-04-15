@@ -13,12 +13,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import com.alibaba.fastjson.JSON;
 import com.uWinOPCTjyx.entity.*;
 
 public class OpcUtil {
 	
 	private static SynchReadItemExample test = null;
 	private static JOpc jopc = null;
+	private static boolean IS_TEST=true;
 	
 	static {
 		test = new SynchReadItemExample();
@@ -65,15 +70,25 @@ public class OpcUtil {
                 //logger.error(e.getMessage());
             }
         }
+        
+        List<String> varNameList = new ArrayList<String>();
 //		ArrayList<OpcItem> opcItems = responseGroup.getItems();
         List<OpcItem> opcItems = new ArrayList<OpcItem>();
-        OpcItem opcItem1 = new OpcItem("'甲醛实际进料重量_F1_AV",false,"111");
+        OpcItem opcItem1 = new OpcItem("甲醛实际进料重量_F1_AV",false,"111");
         opcItem1.setValue(new Variant("0"));
         opcItems.add(opcItem1);
+        
+        OpcItem opcItem2 = new OpcItem("加水实际重量_F1_AV",false,"111");
+        opcItem2.setValue(new Variant("0"));
+        opcItems.add(opcItem2);
+        
         for (OpcItem opcItem : opcItems) {
+        	varNameList.add(opcItem.getItemName());
             System.out.println("Item名:" + opcItem.getItemName() + "  Item值: " + opcItem.getValue());
         }
         System.out.println(opcItems.toString());
+        
+        getOpcItemTestList(varNameList);
     }
     
     public static Map<String, Object> readerOpcProVarByTVList(List<TriggerVar> triggerVarList){
@@ -179,7 +194,7 @@ public class OpcUtil {
 
         jopc.addGroup(group);   //添加组
 
-        OpcGroup responseGroup;
+        OpcGroup responseGroup = null;
 
         try {
             jopc.connect();   //连接
@@ -201,14 +216,19 @@ public class OpcUtil {
                 //logger.error(e.getMessage());
             }
         }
-//		ArrayList<OpcItem> opcItems = responseGroup.getItems();
         
         List<ProcessVar> proVarList=new ArrayList<ProcessVar>();
         
-        List<OpcItem> opcItems = new ArrayList<OpcItem>();
+        ArrayList<OpcItem> opcItems = null;
+        if(IS_TEST)
+        	opcItems = getOpcItemTestList(opcVarNameList);
+        else
+    		opcItems = responseGroup.getItems();
+        /*
         OpcItem opcItem1 = new OpcItem("甲醛实际进料重量_F1_AV",false,"111");
         opcItem1.setValue(new Variant("0"));
         opcItems.add(opcItem1);
+        */
         
         ProcessVar proVar=null;
         for (OpcItem opcItem : opcItems) {//一个触发变量可能会查询多个过程变量，得用集合存储
@@ -286,5 +306,40 @@ public class OpcUtil {
 			break;
 		}
     	return fName;
+	}
+    
+    private static ArrayList<OpcItem> getOpcItemTestList(List<String> varNameList) {
+    	List<OpcVarTest> opcVarTestList = null;
+    	
+    	Map<String, Object> bodyParamMap=new HashMap<String, Object>();
+		String varNames="";
+		for (String varName : varNameList) {
+			varNames+=","+varName;
+		}
+		varNames=varNames.substring(1);
+		bodyParamMap.put("varNames", varNames);
+		JSONObject resultJO = APIUtil.doHttp("getOVTListByVarNames", bodyParamMap);
+		String status = resultJO.get("status").toString();
+		if("ok".equals(status)) {
+			String opcVarTestListStr = resultJO.get("opcVarTestList").toString();
+			opcVarTestList = JSON.parseArray(opcVarTestListStr, OpcVarTest.class); 
+		}
+		ArrayList<OpcItem> opcItemList = convertOVTToOIList(opcVarTestList);
+		return opcItemList;
+	}
+    
+    private static ArrayList<OpcItem> convertOVTToOIList(List<OpcVarTest> opcVarTestList) {
+    	ArrayList<OpcItem> opcItemList=new ArrayList<OpcItem>();
+    	OpcItem opcItem=null;
+    	for (OpcVarTest opcVarTest : opcVarTestList) {
+    		String varName = opcVarTest.getVarName();
+    		Float varValue = opcVarTest.getVarValue();
+    		
+    		opcItem=new OpcItem(varName,false,"");
+    		opcItem.setValue(new Variant(varValue));
+    		
+    		opcItemList.add(opcItem);
+		}
+    	return opcItemList;
 	}
 }

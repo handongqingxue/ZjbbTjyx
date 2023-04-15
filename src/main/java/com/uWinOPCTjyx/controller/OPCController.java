@@ -32,6 +32,8 @@ public class OPCController {
 	private TriggerVarService triggerVarService;
 	@Autowired
 	private ProcessVarService processVarService;
+	@Autowired
+	private OpcVarTestService opcVarTestService;
 
 	private Map<String,Object> f1Map,f2Map,f3Map,f4Map,f5Map;
 
@@ -537,6 +539,28 @@ public class OPCController {
 		finally {
 			return json;
 		}
+	}
+
+	@RequestMapping(value = "/getOVTListByVarNames", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> getOVTListByVarNames(String varNames) {
+
+		Map<String,Object> json=new HashMap<String, Object>();
+		
+		System.out.println("varNames==="+varNames);
+		List<OpcVarTest> opcVarTestList = opcVarTestService.getListByVarNames(varNames);
+		System.out.println("opcVarTestListSize==="+opcVarTestList.size());
+		
+		if (opcVarTestList.size()>0){
+			json.put("status","ok");
+			json.put("opcVarTestList",opcVarTestList);
+		}
+		else {
+			json.put("status","no");
+			json.put("info","无变量");
+		}
+		
+		return json;
 	}
 	
 	/**
