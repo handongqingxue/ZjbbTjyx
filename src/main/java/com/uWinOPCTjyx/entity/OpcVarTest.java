@@ -31,8 +31,4 @@ public class OpcVarTest {
         VarValue = varValue;
     }
 
-
-
-
-
 }
