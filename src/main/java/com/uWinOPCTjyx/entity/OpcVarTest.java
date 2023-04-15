@@ -4,7 +4,7 @@ public class OpcVarTest {
 
     private Integer Id;
     private String VarName;
-    private Double VarValue;
+    private Float VarValue;
 
 
     public Integer getId() {
@@ -23,11 +23,11 @@ public class OpcVarTest {
         VarName = varName;
     }
 
-    public Double getVarValue() {
+    public Float getVarValue() {
         return VarValue;
     }
 
-    public void setVarValue(Double varValue) {
+    public void setVarValue(Float varValue) {
         VarValue = varValue;
     }
 

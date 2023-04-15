@@ -398,4 +398,8 @@ public class Constant {
 	 * YSD104阶段
 	 */
 	public static final String YSD104="YSD104";
+	/**
+	 * 停汽
+	 */
+	public static final String TING_QI="停汽";
 }
