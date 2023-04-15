@@ -817,11 +817,9 @@ public class OPCController {
 				List<ProcessVar> udProVarList = processVarService.getUnDealListByFIdList(jwwcFIdList);
 				int c = eRecordService.addFromProVarList(udProVarList);
 			}
-
 			updateProTVListByCurrList(jwwcTVList);//这个方法用来存储本次变量值，作为下次检索里的上次变量值来使用。每次检索结束后都要记录一下
 		}
-		
-		
+
 		
 		return json;
 	}
@@ -838,11 +836,26 @@ public class OPCController {
 			System.out.println("分组方法"+triggerVar.toString());
 		}
 		Map<String, List<TriggerVar>> tvGroupMap=new HashMap<String, List<TriggerVar>>();
-		List<TriggerVar> jwwcTVList=new ArrayList<TriggerVar>();//降温完成新集合,用来存放对象
 		List<TriggerVar> blksTVList=new ArrayList<TriggerVar>();//备料开始新集合,用来存放对象
 		List<TriggerVar> jqblksTVList=new ArrayList<TriggerVar>();//甲醛备料开始新集合,用来存放对象
 		List<TriggerVar> jqflwcTVList=new ArrayList<TriggerVar>();//甲醛放料完成新集合,用来存放对象
-
+		List<TriggerVar> jjphzzcTVList=new ArrayList<TriggerVar>();//加碱PH值正常
+		List<TriggerVar> yxycjzjTVList=new ArrayList<TriggerVar>();//允许一次加助剂
+		List<TriggerVar> syzjjlwc1TVList=new ArrayList<TriggerVar>();//所有助剂加料完成1
+		List<TriggerVar> jfltxTVList=new ArrayList<TriggerVar>();//加粉料提醒
+		List<TriggerVar> fhnsflfTVList=new ArrayList<TriggerVar>();//釜号尿素放料阀
+		List<TriggerVar> jflphhgTVList=new ArrayList<TriggerVar>();//加粉料PH合格
+		List<TriggerVar> swksTVList=new ArrayList<TriggerVar>();//升温开始
+		List<TriggerVar> wd85yectltxTVList=new ArrayList<TriggerVar>();//温度85与二次投料提醒
+		List<TriggerVar> eczjhcphtxTVList=new ArrayList<TriggerVar>();//二次助剂后测PH提醒
+		List<TriggerVar> yxecjzjTVList=new ArrayList<TriggerVar>();//允许二次加助剂
+		List<TriggerVar> syzjjlwc2TVList=new ArrayList<TriggerVar>();//所有助剂加料完成2
+		List<TriggerVar> swwcTVList=new ArrayList<TriggerVar>();//升温完成
+		List<TriggerVar> wd98phhgTVList=new ArrayList<TriggerVar>();//温度98PH合格
+		List<TriggerVar> clbswdtxTVList=new ArrayList<TriggerVar>();//测量冰水雾点提醒
+		List<TriggerVar> csstxTVList=new ArrayList<TriggerVar>();//测水数提醒
+		List<TriggerVar> jhzdTVList=new ArrayList<TriggerVar>();//聚合终点
+		List<TriggerVar> jwwcTVList=new ArrayList<TriggerVar>();//降温完成新集合,用来存放对象
 
 		for (TriggerVar triggerVar : triggerVarList) {//遍历全部变量对象
 			String varName = triggerVar.getVarName();//获取变量名称
@@ -891,14 +904,78 @@ public class OPCController {
 			else if((Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+"_"+fyfh+"_AV").equals(varName)){//甲醛放料完成
 				jqflwcTVList.add(triggerVar);
 			}
+			else if((Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+"_"+fyfh+"_AV").equals(varName)){//加碱PH值正常
+				jjphzzcTVList.add(triggerVar);
+			}
+			else if((Constant.YUN_XU_YI_CI_JIA_ZHU_JI+"_"+fyfh+"_AV").equals(varName)){//允许一次加助剂
+				yxycjzjTVList.add(triggerVar);
+			}
+			else if((Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+"_"+fyfh+"_AV").equals(varName)){//所有助剂加料完成1
+				syzjjlwc1TVList.add(triggerVar);
+			}
+			else if((Constant.JIA_FEN_LIAO_TI_XING+"_"+fyfh+"_AV").equals(varName)){//加粉料提醒
+				jfltxTVList.add(triggerVar);
+			}
+			else if((Constant.FU+fId+Constant.NIAO_SU_FANG_LIAO_FA+"_AV").equals(varName)){//釜号尿素放料阀
+				fhnsflfTVList.add(triggerVar);
+			}
+			else if((Constant.JIA_FEN_LIAO_PH_HE_GE+"_"+fyfh+"_AV").equals(varName)){//加粉料PH合格
+				jflphhgTVList.add(triggerVar);
+			}
+			else if((Constant.SHENG_WEN_KAI_SHI+"_"+fyfh+"_AV").equals(varName)){//升温开始
+				swksTVList.add(triggerVar);
+			}
+			else if((Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING+"_"+fyfh+"_AV").equals(varName)){//温度85与二次投料提醒
+				wd85yectltxTVList.add(triggerVar);
+			}
+			else if((Constant.ER_CI_ZHU_JI_HOU_CE_PH_TI_XING+"_"+fyfh+"_AV").equals(varName)){//二次助剂后测PH提醒
+				eczjhcphtxTVList.add(triggerVar);
+			}
+			else if((Constant.YUN_XU_ER_CI_JIA_ZHU_JI+"_"+fyfh+"_AV").equals(varName)){//允许二次加助剂
+				yxecjzjTVList.add(triggerVar);
+			}
+			else if((Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+"_"+fyfh+"_AV").equals(varName)){//所有助剂加料完成2
+				syzjjlwc2TVList.add(triggerVar);
+			}
+			else if((Constant.SHENG_WEN_WAN_CHENG+"_"+fyfh+"_AV").equals(varName)){//升温完成
+				swwcTVList.add(triggerVar);
+			}
+			else if((Constant.WEN_DU_98_PH+Constant.HE_GE+"_"+fyfh+"_AV").equals(varName)){//温度98PH合格
+				wd98phhgTVList.add(triggerVar);
+			}
+			else if((Constant.CE_LIANG_BING_SHUI_WU_DIAN_TI_XING+"_"+fyfh+"_AV").equals(varName)){//测量冰水雾点提醒
+				clbswdtxTVList.add(triggerVar);
+			}
+			else if((Constant.CE_SHUI_SHU_TI_XING+"_"+fyfh+"_AV").equals(varName)){//测水数提醒
+				csstxTVList.add(triggerVar);
+			}
+			else if((Constant.JU_HE_ZHONG_DIAN+"_"+fyfh+"_AV").equals(varName)){//聚合终点
+				jhzdTVList.add(triggerVar);
+			}
 			else if((Constant.JIANG_WEN_WAN_CHENG+"_"+fyfh+"_AV").equals(varName)) {//降温完成
 				jwwcTVList.add(triggerVar);
 			}
 		}
 		
-		tvGroupMap.put(Constant.BEI_LIAO_KAI_SHI, blksTVList);
-		tvGroupMap.put(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI, jqblksTVList);
-		tvGroupMap.put(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG,jqflwcTVList);
+		tvGroupMap.put(Constant.BEI_LIAO_KAI_SHI, blksTVList);//备料开始
+		tvGroupMap.put(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI, jqblksTVList);//甲醛备料开始
+		tvGroupMap.put(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG,jqflwcTVList);//甲醛放料完成
+		tvGroupMap.put(Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG,jjphzzcTVList);//加碱PH值正常
+		tvGroupMap.put(Constant.YUN_XU_YI_CI_JIA_ZHU_JI,yxycjzjTVList);//允许一次加助剂
+		tvGroupMap.put(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1,syzjjlwc1TVList);//所有助剂加料完成1
+		tvGroupMap.put(Constant.JIA_FEN_LIAO_TI_XING,jfltxTVList);//加粉料提醒
+		//tvGroupMap.put(Constant.FU+,fhnsflfTVList);//釜号尿素放料阀
+		tvGroupMap.put(Constant.JIA_FEN_LIAO_PH_HE_GE,jflphhgTVList);//加粉料PH合格
+		tvGroupMap.put(Constant.SHENG_WEN_KAI_SHI,swksTVList);//升温开始
+		tvGroupMap.put(Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING,wd85yectltxTVList);//温度85与二次投料提醒
+		tvGroupMap.put(Constant.ER_CI_ZHU_JI_HOU_CE_PH_TI_XING,eczjhcphtxTVList);//二次助剂后测PH提醒
+		tvGroupMap.put(Constant.YUN_XU_ER_CI_JIA_ZHU_JI,yxecjzjTVList);//允许二次加助剂
+		tvGroupMap.put(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2,syzjjlwc2TVList);//所有助剂加料完成2
+		tvGroupMap.put(Constant.SHENG_WEN_WAN_CHENG,swwcTVList);//升温完成
+		tvGroupMap.put(Constant.WEN_DU_98_PH+Constant.HE_GE,wd98phhgTVList);//温度98PH合格
+		tvGroupMap.put(Constant.CE_LIANG_BING_SHUI_WU_DIAN_TI_XING,clbswdtxTVList);//测量冰水雾点提醒
+		tvGroupMap.put(Constant.CE_SHUI_SHU_TI_XING,csstxTVList);//测水数提醒
+		tvGroupMap.put(Constant.JU_HE_ZHONG_DIAN,jhzdTVList);//聚合终点
 		tvGroupMap.put(Constant.JIANG_WEN_WAN_CHENG, jwwcTVList);
 
 		return tvGroupMap;

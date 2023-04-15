@@ -309,15 +309,86 @@ public class OpcUtil {
         	String sysTime = DateUtil.getTimeStrByFormatStr(new Date(),DateUtil.YEAR_TO_SECOND);//系统时间
         	
         	String varName=null;
-        	if(tv1VarName.startsWith(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+"_")) {
-        		if(itemName.startsWith(Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG)) {
+        	if (tv1VarName.startsWith(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+"_")){//甲醛备料开始
+                if(itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)){
+                    varName=Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
+                }
+            }
+        	else if(tv1VarName.startsWith(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+"_")) {//甲醛放料完成
+        		if(itemName.startsWith(Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG+"_")) {
         			varName=Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG;
-        		}
-        		else if(itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)) {
+        		}else if(itemName.startsWith(Constant.JIA_SHUI_SHI_JI_ZHONG_LIANG+"_")){
+                    varName=Constant.JIA_SHUI_SHI_JI_ZHONG_LIANG;
+                }else if(itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)) {
         			varName=Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
-        		}
+        		}else if(itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)){
+                    varName=Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
+                }
         	}
-        	
+        	else if(tv1VarName.startsWith(Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+"_")){//加碱PH值正常
+                if(itemName.startsWith(Constant.JIA_JIAN_QIAN_PH_SHU_RU_ZHI+"_")) {
+                    varName=Constant.JIA_JIAN_QIAN_PH_SHU_RU_ZHI;
+                }else if(tv1VarName.startsWith(Constant.JIA_JIAN_LIANG_TI_SHI+"_")){
+                    varName=Constant.JIA_JIAN_LIANG_TI_SHI;
+                }else if(tv1VarName.startsWith(Constant.JIA_JIAN_HOU_PH_SHU_RU_ZHI+"_")){
+                    varName=Constant.JIA_JIAN_HOU_PH_SHU_RU_ZHI;
+                }
+            }
+        	else if(tv1VarName.startsWith(Constant.YUN_XU_YI_CI_JIA_ZHU_JI+"_")){//允许一次加助剂
+        	    if (itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)){
+                    varName=Constant.YUN_XU_YI_CI_JIA_ZHU_JI+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
+                }
+            }
+        	else if(tv1VarName.startsWith(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+"_")){//所有助剂加料完成1
+                if (itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)){
+                    varName=Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
+                }else if (itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)){
+                    varName=Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
+                }
+            }
+        	else if(tv1VarName.startsWith(Constant.JIA_FEN_LIAO_TI_XING+"_")){//加粉料提醒
+                if (itemName.startsWith(Constant.FEN_LIAO_ZHONG_LIANG_SHE_DING+"_")){
+                    varName=Constant.FEN_LIAO_ZHONG_LIANG_SHE_DING;
+                }
+            }
+        	else if(tv1VarName.startsWith(Constant.JIA_FEN_LIAO_PH_HE_GE+"_")){//加粉料PH合格
+                if(itemName.startsWith(Constant.JIA_FEN_LIAO_PH_SHU_RU_ZHI+"_")){
+                    varName=Constant.JIA_FEN_LIAO_PH_SHU_RU_ZHI;
+                }
+            }
+        	else if(tv1VarName.startsWith(Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING+"_")){//温度85与二次投料提醒
+        	    if(itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)){
+                    varName=Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
+                }
+            }
+        	else if(tv1VarName.startsWith(Constant.ER_CI_ZHU_JI_HOU_CE_PH_TI_XING+"_")){//二次助剂后测PH提醒
+        	    if (itemName.startsWith(Constant.ER_CI_TOU_LIAO_PH_SHU_RU_ZHI+"_")){
+                    varName=Constant.ER_CI_TOU_LIAO_PH_SHU_RU_ZHI;
+                }
+            }
+        	else if(tv1VarName.startsWith(Constant.YUN_XU_ER_CI_JIA_ZHU_JI+"_")){//允许二次加助剂
+        	    if(itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)){
+                    varName=Constant.YUN_XU_ER_CI_JIA_ZHU_JI+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
+                }
+            }
+        	else if(tv1VarName.startsWith(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+"_")){//'所有助剂加料完成2
+                if (itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)){
+                    varName=Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
+                }else if (itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)){
+                    varName=Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
+                }
+            }
+        	else if(tv1VarName.startsWith(Constant.SHENG_WEN_WAN_CHENG+"_")){//升温完成
+        	    if (itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)){
+                    varName=Constant.SHENG_WEN_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
+                }
+            }
+        	else if(tv1VarName.startsWith(Constant.WEN_DU_98_PH+Constant.HE_GE+"_")){//温度98PH合格
+                if (itemName.startsWith(Constant.WEN_DU_98_PH+"_")){
+                    varName=Constant.WEN_DU_98_PH;
+                }
+            }
+
         	String unit=null;
         	//判断单位
         	if (itemName.startsWith(Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG)||
