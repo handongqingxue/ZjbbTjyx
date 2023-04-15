@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.alibaba.fastjson.JSON;
@@ -87,8 +88,12 @@ public class OpcUtil {
             System.out.println("Item名:" + opcItem.getItemName() + "  Item值: " + opcItem.getValue());
         }
         System.out.println(opcItems.toString());
-        
-        getOpcItemTestList(varNameList);
+
+        try {
+            getOpcItemTestList(varNameList);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     
     public static Map<String, Object> readerOpcProVarByTVList(List<TriggerVar> triggerVarList){
@@ -241,8 +246,13 @@ public class OpcUtil {
         List<ProcessVar> proVarList=new ArrayList<ProcessVar>();
         
         ArrayList<OpcItem> opcItems = null;
-        if(IS_TEST)
-        	opcItems = getOpcItemTestList(opcVarNameList);
+        if(IS_TEST) {
+            try {
+                opcItems = getOpcItemTestList(opcVarNameList);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         else
     		opcItems = responseGroup.getItems();
         /*
@@ -340,25 +350,31 @@ public class OpcUtil {
     	return fName;
 	}
     
-    private static ArrayList<OpcItem> getOpcItemTestList(List<String> varNameList) {
-    	List<OpcVarTest> opcVarTestList = null;
-    	
-    	Map<String, Object> bodyParamMap=new HashMap<String, Object>();
-		String varNames="";
-		for (String varName : varNameList) {
-			varNames+=","+varName;
-		}
-		varNames=varNames.substring(1);
-		bodyParamMap.put("varNames", varNames);
-		JSONObject resultJO = APIUtil.doHttp("getOVTListByVarNames", bodyParamMap);
-		String status = resultJO.get("status").toString();
-		if("ok".equals(status)) {
-			String opcVarTestListStr = resultJO.get("opcVarTestList").toString();
-			opcVarTestList = JSON.parseArray(opcVarTestListStr, OpcVarTest.class); 
-		}
-		ArrayList<OpcItem> opcItemList = convertOVTToOIList(opcVarTestList);
-		return opcItemList;
-	}
+    private static ArrayList<OpcItem> getOpcItemTestList(List<String> varNameList){
+        ArrayList<OpcItem> opcItemList =null;
+        try {
+            List<OpcVarTest> opcVarTestList = null;
+            Map<String, Object> bodyParamMap=new HashMap<String, Object>();
+            String varNames="";
+            for (String varName : varNameList) {
+                varNames+=","+varName;
+            }
+            varNames=varNames.substring(1);
+            bodyParamMap.put("varNames", varNames);
+            JSONObject resultJO = APIUtil.doHttp("getOVTListByVarNames", bodyParamMap);
+            String status = resultJO.get("status").toString();
+            if("ok".equals(status)) {
+                String opcVarTestListStr = resultJO.get("opcVarTestList").toString();
+                opcVarTestList = JSON.parseArray(opcVarTestListStr, OpcVarTest.class);
+            }
+            opcItemList = convertOVTToOIList(opcVarTestList);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        finally {
+            return opcItemList;
+        }
+    }
     
     private static ArrayList<OpcItem> convertOVTToOIList(List<OpcVarTest> opcVarTestList) {
     	ArrayList<OpcItem> opcItemList=new ArrayList<OpcItem>();
