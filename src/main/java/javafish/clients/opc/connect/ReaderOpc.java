@@ -2588,7 +2588,7 @@ public class ReaderOpc {
 					//APIUtil.addPiCiU(opcItem.getValue().toString());
 					//break;
 				}
-				APIUtil.addTriggerVarFromOpc(opcItems);
+				APIUtil.addVar("addTriggerVarFromOpc",opcItems);
 				break;
 			} catch (ComponentNotFoundException e) {
 				//logger.error(e.getMessage()); //获取responseGroup错误

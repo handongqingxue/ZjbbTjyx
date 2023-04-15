@@ -20,6 +20,6 @@ public interface ProcessVarMapper {
 	 * @param processVar
 	 * @return
 	 */
-	int addProcessVar(ProcessVar processVar);
+	int add(ProcessVar processVar);
 
 }

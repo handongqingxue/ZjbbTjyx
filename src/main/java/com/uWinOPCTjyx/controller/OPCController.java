@@ -32,6 +32,8 @@ public class OPCController {
 	private TriggerVarService triggerVarService;
 	@Autowired
 	private ProcessVarService processVarService;
+	@Autowired
+	private OpcVarTestService opcVarTestService;
 
 	private Map<String,Object> f1Map,f2Map,f3Map,f4Map,f5Map;
 
@@ -87,11 +89,15 @@ public class OPCController {
 			fIdList.add(fId);
 		}
 		List<TriggerVar> triggerVarList = triggerVarService.getListByFIdList(fIdList);//查询全部触发器变量
-
+		System.out.println("全部触发器变量");
+		for (TriggerVar triggerVar : triggerVarList) {
+			System.out.println(triggerVar.toString());
+		}
 		//1号釜
 		HashMap<String,Object> f1MMap=new HashMap<String, Object>();
 		HashMap<String,Object> f1UMap=new HashMap<String, Object>();
 		//初始化run标识位、M类哈希表、U类哈希表
+		//1号釜
 		f1Map=new HashMap<String, Object>();
 		f1Map.put("run",true);
 		f1Map.put("f1MMap",f1MMap);
@@ -136,38 +142,37 @@ public class OPCController {
 		for (TriggerVar triggerVar : triggerVarList) {
 			switch (triggerVar.getFId()){
 				case Constant.F1_ID:
-					if (triggerVar.getRecType()==TriggerVar.M){
+					if (triggerVar.getRecType().equals(TriggerVar.M)){
 						f1MMap.put(triggerVar.getVarName(),Constant.FYF_CSZ);
-
-					}else if (triggerVar.getRecType()==TriggerVar.U){
+					}else if (triggerVar.getRecType().equals(TriggerVar.U)){
 						f1UMap.put(triggerVar.getVarName(),Constant.FYF_CSZ);
 					}
 					break;
 				case Constant.F2_ID:
-					if (triggerVar.getRecType()==TriggerVar.M){
+					if (triggerVar.getRecType().equals(TriggerVar.M)){
 						f2MMap.put(triggerVar.getVarName(),Constant.FYF_CSZ);
-					}else if (triggerVar.getRecType()==TriggerVar.U){
+					}else if (triggerVar.getRecType().equals(TriggerVar.U)){
 						f2UMap.put(triggerVar.getVarName(),Constant.FYF_CSZ);
 					}
 					break;
 				case Constant.F3_ID:
-					if (triggerVar.getRecType()==TriggerVar.M){
+					if (triggerVar.getRecType().equals(TriggerVar.M)){
 						f3MMap.put(triggerVar.getVarName(),Constant.FYF_CSZ);
-					}else if (triggerVar.getRecType()==TriggerVar.U){
+					}else if (triggerVar.getRecType().equals(TriggerVar.U)){
 						f3UMap.put(triggerVar.getVarName(),Constant.FYF_CSZ);
 					}
 					break;
 				case Constant.F4_ID:
-					if (triggerVar.getRecType()==TriggerVar.M){
+					if (triggerVar.getRecType().equals(TriggerVar.M)){
 						f4MMap.put(triggerVar.getVarName(),Constant.FYF_CSZ);
-					}else if (triggerVar.getRecType()==TriggerVar.U){
+					}else if (triggerVar.getRecType().equals(TriggerVar.U)){
 						f4UMap.put(triggerVar.getVarName(),Constant.FYF_CSZ);
 					}
 					break;
 				case Constant.F5_ID:
-					if (triggerVar.getRecType()==TriggerVar.M){
+					if (triggerVar.getRecType().equals(TriggerVar.M)){
 						f5MMap.put(triggerVar.getVarName(),Constant.FYF_CSZ);
-					}else if (triggerVar.getRecType()==TriggerVar.U){
+					}else if (triggerVar.getRecType().equals(TriggerVar.U)){
 						f5UMap.put(triggerVar.getVarName(),Constant.FYF_CSZ);
 					}
 					break;
@@ -181,140 +186,404 @@ public class OPCController {
 	public Map<String, Object> keepWatchOnTriggerVar() {
 
 		Map<String,Object> json=new HashMap<String, Object>();
-		
 		List<Integer> runFIdList=new ArrayList<Integer>();//用于存放运行的反应釜号的集合
-		
 		//判断反应釜是否在运行
 		boolean runF1 = Boolean.parseBoolean(f1Map.get("run").toString());
 		System.out.println("runF1==="+runF1);
 		if(runF1) {
 			runFIdList.add(Constant.F1_ID);
 		}
-		
 		boolean runF2 = Boolean.parseBoolean(f2Map.get("run").toString());
 		System.out.println("runF2==="+runF2);
 		if(runF2) {
 			runFIdList.add(Constant.F2_ID);
 		}
-		
 		boolean runF3 = Boolean.parseBoolean(f3Map.get("run").toString());
 		System.out.println("runF3==="+runF3);
 		if(runF3) {
 			runFIdList.add(Constant.F3_ID);
 		}
-		
 		boolean runF4 = Boolean.parseBoolean(f4Map.get("run").toString());
 		System.out.println("runF4==="+runF4);
 		if(runF4) {
 			runFIdList.add(Constant.F4_ID);
 		}
-		
 		boolean runF5 = Boolean.parseBoolean(f5Map.get("run").toString());
 		System.out.println("runF5==="+runF5);
 		if(runF5) {
 			runFIdList.add(Constant.F5_ID);
 		}
-		
+		System.out.println("运行的釜号:"+runFIdList.toString());
 		HashMap<String,Object> preValueF1MMap=(HashMap<String,Object>)f1Map.get("f1MMap");//获取1号釜M类
 		HashMap<String,Object> preValueF1UMap=(HashMap<String,Object>)f1Map.get("f1UMap");//获取1号釜U类
-		
-
+		System.out.println("1号釜M类"+preValueF1MMap.toString());
+		System.out.println("1号釜U类"+preValueF1UMap.toString());
 		//每次检索只获取一次所有的触发量就行，下面的逻辑里会根据不同的变量从反应釜列表里读取
 		List<TriggerVar> triggerVarList = triggerVarService.getListByFIdList(runFIdList);//先获取所有运行的反应釜触发量,不管是否是上升沿
-		Map<String,List<TriggerVar>> triggerVarMap=getTriVarListGroupMap(triggerVarList);
-		
+		System.out.println("所有的反应釜触发变量↓");
+		for (TriggerVar triggerVar : triggerVarList) {
+			System.out.println(triggerVar.toString());
+		}
+
+		Map<String,List<TriggerVar>> triggerVarMap=getTriVarListGroupMap(triggerVarList);//将获取的变量分组
+		System.out.println("------------------------------");
+		System.out.println(triggerVarMap.toString());
 		//李工的代码逻辑从这里开始写
 		//备料开始触发量
 		List<Integer> blksFIdList=new ArrayList<Integer>();
-		List<TriggerVar> blksTVList = (List<TriggerVar>)triggerVarMap.get(Constant.BEI_LIAO_KAI_SHI_TEXT);//获取备料开始触发变量,不管是否是上升沿
+		List<TriggerVar> blksTVList = (List<TriggerVar>)triggerVarMap.get(Constant.BEI_LIAO_KAI_SHI);//获取备料开始触发变量,不管是否是上升沿
+		System.out.println("备料开始==="+blksTVList.toString());
 		List<TriggerVar> upBlksTVList = getUpDownVarValueListFromList(blksTVList, TriggerVar.UP);//获取上升的备料开始变量
-		for (TriggerVar upBlksTV : upBlksTVList) {
-			Integer upFId = upBlksTV.getFId();
-			String upRecType = upBlksTV.getRecType();
-			String upVarName = upBlksTV.getVarName();//上次变量名和本次变量名其实是一致的
-			switch (upFId) {
+		System.out.println("upBlksTVList的长度"+upBlksTVList.size());
+		if (upBlksTVList.size()>0){
+			System.out.println("upBlksTVList"+upBlksTVList.toString());
+			for (TriggerVar upBlksTV : upBlksTVList) {
+				Integer upFId = upBlksTV.getFId();//获取反应釜号
+				String upRecType = upBlksTV.getRecType();//获取配方类型
+				String upVarName = upBlksTV.getVarName();//上次变量名和本次变量名其实是一致的
+				switch (upFId) {//匹配反应釜号
+					case Constant.F1_ID:
+						if(TriggerVar.M.equals(upRecType)) {
+							Float preValue = Float.valueOf(preValueF1MMap.get(upVarName).toString());
+							if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
+								List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
+								opcTVList.add(upBlksTV);//根据备料开始触发变量从opc端查找对应的过程变量
+								Map<String, Object> blksMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);
+								List<ProcessVar> blksMResPVList = (List<ProcessVar>)blksMResMap.get("proVarList");
+								int i = processVarService.addFromList(blksMResPVList);//调用添加过程接口
+								System.out.println("添加"+i);
+							}
+						}
+						else if(TriggerVar.U.equals(upRecType)) {
+							Float preValue = Float.valueOf(preValueF1UMap.get(upVarName).toString());
+							if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
+								List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
+								opcTVList.add(upBlksTV);//根据备料开始触发变量从opc端查找对应的过程变量
+								Map<String, Object> blksMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);
+								List<ProcessVar> blksMResPVList = (List<ProcessVar>)blksMResMap.get("proVarList");
+								int i = processVarService.addFromList(blksMResPVList);//调用添加过程接口
+								System.out.println("添加"+i);
+							}
+						}
+						break;
+				}
+			}
+		}
+
+
+		//甲醛放料完成
+		List<Integer> jqflwcFIdList=new ArrayList<Integer>();
+		List<TriggerVar> jqflwcTVList = (List<TriggerVar>)triggerVarMap.get(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG);//获取甲醛放料完成变量,不管是否是上升沿
+		List<TriggerVar> upJqflwcTVList = getUpDownVarValueListFromList(jqflwcTVList, TriggerVar.UP);//获取上升的甲醛放料完成变量
+		for (TriggerVar upJqflwcTV : upJqflwcTVList) {
+			Integer upFId = upJqflwcTV.getFId();//获取反应釜号
+			String upRecType = upJqflwcTV.getRecType();//获取配方类型
+			String upVarName = upJqflwcTV.getVarName();//上次变量名和本次变量名其实是一致的
+			switch (upFId) {//匹配反应釜号
 				case Constant.F1_ID:
 					if(TriggerVar.M.equals(upRecType)) {
 						Float preValue = Float.valueOf(preValueF1MMap.get(upVarName).toString());
 						if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-							Date date = new Date();
-							String currentTime = DateUtil.getTimeStrByFormatStr(date, DateUtil.YEAR_TO_SECOND);
-							System.out.println("当前系统时间:"+currentTime);
-
-							ProcessVar processVar=new ProcessVar();
-							processVar.setVarName(upVarName);//设置变量名称
-							processVar.setRecType(upRecType);//设置配方类型
-							processVar.setDealBz(ProcessVar.WCL);//设置处理标志
-							processVar.setUpdateTime(currentTime);//设置更新时间
-							processVar.setFId(Constant.F1_ID);//设置反应釜ID
-
-							int i = processVarService.addProcessVar(processVar);//调用添加过程接口
-
+							List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
+							opcTVList.add(upJqflwcTV);
+							Map<String, Object> jqflwcMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据甲醛放料完成触发变量从opc端查找对应的过程变量
+							List<ProcessVar> jqflwcMResPVList = (List<ProcessVar>)jqflwcMResMap.get("proVarList");
+							int i = processVarService.addFromList(jqflwcMResPVList);//调用添加过程接口
+							System.out.println("M添加"+i);
 						}
 					}
 					else if(TriggerVar.U.equals(upRecType)) {
 						Float preValue = Float.valueOf(preValueF1UMap.get(upVarName).toString());
 						if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-							Date date = new Date();
-							String currentTime = DateUtil.getTimeStrByFormatStr(date, DateUtil.YEAR_TO_SECOND);
-							System.out.println("当前系统时间:"+currentTime);
-
-							ProcessVar processVar=new ProcessVar();
-							processVar.setVarName(upVarName);//设置变量名称
-							processVar.setRecType(upRecType);//设置配方类型
-							processVar.setDealBz(ProcessVar.WCL);//设置处理标志
-							processVar.setUpdateTime(currentTime);//设置更新时间
-							processVar.setFId(Constant.F1_ID);//设置反应釜ID
-
-							int i = processVarService.addProcessVar(processVar);//调用添加过程接口
+							List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
+							opcTVList.add(upJqflwcTV);//根据甲醛放料完成触发变量从opc端查找对应的过程变量
+							Map<String, Object> jqflwcMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据甲醛放料完成触发变量从opc端查找对应的过程变量
+							List<ProcessVar> jqflwcMResPVList = (List<ProcessVar>)jqflwcMResMap.get("proVarList");
+							int i = processVarService.addFromList(jqflwcMResPVList);//调用添加过程接口
+							System.out.println("U添加"+i);
 						}
 					}
 					break;
 			}
 		}
 
-		//甲醛放料完成
-		List<Integer> jqflwcFIdList=new ArrayList<Integer>();
-		List<TriggerVar> jqflwcTVList = (List<TriggerVar>)triggerVarMap.get(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG_TEXT);//获取甲醛放料完成变量,不管是否是上升沿
-		List<TriggerVar> upJqflwcTVList = getUpDownVarValueListFromList(jqflwcTVList, TriggerVar.UP);//获取上升的甲醛放料完成变量
-		//检测OPC变量
-		List<String> triggerVars=new ArrayList<String>();
-		triggerVars.add(Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG_TEXT);//读取甲醛实际进料重量
-		String readerOpc = OpcUtil.readerOpc(triggerVars);
-
-
-		//降温完成
-		List<Integer> jwwcFIdList=new ArrayList<Integer>();//降温完成反应釜号集合(M类和U类共用)
-		List<TriggerVar> jwwcTVList=(List<TriggerVar>)triggerVarMap.get(Constant.JIANG_WEN_WAN_CHENG_TEXT);//先获取所有反应釜降温完成触发量,不管是否是上升沿
-		List<TriggerVar> upJwwcTVList = getUpDownVarValueListFromList(jwwcTVList,TriggerVar.UP);//获取上升的降温完成变量
-		for (TriggerVar upJwwcTV : upJwwcTVList) {
-			Integer upFId = upJwwcTV.getFId();
-			String upRecType = upJwwcTV.getRecType();
-			String upVarName = upJwwcTV.getVarName();//上次变量名和本次变量名其实是一致的
-			switch (upFId) {
-			case Constant.F1_ID:
-				if(TriggerVar.M.equals(upRecType)) {
-					Float preValue = Float.valueOf(preValueF1MMap.get(upVarName).toString());
-					if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-						jwwcFIdList.add(upFId);
+		//甲醛备料开始
+		List<Integer> jqblksFIdList=new ArrayList<Integer>();
+		List<TriggerVar> jqblksTVList = (List<TriggerVar>)triggerVarMap.get(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI);//获取甲醛备料开始变量,不管是否是上升沿
+		List<TriggerVar> upJqblksTVList = getUpDownVarValueListFromList(jqblksTVList, TriggerVar.UP);//获取上升的甲醛备料开始完成变量
+		for (TriggerVar upJqblksTV : upJqblksTVList) {
+			Integer upFId = upJqblksTV.getFId();//获取反应釜号
+			String upRecType = upJqblksTV.getRecType();//获取配方类型
+			String upVarName = upJqblksTV.getVarName();//上次变量名和本次变量名其实是一致的
+			switch (upFId) {//匹配反应釜号
+				case Constant.F1_ID:
+					if(TriggerVar.M.equals(upRecType)) {
+						Float preValue = Float.valueOf(preValueF1MMap.get(upVarName).toString());
+						if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
+							List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
+							opcTVList.add(upJqblksTV);
+							Map<String, Object> jqblksMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据甲醛备料开始触发变量从opc端查找对应的过程变量
+							List<ProcessVar> jqblksMResPVList = (List<ProcessVar>)jqblksMResMap.get("proVarList");
+							int i = processVarService.addFromList(jqblksMResPVList);//调用添加过程接口
+							System.out.println("添加"+i);
+						}
 					}
-				}
-				else if(TriggerVar.U.equals(upRecType)) {
-					Float preValue = Float.valueOf(preValueF1UMap.get(upVarName).toString());
-					if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-						jwwcFIdList.add(upFId);
+					else if(TriggerVar.U.equals(upRecType)) {
+						Float preValue = Float.valueOf(preValueF1UMap.get(upVarName).toString());
+						if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
+							List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
+							opcTVList.add(upJqblksTV);
+							Map<String, Object> jqblksMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据甲醛备料开始触发变量从opc端查找对应的过程变量
+							List<ProcessVar> jqblksMResPVList = (List<ProcessVar>)jqblksMResMap.get("proVarList");
+							int i = processVarService.addFromList(jqblksMResPVList);//调用添加过程接口
+							System.out.println("添加"+i);
+						}
 					}
-				}
-				break;
+					break;
 			}
 		}
-		
-		if(jwwcFIdList.size()>0) {//若有需要处理的降温完成节点的反应釜，说明这些反应釜的批次执行完成，就从过程变量表(ProcessVar)里读取已采集好的变量，经过加工处理存入批记录表(ERecord)里
-			List<ProcessVar> udProVarList=processVarService.getUnDealListByFIdList(jwwcFIdList);
-			int c=eRecordService.addFromProVarList(udProVarList);
+
+		//加碱PH值正常
+		List<Integer> jjphzzcFIdList=new ArrayList<Integer>();
+		List<TriggerVar> jjphzzcTVList = (List<TriggerVar>)triggerVarMap.get(Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG);//获取加碱PH值正常变量,不管是否是上升沿
+		List<TriggerVar> upJjphzzcTVList = getUpDownVarValueListFromList(jjphzzcTVList, TriggerVar.UP);//获取上升的加碱PH值正常完成变量
+		for (TriggerVar upJjphzzcTV : upJjphzzcTVList) {
+			Integer upFId = upJjphzzcTV.getFId();//获取反应釜号
+			String upRecType = upJjphzzcTV.getRecType();//获取配方类型
+			String upVarName = upJjphzzcTV.getVarName();//上次变量名和本次变量名其实是一致的
+			switch (upFId) {//匹配反应釜号
+				case Constant.F1_ID:
+					if(TriggerVar.M.equals(upRecType)) {
+						Float preValue = Float.valueOf(preValueF1MMap.get(upVarName).toString());
+						if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
+							List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
+							opcTVList.add(upJjphzzcTV);
+							Map<String, Object> jjphzzcMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据加碱PH值正常触发变量从opc端查找对应的过程变量
+							List<ProcessVar> jjphzzcMResPVList = (List<ProcessVar>)jjphzzcMResMap.get("proVarList");
+							int i = processVarService.addFromList(jjphzzcMResPVList);//调用添加过程接口
+							System.out.println("添加"+i);
+						}
+					}
+					else if(TriggerVar.U.equals(upRecType)) {
+						Float preValue = Float.valueOf(preValueF1UMap.get(upVarName).toString());
+						if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
+							List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
+							opcTVList.add(upJjphzzcTV);
+							Map<String, Object> jjphzzcMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据加碱PH值正常触发变量从opc端查找对应的过程变量
+							List<ProcessVar> jjphzzcMResPVList = (List<ProcessVar>)jjphzzcMResMap.get("proVarList");
+							int i = processVarService.addFromList(jjphzzcMResPVList);//调用添加过程接口
+							System.out.println("添加"+i);
+						}
+					}
+					break;
+			}
 		}
-		
-		updateProTVListByCurrList(jwwcTVList);//这个方法用来存储本次变量值，作为下次检索里的上次变量值来使用。每次检索结束后都要记录一下
+
+		//允许一次加助剂
+		List<Integer> yxycjzjFIdList=new ArrayList<Integer>();
+		List<TriggerVar> yxycjzjTVList = (List<TriggerVar>)triggerVarMap.get(Constant.YUN_XU_YI_CI_JIA_ZHU_JI);//获取允许一次加助剂变量,不管是否是上升沿
+		List<TriggerVar> upYxycjzjTVList = getUpDownVarValueListFromList(yxycjzjTVList, TriggerVar.UP);//获取上升的允许一次加助剂变量
+		for (TriggerVar upYxycjzjTV : upYxycjzjTVList) {
+			Integer upFId = upYxycjzjTV.getFId();//获取反应釜号
+			String upRecType = upYxycjzjTV.getRecType();//获取配方类型
+			String upVarName = upYxycjzjTV.getVarName();//上次变量名和本次变量名其实是一致的
+			switch (upFId) {//匹配反应釜号
+				case Constant.F1_ID:
+					if(TriggerVar.M.equals(upRecType)) {
+						Float preValue = Float.valueOf(preValueF1MMap.get(upVarName).toString());
+						if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
+							List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
+							opcTVList.add(upYxycjzjTV);
+							Map<String, Object> yxycjzjMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据允许一次加助剂触发变量从opc端查找对应的过程变量
+							List<ProcessVar> yxycjzjMResPVList = (List<ProcessVar>)yxycjzjMResMap.get("proVarList");
+							int i = processVarService.addFromList(yxycjzjMResPVList);//调用添加过程接口
+							System.out.println("添加"+i);
+						}
+					}
+					else if(TriggerVar.U.equals(upRecType)) {
+						Float preValue = Float.valueOf(preValueF1UMap.get(upVarName).toString());
+						if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
+							List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
+							opcTVList.add(upYxycjzjTV);
+							Map<String, Object> yxycjzjMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据允许一次加助剂变量从opc端查找对应的过程变量
+							List<ProcessVar> yxycjzjMResPVList = (List<ProcessVar>)yxycjzjMResMap.get("proVarList");
+							int i = processVarService.addFromList(yxycjzjMResPVList);//调用添加过程接口
+							System.out.println("添加"+i);
+						}
+					}
+					break;
+			}
+		}
+
+		//所有助剂加料完成1
+		List<Integer> syzjjlwcFIdList=new ArrayList<Integer>();
+		List<TriggerVar> syzjjlwc1TVList = (List<TriggerVar>)triggerVarMap.get(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1);//获取所有助剂加料完成1变量,不管是否是上升沿
+		List<TriggerVar> upSyzjjlwc1TVList = getUpDownVarValueListFromList(syzjjlwc1TVList, TriggerVar.UP);//获取上升的所有助剂加料完成1变量
+		for (TriggerVar upSyzjjlwc1TV : upSyzjjlwc1TVList) {
+			Integer upFId = upSyzjjlwc1TV.getFId();//获取反应釜号
+			String upRecType = upSyzjjlwc1TV.getRecType();//获取配方类型
+			String upVarName = upSyzjjlwc1TV.getVarName();//上次变量名和本次变量名其实是一致的
+			switch (upFId) {//匹配反应釜号
+				case Constant.F1_ID:
+					if(TriggerVar.M.equals(upRecType)) {
+						Float preValue = Float.valueOf(preValueF1MMap.get(upVarName).toString());
+						if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
+							List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
+							opcTVList.add(upSyzjjlwc1TV);
+							Map<String, Object> syzjjlwc1MResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据所有助剂加料完成1触发变量从opc端查找对应的过程变量
+							List<ProcessVar> syzjjlwc1MResPVList = (List<ProcessVar>)syzjjlwc1MResMap.get("proVarList");
+							int i = processVarService.addFromList(syzjjlwc1MResPVList);//调用添加过程接口
+							System.out.println("添加"+i);
+						}
+					}
+					else if(TriggerVar.U.equals(upRecType)) {
+						Float preValue = Float.valueOf(preValueF1UMap.get(upVarName).toString());
+						if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
+							List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
+							opcTVList.add(upSyzjjlwc1TV);
+							Map<String, Object> syzjjlwc1MResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据所有助剂加料完成1变量从opc端查找对应的过程变量
+							List<ProcessVar> syzjjlwc1MResPVList = (List<ProcessVar>)syzjjlwc1MResMap.get("proVarList");
+							int i = processVarService.addFromList(syzjjlwc1MResPVList);//调用添加过程接口
+							System.out.println("添加"+i);
+						}
+					}
+					break;
+			}
+		}
+
+		int jfltxSign=TriggerVar.DOWN;//加粉料提醒标志
+		int jfltxFId=0;//加粉料提醒釜id
+		//加粉料提醒
+		List<Integer> jfltxFIdList=new ArrayList<Integer>();
+		List<TriggerVar> jfltxTVList = (List<TriggerVar>)triggerVarMap.get(Constant.JIA_FEN_LIAO_TI_XING);//获取加粉料提醒变量,不管是否是上升沿
+		List<TriggerVar> upJfltxTVList = getUpDownVarValueListFromList(jfltxTVList, TriggerVar.UP);//获取上升的加粉料提醒变量
+		for (TriggerVar upJfltxTV : upJfltxTVList) {
+			jfltxSign=TriggerVar.UP;//上升沿为1
+			Integer upFId = upJfltxTV.getFId();//获取反应釜号
+			jfltxFId=upFId;//设置加粉料提醒釜id
+			String upRecType = upJfltxTV.getRecType();//获取配方类型
+			String upVarName = upJfltxTV.getVarName();//上次变量名和本次变量名其实是一致的
+			switch (upFId) {//匹配反应釜号
+				case Constant.F1_ID:
+					if(TriggerVar.M.equals(upRecType)) {
+						Float preValue = Float.valueOf(preValueF1MMap.get(upVarName).toString());
+						if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
+							List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
+							opcTVList.add(upJfltxTV);
+							Map<String, Object> jfltxMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据加粉料提醒触发变量从opc端查找对应的过程变量
+							List<ProcessVar> jfltxMResPVList = (List<ProcessVar>)jfltxMResMap.get("proVarList");
+							int i = processVarService.addFromList(jfltxMResPVList);//调用添加过程接口
+							System.out.println("添加"+i);
+						}
+					}
+					else if(TriggerVar.U.equals(upRecType)) {
+						Float preValue = Float.valueOf(preValueF1UMap.get(upVarName).toString());
+						if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
+							List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
+							opcTVList.add(upJfltxTV);
+							Map<String, Object> jfltxMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据加粉料提醒变量从opc端查找对应的过程变量
+							List<ProcessVar> jfltxMResPVList = (List<ProcessVar>)jfltxMResMap.get("proVarList");
+							int i = processVarService.addFromList(jfltxMResPVList);//调用添加过程接口
+							System.out.println("添加"+i);
+						}
+					}
+					break;
+			}
+		}
+
+		//判断加粉料提醒为1
+		if (jfltxSign==TriggerVar.UP){
+			//获取釜(号)尿素放料阀上升沿
+			List<Integer> fhnsflfFIdList=new ArrayList<Integer>();
+			List<TriggerVar> fhnsflfTVList = (List<TriggerVar>)triggerVarMap.get(Constant.FU+jfltxFId+Constant.NIAO_SU_FANG_LIAO_FA);//获取加粉料提醒变量,不管是否是上升沿
+			List<TriggerVar> upFhnsflfTVList = getUpDownVarValueListFromList(fhnsflfTVList, TriggerVar.UP);//获取上升的加粉料提醒变量
+			for (TriggerVar upFhnsflfTV : upFhnsflfTVList) {
+				jfltxSign=TriggerVar.UP;//上升沿为1
+				Integer upFId = upFhnsflfTV.getFId();//获取反应釜号
+				String upRecType = upFhnsflfTV.getRecType();//获取配方类型
+				String upVarName = upFhnsflfTV.getVarName();//上次变量名和本次变量名其实是一致的
+				switch (upFId) {//匹配反应釜号
+					case Constant.F1_ID:
+						if(TriggerVar.M.equals(upRecType)) {
+							Float preValue = Float.valueOf(preValueF1MMap.get(upVarName).toString());
+							if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
+								List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
+								opcTVList.add(upFhnsflfTV);
+								Map<String, Object> fhnsflfMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据釜(号)尿素放料阀变量从opc端查找对应的过程变量
+								List<ProcessVar> fhnsflfMResPVList = (List<ProcessVar>)fhnsflfMResMap.get("proVarList");
+								int i = processVarService.addFromList(fhnsflfMResPVList);//调用添加过程接口
+								System.out.println("添加"+i);
+							}
+						}
+						else if(TriggerVar.U.equals(upRecType)) {
+							Float preValue = Float.valueOf(preValueF1UMap.get(upVarName).toString());
+							if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
+								List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
+								opcTVList.add(upFhnsflfTV);
+								Map<String, Object> fhnsflfMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据釜(号)尿素放料阀变量从opc端查找对应的过程变量
+								List<ProcessVar> fhnsflfMResPVList = (List<ProcessVar>)fhnsflfMResMap.get("proVarList");
+								int i = processVarService.addFromList(fhnsflfMResPVList);//调用添加过程接口
+								System.out.println("添加"+i);
+							}
+						}
+						break;
+				}
+			}
+
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		if(false) {
+			//降温完成
+			List<Integer> jwwcFIdList = new ArrayList<Integer>();//降温完成反应釜号集合(M类和U类共用)
+			List<TriggerVar> jwwcTVList = (List<TriggerVar>) triggerVarMap.get(Constant.JIANG_WEN_WAN_CHENG);//先获取所有反应釜降温完成触发量,不管是否是上升沿
+			List<TriggerVar> upJwwcTVList = getUpDownVarValueListFromList(jwwcTVList, TriggerVar.UP);//获取上升的降温完成变量
+			for (TriggerVar upJwwcTV : upJwwcTVList) {
+				Integer upFId = upJwwcTV.getFId();
+				String upRecType = upJwwcTV.getRecType();
+				String upVarName = upJwwcTV.getVarName();//上次变量名和本次变量名其实是一致的
+				switch (upFId) {
+					case Constant.F1_ID:
+						if (TriggerVar.M.equals(upRecType)) {
+							Float preValue = Float.valueOf(preValueF1MMap.get(upVarName).toString());
+							if (preValue == TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
+								jwwcFIdList.add(upFId);
+							}
+						} else if (TriggerVar.U.equals(upRecType)) {
+							Float preValue = Float.valueOf(preValueF1UMap.get(upVarName).toString());
+							if (preValue == TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
+								jwwcFIdList.add(upFId);
+							}
+						}
+						break;
+				}
+			}
+
+			if (jwwcFIdList.size() > 0) {//若有需要处理的降温完成节点的反应釜，说明这些反应釜的批次执行完成，就从过程变量表(ProcessVar)里读取已采集好的变量，经过加工处理存入批记录表(ERecord)里
+				List<ProcessVar> udProVarList = processVarService.getUnDealListByFIdList(jwwcFIdList);
+				int c = eRecordService.addFromProVarList(udProVarList);
+			}
+
+			updateProTVListByCurrList(jwwcTVList);//这个方法用来存储本次变量值，作为下次检索里的上次变量值来使用。每次检索结束后都要记录一下
+		}
 		
 		
 		
@@ -327,10 +596,16 @@ public class OPCController {
 	 * @return
 	 */
 	private Map<String, List<TriggerVar>> getTriVarListGroupMap(List<TriggerVar> triggerVarList) {
-		// TODO Auto-generated method stub
+
+		System.out.println("getTriVarListGroupMap方法:");
+		for (TriggerVar triggerVar : triggerVarList) {
+			System.out.println("分组方法"+triggerVar.toString());
+		}
 		Map<String, List<TriggerVar>> tvGroupMap=new HashMap<String, List<TriggerVar>>();
-		List<TriggerVar> jwwcTVList=new ArrayList<TriggerVar>();//新集合,用来存放对象
-		List<TriggerVar> blksTVList=new ArrayList<TriggerVar>();//新集合,用来存放对象
+		List<TriggerVar> jwwcTVList=new ArrayList<TriggerVar>();//降温完成新集合,用来存放对象
+		List<TriggerVar> blksTVList=new ArrayList<TriggerVar>();//备料开始新集合,用来存放对象
+		List<TriggerVar> jqflwcTVList=new ArrayList<TriggerVar>();//甲醛放料完成新集合,用来存放对象
+
 
 		for (TriggerVar triggerVar : triggerVarList) {//遍历全部变量对象
 			String varName = triggerVar.getVarName();//获取变量名称
@@ -370,16 +645,20 @@ public class OPCController {
 					fyfh=Constant.BSF_F5U;
 				break;
 			}
-			if((Constant.BEI_LIAO_KAI_SHI_TEXT+"_"+fyfh+"_AV").equals(varName)) {
+			if((Constant.BEI_LIAO_KAI_SHI+"_"+fyfh+"_AV").equals(varName)) {
 				blksTVList.add(triggerVar);
 			}
-			if((Constant.JIANG_WEN_WAN_CHENG_TEXT+"_"+fyfh+"_AV").equals(varName)) {
+			if((Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+"_"+fyfh+"_AV").equals(varName)){
+				jqflwcTVList.add(triggerVar);
+			}
+			if((Constant.JIANG_WEN_WAN_CHENG+"_"+fyfh+"_AV").equals(varName)) {
 				jwwcTVList.add(triggerVar);
 			}
 		}
-		tvGroupMap.put(Constant.BEI_LIAO_KAI_SHI_TEXT, blksTVList);
-		tvGroupMap.put(Constant.JIANG_WEN_WAN_CHENG_TEXT, jwwcTVList);
-		
+		tvGroupMap.put(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG,jqflwcTVList);
+		tvGroupMap.put(Constant.JIANG_WEN_WAN_CHENG, jwwcTVList);
+		tvGroupMap.put(Constant.BEI_LIAO_KAI_SHI, blksTVList);
+
 		return tvGroupMap;
 	}
 
@@ -406,6 +685,28 @@ public class OPCController {
 		finally {
 			return json;
 		}
+	}
+
+	@RequestMapping(value = "/getOVTListByVarNames", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> getOVTListByVarNames(String varNames) {
+
+		Map<String,Object> json=new HashMap<String, Object>();
+		
+		System.out.println("varNames==="+varNames);
+		List<OpcVarTest> opcVarTestList = opcVarTestService.getListByVarNames(varNames);
+		System.out.println("opcVarTestListSize==="+opcVarTestList.size());
+		
+		if (opcVarTestList.size()>0){
+			json.put("status","ok");
+			json.put("opcVarTestList",opcVarTestList);
+		}
+		else {
+			json.put("status","no");
+			json.put("info","无变量");
+		}
+		
+		return json;
 	}
 	
 	/**
@@ -436,6 +737,7 @@ public class OPCController {
 	 * @return
 	 */
 	private List<TriggerVar> getUpDownVarValueListFromList(List<TriggerVar> triggerVarList,int flag) {
+		System.out.println("获取上升沿的方法");
 		List<TriggerVar> upDownVarValueTVList=new ArrayList<TriggerVar>();
 		for (TriggerVar triggerVar : triggerVarList) {
 			Float varValue = triggerVar.getVarValue();

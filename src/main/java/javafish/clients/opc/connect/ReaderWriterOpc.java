@@ -12,7 +12,7 @@ public class ReaderWriterOpc {
         List<OpcItem> params = new ArrayList<OpcItem>();
 
 
-        APIUtil.addTriggerVarFromOpc(params);
+
     }
 
 }

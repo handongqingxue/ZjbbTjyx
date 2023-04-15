@@ -61,7 +61,6 @@ public class APIUtil {
 
 			connection.disconnect();
 			String result = sbf.toString();
-			System.out.println("result==="+result);
 			resultJO = new JSONObject(result);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -130,7 +129,7 @@ public class APIUtil {
 		}
 	}
 
-	public static void addTriggerVarFromOpc(List<OpcItem> opcItemList) {
+	public static void addVar(String method,List<OpcItem> opcItemList) {
 
 		try {
 			JSONArray ja=new JSONArray();
@@ -145,10 +144,9 @@ public class APIUtil {
 				
 				ja.put(jo);
 			}
-			doHttp("addTriggerVarFromOpc",ja);
+			doHttp(method,ja);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
 }
