@@ -282,6 +282,10 @@ public class Constant {
 	 */
 	public static final String HE_GE="合格";
 	/**
+	 * 测量冰水雾点提醒
+	 */
+	public static final String CE_LIANG_BING_SHUI_WU_DIAN_TI_XING="测量冰水雾点提醒";
+	/**
 	 * 测量冰水雾点输入值
 	 */
 	public static final String CE_LIANG_BSWD_SRZ="测量冰水雾点输入值";
