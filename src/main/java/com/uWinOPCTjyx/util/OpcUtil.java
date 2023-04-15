@@ -117,9 +117,10 @@ public class OpcUtil {
 				triggerVar2 = triggerVar;
 		}
         List<String> opcVarNameList=new ArrayList<String>();//要读取的opc变量集合
-        String varName1 = triggerVar1.getVarName();
+        String tv1VarName = triggerVar1.getVarName();
+        Integer tv1FId=Integer.valueOf(triggerVar1.getFId());
         //甲醛放料完成
-        if(varName1.startsWith(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+"_")) {//甲醛放料完成要记录(甲醛实际进料重量、加水实际重量、釜1称重、反应釜1温度)
+        if(tv1VarName.startsWith(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+"_")) {//甲醛放料完成要记录(甲醛实际进料重量、加水实际重量、釜1称重、反应釜1温度)
         	Integer tvFId = triggerVar1.getFId();
         	String tvRecType = triggerVar1.getRecType();
         	String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
@@ -139,7 +140,7 @@ public class OpcUtil {
             opcVarNameList.add(jssjzlOpcVarName);
             opcVarNameList.add(fyfwdOpcVarName);
             opcVarNameList.add(fhczOpcVarName);
-        } else if (varName1.startsWith(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+"_")){//甲醛备料开始要记录(釜(号)称重)
+        } else if (tv1VarName.startsWith(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+"_")){//甲醛备料开始要记录(釜(号)称重)
             Integer tvFId = triggerVar1.getFId();
             String tvRecType = triggerVar1.getRecType();
             String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
@@ -147,7 +148,7 @@ public class OpcUtil {
             String fhczPvVarNameQz=Constant.FU+tvFId+Constant.CHENG_ZHONG;
             String fhczOpcVarName=fhczPvVarNameQz+"_AV";
             opcVarNameList.add(fhczOpcVarName);
-        } else if (varName1.startsWith(Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+"_")){//加碱PH值正常要记录(加碱量提示、加碱后PH输入值、助剂计量罐1称重、助剂计量罐2称重)
+        } else if (tv1VarName.startsWith(Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+"_")){//加碱PH值正常要记录(加碱量提示、加碱后PH输入值、助剂计量罐1称重、助剂计量罐2称重)
             Integer tvFId = triggerVar1.getFId();
             String tvRecType = triggerVar1.getRecType();
             String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
@@ -167,7 +168,7 @@ public class OpcUtil {
             opcVarNameList.add(jjhsrzOpcVarName);
             opcVarNameList.add(zjjlg1czOpcVarName);
             opcVarNameList.add(zjjlg2czOpcVarName);
-        } else if (varName1.startsWith(Constant.YUN_XU_YI_CI_JIA_ZHU_JI+"_")){//允许一次加助剂要记录(釜(号)称重)
+        } else if (tv1VarName.startsWith(Constant.YUN_XU_YI_CI_JIA_ZHU_JI+"_")){//允许一次加助剂要记录(釜(号)称重)
             Integer tvFId = triggerVar1.getFId();
             String tvRecType = triggerVar1.getRecType();
             String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
@@ -175,7 +176,7 @@ public class OpcUtil {
             String fhczPvVarNameQz=Constant.FU+tvFId+Constant.CHENG_ZHONG;
             String fhczOpcVarName=fhczPvVarNameQz+"_AV";
             opcVarNameList.add(fhczOpcVarName);
-        } else if (varName1.startsWith(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+"_")){//所有助剂加料完成1要记录(反应釜(号)温度、釜(号)称重)
+        } else if (tv1VarName.startsWith(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+"_")){//所有助剂加料完成1要记录(反应釜(号)温度、釜(号)称重)
             Integer tvFId = triggerVar1.getFId();
             String tvRecType = triggerVar1.getRecType();
             String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
@@ -187,7 +188,7 @@ public class OpcUtil {
             String fyfwdOpcVarName=fyfwdPvVarNameQz+"_AV";
             opcVarNameList.add(fhczOpcVarName);
             opcVarNameList.add(fyfwdOpcVarName);
-        } else if (varName1.startsWith(Constant.SHENG_WEN_KAI_SHI+"_")){//升温开始要记录(蒸汽压力MPa)
+        } else if (tv1VarName.startsWith(Constant.SHENG_WEN_KAI_SHI+"_")){//升温开始要记录(蒸汽压力MPa)
             Integer tvFId = triggerVar1.getFId();
             String tvRecType = triggerVar1.getRecType();
             String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
@@ -195,7 +196,7 @@ public class OpcUtil {
             String zqylmpaPvVarNameQz=Constant.ZHENG_QI_YA_LI+Constant.MPA;
             String zqylOpcVarName=zqylmpaPvVarNameQz+"_AV";
             opcVarNameList.add(zqylOpcVarName);
-        } else if (varName1.startsWith(Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING+"_")){//温度85与二次投料提醒要记录(反应釜(号)温度)
+        } else if (tv1VarName.startsWith(Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING+"_")){//温度85与二次投料提醒要记录(反应釜(号)温度)
             Integer tvFId = triggerVar1.getFId();
             String tvRecType = triggerVar1.getRecType();
             String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
@@ -203,7 +204,7 @@ public class OpcUtil {
             String fyfwdPvVarNameQz=Constant.FAN_YING_FU+tvFId+Constant.WEN_DU;
             String fyfwdOpcVarName=fyfwdPvVarNameQz+"_AV";
             opcVarNameList.add(fyfwdOpcVarName);
-        } else if(varName1.startsWith(Constant.ER_CI_ZHU_JI_HOU_CE_PH_TI_XING+"_")) {//二次助剂后测PH提醒要记录(二次投料PH输入)
+        } else if(tv1VarName.startsWith(Constant.ER_CI_ZHU_JI_HOU_CE_PH_TI_XING+"_")) {//二次助剂后测PH提醒要记录(二次投料PH输入)
             Integer tvFId = triggerVar1.getFId();
             String tvRecType = triggerVar1.getRecType();
             String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
@@ -267,10 +268,19 @@ public class OpcUtil {
         
         ProcessVar proVar=null;
         for (OpcItem opcItem : opcItems) {//一个触发变量可能会查询多个过程变量，得用集合存储
-        	String varName=null;
         	String itemName = opcItem.getItemName();
         	Float value = Float.valueOf(opcItem.getValue().toString());
         	String sysTime = DateUtil.getTimeStrByFormatStr(new Date(),DateUtil.YEAR_TO_SECOND);//系统时间
+        	
+        	String varName=null;
+        	if(tv1VarName.startsWith(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+"_")) {
+        		if(itemName.startsWith(Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG)) {
+        			varName=Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG;
+        		}
+        		else if(itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)) {
+        			varName=Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
+        		}
+        	}
         	
         	String unit=null;
         	//判断单位
@@ -284,11 +294,11 @@ public class OpcUtil {
             }
             */
         	proVar=new ProcessVar();
-        	proVar.setVarName(itemName);
+        	proVar.setVarName(varName);
         	proVar.setVarValue(value);
         	proVar.setDealBz(ProcessVar.WCL);
         	proVar.setUpdateTime(sysTime);
-        	proVar.setId(triggerVar1.getFId());
+        	proVar.setFId(triggerVar1.getFId());
         	proVar.setRecType(triggerVar1.getRecType());
         	proVar.setUnit(unit);
         	
@@ -298,45 +308,43 @@ public class OpcUtil {
         
 
         //以下是报表里所需的系统时间，opc上没有这些变量，就得根据服务器的系统时间获取，再存入集合里
-        String varName = null;
-        if(varName1.startsWith(Constant.BEI_LIAO_KAI_SHI+"_")) {//备料开始
-        	varName = Constant.BEI_LIAO_KAI_SHI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+        String itemName = null;
+        if(tv1VarName.startsWith(Constant.BEI_LIAO_KAI_SHI+"_")) {//备料开始
+        	itemName = Constant.BEI_LIAO_KAI_SHI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
         }
-        else if(varName1.startsWith(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+"_")) {//甲醛备料开始
-        	varName = Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+        else if(tv1VarName.startsWith(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+"_")) {//甲醛备料开始
+        	itemName = Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
         }
-        else if(varName1.startsWith(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+"_")) { //甲醛放料完成
-        	varName = Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+        else if(tv1VarName.startsWith(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+"_")) { //甲醛放料完成
+        	itemName = Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
         }
-        else if (varName1.startsWith(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+"_")){//甲醛备料完成
-            varName = Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+        else if(tv1VarName.startsWith(Constant.YUN_XU_YI_CI_JIA_ZHU_JI+"_")) {//允许一次加助剂
+        	itemName = Constant.YUN_XU_YI_CI_JIA_ZHU_JI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
         }
-        else if(varName1.startsWith(Constant.YUN_XU_YI_CI_JIA_ZHU_JI+"_")) {//允许一次加助剂
-            varName = Constant.YUN_XU_YI_CI_JIA_ZHU_JI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+        else if (tv1VarName.startsWith(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+"_")){//所有助剂加料完成
+        	itemName = Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
         }
-        else if (varName1.startsWith(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+"_")){//所有助剂加料完成
-            varName = Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+        else if(tv1VarName.startsWith(Constant.SHENG_WEN_KAI_SHI+"_")){//升温开始
+        	itemName = Constant.SHENG_WEN_KAI_SHI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
         }
-        else if(varName1.startsWith(Constant.SHENG_WEN_KAI_SHI+"_")){//升温开始
-            varName = Constant.SHENG_WEN_KAI_SHI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
-        }
-        else if (varName1.startsWith(Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING+"_")){//温度85与二次投料提醒
-            varName = Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+        else if (tv1VarName.startsWith(Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING+"_")){//温度85与二次投料提醒
+        	itemName = Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
         }
         
         
         //触发器变量1在满足以上几种情况时，说明需要添加系统时间，就调用下面这个逻辑。若加在上面代码量太多，就简化一下加在下面
-        if(varName1.startsWith(Constant.BEI_LIAO_KAI_SHI+"_")||
-           varName1.startsWith(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+"_")||
-           varName1.startsWith(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+"_")||
-           varName1.startsWith(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+"_")||
-           varName1.startsWith(Constant.YUN_XU_YI_CI_JIA_ZHU_JI+"_")||
-           varName1.startsWith(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1)||
-           varName1.startsWith(Constant.SHENG_WEN_KAI_SHI+"_")) {
+        if(tv1VarName.startsWith(Constant.BEI_LIAO_KAI_SHI+"_")||
+		   tv1VarName.startsWith(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+"_")||
+		   tv1VarName.startsWith(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+"_")||
+		   tv1VarName.startsWith(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+"_")||
+		   tv1VarName.startsWith(Constant.YUN_XU_YI_CI_JIA_ZHU_JI+"_")||
+		   tv1VarName.startsWith(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1)||
+		   tv1VarName.startsWith(Constant.SHENG_WEN_KAI_SHI+"_")||
+		   tv1VarName.startsWith(Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING)) {
         	String sysTime = DateUtil.getTimeStrByFormatStr(new Date(),DateUtil.YEAR_TO_SECOND);//系统时间
         	
         	proVar=new ProcessVar();
-        	proVar.setVarName(varName);
+        	proVar.setVarName(itemName);
         	proVar.setUpdateTime(sysTime);
         	proVarList.add(proVar);
         }
