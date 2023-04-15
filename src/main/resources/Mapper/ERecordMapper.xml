@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uWinOPCTjyx.dao.ERecordMapper">
+	<insert id="add" parameterType="com.uWinOPCTjyx.entity.ERecord">
+		insert into ERecord
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="VarName!=null">
+				VarName,
+			</if>
+			<if test="VarValue!=null">
+				VarValue,
+			</if>
+			<if test="Unit!=null">
+				Unit,
+			</if>
+			<if test="PreValue!=null">
+				PreValue,
+			</if>
+			<if test="NxtValue!=null">
+				NxtValue,
+			</if>
+			<if test="PtnValue!=null">
+				PtnValue,
+			</if>
+			<if test="RecType!=null">
+				RecType,
+			</if>
+			<if test="FId!=null">
+				FId,
+			</if>
+			<if test="RecordTime!=null">
+				RecordTime,
+			</if>
+			<if test="BatchID!=null">
+				BatchID,
+			</if>
+			<if test="PhaseName!=null">
+				PhaseName,
+			</if>
+			<if test="Remark!=null">
+				Remark,
+			</if>
+		</trim>
+		values
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="VarName!=null">
+				#{VarName},
+			</if>
+			<if test="VarValue!=null">
+				#{VarValue},
+			</if>
+			<if test="Unit!=null">
+				#{Unit},
+			</if>
+			<if test="PreValue!=null">
+				#{PreValue},
+			</if>
+			<if test="NxtValue!=null">
+				#{NxtValue},
+			</if>
+			<if test="PtnValue!=null">
+				#{PtnValue},
+			</if>
+			<if test="RecType!=null">
+				#{RecType},
+			</if>
+			<if test="FId!=null">
+				#{FId},
+			</if>
+			<if test="RecordTime!=null">
+				#{RecordTime},
+			</if>
+			<if test="BatchID!=null">
+				#{BatchID},
+			</if>
+			<if test="PhaseName!=null">
+				#{PhaseName},
+			</if>
+			<if test="Remark!=null">
+				#{Remark},
+			</if>
+		</trim>
+	</insert>
+	<select id="getMaxBatchNumByYear" resultType="java.lang.Integer">
+		select max(right(BatchID,8)) from ERecord where year(RecordTime)=#{year}
+	</select>
+</mapper>

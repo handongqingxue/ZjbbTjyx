@@ -1,23 +1,25 @@
 package com.uWinOPCTjyx.util;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.alibaba.fastjson.JSON;
+import javafish.clients.opc.component.OpcItem;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import com.alibaba.fastjson.JSON;
 
 public class APIUtil {
 
 	public static final String SERVICE_URL="http://localhost:8080/UWinOPCTjyx/opc/";
-	
+
 	public static JSONObject doHttp(String method, Map<String, Object> params) {
 		JSONObject resultJO = null;
 		try {
@@ -44,22 +46,21 @@ public class APIUtil {
 			//connection.setRequestProperty("key", "value");
 			connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
 			connection.connect(); 
-			
-			OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream(),"UTF-8"); 
-			//OutputStream writer = connection.getOutputStream(); 
+
+			OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream(),"UTF-8");
+			//OutputStream writer = connection.getOutputStream();
 			writer.write(paramsSB.toString());
 			writer.flush();
-			InputStream is = connection.getInputStream(); 
+			InputStream is = connection.getInputStream();
 			BufferedReader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
 			while ((strRead = reader.readLine()) != null) {
-				sbf.append(strRead); 
-				sbf.append("\r\n"); 
+				sbf.append(strRead);
+				sbf.append("\r\n");
 			}
 			reader.close();
-			
+
 			connection.disconnect();
 			String result = sbf.toString();
-			System.out.println("result==="+result);
 			resultJO = new JSONObject(result);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -125,6 +126,27 @@ public class APIUtil {
 		}
 		finally {
 			return resultJO;
+		}
+	}
+
+	public static void addVar(String method,List<OpcItem> opcItemList) {
+
+		try {
+			JSONArray ja=new JSONArray();
+			JSONObject jo=null;
+			for (OpcItem opcItem : opcItemList) {
+				String itemName = opcItem.getItemName();
+				String value = opcItem.getValue().toString();
+				jo=new JSONObject();
+				
+				jo.put("varName", itemName);
+				jo.put("varValue", value);
+				
+				ja.put(jo);
+			}
+			doHttp(method,ja);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 }

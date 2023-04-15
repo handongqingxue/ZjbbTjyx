@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uWinOPCTjyx.dao.ProcessVarMapper">
+	<select id="getUnDealListByFIdList" resultType="com.uWinOPCTjyx.entity.ProcessVar">
+		select * from ProcessVar where DealBz=${@com.uWinOPCTjyx.entity.ProcessVar@WCL}
+		<foreach collection="fIdList" item="fId" open=" and cast(fId as char) in (" separator="," close=")">
+		#{fId}
+		</foreach>
+	</select>
+
+	<insert id="add" parameterType="com.uWinOPCTjyx.entity.ProcessVar">
+		insert into ProcessVar
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="VarName!=null">
+				VarName,
+			</if>
+			<if test="VarValue!=null">
+				VarValue,
+			</if>
+			<if test="Unit!=null">
+				Unit,
+			</if>
+			<if test="RecType!=null">
+				RecType,
+			</if>
+			<if test="DealBz!=null">
+				DealBz,
+			</if>
+			<if test="UpdateTime!=null">
+				UpdateTime,
+			</if>
+			<if test="ParaType!=null">
+				ParaType,
+			</if>
+			<if test="FId!=null">
+				FId,
+			</if>
+			<if test="Desc!=null">
+				Desc,
+			</if>
+		</trim>
+		values
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="VarName!=null">
+				#{VarName},
+			</if>
+			<if test="VarValue!=null">
+				#{VarValue},
+			</if>
+			<if test="Unit!=null">
+				#{Unit},
+			</if>
+			<if test="RecType!=null">
+				#{RecType},
+			</if>
+			<if test="DealBz!=null">
+				#{DealBz},
+			</if>
+			<if test="UpdateTime!=null">
+				#{UpdateTime},
+			</if>
+			<if test="ParaType!=null">
+				#{ParaType},
+			</if>
+			<if test="FId!=null">
+				#{FId},
+			</if>
+			<if test="Desc!=null">
+				#{Desc},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateDealBzByIdList">
+		update ProcessVar set DealBz=#{dealBz} where 1=1
+		<foreach collection="idList" item="id" open=" and cast(id as char) in (" separator="," close=")">
+			#{id}
+		</foreach>
+	</update>
+</mapper>
