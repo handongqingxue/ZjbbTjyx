@@ -267,14 +267,15 @@ public class OpcUtil {
         
         ProcessVar proVar=null;
         for (OpcItem opcItem : opcItems) {//一个触发变量可能会查询多个过程变量，得用集合存储
+        	String varName=null;
         	String itemName = opcItem.getItemName();
         	Float value = Float.valueOf(opcItem.getValue().toString());
         	String sysTime = DateUtil.getTimeStrByFormatStr(new Date(),DateUtil.YEAR_TO_SECOND);//系统时间
+        	
         	String unit=null;
         	//判断单位
         	if (itemName.startsWith(Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG)||
-                    itemName.startsWith(Constant.JIA_SHUI_SHI_JI_ZHONG_LIANG)
-            ){
+                itemName.startsWith(Constant.JIA_SHUI_SHI_JI_ZHONG_LIANG)){
                 unit=Constant.KG;//kg
             }
         	/*
@@ -294,6 +295,7 @@ public class OpcUtil {
         	proVarList.add(proVar);
             System.out.println("Item名:" + itemName + "  Item值: " + value);
         }
+        
 
         //以下是报表里所需的系统时间，opc上没有这些变量，就得根据服务器的系统时间获取，再存入集合里
         String varName = null;
@@ -314,9 +316,11 @@ public class OpcUtil {
         }
         else if (varName1.startsWith(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+"_")){//所有助剂加料完成
             varName = Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
-        }else if(varName1.startsWith(Constant.SHENG_WEN_KAI_SHI+"_")){//升温开始
+        }
+        else if(varName1.startsWith(Constant.SHENG_WEN_KAI_SHI+"_")){//升温开始
             varName = Constant.SHENG_WEN_KAI_SHI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
-        }else if (varName1.startsWith(Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING+"_")){//温度85与二次投料提醒
+        }
+        else if (varName1.startsWith(Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING+"_")){//温度85与二次投料提醒
             varName = Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
         }
         
@@ -328,8 +332,7 @@ public class OpcUtil {
            varName1.startsWith(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+"_")||
            varName1.startsWith(Constant.YUN_XU_YI_CI_JIA_ZHU_JI+"_")||
            varName1.startsWith(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1)||
-           varName1.startsWith(Constant.SHENG_WEN_KAI_SHI+"_")
-        ) {
+           varName1.startsWith(Constant.SHENG_WEN_KAI_SHI+"_")) {
         	String sysTime = DateUtil.getTimeStrByFormatStr(new Date(),DateUtil.YEAR_TO_SECOND);//系统时间
         	
         	proVar=new ProcessVar();
