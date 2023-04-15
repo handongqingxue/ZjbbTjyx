@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -318,6 +319,9 @@ public class OpcUtil {
         		}
         	}
         	
+        	if(StringUtils.isEmpty(varName))
+        		continue;
+        	
         	String unit=null;
         	//判断单位
         	if (itemName.startsWith(Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG)||
@@ -396,7 +400,11 @@ public class OpcUtil {
         	
         	proVar=new ProcessVar();
         	proVar.setVarName(itemName);
+        	proVar.setDealBz(ProcessVar.WCL);
         	proVar.setUpdateTime(sysTime);
+        	proVar.setFId(triggerVar1.getFId());
+        	proVar.setRecType(triggerVar1.getRecType());
+        	
         	proVarList.add(proVar);
         }
         
