@@ -279,6 +279,7 @@ public class OPCController {
 		}
 
 
+		if(false) {
 		//甲醛放料完成
 		List<Integer> jqflwcFIdList=new ArrayList<Integer>();
 		List<TriggerVar> jqflwcTVList = (List<TriggerVar>)triggerVarMap.get(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG);//获取甲醛放料完成变量,不管是否是上升沿
@@ -313,6 +314,7 @@ public class OPCController {
 					}
 					break;
 			}
+		}
 		}
 
 		//甲醛备料开始
@@ -756,6 +758,7 @@ public class OPCController {
 			}
 		}
 
+		if(false) {
 		//温度98PH合格
 		List<Integer> wd98phhgFIdList=new ArrayList<Integer>();
 		List<TriggerVar> wd98phhgTVList = (List<TriggerVar>)triggerVarMap.get(Constant.SHENG_WEN_WAN_CHENG);//获取温度98PH合格变量,不管是否是上升沿
@@ -790,6 +793,7 @@ public class OPCController {
 					}
 					break;
 			}
+		}
 		}
 
 
