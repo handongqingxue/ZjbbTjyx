@@ -13,7 +13,7 @@ public interface ProcessVarMapper {
 	 * @param fIdList
 	 * @return
 	 */
-	List<ProcessVar> getUnDealListByFIdList(List<Integer> fIdList);
+	List<ProcessVar> getUnDealListByFIdList(@Param("fIdList") List<Integer> fIdList);
 
 	/**
 	 * 添加工艺过程
@@ -21,5 +21,13 @@ public interface ProcessVarMapper {
 	 * @return
 	 */
 	int add(ProcessVar processVar);
+
+	/**
+	 * 根据id集合更新处理状态
+	 * @param dealBz
+	 * @param idList
+	 * @return
+	 */
+	int updateDealBzByIdList(@Param("dealBz") int dealBz, @Param("idList") List<Integer> idList);
 
 }

@@ -165,6 +165,10 @@ public class Constant {
 	 */
 	public static final String FAN_YING_JIE_SHU_SHI_JIAN="反应结束时间";
 	/**
+	 * 生产工时
+	 */
+	public static final String SHENG_CHAN_GONG_SHI="生产工时";
+	/**
 	 * 生产日期
 	 */
 	public static final String SHENG_CHAN_RI_QI="生产日期";
@@ -173,6 +177,10 @@ public class Constant {
 	 */
 	public static final String JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG="甲醛实际进料重量";
 	/**
+	 * 加水实际重量
+	 */
+	public static final String JIA_SHUI_SHI_JI_ZHONG_LIANG="加水实际重量";
+	/**
 	 * 甲醛备料开始
 	 */
 	public static final String JIA_QUAN_BEI_LIAO_KAI_SHI="甲醛备料开始";
@@ -180,10 +188,6 @@ public class Constant {
 	 * 甲醛放料完成
 	 */
 	public static final String JIA_QUAN_FANG_LIAO_WAN_CHENG="甲醛放料完成";
-	/**
-	 * 加水实际重量
-	 */
-	public static final String JIA_SHUI_SHI_JI_ZHONG_LIANG="加水实际重量";
 	/**
 	 * 加碱PH值正常
 	 */

@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -313,28 +314,31 @@ public class OpcUtil {
         	String sysTime = DateUtil.getTimeStrByFormatStr(new Date(),DateUtil.YEAR_TO_SECOND);//系统时间
         	
         	String varName=null;
-        	if (tv1VarName.startsWith(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+"_")){//甲醛备料开始
+        	if(tv1VarName.startsWith(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+"_")) {//甲醛放料完成
+        		if(itemName.startsWith(Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG+"_")) {
+        			varName=Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG;
+        		}
+        		else if(itemName.startsWith(Constant.JIA_SHUI_SHI_JI_ZHONG_LIANG+"_")){
+                    varName=Constant.JIA_SHUI_SHI_JI_ZHONG_LIANG;
+                }
+        		else if(itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)) {
+        			varName=Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
+        		}
+        		else if(itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)){
+                    varName=Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
+                }
+        	}
+        	else if (tv1VarName.startsWith(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+"_")){//甲醛备料开始
                 if(itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)){
                     varName=Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
                 }
             }
-        	else if(tv1VarName.startsWith(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+"_")) {//甲醛放料完成
-        		if(itemName.startsWith(Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG+"_")) {
-        			varName=Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG;
-        		}else if(itemName.startsWith(Constant.JIA_SHUI_SHI_JI_ZHONG_LIANG+"_")){
-                    varName=Constant.JIA_SHUI_SHI_JI_ZHONG_LIANG;
-                }else if(itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)) {
-        			varName=Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
-        		}else if(itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)){
-                    varName=Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
-                }
-        	}
         	else if(tv1VarName.startsWith(Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+"_")){//加碱PH值正常
                 if(itemName.startsWith(Constant.JIA_JIAN_QIAN_PH_SHU_RU_ZHI+"_")) {
                     varName=Constant.JIA_JIAN_QIAN_PH_SHU_RU_ZHI;
-                }else if(tv1VarName.startsWith(Constant.JIA_JIAN_LIANG_TI_SHI+"_")){
+                }else if(itemName.startsWith(Constant.JIA_JIAN_LIANG_TI_SHI+"_")){
                     varName=Constant.JIA_JIAN_LIANG_TI_SHI;
-                }else if(tv1VarName.startsWith(Constant.JIA_JIAN_HOU_PH_SHU_RU_ZHI+"_")){
+                }else if(itemName.startsWith(Constant.JIA_JIAN_HOU_PH_SHU_RU_ZHI+"_")){
                     varName=Constant.JIA_JIAN_HOU_PH_SHU_RU_ZHI;
                 }
             }
@@ -398,17 +402,27 @@ public class OpcUtil {
                 }
             }
 
+        	if(StringUtils.isEmpty(varName))
+        		continue;
+        	
         	String unit=null;
         	//判断单位
         	if (itemName.startsWith(Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG)||
-                itemName.startsWith(Constant.JIA_SHUI_SHI_JI_ZHONG_LIANG)){
+                itemName.startsWith(Constant.JIA_SHUI_SHI_JI_ZHONG_LIANG)||
+                itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)||
+                itemName.startsWith(Constant.ZHU_JI_JI_LIANG_GUAN+Constant.BSF_ZJJLG1+Constant.CHENG_ZHONG)||
+                itemName.startsWith(Constant.ZHU_JI_JI_LIANG_GUAN+Constant.BSF_ZJJLG2+Constant.CHENG_ZHONG)||
+                itemName.startsWith(Constant.ZHU_JI_JI_LIANG_GUAN+Constant.BSF_ZJJLG3+Constant.CHENG_ZHONG)||
+                itemName.startsWith(Constant.ZHU_JI_JI_LIANG_GUAN+Constant.BSF_ZJJLG4+Constant.CHENG_ZHONG)||
+                itemName.startsWith(Constant.ZHU_JI_JI_LIANG_GUAN+Constant.BSF_ZJJLG5+Constant.CHENG_ZHONG)){
                 unit=Constant.KG;//kg
             }
-        	/*
-        	if (itemName.contains("")){
+        	else if (itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)){
         	    unit=Constant.WEN_DU_DAN_WEI_SIGN;//°C
             }
-            */
+        	else if (itemName.startsWith(Constant.ZHENG_QI_YA_LI)){
+        	    unit=Constant.MPA;//MPa
+            }
         	proVar=new ProcessVar();
         	proVar.setVarName(varName);
         	proVar.setVarValue(value);
@@ -470,7 +484,11 @@ public class OpcUtil {
         	
         	proVar=new ProcessVar();
         	proVar.setVarName(itemName);
+        	proVar.setDealBz(ProcessVar.WCL);
         	proVar.setUpdateTime(sysTime);
+        	proVar.setFId(triggerVar1.getFId());
+        	proVar.setRecType(triggerVar1.getRecType());
+        	
         	proVarList.add(proVar);
         }
         
