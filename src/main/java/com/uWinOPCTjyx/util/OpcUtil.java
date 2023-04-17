@@ -364,7 +364,7 @@ public class OpcUtil {
                     varName=Constant.JIA_FEN_LIAO_PH_SHU_RU_ZHI;
                 }
             }
-        	else if(tv1VarName.startsWith(Constant.SHENG_WEN_WAN_CHENG+"_")){//升温开始
+        	else if(tv1VarName.startsWith(Constant.SHENG_WEN_KAI_SHI+"_")){//升温开始
                 if (itemName.startsWith(Constant.ZHENG_QI_YA_LI+Constant.MPA)){
                     varName=Constant.ZHENG_QI_YA_LI+Constant.MPA;
                 }
@@ -405,7 +405,7 @@ public class OpcUtil {
         	if(StringUtils.isEmpty(varName))
         		continue;
         	
-        	String unit=null;
+        	String unit=null;//单位
         	//判断单位
         	if (itemName.startsWith(Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG)||
                 itemName.startsWith(Constant.JIA_SHUI_SHI_JI_ZHONG_LIANG)||
@@ -423,6 +423,29 @@ public class OpcUtil {
         	else if (itemName.startsWith(Constant.ZHENG_QI_YA_LI)){
         	    unit=Constant.MPA;//MPa
             }
+
+            int paraType=0;//工业参数
+        	if (itemName.startsWith(Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG)||
+                itemName.startsWith(Constant.JIA_SHUI_SHI_JI_ZHONG_LIANG)||
+                itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)||
+                itemName.startsWith(Constant.JIA_JIAN_QIAN_PH_SHU_RU_ZHI)||
+                itemName.startsWith(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI)||
+                itemName.startsWith(Constant.JIA_JIAN_LIANG_TI_SHI)||
+                itemName.startsWith(Constant.JIA_JIAN_HOU_PH_SHU_RU_ZHI)||
+                itemName.startsWith(Constant.FEN_LIAO_ZHONG_LIANG_SHE_DING)||
+                itemName.startsWith(Constant.JIA_FEN_LIAO_PH_SHU_RU_ZHI)||
+                itemName.startsWith(Constant.ZHENG_QI_YA_LI+Constant.MPA)||
+                itemName.startsWith(Constant.ER_CI_TOU_LIAO_PH_SHU_RU_ZHI)||
+                itemName.startsWith(Constant.WEN_DU_98_PH)||
+                itemName.startsWith(Constant.CE_LIANG_BING_SHUI_WU_DIAN_TI_XING)||
+                itemName.startsWith(Constant.CE_20_WU_DIAN_SRZ)||
+                itemName.startsWith(Constant.TING_RE_JIANG_WEN_SHUI_SHU_SRZ)
+            ){
+                paraType=ProcessVar.GYCS;
+            }
+        	else if(itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)){
+        	    paraType=ProcessVar.YLCS;
+            }
         	proVar=new ProcessVar();
         	proVar.setVarName(varName);
         	proVar.setVarValue(value);
@@ -431,7 +454,7 @@ public class OpcUtil {
         	proVar.setFId(triggerVar1.getFId());
         	proVar.setRecType(triggerVar1.getRecType());
         	proVar.setUnit(unit);
-        	
+        	proVar.setParaType(paraType);
         	proVarList.add(proVar);
             System.out.println("Item名:" + itemName + "  Item值: " + value);
         }
