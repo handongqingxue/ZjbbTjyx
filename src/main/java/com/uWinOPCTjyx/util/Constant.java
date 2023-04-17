@@ -270,10 +270,6 @@ public class Constant {
 	 */
 	public static final String SHENG_WEN_WAN_CHENG="升温完成";
 	/**
-	 * 最高温PH录入值
-	 */
-	public static final String ZUI_GAO_WEN_PH_LRZ="最高温PH录入值";
-	/**
 	 * 温度98PH
 	 */
 	public static final String WEN_DU_98_PH="温度98PH";

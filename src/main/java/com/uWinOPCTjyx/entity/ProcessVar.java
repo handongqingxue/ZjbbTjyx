@@ -10,6 +10,14 @@ public class ProcessVar {
 	 * 未处理
 	 */
 	public static final int WCL=0;
+	/**
+	 * 工艺参数
+	 */
+	public static final int GYCS=1;
+	/**
+	 * 原料参数
+	 */
+	public static final int YLCS=2;
 
 	private Integer Id;
 	private String VarName;
