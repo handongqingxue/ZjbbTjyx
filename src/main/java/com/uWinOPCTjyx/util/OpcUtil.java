@@ -424,7 +424,7 @@ public class OpcUtil {
         	    unit=Constant.MPA;//MPa
             }
 
-            int paraType=0;//工艺参数
+            int paraType=0;//参数类型
         	if (itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)||
                 itemName.startsWith(Constant.JIA_JIAN_QIAN_PH_SHU_RU_ZHI)||
                 itemName.startsWith(Constant.JIA_JIAN_LIANG_TI_SHI)||
