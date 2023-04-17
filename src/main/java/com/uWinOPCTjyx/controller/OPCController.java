@@ -300,7 +300,11 @@ public class OPCController {
 							
 							//获取甲醛放料完成釜称重变量名
 							String jqflwcFczVarName = Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
-							Float jqflwcFczVarValue = OpcUtil.getProVarListVarValueByVarName(jqflwcFczVarName, jqflwcMResPVList);
+							ProcessVar jqflwcFczPV = OpcUtil.getProVarInListByVarName(jqflwcFczVarName, jqflwcMResPVList);
+							Float jqflwcFczVarValue = jqflwcFczPV.getVarValue();
+							
+							ProcessVar ptnPV = processVarService.getPtnValuePV(jqflwcFczVarName,jqflwcFczVarValue+"",jqflwcFczPV);
+							jqflwcMResPVList.add(ptnPV);//将时间差对象添加到集合里
 							
 							int i = processVarService.addFromList(jqflwcMResPVList);//调用添加过程接口
 							System.out.println("M添加"+i);

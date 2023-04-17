@@ -78,4 +78,7 @@
 			#{id}
 		</foreach>
 	</update>
+	<select id="getPreValueByPreName" resultType="java.lang.String">
+		select VarValue from ProcessVar where VarName=#{preName} and DealBz=${@com.uWinOPCTjyx.entity.ProcessVar@WCL}
+	</select>
 </mapper>

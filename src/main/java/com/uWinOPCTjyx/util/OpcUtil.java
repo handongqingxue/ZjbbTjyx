@@ -522,20 +522,20 @@ public class OpcUtil {
     }
     
     /**
-     * 根据变量名从过程变量集合里获取值
+     * 根据变量名从过程变量集合里获取过程变量
      * @param varName
      * @param proVarList
      * @return
      */
-    public static Float getProVarListVarValueByVarName(String varName, List<ProcessVar> proVarList) {
-		Float varValue=null;
-		for (ProcessVar proVar : proVarList) {
-			if(proVar.getVarName().equals(varName)) {
-				varValue=proVar.getVarValue();
+    public static ProcessVar getProVarInListByVarName(String varName, List<ProcessVar> proVarList) {
+    	ProcessVar proVar=null;
+		for (ProcessVar proVarItem : proVarList) {
+			if(proVarItem.getVarName().equals(varName)) {
+				proVar=proVarItem;
 				break;
 			}
 		}
-		return varValue;
+		return proVar;
 	}
     
     /**
