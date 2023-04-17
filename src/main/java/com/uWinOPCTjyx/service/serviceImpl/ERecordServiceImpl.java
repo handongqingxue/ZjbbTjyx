@@ -1002,9 +1002,6 @@ public class ERecordServiceImpl implements ERecordService {
 
 				eRecordList.add(eRecord);
 			}
-			else if(pvVarName.startsWith(Constant.ZUI_GAO_WEN_PH_LRZ)) {//最高温PH录入值
-				
-			}
 			else if(pvVarName.startsWith(Constant.WEN_DU_98_PH)) {//温度98PH
 				
 			}

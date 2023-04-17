@@ -19,6 +19,10 @@ public class TriggerVar {
 	 * U类配方类型
 	 */
 	public static final String U="U";
+	/**
+	 * MU类配方类型
+	 */
+	public static final String MU="MU";
 	
 	private Integer Id;
 	private String VarName;
