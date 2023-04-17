@@ -522,6 +522,23 @@ public class OpcUtil {
     }
     
     /**
+     * 根据变量名从过程变量集合里获取过程变量
+     * @param varName
+     * @param proVarList
+     * @return
+     */
+    public static ProcessVar getProVarInListByVarName(String varName, List<ProcessVar> proVarList) {
+    	ProcessVar proVar=null;
+		for (ProcessVar proVarItem : proVarList) {
+			if(proVarItem.getVarName().equals(varName)) {
+				proVar=proVarItem;
+				break;
+			}
+		}
+		return proVar;
+	}
+    
+    /**
      * 根据釜id和胶类型获取釜名
      * @param fId
      * @param recType

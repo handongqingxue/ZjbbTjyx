@@ -26,4 +26,13 @@ public interface ProcessVarService {
 	 * @return
 	 */
 	int addFromList(List<ProcessVar> proVarList);
+
+	/**
+	 * 根据之后变量名获取差值对象
+	 * @param nxtName
+	 * @param nxtValue
+	 * @param nxtPV
+	 * @return
+	 */
+	ProcessVar getPtnValuePV(String nxtName, String nxtValue, ProcessVar nxtPV);
 }

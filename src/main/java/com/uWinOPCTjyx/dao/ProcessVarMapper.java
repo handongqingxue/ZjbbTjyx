@@ -30,4 +30,11 @@ public interface ProcessVarMapper {
 	 */
 	int updateDealBzByIdList(@Param("dealBz") int dealBz, @Param("idList") List<Integer> idList);
 
+	/**
+	 * 根据之前变量名获取变量值
+	 * @param preName
+	 * @return
+	 */
+	String getPreValueByPreName(@Param("preName") String preName);
+
 }
