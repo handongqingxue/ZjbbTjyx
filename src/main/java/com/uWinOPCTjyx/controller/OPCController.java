@@ -297,6 +297,11 @@ public class OPCController {
 							opcTVList.add(upJqflwcTV);
 							Map<String, Object> jqflwcMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据甲醛放料完成触发变量从opc端查找对应的过程变量
 							List<ProcessVar> jqflwcMResPVList = (List<ProcessVar>)jqflwcMResMap.get("proVarList");
+							
+							//获取甲醛放料完成釜称重变量名
+							String jqflwcFczVarName = Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
+							Float jqflwcFczVarValue = OpcUtil.getProVarListVarValueByVarName(jqflwcFczVarName, jqflwcMResPVList);
+							
 							int i = processVarService.addFromList(jqflwcMResPVList);//调用添加过程接口
 							System.out.println("M添加"+i);
 						}
