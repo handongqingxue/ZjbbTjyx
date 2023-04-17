@@ -424,15 +424,11 @@ public class OpcUtil {
         	    unit=Constant.MPA;//MPa
             }
 
-            int paraType=0;//工业参数
-        	if (itemName.startsWith(Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG)||
-                itemName.startsWith(Constant.JIA_SHUI_SHI_JI_ZHONG_LIANG)||
-                itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)||
+            int paraType=0;//参数类型
+        	if (itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)||
                 itemName.startsWith(Constant.JIA_JIAN_QIAN_PH_SHU_RU_ZHI)||
-                itemName.startsWith(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI)||
                 itemName.startsWith(Constant.JIA_JIAN_LIANG_TI_SHI)||
                 itemName.startsWith(Constant.JIA_JIAN_HOU_PH_SHU_RU_ZHI)||
-                itemName.startsWith(Constant.FEN_LIAO_ZHONG_LIANG_SHE_DING)||
                 itemName.startsWith(Constant.JIA_FEN_LIAO_PH_SHU_RU_ZHI)||
                 itemName.startsWith(Constant.ZHENG_QI_YA_LI+Constant.MPA)||
                 itemName.startsWith(Constant.ER_CI_TOU_LIAO_PH_SHU_RU_ZHI)||
@@ -443,7 +439,11 @@ public class OpcUtil {
             ){
                 paraType=ProcessVar.GYCS;
             }
-        	else if(itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)){
+        	else if(itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)||
+                    itemName.startsWith(Constant.FEN_LIAO_ZHONG_LIANG_SHE_DING)||
+                    itemName.startsWith(Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG)||
+                    itemName.startsWith(Constant.JIA_SHUI_SHI_JI_ZHONG_LIANG)
+            ){
         	    paraType=ProcessVar.YLCS;
             }
         	proVar=new ProcessVar();
