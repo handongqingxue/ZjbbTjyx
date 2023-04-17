@@ -77,7 +77,7 @@ public class ProcessVarServiceImpl implements ProcessVarService {
 		if(nxtName.contains(Constant.FU+Constant.CHENG_ZHONG)) {//计算重量差
 			ptnValue=Float.valueOf(nxtValue)-Float.valueOf(preValue);
 		}
-		else if(nxtName.contains(Constant.SHI_JIAN+Constant.CHA)) {//计算时间差，需要调用日期工具类方法处理下
+		else if(nxtName.contains(Constant.SHI_JIAN)) {//计算时间差，需要调用日期工具类方法处理下
 			Date date = new Date();
 			long preValueLong = date.parse(preValue);
 			long nxtValueLong = date.parse(nxtValue);

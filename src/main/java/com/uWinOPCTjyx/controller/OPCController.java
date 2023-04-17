@@ -302,15 +302,10 @@ public class OPCController {
 							String jqflwcFczVarName = Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
 							ProcessVar jqflwcFczPV = OpcUtil.getProVarInListByVarName(jqflwcFczVarName, jqflwcMResPVList);
 							Float jqflwcFczVarValue = jqflwcFczPV.getVarValue();
+							
 							ProcessVar ptnPV = processVarService.getPtnValuePV(jqflwcFczVarName,jqflwcFczVarValue+"",jqflwcFczPV);
-							jqflwcMResPVList.add(ptnPV);//将重量差对象添加到集合里
-
-							String jqflwcSjcVarName = Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.SHI_JIAN+Constant.CHA;
-							ProcessVar jqflwcSjcPV = OpcUtil.getProVarInListByVarName(jqflwcSjcVarName, jqflwcMResPVList);
-							Float jqflwcSjcVarValue = jqflwcFczPV.getVarValue();
-							ProcessVar ptnPV2 = processVarService.getPtnValuePV(jqflwcSjcVarName,jqflwcSjcVarValue+"",jqflwcSjcPV);
-							jqflwcMResPVList.add(ptnPV2);//将时间差对象添加到集合里
-
+							jqflwcMResPVList.add(ptnPV);//将时间差对象添加到集合里
+							
 							int i = processVarService.addFromList(jqflwcMResPVList);//调用添加过程接口
 							System.out.println("M添加"+i);
 						}
@@ -456,20 +451,6 @@ public class OPCController {
 							opcTVList.add(upSyzjjlwc1TV);
 							Map<String, Object> syzjjlwc1MResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据所有助剂加料完成1触发变量从opc端查找对应的过程变量
 							List<ProcessVar> syzjjlwc1MResPVList = (List<ProcessVar>)syzjjlwc1MResMap.get("proVarList");
-
-							//获取所有助剂加料完成1釜称重变量名
-							String syzjjlwc1FczVarName = Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
-							ProcessVar syzjjlwc1FczPV = OpcUtil.getProVarInListByVarName(syzjjlwc1FczVarName, syzjjlwc1MResPVList);
-							Float syzjjlwc1cFczVarValue = syzjjlwc1FczPV.getVarValue();
-							ProcessVar ptnPV = processVarService.getPtnValuePV(syzjjlwc1FczVarName,syzjjlwc1cFczVarValue+"",syzjjlwc1FczPV);
-							syzjjlwc1MResPVList.add(ptnPV);//将重量差对象添加到集合里
-
-							String syzjjlwc1SjcVarName = Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN+Constant.CHA;
-							ProcessVar syzjjlwc1SjcPV = OpcUtil.getProVarInListByVarName(syzjjlwc1SjcVarName, syzjjlwc1MResPVList);
-							Float syzjjlwc1cSjcVarValue = syzjjlwc1FczPV.getVarValue();
-							ProcessVar ptnPV2 = processVarService.getPtnValuePV(syzjjlwc1SjcVarName,syzjjlwc1cSjcVarValue+"",syzjjlwc1SjcPV);
-							syzjjlwc1MResPVList.add(ptnPV2);//将时间差对象添加到集合里
-
 							int i = processVarService.addFromList(syzjjlwc1MResPVList);//调用添加过程接口
 							System.out.println("添加"+i);
 						}
@@ -623,13 +604,6 @@ public class OPCController {
 							opcTVList.add(upWd85yectltxTV);
 							Map<String, Object> wd85yectltxMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据温度85与二次投料提醒变量从opc端查找对应的过程变量
 							List<ProcessVar> wd85yectltxMResPVList = (List<ProcessVar>)wd85yectltxMResMap.get("proVarList");
-
-							String wd85yectltxSjcVarName = Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN+Constant.CHA;
-							ProcessVar wd85yectltxSjcPV = OpcUtil.getProVarInListByVarName(wd85yectltxSjcVarName, wd85yectltxMResPVList);
-							Float wd85yectltxSjcVarValue = wd85yectltxSjcPV.getVarValue();
-							ProcessVar ptnPV2 = processVarService.getPtnValuePV(wd85yectltxSjcVarName,wd85yectltxSjcVarValue+"",wd85yectltxSjcPV);
-							wd85yectltxMResPVList.add(ptnPV2);//将时间差对象添加到集合里
-
 							int i = processVarService.addFromList(wd85yectltxMResPVList);//调用添加过程接口
 							System.out.println("添加"+i);
 						}
@@ -738,19 +712,6 @@ public class OPCController {
 							opcTVList.add(upSyzjjlwc2TV);
 							Map<String, Object> syzjjlwc2MResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据所有助剂加料完成2变量从opc端查找对应的过程变量
 							List<ProcessVar> syzjjlwc2MResPVList = (List<ProcessVar>)syzjjlwc2MResMap.get("proVarList");
-
-							//获取所有助剂加料完成2釜称重变量名
-							String syzjjlwc2FczVarName = Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
-							ProcessVar syzjjlwc2FczPV = OpcUtil.getProVarInListByVarName(syzjjlwc2FczVarName, syzjjlwc2MResPVList);
-							Float syzjjlwc2cFczVarValue = syzjjlwc2FczPV.getVarValue();
-							ProcessVar ptnPV = processVarService.getPtnValuePV(syzjjlwc2FczVarName,syzjjlwc2cFczVarValue+"",syzjjlwc2FczPV);
-							syzjjlwc2MResPVList.add(ptnPV);//将时间差对象添加到集合里
-
-							String syzjjlwc2SjcVarName = Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN+Constant.CHA;
-							ProcessVar syzjjlwc2SjcPV = OpcUtil.getProVarInListByVarName(syzjjlwc2SjcVarName, syzjjlwc2MResPVList);
-							Float syzjjlwc2SjcVarValue = syzjjlwc2SjcPV.getVarValue();
-							ProcessVar ptnPV2 = processVarService.getPtnValuePV(syzjjlwc2SjcVarName,syzjjlwc2SjcVarValue+"",syzjjlwc2SjcPV);
-							syzjjlwc2MResPVList.add(ptnPV2);//将时间差对象添加到集合里
 							int i = processVarService.addFromList(syzjjlwc2MResPVList);//调用添加过程接口
 							System.out.println("添加"+i);
 						}
@@ -787,13 +748,6 @@ public class OPCController {
 							opcTVList.add(upSwwcTV);
 							Map<String, Object> swwcMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据升温完成变量从opc端查找对应的过程变量
 							List<ProcessVar> swwcMResPVList = (List<ProcessVar>)swwcMResMap.get("proVarList");
-
-							String swwcSjcVarName = Constant.SHENG_WEN_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN+Constant.CHA;
-							ProcessVar swwc2SjcPV = OpcUtil.getProVarInListByVarName(swwcSjcVarName, swwcMResPVList);
-							Float swwc2SjcVarValue = swwc2SjcPV.getVarValue();
-							ProcessVar ptnPV = processVarService.getPtnValuePV(swwcSjcVarName,swwc2SjcVarValue+"",swwc2SjcPV);
-							swwcMResPVList.add(ptnPV);//将时间差对象添加到集合里
-
 							int i = processVarService.addFromList(swwcMResPVList);//调用添加过程接口
 							System.out.println("添加"+i);
 						}
