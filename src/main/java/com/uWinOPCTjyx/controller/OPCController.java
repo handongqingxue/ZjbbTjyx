@@ -608,7 +608,7 @@ public class OPCController {
 
 		//二次助剂后测PH提醒
 		List<Integer> eczjhcphtxFIdList=new ArrayList<Integer>();
-		List<TriggerVar> eczjhcphtxTVList = (List<TriggerVar>)triggerVarMap.get(Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING);//获取二次助剂后测PH提醒变量,不管是否是上升沿
+		List<TriggerVar> eczjhcphtxTVList = (List<TriggerVar>)triggerVarMap.get(Constant.ER_CI_ZHU_JI_HOU_CE_PH_TI_XING);//获取二次助剂后测PH提醒变量,不管是否是上升沿
 		List<TriggerVar> upEczjhcphtxTVList = getUpDownVarValueListFromList(eczjhcphtxTVList, TriggerVar.UP);//获取上升的二次助剂后测PH提醒变量
 		for (TriggerVar upEczjhcphtxTV : upEczjhcphtxTVList) {
 			Integer upFId = upEczjhcphtxTV.getFId();//获取反应釜号
@@ -752,7 +752,7 @@ public class OPCController {
 
 		//温度98PH合格
 		List<Integer> wd98phhgFIdList=new ArrayList<Integer>();
-		List<TriggerVar> wd98phhgTVList = (List<TriggerVar>)triggerVarMap.get(Constant.SHENG_WEN_WAN_CHENG);//获取温度98PH合格变量,不管是否是上升沿
+		List<TriggerVar> wd98phhgTVList = (List<TriggerVar>)triggerVarMap.get(Constant.WEN_DU_98_PH+Constant.HE_GE);//获取温度98PH合格变量,不管是否是上升沿
 		List<TriggerVar> upWd98phhgTVList = getUpDownVarValueListFromList(wd98phhgTVList, TriggerVar.UP);//获取上升的温度98PH合格变量
 		for (TriggerVar upWd98phhgTV : upWd98phhgTVList) {
 			Integer upFId = upWd98phhgTV.getFId();//获取反应釜号
