@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.alibaba.fastjson.JSON;
@@ -31,7 +32,7 @@ public class OpcUtil {
 		jopc = new JOpc("127.0.0.1", "Kepware.KEPServerEX.V6", "OPS3-PC");
 	}
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws JSONException {
         SynchReadItemExample test = new SynchReadItemExample();
 
         JOpc.coInitialize();   //初始化JOpc        JOpc继承父类JCustomOpc
@@ -91,7 +92,7 @@ public class OpcUtil {
         getOpcItemTestList(varNameList);
     }
     
-    public static Map<String, Object> readerOpcProVarByTVList(List<TriggerVar> triggerVarList){
+    public static Map<String, Object> readerOpcProVarByTVList(List<TriggerVar> triggerVarList) throws JSONException {
 
     	Map<String,Object> json=new HashMap<String, Object>();
     	
@@ -337,7 +338,7 @@ public class OpcUtil {
     	return fName;
 	}
     
-    private static ArrayList<OpcItem> getOpcItemTestList(List<String> varNameList) {
+    private static ArrayList<OpcItem> getOpcItemTestList(List<String> varNameList) throws JSONException {
     	List<OpcVarTest> opcVarTestList = null;
     	
     	Map<String, Object> bodyParamMap=new HashMap<String, Object>();
