@@ -963,7 +963,7 @@ public class ERecordServiceImpl implements ERecordService {
 				}
 				eRecord.setPtnValue(varValue+"");				
 			}//YSD104阶段结束
-			else if(pvVarName.startsWith(Constant.SHENG_WEN_WAN_CHENG+Constant.SHI_JIAN)) {//升温完成时间    //停汽阶段开始
+			else if(pvVarName.startsWith(Constant.SHENG_WEN_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN)) {//升温完成上升沿时间    //停汽阶段开始
 				Integer pvFId = processVar.getFId();
 				String batchID = batchIDMap.get(pvFId).toString();
 				String updateTime = processVar.getUpdateTime();
@@ -984,7 +984,7 @@ public class ERecordServiceImpl implements ERecordService {
 				}
 				eRecord.setNxtValue(updateTime);
 			}
-			else if(pvVarName.startsWith(Constant.SHENG_WEN_WAN_CHENG+Constant.FAN_YING_FU+Constant.WEN_DU)) {//升温完成反应釜温度
+			else if(pvVarName.startsWith(Constant.SHENG_WEN_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU)) {//升温完成上升沿反应釜温度
 				Float pvVarValue = processVar.getVarValue();
 				String pvRecType = processVar.getRecType();
 				Integer pvFId = processVar.getFId();
@@ -1006,7 +1006,27 @@ public class ERecordServiceImpl implements ERecordService {
 				
 			}
 			else if(pvVarName.startsWith(Constant.SHENG_WEN_KAI_SHI+Constant.DAO+Constant.SHENG_WEN_WAN_CHENG+Constant.SHI_JIAN+Constant.CHA)) {//升温开始到升温完成时间差
-				
+				Integer pvFId = processVar.getFId();
+				String batchID = batchIDMap.get(pvFId).toString();
+				Float varValue = processVar.getVarValue();
+				String unit = processVar.getUnit();
+
+				eRecord=getFromList(Constant.SHENG_WEN_KAI_SHI+Constant.DAO+Constant.SHENG_WEN_WAN_CHENG+Constant.SHI_JIAN, batchID, eRecordList);
+				if(eRecord==null) {
+					String pvRecType = processVar.getRecType();
+					
+					eRecord=new ERecord();
+					eRecord.setVarName(pvVarName);
+					eRecord.setUnit(unit);
+					eRecord.setRecType(pvRecType);
+					eRecord.setFId(pvFId);
+					eRecord.setRecordTime(recordTime);
+					eRecord.setBatchID(batchID);
+					eRecord.setPhaseName(Constant.TING_QI);
+					
+					eRecordList.add(eRecord);
+				}
+				eRecord.setPtnValue(varValue+"");
 			}
 			else if(pvVarName.startsWith(Constant.CE_LIANG_BSWD_SRZ)) {//测量冰水雾点输入值
 				
