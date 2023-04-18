@@ -42,24 +42,61 @@ public class ProcessVarServiceImpl implements ProcessVarService {
 		Float ptnValue=null;
 		if((Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG).equals(nxtName)) {
 			preName=Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
-			ptnName=Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+Constant.DAO+Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.FU+Constant.ZHONG_LIANG+Constant.CHA;
+			ptnName=Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+Constant.DAO+Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.FU+Constant.ZHONG_LIANG+Constant.CHA;//甲醛备料开始到甲醛放料完成的重量差
 		}
-		
-		String preValue=processVarMapper.getPreValueByPreName(preName);//计算重量差
-		if(nxtName.contains(Constant.FU+Constant.CHENG_ZHONG)) {
+		else if((Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN).equals(nxtName)){
+			preName=Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+			ptnName=Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+Constant.DAO+Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.SHI_JIAN+Constant.CHA;//甲醛备料开始到甲醛放料完成时间差
+		}
+		else if((Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG).equals(nxtName)){
+			preName=Constant.YUN_XU_YI_CI_JIA_ZHU_JI+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
+			ptnName=Constant.YUN_XU_YI_CI_JIA_ZHU_JI+Constant.DAO+Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.FU+Constant.ZHONG_LIANG+Constant.CHA;//允许一次加助剂到所有助剂加料完成1的重量差
+		}
+		else if((Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN).equals(nxtName)){
+			preName=Constant.YUN_XU_YI_CI_JIA_ZHU_JI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+			ptnName=Constant.YUN_XU_YI_CI_JIA_ZHU_JI+Constant.DAO+Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.SHI_JIAN+Constant.CHA;//允许一次加助剂到所有助剂加料完成时间差
+		}
+		else if((Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG).equals(nxtName)){
+			preName=Constant.YUN_XU_ER_CI_JIA_ZHU_JI+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
+			ptnName=Constant.YUN_XU_ER_CI_JIA_ZHU_JI+Constant.DAO+Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+Constant.FU+Constant.ZHONG_LIANG+Constant.CHA;//允许二次加助剂到所有助剂加料完成2的重量差
+		}
+		else if((Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN).equals(nxtName)){
+			preName=Constant.YUN_XU_ER_CI_JIA_ZHU_JI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+			ptnName=Constant.YUN_XU_ER_CI_JIA_ZHU_JI+Constant.DAO+Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+Constant.SHI_JIAN+Constant.CHA;//允许二次加助剂到所有助剂加料完成2时间差
+		}
+		else if((Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN).equals(nxtName)){
+			preName=Constant.SHENG_WEN_KAI_SHI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+			ptnName=Constant.SHENG_WEN_KAI_SHI+Constant.DAO+Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING+Constant.SHI_JIAN+Constant.CHA;//升温开始到温度85与二次投料提醒时间差
+		}
+		else if((Constant.SHENG_WEN_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN).equals(nxtName)){
+			preName=Constant.SHENG_WEN_KAI_SHI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+			ptnName=Constant.SHENG_WEN_KAI_SHI+Constant.DAO+Constant.SHENG_WEN_WAN_CHENG+Constant.SHI_JIAN+Constant.CHA;//升温开始到升温完成时间差
+		}
+		else if((Constant.NIAO_SU_FANG_LIAO_FA+Constant.XIA_JIANG_YAN+Constant.SHI_JIAN).equals(nxtName)){
+			preName=Constant.NIAO_SU_FANG_LIAO_FA+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+			ptnName=Constant.NIAO_SU_FANG_LIAO_FA+Constant.SHANG_SHENG_YAN+Constant.DAO+Constant.NIAO_SU_FANG_LIAO_FA+Constant.XIA_JIANG_YAN+Constant.SHI_JIAN+Constant.CHA;//尿素放料阀上升沿到尿素放料阀下降沿时间差
+		}
+		else if((Constant.NIAO_SU_FANG_LIAO_FA+Constant.XIA_JIANG_YAN+Constant.FU+Constant.CHENG_ZHONG).equals(nxtName)){
+			preName=Constant.NIAO_SU_FANG_LIAO_FA+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
+			ptnName=Constant.NIAO_SU_FANG_LIAO_FA+Constant.SHANG_SHENG_YAN+Constant.DAO+Constant.NIAO_SU_FANG_LIAO_FA+Constant.XIA_JIANG_YAN+Constant.ZHONG_LIANG+Constant.CHA;//尿素放料阀上升沿到尿素放料阀下降沿重量差
+		}
+		String preValue=null;
+		String ptnUnit = null;
+		preValue=processVarMapper.getPreValueByPreName(preName);
+		if(nxtName.contains(Constant.FU+Constant.CHENG_ZHONG)) {//计算重量差
 			ptnValue=Float.valueOf(nxtValue)-Float.valueOf(preValue);
+			ptnUnit = nxtPV.getUnit();
 		}
-		else if(nxtName.contains(Constant.SHI_JIAN+Constant.CHA)) {//计算时间差，需要调用日期工具类方法处理下
-			Date date = new Date();
-			long preValueLong = date.parse(preValue);
-			long nxtValueLong = date.parse(nxtValue);
-			ptnValue = (float)DateUtil.betweenTime(nxtValueLong, preValueLong, DateUtil.FEN);
+		else if(nxtName.contains(Constant.SHI_JIAN)) {//计算时间差，需要调用日期工具类方法处理下
+			long preValueLong = DateUtil.convertStrToLong(preValue);
+			long nxtValueLong = DateUtil.convertStrToLong(nxtValue);
+			ptnValue = (float)DateUtil.betweenTime(preValueLong, nxtValueLong, DateUtil.FEN);
+			ptnUnit = Constant.MIN;
 		}
 		
 		String nxtUpdateTime = nxtPV.getUpdateTime();
 		Integer nxtFId = nxtPV.getFId();
 		String nxtRecType = nxtPV.getRecType();
-		String nxtUnit = nxtPV.getUnit();
 		Integer nxtParaType = nxtPV.getParaType();
 		
     	ProcessVar ptnValuePV = new ProcessVar();
@@ -69,7 +106,7 @@ public class ProcessVarServiceImpl implements ProcessVarService {
     	ptnValuePV.setUpdateTime(nxtUpdateTime);
     	ptnValuePV.setFId(nxtFId);
     	ptnValuePV.setRecType(nxtRecType);
-    	ptnValuePV.setUnit(nxtUnit);
+    	ptnValuePV.setUnit(ptnUnit);
     	ptnValuePV.setParaType(nxtParaType);
     	
 		return ptnValuePV;

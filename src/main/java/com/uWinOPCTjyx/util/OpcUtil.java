@@ -120,6 +120,14 @@ public class OpcUtil {
         List<String> opcVarNameList=new ArrayList<String>();//要读取的opc变量集合
         String tv1VarName = triggerVar1.getVarName();
         Integer tv1FId=Integer.valueOf(triggerVar1.getFId());
+        
+        String tv2VarName = null;
+        Float tv2VarValue = null;
+        if(triggerVar2!=null) {
+	        tv2VarName = triggerVar2.getVarName();
+	        tv2VarValue = triggerVar2.getVarValue();
+        }
+        
         //甲醛放料完成
         if(tv1VarName.startsWith(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+"_")) {//甲醛放料完成要记录(甲醛实际进料重量、加水实际重量、釜1称重、反应釜1温度)
         	Integer tvFId = triggerVar1.getFId();
@@ -193,7 +201,30 @@ public class OpcUtil {
             String fyfwdOpcVarName=fyfwdPvVarNameQz+"_AV";
             opcVarNameList.add(fhczOpcVarName);
             opcVarNameList.add(fyfwdOpcVarName);
-        } else if (tv1VarName.startsWith(Constant.SHENG_WEN_KAI_SHI+"_")){//升温开始要记录(蒸汽压力MPa)
+        }
+        else if (tv1VarName.startsWith(Constant.JIA_FEN_LIAO_TI_XING+"_")&&tv2VarName==null) {
+            Integer tvFId = triggerVar1.getFId();
+            
+            //粉料重量设定
+        	String flzlsdVarNameQz = Constant.FEN_LIAO_ZHONG_LIANG_SHE_DING+"_"+Constant.BSF_PF+tvFId;
+        	String flzlsdVarName = flzlsdVarNameQz+"_AV";
+            opcVarNameList.add(flzlsdVarName);
+        }
+        else if (tv1VarName.startsWith(Constant.JIA_FEN_LIAO_TI_XING+"_")&&tv2VarName!=null) {
+            Integer tvFId = triggerVar1.getFId();
+        	if(tv2VarName.startsWith(Constant.FU+tvFId+Constant.NIAO_SU_FANG_LIAO_FA)) {
+                //釜(反应釜号)称重
+                String fhczPvVarNameQz=Constant.FU+tvFId+Constant.CHENG_ZHONG;
+                String fhczPvVarName=fhczPvVarNameQz+"_AV";
+                opcVarNameList.add(fhczPvVarName);
+                
+                //反应釜(反应釜号)温度
+                String fyfwdPvVarNameQz=Constant.FAN_YING_FU+tvFId+Constant.WEN_DU;
+                String fyfwdPvVarName=fyfwdPvVarNameQz+"_AV";
+                opcVarNameList.add(fyfwdPvVarName);
+            }
+        }
+        else if (tv1VarName.startsWith(Constant.SHENG_WEN_KAI_SHI+"_")){//升温开始要记录(蒸汽压力MPa)
             Integer tvFId = triggerVar1.getFId();
             String tvRecType = triggerVar1.getRecType();
             String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
@@ -354,11 +385,31 @@ public class OpcUtil {
                     varName=Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
                 }
             }
-        	else if(tv1VarName.startsWith(Constant.JIA_FEN_LIAO_TI_XING+"_")){//加粉料提醒
+        	else if(tv1VarName.startsWith(Constant.JIA_FEN_LIAO_TI_XING+"_")&&tv2VarName==null){//加粉料提醒
                 if (itemName.startsWith(Constant.FEN_LIAO_ZHONG_LIANG_SHE_DING+"_")){
                     varName=Constant.FEN_LIAO_ZHONG_LIANG_SHE_DING;
                 }
             }
+        	else if(tv1VarName.startsWith(Constant.JIA_FEN_LIAO_TI_XING+"_")&&tv2VarName!=null) {
+        		if(tv2VarName.contains(Constant.NIAO_SU_FANG_LIAO_FA)) {
+        			if (itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)){
+	        			if(tv2VarValue==TriggerVar.UP) {
+	        				varName=Constant.NIAO_SU_FANG_LIAO_FA+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
+	        			}
+	        			else {
+	        				varName=Constant.NIAO_SU_FANG_LIAO_FA+Constant.XIA_JIANG_YAN+Constant.FU+Constant.CHENG_ZHONG;
+	        			}
+        			}
+        			else if (itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)){
+	        			if(tv2VarValue==TriggerVar.UP) {
+	        				varName=Constant.NIAO_SU_FANG_LIAO_FA+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
+	        			}
+	        			else {
+	        				varName=Constant.NIAO_SU_FANG_LIAO_FA+Constant.XIA_JIANG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
+	        			}
+        			}
+        		}
+        	}
         	else if(tv1VarName.startsWith(Constant.JIA_FEN_LIAO_PH_HE_GE+"_")){//加粉料PH合格
                 if(itemName.startsWith(Constant.JIA_FEN_LIAO_PH_SHU_RU_ZHI+"_")){
                     varName=Constant.JIA_FEN_LIAO_PH_SHU_RU_ZHI;
@@ -410,6 +461,7 @@ public class OpcUtil {
         	if (itemName.startsWith(Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG)||
                 itemName.startsWith(Constant.JIA_SHUI_SHI_JI_ZHONG_LIANG)||
                 itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)||
+                itemName.startsWith(Constant.FEN_LIAO_ZHONG_LIANG_SHE_DING)||
                 itemName.startsWith(Constant.ZHU_JI_JI_LIANG_GUAN+Constant.BSF_ZJJLG1+Constant.CHENG_ZHONG)||
                 itemName.startsWith(Constant.ZHU_JI_JI_LIANG_GUAN+Constant.BSF_ZJJLG2+Constant.CHENG_ZHONG)||
                 itemName.startsWith(Constant.ZHU_JI_JI_LIANG_GUAN+Constant.BSF_ZJJLG3+Constant.CHENG_ZHONG)||
@@ -474,14 +526,27 @@ public class OpcUtil {
         else if(tv1VarName.startsWith(Constant.YUN_XU_YI_CI_JIA_ZHU_JI+"_")) {//允许一次加助剂
         	itemName = Constant.YUN_XU_YI_CI_JIA_ZHU_JI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
         }
-        else if (tv1VarName.startsWith(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+"_")){//所有助剂加料完成
+        else if (tv1VarName.startsWith(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+"_")){//所有助剂加料完成1
         	itemName = Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+        }
+        else if(tv1VarName.startsWith(Constant.JIA_FEN_LIAO_TI_XING+"_")&&tv2VarName!=null) {
+        	if(tv2VarName.contains(Constant.NIAO_SU_FANG_LIAO_FA)) {
+    			if(tv2VarValue==TriggerVar.UP) {
+    				itemName=Constant.NIAO_SU_FANG_LIAO_FA+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+    			}
+    			else {
+    				itemName=Constant.NIAO_SU_FANG_LIAO_FA+Constant.XIA_JIANG_YAN+Constant.SHI_JIAN;
+    			}
+    		}
         }
         else if(tv1VarName.startsWith(Constant.SHENG_WEN_KAI_SHI+"_")){//升温开始
         	itemName = Constant.SHENG_WEN_KAI_SHI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
         }
         else if (tv1VarName.startsWith(Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING+"_")){//温度85与二次投料提醒
         	itemName = Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+        }
+        else if (tv1VarName.startsWith(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+"_")){//所有助剂加料完成2
+            itemName = Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
         }
         else if (tv1VarName.startsWith(Constant.YUN_XU_ER_CI_JIA_ZHU_JI+"_")){//允许二次加助剂
             itemName = Constant.YUN_XU_ER_CI_JIA_ZHU_JI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
@@ -497,6 +562,7 @@ public class OpcUtil {
 		   tv1VarName.startsWith(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+"_")||
 		   tv1VarName.startsWith(Constant.YUN_XU_YI_CI_JIA_ZHU_JI+"_")||
 		   tv1VarName.startsWith(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+"_")||
+		   tv1VarName.startsWith(Constant.JIA_FEN_LIAO_TI_XING+"_")&&tv2VarName!=null&&itemName.contains(Constant.SHI_JIAN)||
 		   tv1VarName.startsWith(Constant.SHENG_WEN_KAI_SHI+"_")||
 		   tv1VarName.startsWith(Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING+"_")||
            tv1VarName.startsWith(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+"_")||
