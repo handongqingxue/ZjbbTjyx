@@ -357,6 +357,10 @@ public class Constant {
 	 */
 	public static final String KG="kg";
 	/**
+	 * 分钟单位符号
+	 */
+	public static final String MIN="Min";
+	/**
 	 * 温度单位符号
 	 */
 	public static final String WEN_DU_DAN_WEI_SIGN="°C";

@@ -33,31 +33,26 @@ public class DateUtil {
 		}
 	}
 	
-	public static long betweenTime(long time1,long time2,int flag) {
-		long time = time2-time1;
+	public static long betweenTime(long preTime,long nxtTime,int flag) {
+		long ptnTime = nxtTime-preTime;
 		switch (flag) {
 		case HAO_MIAO:
 			
 			break;
 		case MIAO:
-			time=time/1000;
+			ptnTime=ptnTime/1000;
 			break;
 		case FEN:
-			time=time/1000*60;
+			ptnTime=ptnTime/1000/60;
 			break;
 		}
-		return time;
+		return ptnTime;
 	}
 	
 	public static void main(String[] args) {
-		Date d1,d2;
 		try {
-			d1 = timeSDF.parse("1997-07-01 00:00:00");
-			d2 = timeSDF.parse("1997-07-01 00:01:00");
-			long l1 = d1.getTime();
-			long l2 = d2.getTime();
-			System.out.println("s==="+(l2-l1));
-		} catch (ParseException e) {
+			
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

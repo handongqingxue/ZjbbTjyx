@@ -562,7 +562,7 @@ public class OpcUtil {
 		   tv1VarName.startsWith(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+"_")||
 		   tv1VarName.startsWith(Constant.YUN_XU_YI_CI_JIA_ZHU_JI+"_")||
 		   tv1VarName.startsWith(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+"_")||
-		   tv2VarName.contains(Constant.NIAO_SU_FANG_LIAO_FA+"_")||
+		   tv1VarName.startsWith(Constant.JIA_FEN_LIAO_TI_XING+"_")&&tv2VarName!=null&&itemName.contains(Constant.SHI_JIAN)||
 		   tv1VarName.startsWith(Constant.SHENG_WEN_KAI_SHI+"_")||
 		   tv1VarName.startsWith(Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING+"_")||
            tv1VarName.startsWith(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+"_")||
