@@ -759,7 +759,7 @@ public class ERecordServiceImpl implements ERecordService {
 				}
 				eRecord.setNxtValue(updateTime);
 			}
-			else if(pvVarName.startsWith(Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING+Constant.FAN_YING_FU+Constant.WEN_DU)) {//温度85与二次投料提醒反应釜温度
+			else if(pvVarName.startsWith(Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU)) {//温度85与二次投料提醒上升沿反应釜温度
 				Float pvVarValue = processVar.getVarValue();
 				String pvUnit = processVar.getUnit();
 				String pvRecType = processVar.getRecType();
@@ -843,12 +843,12 @@ public class ERecordServiceImpl implements ERecordService {
 				String batchID = batchIDMap.get(pvFId).toString();
 				String updateTime = processVar.getUpdateTime();
 
-				eRecord=getFromList(Constant.YUN_XU_ER_CI_JIA_ZHU_JI+Constant.DAO+Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN, batchID, eRecordList);
+				eRecord=getFromList(Constant.YUN_XU_ER_CI_JIA_ZHU_JI+Constant.DAO+Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+Constant.SHI_JIAN, batchID, eRecordList);
 				if(eRecord==null) {
 					String pvRecType = processVar.getRecType();
 					
 					eRecord=new ERecord();
-					eRecord.setVarName(Constant.YUN_XU_ER_CI_JIA_ZHU_JI+Constant.DAO+Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN);
+					eRecord.setVarName(Constant.YUN_XU_ER_CI_JIA_ZHU_JI+Constant.DAO+Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+Constant.SHI_JIAN);
 					eRecord.setRecType(pvRecType);
 					eRecord.setFId(pvFId);
 					eRecord.setRecordTime(recordTime);
@@ -857,7 +857,7 @@ public class ERecordServiceImpl implements ERecordService {
 
 					eRecordList.add(eRecord);
 				}
-				eRecord.setPreValue(updateTime);
+				eRecord.setNxtValue(updateTime);
 			}
 			else if(pvVarName.startsWith(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU)) {//所有助剂加料完成2上升沿反应釜温度
 				Float pvVarValue = processVar.getVarValue();
@@ -921,7 +921,7 @@ public class ERecordServiceImpl implements ERecordService {
 				}
 				eRecord.setNxtValue(varValue+"");
 			}
-			else if(pvVarName.startsWith(Constant.YUN_XU_ER_CI_JIA_ZHU_JI+Constant.DAO+Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+Constant.ZHONG_LIANG+Constant.CHA)) {//允许二次加助剂到所有助剂加料完成2重量差
+			else if(pvVarName.startsWith(Constant.YUN_XU_ER_CI_JIA_ZHU_JI+Constant.DAO+Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+Constant.FU+Constant.ZHONG_LIANG+Constant.CHA)) {//允许二次加助剂到所有助剂加料完成2釜重量差
 				Integer pvFId = processVar.getFId();
 				String batchID = batchIDMap.get(pvFId).toString();
 				Float varValue = processVar.getVarValue();
@@ -963,7 +963,7 @@ public class ERecordServiceImpl implements ERecordService {
 				}
 				eRecord.setPtnValue(varValue+"");				
 			}//YSD104阶段结束
-			else if(pvVarName.startsWith(Constant.SHENG_WEN_WAN_CHENG+Constant.SHI_JIAN)) {//升温完成时间    //停汽阶段开始
+			else if(pvVarName.startsWith(Constant.SHENG_WEN_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN)) {//升温完成上升沿时间    //停汽阶段开始
 				Integer pvFId = processVar.getFId();
 				String batchID = batchIDMap.get(pvFId).toString();
 				String updateTime = processVar.getUpdateTime();
@@ -984,7 +984,7 @@ public class ERecordServiceImpl implements ERecordService {
 				}
 				eRecord.setNxtValue(updateTime);
 			}
-			else if(pvVarName.startsWith(Constant.SHENG_WEN_WAN_CHENG+Constant.FAN_YING_FU+Constant.WEN_DU)) {//升温完成反应釜温度
+			else if(pvVarName.startsWith(Constant.SHENG_WEN_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU)) {//升温完成上升沿反应釜温度
 				Float pvVarValue = processVar.getVarValue();
 				String pvRecType = processVar.getRecType();
 				Integer pvFId = processVar.getFId();
@@ -1006,7 +1006,27 @@ public class ERecordServiceImpl implements ERecordService {
 				
 			}
 			else if(pvVarName.startsWith(Constant.SHENG_WEN_KAI_SHI+Constant.DAO+Constant.SHENG_WEN_WAN_CHENG+Constant.SHI_JIAN+Constant.CHA)) {//升温开始到升温完成时间差
-				
+				Integer pvFId = processVar.getFId();
+				String batchID = batchIDMap.get(pvFId).toString();
+				Float varValue = processVar.getVarValue();
+				String unit = processVar.getUnit();
+
+				eRecord=getFromList(Constant.SHENG_WEN_KAI_SHI+Constant.DAO+Constant.SHENG_WEN_WAN_CHENG+Constant.SHI_JIAN, batchID, eRecordList);
+				if(eRecord==null) {
+					String pvRecType = processVar.getRecType();
+					
+					eRecord=new ERecord();
+					eRecord.setVarName(pvVarName);
+					eRecord.setUnit(unit);
+					eRecord.setRecType(pvRecType);
+					eRecord.setFId(pvFId);
+					eRecord.setRecordTime(recordTime);
+					eRecord.setBatchID(batchID);
+					eRecord.setPhaseName(Constant.TING_QI);
+					
+					eRecordList.add(eRecord);
+				}
+				eRecord.setPtnValue(varValue+"");
 			}
 			else if(pvVarName.startsWith(Constant.CE_LIANG_BSWD_SRZ)) {//测量冰水雾点输入值
 				

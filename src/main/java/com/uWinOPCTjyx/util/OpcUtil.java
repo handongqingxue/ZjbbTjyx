@@ -246,7 +246,7 @@ public class OpcUtil {
             String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
             //二次投料PH输入
             String ectlphsrPvVarNameQz=Constant.ER_CI_TOU_LIAO_PH_SHU_RU_ZHI;
-            String ectlphsrVarName=ectlphsrPvVarNameQz+opcFName+"_AV";
+            String ectlphsrVarName=ectlphsrPvVarNameQz+"_"+opcFName+"_AV";
             opcVarNameList.add(ectlphsrVarName);
         } else if (tv1VarName.startsWith(Constant.YUN_XU_ER_CI_JIA_ZHU_JI+"_")){//允许二次加助剂要记录(釜(号)称重)
             Integer tvFId = triggerVar1.getFId();
