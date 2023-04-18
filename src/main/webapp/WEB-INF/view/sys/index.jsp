@@ -6,33 +6,26 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String basePath=request.getScheme()+"://"+request.getServerName()+":"
+            +request.getServerPort()+request.getContextPath()+"/";
+%>
 <html>
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width">
     <title>永兴制胶数据报表系统</title>
+    <link rel="stylesheet" href="<%=basePath%>resource/css/layui.css">
 </head>
 <body>
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header">
-        <div class="layui-logo layui-hide-xs layui-bg-black">layout demo</div>
+        <div class="layui-logo layui-hide-xs layui-bg-black" style="font: none 600 20px '微软雅黑';">永兴制胶数据报表系统</div>
         <!-- 头部区域（可配合layui 已有的水平导航） -->
         <ul class="layui-nav layui-layout-left">
             <!-- 移动端显示 -->
             <li class="layui-nav-item layui-show-xs-inline-block layui-hide-sm" lay-header-event="menuLeft">
                 <i class="layui-icon layui-icon-spread-left"></i>
-            </li>
-
-            <li class="layui-nav-item layui-hide-xs"><a href="">nav 1</a></li>
-            <li class="layui-nav-item layui-hide-xs"><a href="">nav 2</a></li>
-            <li class="layui-nav-item layui-hide-xs"><a href="">nav 3</a></li>
-            <li class="layui-nav-item">
-                <a href="javascript:;">nav groups</a>
-                <dl class="layui-nav-child">
-                    <dd><a href="">menu 11</a></dd>
-                    <dd><a href="">menu 22</a></dd>
-                    <dd><a href="">menu 33</a></dd>
-                </dl>
             </li>
         </ul>
         <ul class="layui-nav layui-layout-right">
@@ -60,24 +53,19 @@
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree" lay-filter="test">
                 <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;">menu group 1</a>
+                    <a class="" href="javascript:;">M类</a>
                     <dl class="layui-nav-child">
                         <dd><a href="javascript:;">menu 1</a></dd>
                         <dd><a href="javascript:;">menu 2</a></dd>
-                        <dd><a href="javascript:;">menu 3</a></dd>
-                        <dd><a href="">the links</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="javascript:;">menu group 2</a>
+                    <a href="javascript:;">U类</a>
                     <dl class="layui-nav-child">
                         <dd><a href="javascript:;">list 1</a></dd>
                         <dd><a href="javascript:;">list 2</a></dd>
-                        <dd><a href="">超链接</a></dd>
                     </dl>
                 </li>
-                <li class="layui-nav-item"><a href="javascript:;">click menu item</a></li>
-                <li class="layui-nav-item"><a href="">the links</a></li>
             </ul>
         </div>
     </div>
@@ -92,7 +80,7 @@
         底部固定区域
     </div>
 </div>
-<script src="./layui/layui.js"></script>
+<script src="<%=basePath%>resource/js/layui.js"></script>
 <script>
     //JS
     layui.use(['element', 'layer', 'util'], function(){
