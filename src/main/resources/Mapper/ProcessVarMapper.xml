@@ -79,6 +79,13 @@
 		</foreach>
 	</update>
 	<select id="getPreValueByPreName" resultType="java.lang.String">
-		select VarValue from ProcessVar where VarName=#{preName} and DealBz=${@com.uWinOPCTjyx.entity.ProcessVar@WCL}
+		select 
+		<if test="preName.contains(@com.uWinOPCTjyx.util.Constant@CHENG_ZHONG)">
+		VarValue 
+		</if>
+		<if test="preName.contains(@com.uWinOPCTjyx.util.Constant@SHI_JIAN)">
+		UpdateTime 
+		</if>
+		from ProcessVar where VarName=#{preName} and DealBz=${@com.uWinOPCTjyx.entity.ProcessVar@WCL}
 	</select>
 </mapper>
