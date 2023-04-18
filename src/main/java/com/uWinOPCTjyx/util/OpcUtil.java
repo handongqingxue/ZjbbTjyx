@@ -394,18 +394,15 @@ public class OpcUtil {
         		if(tv2VarName.contains(Constant.NIAO_SU_FANG_LIAO_FA)) {
         			if (itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)){
 	        			if(tv2VarValue==TriggerVar.UP) {
-	        				varName=Constant.NIAO_SU_FANG_LIAO_FA+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
+	        				varName=Constant.FU+Constant.NIAO_SU_FANG_LIAO_FA+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
 	        			}
 	        			else {
-	        				varName=Constant.NIAO_SU_FANG_LIAO_FA+Constant.XIA_JIANG_YAN+Constant.FU+Constant.CHENG_ZHONG;
+	        				varName=Constant.FU+Constant.NIAO_SU_FANG_LIAO_FA+Constant.XIA_JIANG_YAN+Constant.FU+Constant.CHENG_ZHONG;
 	        			}
         			}
         			else if (itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)){
-	        			if(tv2VarValue==TriggerVar.UP) {
-	        				varName=Constant.NIAO_SU_FANG_LIAO_FA+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
-	        			}
-	        			else {
-	        				varName=Constant.NIAO_SU_FANG_LIAO_FA+Constant.XIA_JIANG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
+	        			if(tv2VarValue==TriggerVar.DOWN) {
+	        				varName=Constant.FU+Constant.NIAO_SU_FANG_LIAO_FA+Constant.XIA_JIANG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
 	        			}
         			}
         		}
@@ -532,10 +529,10 @@ public class OpcUtil {
         else if(tv1VarName.startsWith(Constant.JIA_FEN_LIAO_TI_XING+"_")&&tv2VarName!=null) {
         	if(tv2VarName.contains(Constant.NIAO_SU_FANG_LIAO_FA)) {
     			if(tv2VarValue==TriggerVar.UP) {
-    				itemName=Constant.NIAO_SU_FANG_LIAO_FA+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+    				itemName=Constant.FU+Constant.NIAO_SU_FANG_LIAO_FA+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
     			}
     			else {
-    				itemName=Constant.NIAO_SU_FANG_LIAO_FA+Constant.XIA_JIANG_YAN+Constant.SHI_JIAN;
+    				itemName=Constant.FU+Constant.NIAO_SU_FANG_LIAO_FA+Constant.XIA_JIANG_YAN+Constant.SHI_JIAN;
     			}
     		}
         }
