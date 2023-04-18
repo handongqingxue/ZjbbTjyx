@@ -560,6 +560,21 @@ public class OPCController {
 							opcTVList.add(fnsflfTV);
 							Map<String, Object> fhnsflfMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据釜(号)尿素放料阀变量从opc端查找对应的过程变量
 							List<ProcessVar> fhnsflfMResPVList = (List<ProcessVar>)fhnsflfMResMap.get("proVarList");
+
+							//获取尿素放料阀釜称重变量名
+							String nsflfFczVarName = Constant.NIAO_SU_FANG_LIAO_FA+Constant.XIA_JIANG_YAN+Constant.FU+Constant.CHENG_ZHONG;
+							ProcessVar nsflfFczFczPV = OpcUtil.getProVarInListByVarName(nsflfFczVarName, fhnsflfMResPVList);
+							Float nsflfFczFczVarValue = nsflfFczFczPV.getVarValue();
+							ProcessVar ptnFczPV = processVarService.getPtnValuePV(nsflfFczVarName,nsflfFczFczVarValue+"",nsflfFczFczPV);
+							fhnsflfMResPVList.add(ptnFczPV);//将重量差对象添加到集合里
+
+							//获取尿素放料阀时间变量名
+							String nsflfSjVarName = Constant.NIAO_SU_FANG_LIAO_FA+Constant.XIA_JIANG_YAN+Constant.SHI_JIAN;
+							ProcessVar nsflfSjPV = OpcUtil.getProVarInListByVarName(nsflfSjVarName, fhnsflfMResPVList);
+							String nsflfSjVarValue = nsflfSjPV.getUpdateTime();
+							ProcessVar ptnSjPV = processVarService.getPtnValuePV(nsflfSjVarName,nsflfSjVarValue+"",nsflfSjPV);
+							fhnsflfMResPVList.add(ptnSjPV);//将时间差对象添加到集合里
+
 							int i = processVarService.addFromList(fhnsflfMResPVList);//调用添加过程接口
 						}
 					}
