@@ -294,11 +294,15 @@ public class OpcUtil {
             //测20雾点输入值
             String c20wdsrzPvVarNameQz=Constant.CE_20_WU_DIAN_SRZ;
             String c20wdsrzOpcVarName=c20wdsrzPvVarNameQz+"_"+opcFName+"_AV";
+            opcVarNameList.add(clbswdsrzOpcVarName);
+            opcVarNameList.add(c20wdsrzOpcVarName);
+        } else if (tv1VarName.startsWith(Constant.CE_SHUI_SHU_TI_XING+"_")){//测水数提醒
+            Integer tvFId = triggerVar1.getFId();
+            String tvRecType = triggerVar1.getRecType();
+            String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
             //停热降温水数输入值
             String trjwsssrzPvVarNameQz=Constant.TING_RE_JIANG_WEN_SHUI_SHU_SRZ;
             String trjwsssrzOpcVarName=trjwsssrzPvVarNameQz+"_"+opcFName+"_AV";
-            opcVarNameList.add(clbswdsrzOpcVarName);
-            opcVarNameList.add(c20wdsrzOpcVarName);
             opcVarNameList.add(trjwsssrzOpcVarName);
         } else if(tv1VarName.startsWith(Constant.JU_HE_ZHONG_DIAN+"_")){//聚合终点要记录(反应釜温度)
             Integer tvFId = triggerVar1.getFId();
