@@ -493,9 +493,9 @@ public class OpcUtil {
         	else if(tv1VarName.startsWith(Constant.CE_LIANG_BING_SHUI_WU_DIAN_TI_XING+"_")){//测量冰水雾点提醒
                 if (itemName.startsWith(Constant.CE_LIANG_BSWD_SRZ+"_")){
                     varName=Constant.CE_LIANG_BSWD_SRZ;
-                }else if(tv1VarName.startsWith(Constant.CE_20_WU_DIAN_SRZ+"_")){
+                }else if(itemName.startsWith(Constant.CE_20_WU_DIAN_SRZ+"_")){
                     varName=Constant.CE_20_WU_DIAN_SRZ;
-                }else if(tv1VarName.startsWith(Constant.TING_RE_JIANG_WEN_SHUI_SHU_SRZ+"_")){
+                }else if(itemName.startsWith(Constant.TING_RE_JIANG_WEN_SHUI_SHU_SRZ+"_")){
                     varName=Constant.TING_RE_JIANG_WEN_SHUI_SHU_SRZ;
                 }
             }
@@ -508,7 +508,7 @@ public class OpcUtil {
                 if (itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)){
                     varName=Constant.JIANG_WEN_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
                 }
-            }
+            }//???????????
 
         	if(StringUtils.isEmpty(varName))
         		continue;
