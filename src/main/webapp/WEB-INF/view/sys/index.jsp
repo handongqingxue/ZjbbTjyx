@@ -13,9 +13,10 @@
 <html>
 <head>
     <title>永兴制胶数据报表系统</title>
-    <link rel="stylesheet" href="<%=basePath%>resource/css/m_ui.css">
+    <link rel="stylesheet" href="<%=basePath%>resource/css/system_ui.css">
     <link rel="stylesheet" href="<%=basePath%>resource/css/layui.css">
     <script type="text/javascript" src="<%=basePath%>resource/js/layui.js"></script>
+    <script type="text/javascript" src="<%=basePath%>resource/js/opc.js"></script>
 </head>
 <body>
 <div class="home">
@@ -34,45 +35,68 @@
     <div class="home-body">
         <div class="home-left-body">
             <ul class="layui-nav layui-nav-tree" lay-filter="test">
-                <!-- 侧边导航: <ul class="layui-nav layui-nav-tree layui-nav-side"> -->
-                <li class="layui-nav-item layui-nav-itemed">
-                    <a href="javascript:;">默认展开</a>
+                <%--layui-nav-itemed 自动展开--%>
+                <li class="layui-nav-item">
+                    <a href="javascript:;" onclick="inspect(0)">M类报表生成</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">选项1</a></dd>
-                        <dd><a href="javascript:;">选项2</a></dd>
-                        <dd><a href="">跳转</a></dd>
+                        <dd><a href="javascript:;">demo1</a></dd>
+                        <dd><a href="javascript:;">demo2</a></dd>
+                        <dd><a href="javascript:;">demo3</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="javascript:;">解决方案</a>
+                    <a href="javascript:;" onclick="inspect(0)">U类报表生成</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="">移动模块</a></dd>
-                        <dd><a href="">后台模版</a></dd>
-                        <dd><a href="">电商平台</a></dd>
+                        <dd><a href="javascript:;">demo1</a></dd>
+                        <dd><a href="javascript:;">demo2</a></dd>
+                        <dd><a href="javascript:;">demo3</a></dd>
                     </dl>
                 </li>
-                <li class="layui-nav-item"><a href="">产品</a></li>
-                <li class="layui-nav-item"><a href="">大数据</a></li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;" onclick="inspect(1)">M类报表查询</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">demo1</a></dd>
+                        <dd><a href="javascript:;">demo2</a></dd>
+                        <dd><a href="javascript:;">demo3</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;" onclick="inspect(1)">U类报表查询</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">demo1</a></dd>
+                        <dd><a href="javascript:;">demo2</a></dd>
+                        <dd><a href="javascript:;">demo3</a></dd>
+                    </dl>
+                </li>
             </ul>
         </div>
         <div class="home-right-body">
+            <div class="right-body-head">
+                <span class="right-body-head-span1">
+                     <i class="layui-icon " id="right-body-head-icon" style="font-size: 30px; color: #1E9FFF;"></i>
+                </span>
+                <span id="right-body-head-span2" class="right-body-head-span2">
 
+                </span>
+            </div>
         </div>
     </div>
 </div>
 <script>
-    var i=0;
-    function myDate(){
-        var now=new Date();
-        var year=now.getFullYear();
-        var month=now.getMonth()+1;
-        var day=now.getDate();
-        var hours=now.getHours();
-        var minutes=now.getMinutes();
-        var seconds=now.getSeconds();
-        document.getElementById("system-time").innerHTML=year+"年"+month+"月"+day+"日"+"&nbsp;"+hours+":"+minutes+":"+seconds;
+    window.load(inspect(1));
+
+    function inspect(id){
+        if (id==0){
+            document.getElementById("right-body-head-span2").innerHTML="报表生成页面";
+            document.getElementById("right-body-head-icon").classList.add("layui-icon-add-circle-fine");
+        }else if(id==1){
+            document.getElementById("right-body-head-span2").innerHTML="报表查询页面";
+            document.getElementById("right-body-head-icon").classList.add("layui-icon-search");
+        }else if (id==null||id==undefined){
+            document.getElementById("right-body-head-span2").innerHTML="报表查询页面";
+            document.getElementById("right-body-head-icon").classList.add("layui-icon-search");
+        }
     }
-    setInterval(myDate,1000);
 
 </script>
 </body>
