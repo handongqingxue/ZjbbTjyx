@@ -282,7 +282,7 @@ public class OpcUtil {
             String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
             //温度98PH
             String wd98phPvVarNameQz=Constant.WEN_DU_98_PH;
-            String wd98phOpcVarName=wd98phPvVarNameQz+opcFName+"_AV";
+            String wd98phOpcVarName=wd98phPvVarNameQz+"_"+opcFName+"_AV";
             opcVarNameList.add(wd98phOpcVarName);
         }
 

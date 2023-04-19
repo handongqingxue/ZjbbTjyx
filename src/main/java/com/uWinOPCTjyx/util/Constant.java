@@ -414,4 +414,8 @@ public class Constant {
 	 * 停汽
 	 */
 	public static final String TING_QI="停汽";
+	/**
+	 * 保温
+	 */
+	public static final String BAO_WEN="保温";
 }
