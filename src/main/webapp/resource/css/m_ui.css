@@ -34,8 +34,18 @@ body, html {
     float: left;
     margin: 0 10px;
 }
+.home-body{
+    display:inline;
+}
 .home-left-body{
+    float:left;
     width: 200px;
     height: calc(100% - 65px);
     background-color: #333333;
+}
+.home-right-body{
+    float:left;
+    width: calc(100% - 200px);
+    height: calc(100% - 65px);
+    background-color: #e3d6d6;
 }

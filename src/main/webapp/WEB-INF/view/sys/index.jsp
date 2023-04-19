@@ -16,20 +16,21 @@
     <link rel="stylesheet" href="<%=basePath%>resource/css/m_ui.css">
     <link rel="stylesheet" href="<%=basePath%>resource/css/layui.css">
 </head>
-
 <body>
-    <div class="home">
-        <%--头部--%>
-        <div class="home-head">
-            <span class="home-head-span">永兴制胶数据报表系统</span>
-            <ul class="home-head-ul">
-                <li></li>
-                <li>|</li>
-                <li id="system-time">2023年4月19日10:30:30</li>
-                <li>|</li>
-                <li>欢迎您!超级管理员</li>
-            </ul>
-        </div>
+<div class="home">
+    <%--头部--%>
+    <div class="home-head">
+        <span class="home-head-span">永兴制胶数据报表系统</span>
+        <ul class="home-head-ul">
+            <li></li>
+            <li>|</li>
+            <li id="system-time">2023年4月19日10:30:30</li>
+            <li>|</li>
+            <li>欢迎您!超级管理员</li>
+        </ul>
+    </div>
+    <%--身体--%>
+    <div class="home-body">
         <div class="home-left-body">
             <ul class="layui-nav layui-nav-tree" lay-filter="test">
                 <!-- 侧边导航: <ul class="layui-nav layui-nav-tree layui-nav-side"> -->
@@ -52,9 +53,12 @@
                 <li class="layui-nav-item"><a href="">产品</a></li>
                 <li class="layui-nav-item"><a href="">大数据</a></li>
             </ul>
+        </div>
+        <div class="home-right-body">
 
         </div>
     </div>
+</div>
 <script>
     var i=0;
     function myDate(){
