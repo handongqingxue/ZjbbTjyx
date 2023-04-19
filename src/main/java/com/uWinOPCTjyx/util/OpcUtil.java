@@ -284,6 +284,38 @@ public class OpcUtil {
             String wd98phPvVarNameQz=Constant.WEN_DU_98_PH;
             String wd98phOpcVarName=wd98phPvVarNameQz+"_"+opcFName+"_AV";
             opcVarNameList.add(wd98phOpcVarName);
+        } else if (tv1VarName.startsWith(Constant.CE_LIANG_BING_SHUI_WU_DIAN_TI_XING+"_")){//测量冰水雾点提醒要记录(测量冰水雾点输入值、测20雾点输入值、停热降温水数输入值)
+            Integer tvFId = triggerVar1.getFId();
+            String tvRecType = triggerVar1.getRecType();
+            String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
+            //测量冰水雾点输入值
+            String clbswdsrzPvVarNameQz=Constant.CE_LIANG_BSWD_SRZ;
+            String clbswdsrzOpcVarName=clbswdsrzPvVarNameQz+"_"+opcFName+"_AV";
+            //测20雾点输入值
+            String c20wdsrzPvVarNameQz=Constant.CE_20_WU_DIAN_SRZ;
+            String c20wdsrzOpcVarName=c20wdsrzPvVarNameQz+"_"+opcFName+"_AV";
+            //停热降温水数输入值
+            String trjwsssrzPvVarNameQz=Constant.TING_RE_JIANG_WEN_SHUI_SHU_SRZ;
+            String trjwsssrzOpcVarName=trjwsssrzPvVarNameQz+"_"+opcFName+"_AV";
+            opcVarNameList.add(clbswdsrzOpcVarName);
+            opcVarNameList.add(c20wdsrzOpcVarName);
+            opcVarNameList.add(trjwsssrzOpcVarName);
+        } else if(tv1VarName.startsWith(Constant.JU_HE_ZHONG_DIAN+"_")){//聚合终点要记录(反应釜温度)
+            Integer tvFId = triggerVar1.getFId();
+            String tvRecType = triggerVar1.getRecType();
+            String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
+            //反应釜(反应釜号)温度
+            String fyfwdPvVarNameQz=Constant.FAN_YING_FU+tvFId+Constant.WEN_DU;
+            String fyfwdOpcVarName=fyfwdPvVarNameQz+"_AV";
+            opcVarNameList.add(fyfwdOpcVarName);
+        } else if(tv1VarName.startsWith(Constant.JIANG_WEN_WAN_CHENG+"_")){//降温完成要记录(反应釜温度)
+            Integer tvFId = triggerVar1.getFId();
+            String tvRecType = triggerVar1.getRecType();
+            String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
+            //反应釜(反应釜号)温度
+            String fyfwdPvVarNameQz=Constant.FAN_YING_FU+tvFId+Constant.WEN_DU;
+            String fyfwdOpcVarName=fyfwdPvVarNameQz+"_AV";
+            opcVarNameList.add(fyfwdOpcVarName);
         }
 
 
@@ -449,6 +481,25 @@ public class OpcUtil {
                     varName=Constant.WEN_DU_98_PH;
                 }
             }
+        	else if(tv1VarName.startsWith(Constant.CE_LIANG_BING_SHUI_WU_DIAN_TI_XING+"_")){//测量冰水雾点提醒
+                if (itemName.startsWith(Constant.CE_LIANG_BSWD_SRZ+"_")){
+                    varName=Constant.CE_LIANG_BSWD_SRZ;
+                }else if(tv1VarName.startsWith(Constant.CE_20_WU_DIAN_SRZ+"_")){
+                    varName=Constant.CE_20_WU_DIAN_SRZ;
+                }else if(tv1VarName.startsWith(Constant.TING_RE_JIANG_WEN_SHUI_SHU_SRZ+"_")){
+                    varName=Constant.TING_RE_JIANG_WEN_SHUI_SHU_SRZ;
+                }
+            }
+        	else if(tv1VarName.startsWith(Constant.JU_HE_ZHONG_DIAN+"_")){//聚合终点
+        	    if (itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)){
+                    varName=Constant.JU_HE_ZHONG_DIAN+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
+                }
+            }
+            else if(tv1VarName.startsWith(Constant.JIANG_WEN_WAN_CHENG+"_")){//降温完成
+                if (itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)){
+                    varName=Constant.JIANG_WEN_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
+                }
+            }
 
         	if(StringUtils.isEmpty(varName))
         		continue;
@@ -551,7 +602,12 @@ public class OpcUtil {
         else if (tv1VarName.startsWith(Constant.SHENG_WEN_WAN_CHENG+"_")){//升温完成
             itemName = Constant.SHENG_WEN_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
         }
-        
+        else if (tv1VarName.startsWith(Constant.JU_HE_ZHONG_DIAN+"_")){//聚合终点
+            itemName = Constant.JU_HE_ZHONG_DIAN+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+        }
+        else if (tv1VarName.startsWith(Constant.JIANG_WEN_WAN_CHENG+"_")){//降温完成
+            itemName = Constant.JIANG_WEN_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+        }
         
         //触发器变量1在满足以上几种情况时，说明需要添加系统时间，就调用下面这个逻辑。若加在上面代码量太多，就简化一下加在下面
         if(tv1VarName.startsWith(Constant.BEI_LIAO_KAI_SHI+"_")||
@@ -564,7 +620,9 @@ public class OpcUtil {
 		   tv1VarName.startsWith(Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING+"_")||
            tv1VarName.startsWith(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+"_")||
            tv1VarName.startsWith(Constant.YUN_XU_ER_CI_JIA_ZHU_JI+"_")||
-           tv1VarName.startsWith(Constant.SHENG_WEN_WAN_CHENG+"_")
+           tv1VarName.startsWith(Constant.SHENG_WEN_WAN_CHENG+"_")||
+           tv1VarName.startsWith(Constant.JU_HE_ZHONG_DIAN+"_")||
+           tv1VarName.startsWith(Constant.JIANG_WEN_WAN_CHENG+"_")
         ) {
         	String sysTime = DateUtil.getTimeStrByFormatStr(new Date(),DateUtil.YEAR_TO_SECOND);//系统时间
         	
