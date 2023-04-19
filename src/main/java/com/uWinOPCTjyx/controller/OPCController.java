@@ -870,7 +870,7 @@ public class OPCController {
 			}
 		}
 
-		if(false) {
+		//if(false) {
 		//温度98PH合格
 		List<Integer> wd98phhgFIdList=new ArrayList<Integer>();
 		List<TriggerVar> wd98phhgTVList = (List<TriggerVar>)triggerVarMap.get(Constant.WEN_DU_98_PH+Constant.HE_GE);//获取温度98PH合格变量,不管是否是上升沿
@@ -906,7 +906,7 @@ public class OPCController {
 					break;
 			}
 		}
-		}
+		//}
 
 
 		//if(false) {
