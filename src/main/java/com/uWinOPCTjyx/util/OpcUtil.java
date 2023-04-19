@@ -163,7 +163,7 @@ public class OpcUtil {
             String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
             //加碱前PH输入值
             String jjqsrzPvVarName= Constant.JIA_JIAN_QIAN_PH_SHU_RU_ZHI;
-            String jjqsrzOpcVarName=jjqsrzPvVarName+"_"+Constant.BSF_PF+tvFId+"_AV";
+            String jjqsrzOpcVarName=jjqsrzPvVarName+"_"+opcFName+"_AV";
             //加碱量提示
             String jjltsPvVarNameQz= Constant.JIA_JIAN_LIANG_TI_SHI;
             String jjltsOpcVarName=jjltsPvVarNameQz+"_"+Constant.BSF_PF+tvFId+"_AV";
@@ -403,10 +403,15 @@ public class OpcUtil {
         	else if(tv1VarName.startsWith(Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+"_")){//加碱PH值正常
                 if(itemName.startsWith(Constant.JIA_JIAN_QIAN_PH_SHU_RU_ZHI+"_")) {
                     varName=Constant.JIA_JIAN_QIAN_PH_SHU_RU_ZHI;
-                }else if(itemName.startsWith(Constant.JIA_JIAN_LIANG_TI_SHI+"_")){
+                }
+                else if(itemName.startsWith(Constant.JIA_JIAN_LIANG_TI_SHI+"_")){
                     varName=Constant.JIA_JIAN_LIANG_TI_SHI;
-                }else if(itemName.startsWith(Constant.JIA_JIAN_HOU_PH_SHU_RU_ZHI+"_")){
+                }
+                else if(itemName.startsWith(Constant.JIA_JIAN_HOU_PH_SHU_RU_ZHI+"_")){
                     varName=Constant.JIA_JIAN_HOU_PH_SHU_RU_ZHI;
+                }
+                else if(itemName.startsWith(Constant.ZHU_JI_JI_LIANG_GUAN)){
+                    varName=Constant.ZHU_JI_JI_LIANG_GUAN+tv1FId+Constant.CHENG_ZHONG;
                 }
             }
         	else if(tv1VarName.startsWith(Constant.YUN_XU_YI_CI_JIA_ZHU_JI+"_")){//允许一次加助剂
@@ -488,9 +493,9 @@ public class OpcUtil {
         	else if(tv1VarName.startsWith(Constant.CE_LIANG_BING_SHUI_WU_DIAN_TI_XING+"_")){//测量冰水雾点提醒
                 if (itemName.startsWith(Constant.CE_LIANG_BSWD_SRZ+"_")){
                     varName=Constant.CE_LIANG_BSWD_SRZ;
-                }else if(tv1VarName.startsWith(Constant.CE_20_WU_DIAN_SRZ+"_")){
+                }else if(itemName.startsWith(Constant.CE_20_WU_DIAN_SRZ+"_")){
                     varName=Constant.CE_20_WU_DIAN_SRZ;
-                }else if(tv1VarName.startsWith(Constant.TING_RE_JIANG_WEN_SHUI_SHU_SRZ+"_")){
+                }else if(itemName.startsWith(Constant.TING_RE_JIANG_WEN_SHUI_SHU_SRZ+"_")){
                     varName=Constant.TING_RE_JIANG_WEN_SHUI_SHU_SRZ;
                 }
             }
@@ -503,7 +508,7 @@ public class OpcUtil {
                 if (itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)){
                     varName=Constant.JIANG_WEN_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
                 }
-            }
+            }//???????????
 
         	if(StringUtils.isEmpty(varName))
         		continue;

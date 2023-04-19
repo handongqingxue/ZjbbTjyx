@@ -52,5 +52,6 @@
 		<foreach collection="runFIdList" item="runFId" open=" and cast(FId as char) in (" separator="," close=")">
 			#{runFId}
 		</foreach>
+		 order by Sort
 	</select>
 </mapper>

@@ -336,7 +336,7 @@ public class ERecordServiceImpl implements ERecordService {
 				
 				eRecordList.add(eRecord);
 			}//YSD109阶段结束
-			else if(pvVarName.startsWith(Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+Constant.SHANG_SHENG_YAN+Constant.ZHU_JI_JI_LIANG_GUAN+Constant.CHENG_ZHONG)) {//加碱PH值正常上升沿助剂计量罐称重    //YSD106阶段开始
+			else if(pvVarName.startsWith(Constant.ZHU_JI_JI_LIANG_GUAN)&&pvVarName.endsWith(Constant.CHENG_ZHONG)) {//助剂计量罐1-2称重    //YSD106阶段开始
 				Float pvVarValue = processVar.getVarValue();
 				String pvUnit = processVar.getUnit();
 				String pvRecType = processVar.getRecType();

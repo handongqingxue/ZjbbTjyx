@@ -391,6 +391,7 @@ public class OPCController {
 							opcTVList.add(upJjphzzcTV);
 							Map<String, Object> jjphzzcMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据加碱PH值正常触发变量从opc端查找对应的过程变量
 							List<ProcessVar> jjphzzcMResPVList = (List<ProcessVar>)jjphzzcMResMap.get("proVarList");
+							totalZJJLGChengZhongSum(jjphzzcMResPVList);
 							int i = processVarService.addFromList(jjphzzcMResPVList);//调用添加过程接口
 							System.out.println("添加"+i);
 						}
@@ -943,41 +944,6 @@ public class OPCController {
 					break;
 			}
 		}
-		//测水数提醒
-		List<Integer> csstxFIdList=new ArrayList<Integer>();
-		List<TriggerVar> csstxTVList = (List<TriggerVar>)triggerVarMap.get(Constant.CE_SHUI_SHU_TI_XING);//获取测水数提醒变量,不管是否是上升沿
-		List<TriggerVar> upCsstxTVList = getUpDownVarValueListFromList(csstxTVList, TriggerVar.DOWN);//获取下降的测水数提醒变量
-		for (TriggerVar upCsstxTV : upCsstxTVList) {
-			Integer upFId = upCsstxTV.getFId();//获取反应釜号
-			String upRecType = upCsstxTV.getRecType();//获取配方类型
-			String upVarName = upCsstxTV.getVarName();//上次变量名和本次变量名其实是一致的
-			switch (upFId) {//匹配反应釜号
-				case Constant.F1_ID:
-					if(TriggerVar.M.equals(upRecType)) {
-						Float preValue = Float.valueOf(preValueF1MMap.get(upVarName).toString());
-						if(preValue==TriggerVar.UP) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-							List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
-							opcTVList.add(upCsstxTV);
-							Map<String, Object> csstxMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据测水数提醒变量从opc端查找对应的过程变量
-							List<ProcessVar> csstxMResPVList = (List<ProcessVar>)csstxMResMap.get("proVarList");
-							int i = processVarService.addFromList(csstxMResPVList);//调用添加过程接口
-							System.out.println("添加"+i);
-						}
-					}
-					else if(TriggerVar.U.equals(upRecType)) {
-						Float preValue = Float.valueOf(preValueF1UMap.get(upVarName).toString());
-						if(preValue==TriggerVar.UP) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-							List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
-							opcTVList.add(upCsstxTV);
-							Map<String, Object> csstxMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据测水数提醒变量从opc端查找对应的过程变量
-							List<ProcessVar> csstxMResPVList = (List<ProcessVar>)csstxMResMap.get("proVarList");
-							int i = processVarService.addFromList(csstxMResPVList);//调用添加过程接口
-							System.out.println("添加"+i);
-						}
-					}
-					break;
-			}
-		}
 
 		//聚合终点
 		List<Integer> jhzdFIdList=new ArrayList<Integer>();
@@ -1014,6 +980,44 @@ public class OPCController {
 					break;
 			}
 		}
+		
+		
+		
+		//测水数提醒
+		List<Integer> csstxFIdList=new ArrayList<Integer>();
+		List<TriggerVar> csstxTVList = (List<TriggerVar>)triggerVarMap.get(Constant.CE_SHUI_SHU_TI_XING);//获取测水数提醒变量,不管是否是上升沿
+		List<TriggerVar> upCsstxTVList = getUpDownVarValueListFromList(csstxTVList, TriggerVar.DOWN);//获取下降的测水数提醒变量
+		for (TriggerVar upCsstxTV : upCsstxTVList) {
+			Integer upFId = upCsstxTV.getFId();//获取反应釜号
+			String upRecType = upCsstxTV.getRecType();//获取配方类型
+			String upVarName = upCsstxTV.getVarName();//上次变量名和本次变量名其实是一致的
+			switch (upFId) {//匹配反应釜号
+				case Constant.F1_ID:
+					if(TriggerVar.M.equals(upRecType)) {
+						Float preValue = Float.valueOf(preValueF1MMap.get(upVarName).toString());
+						//if(preValue==TriggerVar.UP) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
+							List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
+							opcTVList.add(upCsstxTV);
+							Map<String, Object> csstxMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据测水数提醒变量从opc端查找对应的过程变量
+							List<ProcessVar> csstxMResPVList = (List<ProcessVar>)csstxMResMap.get("proVarList");
+							int i = processVarService.addFromList(csstxMResPVList);//调用添加过程接口
+							System.out.println("添加"+i);
+						//}
+					}
+					else if(TriggerVar.U.equals(upRecType)) {
+						Float preValue = Float.valueOf(preValueF1UMap.get(upVarName).toString());
+						if(preValue==TriggerVar.UP) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
+							List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
+							opcTVList.add(upCsstxTV);
+							Map<String, Object> csstxMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据测水数提醒变量从opc端查找对应的过程变量
+							List<ProcessVar> csstxMResPVList = (List<ProcessVar>)csstxMResMap.get("proVarList");
+							int i = processVarService.addFromList(csstxMResPVList);//调用添加过程接口
+							System.out.println("添加"+i);
+						}
+					}
+					break;
+			}
+		}
 
 		//if(false) {
 		//降温完成
@@ -1030,11 +1034,15 @@ public class OPCController {
 						Float preValue = Float.valueOf(preValueF1MMap.get(upVarName).toString());
 						if (preValue == TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
 							jwwcFIdList.add(upFId);
+							
+							
 						}
 					} else if (TriggerVar.U.equals(upRecType)) {
 						Float preValue = Float.valueOf(preValueF1UMap.get(upVarName).toString());
 						if (preValue == TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
 							jwwcFIdList.add(upFId);
+							
+							
 						}
 					}
 					break;
@@ -1353,5 +1361,43 @@ public class OPCController {
 			}
 		}
 		return triggerVar;
+	}
+	
+	private void totalZJJLGChengZhongSum(List<ProcessVar> processVarList) {
+		ProcessVar sumPV=null;
+		float sumVarValue=0;
+		List<ProcessVar> zjjlgPVList=new ArrayList<ProcessVar>();
+		List<Integer> removeIndexList=new ArrayList<Integer>();
+		for (int i = 0; i < processVarList.size(); i++) {
+			ProcessVar processVar = processVarList.get(i);
+			String varName = processVar.getVarName();
+			if(varName.startsWith(Constant.ZHU_JI_JI_LIANG_GUAN)) {
+				zjjlgPVList.add(processVar);
+				removeIndexList.add(i);
+			}
+		}
+		
+		for (int i = removeIndexList.size()-1; i >=0 ; i--) {
+			int removeIndex = removeIndexList.get(i);
+			processVarList.remove(removeIndex);
+		}
+		
+		for (int i = 0; i < zjjlgPVList.size(); i++) {
+			ProcessVar zjjlgPV = zjjlgPVList.get(i);
+			if(i==0)
+				sumPV=zjjlgPV;
+			sumVarValue+=zjjlgPV.getVarValue();
+		}
+		
+		String sumVarName=null;
+		if(zjjlgPVList.size()==2)
+			sumVarName=Constant.ZHU_JI_JI_LIANG_GUAN+Constant.BSF_ZJJLG1+"-"+Constant.BSF_ZJJLG2+Constant.CHENG_ZHONG;
+		else if(zjjlgPVList.size()==3)
+			sumVarName=Constant.ZHU_JI_JI_LIANG_GUAN+Constant.BSF_ZJJLG3+"-"+Constant.BSF_ZJJLG5+Constant.CHENG_ZHONG;
+		
+		sumPV.setVarName(sumVarName);
+		sumPV.setVarValue(sumVarValue);
+		
+		processVarList.add(sumPV);
 	}
 }
