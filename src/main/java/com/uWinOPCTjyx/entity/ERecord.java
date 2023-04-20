@@ -1,6 +1,15 @@
 package com.uWinOPCTjyx.entity;
 
 public class ERecord {
+	
+	/**
+	 * 未生成报表
+	 */
+	public static final int WSCBB=0;
+	/**
+	 * 已生成报表
+	 */
+	public static final int YSCBB=1;
 
 	private Integer Id;
 	public Integer getId() {

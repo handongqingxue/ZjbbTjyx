@@ -145,9 +145,17 @@ public class Constant {
 	public static final Integer[] BSF_ZJJLG_3_5_M_ARR=new Integer[] {BSF_ZJJLG3,BSF_ZJJLG4,BSF_ZJJLG5};
 	
 	/**
-	 * 开始到结束时间
+	 * 批次记录
 	 */
-	public static final String KAI_SHI_DAO_JIE_SHU_SHI_JIAN="开始到结束时间";
+	public static final String PI_CI_JI_LU="批次记录";
+	/**
+	 * 开始
+	 */
+	public static final String KAI_SHI="开始";
+	/**
+	 * 结束
+	 */
+	public static final String JIE_SHU="结束";
 	/**
 	 * 备料开始
 	 */

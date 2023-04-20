@@ -678,7 +678,7 @@ public class OpcUtil {
      * @param recType
      * @return
      */
-    private static String getFNameByFIdRecType(Integer fId,String recType) {
+    public static String getFNameByFIdRecType(Integer fId,String recType) {
     	String fName=null;
     	switch (fId) {
 		case Constant.F1_ID:
