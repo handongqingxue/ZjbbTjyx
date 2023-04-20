@@ -621,6 +621,9 @@ public class OpcUtil {
         else if (tv1VarName.startsWith(Constant.JIANG_WEN_WAN_CHENG+"_")){//降温完成
             itemName = Constant.JIANG_WEN_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
         }
+        else if (tv1VarName.startsWith(Constant.FAN_YING_JIE_SHU+"_")){//反应结束
+            itemName = Constant.FAN_YING_JIE_SHU+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+        }
         
         //触发器变量1在满足以上几种情况时，说明需要添加系统时间，就调用下面这个逻辑。若加在上面代码量太多，就简化一下加在下面
         if(tv1VarName.startsWith(Constant.BEI_LIAO_KAI_SHI+"_")||
@@ -635,7 +638,8 @@ public class OpcUtil {
            tv1VarName.startsWith(Constant.YUN_XU_ER_CI_JIA_ZHU_JI+"_")||
            tv1VarName.startsWith(Constant.SHENG_WEN_WAN_CHENG+"_")||
            tv1VarName.startsWith(Constant.JU_HE_ZHONG_DIAN+"_")||
-           tv1VarName.startsWith(Constant.JIANG_WEN_WAN_CHENG+"_")
+           tv1VarName.startsWith(Constant.JIANG_WEN_WAN_CHENG+"_")||
+           tv1VarName.startsWith(Constant.FAN_YING_JIE_SHU+"_")
         ) {
         	String sysTime = DateUtil.getTimeStrByFormatStr(new Date(),DateUtil.YEAR_TO_SECOND);//系统时间
         	
