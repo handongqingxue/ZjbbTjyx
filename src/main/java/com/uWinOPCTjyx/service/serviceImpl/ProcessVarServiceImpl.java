@@ -82,7 +82,7 @@ public class ProcessVarServiceImpl implements ProcessVarService {
 		}
 		else if((Constant.JIANG_WEN_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN).equals(nxtName)){
 			preName=Constant.JU_HE_ZHONG_DIAN+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
-			ptnName=Constant.JU_HE_ZHONG_DIAN+Constant.DAO+Constant.JIANG_WEN_WAN_CHENG+Constant.SHI_JIAN+Constant.CHA;//聚合终点到降温完成时间差
+			ptnName=Constant.KAI_SHI_JIANG_WEN+Constant.DAO+Constant.TING_ZHI_JIANG_WEN+Constant.SHI_JIAN+Constant.CHA;//开始降温到停止降温时间差
 		}
 		else if((Constant.FAN_YING_JIE_SHU+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN).equals(nxtName)){
 			preName=Constant.BEI_LIAO_KAI_SHI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
