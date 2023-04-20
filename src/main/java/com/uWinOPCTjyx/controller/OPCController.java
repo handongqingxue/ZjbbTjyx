@@ -284,22 +284,29 @@ public class OPCController {
 		}
 
 		//反应结束
-		List<Integer> syjsFIdList=new ArrayList<Integer>();
-		List<TriggerVar> syjsTVList = (List<TriggerVar>)triggerVarMap.get(Constant.FAN_YING_JIE_SHU);//获取反应结束变量,不管是否是上升沿
-		List<TriggerVar> upSyjsTVList = getUpDownVarValueListFromList(syjsTVList, TriggerVar.UP);//获取上升的反应结束变量
-		for (TriggerVar upSyjsTV : upSyjsTVList) {
-			Integer upFId = upSyjsTV.getFId();//获取反应釜号
-			String upRecType = upSyjsTV.getRecType();//获取配方类型
-			String upVarName = upSyjsTV.getVarName();//上次变量名和本次变量名其实是一致的
+		List<Integer> fyjsFIdList=new ArrayList<Integer>();
+		List<TriggerVar> fyjsTVList = (List<TriggerVar>)triggerVarMap.get(Constant.FAN_YING_JIE_SHU);//获取反应结束变量,不管是否是上升沿
+		List<TriggerVar> upFyjsTVList = getUpDownVarValueListFromList(fyjsTVList, TriggerVar.UP);//获取上升的反应结束变量
+		for (TriggerVar upFyjsTV : upFyjsTVList) {
+			Integer upFId = upFyjsTV.getFId();//获取反应釜号
+			String upRecType = upFyjsTV.getRecType();//获取配方类型
+			String upVarName = upFyjsTV.getVarName();//上次变量名和本次变量名其实是一致的
 			switch (upFId) {//匹配反应釜号
 				case Constant.F1_ID:
 					if(TriggerVar.M.equals(upRecType)) {
 						Float preValue = Float.valueOf(preValueF1MMap.get(upVarName).toString());
 						if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
 							List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
-							opcTVList.add(upSyjsTV);
+							opcTVList.add(upFyjsTV);
 							Map<String, Object> fyjsMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据反应结束触发变量从opc端查找对应的过程变量
 							List<ProcessVar> fyjsMResPVList = (List<ProcessVar>)fyjsMResMap.get("proVarList");
+
+							//获取反应结束时间变量名
+							String fyjsSjVarName = Constant.FAN_YING_JIE_SHU+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+							ProcessVar fyjsSjPV = OpcUtil.getProVarInListByVarName(fyjsSjVarName, fyjsMResPVList);
+							String fyjsSjVarValue = fyjsSjPV.getUpdateTime();
+							ProcessVar ptnSjPV = processVarService.getPtnValuePV(fyjsSjVarName,fyjsSjVarValue+"",fyjsSjPV);
+							fyjsMResPVList.add(ptnSjPV);//将时间差对象添加到集合里
 							int i = processVarService.addFromList(fyjsMResPVList);//调用添加过程接口
 							System.out.println("添加"+i);
 						}
@@ -308,7 +315,7 @@ public class OPCController {
 						Float preValue = Float.valueOf(preValueF1UMap.get(upVarName).toString());
 						if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
 							List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
-							opcTVList.add(upSyjsTV);
+							opcTVList.add(upFyjsTV);
 							Map<String, Object> fyjsMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据反应结束触发变量从opc端查找对应的过程变量
 							List<ProcessVar> fyjsMResPVList = (List<ProcessVar>)fyjsMResMap.get("proVarList");
 							int i = processVarService.addFromList(fyjsMResPVList);//调用添加过程接口

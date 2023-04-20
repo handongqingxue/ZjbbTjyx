@@ -63,12 +63,10 @@ function exportExcel() {
     <div class="m_query_head_div">
         <table class="m_query_head_table">
             <tr>
-                <td></td>
                 <td>设置检索条件</td>
                 <td></td>
             </tr>
             <tr>
-                <td></td>
                 <td>
                     起始时间
                     <input type="date" placeholder="请选择时间">
@@ -83,7 +81,6 @@ function exportExcel() {
                 </td>
             </tr>
             <tr>
-                <td></td>
                 <td>
                     结束时间
                     <input type="date" placeholder="请选择时间">
@@ -98,7 +95,7 @@ function exportExcel() {
         </table>
     </div>
     <div>
-        <table class="tab" border="1px" id="opcMTable">
+        <table class="m_query_body_table" border="1px" id="opcMTable">
             <tr>
                 <td colspan="13">
                     <span class="onetd1">M类 （ ）胶 生产记录</span>
