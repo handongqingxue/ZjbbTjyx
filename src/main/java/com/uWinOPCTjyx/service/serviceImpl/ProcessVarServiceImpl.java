@@ -84,6 +84,10 @@ public class ProcessVarServiceImpl implements ProcessVarService {
 			preName=Constant.JU_HE_ZHONG_DIAN+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
 			ptnName=Constant.JU_HE_ZHONG_DIAN+Constant.DAO+Constant.JIANG_WEN_WAN_CHENG+Constant.SHI_JIAN+Constant.CHA;//聚合终点到降温完成时间差
 		}
+		else if((Constant.FAN_YING_JIE_SHU+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN).equals(nxtName)){
+			preName=Constant.BEI_LIAO_KAI_SHI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+			ptnName=Constant.BEI_LIAO_KAI_SHI+Constant.DAO+Constant.FAN_YING_JIE_SHU+Constant.SHI_JIAN+Constant.CHA;//备料开始时间到反应结束时间差
+		}
 		String preValue=null;
 		String ptnUnit = null;
 		preValue=processVarMapper.getPreValueByPreName(preName);

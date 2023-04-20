@@ -6,15 +6,15 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
-    String basePath=request.getScheme()+"://"+request.getServerName()+":"
-            +request.getServerPort()+request.getContextPath()+"/";
-%>
+<%--<%--%>
+<%--    String basePath=request.getScheme()+"://"+request.getServerName()+":"--%>
+<%--            +request.getServerPort()+request.getContextPath()+"/";--%>
+<%--%>--%>
 <html>
 <head>
-    <script type="text/javascript" src="<%=basePath%>resource/js/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="../../../resource/js/jquery-3.3.1.js"></script>
     <title>Title</title>
-    <link rel="stylesheet" href="<%=basePath%>resource/css/style.css">
+    <link rel="stylesheet" href="../../../resource/css/form_style.css">
 
     <script type="text/javascript">
         // $(function () {

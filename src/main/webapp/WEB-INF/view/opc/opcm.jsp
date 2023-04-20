@@ -6,14 +6,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
-    String basePath=request.getScheme()+"://"+request.getServerName()+":"
-            +request.getServerPort()+request.getContextPath()+"/";
-%>
 <html>
 <head>
-<link rel="stylesheet" href="<%=basePath%>resource/css/form_style.css">
-<script type="text/javascript" src="<%=basePath%>resource/js/jquery-3.3.1.js"></script>
+
 <title>Title</title>
 <script type="text/javascript">
 var path='<%=basePath%>';
@@ -66,12 +61,14 @@ function exportExcel() {
 <body>
 <div class="m-query_div">
     <div class="m_query_head_div">
-        <table>
+        <table class="m_query_head_table">
             <tr>
+                <td></td>
                 <td>设置检索条件</td>
                 <td></td>
             </tr>
             <tr>
+                <td></td>
                 <td>
                     起始时间
                     <input type="date" placeholder="请选择时间">
@@ -86,6 +83,7 @@ function exportExcel() {
                 </td>
             </tr>
             <tr>
+                <td></td>
                 <td>
                     结束时间
                     <input type="date" placeholder="请选择时间">
