@@ -1,3 +1,7 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
 .tab{
     width: 100%;
     height: 100%;
@@ -67,4 +71,26 @@ tr>td{
 .input_yangshi{
     border-color: transparent;/*透明边框*/
     background-color:rgba(0,0,0,0);/*透明背景*/
+}
+.m-query_div{
+    width: 100%;
+    height: 100%;
+    background-color: #e1e1e1;
+}
+.m_query_head_div{
+    width: 100%;
+    height: 150px;
+    background-color: #9F9F9F;
+}
+.m_query_head_div>table{
+    padding-left: 50px;
+    width: 100%;
+    border: 1px solid #f60000;
+    background-color: #ecc61b;
+}
+.m_query_head_div>table>tr{
+    margin-top: 50px;
+}
+.m_query_head_div>table>tr>td{
+    padding-right: -50px;
 }

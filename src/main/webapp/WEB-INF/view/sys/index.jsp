@@ -13,7 +13,7 @@
 <html>
 <head>
     <title>永兴制胶数据报表系统</title>
-    <link rel="stylesheet" href="<%=basePath%>resource/css/system_ui.css">
+    <link rel="stylesheet" href="<%=basePath%>resource/css/system_style.css">
     <link rel="stylesheet" href="<%=basePath%>resource/css/layui.css">
     <script type="text/javascript" src="<%=basePath%>resource/js/layui.js"></script>
     <script type="text/javascript" src="<%=basePath%>resource/js/opc.js"></script>
