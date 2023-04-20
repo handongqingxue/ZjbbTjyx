@@ -77,7 +77,7 @@
             <%--右部分标题头--%>
             <div class="right-body-head">
                 <span class="right-body-head-span1">
-                     <i class="layui-icon" id="right-body-head-icon" style="font-size: 30px; color: #1E9FFF;"></i>
+                     <i class="layui-icon" id="right-body-head-icon" style="font-size: 30px; color: #2a2a2b;"></i>
                 </span>
                 <span id="right-body-head-span2" class="right-body-head-span2"></span>
             </div>
