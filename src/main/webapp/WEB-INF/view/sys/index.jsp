@@ -31,7 +31,7 @@
             <li>|</li>
             <li id="system-time">2023年4月19日10:30:30</li>
             <li>|</li>
-            <li>欢迎您!超级管理员</li>
+            <li>欢迎您!<span style="cursor:pointer;">超级管理员</span></li>
         </ul>
     </div>
     <%--身体--%>

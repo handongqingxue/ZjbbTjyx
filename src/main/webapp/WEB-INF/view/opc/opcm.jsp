@@ -63,17 +63,17 @@ function exportExcel() {
     <div class="m_query_head_div">
         <table class="m_query_head_table">
             <tr>
-                <td>设置检索条件</td>
+                <td style="font-size: 17px">设置检索条件:</td>
                 <td></td>
             </tr>
             <tr>
                 <td>
-                    起始时间
-                    <input type="date" placeholder="请选择时间">
+                    起始时间&nbsp;&nbsp;
+                    <input type="date" placeholder="请选择时间" class="m_query_head_input">
                 </td>
                 <td>
-                    选择批次
-                    <select>
+                    选择批次&nbsp;&nbsp;
+                    <select class="m_query_head_input">
                         <option>m1</option>
                         <option>m2</option>
                         <option>m3</option>
@@ -82,24 +82,27 @@ function exportExcel() {
             </tr>
             <tr>
                 <td>
-                    结束时间
-                    <input type="date" placeholder="请选择时间">
+                    结束时间&nbsp;&nbsp;
+                    <input type="date" placeholder="请选择时间" class="m_query_head_input">
                 </td>
                 <td>
-                    当前胶种
+                    当前胶种&nbsp;&nbsp;
                 </td>
                 <td>
-                    <button>查询</button>
+                    <button class="m_query_head_button">
+                        <i class="layui-icon layui-icon-search" style="font-size: 16px; color: #ffffff;"></i>
+                        查询
+                    </button>
                 </td>
             </tr>
         </table>
     </div>
-    <div>
+    <div class="m_query_body_div">
         <table class="m_query_body_table" border="1px" id="opcMTable">
             <tr>
                 <td colspan="13">
                     <span class="onetd1">M类 （ ）胶 生产记录</span>
-                    <span class="onetd4">自动表单设计：张发 设计号：ZJZD20211225</span>
+<%--                    <span class="onetd4">自动表单设计：张发 设计号：ZJZD20211225</span>--%>
                 </td>
             </tr>
             <%--第二行--%>
@@ -107,23 +110,23 @@ function exportExcel() {
                 <td>YSD101信息</td>
                 <td class="blue">
                     <%--甲醛厂家信息，可后期录入--%>
-                    <input type="text" id="ysd101_input" placeholder="甲醛厂家信息"/>
+<%--                    <input type="text" id="ysd101_input" placeholder="甲醛厂家信息"/>--%>
                 </td>
                 <td>YSD102信息</td>
                 <td class="blue">
                     <%--三安厂家信息可后期录入--%>
-                    <input type="text" id="ysd102_input" placeholder="三安厂家信息">
+<%--                    <input type="text" id="ysd102_input" placeholder="三安厂家信息">--%>
                 </td>
                 <td></td>
                 <td colspan="2">当班操作员：</td>
                 <td class="green" colspan="2">
                     <%--直接摘抄登录名--%>
-                    <input type="text" id="dbczyBsh_input" placeholder="登录名">
+<%--                    <input type="text" id="dbczyBsh_input" placeholder="登录名">--%>
                 </td>
                 <td colspan="2">接班操作员：</td>
                 <td class="green" colspan="2">
                     <%--直接摘抄登录名--%>
-                    <input type="text" id="jbczyBsh_input" placeholder="登录名">
+<%--                    <input type="text" id="jbczyBsh_input" placeholder="登录名">--%>
                 </td>
             </tr>
             <%--第三行--%>
@@ -131,31 +134,31 @@ function exportExcel() {
                 <td>生产编号</td>
                 <td class="yellow">
                     <%--每生产1釜加1--%>
-                    <input type="text" id="scbh_input" placeholder="生产编号">
+<%--                    <input type="text" id="scbh_input" placeholder="生产编号">--%>
                 </td>
                 <td>反应釜：</td>
                 <td class="green" colspan="2">
                     <%--反应釜号--%>
-                    <input type="text" id="fyfh_input" placeholder="反应釜号">
+<%--                    <input type="text" id="fyfh_input" placeholder="反应釜号">--%>
                 </td>
                 <td>开始时间</td>
                 <td class="green">
                     <%--备料开始时间--%>
-                    <input type="datetime-local" id="kssj_input">
+<%--                    <input type="datetime-local" id="kssj_input">--%>
                 </td>
                 <td>结束时间</td>
                 <td class="green">
                     <%--冷却结束时间--%>
-                    <input type="datetime-local" id="jssj_input">
+<%--                    <input type="datetime-local" id="jssj_input">--%>
                 </td>
                 <td>生产工时</td>
                 <td class="yellow">
                     <%--min--%>
-                    <input type="text" id="scgs_input" placeholder="min/分">
+<%--                    <input type="text" id="scgs_input" placeholder="min/分">--%>
                 </td>
                 <td>生产日期： </td>
                 <td class="green">
-                    <input type="date" id="scrq_input">
+<%--                    <input type="date" id="scrq_input">--%>
                 </td>
             </tr>
             <%--第四行--%>
