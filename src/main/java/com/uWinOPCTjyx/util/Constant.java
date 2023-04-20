@@ -418,4 +418,8 @@ public class Constant {
 	 * 保温
 	 */
 	public static final String BAO_WEN="保温";
+	/**
+	 * 冷却
+	 */
+	public static final String LENG_QUE="冷却";
 }

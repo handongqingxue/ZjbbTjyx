@@ -1034,10 +1034,12 @@ public class OPCController {
 						Float preValue = Float.valueOf(preValueF1MMap.get(upVarName).toString());
 						if (preValue == TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
 							jwwcFIdList.add(upFId);
+							
 							List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
 							opcTVList.add(upJwwcTV);
 							Map<String, Object> jwwcMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据降温完成变量从opc端查找对应的过程变量
 							List<ProcessVar> jwwcMResPVList = (List<ProcessVar>)jwwcMResMap.get("proVarList");
+							
 							int i = processVarService.addFromList(jwwcMResPVList);//调用添加过程接口
 							System.out.println("添加"+i);
 							
@@ -1046,10 +1048,12 @@ public class OPCController {
 						Float preValue = Float.valueOf(preValueF1UMap.get(upVarName).toString());
 						if (preValue == TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
 							jwwcFIdList.add(upFId);
+							
 							List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
 							opcTVList.add(upJwwcTV);
 							Map<String, Object> jwwcMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据降温完成变量从opc端查找对应的过程变量
 							List<ProcessVar> jwwcMResPVList = (List<ProcessVar>)jwwcMResMap.get("proVarList");
+							
 							int i = processVarService.addFromList(jwwcMResPVList);//调用添加过程接口
 							System.out.println("添加"+i);
 						}
