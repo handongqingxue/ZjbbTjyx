@@ -1039,7 +1039,13 @@ public class OPCController {
 							opcTVList.add(upJwwcTV);
 							Map<String, Object> jwwcMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据降温完成变量从opc端查找对应的过程变量
 							List<ProcessVar> jwwcMResPVList = (List<ProcessVar>)jwwcMResMap.get("proVarList");
-							
+							//获取降温完成时间变量名
+							String jwwcSjVarName = Constant.JIANG_WEN_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+							ProcessVar jwwcSjPV = OpcUtil.getProVarInListByVarName(jwwcSjVarName, jwwcMResPVList);
+							String jwwcSjVarValue = jwwcSjPV.getUpdateTime();
+							ProcessVar ptnSjPV = processVarService.getPtnValuePV(jwwcSjVarName,jwwcSjVarValue+"",jwwcSjPV);
+							jwwcMResPVList.add(ptnSjPV);//将时间差对象添加到集合里
+
 							int i = processVarService.addFromList(jwwcMResPVList);//调用添加过程接口
 							System.out.println("添加"+i);
 							

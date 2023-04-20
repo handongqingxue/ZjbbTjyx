@@ -88,9 +88,3 @@ tr>td{
     border: 1px solid #f60000;
     background-color: #ecc61b;
 }
-.m_query_head_div>table>tr{
-    margin-top: 50px;
-}
-.m_query_head_div>table>tr>td{
-    padding-right: -50px;
-}

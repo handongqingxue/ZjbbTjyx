@@ -80,6 +80,8 @@
             </div>
             <%--右部分body--%>
             <div class="right-body-main">
+                <jsp:forward page="../opc/opc.jsp"></jsp:forward>
+                <%@include file="../opc/opc.jsp"%>
             <%--<jsp:include page="<%=basePath%>WEB-INF/view/opc/opc.jsp"></jsp:include>--%>
             <%-- <%=basePath%>WEB-INF/view/opc/opc.jsp--%>
             </div>
