@@ -56,6 +56,22 @@ function exportExcel() {
     a.click();
 }
 
+
+
+layui.use('laypage', function(){
+    var laypage = layui.laypage;
+
+    //完整功能
+    laypage.render({
+        elem: 'paging'
+        ,count: 100
+        ,layout: ['count', 'prev', 'page', 'next', 'refresh', 'skip']
+        ,jump: function(obj){
+            console.log(obj)
+        }
+    });
+});
+
 </script>
 </head>
 <body>
@@ -440,6 +456,9 @@ function exportExcel() {
                 <td></td>
             </tr>
         </table>
+    </div>
+    <div class="m_query_bottom_div">
+        <div id="paging"></div>
     </div>
 </div>
 </body>
