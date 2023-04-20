@@ -71,30 +71,36 @@
             </ul>
         </div>
         <div class="home-right-body">
+            <%--右部分标题头--%>
             <div class="right-body-head">
                 <span class="right-body-head-span1">
-                     <i class="layui-icon " id="right-body-head-icon" style="font-size: 30px; color: #1E9FFF;"></i>
+                     <i class="layui-icon" id="right-body-head-icon" style="font-size: 30px; color: #1E9FFF;"></i>
                 </span>
-                <span id="right-body-head-span2" class="right-body-head-span2">
-
-                </span>
+                <span id="right-body-head-span2" class="right-body-head-span2"></span>
+            </div>
+            <%--右部分body--%>
+            <div class="right-body-main">
+            <%--<jsp:include page="<%=basePath%>WEB-INF/view/opc/opc.jsp"></jsp:include>--%>
+            <%-- <%=basePath%>WEB-INF/view/opc/opc.jsp--%>
             </div>
         </div>
     </div>
 </div>
 <script>
-    window.load(inspect(1));
+    window.load(init(1));
+
+    function init(id) {
+        document.getElementById("right-body-head-icon").classList.add("layui-icon-search");
+        document.getElementById("right-body-head-span2").innerHTML="报表查询页面";
+    }
 
     function inspect(id){
         if (id==0){
             document.getElementById("right-body-head-span2").innerHTML="报表生成页面";
-            document.getElementById("right-body-head-icon").classList.add("layui-icon-add-circle-fine");
+            document.getElementById("right-body-head-icon").classList.replace("layui-icon-search","layui-icon-add-circle");
         }else if(id==1){
             document.getElementById("right-body-head-span2").innerHTML="报表查询页面";
-            document.getElementById("right-body-head-icon").classList.add("layui-icon-search");
-        }else if (id==null||id==undefined){
-            document.getElementById("right-body-head-span2").innerHTML="报表查询页面";
-            document.getElementById("right-body-head-icon").classList.add("layui-icon-search");
+            document.getElementById("right-body-head-icon").classList.replace("layui-icon-add-circle","layui-icon-search");
         }
     }
 

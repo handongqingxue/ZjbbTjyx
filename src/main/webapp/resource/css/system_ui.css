@@ -67,3 +67,8 @@ body, html {
     color: #3c7faf;
     margin-left: 5px;
 }
+.right-body-main{
+    margin: 0px 0px 0px 5px;
+    height: calc(100% - 5px);
+    height: calc(100% - 60px);
+}
