@@ -99,25 +99,73 @@ public class ERecordServiceImpl implements ERecordService {
 				eRecord4.setPreValue(updateTime);//备料开始时间是数据采集过程中记录的，与记录时间不是一回事
 				
 			}
-			else if(pvVarName.startsWith(Constant.FAN_YING_JIE_SHU_SHI_JIAN+Constant.SHANG_SHENG_YAN)) {//反应结束上升沿时间
+			else if(pvVarName.startsWith(Constant.FAN_YING_JIE_SHU+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN)) {//反应结束上升沿时间
 				String updateTime = processVar.getUpdateTime();
 				String pvRecType = processVar.getRecType();
 				Integer pvFId = processVar.getFId();
 				String batchID = batchIDMap.get(pvFId).toString();
 				
-				eRecord=getFromList(Constant.KAI_SHI+Constant.DAO+Constant.JIE_SHU+Constant.SHI_JIAN, batchID, eRecordList);
-				if(eRecord==null) {
-					eRecord=new ERecord();
-					eRecord.setVarName(Constant.KAI_SHI+Constant.DAO+Constant.JIE_SHU+Constant.SHI_JIAN);
-					eRecord.setRecType(pvRecType);
-					eRecord.setFId(pvFId);
-					eRecord.setRecordTime(recordTime);
-					eRecord.setBatchID(batchID);
-					eRecord.setPhaseName(Constant.SHENG_CHAN_BIAN_HAO);
+				ERecord eRecord1=getFromList(Constant.KAI_SHI+Constant.DAO+Constant.JIE_SHU+Constant.SHI_JIAN, batchID, eRecordList);
+				if(eRecord1==null) {
+					eRecord1=new ERecord();
+					eRecord1.setVarName(Constant.KAI_SHI+Constant.DAO+Constant.JIE_SHU+Constant.SHI_JIAN);
+					eRecord1.setRecType(pvRecType);
+					eRecord1.setFId(pvFId);
+					eRecord1.setRecordTime(recordTime);
+					eRecord1.setBatchID(batchID);
+					eRecord1.setPhaseName(Constant.SHENG_CHAN_BIAN_HAO);
+					
+					eRecordList.add(eRecord1);
 				}
-				eRecord.setNxtValue(updateTime);//反应结束时间是数据采集过程中记录的，与记录时间不是一回事
+				eRecord1.setNxtValue(updateTime);//反应结束时间是数据采集过程中记录的，与记录时间不是一回事
 				
-				eRecordList.add(eRecord);
+				ERecord eRecord2=getFromList(Constant.PI_CI_JI_LU, batchID, eRecordList);
+				if(eRecord2==null) {
+					eRecord2=new ERecord();
+					eRecord2.setVarName(Constant.PI_CI_JI_LU);
+					eRecord2.setRecType(pvRecType);
+					eRecord2.setFId(pvFId);
+					eRecord2.setRecordTime(recordTime);
+					eRecord2.setBatchID(batchID);
+					eRecord2.setRemark(ERecord.WSCBB+"");
+					
+					eRecordList.add(eRecord2);
+				}
+				eRecord2.setNxtValue(updateTime);
+			}
+			else if(pvVarName.startsWith(Constant.BEI_LIAO_KAI_SHI+Constant.DAO+Constant.FAN_YING_JIE_SHU+Constant.SHI_JIAN+Constant.CHA)) {//备料开始到反应结束时间差
+				String pvRecType = processVar.getRecType();
+				Integer pvFId = processVar.getFId();
+				String batchID = batchIDMap.get(pvFId).toString();
+				Float varValue = processVar.getVarValue();
+				
+				ERecord eRecord1=getFromList(Constant.KAI_SHI+Constant.DAO+Constant.JIE_SHU+Constant.SHI_JIAN, batchID, eRecordList);
+				if(eRecord1==null) {
+					eRecord1=new ERecord();
+					eRecord1.setVarName(Constant.KAI_SHI+Constant.DAO+Constant.JIE_SHU+Constant.SHI_JIAN);
+					eRecord1.setRecType(pvRecType);
+					eRecord1.setFId(pvFId);
+					eRecord1.setRecordTime(recordTime);
+					eRecord1.setBatchID(batchID);
+					eRecord1.setPhaseName(Constant.SHENG_CHAN_BIAN_HAO);
+					
+					eRecordList.add(eRecord1);
+				}
+				eRecord1.setPtnValue(varValue+"");
+				
+				ERecord eRecord2=getFromList(Constant.PI_CI_JI_LU, batchID, eRecordList);
+				if(eRecord2==null) {
+					eRecord2=new ERecord();
+					eRecord2.setVarName(Constant.PI_CI_JI_LU);
+					eRecord2.setRecType(pvRecType);
+					eRecord2.setFId(pvFId);
+					eRecord2.setRecordTime(recordTime);
+					eRecord2.setBatchID(batchID);
+					eRecord2.setRemark(ERecord.WSCBB+"");
+					
+					eRecordList.add(eRecord2);
+				}
+				eRecord2.setPtnValue(varValue+"");
 			}
 			else if(pvVarName.startsWith(Constant.SHENG_CHAN_GONG_SHI)) {//生产工时
 				Integer pvFId = processVar.getFId();
@@ -1154,25 +1202,26 @@ public class ERecordServiceImpl implements ERecordService {
 				eRecord.setPreValue(updateTime);
 			}
 			else if(pvVarName.startsWith(Constant.JIANG_WEN_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN)) {//降温完成上升沿时间
+				String pvRecType = processVar.getRecType();
 				Integer pvFId = processVar.getFId();
 				String batchID = batchIDMap.get(pvFId).toString();
 				String updateTime = processVar.getUpdateTime();
 				
-				eRecord=getFromList(Constant.KAI_SHI_JIANG_WEN+Constant.DAO+Constant.TING_ZHI_JIANG_WEN+Constant.SHI_JIAN, batchID, eRecordList);
-				if(eRecord==null) {
-					String pvRecType = processVar.getRecType();
+				ERecord eRecord1=getFromList(Constant.KAI_SHI_JIANG_WEN+Constant.DAO+Constant.TING_ZHI_JIANG_WEN+Constant.SHI_JIAN, batchID, eRecordList);
+				if(eRecord1==null) {
+					eRecord1=new ERecord();
+					eRecord1.setVarName(Constant.KAI_SHI_JIANG_WEN+Constant.DAO+Constant.TING_ZHI_JIANG_WEN+Constant.SHI_JIAN);
+					eRecord1.setRecType(pvRecType);
+					eRecord1.setFId(pvFId);
+					eRecord1.setRecordTime(recordTime);
+					eRecord1.setBatchID(batchID);
+					eRecord1.setPhaseName(Constant.LENG_QUE);
 					
-					eRecord=new ERecord();
-					eRecord.setVarName(Constant.KAI_SHI_JIANG_WEN+Constant.DAO+Constant.TING_ZHI_JIANG_WEN+Constant.SHI_JIAN);
-					eRecord.setRecType(pvRecType);
-					eRecord.setFId(pvFId);
-					eRecord.setRecordTime(recordTime);
-					eRecord.setBatchID(batchID);
-					eRecord.setPhaseName(Constant.LENG_QUE);
-					
-					eRecordList.add(eRecord);
+					eRecordList.add(eRecord1);
 				}
-				eRecord.setNxtValue(updateTime);
+				
+				if(eRecord1!=null)
+					eRecord1.setNxtValue(updateTime);
 			}
 			else if(pvVarName.startsWith(Constant.JIANG_WEN_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU)) {//降温完成上升沿反应釜温度
 				Float pvVarValue = processVar.getVarValue();

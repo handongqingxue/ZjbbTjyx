@@ -240,7 +240,7 @@ public class OPCController {
 		System.out.println("------------------------------");
 		System.out.println(triggerVarMap.toString());
 		//李工的代码逻辑从这里开始写
-		if(false) {
+		//if(false) {
 		//备料开始触发量
 		List<Integer> blksFIdList=new ArrayList<Integer>();
 		List<TriggerVar> blksTVList = (List<TriggerVar>)triggerVarMap.get(Constant.BEI_LIAO_KAI_SHI);//获取备料开始触发变量,不管是否是上升沿
@@ -281,7 +281,7 @@ public class OPCController {
 				}
 			}
 		}
-		}
+		//}
 
 		//反应结束
 		List<Integer> fyjsFIdList=new ArrayList<Integer>();
@@ -307,6 +307,7 @@ public class OPCController {
 							String fyjsSjVarValue = fyjsSjPV.getUpdateTime();
 							ProcessVar ptnSjPV = processVarService.getPtnValuePV(fyjsSjVarName,fyjsSjVarValue+"",fyjsSjPV);
 							fyjsMResPVList.add(ptnSjPV);//将时间差对象添加到集合里
+							
 							int i = processVarService.addFromList(fyjsMResPVList);//调用添加过程接口
 							System.out.println("添加"+i);
 						}
@@ -318,6 +319,7 @@ public class OPCController {
 							opcTVList.add(upFyjsTV);
 							Map<String, Object> fyjsMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据反应结束触发变量从opc端查找对应的过程变量
 							List<ProcessVar> fyjsMResPVList = (List<ProcessVar>)fyjsMResMap.get("proVarList");
+							
 							int i = processVarService.addFromList(fyjsMResPVList);//调用添加过程接口
 							System.out.println("添加"+i);
 						}
@@ -1136,6 +1138,7 @@ public class OPCController {
 		}
 		Map<String, List<TriggerVar>> tvGroupMap=new HashMap<String, List<TriggerVar>>();
 		List<TriggerVar> blksTVList=new ArrayList<TriggerVar>();//备料开始新集合,用来存放对象
+		List<TriggerVar> fyjsTVList=new ArrayList<TriggerVar>();//反应结束新集合,用来存放对象
 		List<TriggerVar> jqblksTVList=new ArrayList<TriggerVar>();//甲醛备料开始新集合,用来存放对象
 		List<TriggerVar> jqflwcTVList=new ArrayList<TriggerVar>();//甲醛放料完成新集合,用来存放对象
 		List<TriggerVar> jjphzzcTVList=new ArrayList<TriggerVar>();//加碱PH值正常
@@ -1194,8 +1197,12 @@ public class OPCController {
 					fyfh=Constant.BSF_F5U;
 				break;
 			}
+			
 			if((Constant.BEI_LIAO_KAI_SHI+"_"+fyfh+"_AV").equals(varName)) {//备料开始
 				blksTVList.add(triggerVar);
+			}
+			else if((Constant.FAN_YING_JIE_SHU+"_"+fyfh+"_AV").equals(varName)) {//反应结束
+				fyjsTVList.add(triggerVar);
 			}
 			else if((Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+"_"+fyfh+"_AV").equals(varName)) {//甲醛备料开始
 				jqblksTVList.add(triggerVar);
@@ -1257,6 +1264,7 @@ public class OPCController {
 		}
 		
 		tvGroupMap.put(Constant.BEI_LIAO_KAI_SHI, blksTVList);//备料开始
+		tvGroupMap.put(Constant.FAN_YING_JIE_SHU, fyjsTVList);//反应结束
 		tvGroupMap.put(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI, jqblksTVList);//甲醛备料开始
 		tvGroupMap.put(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG,jqflwcTVList);//甲醛放料完成
 		tvGroupMap.put(Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG,jjphzzcTVList);//加碱PH值正常
