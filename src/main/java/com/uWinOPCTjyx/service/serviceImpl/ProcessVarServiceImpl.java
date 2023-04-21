@@ -120,8 +120,11 @@ public class ProcessVarServiceImpl implements ProcessVarService {
 		return ptnValuePV;
 	}
 
-	public int deleteProByDealBz() {
-		return processVarMapper.deleteProByDealBz();
+	public int deleteDealed(int fId) {
+		int count=processVarMapper.getDealedCount(fId);
+		if(count>0)
+			count=processVarMapper.deleteDealed(fId);
+		return count;
 	}
 
 }

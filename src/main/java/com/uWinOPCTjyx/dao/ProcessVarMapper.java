@@ -37,9 +37,11 @@ public interface ProcessVarMapper {
 	 */
 	String getPreValueByPreName(@Param("preName") String preName);
 
+	int getDealedCount(@Param("fId") int fId);
+
 	/**
 	 * 删除ProcessVar表里面处理标志为1的数据
 	 * @return
 	 */
-	int deleteProByDealBz();
+	int deleteDealed(@Param("fId") int fId);
 }

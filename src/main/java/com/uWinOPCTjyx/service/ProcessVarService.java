@@ -38,7 +38,8 @@ public interface ProcessVarService {
 
 	/**
 	 * 删除ProcessVar表里面处理标志为1的数据
+	 * @param fId 
 	 * @return
 	 */
-	int deleteProByDealBz();
+	int deleteDealed(int fId);
 }
