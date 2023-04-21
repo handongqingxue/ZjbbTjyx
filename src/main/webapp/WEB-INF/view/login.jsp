@@ -119,11 +119,11 @@
     }
 
     function insertUser() {
-        // var pass=MD5($("12345678").val()).toUpperCase();
+        var pass=MD5("12345678").toUpperCase();
         $.post(baseUrl + "/user/addUser",
             {
                 UserName:'lilekang',
-                Psd:'123456'
+                Psd:pass
             },
             function(json){
                 alert(json)
