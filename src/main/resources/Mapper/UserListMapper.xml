@@ -5,11 +5,11 @@
 <mapper namespace="com.uWinOPCTjyx.dao.UserListMapper">
 
     <select id="login" resultType="com.uWinOPCTjyx.entity.UserList">
-        select * from UserList where UserName=#{user.UserName} and Psd=#{user.Psd}
+        select * from UserList where UserName=#{userName} and Psd=#{psd}
     </select>
 
     <insert id="addUser" parameterType="com.uWinOPCTjyx.entity.UserList">
-        INSERT into UserList (UserName,Psd,CTime,Type) VALUES (#{user.UserName},#{user.Psd},getDate(),1)
+        INSERT into UserList (UserName,Psd,CTime,Type) VALUES (#{userName},#{psd},getDate(),1)
     </insert>
 
 </mapper>
