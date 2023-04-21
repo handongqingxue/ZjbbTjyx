@@ -12,11 +12,22 @@
 %>
 <html>
 <head>
-    <title>Title</title>
+    <title>登陆</title>
     <link rel="stylesheet" href="<%=basePath%>resource/css/system_style.css">
 </head>
 <body>
     <div class="login">
+        <video
+                class="fullscreenVideo"
+                id="bgVid"
+                playsinline=""
+                autoplay=""
+                muted=""
+                loop=""
+                width="100%"
+        >
+            <source src="<%=basePath%>resource/video/login_background.mp4" type="video/mp4" />
+        </video>
         <div class="login_box">
             <table>
                 <tr>
@@ -24,17 +35,17 @@
                 </tr>
                 <tr>
                     <td>
-                        <input type="text" placeholder="请输入账号">
+                        <input type="text" class="login_input" placeholder="请输入账号">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <input type="text" placeholder="请输入密码">
+                        <input type="password" class="login_input" placeholder="请输入密码">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <button @click="login()" class="denglu">登陆</button>
+                        <button @click="login()" class="login_button">登陆</button>
                     </td>
                 </tr>
             </table>
