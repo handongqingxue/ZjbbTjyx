@@ -1363,4 +1363,9 @@ public class ERecordServiceImpl implements ERecordService {
 		}
 		return eRecord;
 	}
+
+	public List<ERecord> getListByBatchID(String batchID) {
+		// TODO Auto-generated method stub
+		return eRecordMapper.getListByBatchID(batchID);
+	}
 }

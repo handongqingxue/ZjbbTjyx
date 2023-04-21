@@ -34,6 +34,8 @@ public class OPCController {
 	private ProcessVarService processVarService;
 	@Autowired
 	private OpcVarTestService opcVarTestService;
+	@Autowired
+	private ReportF_MService reportF_MService;
 
 	private Map<String,Object> f1Map,f2Map,f3Map,f4Map,f5Map;
 
@@ -78,6 +80,23 @@ public class OPCController {
 		finally {
 			return json;
 		}
+	}
+
+	@RequestMapping(value = "/addReportFByBatchID", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> addReportFByBatchID(String batchID) {
+
+		Map<String,Object> json=new HashMap<String, Object>();
+		
+		List<ERecord> eRecordList=eRecordService.getListByBatchID(batchID);
+		
+		int count=0;
+		String recType = batchID.substring(0,1);
+		if(ERecord.M.equals(recType)) {
+			count=reportF_MService.addByERecordList(eRecordList);
+		}
+		
+		return json;
 	}
 	
 	@RequestMapping(value = "/initFMap", method = RequestMethod.POST)
