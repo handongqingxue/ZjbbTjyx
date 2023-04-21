@@ -224,6 +224,15 @@ public class OpcUtil {
                 opcVarNameList.add(fyfwdPvVarName);
             }
         }
+        else if (tv1VarName.startsWith(Constant.JIA_FEN_LIAO_PH_HE_GE)) {
+        	Integer tvFId = triggerVar1.getFId();
+        	String tvRecType = triggerVar1.getRecType();
+        	String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
+        	//加粉料PH输入值
+            String jflphsrzPvVarNameQz=Constant.JIA_FEN_LIAO_PH_SHU_RU_ZHI;
+            String jflphsrzOpcVarName=jflphsrzPvVarNameQz+"_"+opcFName+"_AV";
+            opcVarNameList.add(jflphsrzOpcVarName);
+        }
         else if (tv1VarName.startsWith(Constant.SHENG_WEN_KAI_SHI+"_")){//升温开始要记录(蒸汽压力MPa)
             Integer tvFId = triggerVar1.getFId();
             String tvRecType = triggerVar1.getRecType();
