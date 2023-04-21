@@ -7,6 +7,11 @@ public class UserList {
     private String CTime;
     private Integer Type;
 
+    public UserList(String userName, String psd) {
+        UserName = userName;
+        Psd = psd;
+    }
+
     public Integer getId() {
         return id;
     }
