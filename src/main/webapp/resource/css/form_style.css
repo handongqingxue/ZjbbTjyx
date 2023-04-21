@@ -1,0 +1,116 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.m_query_body_table{
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.remarks{
+    width: 150px;
+}
+.dcfxjg_style{
+    font: normal 400 18px '微软雅黑';
+    position: fixed;
+    top: 25px;
+    left: 1610px;
+}
+
+.bc_style{
+    position: fixed;
+    top: 25px;
+    left: 1550px;
+    font: normal 400 18px '微软雅黑';
+}
+
+.onetd1{
+    font: normal 600 24px"宋体";
+}
+
+.onetd2{
+    font: normal 600 26px"宋体";
+}
+
+.onetd3{
+    font: normal 600 22px"宋体";
+    left: 50px;
+}
+
+.onetd4{
+    font: normal 400 6px"宋体";
+}
+
+.greens{
+    background-color: #70ad47;
+}
+
+.blue{
+    background-color: #5b9bd5;
+}
+
+.green{
+    background-color: #c6e0b4;
+}
+
+.yellow{
+    background-color: #fee699;
+}
+
+.grey{
+    background-color: #aeaaaa;
+}
+
+.input_yangshi{
+    border-color: transparent;/*透明边框*/
+    background-color:rgba(0,0,0,0);/*透明背景*/
+}
+.m-query_div{
+    width: 100%;
+    background-color: #FFFFFF;
+}
+.m_query_head_div{
+    width: 100%;
+    height: 110px;
+    border-bottom: 2px #dbdbdb solid;
+}
+.m_query_head_table{
+    margin-left: 55px;
+    width: 100%;
+    height: 95%;
+}
+.m_query_head_table tr{
+}
+.m_query_head_table tr td{
+    width: 150px;
+    color: #1f1f1f;
+    font: normal 400 14px "华文黑体";
+}
+.m_query_head_button{
+    border: 0px;
+    width: 90px;
+    height: 30px;
+    color: #FFFFFF;
+    border-radius: 7px;
+    background-color: #5ac980;
+    cursor:pointer;
+    margin-left: 60px;
+}
+.m_query_head_input{
+    width: 200px;
+    color: #c2c2c2;
+    border: #c2c2c2 1px solid;
+    border-radius: 3px;
+    height: 25px;
+}
+.m_query_body_div{
+    overflow:auto;
+    width: 100%;
+    height: 80%;
+}
+.m_query_bottom_div{
+    width: 100%;
+    height: 80px;
+    border-top: 1px #d4cfcf solid;
+}

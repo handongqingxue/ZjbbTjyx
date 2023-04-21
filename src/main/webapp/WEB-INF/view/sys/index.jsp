@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
-  User: OPS1
-  Date: 2023/4/18
-  Time: 13:18
+  User: lilekang
+  Date: 2023/4/19
+  Time: 9:15 上午
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -12,110 +12,101 @@
 %>
 <html>
 <head>
-    <link rel="stylesheet" href="<%=basePath%>resource/css/layui.css">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>永兴制胶数据报表系统</title>
+    <link rel="stylesheet" href="<%=basePath%>resource/css/form_style.css">
+    <script type="text/javascript" src="<%=basePath%>resource/js/jquery-3.3.1.js"></script>
+
+    <link rel="stylesheet" href="<%=basePath%>resource/css/system_style.css">
+    <link rel="stylesheet" href="<%=basePath%>resource/css/layui.css">
+    <script type="text/javascript" src="<%=basePath%>resource/js/layui.js"></script>
+    <script type="text/javascript" src="<%=basePath%>resource/js/opc.js"></script>
 </head>
 <body>
-<div class="layui-layout layui-layout-admin">
-    <div class="layui-header">
-        <div class="layui-logo layui-hide-xs layui-bg-black">layout demo</div>
-        <!-- 头部区域（可配合layui 已有的水平导航） -->
-        <ul class="layui-nav layui-layout-left">
-            <!-- 移动端显示 --> 
-                <dl class="layui-nav-child">
-                    <dd><a href="">menu 11</a></dd>
-                    <dd><a href="">menu 22</a></dd>
-                    <dd><a href="">menu 33</a></dd>
-                </dl>
-            </li>
-        </ul>
-        <ul class="layui-nav layui-layout-right">
-            <li class="layui-nav-item layui-hide layui-show-md-inline-block">
-                <a href="javascript:;">
-                    <img src="//tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" class="layui-nav-img">
-                    tester
-                </a>
-                <dl class="layui-nav-child">
-                    <dd><a href="">Your Profile</a></dd>
-                    <dd><a href="">Settings</a></dd>
-                    <dd><a href="">Sign out</a></dd>
-                </dl>
-            </li>
-            <li class="layui-nav-item" lay-header-event="menuRight" lay-unselect>
-                <a href="javascript:;">
-                    <i class="layui-icon layui-icon-more-vertical"></i>
-                </a>
-            </li>
+<div class="home">
+    <%--头部--%>
+    <div class="home-head">
+        <span class="home-head-span">永兴制胶数据报表系统</span>
+        <ul class="home-head-ul">
+            <li></li>
+            <li>|</li>
+            <li id="system-time">2023年4月19日10:30:30</li>
+            <li>|</li>
+            <li>欢迎您!<span style="cursor:pointer;">超级管理员</span></li>
         </ul>
     </div>
-
-    <div class="layui-side layui-bg-black">
-        <div class="layui-side-scroll">
-            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+    <%--身体--%>
+    <div class="home-body">
+        <div class="home-left-body">
             <ul class="layui-nav layui-nav-tree" lay-filter="test">
-                <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;">menu group 1</a>
+                <%--layui-nav-itemed 自动展开--%>
+                <li class="layui-nav-item">
+                    <a href="javascript:;" onclick="inspect(0)">M类报表生成</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">menu 1</a></dd>
-                        <dd><a href="javascript:;">menu 2</a></dd>
-                        <dd><a href="javascript:;">menu 3</a></dd>
-                        <dd><a href="">the links</a></dd>
+                        <dd><a href="javascript:;">demo1</a></dd>
+                        <dd><a href="javascript:;">demo2</a></dd>
+                        <dd><a href="javascript:;">demo3</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="javascript:;">menu group 2</a>
+                    <a href="javascript:;" onclick="inspect(0)">U类报表生成</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">list 1</a></dd>
-                        <dd><a href="javascript:;">list 2</a></dd>
-                        <dd><a href="">超链接</a></dd>
+                        <dd><a href="javascript:;">demo1</a></dd>
+                        <dd><a href="javascript:;">demo2</a></dd>
+                        <dd><a href="javascript:;">demo3</a></dd>
                     </dl>
                 </li>
-                <li class="layui-nav-item"><a href="javascript:;">click menu item</a></li>
-                <li class="layui-nav-item"><a href="">the links</a></li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;" onclick="inspect(1)">M类报表查询</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">demo1</a></dd>
+                        <dd><a href="javascript:;">demo2</a></dd>
+                        <dd><a href="javascript:;">demo3</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;" onclick="inspect(1)">U类报表查询</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">demo1</a></dd>
+                        <dd><a href="javascript:;">demo2</a></dd>
+                        <dd><a href="javascript:;">demo3</a></dd>
+                    </dl>
+                </li>
             </ul>
         </div>
-    </div>
-
-    <div class="layui-body">
-        <!-- 内容主体区域 -->
-        <div style="padding: 15px;">内容主体区域。记得修改 layui.css 和 js 的路径</div>
-    </div>
-
-    <div class="layui-footer">
-        <!-- 底部固定区域 -->
-        底部固定区域
+        <div class="home-right-body">
+            <%--右部分标题头--%>
+            <div class="right-body-head">
+                <span class="right-body-head-span1">
+                     <i class="layui-icon" id="right-body-head-icon" style="font-size: 30px; color: #2a2a2b;"></i>
+                </span>
+                <span id="right-body-head-span2" class="right-body-head-span2"></span>
+            </div>
+            <%--右部分body--%>
+            <div class="right-body-main" style="overflow: hidden">
+<%--                <iframe style="width: 100%; height: 500px;" src="../opc/demo.jsp"></iframe>--%>
+                <%@include file="../opc/opcm.jsp"%>
+            </div>
+        </div>
     </div>
 </div>
-<script src="<%=basePath%>resource/js/layui.js"></script>
 <script>
-    //JS
-    layui.use(['element', 'layer', 'util'], function(){
-        var element = layui.element
-            ,layer = layui.layer
-            ,util = layui.util
-            ,$ = layui.$;
+    window.load(init(1));
 
-        //头部事件
-        util.event('lay-header-event', {
-            //左侧菜单事件
-            menuLeft: function(othis){
-                layer.msg('展开左侧菜单的操作', {icon: 0});
-            }
-            ,menuRight: function(){
-                layer.open({
-                    type: 1
-                    ,content: '<div style="padding: 15px;">处理右侧面板的操作</div>'
-                    ,area: ['260px', '100%']
-                    ,offset: 'rt' //右上角
-                    ,anim: 5
-                    ,shadeClose: true
-                });
-            }
-        });
+    function init(id) {
+        document.getElementById("right-body-head-icon").classList.add("layui-icon-search");
+        document.getElementById("right-body-head-span2").innerHTML="报表查询页面";
+    }
 
-    });
+    function inspect(id){
+        if (id==0){
+            document.getElementById("right-body-head-span2").innerHTML="报表生成页面";
+            document.getElementById("right-body-head-icon").classList.replace("layui-icon-search","layui-icon-add-circle");
+        }else if(id==1){
+            document.getElementById("right-body-head-span2").innerHTML="报表查询页面";
+            document.getElementById("right-body-head-icon").classList.replace("layui-icon-add-circle","layui-icon-search");
+        }
+    }
+
 </script>
 </body>
 </html>
