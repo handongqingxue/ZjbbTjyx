@@ -75,6 +75,8 @@ body, html {
     height: calc(100% - 60px);
 }
 .login_box {
+    justify-content:center;/*左右居中
+    align-items:center;/*上下居中*/
     background: rgba(6, 47, 101, 0.3);
     position: fixed;
     top: 200px;
@@ -88,16 +90,46 @@ body, html {
     border-radius: 5px;
 }
 .login{
+    position: fixed;
     width: 100%;
     height: 100%;
-    background-color: #dcd9d9;
+    overflow: hidden;
+    z-index: -100;
 }
 .login_box > table {
+    width: 100%;
+    height: 100px;
+    border: 1px saddlebrown solid;
+    background-color: #1E9FFF;
+    margin-top: 30px;
 }
-.login_box > table > tr {
+.login_box > table tr {
     margin-top: 20px;
 }
 .login_page_title {
     font: normal 400 22px "微软雅黑";
     color: #ffffff;
+}
+.login:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: -1;
+    top: 0;
+    left: 0;
+}
+.login_input{
+    width: 240px;
+    height: 50px;
+
+}
+.login_button{
+    border-radius: 10px;
+    border: 0px;
+    width: 240px;
+    height: 50px;
+    color: #FFFFFF;
+    background-color: #5e94c8;
 }
