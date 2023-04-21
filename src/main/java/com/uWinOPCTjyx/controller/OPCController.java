@@ -671,6 +671,8 @@ public class OPCController {
 
 		}
 		*/
+		
+		
 		//加粉料PH合格
 		List<Integer> jflphhgFIdList=new ArrayList<Integer>();
 		List<TriggerVar> jflphhgTVList = (List<TriggerVar>)triggerVarMap.get(Constant.JIA_FEN_LIAO_PH_HE_GE);//获取加粉料PH合格变量,不管是否是上升沿
