@@ -39,6 +39,7 @@ body, html {
     display:inline;
 }
 .home-left-body{
+    overflow:auto;
     float:left;
     width: 200px;
     height: calc(100% - 65px);
@@ -72,4 +73,31 @@ body, html {
     margin: 0px 0px 0px 5px;
     height: calc(100% - 5px);
     height: calc(100% - 60px);
+}
+.login_box {
+    background: rgba(6, 47, 101, 0.3);
+    position: fixed;
+    top: 200px;
+    left: 800px;
+    width: 400px;
+    height: 270px;
+    border: 1px solid #0b477d;
+    color: white;
+    box-shadow: 0 0 12px #14678f inset;
+    margin-right: 50px;
+    border-radius: 5px;
+}
+.login{
+    width: 100%;
+    height: 100%;
+    background-color: #dcd9d9;
+}
+.login_box > table {
+}
+.login_box > table > tr {
+    margin-top: 20px;
+}
+.login_page_title {
+    font: normal 400 22px "微软雅黑";
+    color: #ffffff;
 }
