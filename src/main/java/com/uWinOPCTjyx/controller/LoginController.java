@@ -37,7 +37,7 @@ public class LoginController {
         try {
             UsernamePasswordToken token = new UsernamePasswordToken(user.getUserName(), user.getPsd());
             Subject currentUser = SecurityUtils.getSubject();
-            if (currentUser.isAuthenticated()){
+            if (!currentUser.isAuthenticated()){
                 //使用shiro来验证
                 token.setRememberMe(true);
                 currentUser.login(token);

@@ -8,8 +8,21 @@ public class UserList {
     private Integer Type;
 
     public UserList(String userName, String psd) {
+
         UserName = userName;
         Psd = psd;
+
+    }
+
+    public UserList() {
+    }
+
+    public UserList(Integer id, String userName, String psd, String CTime, Integer type) {
+        this.id = id;
+        UserName = userName;
+        Psd = psd;
+        this.CTime = CTime;
+        Type = type;
     }
 
     public Integer getId() {
