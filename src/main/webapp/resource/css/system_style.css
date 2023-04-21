@@ -76,8 +76,9 @@ body, html {
 }
 .login_box {
     z-index: 100;
-    justify-content:center;/*左右居中*/
-    align-items:center;/*上下居中*/
+    display: flex;
+    align-items: center; /*纵轴对齐方式，默认是纵轴 子元素垂直居中*/
+    justify-content: center; /*纵轴对齐方式，默认是纵轴*/
     background: rgba(6, 47, 101, 0.3);
     position: fixed;
     top: 30%;
@@ -99,11 +100,7 @@ body, html {
     /*z-index: -1;*/
 }
 .login_box > table {
-    height: 100px;
-    background-color: #1E9FFF;
-}
-.login_box > table tr {
-    margin-top: 20px;
+    height: 70%;
 }
 .login_page_title {
     font: normal 400 22px "微软雅黑";
@@ -120,15 +117,24 @@ body, html {
     left: 0;
 }
 .login_input{
-    width: 240px;
-    height: 50px;
-
+    border: 0px;
+    width: 230px;
+    height: 40px;
+    border-radius: 5px;
+}
+.login_input::placeholder{
+    font: normal 400 14px "微软雅黑";
+    color: #7e8286;
+    margin-left: 20px;
+    position:relative;
+    left:15px;
 }
 .login_button{
-    border-radius: 10px;
+    border-radius: 5px;
     border: 0px;
-    width: 240px;
-    height: 50px;
+    width: 230px;
+    height: 40px;
     color: #FFFFFF;
     background-color: #5e94c8;
+    cursor:pointer;
 }
