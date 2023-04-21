@@ -3,7 +3,8 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.uWinOPCTjyx.dao.ProcessVarMapper">
-	<select id="getUnDealListByFIdList" resultType="com.uWinOPCTjyx.entity.ProcessVar">
+
+    <select id="getUnDealListByFIdList" resultType="com.uWinOPCTjyx.entity.ProcessVar">
 		select * from ProcessVar where DealBz=${@com.uWinOPCTjyx.entity.ProcessVar@WCL}
 		<foreach collection="fIdList" item="fId" open=" and cast(fId as char) in (" separator="," close=")">
 		#{fId}
@@ -88,4 +89,8 @@
 		</if>
 		from ProcessVar where VarName=#{preName} and DealBz=${@com.uWinOPCTjyx.entity.ProcessVar@WCL}
 	</select>
+
+	<delete id="deleteProByDealBz">
+		DELETE FROM ProcessVar WHERE DealBz=1
+	</delete>
 </mapper>

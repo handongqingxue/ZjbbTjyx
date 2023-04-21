@@ -24,6 +24,7 @@
 		<property name="loginUrl" value="/main/goLogin" />
 		<property name="filterChainDefinitions">
 			<value>
+				/loginPage/**=anon
 				/user/**=anon
 				/sys/**=anon
 				/opc/**=anon
