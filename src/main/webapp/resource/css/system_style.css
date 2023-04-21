@@ -75,33 +75,32 @@ body, html {
     height: calc(100% - 60px);
 }
 .login_box {
-    justify-content:center;/*左右居中
+    z-index: 100;
+    justify-content:center;/*左右居中*/
     align-items:center;/*上下居中*/
     background: rgba(6, 47, 101, 0.3);
     position: fixed;
-    top: 200px;
-    left: 800px;
+    top: 30%;
+    left: 37%;
     width: 400px;
     height: 270px;
     border: 1px solid #0b477d;
     color: white;
     box-shadow: 0 0 12px #14678f inset;
-    margin-right: 50px;
-    border-radius: 5px;
+    /*margin-right: 50px;*/
+    border-radius: 7px;
+
 }
 .login{
     position: fixed;
     width: 100%;
     height: 100%;
     overflow: hidden;
-    z-index: -100;
+    /*z-index: -1;*/
 }
 .login_box > table {
-    width: 100%;
     height: 100px;
-    border: 1px saddlebrown solid;
     background-color: #1E9FFF;
-    margin-top: 30px;
 }
 .login_box > table tr {
     margin-top: 20px;
