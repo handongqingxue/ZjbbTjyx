@@ -80,6 +80,10 @@ public class OPCController {
 		}
 	}
 	
+	public Map<String, Object> addReportF_M() {
+		
+	}
+	
 	@RequestMapping(value = "/initFMap", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> initFMap(@RequestBody String bodyStr) {
