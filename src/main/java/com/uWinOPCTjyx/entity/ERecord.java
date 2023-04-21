@@ -11,6 +11,15 @@ public class ERecord {
 	 */
 	public static final int YSCBB=1;
 
+	/**
+	 * M类配方类型
+	 */
+	public static final String M="M";
+	/**
+	 * U类配方类型
+	 */
+	public static final String U="U";
+
 	private Integer Id;
 	public Integer getId() {
 		return Id;
