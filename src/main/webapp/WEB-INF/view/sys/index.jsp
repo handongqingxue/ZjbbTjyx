@@ -41,7 +41,7 @@
                 <%--layui-nav-itemed 自动展开--%>
                 <li class="layui-nav-item">
                     <a href="javascript:;" onclick="inspect(0)">M类报表生成</a>
-                    <dl class="layui-nav-child">
+                    <dl class="layui-nav-child" style="color: #79e6e8">
                         <dd><a href="javascript:;">demo1</a></dd>
                         <dd><a href="javascript:;">demo2</a></dd>
                         <dd><a href="javascript:;">demo3</a></dd>
