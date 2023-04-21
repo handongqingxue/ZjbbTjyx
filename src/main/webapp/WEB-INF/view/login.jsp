@@ -106,14 +106,17 @@
 
     function login(userName,password){
         $.post(baseUrl + "/user/login",
-            {userName:userName,password:password},
+            {
+                userName:userName,
+                Psd:password
+            },
             function(json){
                 alert(json)
-                // if(json.status==0){
-                //     window.location.href=baseUrl+json.url;
-                // }else if(json.status==1){
-                //     alert(json.msg);
-                // }
+                if(json.status==1){
+                    window.location.href=baseUrl+json.url;
+                }else if(json.status==0){
+                    alert(json.msg);
+                }
             }
             ,"json");
     }
