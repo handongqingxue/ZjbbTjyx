@@ -6,8 +6,13 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String basePath=request.getScheme()+"://"+request.getServerName()+":"
+            +request.getServerPort()+request.getContextPath()+"/";
+%>
 <html>
 <head>
+    <link rel="stylesheet" href="<%=basePath%>resource/css/layui.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>永兴制胶数据报表系统</title>
@@ -18,16 +23,7 @@
         <div class="layui-logo layui-hide-xs layui-bg-black">layout demo</div>
         <!-- 头部区域（可配合layui 已有的水平导航） -->
         <ul class="layui-nav layui-layout-left">
-            <!-- 移动端显示 -->
-            <li class="layui-nav-item layui-show-xs-inline-block layui-hide-sm" lay-header-event="menuLeft">
-                <i class="layui-icon layui-icon-spread-left"></i>
-            </li>
-
-            <li class="layui-nav-item layui-hide-xs"><a href="">nav 1</a></li>
-            <li class="layui-nav-item layui-hide-xs"><a href="">nav 2</a></li>
-            <li class="layui-nav-item layui-hide-xs"><a href="">nav 3</a></li>
-            <li class="layui-nav-item">
-                <a href="javascript:;">nav groups</a>
+            <!-- 移动端显示 --> 
                 <dl class="layui-nav-child">
                     <dd><a href="">menu 11</a></dd>
                     <dd><a href="">menu 22</a></dd>
@@ -92,7 +88,7 @@
         底部固定区域
     </div>
 </div>
-<script src="./layui/layui.js"></script>
+<script src="<%=basePath%>resource/js/layui.js"></script>
 <script>
     //JS
     layui.use(['element', 'layer', 'util'], function(){
