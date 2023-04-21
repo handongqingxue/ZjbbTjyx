@@ -3,13 +3,12 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.uWinOPCTjyx.dao.ProcessVarMapper">
-	<select id="getUnDealListByFIdList" resultType="com.uWinOPCTjyx.entity.ProcessVar">
+    <select id="getUnDealListByFIdList" resultType="com.uWinOPCTjyx.entity.ProcessVar">
 		select * from ProcessVar where DealBz=${@com.uWinOPCTjyx.entity.ProcessVar@WCL}
 		<foreach collection="fIdList" item="fId" open=" and cast(fId as char) in (" separator="," close=")">
 		#{fId}
 		</foreach>
 	</select>
-
 	<insert id="add" parameterType="com.uWinOPCTjyx.entity.ProcessVar">
 		insert into ProcessVar
 		<trim prefix="(" suffix=")" suffixOverrides=",">
@@ -88,4 +87,10 @@
 		</if>
 		from ProcessVar where VarName=#{preName} and DealBz=${@com.uWinOPCTjyx.entity.ProcessVar@WCL}
 	</select>
+	<select id="getDealedCount" resultType="java.lang.Integer">
+		select count(*) from ProcessVar WHERE DealBz=${@com.uWinOPCTjyx.entity.ProcessVar@YCL} and FId=#{fId}
+	</select>
+	<delete id="deleteDealed">
+		DELETE FROM ProcessVar WHERE DealBz=${@com.uWinOPCTjyx.entity.ProcessVar@YCL} and FId=#{fId}
+	</delete>
 </mapper>

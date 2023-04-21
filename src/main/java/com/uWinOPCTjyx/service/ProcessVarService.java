@@ -35,4 +35,11 @@ public interface ProcessVarService {
 	 * @return
 	 */
 	ProcessVar getPtnValuePV(String nxtName, String nxtValue, ProcessVar nxtPV);
+
+	/**
+	 * 删除ProcessVar表里面处理标志为1的数据
+	 * @param fId 
+	 * @return
+	 */
+	int deleteDealed(int fId);
 }

@@ -258,6 +258,8 @@ public class OPCController {
 						if(TriggerVar.M.equals(upRecType)) {
 							Float preValue = Float.valueOf(preValueF1MMap.get(upVarName).toString());
 							if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
+								//删除ProcessVar表里处理标志为1的数据
+								processVarService.deleteDealed(upFId);
 								List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
 								opcTVList.add(upBlksTV);//根据备料开始触发变量从opc端查找对应的过程变量
 								Map<String, Object> blksMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);
@@ -269,6 +271,8 @@ public class OPCController {
 						else if(TriggerVar.U.equals(upRecType)) {
 							Float preValue = Float.valueOf(preValueF1UMap.get(upVarName).toString());
 							if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
+								//删除ProcessVar表里处理标志为1的数据
+								processVarService.deleteDealed(upFId);
 								List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
 								opcTVList.add(upBlksTV);//根据备料开始触发变量从opc端查找对应的过程变量
 								Map<String, Object> blksMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);
@@ -646,6 +650,8 @@ public class OPCController {
 						if(TriggerVar.M.equals(upRecType)) {
 							Float preValue = Float.valueOf(preValueF1MMap.get(upVarName).toString());
 							if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
+								//删除ProcessVar表里处理标志为1的数据
+								processVarService.deleteProByDealBz();
 								List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
 								opcTVList.add(upFhnsflfTV);
 								Map<String, Object> fhnsflfMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据釜(号)尿素放料阀变量从opc端查找对应的过程变量
@@ -657,6 +663,8 @@ public class OPCController {
 						else if(TriggerVar.U.equals(upRecType)) {
 							Float preValue = Float.valueOf(preValueF1UMap.get(upVarName).toString());
 							if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
+								//删除ProcessVar表里处理标志为1的数据
+								processVarService.deleteProByDealBz();
 								List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
 								opcTVList.add(upFhnsflfTV);
 								Map<String, Object> fhnsflfMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据釜(号)尿素放料阀变量从opc端查找对应的过程变量
@@ -671,6 +679,8 @@ public class OPCController {
 
 		}
 		*/
+		
+		
 		//加粉料PH合格
 		List<Integer> jflphhgFIdList=new ArrayList<Integer>();
 		List<TriggerVar> jflphhgTVList = (List<TriggerVar>)triggerVarMap.get(Constant.JIA_FEN_LIAO_PH_HE_GE);//获取加粉料PH合格变量,不管是否是上升沿
@@ -1113,7 +1123,6 @@ public class OPCController {
 						Float preValue = Float.valueOf(preValueF1MMap.get(upVarName).toString());
 						if (preValue == TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
 							jwwcFIdList.add(upFId);
-							
 							List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
 							opcTVList.add(upJwwcTV);
 							Map<String, Object> jwwcMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据降温完成变量从opc端查找对应的过程变量
@@ -1134,12 +1143,10 @@ public class OPCController {
 						Float preValue = Float.valueOf(preValueF1UMap.get(upVarName).toString());
 						if (preValue == TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
 							jwwcFIdList.add(upFId);
-							
 							List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
 							opcTVList.add(upJwwcTV);
 							Map<String, Object> jwwcMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据降温完成变量从opc端查找对应的过程变量
 							List<ProcessVar> jwwcMResPVList = (List<ProcessVar>)jwwcMResMap.get("proVarList");
-							
 							int i = processVarService.addFromList(jwwcMResPVList);//调用添加过程接口
 							System.out.println("添加"+i);
 						}

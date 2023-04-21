@@ -458,7 +458,7 @@ layui.use('laypage', function(){
         </table>
     </div>
     <div class="m_query_bottom_div">
-        <div id="paging"></div>
+        <div id="paging" class="m_query_bottom_paging"></div>
     </div>
 </div>
 </body>
