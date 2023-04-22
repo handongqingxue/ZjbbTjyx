@@ -14,4 +14,5 @@ public interface ERecordMapper {
 
 	List<ERecord> getListByBatchID(@Param("batchID") String batchID);
 
+	List<ERecord> getListByPcjl();
 }

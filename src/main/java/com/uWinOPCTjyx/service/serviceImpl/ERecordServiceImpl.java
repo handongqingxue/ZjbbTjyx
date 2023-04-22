@@ -1368,4 +1368,10 @@ public class ERecordServiceImpl implements ERecordService {
 		// TODO Auto-generated method stub
 		return eRecordMapper.getListByBatchID(batchID);
 	}
+
+	public List<ERecord> getListByPcjl() {
+		List<ERecord> listByPcjl = eRecordMapper.getListByPcjl();//查询全部批次记录
+		List<String> mYscPcjlList = new ArrayList<String>();//M类
+		return null;
+	}
 }

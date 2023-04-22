@@ -7,6 +7,7 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>UWinOPCTjyx Maven Webapp</name>
   <url>http://maven.apache.org</url>
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -158,5 +159,15 @@
   </dependencies>
   <build>
     <finalName>UWinOPCTjyx</finalName>
+<!--	  <plugins>-->
+<!--		  <plugin>-->
+<!--			  <groupId>org.apache.maven.plugins</groupId>-->
+<!--			  <artifactId>maven-compiler-plugin</artifactId>-->
+<!--			  <configuration>-->
+<!--				  <source>1.8</source>  &lt;!&ndash;language level&ndash;&gt;-->
+<!--				  <target>1.8</target>  &lt;!&ndash;java compiler version&ndash;&gt;-->
+<!--			  </configuration>-->
+<!--			</plugin>-->
+<!--	  </plugins>-->
   </build>
 </project>

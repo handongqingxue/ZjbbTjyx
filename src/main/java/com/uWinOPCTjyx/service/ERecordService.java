@@ -15,4 +15,9 @@ public interface ERecordService {
 	 */
 	List<ERecord> getListByBatchID(String batchID);
 
+	/**
+	 * 查询全部批次记录
+	 * @return
+	 */
+	List<ERecord> getListByPcjl();
 }

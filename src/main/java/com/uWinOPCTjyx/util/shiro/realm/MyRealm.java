@@ -53,6 +53,7 @@ public class MyRealm extends AuthorizingRealm {
 		UserList msg=new UserList(token.getUsername(),String.valueOf(token.getPassword()));
 
 		UserList resultMsg=userListMapper.getUser(msg);
+		System.out.println("是否"+resultMsg);
 		System.out.println(resultMsg+";;;");
 		if(token.getUsername().equals(resultMsg.getUserName())
 				&&
