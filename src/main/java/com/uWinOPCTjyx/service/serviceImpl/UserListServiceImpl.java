@@ -12,8 +12,8 @@ public class UserListServiceImpl implements UserListService {
     @Autowired
     private UserListMapper userListMapper;
 
-    public UserList login(UserList user) {
-        return userListMapper.login(user);
+    public UserList getUser(UserList user) {
+        return userListMapper.getUser(user);
     }
 
     public int addUser(UserList user) {
