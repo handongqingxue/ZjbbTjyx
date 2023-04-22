@@ -89,4 +89,7 @@
 	<select id="getListByBatchID" resultType="com.uWinOPCTjyx.entity.ERecord">
 		select * from ERecord where BatchID=#{batchID}
 	</select>
+	<update id="updatePCJLReportedByBatchID">
+		update ERecord set Remark=${@com.uWinOPCTjyx.entity.ERecord@YSCBB} where VarName='${@com.uWinOPCTjyx.util.Constant@PI_CI_JI_LU}' and BatchID=#{batchID}
+	</update>
 </mapper>

@@ -1368,4 +1368,9 @@ public class ERecordServiceImpl implements ERecordService {
 		// TODO Auto-generated method stub
 		return eRecordMapper.getListByBatchID(batchID);
 	}
+
+	public int updatePCJLReportedByBatchID(String batchID) {
+		// TODO Auto-generated method stub
+		return eRecordMapper.updatePCJLReportedByBatchID(batchID);
+	}
 }
