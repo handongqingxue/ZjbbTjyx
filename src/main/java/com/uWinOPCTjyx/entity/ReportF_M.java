@@ -200,6 +200,179 @@ public class ReportF_M {
 	 */
 	public static final int JQBLKSDFLWCSJC_CN=11;
 	
+	/**
+	 * 加碱量提示行号
+	 */
+	public static final int JJLTS_RN=9;
+	
+	/**
+	 * 加碱量提示列号
+	 */
+	public static final int JJLTS_CN=2;
+	
+	/**
+	 * 加碱后PH输入值行号
+	 */
+	public static final int JJHPHSRZ_RN=9;
+	/**
+	 * 加碱后PH输入值列号
+	 */
+	public static final int JJHPHSRZ_CN=4;
+	
+	/**
+	 * 助剂计量罐1-2称重行号
+	 */
+	public static final int ZJJLG12CZ_RN=10;
+	/**
+	 * 助剂计量罐1-2称重列号
+	 */
+	public static final int ZJJLG12CZ_CN=2;
+	
+	/**
+	 * 允许一次加助剂时间行号
+	 */
+	public static final int YXYCJZJSJ_RN=10;
+	/**
+	 * 允许一次加助剂时间列号
+	 */
+	public static final int YXYCJZJSJ_CN=3;
+	
+	/**
+	 * 所有助剂加料完成1时间行号
+	 */
+	public static final int SYZJJLWC1SJ_RN=10;
+	/**
+	 * 所有助剂加料完成1时间列号
+	 */
+	public static final int SYZJJLWC1SJ_CN=4;
+	
+	/**
+	 * 所有助剂加料完成1反应釜温度行号
+	 */
+	public static final int SYZJJLWC1FYFWD_RN=10;
+	/**
+	 * 所有助剂加料完成1反应釜温度列号
+	 */
+	public static final int SYZJJLWC1FYFWD_CN=5;
+	
+	/**
+	 * 允许一次加助剂釜称重行号
+	 */
+	public static final int YXYCJZJFCZ_RN=10;
+	/**
+	 * 允许一次加助剂釜称重列号
+	 */
+	public static final int YXYCJZJFCZ_CN=7;
+	
+	/**
+	 * 所有助剂加料完成1釜称重行号
+	 */
+	public static final int SYZJJLWC1FCZ_RN=10;
+	/**
+	 * 所有助剂加料完成1釜称重列号
+	 */
+	public static final int SYZJJLWC1FCZ_CN=8;
+	
+	/**
+	 * 允许一次加助剂到所有助剂加料完成1重量差行号
+	 */
+	public static final int YXYCJZJDSYZJJLWC1ZLC_RN=10;
+	/**
+	 * 允许一次加助剂到所有助剂加料完成1重量差列号
+	 */
+	public static final int YXYCJZJDSYZJJLWC1ZLC_CN=9;
+	
+	/**
+	 * 允许一次加助剂到所有助剂加料完成1时间差行号
+	 */
+	public static final int YXYCJZJDSYZJJLWC1SJC_RN=10;
+	/**
+	 * 允许一次加助剂到所有助剂加料完成1时间差列号
+	 */
+	public static final int YXYCJZJDSYZJJLWC1SJC_CN=10;
+	
+	/**
+	 * 粉料重量设定行号
+	 */
+	public static final int FLZLSD_RN=11;
+	/**
+	 * 粉料重量设定列号
+	 */
+	public static final int FLZLSD_CN=2;
+	
+	/**
+	 * 釜尿素放料阀上升沿时间行号
+	 */
+	public static final int FNSFLFSSYSJ_RN=11;
+	/**
+	 * 釜尿素放料阀上升沿时间列号
+	 */
+	public static final int FNSFLFSSYSJ_CN=3;
+	
+	/**
+	 * 釜尿素放料阀下降沿时间行号
+	 */
+	public static final int FNSFLFXJYSJ_RN=11;
+	/**
+	 * 釜尿素放料阀下降沿时间列号
+	 */
+	public static final int FNSFLFXJYSJ_CN=4;
+	
+	/**
+	 * 釜尿素放料阀下降沿反应釜温度行号
+	 */
+	public static final int FNSFLFXJYFYFWD_RN=11;
+	/**
+	 * 釜尿素放料阀下降沿反应釜温度列号
+	 */
+	public static final int FNSFLFXJYFYFWD_CN=5;
+	
+	/**
+	 * 加粉料PH输入值行号
+	 */
+	public static final int JFLPHSRZ_RN=11;
+	/**
+	 * 加粉料PH输入值列号
+	 */
+	public static final int JFLPHSRZ_CN=7;
+	
+	/**
+	 * 釜尿素放料阀上升沿釜称重行号
+	 */
+	public static final int FNSFLFSSYFCZ_RN=11;
+	/**
+	 * 釜尿素放料阀上升沿釜称重列号
+	 */
+	public static final int FNSFLFSSYFCZ_CN=8;
+
+	/**
+	 * 釜尿素放料阀下降沿釜称重行号
+	 */
+	public static final int FNSFLFXJYFCZ_RN=11;
+	/**
+	 * 釜尿素放料阀下降沿釜称重列号
+	 */
+	public static final int FNSFLFXJYFCZ_CN=9;
+	
+	/**
+	 * 釜尿素放料阀上升沿到下降沿重量差行号
+	 */
+	public static final int FNSFLFSSYDXJYZLC_RN=11;
+	/**
+	 * 釜尿素放料阀上升沿到下降沿重量差列号
+	 */
+	public static final int FNSFLFSSYDXJYZLC_CN=10;
+
+	/**
+	 * 釜尿素放料阀上升沿到下降沿时间差行号
+	 */
+	public static final int FNSFLFSSYDXJYSJC_RN=11;
+	/**
+	 * 釜尿素放料阀上升沿到下降沿时间差列号
+	 */
+	public static final int FNSFLFSSYDXJYSJC_CN=11;
+	
+	
     private Integer Id;
     private String RowNumber;//行号
     private String ColNumber;//列号
