@@ -90,7 +90,7 @@
 		select * from ERecord where BatchID=#{batchID}
 	</select>
 	<select id="getListByPcjl" resultType="com.uWinOPCTjyx.entity.ERecord">
-		select BatchID from ERecord where VarName='批次记录';
+		select RecType,BatchID,Remark from ERecord where VarName='批次记录';
 	</select>
 
 </mapper>

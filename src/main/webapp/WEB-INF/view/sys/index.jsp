@@ -5,7 +5,9 @@
   Time: 9:15 上午
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <%
     String basePath=request.getScheme()+"://"+request.getServerName()+":"
             +request.getServerPort()+request.getContextPath()+"/";
@@ -29,7 +31,7 @@
         <ul class="home-head-ul">
             <li></li>
             <li>|</li>
-            <li id="system-time">2023年4月19日10:30:30</li>
+            <li id="system-time"></li>
             <li>|</li>
             <li class="layui-nav-item">
                 <span>欢迎您!</span>
@@ -47,40 +49,30 @@
                 <li class="layui-nav-item">
                     <a href="javascript:;" onclick="inspect(0)">M类报表生成</a>
                     <dl class="layui-nav-child" style="color: #79e6e8">
-                        <dd><a href="javascript:;">demo1</a></dd>
-                        <dd><a href="javascript:;">demo2</a></dd>
-                        <dd><a href="javascript:;">demo3</a></dd>
+                        <c:forEach items="${mWscPcjlList}" var="item">
+                            <dd><a href="javascript:;">${item.batchID}</a></dd>
+                        </c:forEach>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
                     <a href="javascript:;" onclick="inspect(0)">U类报表生成</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">demo1</a></dd>
-                        <dd><a href="javascript:;">demo2</a></dd>
-                        <dd><a href="javascript:;">demo3</a></dd>
+                        <c:forEach items="${uWscPcjlList}" var="item">
+                            <dd><a href="javascript:;">${item.batchID}</a></dd>
+                        </c:forEach>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
                     <a href="javascript:;" onclick="inspect(1)">M类报表查询</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">demo1</a></dd>
-                        <dd><a href="javascript:;">demo2</a></dd>
-                        <dd><a href="javascript:;">demo3</a></dd>
+                        <dd><a href="javascript:;" onclick="typeQuery('MA')">MA胶种</a></dd>
+                        <dd><a href="javascript:;" onclick="typeQuery('MB')">MB胶种</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
                     <a href="javascript:;" onclick="inspect(1)">U类报表查询</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">demo1</a></dd>
-                        <dd><a href="javascript:;">demo2</a></dd>
-                        <dd><a href="javascript:;">demo3</a></dd>
-                        <dd><a href="javascript:;">demo3</a></dd>
-                        <dd><a href="javascript:;">demo3</a></dd>
-                        <dd><a href="javascript:;">demo3</a></dd>
-                        <dd><a href="javascript:;">demo3</a></dd>
-                        <dd><a href="javascript:;">demo3</a></dd>
-                        <dd><a href="javascript:;">demo3</a></dd>
-                        <dd><a href="javascript:;">demo3</a></dd>
+                        <dd><a href="javascript:;" onclick="typeQuery('UD')">UD胶种</a></dd>
                     </dl>
                 </li>
             </ul>
@@ -102,7 +94,9 @@
     </div>
 </div>
 <script>
+    
     window.load(init(1));
+
 
     function init(id) {
         document.getElementById("right-body-head-icon").classList.add("layui-icon-search");
@@ -117,6 +111,23 @@
             document.getElementById("right-body-head-span2").innerHTML="报表查询页面";
             document.getElementById("right-body-head-icon").classList.replace("layui-icon-add-circle","layui-icon-search");
         }
+    }
+
+    function typeQuery(type) {
+        $.post("<%=basePath%>sys/getListByType",
+            {type:type},
+            function(data){
+                if(data.message=="ok"){
+                    var typeSelect=$("#typeSelect");
+                    typeSelect.empty();
+                    var list=data.getListByType;
+                    typeSelect.append("<option>请选择</option>")
+                    for (var i=0;i<list.length;i++){
+                        typeSelect.append("<option>"+list[i].batchID+"</option>")
+                    }
+                }
+            }
+            ,"json");
     }
 
 </script>

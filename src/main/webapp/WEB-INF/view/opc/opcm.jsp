@@ -5,6 +5,7 @@
   Time: 9:53 上午
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -72,6 +73,10 @@ layui.use('laypage', function(){
     });
 });
 
+function chax() {
+    console.log("进来")
+    console.log("adadadad"+typeList[1])
+}
 </script>
 </head>
 <body>
@@ -89,10 +94,8 @@ layui.use('laypage', function(){
                 </td>
                 <td>
                     选择批次&nbsp;&nbsp;
-                    <select class="m_query_head_input">
-                        <option>m1</option>
-                        <option>m2</option>
-                        <option>m3</option>
+                    <select class="m_query_head_input" id="typeSelect">
+<%--                        <option></option>--%>
                     </select>
                 </td>
             </tr>
@@ -106,7 +109,7 @@ layui.use('laypage', function(){
                 </td>
                 <td>
                     <button class="m_query_head_button">
-                        <i class="layui-icon layui-icon-search" style="font-size: 16px; color: #ffffff;"></i>
+                        <i class="layui-icon layui-icon-search" onclick="chax()" style="font-size: 16px; color: #ffffff;"></i>
                         查询
                     </button>
                 </td>

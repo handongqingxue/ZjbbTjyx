@@ -1,6 +1,7 @@
 package com.uWinOPCTjyx.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.uWinOPCTjyx.entity.*;
 
@@ -19,5 +20,10 @@ public interface ERecordService {
 	 * 查询全部批次记录
 	 * @return
 	 */
-	List<ERecord> getListByPcjl();
+	Map<String,Object> getListByPcjl();
+
+	/**
+	 * 通过类型来获取批次记录
+	 */
+	List<ERecord> getListByType(String type);
 }
