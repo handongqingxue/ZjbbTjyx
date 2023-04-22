@@ -13,4 +13,9 @@
       <module name="UWinOPCTjyx" target="1.5" />
     </bytecodeTargetLevel>
   </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="UWinOPCTjyx" options="" />
+    </option>
+  </component>
 </project>
