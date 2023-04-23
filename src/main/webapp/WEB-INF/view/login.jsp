@@ -110,7 +110,7 @@
     }
 
     function login(userName,password){
-        $.post(baseUrl + "/user/login",
+        $.post(baseUrl + "/main/login",
             {
                 userName:userName,
                 Psd:password

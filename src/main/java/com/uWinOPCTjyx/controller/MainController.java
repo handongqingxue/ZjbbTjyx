@@ -52,7 +52,7 @@ public class MainController {
         session.setAttribute("user",principal);
         json.put("status",1);
         json.put("msg","验证成功");
-        json.put("url","/sys/index");
+        json.put("url","/report/index");
         return json;
 
     }
