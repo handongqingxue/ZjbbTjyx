@@ -1,7 +1,30 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+<title>Title</title>
+<script type="text/javascript">
+var path='<%=basePath%>';
+$(function () {
+	getUnCreRepVarList();
+})
+
+function getUnCreRepVarList(){
+	$.post(path+"report/getUnCreRepVarList",
+		{batchID:"MA202323000022"},
+		function(result){
+			var varMapList=result.varMapList;
+			for (var i = 0; i < varMapList.length; i++) {
+				var varMap=varMapList[i];
+				var rowNumber=varMap.rowNumber;
+				var colNumber=varMap.colNumber;
+				var value=varMap.value;
+				console.log(rowNumber+","+colNumber+","+value);
+				$("#td"+rowNumber+"_"+colNumber).text(value);
+			}
+		}
+	,"json");
+}
+</script>
 </head>
 <script>
     // layui.use('laypage', function(){
@@ -85,17 +108,17 @@
             <%--第三行--%>
             <tr>
                 <td>生产编号</td>
-                <td class="yellow">
+                <td class="yellow" id="td3_2">
                     <%--每生产1釜加1--%>
                     <%--                    <input type="text" id="scbh_input" placeholder="生产编号">--%>
                 </td>
                 <td>反应釜：</td>
-                <td class="green" colspan="2">
+                <td class="green" id="td3_4" colspan="2">
                     <%--反应釜号--%>
                     <%--                    <input type="text" id="fyfh_input" placeholder="反应釜号">--%>
                 </td>
                 <td>开始时间</td>
-                <td class="green">
+                <td class="green" id="td3_6">
                     <%--备料开始时间--%>
                     <%--                    <input type="datetime-local" id="kssj_input">--%>
                 </td>

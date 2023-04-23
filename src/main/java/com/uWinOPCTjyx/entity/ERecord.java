@@ -110,6 +110,98 @@ public class ERecord {
 	 * 允许一次加助剂到所有助剂加料完成1时间差
 	 */
 	public static final String YXYCJZJDSYZJJLWC1SJC=Constant.YUN_XU_YI_CI_JIA_ZHU_JI+Constant.DAO+Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.SHI_JIAN+Constant.CHA;
+	/**
+	 * 釜尿素放料阀上升沿时间
+	 */
+	public static final String FNSFLFSSYSJ=Constant.FU+Constant.NIAO_SU_FANG_LIAO_FA+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+	/**
+	 * 釜尿素放料阀上升沿到下降沿时间
+	 */
+	public static final String FNSFLFSSYDXJYSJ=Constant.FU+Constant.NIAO_SU_FANG_LIAO_FA+Constant.SHANG_SHENG_YAN+Constant.DAO+Constant.XIA_JIANG_YAN+Constant.SHI_JIAN;
+	/**
+	 * 釜尿素放料阀上升沿釜称重
+	 */
+	public static final String FNSFLFSSYFCZ=Constant.FU+Constant.NIAO_SU_FANG_LIAO_FA+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
+	/**
+	 * 釜尿素放料阀上升沿到下降沿重量
+	 */
+	public static final String FNSFLFSSYDXJYZL=Constant.FU+Constant.NIAO_SU_FANG_LIAO_FA+Constant.SHANG_SHENG_YAN+Constant.DAO+Constant.XIA_JIANG_YAN+Constant.ZHONG_LIANG;
+	/**
+	 * 釜尿素放料阀下降沿釜称重
+	 */
+	public static final String FNSFLFXJYFCZ=Constant.FU+Constant.NIAO_SU_FANG_LIAO_FA+Constant.XIA_JIANG_YAN+Constant.FU+Constant.CHENG_ZHONG;
+	/**
+	 * 釜尿素放料阀重量差
+	 */
+	public static final String FNSFLFSSYDXJYZLC=Constant.FU+Constant.NIAO_SU_FANG_LIAO_FA+Constant.SHANG_SHENG_YAN+Constant.DAO+Constant.XIA_JIANG_YAN+Constant.ZHONG_LIANG+Constant.CHA;
+	/**
+	 * 釜尿素放料阀时间差
+	 */
+	public static final String FNSFLFSSYDXJYSJC=Constant.FU+Constant.NIAO_SU_FANG_LIAO_FA+Constant.SHANG_SHENG_YAN+Constant.DAO+Constant.XIA_JIANG_YAN+Constant.SHI_JIAN+Constant.CHA;
+	/**
+	 * 釜尿素放料阀下降沿反应釜温度
+	 */
+	public static final String FNSFLFXJYFYFWD=Constant.FU+Constant.NIAO_SU_FANG_LIAO_FA+Constant.XIA_JIANG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
+	/**
+	 * 升温开始上升沿时间
+	 */
+	public static final String SWKSSSYSJ=Constant.SHENG_WEN_KAI_SHI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+	/**
+	 * 升温开始到温度85与二次投料提醒时间
+	 */
+	public static final String SWKSDWD85YECTLTXSJ=Constant.SHENG_WEN_KAI_SHI+Constant.DAO+Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING+Constant.SHI_JIAN;
+	/**
+	 * 升温开始到升温完成时间
+	 */
+	public static final String SWKSDSWWCSJ=Constant.SHENG_WEN_KAI_SHI+Constant.DAO+Constant.SHENG_WEN_WAN_CHENG+Constant.SHI_JIAN;
+	/**
+	 * 温度85与二次投料提醒上升沿时间
+	 */
+	public static final String WD85YECTLTXSSYSJ=Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+	/**
+	 * 温度85与二次投料提醒上升沿反应釜温度
+	 */
+	public static final String WD85YECTLTXSSYFYFWD=Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
+	/**
+	 * 升温开始到温度85与二次投料提醒时间差
+	 */
+	public static final String SWKSDWD85YECTLTXSJC=Constant.SHENG_WEN_KAI_SHI+Constant.DAO+Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING+Constant.SHI_JIAN+Constant.CHA;
+	/**
+	 * 允许二次加助剂上升沿时间
+	 */
+	public static final String YXECJZJSSYSJ=Constant.YUN_XU_ER_CI_JIA_ZHU_JI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+	/**
+	 * 允许二次加助剂到所有助剂加料完成2时间
+	 */
+	public static final String YXECJZJDSYZJJLWC2SJ=Constant.YUN_XU_ER_CI_JIA_ZHU_JI+Constant.DAO+Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+Constant.SHI_JIAN;
+	/**
+	 * 所有助剂加料完成2上升沿时间
+	 */
+	public static final String SYZJJLWC2SSYSJ=Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+	/**
+	 * 所有助剂加料完成2上升沿反应釜温度
+	 */
+	public static final String SYZJJLWC2SSYFYFWD=Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
+	/**
+	 * 允许二次加助剂上升沿釜称重
+	 */
+	public static final String YXECJZJSSYFCZ=Constant.YUN_XU_ER_CI_JIA_ZHU_JI+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
+	/**
+	 * 允许二次加助剂到所有助剂加料完成2釜称重
+	 */
+	public static final String YXECJZJDSYZJJLWC2FCZ=Constant.YUN_XU_ER_CI_JIA_ZHU_JI+Constant.DAO+Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+Constant.FU+Constant.CHENG_ZHONG;
+	/**
+	 * 所有助剂加料完成2上升沿釜称重
+	 */
+	public static final String SYZJJLWC2SSYFCZ=Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
+	/**
+	 * 允许二次加助剂到所有助剂加料完成2釜重量差
+	 */
+	public static final String YXECJZJDSYZJJLWC2FZLC=Constant.YUN_XU_ER_CI_JIA_ZHU_JI+Constant.DAO+Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+Constant.FU+Constant.ZHONG_LIANG+Constant.CHA;
+	/**
+	 * 允许二次加助剂到所有助剂加料完成2时间差
+	 */
+	public static final String YXECJZJDSYZJJLWC2SJC=Constant.YUN_XU_ER_CI_JIA_ZHU_JI+Constant.DAO+Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+Constant.SHI_JIAN+Constant.CHA;
 
 	private Integer Id;
 	public Integer getId() {
