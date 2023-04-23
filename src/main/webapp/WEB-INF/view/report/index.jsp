@@ -47,7 +47,7 @@
             <ul class="layui-nav layui-nav-tree" lay-filter="test">
                 <%--layui-nav-itemed 自动展开--%>
                 <li class="layui-nav-item">
-                    <a href="javascript:;" onclick="inspect(0)">M类报表生成</a>
+                    <a href="javascript:;">M类报表生成</a>
                     <dl class="layui-nav-child" style="color: #79e6e8">
                         <c:forEach items="${mWscPcjlList}" var="item">
                             <dd><a href="javascript:;" onclick="typeQuery('M')">${item.batchID}</a></dd>
@@ -55,7 +55,7 @@
                     </dl>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="javascript:;" onclick="inspect(0)">U类报表生成</a>
+                    <a href="javascript:;">U类报表生成</a>
                     <dl class="layui-nav-child">
                         <c:forEach items="${uWscPcjlList}" var="item">
                             <dd><a href="javascript:;" onclick="typeQuery('U')">${item.batchID}</a></dd>
@@ -63,14 +63,14 @@
                     </dl>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="javascript:;" onclick="inspect(1)">M类报表查询</a>
+                    <a href="javascript:;">M类报表查询</a>
                     <dl class="layui-nav-child">
                         <dd><a href="javascript:;" onclick="typeQuery('MA')">MA胶种</a></dd>
                         <dd><a href="javascript:;" onclick="typeQuery('MB')">MB胶种</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="javascript:;" onclick="inspect(1)">U类报表查询</a>
+                    <a href="javascript:;">U类报表查询</a>
                     <dl class="layui-nav-child">
                         <dd><a href="javascript:;" onclick="typeQuery('UD')">UD胶种</a></dd>
                     </dl>
@@ -105,19 +105,14 @@
 </div>
 <script>
     $(function () {
-        // init();
         typeQuery("M");
     })
-
-    function init() {
-        document.getElementById("right-body-head-icon").classList.add("layui-icon-search");
-        document.getElementById("right-body-head-span2").innerHTML="报表查询页面";
-    }
 
     function inspect(id){
         if (id==0){
             document.getElementById("right-body-head-span2").innerHTML="报表生成页面";
             document.getElementById("right-body-head-icon").classList.replace("layui-icon-search","layui-icon-add-circle");
+            // typeQuery("M");
         }else if(id==1){
             document.getElementById("right-body-head-span2").innerHTML="报表查询页面";
             document.getElementById("right-body-head-icon").classList.replace("layui-icon-add-circle","layui-icon-search");
