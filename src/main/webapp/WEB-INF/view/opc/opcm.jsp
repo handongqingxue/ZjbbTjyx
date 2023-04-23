@@ -68,15 +68,10 @@ layui.use('laypage', function(){
         ,count: 100
         ,layout: ['count', 'prev', 'page', 'next', 'refresh', 'skip']
         ,jump: function(obj){
-            console.log(obj)
         }
     });
 });
 
-function chax() {
-    console.log("进来")
-    console.log("adadadad"+typeList[1])
-}
 </script>
 </head>
 <body>
@@ -95,7 +90,7 @@ function chax() {
                 <td>
                     选择批次&nbsp;&nbsp;
                     <select class="m_query_head_input" id="typeSelect">
-<%--                        <option></option>--%>
+                        <%--<option></option>--%>
                     </select>
                 </td>
             </tr>
@@ -109,7 +104,7 @@ function chax() {
                 </td>
                 <td>
                     <button class="m_query_head_button">
-                        <i class="layui-icon layui-icon-search" onclick="chax()" style="font-size: 16px; color: #ffffff;"></i>
+                        <i class="layui-icon layui-icon-search" style="font-size: 16px; color: #ffffff;"></i>
                         查询
                     </button>
                 </td>

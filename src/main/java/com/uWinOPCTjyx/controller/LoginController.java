@@ -59,10 +59,11 @@ public class LoginController {
 
     //注销
     @RequestMapping("/exit")
-    @ResponseBody
     public String exit(HttpSession session){
-//        Subject current = SecurityUtils.getSubject();
-        return null;
+        Subject currentUser = SecurityUtils.getSubject();
+        currentUser.logout();
+        System.out.println("跳转");
+        return "login";
     }
 
     //注册用户

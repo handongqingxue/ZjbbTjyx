@@ -38,7 +38,7 @@
                 <a style="cursor:pointer;">超级管理员</a>
             </li>
             <li>|</li>
-            <li>退出</li>
+            <li onclick="logout()">退出</li>
         </ul>
     </div>
     <%--身体--%>
@@ -128,6 +128,10 @@
                 }
             }
             ,"json");
+    }
+
+    function logout() {
+        $.post("<%=basePath%>user/exit");
     }
 
 </script>
