@@ -30,6 +30,14 @@ public class ReportController {
         return MODULE_NAME+"/index";
     }
 
+    @RequestMapping("/goCreateM")
+    public String goCreateM(HttpServletRequest request){
+        
+    	loadLeftMenuData(request);
+
+        return MODULE_NAME+"/createM";
+    }
+
     @RequestMapping("/goSearchM")
     public String goSearchM(HttpServletRequest request){
         
@@ -70,5 +78,12 @@ public class ReportController {
             return map;
         }
     }
+
+    @RequestMapping("/getUnCreRepERecList")
+    @ResponseBody
+    public Map<String,Object> getUnCreRepVarList(String batchID) {
+		
+    	List<Map<String, Object>> varMapList=eRecordService.getUnCreRepVarList(batchID);
+	}
 
 }

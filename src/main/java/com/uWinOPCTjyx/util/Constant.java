@@ -430,4 +430,9 @@ public class Constant {
 	 * 冷却
 	 */
 	public static final String LENG_QUE="冷却";
+	
+	public static final String VALUE="value";
+	public static final String UNIT="unit";
+	public static final String ROW_NUMBER="rowNumber";
+	public static final String COL_NUMBER="colNumber";
 }
