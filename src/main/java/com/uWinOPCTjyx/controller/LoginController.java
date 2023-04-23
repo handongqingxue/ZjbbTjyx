@@ -57,6 +57,14 @@ public class LoginController {
 
     }
 
+    //注销
+    @RequestMapping("/exit")
+    @ResponseBody
+    public String exit(HttpSession session){
+//        Subject current = SecurityUtils.getSubject();
+        return null;
+    }
+
     //注册用户
     @RequestMapping("/addUser")
     public void addUser(UserList user){

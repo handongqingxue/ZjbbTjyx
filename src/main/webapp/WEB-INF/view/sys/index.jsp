@@ -35,7 +35,7 @@
             <li>|</li>
             <li class="layui-nav-item">
                 <span>欢迎您!</span>
-                <a href="" style="cursor:pointer;">超级管理员</a>
+                <a style="cursor:pointer;">超级管理员</a>
             </li>
             <li>|</li>
             <li>退出</li>
