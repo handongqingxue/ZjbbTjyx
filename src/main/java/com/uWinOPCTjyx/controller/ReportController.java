@@ -14,22 +14,43 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/sys")
-public class SysController {
+@RequestMapping("/report")
+public class ReportController {
+	
+	public static final String MODULE_NAME="report";
 
     @Autowired
     private ERecordService eRecordService;
 
-    @RequestMapping("/index")
-    public String index(HttpServletRequest request, Model model){
-        Map<String, Object> pcjlMap = eRecordService.getListByPcjl();
-        model.addAttribute("mYscPcjlList",pcjlMap.get("mYscPcjlList"));
-        model.addAttribute("uYscPcjlList",pcjlMap.get("uYscPcjlList"));
-        model.addAttribute("mWscPcjlList",pcjlMap.get("mWscPcjlList"));
-        model.addAttribute("uWscPcjlList",pcjlMap.get("uWscPcjlList"));
+    @RequestMapping("/goIndex")
+    public String goIndex(HttpServletRequest request){
+        
+    	loadLeftMenuData(request);
 
-        return "sys/index";
+        return MODULE_NAME+"/index";
     }
+
+    @RequestMapping("/goSearchM")
+    public String goSearchM(HttpServletRequest request){
+        
+    	loadLeftMenuData(request);
+
+        return MODULE_NAME+"/searchM";
+    }
+    
+    /**
+     * 加载左边菜单数据
+     * @param request
+     */
+    private void loadLeftMenuData(HttpServletRequest request) {
+    	
+    	Map<String, Object> pcjlMap = eRecordService.getListByPcjl();
+    	
+    	request.setAttribute("mYscPcjlList",pcjlMap.get("mYscPcjlList"));
+    	request.setAttribute("uYscPcjlList",pcjlMap.get("uYscPcjlList"));
+    	request.setAttribute("mWscPcjlList",pcjlMap.get("mWscPcjlList"));
+    	request.setAttribute("uWscPcjlList",pcjlMap.get("uWscPcjlList"));
+	}
 
     @RequestMapping("/getListByType")
     @ResponseBody

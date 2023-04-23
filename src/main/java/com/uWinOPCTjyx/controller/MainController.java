@@ -17,14 +17,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/user")
-public class LoginController {
+@RequestMapping("/main")
+public class MainController {
 
     @Autowired
     private UserListService userListService;
 
-    @RequestMapping("/loginPage")
-    public String loginPage(UserList user){
+    @RequestMapping("/goLogin")
+    public String goLogin(UserList user){
         return "login";
     }
 
