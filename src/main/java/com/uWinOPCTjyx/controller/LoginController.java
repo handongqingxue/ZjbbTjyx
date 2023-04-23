@@ -1,7 +1,5 @@
 package com.uWinOPCTjyx.controller;
 
-import com.microsoft.sqlserver.jdbc.ISQLServerResultSet;
-import com.microsoft.sqlserver.jdbc.SQLServerDriver;
 import com.uWinOPCTjyx.entity.UserList;
 import com.uWinOPCTjyx.service.UserListService;
 import com.uWinOPCTjyx.util.PlanResult;
@@ -15,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.sql.JDBCType;
 import java.util.HashMap;
 import java.util.Map;
 
