@@ -84,6 +84,7 @@ public class ReportController {
     public Map<String,Object> getUnCreRepVarList(String batchID) {
 		
     	List<Map<String, Object>> varMapList=eRecordService.getUnCreRepVarList(batchID);
+    	return null;
 	}
 
 }

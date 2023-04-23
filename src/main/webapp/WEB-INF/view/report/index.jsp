@@ -87,11 +87,17 @@
             </div>
             <%--右部分body--%>
             <div class="right-body-main" style="overflow: hidden">
+                <div id="createM">
+                    <%@include file="../report/inc/createM.jsp"%>
+                </div>
+                <div id="createU">
+                    <%@include file="../report/inc/createU.jsp"%>
+                </div>
                 <div id="searchM">
-                    <%@include file="../opc/opcm.jsp"%>
+                    <%@include file="../report/inc/searchM.jsp"%>
                 </div>
                 <div id="searchU">
-                    <%@include file="../opc/opcu.jsp"%>
+                    <%@include file="../report/inc/searchU.jsp"%>
                 </div>
             </div>
         </div>
@@ -99,10 +105,11 @@
 </div>
 <script>
     $(function () {
-        init(1);
+        // init();
+        typeQuery("M");
     })
 
-    function init(id) {
+    function init() {
         document.getElementById("right-body-head-icon").classList.add("layui-icon-search");
         document.getElementById("right-body-head-span2").innerHTML="报表查询页面";
     }
@@ -118,16 +125,30 @@
     }
 
     function typeQuery(type) {
-        if (type=="MA"||type=="MB"){
+        if (type=="M"){
+            $("#createM").css('display','block');
+            $("#createU").css('display','none');
+            $("#searchM").css('display','none');
+            $("#searchU").css('display','none');
+            inspect(0);
+        }else if(type=="U"){
+            $("#createM").css('display','none');
+            $("#createU").css('display','block');
+            $("#searchM").css('display','none');
+            $("#searchU").css('display','none');
+            inspect(0);
+        } else if (type=="MA"||type=="MB"){
+            $("#createM").css('display','none');
+            $("#createU").css('display','none');
             $("#searchM").css('display','block');
             $("#searchU").css('display','none');
             inspect(1);
         }else if (type=="UD"){
-            $("#searchU").css('display','block');
+            $("#createM").css('display','none');
+            $("#createU").css('display','none');
             $("#searchM").css('display','none');
+            $("#searchU").css('display','block');
             inspect(1);
-        }else {
-            inspect(0);
         }
         $.post("<%=basePath%>report/getListByType",
             {type:type},
