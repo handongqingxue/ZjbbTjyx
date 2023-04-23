@@ -20,7 +20,7 @@
             <a href="" style="cursor:pointer;">超级管理员</a>
         </li>
         <li>|</li>
-        <li>退出</li>
+        <li><a href="<%=basePath%>main/exit">退出</a></li>
     </ul>
 </div>
 
@@ -46,6 +46,7 @@
         <li class="layui-nav-item">
             <a href="javascript:;" onclick="inspect(1)">M类报表查询</a>
             <dl class="layui-nav-child">
+                <dd><a href="<%=basePath%>report/goSearchM?param=MA">MA胶种</a></dd>
                 <dd><a href="javascript:;" onclick="typeQuery('MA')">MA胶种</a></dd>
                 <dd><a href="javascript:;" onclick="typeQuery('MB')">MB胶种</a></dd>
             </dl>
