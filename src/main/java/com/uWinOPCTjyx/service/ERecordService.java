@@ -23,7 +23,7 @@ public interface ERecordService {
 	 */
 	int updatePCJLReportedByBatchID(String batchID);
 
-	/*
+	/**
 	 * 查询全部批次记录
 	 * @return
 	 */
