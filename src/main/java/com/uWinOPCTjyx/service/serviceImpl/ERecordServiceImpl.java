@@ -1373,4 +1373,45 @@ public class ERecordServiceImpl implements ERecordService {
 		// TODO Auto-generated method stub
 		return eRecordMapper.updatePCJLReportedByBatchID(batchID);
 	}
+
+	public Map<String,Object> getListByPcjl() {
+		Map<String,Object> map = new HashMap<String, Object>();
+		List<ERecord> mYscPcjlList = new ArrayList<ERecord>();//M类已生成的批次记录集合
+		List<ERecord> uYscPcjlList = new ArrayList<ERecord>();//U类已生成的批次记录集合
+		List<ERecord> mWscPcjlList = new ArrayList<ERecord>();//M类未生成的批次记录集合
+		List<ERecord> uWscPcjlList = new ArrayList<ERecord>();//U类未生成的批次记录集合
+		List<ERecord> pcjlList = eRecordMapper.getListByPcjl();//查询全部批次记录
+		for (ERecord pcjl : pcjlList) {
+			if (pcjl.getRemark().equals("0")){
+				if (pcjl.getRecType().equals("M")){
+					mYscPcjlList.add(pcjl);
+				}else if(pcjl.getRecType().equals("U")){
+					uYscPcjlList.add(pcjl);
+				}
+			}else if (pcjl.getRemark().equals("1")){
+				if (pcjl.getRecType().equals("M")){
+					mWscPcjlList.add(pcjl);
+				}else if(pcjl.getRecType().equals("U")){
+					uWscPcjlList.add(pcjl);
+				}
+			}
+		}
+		map.put("mYscPcjlList",mYscPcjlList);
+		map.put("uYscPcjlList",uYscPcjlList);
+		map.put("mWscPcjlList",mWscPcjlList);
+		map.put("uWscPcjlList",uWscPcjlList);
+		return map;
+	}
+
+	public List<ERecord> getListByType(String type) {
+		List<ERecord> pcjls = new ArrayList<ERecord>();
+		List<ERecord> pcjlList = eRecordMapper.getListByPcjl();
+		for (ERecord pcjl : pcjlList) {
+			String pcjlType = pcjl.getBatchID().substring(0, 2);
+			if (pcjlType.equals(type)){
+				pcjls.add(pcjl);
+			}
+		}
+		return pcjls;
+	}
 }
