@@ -35,10 +35,10 @@
             <li>|</li>
             <li class="layui-nav-item">
                 <span>欢迎您!</span>
-                <a href="" style="cursor:pointer;">超级管理员</a>
+                <a style="cursor:pointer;">超级管理员</a>
             </li>
             <li>|</li>
-            <li>退出</li>
+            <li><a href="<%=basePath%>main/exit">退出</a></li>
         </ul>
     </div>
     <%--身体--%>
@@ -50,7 +50,7 @@
                     <a href="javascript:;" onclick="inspect(0)">M类报表生成</a>
                     <dl class="layui-nav-child" style="color: #79e6e8">
                         <c:forEach items="${mWscPcjlList}" var="item">
-                            <dd><a href="javascript:;">${item.batchID}</a></dd>
+                            <dd><a href="javascript:;" onclick="typeQuery('M')">${item.batchID}</a></dd>
                         </c:forEach>
                     </dl>
                 </li>
@@ -58,7 +58,7 @@
                     <a href="javascript:;" onclick="inspect(0)">U类报表生成</a>
                     <dl class="layui-nav-child">
                         <c:forEach items="${uWscPcjlList}" var="item">
-                            <dd><a href="javascript:;">${item.batchID}</a></dd>
+                            <dd><a href="javascript:;" onclick="typeQuery('U')">${item.batchID}</a></dd>
                         </c:forEach>
                     </dl>
                 </li>
@@ -87,18 +87,29 @@
             </div>
             <%--右部分body--%>
             <div class="right-body-main" style="overflow: hidden">
-<%--                <iframe style="width: 100%; height: 500px;" src="../opc/demo.jsp"></iframe>--%>
-                <%@include file="../opc/opcm.jsp"%>
+                <div id="createM">
+                    <%@include file="../report/inc/createM.jsp"%>
+                </div>
+                <div id="createU">
+                    <%@include file="../report/inc/createU.jsp"%>
+                </div>
+                <div id="searchM">
+                    <%@include file="../report/inc/searchM.jsp"%>
+                </div>
+                <div id="searchU">
+                    <%@include file="../report/inc/searchU.jsp"%>
+                </div>
             </div>
         </div>
     </div>
 </div>
 <script>
-    
-    window.load(init(1));
+    $(function () {
+        // init();
+        typeQuery("M");
+    })
 
-
-    function init(id) {
+    function init() {
         document.getElementById("right-body-head-icon").classList.add("layui-icon-search");
         document.getElementById("right-body-head-span2").innerHTML="报表查询页面";
     }
@@ -114,7 +125,32 @@
     }
 
     function typeQuery(type) {
-        $.post("<%=basePath%>sys/getListByType",
+        if (type=="M"){
+            $("#createM").css('display','block');
+            $("#createU").css('display','none');
+            $("#searchM").css('display','none');
+            $("#searchU").css('display','none');
+            inspect(0);
+        }else if(type=="U"){
+            $("#createM").css('display','none');
+            $("#createU").css('display','block');
+            $("#searchM").css('display','none');
+            $("#searchU").css('display','none');
+            inspect(0);
+        } else if (type=="MA"||type=="MB"){
+            $("#createM").css('display','none');
+            $("#createU").css('display','none');
+            $("#searchM").css('display','block');
+            $("#searchU").css('display','none');
+            inspect(1);
+        }else if (type=="UD"){
+            $("#createM").css('display','none');
+            $("#createU").css('display','none');
+            $("#searchM").css('display','none');
+            $("#searchU").css('display','block');
+            inspect(1);
+        }
+        $.post("<%=basePath%>report/getListByType",
             {type:type},
             function(data){
                 if(data.message=="ok"){

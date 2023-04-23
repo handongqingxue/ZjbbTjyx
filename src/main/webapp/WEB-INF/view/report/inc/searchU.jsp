@@ -6,14 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
-    String basePath=request.getScheme()+"://"+request.getServerName()+":"
-            +request.getServerPort()+request.getContextPath()+"/";
-%>
 <html>
 <head>
-<link rel="stylesheet" href="<%=basePath%>resource/css/style.css">
-<script type="text/javascript" src="<%=basePath%>resource/js/jquery-3.3.1.js"></script>
 <title>Title</title>
 <script type="text/javascript">
 var path='<%=basePath%>';
@@ -45,7 +39,7 @@ function addSCJL() {
 </head>
 <body>
     <div>
-        <button class="baocun" style="position: fixed;top: 20px;left: 1500px" onclick="addSCJL()">保存</button>
+
         <table class="tab" border="1px">
             <tr>
                 <th colspan="13">

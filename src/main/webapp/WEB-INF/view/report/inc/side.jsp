@@ -7,22 +7,22 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%--头部--%>
-<div class="home-head">
-    <span class="home-head-span">永兴制胶数据报表系统</span>
-    <ul class="home-head-ul">
-        <li></li>
-        <li>|</li>
-        <li id="system-time"></li>
-        <li>|</li>
-        <li class="layui-nav-item">
-            <span>欢迎您!</span>
-            <a href="" style="cursor:pointer;">超级管理员</a>
-        </li>
-        <li>|</li>
-        <li><a href="<%=basePath%>main/exit">退出</a></li>
-    </ul>
-</div>
+<%--&lt;%&ndash;头部&ndash;%&gt;--%>
+<%--<div class="home-head">--%>
+<%--    <span class="home-head-span">永兴制胶数据报表系统</span>--%>
+<%--    <ul class="home-head-ul">--%>
+<%--        <li></li>--%>
+<%--        <li>|</li>--%>
+<%--        <li id="system-time"></li>--%>
+<%--        <li>|</li>--%>
+<%--        <li class="layui-nav-item">--%>
+<%--            <span>欢迎您!</span>--%>
+<%--            <a href="" style="cursor:pointer;">超级管理员</a>--%>
+<%--        </li>--%>
+<%--        <li>|</li>--%>
+<%--        <li><a href="<%=basePath%>main/exit">退出</a></li>--%>
+<%--    </ul>--%>
+<%--</div>--%>
 
 <div class="home-left-body">
     <ul class="layui-nav layui-nav-tree" lay-filter="test">

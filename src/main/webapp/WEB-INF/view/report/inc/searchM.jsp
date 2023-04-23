@@ -57,8 +57,6 @@ function exportExcel() {
     a.click();
 }
 
-
-
 layui.use('laypage', function(){
     var laypage = layui.laypage;
 
@@ -68,15 +66,10 @@ layui.use('laypage', function(){
         ,count: 100
         ,layout: ['count', 'prev', 'page', 'next', 'refresh', 'skip']
         ,jump: function(obj){
-            console.log(obj)
         }
     });
 });
 
-function chax() {
-    console.log("进来")
-    console.log("adadadad"+typeList[1])
-}
 </script>
 </head>
 <body>
@@ -95,7 +88,7 @@ function chax() {
                 <td>
                     选择批次&nbsp;&nbsp;
                     <select class="m_query_head_input" id="typeSelect">
-<%--                        <option></option>--%>
+                        <%--<option></option>--%>
                     </select>
                 </td>
             </tr>
@@ -105,11 +98,11 @@ function chax() {
                     <input type="date" placeholder="请选择时间" class="m_query_head_input">
                 </td>
                 <td>
-                    当前胶种&nbsp;&nbsp;
+                    当前胶种&nbsp;&nbsp;<span id="glue"></span>
                 </td>
                 <td>
                     <button class="m_query_head_button">
-                        <i class="layui-icon layui-icon-search" onclick="chax()" style="font-size: 16px; color: #ffffff;"></i>
+                        <i class="layui-icon layui-icon-search" style="font-size: 16px; color: #ffffff;"></i>
                         查询
                     </button>
                 </td>
