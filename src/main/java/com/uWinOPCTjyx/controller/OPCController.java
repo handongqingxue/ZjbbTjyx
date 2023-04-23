@@ -96,6 +96,18 @@ public class OPCController {
 			count=reportF_MService.addByERecordList(eRecordList);
 		}
 		
+		if(count>0)
+			count=eRecordService.updatePCJLReportedByBatchID(batchID);
+		
+		if (count>0){
+			json.put("message","ok");
+			json.put("info","生成报表成功");
+		}
+		else {
+			json.put("message","no");
+			json.put("info","生成报表失败");
+		}
+		
 		return json;
 	}
 	

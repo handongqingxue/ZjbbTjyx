@@ -19,6 +19,7 @@ public class ReportF_MServiceImpl implements ReportF_MService {
     
 	public int addByERecordList(List<ERecord> eRecordList) {
 		// TODO Auto-generated method stub
+		int count=0;
 		List<ReportF_M> reportF_MList=new ArrayList<ReportF_M>();
 		for (ERecord eRecord : eRecordList) {
 			String varName = eRecord.getVarName();
@@ -167,13 +168,124 @@ public class ReportF_MServiceImpl implements ReportF_MService {
 				int jflphsrzColNumber=ReportF_M.JFLPHSRZ_CN;
 				reportF_MList.add(createByParams(jflphsrzRowNumber, jflphsrzColNumber, varValue, batchID));
 			}
+			else if((Constant.SHENG_WEN_KAI_SHI+Constant.DAO+Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING+Constant.SHI_JIAN).equals(varName)) {//升温开始到温度85与二次投料提醒时间
+				int swkssjRowNumber=ReportF_M.SWKSSJ_RN;
+				int swkssjColNumber=ReportF_M.SWKSSJ_CN;
+				reportF_MList.add(createByParams(swkssjRowNumber, swkssjColNumber, preValue, batchID));
+				
+				int wd85yectltxsjRowNumber=ReportF_M.WD85YECTLTXSJ_RN;
+				int wd85yectltxsjColNumber=ReportF_M.WD85YECTLTXSJ_CN;
+				reportF_MList.add(createByParams(wd85yectltxsjRowNumber, wd85yectltxsjColNumber, nxtValue, batchID));
+				
+				int swksdwd85yectltxsjcRowNumber=ReportF_M.SWKSDWD85YECTLTXSJC_RN;
+				int swksdwd85yectltxsjcColNumber=ReportF_M.SWKSDWD85YECTLTXSJC_CN;
+				reportF_MList.add(createByParams(swksdwd85yectltxsjcRowNumber, swksdwd85yectltxsjcColNumber, ptnValue+unit, batchID));
+			}
+			else if(varName.startsWith(Constant.ZHENG_QI_YA_LI)) {//蒸汽压力
+				int zqylRowNumber=ReportF_M.ZQYL_RN;
+				int zqylColNumber=ReportF_M.ZQYL_CN;
+				reportF_MList.add(createByParams(zqylRowNumber, zqylColNumber, varValue+unit, batchID));
+			}
+			else if((Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU).equals(varName)) {//温度85与二次投料提醒上升沿反应釜温度
+				int wd85yectltxfyfwdRowNumber=ReportF_M.WD85YECTLTXFYFWD_RN;
+				int wd85yectltxfyfwdColNumber=ReportF_M.WD85YECTLTXFYFWD_CN;
+				reportF_MList.add(createByParams(wd85yectltxfyfwdRowNumber, wd85yectltxfyfwdColNumber, varValue+unit, batchID));
+			}
+			else if(Constant.ER_CI_TOU_LIAO_PH_SHU_RU_ZHI.equals(varName)) {//二次投料PH输入值
+				int ectlphsrzRowNumber=ReportF_M.ECTLPHSRZ_RN;
+				int ectlphsrzColNumber=ReportF_M.ECTLPHSRZ_CN;
+				reportF_MList.add(createByParams(ectlphsrzRowNumber, ectlphsrzColNumber, varValue, batchID));
+			}
+			else if((Constant.YUN_XU_ER_CI_JIA_ZHU_JI+Constant.DAO+Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+Constant.SHI_JIAN).equals(varName)) {//允许二次加助剂到所有助剂加料完成2时间
+				int yxecjzjsjRowNumber=ReportF_M.YXECJZJSJ_RN;
+				int yxecjzjsjColNumber=ReportF_M.YXECJZJSJ_CN;
+				reportF_MList.add(createByParams(yxecjzjsjRowNumber, yxecjzjsjColNumber, preValue, batchID));
+				
+				int syzjjlwc2sjRowNumber=ReportF_M.SYZJJLWC2SJ_RN;
+				int syzjjlwc2sjColNumber=ReportF_M.SYZJJLWC2SJ_CN;
+				reportF_MList.add(createByParams(syzjjlwc2sjRowNumber, syzjjlwc2sjColNumber, nxtValue, batchID));
+				
+				int yxecjzjdsyzjjlwc2sjcRowNumber=ReportF_M.YXECJZJDSYZJJLWC2SJC_RN;
+				int yxecjzjdsyzjjlwc2sjcColNumber=ReportF_M.YXECJZJDSYZJJLWC2SJC_CN;
+				reportF_MList.add(createByParams(yxecjzjdsyzjjlwc2sjcRowNumber, yxecjzjdsyzjjlwc2sjcColNumber, ptnValue+unit, batchID));
+			}
+			else if((Constant.YUN_XU_ER_CI_JIA_ZHU_JI+Constant.DAO+Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+Constant.FU+Constant.CHENG_ZHONG).equals(varName)) {//允许二次加助剂到所有助剂加料完成2釜称重
+				int yxecjzjfczRowNumber=ReportF_M.YXECJZJFCZ_RN;
+				int yxecjzjfczColNumber=ReportF_M.YXECJZJFCZ_CN;
+				reportF_MList.add(createByParams(yxecjzjfczRowNumber, yxecjzjfczColNumber, preValue, batchID));
+				
+				int syzjjlwc2fczRowNumber=ReportF_M.SYZJJLWC2FCZ_RN;
+				int syzjjlwc2fczColNumber=ReportF_M.SYZJJLWC2FCZ_CN;
+				reportF_MList.add(createByParams(syzjjlwc2fczRowNumber, syzjjlwc2fczColNumber, nxtValue, batchID));
+				
+				int yxecjzjdsyzjjlwc2zlcRowNumber=ReportF_M.YXECJZJDSYZJJLWC2ZLC_RN;
+				int yxecjzjdsyzjjlwc2zlcColNumber=ReportF_M.YXECJZJDSYZJJLWC2ZLC_CN;
+				reportF_MList.add(createByParams(yxecjzjdsyzjjlwc2zlcRowNumber, yxecjzjdsyzjjlwc2zlcColNumber, ptnValue+unit, batchID));
+			}
+			else if((Constant.SHENG_WEN_KAI_SHI+Constant.DAO+Constant.SHENG_WEN_WAN_CHENG+Constant.SHI_JIAN).equals(varName)) {
+				int swwcsjRowNumber=ReportF_M.SWWCSJ_RN;
+				int swwcsjColNumber=ReportF_M.SWWCSJ_CN;
+				reportF_MList.add(createByParams(swwcsjRowNumber, swwcsjColNumber, nxtValue, batchID));
+				
+				int swksdswwcsjcRowNumber=ReportF_M.SWKSDSWWCSJC_RN;
+				int swksdswwcsjcColNumber=ReportF_M.SWKSDSWWCSJC_CN;
+				reportF_MList.add(createByParams(swksdswwcsjcRowNumber, swksdswwcsjcColNumber, ptnValue+unit, batchID));
+			}
+			else if((Constant.SHENG_WEN_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU).equals(varName)) {
+				int swwcfyfwdRowNumber=ReportF_M.SWWCFYFWD_RN;
+				int swwcfyfwdColNumber=ReportF_M.SWWCFYFWD_CN;
+				reportF_MList.add(createByParams(swwcfyfwdRowNumber, swwcfyfwdColNumber, varValue+unit, batchID));
+			}
+			else if(Constant.WEN_DU_98_PH.equals(varName)) {
+				int wd98phRowNumber=ReportF_M.WD98PH_RN;
+				int wd98phColNumber=ReportF_M.WD98PH_CN;
+				reportF_MList.add(createByParams(wd98phRowNumber, wd98phColNumber, varValue, batchID));
+			}
+			else if(Constant.CE_LIANG_BSWD_SRZ.equals(varName)) {
+				int clbswdsrzRowNumber=ReportF_M.CLBSWDSRZ_RN;
+				int clbswdsrzColNumber=ReportF_M.CLBSWDSRZ_CN;
+				reportF_MList.add(createByParams(clbswdsrzRowNumber, clbswdsrzColNumber, varValue, batchID));
+			}
+			else if(Constant.CE_20_WU_DIAN_SRZ.equals(varName)) {
+				int c20wdsrzRowNumber=ReportF_M.C20WDSRZ_RN;
+				int c20wdsrzColNumber=ReportF_M.C20WDSRZ_CN;
+				reportF_MList.add(createByParams(c20wdsrzRowNumber, c20wdsrzColNumber, varValue, batchID));
+			}
+			else if((Constant.JU_HE_ZHONG_DIAN+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU).equals(varName)) {
+				int jhzdfyfwdRowNumber=ReportF_M.JHZDFYFWD_RN;
+				int jhzdfyfwdColNumber=ReportF_M.JHZDFYFWD_CN;
+				reportF_MList.add(createByParams(jhzdfyfwdRowNumber, jhzdfyfwdColNumber, varValue+unit, batchID));
+			}
+			else if(Constant.TING_RE_JIANG_WEN_SHUI_SHU_SRZ.equals(varName)) {
+				int trjwsssrzRowNumber=ReportF_M.TRJWSSSRZ_RN;
+				int trjwsssrzColNumber=ReportF_M.TRJWSSSRZ_CN;
+				reportF_MList.add(createByParams(trjwsssrzRowNumber, trjwsssrzColNumber, varValue, batchID));
+			}
+			else if((Constant.KAI_SHI_JIANG_WEN+Constant.DAO+Constant.TING_ZHI_JIANG_WEN+Constant.SHI_JIAN).equals(varName)) {
+				int jhzdsjRowNumber=ReportF_M.JHZDSJ_RN;
+				int jhzdsjColNumber=ReportF_M.JHZDSJ_CN;
+				reportF_MList.add(createByParams(jhzdsjRowNumber, jhzdsjColNumber, preValue, batchID));
+				
+				int jwwcsjRowNumber=ReportF_M.JWWCSJ_RN;
+				int jwwcsjColNumber=ReportF_M.JWWCSJ_CN;
+				reportF_MList.add(createByParams(jwwcsjRowNumber, jwwcsjColNumber, nxtValue, batchID));
+				
+				int ksjwdtzjwsjcRowNumber=ReportF_M.KSJWDTZJWSJC_RN;
+				int ksjwdtzjwsjcColNumber=ReportF_M.KSJWDTZJWSJC_CN;
+				reportF_MList.add(createByParams(ksjwdtzjwsjcRowNumber, ksjwdtzjwsjcColNumber, ptnValue+unit, batchID));
+			}
+			else if((Constant.JIANG_WEN_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU).equals(varName)) {
+				int jwwcfyfwdRowNumber=ReportF_M.JWWCFYFWD_RN;
+				int jwwcfyfwdColNumber=ReportF_M.JWWCFYFWD_CN;
+				reportF_MList.add(createByParams(jwwcfyfwdRowNumber, jwwcfyfwdColNumber, varValue+unit, batchID));
+			}
 		}
 		
 		for (ReportF_M reportF_M : reportF_MList) {
-			int i=reportF_MMapper.add(reportF_M);
+			count+=reportF_MMapper.add(reportF_M);
 		}
 		
-		return 0;
+		return count;
 	}
 	
 	/**

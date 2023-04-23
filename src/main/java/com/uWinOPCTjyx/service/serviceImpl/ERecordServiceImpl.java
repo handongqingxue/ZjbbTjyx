@@ -1369,6 +1369,11 @@ public class ERecordServiceImpl implements ERecordService {
 		return eRecordMapper.getListByBatchID(batchID);
 	}
 
+	public int updatePCJLReportedByBatchID(String batchID) {
+		// TODO Auto-generated method stub
+		return eRecordMapper.updatePCJLReportedByBatchID(batchID);
+	}
+
 	public Map<String,Object> getListByPcjl() {
 		Map<String,Object> map = new HashMap<String, Object>();
 		List<ERecord> mYscPcjlList = new ArrayList<ERecord>();//M类已生成的批次记录集合

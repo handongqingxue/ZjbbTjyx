@@ -17,6 +17,13 @@ public interface ERecordService {
 	List<ERecord> getListByBatchID(String batchID);
 
 	/**
+	 * 根据批次
+	 * @param batchID
+	 * @return
+	 */
+	int updatePCJLReportedByBatchID(String batchID);
+
+	/**
 	 * 查询全部批次记录
 	 * @return
 	 */
