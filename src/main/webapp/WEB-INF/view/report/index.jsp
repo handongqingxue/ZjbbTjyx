@@ -38,7 +38,7 @@
                 <a style="cursor:pointer;">超级管理员</a>
             </li>
             <li>|</li>
-            <li onclick="logout()">退出</li>
+            <li><a href="<%=basePath%>main/exit">退出</a></li>
         </ul>
     </div>
     <%--身体--%>
@@ -50,7 +50,7 @@
                     <a href="javascript:;" onclick="inspect(0)">M类报表生成</a>
                     <dl class="layui-nav-child" style="color: #79e6e8">
                         <c:forEach items="${mWscPcjlList}" var="item">
-                            <dd><a href="javascript:;">${item.batchID}</a></dd>
+                            <dd><a href="javascript:;" onclick="typeQuery('M')">${item.batchID}</a></dd>
                         </c:forEach>
                     </dl>
                 </li>
@@ -58,7 +58,7 @@
                     <a href="javascript:;" onclick="inspect(0)">U类报表生成</a>
                     <dl class="layui-nav-child">
                         <c:forEach items="${uWscPcjlList}" var="item">
-                            <dd><a href="javascript:;">${item.batchID}</a></dd>
+                            <dd><a href="javascript:;" onclick="typeQuery('U')">${item.batchID}</a></dd>
                         </c:forEach>
                     </dl>
                 </li>
@@ -87,16 +87,20 @@
             </div>
             <%--右部分body--%>
             <div class="right-body-main" style="overflow: hidden">
-<%--                <iframe style="width: 100%; height: 500px;" src="../opc/demo.jsp"></iframe>--%>
-                <%@include file="../opc/opcm.jsp"%>
+                <div id="searchM">
+                    <%@include file="../opc/opcm.jsp"%>
+                </div>
+                <div id="searchU">
+                    <%@include file="../opc/opcu.jsp"%>
+                </div>
             </div>
         </div>
     </div>
 </div>
 <script>
-    
-    window.load(init(1));
-
+    $(function () {
+        init(1);
+    })
 
     function init(id) {
         document.getElementById("right-body-head-icon").classList.add("layui-icon-search");
@@ -114,7 +118,18 @@
     }
 
     function typeQuery(type) {
-        $.post("<%=basePath%>sys/getListByType",
+        if (type=="MA"||type=="MB"){
+            $("#searchM").css('display','block');
+            $("#searchU").css('display','none');
+            inspect(1);
+        }else if (type=="UD"){
+            $("#searchU").css('display','block');
+            $("#searchM").css('display','none');
+            inspect(1);
+        }else {
+            inspect(0);
+        }
+        $.post("<%=basePath%>report/getListByType",
             {type:type},
             function(data){
                 if(data.message=="ok"){
@@ -128,10 +143,6 @@
                 }
             }
             ,"json");
-    }
-
-    function logout() {
-        $.post("<%=basePath%>user/exit");
     }
 
 </script>

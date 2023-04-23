@@ -24,15 +24,15 @@ public class MainController {
     private UserListService userListService;
 
     @RequestMapping("/goLogin")
-    public String goLogin(UserList user){
+    public String goLogin(){
         return "login";
     }
 
     @RequestMapping("/login")
     @ResponseBody
-    public Map<String,Object> login(UserList user, HttpServletRequest request){
-        System.out.println("进来"+user.toString());
-        Map<String,Object> json = new HashMap<String, Object>();
+    public PlanResult login(UserList user, HttpServletRequest request){
+        //返回值对象
+        PlanResult plan=new PlanResult();
         HttpSession session = request.getSession();
         try {
             UsernamePasswordToken token = new UsernamePasswordToken(user.getUserName(), user.getPsd());
@@ -44,17 +44,16 @@ public class MainController {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            json.put("status",0);
-            json.put("msg","验证失败");
-            return json;
+            plan.setStatus(0);
+            plan.setMsg("验证失败");
+            return plan;
         }
         UserList principal = (UserList) SecurityUtils.getSubject().getPrincipal();
         session.setAttribute("user",principal);
-        json.put("status",1);
-        json.put("msg","验证成功");
-        json.put("url","/report/index");
-        return json;
-
+        plan.setStatus(1);
+        plan.setMsg("验证成功");
+        plan.setUrl("/report/goIndex");
+        return plan;
     }
 
     //注销

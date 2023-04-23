@@ -100,7 +100,7 @@ layui.use('laypage', function(){
                     <input type="date" placeholder="请选择时间" class="m_query_head_input">
                 </td>
                 <td>
-                    当前胶种&nbsp;&nbsp;
+                    当前胶种&nbsp;&nbsp;<span id="glue"></span>
                 </td>
                 <td>
                     <button class="m_query_head_button">
