@@ -70,6 +70,46 @@ public class ERecord {
 	 * 允许一次加助剂上升沿时间
 	 */
 	public static final String YXYCJZJSSYSJ=Constant.YUN_XU_YI_CI_JIA_ZHU_JI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+	/**
+	 * 甲醛放料完成上升沿反应釜温度
+	 */
+	public static final String JQFLWCSSYFYFWD=Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
+	/**
+	 * 助剂计量罐1-2称重
+	 */
+	public static final String ZJJLG12CZ=Constant.ZHU_JI_JI_LIANG_GUAN+Constant.BSF_ZJJLG1+"-"+Constant.BSF_ZJJLG2+Constant.CHENG_ZHONG;
+	/**
+	 * 允许一次加助剂到所有助剂加料完成1时间
+	 */
+	public static final String YXYCJZJDSYZJJLWC1SJ=Constant.YUN_XU_YI_CI_JIA_ZHU_JI+Constant.DAO+Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.SHI_JIAN;
+	/**
+	 * 所有助剂加料完成1上升沿时间
+	 */
+	public static final String SYZJJLWC1SSYSJ=Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+	/**
+	 * 所有助剂加料完成1上升沿反应釜温度
+	 */
+	public static final String SYZJJLWC1SSYFYFWD=Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
+	/**
+	 * 允许一次加助剂上升沿釜称重
+	 */
+	public static final String YXYCJZJSSYFCZ=Constant.YUN_XU_YI_CI_JIA_ZHU_JI+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
+	/**
+	 * 允许一次加助剂到所有助剂加料完成1釜重量
+	 */
+	public static final String YXYCJZJDSYZJJLWC1FZL=Constant.YUN_XU_YI_CI_JIA_ZHU_JI+Constant.DAO+Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.FU+Constant.ZHONG_LIANG;
+	/**
+	 * 所有助剂加料完成1上升沿釜称重
+	 */
+	public static final String SYZJJLWC1SSYFCZ=Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
+	/**
+	 * 允许一次加助剂到所有助剂加料完成1重量差
+	 */
+	public static final String YXYCJZJDSYZJJLWC1FZLC=Constant.YUN_XU_YI_CI_JIA_ZHU_JI+Constant.DAO+Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.FU+Constant.ZHONG_LIANG+Constant.CHA;
+	/**
+	 * 允许一次加助剂到所有助剂加料完成1时间差
+	 */
+	public static final String YXYCJZJDSYZJJLWC1SJC=Constant.YUN_XU_YI_CI_JIA_ZHU_JI+Constant.DAO+Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.SHI_JIAN+Constant.CHA;
 
 	private Integer Id;
 	public Integer getId() {

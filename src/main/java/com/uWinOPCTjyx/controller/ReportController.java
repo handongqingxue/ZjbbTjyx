@@ -79,11 +79,24 @@ public class ReportController {
         }
     }
 
-    @RequestMapping("/getUnCreRepERecList")
+    @RequestMapping("/getUnCreRepVarList")
     @ResponseBody
     public Map<String,Object> getUnCreRepVarList(String batchID) {
+    	Map<String,Object> map = new HashMap<String, Object>();
 		
     	List<Map<String, Object>> varMapList=eRecordService.getUnCreRepVarList(batchID);
+    	
+    	if(varMapList.size()>0) {
+    		map.put("message","ok");
+            map.put("info","查询成功");
+            map.put("varMapList",varMapList);
+    	}
+    	else {
+            map.put("message","no");
+            map.put("info","查询失败");
+    	}
+    	
+        return map;
 	}
 
 }
