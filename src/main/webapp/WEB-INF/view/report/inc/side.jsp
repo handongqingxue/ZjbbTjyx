@@ -31,7 +31,7 @@
             <a href="javascript:;" onclick="inspect(0)">M类报表生成</a>
             <dl class="layui-nav-child" style="color: #79e6e8">
                 <c:forEach items="${mWscPcjlList}" var="item">
-                    <dd><a href="javascript:;">${item.batchID}</a></dd>
+                    <dd><a href="<%=basePath%>report/goCreateM?">${item.batchID}</a></dd>
                 </c:forEach>
             </dl>
         </li>

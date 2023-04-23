@@ -33,4 +33,6 @@ public interface ERecordService {
 	 * 通过类型来获取批次记录
 	 */
 	List<ERecord> getListByType(String type);
+
+	List<Map<String, Object>> getUnCreRepVarList(String batchID);
 }
