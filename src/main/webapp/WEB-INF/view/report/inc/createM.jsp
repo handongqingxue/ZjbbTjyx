@@ -101,7 +101,7 @@ $(function () {
 
 function getUnCreRepVarList(){
 	$.post(path+"report/getUnCreRepVarList",
-		{batchID:"MA202323000022"},
+		{batchID:"MA202300000022"},
 		function(result){
 			var varMapList=result.varMapList;
 			for (var i = 0; i < varMapList.length; i++) {

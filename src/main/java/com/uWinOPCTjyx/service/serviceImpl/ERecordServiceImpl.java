@@ -1326,14 +1326,18 @@ public class ERecordServiceImpl implements ERecordService {
 			String batchNumStr=null;
 			int batchNum=maxBatchNum+i+1;
 			if(batchNum<10)
-				batchNumStr="00000"+batchNum;
+				batchNumStr="0000000"+batchNum;
 			else if(batchNum<100)
-				batchNumStr="0000"+batchNum;
+				batchNumStr="000000"+batchNum;
 			else if(batchNum<1000)
-				batchNumStr="000"+batchNum;
+				batchNumStr="00000"+batchNum;
 			else if(batchNum<10000)
-				batchNumStr="00"+batchNum;
+				batchNumStr="0000"+batchNum;
 			else if(batchNum<100000)
+				batchNumStr="000"+batchNum;
+			else if(batchNum<1000000)
+				batchNumStr="00"+batchNum;
+			else if(batchNum<10000000)
 				batchNumStr="0"+batchNum;
 			else
 				batchNumStr=""+batchNum;

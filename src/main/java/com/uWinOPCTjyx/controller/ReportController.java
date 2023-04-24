@@ -59,6 +59,9 @@ public class ReportController {
     	request.setAttribute("uYscPcjlList",pcjlMap.get("uYscPcjlList"));
     	request.setAttribute("mWscPcjlList",pcjlMap.get("mWscPcjlList"));
     	request.setAttribute("uWscPcjlList",pcjlMap.get("uWscPcjlList"));
+    	
+    	List<ERecord> list = (List<ERecord>)pcjlMap.get("mWscPcjlList");
+    	System.out.println("size==="+list.size());
 	}
 
     @RequestMapping("/getListByType")
