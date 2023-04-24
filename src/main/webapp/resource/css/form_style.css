@@ -66,28 +66,28 @@
     border-color: transparent;/*透明边框*/
     background-color:rgba(0,0,0,0);/*透明背景*/
 }
-.m_div{
+.home_right_div{
     width: 100%;
     background-color: #FFFFFF;
 }
-.m_head_div{
+.home_right_head_div{
     width: 100%;
     height: 110px;
     border-bottom: 2px #dbdbdb solid;
 }
-.m_head_table{
+.m_query_head_table{
     margin-left: 55px;
     width: 100%;
     height: 95%;
 }
-.m_head_table tr{
+.m_query_head_table tr{
 }
-.m_head_table tr td{
+.m_query_head_table tr td{
     width: 150px;
     color: #1f1f1f;
     font: normal 400 14px "华文黑体";
 }
-.m_head_button{
+.m_query_head_button{
     border: 0px;
     width: 90px;
     height: 30px;
@@ -97,23 +97,35 @@
     cursor:pointer;
     margin-left: 60px;
 }
-.m_head_input{
+.m_query_head_input{
     width: 200px;
     color: #c2c2c2;
     border: #c2c2c2 1px solid;
     border-radius: 3px;
     height: 25px;
 }
-.m_body_div{
+.home_right_body_div{
     overflow:auto;
     width: 100%;
     height: 80%;
 }
-.m_bottom_div{
+.home_right_bottom_div{
     text-align: center;
     width: 100%;
     height: 80px;
     border-top: 1px #d4cfcf solid;
 }
-.m_bottom_paging{
+.m_create_head_div1{
+    padding-left: 55px;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+}
+.m_create_head_div2{
+    padding-left: 55px;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
 }

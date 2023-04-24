@@ -1,80 +1,30 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: lilekang
-  Date: 2023/3/24
-  Time: 9:53 上午
-  To change this template use File | Settings | File Templates.
---%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
 
 <title>Title</title>
-<script type="text/javascript">
-var path='<%=basePath%>';
+<script>
 
-function addPiCiU() {
-	var scbh=$("#scbh_input").val();
-	var fyfh=$("#fyfh_input").val();
-	var kssj=$("#kssj_input").val();
-	var jssj=$("#jssj_input").val();
-	var scgs=$("#scgs_input").val();
-	var scrq=$("#scrq_input").val();
-	var ysd101=$("#ysd101_input").val();
-	var ysd102=$("#ysd102_input").val();
-	var ysd103="2";
-	var dbczyBsh=$("#dbczyBsh_input").val();
-	var jbczyBsh=$("#jbczyBsh_input").val();
-	
-    $.post(path+"opc/addPiCiU",
-    	{scbh:scbh,fyfh:fyfh,kssj:kssj,jssj:jssj,scgs:scgs,scrq:scrq,ysd101:ysd101,ysd102:ysd102,ysd103:ysd103,dbczyBsh:dbczyBsh,jbczyBsh:jbczyBsh},
-    	function(data){
-    		if(data.message=="ok"){
-    			alert(data.info);
-    		}
-    	}
-    ,"json");
-}
 
-function base64 (content) {
-    return window.btoa(unescape(encodeURIComponent(content)));
-}
-
-function exportExcel() {
-    var table = $("#opcMTable");
-    var excelContent = table[0].innerHTML;
-    var excelFile = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:x='urn:schemas-microsoft-com:office:excel' xmlns='http://www.w3.org/TR/REC-html40'>";
-    excelFile += "<head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head>";
-    excelFile += "<body><table>";
-    excelFile += excelContent;
-    excelFile += "</table></body>";
-    excelFile += "</html>";
-    var link = "data:application/vnd.ms-excel;base64," + base64(excelFile);
-    var a = document.createElement("a");
-    a.download = "M类()胶生产记录.xlsx";
-    a.href = link;
-    a.click();
-}
-
-layui.use('laypage', function(){
-    var laypage = layui.laypage;
-
-    //完整功能
-    laypage.render({
-        elem: 'paging'
-        ,count: 100
-        ,layout: ['count', 'prev', 'page', 'next', 'refresh', 'skip']
-        ,jump: function(obj){
-        }
-    });
-});
+// layui.use('laypage', function(){
+//     var laypage = layui.laypage;
+//
+//     //完整功能
+//     laypage.render({
+//         elem: 'paging'
+//         ,count: 100
+//         ,layout: ['count', 'prev', 'page', 'next', 'refresh', 'skip']
+//         ,jump: function(obj){
+//         }
+//     });
+// });
 
 </script>
 </head>
 <body>
-<div class="m-query_div">
-    <div class="m_query_head_div">
+<div class="home_right_div">
+    <div class="home_right_head_div">
         <table class="m_query_head_table">
             <tr>
                 <td style="font-size: 17px">设置检索条件:</td>
@@ -109,12 +59,12 @@ layui.use('laypage', function(){
             </tr>
         </table>
     </div>
-    <div class="m_query_body_div">
-        <table class="m_query_body_table" border="1px" id="opcMTable">
+    <div class="home_right_body_div">
+        <table class="m_body_table" border="1px" id="opcMTable">
             <tr>
                 <td colspan="13">
                     <span class="onetd1">M类 （ ）胶 生产记录</span>
-<%--                    <span class="onetd4">自动表单设计：张发 设计号：ZJZD20211225</span>--%>
+                    <%--                    <span class="onetd4">自动表单设计：张发 设计号：ZJZD20211225</span>--%>
                 </td>
             </tr>
             <%--第二行--%>
@@ -122,23 +72,23 @@ layui.use('laypage', function(){
                 <td>YSD101信息</td>
                 <td class="blue">
                     <%--甲醛厂家信息，可后期录入--%>
-<%--                    <input type="text" id="ysd101_input" placeholder="甲醛厂家信息"/>--%>
+                    <%--                    <input type="text" id="ysd101_input" placeholder="甲醛厂家信息"/>--%>
                 </td>
                 <td>YSD102信息</td>
                 <td class="blue">
                     <%--三安厂家信息可后期录入--%>
-<%--                    <input type="text" id="ysd102_input" placeholder="三安厂家信息">--%>
+                    <%--                    <input type="text" id="ysd102_input" placeholder="三安厂家信息">--%>
                 </td>
                 <td></td>
                 <td colspan="2">当班操作员：</td>
                 <td class="green" colspan="2">
                     <%--直接摘抄登录名--%>
-<%--                    <input type="text" id="dbczyBsh_input" placeholder="登录名">--%>
+                    <%--                    <input type="text" id="dbczyBsh_input" placeholder="登录名">--%>
                 </td>
                 <td colspan="2">接班操作员：</td>
                 <td class="green" colspan="2">
                     <%--直接摘抄登录名--%>
-<%--                    <input type="text" id="jbczyBsh_input" placeholder="登录名">--%>
+                    <%--                    <input type="text" id="jbczyBsh_input" placeholder="登录名">--%>
                 </td>
             </tr>
             <%--第三行--%>
@@ -146,31 +96,31 @@ layui.use('laypage', function(){
                 <td>生产编号</td>
                 <td class="yellow">
                     <%--每生产1釜加1--%>
-<%--                    <input type="text" id="scbh_input" placeholder="生产编号">--%>
+                    <%--                    <input type="text" id="scbh_input" placeholder="生产编号">--%>
                 </td>
                 <td>反应釜：</td>
                 <td class="green" colspan="2">
                     <%--反应釜号--%>
-<%--                    <input type="text" id="fyfh_input" placeholder="反应釜号">--%>
+                    <%--                    <input type="text" id="fyfh_input" placeholder="反应釜号">--%>
                 </td>
                 <td>开始时间</td>
                 <td class="green">
                     <%--备料开始时间--%>
-<%--                    <input type="datetime-local" id="kssj_input">--%>
+                    <%--                    <input type="datetime-local" id="kssj_input">--%>
                 </td>
                 <td>结束时间</td>
                 <td class="green">
                     <%--冷却结束时间--%>
-<%--                    <input type="datetime-local" id="jssj_input">--%>
+                    <%--                    <input type="datetime-local" id="jssj_input">--%>
                 </td>
                 <td>生产工时</td>
                 <td class="yellow">
                     <%--min--%>
-<%--                    <input type="text" id="scgs_input" placeholder="min/分">--%>
+                    <%--                    <input type="text" id="scgs_input" placeholder="min/分">--%>
                 </td>
                 <td>生产日期： </td>
                 <td class="green">
-<%--                    <input type="date" id="scrq_input">--%>
+                    <%--                    <input type="date" id="scrq_input">--%>
                 </td>
             </tr>
             <%--第四行--%>
@@ -453,8 +403,8 @@ layui.use('laypage', function(){
             </tr>
         </table>
     </div>
-    <div class="m_query_bottom_div">
-        <div id="paging" class="m_query_bottom_paging"></div>
+    <div class="home_right_bottom_div">
+        <div id="paging" class="home_right_bottom_paging"></div>
     </div>
 </div>
 </body>

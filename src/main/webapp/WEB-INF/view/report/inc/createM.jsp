@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: lilekang
-  Date: 2023/4/23
-  Time: 2:51 下午
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -33,43 +26,55 @@ function getUnCreRepVarList(){
 }
 </script>
 </head>
+<script>
+    // layui.use('laypage', function(){
+    //     var laypage = layui.laypage;
+    //
+    //     //完整功能
+    //     laypage.render({
+    //         elem: 'paging'
+    //         ,count: 100
+    //         ,layout: ['count', 'prev', 'page', 'next', 'refresh', 'skip']
+    //         ,jump: function(obj){
+    //         }
+    //     });
+    // });
+</script>
 <body>
-<div class="m-query_div">
-    <div class="m_query_head_div">
-        <table class="m_query_head_table">
-            <tr>
-                <td style="font-size: 17px">
-                    厂家信息
-                    <input type="text" placeholder="录入厂家信息">
-                </td>
-                <td>
-                    操作员
-                    <select>
-                        <option>张三</option>
-                    </select>
-                </td>
-                <td>
-                    报表状态:<span></span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    1号罐重量初始输入
-                    <input type="text">
-                </td>
-                <td>
-                    2号罐重量初始输入
-                    <input type="text">
-                </td>
-                <td>
-                    <button>生成报表</button>
-                    <button>数据复位</button>
-                </td>
-            </tr>
-        </table>
+<div class="home_right_div">
+    <div class="home_right_head_div">
+        <div class="m_create_head_div1">
+            <span>
+                厂家信息&nbsp;
+                <input type="text" placeholder="录入厂家信息"/>
+            </span>
+            <span>
+                操作员&nbsp;
+                <select>
+                    <option>张三</option>
+                </select>
+            </span>
+            <span>
+                报表状态:<span>未生成</span>
+            </span>
+        </div>
+        <div class="m_create_head_div2">
+            <span>
+                1号罐重量初始输入&nbsp;
+                <input type="text"/>
+            </span>
+            <span>
+                2号罐重量初始输入&nbsp;
+                <input type="text"/>
+            </span>
+            <span>
+                <button>生成报表</button>
+                <button>数据复位</button>
+            </span>
+        </div>
     </div>
-    <div class="m_query_body_div">
-        <table class="m_query_body_table" border="1px" id="opcMTable">
+    <div class="home_right_body_div">
+        <table class="m_body_table" border="1px" id="opcMTable">
             <tr>
                 <td colspan="13">
                     <span class="onetd1">M类 （ ）胶 生产记录</span>
@@ -421,8 +426,8 @@ function getUnCreRepVarList(){
             </tr>
         </table>
     </div>
-    <div class="m_query_bottom_div">
-        <div id="paging" class="m_query_bottom_paging"></div>
+    <div class="home_right_bottom_div">
+        <div id="paging" class="home_right_bottom_paging"></div>
     </div>
 </div>
 </body>
