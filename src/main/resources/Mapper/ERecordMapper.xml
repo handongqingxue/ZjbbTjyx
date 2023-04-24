@@ -96,7 +96,7 @@
 		SELECT * FROM ERecord WHERE VarName='批次记录'
 	</select>
 
-	<select id="getMYscPcjlList" resultType="com.uWinOPCTjyx.entity.ERecord">
+	<select id="getYscPcjlListByType" resultType="com.uWinOPCTjyx.entity.ERecord">
 		SELECT * FROM ERecord
 		<where>
 			VarName='批次记录' and Remark='1'
@@ -104,6 +104,5 @@
 				and LEFT(BatchID,2)=#{RecType}
 			</if>
 		</where>
-
 	</select>
 </mapper>

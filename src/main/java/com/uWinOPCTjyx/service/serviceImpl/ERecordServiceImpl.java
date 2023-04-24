@@ -1403,10 +1403,10 @@ public class ERecordServiceImpl implements ERecordService {
 		return map;
 	}
 
-	public List<ERecord> getMYscPcjlList(String type) {
+	public List<ERecord> getYscPcjlListByType(String type) {
 		ERecord eRecord = new ERecord();
 		eRecord.setRecType(type);
-		List<ERecord> pcjlList = eRecordMapper.getMYscPcjlList(eRecord);
+		List<ERecord> pcjlList = eRecordMapper.getYscPcjlListByType(eRecord);
 		return pcjlList;
 	}
 

@@ -47,16 +47,10 @@
 	<select id="getReportFMList" resultType="com.uWinOPCTjyx.entity.ReportF_M">
 		select * from ReportF_M
 		<where>
-			<if test="batchID!='' and batchID!=null">
-				and BatchID=#{batchID}
-			</if>
-<!--			<if test="createTime!=null">-->
 
-<!--			</if>-->
-<!--			<if test="endTime!=null">-->
-
-<!--			</if>-->
+			<foreach collection="batchIDs" item="batchID" open=" and cast(batchID as char) in (" separator="," close=")">
+				#{batchID}
+			</foreach>
 		</where>
 	</select>
-
 </mapper>

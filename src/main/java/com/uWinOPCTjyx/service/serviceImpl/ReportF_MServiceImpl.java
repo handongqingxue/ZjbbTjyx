@@ -293,22 +293,16 @@ public class ReportF_MServiceImpl implements ReportF_MService {
 		return count;
 	}
 
-	public Map<String,Object> getReportFMList(String type, String createTime, String batchID, String endTime, Integer currentPage) {
-		Map<String,Object> mYscMap = new HashMap<String, Object>();
-		List<List<ReportF_M>> mYscList = new ArrayList<List<ReportF_M>>();//用来存储m已生成的批次记录
-		if (currentPage==null||currentPage==0){
-			currentPage=1;
+	public List<List<ReportF_M>> getReportFMList(String type, String createTime, String batchID, String endTime, Integer currentPage) {
+		List<ERecord> yscPcjlListByType = eRecordService.getYscPcjlListByType(type);
+		List<String> batchIDs = new ArrayList<String>();//存放已生成的batchID
+		//遍历出该类型所以的已生成的batchID
+		for (ERecord eRecord : yscPcjlListByType) {
+			batchIDs.add(eRecord.getBatchID());//存入
 		}
+		List<ReportF_M> reportFMList = reportF_MMapper.getReportFMList(null, null, batchIDs);
 
-		//查询M全部的已生成的批次
-		List<ERecord> pcjlListByType = eRecordService.getMYscPcjlList(type);
-		for (ERecord pcjl : pcjlListByType) {
-			List<ReportF_M> reportFMList = reportF_MMapper.getReportFMList(createTime,endTime,batchID);
-			mYscList.add(reportFMList);
-		}
-		mYscMap.put("getPcjlByType",pcjlListByType);
-		mYscMap.put("mYscList",mYscList);
-		return mYscMap;
+		return null;
 	}
 
 	/**

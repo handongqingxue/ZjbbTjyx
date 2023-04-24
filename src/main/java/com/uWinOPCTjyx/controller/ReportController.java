@@ -68,21 +68,22 @@ public class ReportController {
     	request.setAttribute("uWscPcjlList",pcjlMap.get("uWscPcjlList"));
 	}
 
-    @RequestMapping("/getListByType")
+    @RequestMapping("/getPcjlListByType")
     @ResponseBody
-    public Map<String,Object> getListByType(String type,String CreateTime,String endTime,String batchID){
-        Map<String,Object> map = new HashMap<String, Object>();
+    public PlanResult getPcjlListByType(String type){
+        //返回值对象
+        PlanResult result=new PlanResult();
         try {
-            List<ERecord> list = eRecordService.getMYscPcjlList(type);
-            map.put("getListByType",list);
-            map.put("message","ok");
-            map.put("info","查询成功");
+            List<ERecord> list = eRecordService.getYscPcjlListByType(type);
+            result.setMsg("ok");
+            result.setStatus(1);
+            result.setData(list);
         } catch (Exception e) {
             e.printStackTrace();
-            map.put("message","no");
-            map.put("info","查询失败");
+            result.setStatus(0);
+            result.setMsg("no");
         } finally {
-            return map;
+            return result;
         }
     }
 
@@ -102,26 +103,15 @@ public class ReportController {
             map.put("message","no");
             map.put("info","查询失败");
     	}
-    	
+
         return map;
 	}
     @RequestMapping("/getReportFMList")
     @ResponseBody
-	public PlanResult getReportFMList(String type, String createTime, String endTime, String batchID, Integer currentPage){
+	public PlanResult getReportFMList(String type, Integer currentPage){
         //返回值对象
         PlanResult result=new PlanResult();
-        Map<String, Object> reportFMMap = null;
-        try {
-            reportFMMap = reportF_mService.getReportFMList(type,createTime,endTime,batchID,currentPage);
-            result.setData(reportFMMap);
-            result.setStatus(1);
-            result.setMsg("ok");
-        } catch (Exception e) {
-            e.printStackTrace();
-            result.setStatus(0);
-            result.setMsg("no");
-        } finally {
-            return result;
-        }
+
+        return result;
     }
 }

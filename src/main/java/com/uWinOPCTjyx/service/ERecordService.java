@@ -34,7 +34,7 @@ public interface ERecordService {
 	 * @param  type, CreateTime, endTime, batchID
 	 * @return
 	 */
-	List<ERecord> getMYscPcjlList(String type);
+	List<ERecord> getYscPcjlListByType(String type);
 
 	List<Map<String, Object>> getUnCreRepVarList(String batchID);
 }
