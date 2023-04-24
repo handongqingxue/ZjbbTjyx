@@ -1,7 +1,9 @@
 package com.uWinOPCTjyx.controller;
 
 import com.uWinOPCTjyx.entity.ERecord;
+import com.uWinOPCTjyx.entity.ReportF_M;
 import com.uWinOPCTjyx.service.ERecordService;
+import com.uWinOPCTjyx.service.ReportF_MService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +23,9 @@ public class ReportController {
 
     @Autowired
     private ERecordService eRecordService;
+
+    @Autowired
+    private ReportF_MService reportF_mService;
 
     @RequestMapping("/goIndex")
     public String goIndex(HttpServletRequest request){
@@ -62,10 +67,10 @@ public class ReportController {
 
     @RequestMapping("/getListByType")
     @ResponseBody
-    public Map<String,Object> getListByType(String type){
+    public Map<String,Object> getListByType(String type,String CreateTime,String endTime,String batchID){
         Map<String,Object> map = new HashMap<String, Object>();
         try {
-            List<ERecord> list = eRecordService.getListByType(type);
+            List<ERecord> list = eRecordService.getMYscPcjlList(type);
             System.out.println(list.toString()+";");
             map.put("getListByType",list);
             map.put("message","ok");
@@ -98,5 +103,10 @@ public class ReportController {
     	
         return map;
 	}
+    @RequestMapping("/demo")
+	public void demo(String type){
+        type="MA";
+        Map<String, Object> reportFMList = reportF_mService.getReportFMList(type);
 
+    }
 }

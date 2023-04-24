@@ -43,4 +43,9 @@
 			</if>
 		</trim>
 	</insert>
+
+	<select id="getReportFMList" resultType="com.uWinOPCTjyx.entity.ReportF_M">
+		select * from ReportF_M where BatchID=#{batchID}
+	</select>
+
 </mapper>

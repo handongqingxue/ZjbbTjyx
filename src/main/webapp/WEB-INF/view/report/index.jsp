@@ -138,13 +138,17 @@
             $("#searchM").css('display','block');
             $("#searchU").css('display','none');
             inspect(1);
+            getListByType(type);
         }else if (type=="UD"){
             $("#createM").css('display','none');
             $("#createU").css('display','none');
             $("#searchM").css('display','none');
             $("#searchU").css('display','block');
             inspect(1);
+            getListByType(type);
         }
+    }
+    function getListByType(type) {
         $.post("<%=basePath%>report/getListByType",
             {type:type},
             function(data){

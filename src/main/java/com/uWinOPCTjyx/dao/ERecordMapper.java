@@ -18,4 +18,12 @@ public interface ERecordMapper {
 	
 	List<ERecord> getListByPcjl();
 
+
+	/**
+	 * 已生成的m类批次记录
+	 * @param record
+	 * @return
+	 */
+	List<ERecord> getMYscPcjlList(ERecord record);
+
 }

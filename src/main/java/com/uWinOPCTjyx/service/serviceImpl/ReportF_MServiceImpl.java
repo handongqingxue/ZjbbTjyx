@@ -6,7 +6,9 @@ import com.uWinOPCTjyx.service.*;
 import com.uWinOPCTjyx.util.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +18,10 @@ public class ReportF_MServiceImpl implements ReportF_MService {
 
     @Autowired
     private ReportF_MMapper reportF_MMapper;
-    
+
+    @Autowired
+    private ERecordService eRecordService;
+
 	public int addByERecordList(List<ERecord> eRecordList) {
 		// TODO Auto-generated method stub
 		int count=0;
@@ -287,7 +292,22 @@ public class ReportF_MServiceImpl implements ReportF_MService {
 		
 		return count;
 	}
-	
+
+	public Map<String,Object> getReportFMList(String type) {
+		Map<String,Object> mYscMap = new HashMap<String, Object>();
+		//查询M全部的已生成的批次
+//		List<ERecord> pcjlListByType = eRecordService.getListByType(type);
+//		for (ERecord pcjl : pcjlListByType) {
+//			ReportF_M reportFM = new ReportF_M();
+//			reportFM.setBatchID(pcjl.getBatchID());
+//			List<ReportF_M> reportFMList = reportF_MMapper.getReportFMList(reportFM);
+//			System.out.println(pcjl.getBatchID()+"的长度"+reportFMList.size());
+//			mYscMap.put("reportFMList",reportFMList);
+//		}
+
+		return mYscMap;
+	}
+
 	/**
 	 * 根据参数创建报表对象
 	 * @param rowNumber
