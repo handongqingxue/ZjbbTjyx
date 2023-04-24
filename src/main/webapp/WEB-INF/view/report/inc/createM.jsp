@@ -65,6 +65,33 @@
 .m_body_table .tr16{
 	height: 60px;
 }
+.m_body_table .tr17{
+	height: 60px;
+}
+.m_body_table .tr18{
+	height: 60px;
+}
+.m_body_table .tr19{
+	height: 60px;
+}
+.m_body_table .tr20{
+	height: 100px;
+}
+.m_body_table .tr21{
+	height: 20px;
+}
+.m_body_table .tr22{
+	height: 100px;
+}
+.m_body_table .tr23{
+	height: 50px;
+}
+.m_body_table .tr24{
+	height: 80px;
+}
+.m_body_table .tr25{
+	height: 100px;
+}
 </style>
 <script type="text/javascript">
 var path='<%=basePath%>';
@@ -107,34 +134,27 @@ function getUnCreRepVarList(){
 <body>
 <div class="home_right_div">
     <div class="home_right_head_div">
-        <div class="m_create_head_div1">
-            <span>
-                厂家信息&nbsp;
-                <input type="text" placeholder="录入厂家信息"/>
-            </span>
-            <span>
-                操作员&nbsp;
-                <select>
-                    <option>张三</option>
-                </select>
-            </span>
-            <span>
-                报表状态:<span>未生成</span>
-            </span>
+        <div class="m_create_head_row1_div">
+            <span class="cjxx_span">厂家信息</span>
+            <input class="cjxx_input" type="text" placeholder="录入厂家信息"/>
+            
+            <span class="czy_span">操作员</span>
+            <select class="czy_select">
+                <option>张三</option>
+            </select>
+            
+            <span class="bbzt_span">报表状态:</span>
+            <span class="wsc_span">未生成</span>
         </div>
-        <div class="m_create_head_div2">
-            <span>
-                1号罐重量初始输入&nbsp;
-                <input type="text"/>
-            </span>
-            <span>
-                2号罐重量初始输入&nbsp;
-                <input type="text"/>
-            </span>
-            <span>
-                <button>生成报表</button>
-                <button>数据复位</button>
-            </span>
+        <div class="m_create_head_row2_div">
+            <span class="gzlcssr1_span">1号罐重量初始输入</span>
+            <input type="text" size="5"/>
+            
+            <span class="gzlcssr2_span">2号罐重量初始输入</span>
+            <input type="text" size="5"/>
+            
+            <div class="but_div scbb_but_div">生成报表</div>
+            <div class="but_div sjfw_but_div">数据复位</div>
         </div>
     </div>
     <div class="home_right_body_div">
@@ -373,66 +393,81 @@ function getUnCreRepVarList(){
                 <td class="green" id="td16_4"></td>
                 <td class="blue"></td>
                 <td class="green" id="td16_6"></td>
-                <td class="grey" colspan="3" rowspan="4"></td>
+                <td class="grey"></td>
+                <td class="grey"></td>
+                <td class="grey"></td>
                 <td class="yellow" id="td16_10"></td>
                 <td></td>
             </tr>
-            <%--第十七八行--%>
-            <tr>
+            <%--第十七行--%>
+            <tr class="tr17">
                 <td rowspan="3">保温</td>
                 <td class="grey">冰水检测</td>
-                <td class="green" colspan="2"></td>
-                <td class="grey" colspan="2" rowspan="2"></td>
-                <td class="grey" rowspan="4"></td>
-                <td class="blue"></td>
-                <td class="grey" rowspan="3"></td>
+                <td class="green"></td>
+                <td class="green"></td>
+                <td class="grey"></td>
+                <td class="grey"></td>
+                <td class="grey"></td>
+                <td class="blue" id="td17_8"></td>
+                <td class="grey"></td>
+                <td class="grey"></td>
+                <td class="grey"></td>
+                <td class="grey"></td>
+                <td></td>
+            </tr>
+            <%--第十八行--%>
+            <tr class="tr18">
+                <td class="grey">20度检测</td>
+                <td class="green"></td>
+                <td class="green"></td>
+                <td class="grey"></td>
+                <td class="grey"></td>
+                <td class="grey"></td>
+                <td class="blue" id="td18_8"></td>
+                <td class="grey"></td>
+                <td class="grey"></td>
+                <td class="grey"></td>
+                <td class="grey"></td>
                 <td></td>
             </tr>
             <%--第十九行--%>
-            <tr>
-                <td class="grey">20度检测</td>
-                <td class="green" colspan="2"></td>
-                <td class="blue"></td>
-                <td></td>
-            </tr>
-            <%--第二十行--%>
-            <tr>
+            <tr class="tr19">
                 <td>降温水数</td>
                 <td class="yellow"></td>
                 <td class="yellow"></td>
                 <td class="green">：</td>
-                <td class="green"></td>
-                <td class="blue"></td>
+                <td class="green">聚合终点温度</td>
+                <td class="blue" id="td19_7"></td>
+                <td class="blue" id="td19_8"></td>
+                <td class="grey"></td>
+                <td class="grey"></td>
+                <td class="grey"></td>
+                <td class="grey"></td>
                 <td></td>
             </tr>
-            <%--第二十一行--%>
-            <tr>
+            <%--第二十行--%>
+            <tr class="tr20">
                 <td>冷却</td>
-                <td colspan="2">
-                    夏季（35）℃，</br>
-                    冬季（43）℃
-                </td>
-                <td class="grey">
-                    聚合终点</br>
-                    开始时间
-                </td>
-                <td class="green"></td>
-                <td class="green"></td>
+                <td colspan="2">夏季（35）℃，</br>冬季（43）℃</td>
+                <td class="blue" id="td20_3"></td>
+                <td class="green" id="td20_4"></td>
+                <td class="green">降温完成时温度</td>
+                <td class="grey" id="td20_6"></td>
                 <td class="blue"></td>
                 <td class="blue"></td>
                 <td class="blue"></td>
                 <td class="grey"></td>
-                <td class="yellow"></td>
+                <td class="yellow" id="td20_11"></td>
                 <td></td>
             </tr>
-            <%--第二十二行--%>
-            <tr>
+            <%--第二十一行--%>
+            <tr class="tr21">
                 <td rowspan="3">质量终检</td>
                 <td class="grey"></td>
                 <td class="grey"></td>
                 <td class="grey"></td>
                 <td class="grey"></td>
-                <td></td>
+                <td>水数W.T</td>
                 <td>PH</td>
                 <td></td>
                 <td></td>
@@ -441,14 +476,14 @@ function getUnCreRepVarList(){
                 <td></td>
                 <td></td>
             </tr>
-            <%--第二十三行--%>
-            <tr>
+            <%--第二十二行--%>
+            <tr class="tr22">
                 <td>生产总重</td>
-                <td class="yellow"></td>
+                <td class="green"></td>
                 <td class="grey" rowspan="2"></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>20℃标准：</td>
+                <td>配方终检水数上下限</td>
+                <td>配方终检PH上下限</td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -456,28 +491,28 @@ function getUnCreRepVarList(){
                 <td></td>
                 <td></td>
             </tr>
-            <%--第二十四行--%>
-            <tr>
+            <%--第二十三行--%>
+            <tr class="tr23">
                 <td class="grey"></td>
                 <td class="grey"></td>
                 <td>实测：</td>
                 <td class="blue"></td>
                 <td class="blue"></td>
-                <td class="grey"></td>
+                <td class="blue"></td>
                 <td class="grey"></td>
                 <td class="grey"></td>
                 <td class="grey"></td>
                 <td class="grey"></td>
                 <td></td>
             </tr>
-            <%--第二十五行--%>
-            <tr>
+            <%--第二十四行--%>
+            <tr class="tr24">
                 <td rowspan="2">排 胶</td>
                 <td>日期与时间：</td>
                 <td class="green"></td>
                 <td class="green"></td>
                 <td class="yellow"></td>
-                <td></td>
+                <td>打入胶罐1：</td>
                 <td class="green"></td>
                 <td class="green"></td>
                 <td class="green"> </td>
@@ -486,8 +521,8 @@ function getUnCreRepVarList(){
                 <td class="yellow" rowspan="2"></td>
                 <td></td>
             </tr>
-            <%--第二十六行--%>
-            <tr>
+            <%--第二十五行--%>
+            <tr class="tr25">
                 <td>反应釜打胶前后重量</td>
                 <td class="green"></td>
                 <td class="green"> </td>

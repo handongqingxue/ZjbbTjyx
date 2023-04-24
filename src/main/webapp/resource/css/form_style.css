@@ -73,6 +73,7 @@
 .home_right_head_div{
     width: 100%;
     height: 110px;
+    padding: 1px;
     border-bottom: 2px #dbdbdb solid;
 }
 .m_query_head_table{
@@ -115,17 +116,60 @@
     height: 80px;
     border-top: 1px #d4cfcf solid;
 }
-.m_create_head_div1{
-    padding-left: 55px;
-    width: 100%;
-    height: 50%;
-    display: flex;
-    align-items: center;
+.m_create_head_row1_div{
+    width: 90%;
+    height: 30px;
+    margin-top:10px;
 }
-.m_create_head_div2{
-    padding-left: 55px;
-    width: 100%;
-    height: 50%;
-    display: flex;
-    align-items: center;
+.m_create_head_row2_div{
+    width: 90%;
+    height: 30px;
+    margin-top:15px;
+}
+
+.cjxx_span{
+	margin-left:104px;
+}
+.cjxx_input{
+	margin-left:10px;
+}
+.czy_span{
+	margin-left:119px;
+}
+.czy_select{
+	margin-left:10px;
+}
+.bbzt_span{
+	margin-left:50px;
+}
+.wsc_span{
+	margin-left:10px;
+	color: #f00;
+	font-weight: bold;
+}
+.gzlcssr1_span{
+	margin-left:50px;
+}
+.gzlcssr2_span{
+	margin-left:130px;
+}
+
+.but_div{
+	width: 100px;
+	height: 30px;
+	line-height: 30px;
+	color:fff;
+	text-align:center;
+	cursor:pointer;
+	border-radius:5px;
+}
+.scbb_but_div{
+	margin-top: -21px;
+	margin-left: 609px;
+	background-color: #55CA7D;
+}
+.sjfw_but_div{
+	margin-top: -30px;
+	margin-left: 735px;
+	background-color: #FF5157;
 }
