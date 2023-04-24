@@ -1431,6 +1431,15 @@ public class ERecordServiceImpl implements ERecordService {
 				varMap.put(Constant.COL_NUMBER, ReportF_M.SCBH_CN);
 				varMapList.add(varMap);
 			}
+			else if(Constant.FAN_YING_FU.equals(varName)) {
+				String varValue = eRecord.getVarValue();
+				
+				varMap = new HashMap<String, Object>();
+				varMap.put(Constant.VALUE, varValue);
+				varMap.put(Constant.ROW_NUMBER, ReportF_M.FYF_RN);
+				varMap.put(Constant.COL_NUMBER, ReportF_M.FYF_CN);
+				varMapList.add(varMap);
+			}
 			else if(Constant.PI_CI_JI_LU.equals(varName)) {
 				String preValue = eRecord.getPreValue();
 				String nxtValue = eRecord.getNxtValue();
@@ -1497,7 +1506,7 @@ public class ERecordServiceImpl implements ERecordService {
 				ptnVarMap.put(Constant.COL_NUMBER, ReportF_M.JQBLKSDFLWCSJC_CN);
 				varMapList.add(ptnVarMap);
 			}
-			else if(ERecord.JQFLWCSSYFYFWD.equals(varName)) {
+			else if(ERecord.JQFLWCSSYFYFWD.equals(varName)) {//甲醛放料完成上升沿反应釜温度
 				String varValue = eRecord.getVarValue();
 				String unit = eRecord.getUnit();
 				
@@ -1514,13 +1523,13 @@ public class ERecordServiceImpl implements ERecordService {
 				String unit = eRecord.getUnit();
 				
 				HashMap<String, Object> preVarMap = new HashMap<String, Object>();
-				preVarMap.put(Constant.VALUE, preValue);
+				preVarMap.put(Constant.VALUE, preValue+unit);
 				preVarMap.put(Constant.ROW_NUMBER, ReportF_M.JQBLKSFCZ_RN);
 				preVarMap.put(Constant.COL_NUMBER, ReportF_M.JQBLKSFCZ_CN);
 				varMapList.add(preVarMap);
 				
 				HashMap<String, Object> nxtVarMap = new HashMap<String, Object>();
-				nxtVarMap.put(Constant.VALUE, nxtValue);
+				nxtVarMap.put(Constant.VALUE, nxtValue+unit);
 				nxtVarMap.put(Constant.ROW_NUMBER, ReportF_M.JQFLWCFCZ_RN);
 				nxtVarMap.put(Constant.COL_NUMBER, ReportF_M.JQFLWCFCZ_CN);
 				varMapList.add(nxtVarMap);

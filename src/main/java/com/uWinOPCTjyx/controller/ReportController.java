@@ -17,6 +17,7 @@ import java.util.Map;
 @RequestMapping("/report")
 public class ReportController {
 	
+	//http://localhost:8080/UWinOPCTjyx/report/goIndex
 	public static final String MODULE_NAME="report";
 
     @Autowired

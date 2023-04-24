@@ -118,12 +118,12 @@ function getUnCreRepVarList(){
                     <%--                    <input type="datetime-local" id="kssj_input">--%>
                 </td>
                 <td>结束时间</td>
-                <td class="green">
+                <td class="green" id="td3_8">
                     <%--冷却结束时间--%>
                     <%--                    <input type="datetime-local" id="jssj_input">--%>
                 </td>
                 <td>生产工时</td>
-                <td class="yellow">
+                <td class="yellow" id="td3_10">
                     <%--min--%>
                     <%--                    <input type="text" id="scgs_input" placeholder="min/分">--%>
                 </td>
@@ -179,22 +179,31 @@ function getUnCreRepVarList(){
             <%--第八行--%>
             <tr>
                 <td>YSD101</td>
-                <td class="green" colspan="2"></td>
-                <td class="green" rowspan="2"></td>
-                <td class="green" rowspan="2"></td>
-                <td class="green" rowspan="2">℃</td>
-                <td class="blue" rowspan="2"></td>
+                <%--甲醛实际进料重量--%>
+                <td class="green" id="td7_2" colspan="2"></td>
+                <%--甲醛备料开始时间--%>
+                <td class="green" id="td7_3" rowspan="2"></td>
+                <%--甲醛放料完成时间--%>
+                <td class="green" id="td7_4" rowspan="2"></td>
+                <%--甲醛放料完成反应釜温度--%>
+                <td class="green" id="td7_5" rowspan="2"></td>
+                <%--加碱前PH输入值--%>
+                <td class="blue" id="td7_6" rowspan="2"></td>
                 <td class="grey" rowspan="2"></td>
-                <td class="green" rowspan="2"></td>
-                <td class="green" rowspan="2"></td>
-                <td class="yellow" rowspan="2"></td>
-                <td class="yellow" rowspan="2"></td>
+                <%--甲醛备料开始釜称重--%>
+                <td class="green" id="td7_8" rowspan="2"></td>
+                <%--甲醛放料完成釜称重--%>
+                <td class="green" id="td7_9" rowspan="2"></td>
+                <%--甲醛备料开始到放料完成重量差 --%>
+                <td class="yellow" id="td7_10" rowspan="2"></td>
+                <!--甲醛备料开始到放料完成时间差 -->
+                <td class="yellow" id="td7_11" rowspan="2"></td>
                 <td></td>
             </tr>
             <%--第九行--%>
             <tr>
                 <td>纯净水</td>
-                <td class="green" colspan="2"></td>
+                <td class="green" id="td8_2" colspan="2"></td>
                 <td></td>
             </tr>
             <%--第十行--%>
