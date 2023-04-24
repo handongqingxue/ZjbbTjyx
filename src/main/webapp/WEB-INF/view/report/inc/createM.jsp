@@ -101,7 +101,7 @@ $(function () {
 
 function getUnCreRepVarList(){
 	$.post(path+"report/getUnCreRepVarList",
-		{batchID:"MA202300000022"},
+		{batchID:"MA202300000018"},
 		function(result){
 			var varMapList=result.varMapList;
 			for (var i = 0; i < varMapList.length; i++) {
@@ -111,6 +111,18 @@ function getUnCreRepVarList(){
 				var value=varMap.value;
 				console.log(rowNumber+","+colNumber+","+value);
 				$("#td"+rowNumber+"_"+colNumber).text(value);
+			}
+		}
+	,"json");
+}
+
+function addReportFByBatchID(){
+	$.post(path+"report/addReportFByBatchID",
+		{batchID:"MA202300000018"},
+		function(result){
+			if(result.message=="ok"){
+				alert(result.info);
+				getLeftMenuData("mWsc");
 			}
 		}
 	,"json");
@@ -153,7 +165,7 @@ function getUnCreRepVarList(){
             <span class="gzlcssr2_span">2号罐重量初始输入</span>
             <input type="text" size="5"/>
             
-            <div class="but_div scbb_but_div">生成报表</div>
+            <div class="but_div scbb_but_div" onclick="addReportFByBatchID()">生成报表</div>
             <div class="but_div sjfw_but_div">数据复位</div>
         </div>
     </div>

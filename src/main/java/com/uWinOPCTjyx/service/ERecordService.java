@@ -25,9 +25,10 @@ public interface ERecordService {
 
 	/**
 	 * 查询全部批次记录
+	 * @param type 
 	 * @return
 	 */
-	Map<String,Object> getListByPcjl();
+	Map<String,Object> getListByPcjl(String type);
 
 	/**
 	 * 已生成的m类批次记录

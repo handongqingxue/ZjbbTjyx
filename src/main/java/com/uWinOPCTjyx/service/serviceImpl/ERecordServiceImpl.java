@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -1378,32 +1379,60 @@ public class ERecordServiceImpl implements ERecordService {
 		return eRecordMapper.updatePCJLReportedByBatchID(batchID);
 	}
 
-	public Map<String,Object> getListByPcjl() {
+	public Map<String,Object> getListByPcjl(String type) {
 		Map<String,Object> map = new HashMap<String, Object>();
 		List<ERecord> mYscPcjlList = new ArrayList<ERecord>();//M类已生成的批次记录集合
 		List<ERecord> uYscPcjlList = new ArrayList<ERecord>();//U类已生成的批次记录集合
 		List<ERecord> mWscPcjlList = new ArrayList<ERecord>();//M类未生成的批次记录集合
 		List<ERecord> uWscPcjlList = new ArrayList<ERecord>();//U类未生成的批次记录集合
 		List<ERecord> pcjlList = eRecordMapper.getListByPcjl();//查询全部批次记录
-		for (ERecord pcjl : pcjlList) {
-			if (pcjl.getRemark().equals("1")){
-				if (pcjl.getRecType().equals("M")){
-					mYscPcjlList.add(pcjl);
-				}else if(pcjl.getRecType().equals("U")){
-					uYscPcjlList.add(pcjl);
-				}
-			}else if (pcjl.getRemark().equals("0")){
-				if (pcjl.getRecType().equals("M")){
-					mWscPcjlList.add(pcjl);
-				}else if(pcjl.getRecType().equals("U")){
-					uWscPcjlList.add(pcjl);
+		
+		if(Constant.M_WSC.equals(type)) {
+			for (ERecord pcjl : pcjlList) {
+				if (pcjl.getRemark().equals(ERecord.WSCBB+"")){
+					if (pcjl.getRecType().equals(ERecord.M)){
+						mWscPcjlList.add(pcjl);
+					}
 				}
 			}
+			
+			map.put("mWscPcjlList",mWscPcjlList);
 		}
-		map.put("mYscPcjlList",mYscPcjlList);
-		map.put("uYscPcjlList",uYscPcjlList);
-		map.put("mWscPcjlList",mWscPcjlList);
-		map.put("uWscPcjlList",uWscPcjlList);
+		else if(Constant.U_WSC.equals(type)) {
+			for (ERecord pcjl : pcjlList) {
+				if (pcjl.getRemark().equals(ERecord.WSCBB+"")){
+					if (pcjl.getRecType().equals(ERecord.U)){
+						mWscPcjlList.add(pcjl);
+					}
+				}
+			}
+			
+			map.put("uWscPcjlList",uWscPcjlList);
+		}
+		else if(StringUtils.isEmpty(type)) {
+			for (ERecord pcjl : pcjlList) {
+				if (pcjl.getRemark().equals(ERecord.WSCBB+"")){
+					if (pcjl.getRecType().equals(ERecord.M)){
+						mWscPcjlList.add(pcjl);
+					}else if(pcjl.getRecType().equals(ERecord.U)){
+						uWscPcjlList.add(pcjl);
+					}
+				}
+				else if (pcjl.getRemark().equals(ERecord.YSCBB+"")){
+					if (pcjl.getRecType().equals(ERecord.M)){
+						mYscPcjlList.add(pcjl);
+					}else if(pcjl.getRecType().equals(ERecord.U)){
+						uYscPcjlList.add(pcjl);
+					}
+				}
+			}
+			
+			map.put("mWscPcjlList",mWscPcjlList);
+			map.put("uWscPcjlList",uWscPcjlList);
+			map.put("mYscPcjlList",mYscPcjlList);
+			map.put("uYscPcjlList",uYscPcjlList);
+		}
+		
 		return map;
 	}
 
