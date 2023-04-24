@@ -138,28 +138,30 @@
             $("#searchM").css('display','block');
             $("#searchU").css('display','none');
             inspect(1);
-            getListByType(type);
+            getReportFMList(type);
         }else if (type=="UD"){
             $("#createM").css('display','none');
             $("#createU").css('display','none');
             $("#searchM").css('display','none');
             $("#searchU").css('display','block');
             inspect(1);
-            getListByType(type);
+            // getReportFUList(type);
         }
     }
-    function getListByType(type) {
-        $.post("<%=basePath%>report/getListByType",
+    function getReportFMList(type) {
+        $.post("<%=basePath%>report/getReportFMList",
             {type:type},
-            function(data){
-                if(data.message=="ok"){
+            function(result){
+                if(result.msg=="ok"){
                     var typeSelect=$("#typeSelect");
                     typeSelect.empty();
-                    var list=data.getListByType;
+                    var list=result.data.getPcjlByType;
                     typeSelect.append("<option>请选择</option>")
                     for (var i=0;i<list.length;i++){
                         typeSelect.append("<option>"+list[i].batchID+"</option>")
                     }
+                    var mYscList=result.data.mYscList;
+
                 }
             }
             ,"json");

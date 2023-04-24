@@ -4,11 +4,13 @@ import com.uWinOPCTjyx.entity.ERecord;
 import com.uWinOPCTjyx.entity.ReportF_M;
 import com.uWinOPCTjyx.service.ERecordService;
 import com.uWinOPCTjyx.service.ReportF_MService;
+import com.uWinOPCTjyx.util.PlanResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import sun.jvm.hotspot.debugger.Page;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -72,7 +74,6 @@ public class ReportController {
         Map<String,Object> map = new HashMap<String, Object>();
         try {
             List<ERecord> list = eRecordService.getMYscPcjlList(type);
-            System.out.println(list.toString()+";");
             map.put("getListByType",list);
             map.put("message","ok");
             map.put("info","查询成功");
@@ -104,10 +105,23 @@ public class ReportController {
     	
         return map;
 	}
-    @RequestMapping("/demo")
-	public void demo(String type){
-        type="MA";
-        Map<String, Object> reportFMList = reportF_mService.getReportFMList(type);
-
+    @RequestMapping("/getReportFMList")
+    @ResponseBody
+	public PlanResult getReportFMList(String type, String createTime, String endTime, String batchID, Integer currentPage){
+        //返回值对象
+        PlanResult result=new PlanResult();
+        Map<String, Object> reportFMMap = null;
+        try {
+            reportFMMap = reportF_mService.getReportFMList(type,createTime,endTime,batchID,currentPage);
+            result.setData(reportFMMap);
+            result.setStatus(1);
+            result.setMsg("ok");
+        } catch (Exception e) {
+            e.printStackTrace();
+            result.setStatus(0);
+            result.setMsg("no");
+        } finally {
+            return result;
+        }
     }
 }

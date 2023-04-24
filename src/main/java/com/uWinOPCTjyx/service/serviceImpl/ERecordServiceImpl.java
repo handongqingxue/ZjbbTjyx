@@ -1403,9 +1403,8 @@ public class ERecordServiceImpl implements ERecordService {
 		return map;
 	}
 
-	public List<ERecord> getMYscPcjlList(String type,String CreateTime,String endTime,String batchID) {
+	public List<ERecord> getMYscPcjlList(String type) {
 		ERecord eRecord = new ERecord();
-		eRecord.setBatchID(batchID);
 		eRecord.setRecType(type);
 		List<ERecord> pcjlList = eRecordMapper.getMYscPcjlList(eRecord);
 		return pcjlList;

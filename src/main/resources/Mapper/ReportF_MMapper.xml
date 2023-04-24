@@ -45,7 +45,18 @@
 	</insert>
 
 	<select id="getReportFMList" resultType="com.uWinOPCTjyx.entity.ReportF_M">
-		select * from ReportF_M where BatchID=#{batchID}
+		select * from ReportF_M
+		<where>
+			<if test="batchID!='' and batchID!=null">
+				and BatchID=#{batchID}
+			</if>
+<!--			<if test="createTime!=null">-->
+
+<!--			</if>-->
+<!--			<if test="endTime!=null">-->
+
+<!--			</if>-->
+		</where>
 	</select>
 
 </mapper>
