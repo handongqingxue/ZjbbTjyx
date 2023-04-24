@@ -202,6 +202,42 @@ public class ERecord {
 	 * 允许二次加助剂到所有助剂加料完成2时间差
 	 */
 	public static final String YXECJZJDSYZJJLWC2SJC=Constant.YUN_XU_ER_CI_JIA_ZHU_JI+Constant.DAO+Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+Constant.SHI_JIAN+Constant.CHA;
+	/**
+	 * 升温完成上升沿时间 
+	 */
+	public static final String SWWCSSYSJ=Constant.SHENG_WEN_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+	/**
+	 * 升温完成上升沿反应釜温度
+	 */
+	public static final String SWWCSSYFYFWD=Constant.SHENG_WEN_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
+	/**
+	 * 升温开始到升温完成时间差
+	 */
+	public static final String SWKSDSWWCSJC=Constant.SHENG_WEN_KAI_SHI+Constant.DAO+Constant.SHENG_WEN_WAN_CHENG+Constant.SHI_JIAN+Constant.CHA;
+	/**
+	 * 聚合终点上升沿反应釜温度
+	 */
+	public static final String JHZDSSYFYFWD=Constant.JU_HE_ZHONG_DIAN+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
+	/**
+	 * 聚合终点上升沿时间
+	 */
+	public static final String JHZDSSYSJ=Constant.JU_HE_ZHONG_DIAN+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+	/**
+	 * 开始降温到停止降温时间
+	 */
+	public static final String KSJWDTZJWSJ=Constant.KAI_SHI_JIANG_WEN+Constant.DAO+Constant.TING_ZHI_JIANG_WEN+Constant.SHI_JIAN;
+	/**
+	 * 降温完成上升沿时间
+	 */
+	public static final String JWWCSSYSJ=Constant.JIANG_WEN_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+	/**
+	 * 降温完成上升沿反应釜温度
+	 */
+	public static final String JWWCSSYFYFWD=Constant.JIANG_WEN_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
+	/**
+	 * 从开始降温到停止降温时间差
+	 */
+	public static final String KSJWDTZJWSJC=Constant.KAI_SHI_JIANG_WEN+Constant.DAO+Constant.TING_ZHI_JIANG_WEN+Constant.SHI_JIAN+Constant.CHA;
 
 	private Integer Id;
 	public Integer getId() {
