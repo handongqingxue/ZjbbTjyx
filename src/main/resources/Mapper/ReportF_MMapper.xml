@@ -43,4 +43,14 @@
 			</if>
 		</trim>
 	</insert>
+
+	<select id="getReportFMList" resultType="com.uWinOPCTjyx.entity.ReportF_M">
+		select * from ReportF_M
+		<where>
+
+			<foreach collection="batchIDs" item="batchID" open=" and cast(batchID as char) in (" separator="," close=")">
+				#{batchID}
+			</foreach>
+		</where>
+	</select>
 </mapper>

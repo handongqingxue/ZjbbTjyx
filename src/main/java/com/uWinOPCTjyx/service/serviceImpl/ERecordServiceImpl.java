@@ -1386,13 +1386,13 @@ public class ERecordServiceImpl implements ERecordService {
 		List<ERecord> uWscPcjlList = new ArrayList<ERecord>();//U类未生成的批次记录集合
 		List<ERecord> pcjlList = eRecordMapper.getListByPcjl();//查询全部批次记录
 		for (ERecord pcjl : pcjlList) {
-			if (pcjl.getRemark().equals("0")){
+			if (pcjl.getRemark().equals("1")){
 				if (pcjl.getRecType().equals("M")){
 					mYscPcjlList.add(pcjl);
 				}else if(pcjl.getRecType().equals("U")){
 					uYscPcjlList.add(pcjl);
 				}
-			}else if (pcjl.getRemark().equals("1")){
+			}else if (pcjl.getRemark().equals("0")){
 				if (pcjl.getRecType().equals("M")){
 					mWscPcjlList.add(pcjl);
 				}else if(pcjl.getRecType().equals("U")){
@@ -1407,16 +1407,11 @@ public class ERecordServiceImpl implements ERecordService {
 		return map;
 	}
 
-	public List<ERecord> getListByType(String type) {
-		List<ERecord> pcjls = new ArrayList<ERecord>();
-		List<ERecord> pcjlList = eRecordMapper.getListByPcjl();
-		for (ERecord pcjl : pcjlList) {
-			String pcjlType = pcjl.getBatchID().substring(0, 2);
-			if (pcjlType.equals(type)){
-				pcjls.add(pcjl);
-			}
-		}
-		return pcjls;
+	public List<ERecord> getYscPcjlListByType(String type) {
+		ERecord eRecord = new ERecord();
+		eRecord.setRecType(type);
+		List<ERecord> pcjlList = eRecordMapper.getYscPcjlListByType(eRecord);
+		return pcjlList;
 	}
 
 	public List<Map<String, Object>> getUnCreRepVarList(String batchID) {

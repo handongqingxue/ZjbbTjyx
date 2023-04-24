@@ -30,9 +30,11 @@ public interface ERecordService {
 	Map<String,Object> getListByPcjl();
 
 	/**
-	 * 通过类型来获取批次记录
+	 * 已生成的m类批次记录
+	 * @param  type, CreateTime, endTime, batchID
+	 * @return
 	 */
-	List<ERecord> getListByType(String type);
+	List<ERecord> getYscPcjlListByType(String type);
 
 	List<Map<String, Object>> getUnCreRepVarList(String batchID);
 }

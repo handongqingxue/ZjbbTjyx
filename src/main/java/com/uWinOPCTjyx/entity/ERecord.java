@@ -330,4 +330,23 @@ public class ERecord {
 	private String BatchID;
 	private String PhaseName;
 	private String Remark;
+
+	@Override
+	public String toString() {
+		return "ERecord{" +
+				"Id=" + Id +
+				", VarName='" + VarName + '\'' +
+				", VarValue='" + VarValue + '\'' +
+				", Unit='" + Unit + '\'' +
+				", PreValue='" + PreValue + '\'' +
+				", NxtValue='" + NxtValue + '\'' +
+				", PtnValue='" + PtnValue + '\'' +
+				", RecType='" + RecType + '\'' +
+				", FId=" + FId +
+				", RecordTime='" + RecordTime + '\'' +
+				", BatchID='" + BatchID + '\'' +
+				", PhaseName='" + PhaseName + '\'' +
+				", Remark='" + Remark + '\'' +
+				'}';
+	}
 }

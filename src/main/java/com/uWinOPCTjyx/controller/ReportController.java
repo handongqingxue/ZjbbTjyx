@@ -1,12 +1,16 @@
 package com.uWinOPCTjyx.controller;
 
 import com.uWinOPCTjyx.entity.ERecord;
+import com.uWinOPCTjyx.entity.ReportF_M;
 import com.uWinOPCTjyx.service.ERecordService;
+import com.uWinOPCTjyx.service.ReportF_MService;
+import com.uWinOPCTjyx.util.PlanResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import sun.jvm.hotspot.debugger.Page;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -22,6 +26,9 @@ public class ReportController {
 
     @Autowired
     private ERecordService eRecordService;
+
+    @Autowired
+    private ReportF_MService reportF_mService;
 
     @RequestMapping("/goIndex")
     public String goIndex(HttpServletRequest request){
@@ -64,22 +71,22 @@ public class ReportController {
     	System.out.println("size==="+list.size());
 	}
 
-    @RequestMapping("/getListByType")
+    @RequestMapping("/getPcjlListByType")
     @ResponseBody
-    public Map<String,Object> getListByType(String type){
-        Map<String,Object> map = new HashMap<String, Object>();
+    public PlanResult getPcjlListByType(String type){
+        //返回值对象
+        PlanResult result=new PlanResult();
         try {
-            List<ERecord> list = eRecordService.getListByType(type);
-            System.out.println(list.toString()+";");
-            map.put("getListByType",list);
-            map.put("message","ok");
-            map.put("info","查询成功");
+            List<ERecord> list = eRecordService.getYscPcjlListByType(type);
+            result.setMsg("ok");
+            result.setStatus(1);
+            result.setData(list);
         } catch (Exception e) {
             e.printStackTrace();
-            map.put("message","no");
-            map.put("info","查询失败");
+            result.setStatus(0);
+            result.setMsg("no");
         } finally {
-            return map;
+            return result;
         }
     }
 
@@ -99,8 +106,15 @@ public class ReportController {
             map.put("message","no");
             map.put("info","查询失败");
     	}
-    	
+
         return map;
 	}
+    @RequestMapping("/getReportFMList")
+    @ResponseBody
+	public PlanResult getReportFMList(String type, Integer currentPage){
+        //返回值对象
+        PlanResult result=new PlanResult();
 
+        return result;
+    }
 }

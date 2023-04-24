@@ -112,7 +112,6 @@
         if (id==0){
             document.getElementById("right-body-head-span2").innerHTML="报表生成页面";
             document.getElementById("right-body-head-icon").classList.replace("layui-icon-search","layui-icon-add-circle");
-            // typeQuery("M");
         }else if(id==1){
             document.getElementById("right-body-head-span2").innerHTML="报表查询页面";
             document.getElementById("right-body-head-icon").classList.replace("layui-icon-add-circle","layui-icon-search");
@@ -138,20 +137,24 @@
             $("#searchM").css('display','block');
             $("#searchU").css('display','none');
             inspect(1);
+            getPcjlListByType(type);
         }else if (type=="UD"){
             $("#createM").css('display','none');
             $("#createU").css('display','none');
             $("#searchM").css('display','none');
             $("#searchU").css('display','block');
             inspect(1);
+            getPcjlListByType(type);
         }
-        $.post("<%=basePath%>report/getListByType",
+    }
+    function getPcjlListByType(type) {
+        $.post("<%=basePath%>report/getPcjlListByType",
             {type:type},
-            function(data){
-                if(data.message=="ok"){
+            function(result){
+                if(result.msg=="ok"){
                     var typeSelect=$("#typeSelect");
                     typeSelect.empty();
-                    var list=data.getListByType;
+                    var list=result.data;
                     typeSelect.append("<option>请选择</option>")
                     for (var i=0;i<list.length;i++){
                         typeSelect.append("<option>"+list[i].batchID+"</option>")
@@ -159,6 +162,10 @@
                 }
             }
             ,"json");
+    }
+
+    function getReportFMList() {
+
     }
 
 </script>
