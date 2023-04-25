@@ -3,8 +3,6 @@
 <html>
 <head>
     <script type="text/javascript" src="<%=basePath%>resource/js/jquery-3.3.1.js"></script>
-<%--    <link rel="stylesheet" href="<%=basePath%>resource/css/layui.css">--%>
-<%--    <script type="text/javascript" src="<%=basePath%>resource/js/layui.js"></script>--%>
 <title>Title</title>
 <script>
     $(function(){
@@ -24,9 +22,10 @@
                 batchID: typeSelect,
             },
             function(result){
-                if(result.msg=="ok"){
+                if(result.status==1){
                     var list=result.data;
-                    // alert(list.length);
+                    console.log(glueType+"的长度"+list.length)
+                    console.log(list)
                     var reportFMListlist=list[0];
                     for (var i = 0; i < reportFMListlist.length; i++) {
                         var varMap=reportFMListlist[i];
@@ -40,14 +39,6 @@
             }
             ,"json");
     }
-    // laypage.render({
-    //     elem: 'paging'
-    //     ,count: 100
-    //     ,layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
-    //     ,jump: function(obj){
-    //         console.log(obj)
-    //     }
-    // });
 </script>
 </head>
 <body>

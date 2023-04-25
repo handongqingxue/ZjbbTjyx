@@ -300,7 +300,6 @@ public class ReportF_MServiceImpl implements ReportF_MService {
 		List<ReportF_M> reportFMList = reportF_MMapper.getReportFMList(type, startTime, endTime, batchID);
 		//把查询出来的批次进行分组
 		Map<String, List<ReportF_M>> batchGroupMap=createGroupMap(reportFMList);
-		System.out.println("batchGroupMap==="+batchGroupMap);
 		Set<String> keySet = batchGroupMap.keySet();//遍历批次分组，把每个批次集合作为每一页的子集合，添加到父集合里
 		for (String key : keySet) {
 			List<ReportF_M> batchRepFMList = batchGroupMap.get(key);
