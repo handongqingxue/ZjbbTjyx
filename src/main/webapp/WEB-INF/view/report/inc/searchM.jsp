@@ -48,11 +48,6 @@
     //         console.log(obj)
     //     }
     // });
-    laypage.render({
-        elem: 'demo2'
-        ,count: 100
-        ,theme: '#1E9FFF'
-    });
 </script>
 </head>
 <body>

@@ -205,7 +205,7 @@ var path='<%=basePath%>';
             $("#searchU").css('display','none');
             inspect(1);
             getPcjlListByType(type);
-            getReportFMList(0,type);
+
 
         }else if (type=="UD"){
             $("#createM").css('display','none');
@@ -214,7 +214,6 @@ var path='<%=basePath%>';
             $("#searchU").css('display','block');
             inspect(1);
             getPcjlListByType(type);
-            getReportFMList(0,type);
         }
     }
 
@@ -233,6 +232,7 @@ var path='<%=basePath%>';
                     for (var i=0;i<list.length;i++){
                         typeSelect.append("<option value=\""+list[i].batchID+"\">"+list[i].batchID+"</option>")
                     }
+                    getReportFMPageList();
                 }
             }
             ,"json");
