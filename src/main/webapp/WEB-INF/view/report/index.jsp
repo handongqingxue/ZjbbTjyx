@@ -48,18 +48,22 @@
                 <%--layui-nav-itemed 自动展开--%>
                 <li class="layui-nav-item">
                     <a href="javascript:;">M类报表生成</a>
-                    <dl class="layui-nav-child" style="color: #79e6e8">
+                    <dl class="layui-nav-child" id="mWscPcjlList_dl" style="color: #79e6e8">
+                    	<!-- 
                         <c:forEach items="${mWscPcjlList}" var="item">
                             <dd><a href="javascript:;" onclick="typeQuery('M')">${item.batchID}</a></dd>
                         </c:forEach>
+                         -->
                     </dl>
                 </li>
                 <li class="layui-nav-item">
                     <a href="javascript:;">U类报表生成</a>
-                    <dl class="layui-nav-child">
+                    <dl class="layui-nav-child" id="uWscPcjlList_dl">
+                    	<!-- 
                         <c:forEach items="${uWscPcjlList}" var="item">
                             <dd><a href="javascript:;" onclick="typeQuery('U')">${item.batchID}</a></dd>
                         </c:forEach>
+                         -->
                     </dl>
                 </li>
                 <li class="layui-nav-item">
@@ -104,9 +108,42 @@
     </div>
 </div>
 <script>
+var path='<%=basePath%>';
     $(function () {
+    	getLeftMenuData("");
         typeQuery("M");
     })
+    
+    function getLeftMenuData(type){
+    	$.post(path+"report/getLeftMenuData",
+   			{type:type},
+   			function(result){
+   				if(type==""){
+	   				var mWscPcjlList=result.mWscPcjlList;
+	   				var mWscPcjlListDl=$("#mWscPcjlList_dl");
+	   				for (var i = 0; i < mWscPcjlList.length; i++) {
+	   					var mWscPcjl=mWscPcjlList[i];
+	   	   				mWscPcjlListDl.append("<dd><a onclick=\"typeQuery('M')\">"+mWscPcjl.batchID+"</a></dd>");
+					}
+	   				
+	   				var uWscPcjlList=result.uWscPcjlList;
+	   				var uWscPcjlListDl=$("#uWscPcjlList_dl");
+	   				for (var i = 0; i < uWscPcjlList.length; i++) {
+	   					var uWscPcjl=uWscPcjlList[i];
+	   	   				uWscPcjlListDl.append("<dd><a onclick=\"typeQuery('U')\">"+uWscPcjl.batchID+"</a></dd>");
+					}
+   				}
+   				else if(type=="mWsc"){
+   					var mWscPcjlList=result.mWscPcjlList;
+	   				var mWscPcjlListDl=$("#mWscPcjlList_dl");
+	   				for (var i = 0; i < mWscPcjlList.length; i++) {
+	   					var mWscPcjl=mWscPcjlList[i];
+	   	   				mWscPcjlListDl.append("<dd><a onclick=\"typeQuery('M')\">"+mWscPcjl.batchID+"</a></dd>");
+					}
+   				}
+    		}
+    	,"json");
+    }
 
     function inspect(id){
         if (id==0){

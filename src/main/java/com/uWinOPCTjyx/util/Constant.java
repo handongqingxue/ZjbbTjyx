@@ -435,4 +435,21 @@ public class Constant {
 	public static final String UNIT="unit";
 	public static final String ROW_NUMBER="rowNumber";
 	public static final String COL_NUMBER="colNumber";
+	
+	/**
+	 * M类未生成
+	 */
+	public static final String M_WSC="mWsc";
+	/**
+	 * U类未生成
+	 */
+	public static final String U_WSC="uWsc";
+	/**
+	 * M类已生成
+	 */
+	public static final String M_YSC="mYsc";
+	/**
+	 * U类已生成
+	 */
+	public static final String U_YSC="uYsc";
 }
