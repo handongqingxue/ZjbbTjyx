@@ -156,6 +156,20 @@ var path='<%=basePath%>';
     
     function showCreateArea(recType,batchID){
     	alert(recType+","+batchID);
+    	var createMDisplay;
+    	var createUDisplay;
+    	var searchMDisplay;
+    	var searchUDisplay;
+    	if (recType=="M"){
+    		createMDisplay="block";
+    		createUDisplay="none";
+    		searchMDisplay="none";
+    		searchUDisplay="none"
+    	}
+		$("#createM").css("display",createMDisplay);
+        $("#createU").css("display",createUDisplay);
+        $("#searchM").css("display",searchMDisplay);
+        $("#searchU").css("display",searchUDisplay);
     }
 
     function typeQuery(type) {
