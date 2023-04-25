@@ -40,19 +40,13 @@ public class OPCController {
 	public static final String MODULE_NAME="opc";
 	private boolean initFMap=false;
 	
-	@RequestMapping(value="/opcu")
+	@RequestMapping(value="/opc")
 	public String goOpcU(HttpServletRequest request) {
 		//localhost:8080/UWinOPCTjyx/opc/opcu
 		//访问opcu的web页面
-		return MODULE_NAME+"/opcu";
+		return MODULE_NAME+"/opc";
 	}
 
-	@RequestMapping(value="/opcm")
-	public String goOpcM(HttpServletRequest request) {
-		//localhost:8080/UWinOPCTjyx/opc/opcm
-		//访问opcm的web页面
-		return MODULE_NAME+"/opcm";
-	}
 
 	@RequestMapping(value = "/editTriggerVarByReqBody", method = RequestMethod.POST)
 	@ResponseBody

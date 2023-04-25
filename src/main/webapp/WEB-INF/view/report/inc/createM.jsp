@@ -43,28 +43,17 @@ function addReportFByBatchID(){
 </script>
 </head>
 <script>
-    // layui.use('laypage', function(){
-    //     var laypage = layui.laypage;
-    //
-    //     //完整功能
-    //     laypage.render({
-    //         elem: 'paging'
-    //         ,count: 100
-    //         ,layout: ['count', 'prev', 'page', 'next', 'refresh', 'skip']
-    //         ,jump: function(obj){
-    //         }
-    //     });
-    // });
+
 </script>
 <body>
 <div class="home_right_div">
     <div class="home_right_head_div">
         <div class="m_create_head_row1_div">
             <span class="cjxx_span">厂家信息</span>
-            <input class="cjxx_input" type="text" placeholder="录入厂家信息"/>
+            <input type="text" placeholder="录入厂家信息" class="m_create_head_input"/>
             
             <span class="czy_span">操作员</span>
-            <select class="czy_select">
+            <select class="m_create_head_input">
                 <option>张三</option>
             </select>
             
@@ -73,10 +62,10 @@ function addReportFByBatchID(){
         </div>
         <div class="m_create_head_row2_div">
             <span class="gzlcssr1_span">1号罐重量初始输入</span>
-            <input type="text" size="5"/>
+            <input type="text" size="5" class="m_create_head_input"/>
             
             <span class="gzlcssr2_span">2号罐重量初始输入</span>
-            <input type="text" size="5"/>
+            <input type="text" size="5" class="m_create_head_input"/>
             
             <div class="but_div scbb_but_div" onclick="addReportFByBatchID()">生成报表</div>
             <div class="but_div sjfw_but_div">数据复位</div>

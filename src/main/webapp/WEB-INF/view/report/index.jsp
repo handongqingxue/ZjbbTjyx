@@ -217,12 +217,15 @@ var path='<%=basePath%>';
             getReportFMList(0,type);
         }
     }
+
     function getPcjlListByType(type) {
         $.post("<%=basePath%>report/getPcjlListByType",
             {type:type},
             function(result){
                 if(result.msg=="ok"){
                     var typeSelect=$("#typeSelect");
+                    var glue=$("#glue");
+                    glue.text(type)
                     typeSelect.empty();
                     var list=result.data;
                     //完整功能

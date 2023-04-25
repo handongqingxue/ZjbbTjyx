@@ -6,104 +6,14 @@
 <%--    <link rel="stylesheet" href="<%=basePath%>resource/css/layui.css">--%>
 <%--    <script type="text/javascript" src="<%=basePath%>resource/js/layui.js"></script>--%>
 <title>Title</title>
-    <style type="text/css">
-        .m_body_table .tr1{
-            height: 50px;
-        }
-        .m_body_table .tr2,
-        .m_body_table .tr4{
-            height: 30px;
-        }
-        .m_body_table .td2_1,
-        .m_body_table .td2_2,
-        .m_body_table .td2_3{
-            width: 7%;
-        }
-        .m_body_table .td2_4{
-            width: 9%;
-        }
-        .m_body_table .td2_5{
-            width: 9%;
-        }
-        .m_body_table .td2_6,
-        .m_body_table .td2_8{
-            width: 15%;
-        }
-        .m_body_table .td2_7,
-        .m_body_table .td2_9{
-            width: 15%;
-        }
-
-        .m_body_table .tr3{
-            height: 70px;
-        }
-
-        .m_body_table .tr5{
-            height: 150px;
-        }
-        .m_body_table .tr6{
-            height: 40px;
-        }
-        .m_body_table .tr6_1{
-            height: 40px;
-        }
-        .m_body_table .tr7,
-        .m_body_table .tr8,
-        .m_body_table .tr9{
-            height: 40px;
-        }
-        .m_body_table .tr10,
-        .m_body_table .tr12{
-            height: 60px;
-        }
-        .m_body_table .tr13{
-            height: 40px;
-        }
-        .m_body_table .tr14{
-            height: 100px;
-        }
-        .m_body_table .tr15{
-            height: 60px;
-        }
-        .m_body_table .tr16{
-            height: 60px;
-        }
-        .m_body_table .tr17{
-            height: 60px;
-        }
-        .m_body_table .tr18{
-            height: 60px;
-        }
-        .m_body_table .tr19{
-            height: 60px;
-        }
-        .m_body_table .tr20{
-            height: 100px;
-        }
-        .m_body_table .tr21{
-            height: 20px;
-        }
-        .m_body_table .tr22{
-            height: 100px;
-        }
-        .m_body_table .tr23{
-            height: 50px;
-        }
-        .m_body_table .tr24{
-            height: 80px;
-        }
-        .m_body_table .tr25{
-            height: 100px;
-        }
-    </style>
 <script>
-$(function(){
-	initPagerDiv();
-});
+    $(function(){
+        initPagerDiv();
+    });
 
-function initPagerDiv(){
-	
-}
+    function initPagerDiv(){
+
+    }
 
     function getReportFMList() {
         var glueType = $("#glue").text();
@@ -116,7 +26,7 @@ function initPagerDiv(){
             function(result){
                 if(result.msg=="ok"){
                     var list=result.data;
-                    alert(list.length);
+                    // alert(list.length);
                     var reportFMListlist=list[0];
                     for (var i = 0; i < reportFMListlist.length; i++) {
                         var varMap=reportFMListlist[i];
@@ -138,6 +48,11 @@ function initPagerDiv(){
     //         console.log(obj)
     //     }
     // });
+    laypage.render({
+        elem: 'demo2'
+        ,count: 100
+        ,theme: '#1E9FFF'
+    });
 </script>
 </head>
 <body>
@@ -164,7 +79,7 @@ function initPagerDiv(){
                     <input type="date" placeholder="请选择时间" class="m_query_head_input">
                 </td>
                 <td>
-                    当前胶种&nbsp;&nbsp;<span id="glue">MA</span>
+                    当前胶种:&nbsp;&nbsp;&nbsp;<span id="glue" class="glue"></span>
                 </td>
                 <td>
                     <button class="m_query_head_button" onclick="getReportFMList()">
@@ -175,7 +90,7 @@ function initPagerDiv(){
             </tr>
         </table>
     </div>
-    <div class="home_right_body_div">
+    <div class="home_right_sbody_div">
         <table class="m_body_table" border="1px" id="opcMSTable">
             <tr class="tr1">
                 <td colspan="13">

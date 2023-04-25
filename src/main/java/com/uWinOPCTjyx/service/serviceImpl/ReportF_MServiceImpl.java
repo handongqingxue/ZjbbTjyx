@@ -296,8 +296,10 @@ public class ReportF_MServiceImpl implements ReportF_MService {
 	public List<List<ReportF_M>> getReportFMList(String type, String createTime, String batchID, String endTime, Integer currentPage) {
 		List<List<ReportF_M>> list = new ArrayList<List<ReportF_M>>();
 		List<ERecord> yscPcjlListByType = eRecordService.getYscPcjlListByType(type);
+		System.out.println("m类有"+yscPcjlListByType.size()+"条批次记录");
 		List<String> batchIDs = new ArrayList<String>();//存放batchID
-		if (batchID!=null){
+		if (batchID!=null&&batchID!=""){
+			System.out.println("batchID不是空");
 			batchIDs.add(batchID);
 		}else {
 			//遍历出该类型所以的已生成的batchID
@@ -305,6 +307,7 @@ public class ReportF_MServiceImpl implements ReportF_MService {
 				batchIDs.add(eRecord.getBatchID());//存入
 			}
 		}
+		System.out.println("要查的"+batchIDs.toString());
 		List<ReportF_M> reportFMList = reportF_MMapper.getReportFMList(null, null, batchIDs);
 		list.add(reportFMList);
 		return list;
