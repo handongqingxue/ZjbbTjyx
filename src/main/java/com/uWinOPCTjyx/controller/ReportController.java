@@ -137,9 +137,9 @@ public class ReportController {
         //返回值对象
         PlanResult result=new PlanResult();
         try {
-            List<List<ReportF_M>> reportFMList = reportF_MService.getReportFMPageList(type, startTime, endTime, batchID);
-            System.out.println("reportFMList长度："+reportFMList.size());
-            result.setData(reportFMList);
+            List<List<ReportF_M>> reportFMPageList = reportF_MService.getReportFMPageList(type, startTime, endTime, batchID);
+            System.out.println("reportFMPageList长度："+reportFMPageList.size());
+            result.setData(reportFMPageList);
             result.setStatus(Constant.OK_STATUS);
         } catch (Exception e) {
             e.printStackTrace();

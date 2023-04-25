@@ -164,7 +164,6 @@ var path='<%=basePath%>';
     }
     
     function showCreateArea(recType,batchID){
-    	// alert(recType+","+batchID);
     	var createMDisplay;
     	var createUDisplay;
     	var searchMDisplay;
