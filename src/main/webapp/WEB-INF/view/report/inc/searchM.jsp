@@ -6,138 +6,230 @@
 <%--    <link rel="stylesheet" href="<%=basePath%>resource/css/layui.css">--%>
 <%--    <script type="text/javascript" src="<%=basePath%>resource/js/layui.js"></script>--%>
 <title>Title</title>
-    <style type="text/css">
-        .m_body_table .tr1{
-            height: 50px;
-        }
-        .m_body_table .tr2,
-        .m_body_table .tr4{
-            height: 30px;
-        }
-        .m_body_table .td2_1,
-        .m_body_table .td2_2,
-        .m_body_table .td2_3{
-            width: 7%;
-        }
-        .m_body_table .td2_4{
-            width: 9%;
-        }
-        .m_body_table .td2_5{
-            width: 9%;
-        }
-        .m_body_table .td2_6,
-        .m_body_table .td2_8{
-            width: 15%;
-        }
-        .m_body_table .td2_7,
-        .m_body_table .td2_9{
-            width: 15%;
-        }
-
-        .m_body_table .tr3{
-            height: 70px;
-        }
-
-        .m_body_table .tr5{
-            height: 150px;
-        }
-        .m_body_table .tr6{
-            height: 40px;
-        }
-        .m_body_table .tr6_1{
-            height: 40px;
-        }
-        .m_body_table .tr7,
-        .m_body_table .tr8,
-        .m_body_table .tr9{
-            height: 40px;
-        }
-        .m_body_table .tr10,
-        .m_body_table .tr12{
-            height: 60px;
-        }
-        .m_body_table .tr13{
-            height: 40px;
-        }
-        .m_body_table .tr14{
-            height: 100px;
-        }
-        .m_body_table .tr15{
-            height: 60px;
-        }
-        .m_body_table .tr16{
-            height: 60px;
-        }
-        .m_body_table .tr17{
-            height: 60px;
-        }
-        .m_body_table .tr18{
-            height: 60px;
-        }
-        .m_body_table .tr19{
-            height: 60px;
-        }
-        .m_body_table .tr20{
-            height: 100px;
-        }
-        .m_body_table .tr21{
-            height: 20px;
-        }
-        .m_body_table .tr22{
-            height: 100px;
-        }
-        .m_body_table .tr23{
-            height: 50px;
-        }
-        .m_body_table .tr24{
-            height: 80px;
-        }
-        .m_body_table .tr25{
-            height: 100px;
-        }
-    </style>
-<script>
-$(function(){
-	initPagerDiv();
-});
-
-function initPagerDiv(){
-	
+<style type="text/css">
+.m_body_table .tr1{
+    height: 50px;
+}
+.m_body_table .tr2,
+.m_body_table .tr4{
+    height: 30px;
+}
+.m_body_table .td2_1,
+.m_body_table .td2_2,
+.m_body_table .td2_3{
+    width: 7%;
+}
+.m_body_table .td2_4{
+    width: 9%;
+}
+.m_body_table .td2_5{
+    width: 9%;
+}
+.m_body_table .td2_6,
+.m_body_table .td2_8{
+    width: 15%;
+}
+.m_body_table .td2_7,
+.m_body_table .td2_9{
+    width: 15%;
 }
 
-    function getReportFMPageList() {
-        var glueType = $("#glue").text();
-        var typeSelect = $("#typeSelect").val()
-        $.post("<%=basePath%>report/getReportFMPageList",
-            {
-                type:glueType,
-                batchID: typeSelect,
-            },
-            function(result){
-                if(result.msg=="ok"){
-                    var list=result.data;
-                    alert(list.length);
-                    var reportFMListlist=list[0];
-                    for (var i = 0; i < reportFMListlist.length; i++) {
-                        var varMap=reportFMListlist[i];
-                        var rowNumber=varMap.rowNumber;
-                        var colNumber=varMap.colNumber;
-                        var value=varMap.value;
-                        console.log(rowNumber+","+colNumber+","+value);
-                        $("#opcMSTable #td"+rowNumber+"_"+colNumber).text(value);
-                    }
-                }
-            }
-            ,"json");
-    }
-    // laypage.render({
-    //     elem: 'paging'
-    //     ,count: 100
-    //     ,layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
-    //     ,jump: function(obj){
-    //         console.log(obj)
-    //     }
-    // });
+.m_body_table .tr3{
+    height: 70px;
+}
+
+.m_body_table .tr5{
+    height: 150px;
+}
+.m_body_table .tr6{
+    height: 40px;
+}
+.m_body_table .tr6_1{
+    height: 40px;
+}
+.m_body_table .tr7,
+.m_body_table .tr8,
+.m_body_table .tr9{
+    height: 40px;
+}
+.m_body_table .tr10,
+.m_body_table .tr12{
+    height: 60px;
+}
+.m_body_table .tr13{
+    height: 40px;
+}
+.m_body_table .tr14{
+    height: 100px;
+}
+.m_body_table .tr15{
+    height: 60px;
+}
+.m_body_table .tr16{
+    height: 60px;
+}
+.m_body_table .tr17{
+    height: 60px;
+}
+.m_body_table .tr18{
+    height: 60px;
+}
+.m_body_table .tr19{
+    height: 60px;
+}
+.m_body_table .tr20{
+    height: 100px;
+}
+.m_body_table .tr21{
+    height: 20px;
+}
+.m_body_table .tr22{
+    height: 100px;
+}
+.m_body_table .tr23{
+    height: 50px;
+}
+.m_body_table .tr24{
+    height: 80px;
+}
+.m_body_table .tr25{
+    height: 100px;
+}
+</style>
+<script>
+var path='<%=basePath%>';
+$(function(){
+	getReportFMPageList();
+});
+
+function getReportFMPageList() {
+   var glueType = $("#glue").text();
+   var typeSelect = $("#typeSelect").val()
+   $.post(path+"report/getReportFMPageList",
+       {type:glueType,batchID:typeSelect},
+       function(result){
+    	   console.log(result)
+           if(result.status==1){
+               var reportFMPageList=result.data;
+               //alert(reportFMPageList.length);
+               var reportFMList=reportFMPageList[0];
+               for (var i = 0; i < reportFMList.length; i++) {
+                   var varMap=reportFMList[i];
+                   var rowNumber=varMap.rowNumber;
+                   var colNumber=varMap.colNumber;
+                   var value=varMap.value;
+                   console.log(rowNumber+","+colNumber+","+value);
+                   $("#opcMSTable #td"+rowNumber+"_"+colNumber).text(value);
+               }
+        	   
+        	   initPagerDiv(reportFMPageList);
+           }
+       }
+    ,"json");
+}
+
+function initPagerDiv(reportFMPageList){
+	layui.use(['laypage', 'layer'], function(){
+		var laypage = layui.laypage,layer = layui.layer;
+
+		//测试数据
+		var data = [
+		    '北京',
+		    '上海',
+		    '广州',
+		    '深圳',
+		    '杭州',
+		    '长沙',
+		    '合肥',
+		    '宁夏',
+		    '成都',
+		    '西安',
+		    '南昌',
+		    '上饶',
+		    '沈阳',
+		    '济南',
+		    '厦门',
+		    '福州',
+		    '九江',
+		    '宜春',
+		    '赣州',
+		    '宁波',
+		    '绍兴',
+		    '无锡',
+		    '苏州',
+		    '徐州',
+		    '东莞',
+		    '佛山',
+		    '中山',
+		    '成都',
+		    '武汉',
+		    '青岛',
+		    '天津',
+		    '重庆',
+		    '南京',
+		    '九江',
+		    '香港',
+		    '澳门',
+		    '台北'
+		];
+		
+		//调用分页
+		laypage.render({
+		  elem: 'paging'
+		  ,count: data.length,
+		  limit: 1,
+		   prev: '<em><</em>',
+		   next: '<em>></em>',
+		  theme: '#1E9FFF',
+		  layout: ['count', 'prev', 'page', 'next',  'skip'],
+		  jump: function(obj){
+		    //模拟渲染
+		    document.getElementById('reportFMPageList_div').innerHTML = function(){
+		      var arr = []
+		      ,thisData = data.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
+		      layui.each(thisData, function(index, item){
+		    	  var tableStr="<table>";
+				    	  tableStr+="<tr>";
+					    	  tableStr+="<td>";
+					    	  		tableStr+=item;
+					    	  tableStr+="</td>";
+					    	  tableStr+="<td>";
+					    	  		tableStr+=item;
+					    	  tableStr+="</td>";
+					    	  tableStr+="<td>";
+					    	  		tableStr+=item;
+					    	  tableStr+="</td>";
+				    	  tableStr+="</tr>";
+				    	  tableStr+="<tr>";
+					    	  tableStr+="<td>";
+					    	  		tableStr+=item;
+					    	  tableStr+="</td>";
+					    	  tableStr+="<td>";
+					    	  		tableStr+=item;
+					    	  tableStr+="</td>";
+					    	  tableStr+="<td>";
+					    	  		tableStr+=item;
+					    	  tableStr+="</td>";
+				    	  tableStr+="</tr>";
+		    	  	tableStr+="</table>"
+		        arr.push(tableStr);
+		      });
+		      console.log(arr)
+		      return arr.join('');
+		    }();
+		  }
+		});
+	});
+}
+
+// laypage.render({
+//     elem: 'paging'
+//     ,count: 100
+//     ,layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
+//     ,jump: function(obj){
+//         console.log(obj)
+//     }
+// });
 </script>
 </head>
 <body>
@@ -175,7 +267,7 @@ function initPagerDiv(){
             </tr>
         </table>
     </div>
-    <div class="home_right_body_div">
+    <div class="home_right_body_div" id="reportFMPageList_div">
         <table class="m_body_table" border="1px" id="opcMSTable">
             <tr class="tr1">
                 <td colspan="13">

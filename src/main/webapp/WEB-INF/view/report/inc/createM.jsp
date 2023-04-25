@@ -112,7 +112,7 @@ function getUnCreRepVarList(batchID){
 				var rowNumber=varMap.rowNumber;
 				var colNumber=varMap.colNumber;
 				var value=varMap.value;
-				console.log(rowNumber+","+colNumber+","+value);
+				//console.log(rowNumber+","+colNumber+","+value);
 				$("#opcMCTable #td"+rowNumber+"_"+colNumber).text(value);
 			}
 		}

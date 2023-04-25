@@ -114,7 +114,7 @@ var path='<%=basePath%>';
     })
     
     function getLeftMenuData(type){
-    	alert("type==="+type)
+    	//alert("type==="+type)
     	$.post(path+"report/getLeftMenuData",
    			{type:type},
    			function(result){
@@ -166,7 +166,7 @@ var path='<%=basePath%>';
     }
     
     function showCreateArea(recType,batchID){
-    	alert(recType+","+batchID);
+    	//alert(recType+","+batchID);
     	var createMDisplay;
     	var createUDisplay;
     	var searchMDisplay;
