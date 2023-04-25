@@ -676,4 +676,17 @@ public class ReportF_M {
     public void setRemark(String remark) {
         Remark = remark;
     }
+
+	@Override
+	public String toString() {
+		return "ReportF_M{" +
+				"Id=" + Id +
+				", RowNumber='" + RowNumber + '\'' +
+				", ColNumber='" + ColNumber + '\'' +
+				", Value='" + Value + '\'' +
+				", BatchID='" + BatchID + '\'' +
+				", CreateTime='" + CreateTime + '\'' +
+				", Remark='" + Remark + '\'' +
+				'}';
+	}
 }
