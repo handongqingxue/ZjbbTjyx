@@ -131,21 +131,19 @@ public class ReportController {
 
         return map;
 	}
-    @RequestMapping("/getReportFMList")
+    @RequestMapping("/getReportFMPageList")
     @ResponseBody
-	public PlanResult getReportFMList(String type, String createTime, String batchID, String endTime, Integer currentPage){
-        System.out.println("类型"+type);
+	public PlanResult getReportFMPageList(String type, String startTime, String endTime, String batchID){
         //返回值对象
         PlanResult result=new PlanResult();
         try {
-            List<List<ReportF_M>> reportFMList = reportF_MService.getReportFMList(type, null, null, null, 0);
+            List<List<ReportF_M>> reportFMList = reportF_MService.getReportFMPageList(type, startTime, endTime, batchID);
             result.setData(reportFMList);
-            result.setMsg("ok");
-            result.setStatus(1);
+            result.setStatus(Constant.OK_STATUS);
         } catch (Exception e) {
             e.printStackTrace();
-            result.setMsg("no");
-            result.setStatus(0);
+            result.setMsg("暂无信息");
+            result.setStatus(Constant.NO_STATUS);
         } finally {
             return result;
         }

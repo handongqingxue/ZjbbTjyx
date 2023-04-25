@@ -19,5 +19,5 @@ public interface ReportF_MService {
 	 * @param
 	 * @return
 	 */
-	List<List<ReportF_M>> getReportFMList(String type, String createTime, String endTime,String batchID, Integer currentPage);
+	List<List<ReportF_M>> getReportFMPageList(String type, String startTime, String endTime,String batchID);
 }

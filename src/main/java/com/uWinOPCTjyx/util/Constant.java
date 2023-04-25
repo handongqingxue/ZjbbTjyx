@@ -452,4 +452,7 @@ public class Constant {
 	 * U类已生成
 	 */
 	public static final String U_YSC="uYsc";
+	
+	public static final int OK_STATUS=1;
+	public static final int NO_STATUS=0;
 }
