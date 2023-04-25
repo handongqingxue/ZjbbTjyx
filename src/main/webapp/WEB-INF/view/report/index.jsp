@@ -123,14 +123,14 @@ var path='<%=basePath%>';
 	   				var mWscPcjlListDl=$("#mWscPcjlList_dl");
 	   				for (var i = 0; i < mWscPcjlList.length; i++) {
 	   					var mWscPcjl=mWscPcjlList[i];
-	   	   				mWscPcjlListDl.append("<dd><a onclick=\"typeQuery('M')\">"+mWscPcjl.batchID+"</a></dd>");
+	   	   				mWscPcjlListDl.append("<dd><a onclick=\"showCreateArea('M','"+mWscPcjl.batchID+"')\">"+mWscPcjl.batchID+"</a></dd>");
 					}
 	   				
 	   				var uWscPcjlList=result.uWscPcjlList;
 	   				var uWscPcjlListDl=$("#uWscPcjlList_dl");
 	   				for (var i = 0; i < uWscPcjlList.length; i++) {
 	   					var uWscPcjl=uWscPcjlList[i];
-	   	   				uWscPcjlListDl.append("<dd><a onclick=\"typeQuery('U')\">"+uWscPcjl.batchID+"</a></dd>");
+	   	   				uWscPcjlListDl.append("<dd><a onclick=\"showCreateArea('U','"+mWscPcjl.batchID+"')\">"+uWscPcjl.batchID+"</a></dd>");
 					}
    				}
    				else if(type=="mWsc"){
@@ -153,6 +153,10 @@ var path='<%=basePath%>';
             document.getElementById("right-body-head-span2").innerHTML="报表查询页面";
             document.getElementById("right-body-head-icon").classList.replace("layui-icon-add-circle","layui-icon-search");
         }
+    }
+    
+    function showCreateArea(recType,batchID){
+    	alert(recType+","+batchID);
     }
 
     function typeQuery(type) {
