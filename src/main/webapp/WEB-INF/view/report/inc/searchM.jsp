@@ -105,10 +105,10 @@ function initPagerDiv(){
 	
 }
 
-    function getReportFMList() {
+    function getReportFMPageList() {
         var glueType = $("#glue").text();
         var typeSelect = $("#typeSelect").val()
-        $.post("<%=basePath%>report/getReportFMList",
+        $.post("<%=basePath%>report/getReportFMPageList",
             {
                 type:glueType,
                 batchID: typeSelect,
@@ -167,7 +167,7 @@ function initPagerDiv(){
                     当前胶种&nbsp;&nbsp;<span id="glue">MA</span>
                 </td>
                 <td>
-                    <button class="m_query_head_button" onclick="getReportFMList()">
+                    <button class="m_query_head_button" onclick="getReportFMPageList()">
                         <i class="layui-icon layui-icon-search" style="font-size: 16px; color: #ffffff;"></i>
                         查询
                     </button>

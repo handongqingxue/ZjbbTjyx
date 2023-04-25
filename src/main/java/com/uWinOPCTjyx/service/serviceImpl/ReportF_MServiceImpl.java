@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -293,21 +294,65 @@ public class ReportF_MServiceImpl implements ReportF_MService {
 		return count;
 	}
 
-	public List<List<ReportF_M>> getReportFMList(String type, String createTime, String batchID, String endTime, Integer currentPage) {
-		List<List<ReportF_M>> list = new ArrayList<List<ReportF_M>>();
-		List<ERecord> yscPcjlListByType = eRecordService.getYscPcjlListByType(type);
-		List<String> batchIDs = new ArrayList<String>();//存放batchID
-		if (batchID!=null){
-			batchIDs.add(batchID);
-		}else {
-			//遍历出该类型所以的已生成的batchID
-			for (ERecord eRecord : yscPcjlListByType) {
-				batchIDs.add(eRecord.getBatchID());//存入
+	public List<List<ReportF_M>> getReportFMPageList(String type, String startTime, String endTime, String batchID) {
+		List<List<ReportF_M>> reportFMPageList = new ArrayList<List<ReportF_M>>();
+		List<ReportF_M> reportFMList = reportF_MMapper.getReportFMList(type, startTime, endTime, batchID);
+		
+		Map<String, List<ReportF_M>> batchGroupMap=createGroupMap(reportFMList);
+		System.out.println("batchGroupMap==="+batchGroupMap);
+		Set<String> keySet = batchGroupMap.keySet();//遍历批次分组，把每个批次集合作为每一页的子集合，添加到父集合里
+		for (String key : keySet) {
+			List<ReportF_M> batchRepFMList = batchGroupMap.get(key);
+			reportFMPageList.add(batchRepFMList);
+		}
+		
+		return reportFMPageList;
+	}
+	
+	/**
+	 * 创建批次分组map
+	 * @param reportFMList
+	 * @return
+	 */
+	private Map<String, List<ReportF_M>> createGroupMap(List<ReportF_M> reportFMList) {
+		Map<String, List<ReportF_M>> batchGroupMap=new HashMap<String, List<ReportF_M>>();
+		
+		for (ReportF_M reportF_M : reportFMList) {
+			String batchID = reportF_M.getBatchID();
+			boolean exist=checkBatchIDIfExistInGroupMap(batchID,batchGroupMap);
+			if(exist) {
+				List<ReportF_M> batchRepFMList = batchGroupMap.get(batchID);
+				batchRepFMList.add(reportF_M);
+			}
+			else {
+				List<ReportF_M> batchRepFMList = new ArrayList<ReportF_M>();
+				batchRepFMList.add(reportF_M);
+				batchGroupMap.put(batchID, batchRepFMList);
 			}
 		}
-		List<ReportF_M> reportFMList = reportF_MMapper.getReportFMList(null, null, batchIDs);
-		list.add(reportFMList);
-		return list;
+		
+		
+		return batchGroupMap;
+	}
+	
+	/**
+	 * 验证批次id是否存在与批次组里
+	 * @param batchID
+	 * @param batchGroupMap
+	 * @return
+	 */
+	private boolean checkBatchIDIfExistInGroupMap(String batchID, Map<String, List<ReportF_M>> batchGroupMap) {
+		boolean exist=false;
+		Set<String> keySet = batchGroupMap.keySet();
+		for (String key : keySet) {
+			//System.out.println("key==="+key);
+			if(key.equals(batchID)) {
+				exist=true;
+				break;
+			}
+		}
+		
+		return exist;
 	}
 
 	/**

@@ -9,6 +9,6 @@ public interface ReportF_MMapper {
 
 	int add(ReportF_M reportF_M);
 
-	List<ReportF_M> getReportFMList(@Param("createTime") String createTime, @Param("endTime") String endTime,@Param("batchIDs")List<String> batchIDs);
+	List<ReportF_M> getReportFMList(@Param("type") String type, @Param("startTime") String startTime, @Param("endTime") String endTime,@Param("batchID") String batchID);
 
 }
