@@ -110,11 +110,9 @@
 var path='<%=basePath%>';
     $(function () {
     	getLeftMenuData("");
-        //typeQuery("M");
     })
     
     function getLeftMenuData(type){
-    	//alert("type==="+type)
     	$.post(path+"report/getLeftMenuData",
    			{type:type},
    			function(result){
@@ -166,7 +164,6 @@ var path='<%=basePath%>';
     }
     
     function showCreateArea(recType,batchID){
-    	//alert(recType+","+batchID);
     	var createMDisplay;
     	var createUDisplay;
     	var searchMDisplay;
@@ -207,6 +204,8 @@ var path='<%=basePath%>';
             $("#searchU").css('display','none');
             inspect(1);
             getPcjlListByType(type);
+
+
         }else if (type=="UD"){
             $("#createM").css('display','none');
             $("#createU").css('display','none');
@@ -216,18 +215,23 @@ var path='<%=basePath%>';
             getPcjlListByType(type);
         }
     }
+
     function getPcjlListByType(type) {
         $.post("<%=basePath%>report/getPcjlListByType",
             {type:type},
             function(result){
                 if(result.msg=="ok"){
                     var typeSelect=$("#typeSelect");
+                    var glue=$("#glue");
+                    glue.text(type)
                     typeSelect.empty();
                     var list=result.data;
+                    //完整功能
                     typeSelect.append("<option value=''>请选择</option>")
                     for (var i=0;i<list.length;i++){
                         typeSelect.append("<option value=\""+list[i].batchID+"\">"+list[i].batchID+"</option>")
                     }
+                    getReportFMPageList();
                 }
             }
             ,"json");

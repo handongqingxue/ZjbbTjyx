@@ -296,8 +296,9 @@ public class ReportF_MServiceImpl implements ReportF_MService {
 
 	public List<List<ReportF_M>> getReportFMPageList(String type, String startTime, String endTime, String batchID) {
 		List<List<ReportF_M>> reportFMPageList = new ArrayList<List<ReportF_M>>();
+		//通过条件查询批次记录
 		List<ReportF_M> reportFMList = reportF_MMapper.getReportFMList(type, startTime, endTime, batchID);
-		
+		//把查询出来的批次进行分组
 		Map<String, List<ReportF_M>> batchGroupMap=createGroupMap(reportFMList);
 		System.out.println("batchGroupMap==="+batchGroupMap);
 		Set<String> keySet = batchGroupMap.keySet();//遍历批次分组，把每个批次集合作为每一页的子集合，添加到父集合里
@@ -315,16 +316,21 @@ public class ReportF_MServiceImpl implements ReportF_MService {
 	 * @return
 	 */
 	private Map<String, List<ReportF_M>> createGroupMap(List<ReportF_M> reportFMList) {
+		//创建map集合
 		Map<String, List<ReportF_M>> batchGroupMap=new HashMap<String, List<ReportF_M>>();
-		
+		//遍历全部批次记录
 		for (ReportF_M reportF_M : reportFMList) {
+			//获取批次记录batchID
 			String batchID = reportF_M.getBatchID();
+			System.out.println("获取的batchId:"+batchID);
 			boolean exist=checkBatchIDIfExistInGroupMap(batchID,batchGroupMap);
 			if(exist) {
+				System.out.println("通过，获取batchID"+batchID);
 				List<ReportF_M> batchRepFMList = batchGroupMap.get(batchID);
 				batchRepFMList.add(reportF_M);
 			}
 			else {
+				System.out.println("没通过，加入");
 				List<ReportF_M> batchRepFMList = new ArrayList<ReportF_M>();
 				batchRepFMList.add(reportF_M);
 				batchGroupMap.put(batchID, batchRepFMList);
@@ -342,6 +348,7 @@ public class ReportF_MServiceImpl implements ReportF_MService {
 	 * @return
 	 */
 	private boolean checkBatchIDIfExistInGroupMap(String batchID, Map<String, List<ReportF_M>> batchGroupMap) {
+		System.out.println("进入checkBatchIDIfExistInGroupMap方法:"+batchGroupMap.toString());
 		boolean exist=false;
 		Set<String> keySet = batchGroupMap.keySet();
 		for (String key : keySet) {
@@ -351,7 +358,7 @@ public class ReportF_MServiceImpl implements ReportF_MService {
 				break;
 			}
 		}
-		
+		System.out.println("exist:"+exist);
 		return exist;
 	}
 

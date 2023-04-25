@@ -2,97 +2,6 @@
 <html>
 <head>
 <title>Title</title>
-<style type="text/css">
-.m_body_table .tr1{
-	height: 50px;
-}
-
-.m_body_table .tr2,
-.m_body_table .tr4{
-	height: 30px;
-}
-.m_body_table .td2_1,
-.m_body_table .td2_2,
-.m_body_table .td2_3{
-	width: 7%;
-}
-.m_body_table .td2_4{
-	width: 9%;
-}
-.m_body_table .td2_5{
-	width: 9%;
-}
-.m_body_table .td2_6,
-.m_body_table .td2_8{
-	width: 15%;
-}
-.m_body_table .td2_7,
-.m_body_table .td2_9{
-	width: 15%;
-}
-
-.m_body_table .tr3{
-	height: 70px;
-}
-
-.m_body_table .tr5{
-	height: 150px;
-}
-.m_body_table .tr6{
-	height: 40px;
-}
-.m_body_table .tr6_1{
-	height: 40px;
-}
-.m_body_table .tr7,
-.m_body_table .tr8,
-.m_body_table .tr9{
-	height: 40px;
-}
-.m_body_table .tr10,
-.m_body_table .tr12{
-	height: 60px;
-}
-.m_body_table .tr13{
-	height: 40px;
-}
-.m_body_table .tr14{
-	height: 100px;
-}
-.m_body_table .tr15{
-	height: 60px;
-}
-.m_body_table .tr16{
-	height: 60px;
-}
-.m_body_table .tr17{
-	height: 60px;
-}
-.m_body_table .tr18{
-	height: 60px;
-}
-.m_body_table .tr19{
-	height: 60px;
-}
-.m_body_table .tr20{
-	height: 100px;
-}
-.m_body_table .tr21{
-	height: 20px;
-}
-.m_body_table .tr22{
-	height: 100px;
-}
-.m_body_table .tr23{
-	height: 50px;
-}
-.m_body_table .tr24{
-	height: 80px;
-}
-.m_body_table .tr25{
-	height: 100px;
-}
-</style>
 <script type="text/javascript">
 var path='<%=basePath%>';
 $(function () {
@@ -134,28 +43,17 @@ function addReportFByBatchID(){
 </script>
 </head>
 <script>
-    // layui.use('laypage', function(){
-    //     var laypage = layui.laypage;
-    //
-    //     //完整功能
-    //     laypage.render({
-    //         elem: 'paging'
-    //         ,count: 100
-    //         ,layout: ['count', 'prev', 'page', 'next', 'refresh', 'skip']
-    //         ,jump: function(obj){
-    //         }
-    //     });
-    // });
+
 </script>
 <body>
 <div class="home_right_div">
     <div class="home_right_head_div">
         <div class="m_create_head_row1_div">
             <span class="cjxx_span">厂家信息</span>
-            <input class="cjxx_input" type="text" placeholder="录入厂家信息"/>
+            <input type="text" placeholder="录入厂家信息" class="m_create_head_input"/>
             
             <span class="czy_span">操作员</span>
-            <select class="czy_select">
+            <select class="m_create_head_input">
                 <option>张三</option>
             </select>
             
@@ -164,16 +62,16 @@ function addReportFByBatchID(){
         </div>
         <div class="m_create_head_row2_div">
             <span class="gzlcssr1_span">1号罐重量初始输入</span>
-            <input type="text" size="5"/>
+            <input type="text" size="5" class="m_create_head_input"/>
             
             <span class="gzlcssr2_span">2号罐重量初始输入</span>
-            <input type="text" size="5"/>
+            <input type="text" size="5" class="m_create_head_input"/>
             
             <div class="but_div scbb_but_div" onclick="addReportFByBatchID()">生成报表</div>
             <div class="but_div sjfw_but_div">数据复位</div>
         </div>
     </div>
-    <div class="home_right_body_div">
+    <div class="home_right_cbody_div">
         <table class="m_body_table" border="1px" id="opcMCTable">
             <tr class="tr1">
                 <td colspan="13">
@@ -553,9 +451,9 @@ function addReportFByBatchID(){
             </tr>
         </table>
     </div>
-    <div class="home_right_bottom_div">
-        <div id="paging" class="home_right_bottom_paging"></div>
-    </div>
+<%--    <div class="home_right_bottom_div">--%>
+<%--        <div id="paging" class="home_right_bottom_paging"></div>--%>
+<%--    </div>--%>
 </div>
 </body>
 </html>
