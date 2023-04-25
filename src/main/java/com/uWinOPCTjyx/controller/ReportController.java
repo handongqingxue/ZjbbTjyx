@@ -127,6 +127,7 @@ public class ReportController {
     @RequestMapping("/getReportFMList")
     @ResponseBody
 	public PlanResult getReportFMList(String type, String createTime, String batchID, String endTime, Integer currentPage){
+        System.out.println("类型"+type);
         //返回值对象
         PlanResult result=new PlanResult();
         try {

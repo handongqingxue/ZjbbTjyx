@@ -110,11 +110,9 @@
 var path='<%=basePath%>';
     $(function () {
     	getLeftMenuData("");
-        //typeQuery("M");
     })
     
     function getLeftMenuData(type){
-    	alert("type==="+type)
     	$.post(path+"report/getLeftMenuData",
    			{type:type},
    			function(result){
@@ -166,7 +164,7 @@ var path='<%=basePath%>';
     }
     
     function showCreateArea(recType,batchID){
-    	alert(recType+","+batchID);
+    	// alert(recType+","+batchID);
     	var createMDisplay;
     	var createUDisplay;
     	var searchMDisplay;
@@ -207,6 +205,8 @@ var path='<%=basePath%>';
             $("#searchU").css('display','none');
             inspect(1);
             getPcjlListByType(type);
+            getReportFMList(0,type);
+
         }else if (type=="UD"){
             $("#createM").css('display','none');
             $("#createU").css('display','none');
@@ -214,6 +214,7 @@ var path='<%=basePath%>';
             $("#searchU").css('display','block');
             inspect(1);
             getPcjlListByType(type);
+            getReportFMList(0,type);
         }
     }
     function getPcjlListByType(type) {
