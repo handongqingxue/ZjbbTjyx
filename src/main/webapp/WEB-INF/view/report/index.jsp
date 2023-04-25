@@ -17,7 +17,6 @@
     <title>永兴制胶数据报表系统</title>
     <link rel="stylesheet" href="<%=basePath%>resource/css/form_style.css">
     <script type="text/javascript" src="<%=basePath%>resource/js/jquery-3.3.1.js"></script>
-
     <link rel="stylesheet" href="<%=basePath%>resource/css/system_style.css">
     <link rel="stylesheet" href="<%=basePath%>resource/css/layui.css">
     <script type="text/javascript" src="<%=basePath%>resource/js/layui.js"></script>

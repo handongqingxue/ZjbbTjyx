@@ -130,7 +130,7 @@ public class ReportController {
         //返回值对象
         PlanResult result=new PlanResult();
         try {
-            List<List<ReportF_M>> reportFMList = reportF_mService.getReportFMList(type, null, null, null, 0);
+            List<List<ReportF_M>> reportFMList = reportF_MService.getReportFMList(type, null, null, null, 0);
             result.setData(reportFMList);
             result.setMsg("ok");
             result.setStatus(1);

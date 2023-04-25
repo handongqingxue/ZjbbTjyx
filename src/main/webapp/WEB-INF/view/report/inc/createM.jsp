@@ -98,7 +98,6 @@ var path='<%=basePath%>';
 $(function () {
 	getUnCreRepVarList();
 })
-
 function getUnCreRepVarList(){
 	$.post(path+"report/getUnCreRepVarList",
 		{batchID:"MA202300000018"},
