@@ -191,6 +191,7 @@ var path='<%=basePath%>';
                     var typeSelect=$("#typeSelect");
                     typeSelect.empty();
                     var list=result.data;
+                    //完整功能
                     typeSelect.append("<option value=''>请选择</option>")
                     for (var i=0;i<list.length;i++){
                         typeSelect.append("<option value=\""+list[i].batchID+"\">"+list[i].batchID+"</option>")

@@ -547,9 +547,9 @@ function addReportFByBatchID(){
             </tr>
         </table>
     </div>
-    <div class="home_right_bottom_div">
-        <div id="paging" class="home_right_bottom_paging"></div>
-    </div>
+<%--    <div class="home_right_bottom_div">--%>
+<%--        <div id="paging" class="home_right_bottom_paging"></div>--%>
+<%--    </div>--%>
 </div>
 </body>
 </html>

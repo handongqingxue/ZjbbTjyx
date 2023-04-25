@@ -3,8 +3,6 @@
 <html>
 <head>
     <script type="text/javascript" src="<%=basePath%>resource/js/jquery-3.3.1.js"></script>
-<%--    <link rel="stylesheet" href="<%=basePath%>resource/css/layui.css">--%>
-<%--    <script type="text/javascript" src="<%=basePath%>resource/js/layui.js"></script>--%>
 <title>Title</title>
     <style type="text/css">
         .m_body_table .tr1{
@@ -96,9 +94,30 @@
             height: 100px;
         }
     </style>
-<script>
+    <style>
+        .tiao{
+            font: normal 400 10px "微软雅黑";
+            color: #0C0C0C;
 
-    function getReportFMList() {
+        }
+        .paging_button{
+            background-color: #FFFFFF;
+            color: #0C0C0C;
+            /*background: rgba(54, 166, 240, 0.1);*/
+            font: normal 400 12px "微软雅黑";
+            /*box-shadow: 0 0 8px #14678f inset;*/
+            width: 46px;
+            border: 1px #e0dddd solid;
+            height: 28px;
+            cursor: pointer;
+            /*margin-right: 10px;*/
+        }
+    </style>
+<script>
+    $(function () {
+        getReportFMList(0);
+    })
+    function getReportFMList(currentPage) {
         var glueType = $("#glue").text();
         var typeSelect = $("#typeSelect").val()
         $.post("<%=basePath%>report/getReportFMList",
@@ -109,7 +128,7 @@
             function(result){
                 if(result.msg=="ok"){
                     var list=result.data;
-                    var reportFMListlist=list[0];
+                    var reportFMListlist=list[currentPage];
                     for (var i = 0; i < reportFMListlist.length; i++) {
                         var varMap=reportFMListlist[i];
                         var rowNumber=varMap.rowNumber;
@@ -122,14 +141,6 @@
             }
             ,"json");
     }
-    // laypage.render({
-    //     elem: 'paging'
-    //     ,count: 100
-    //     ,layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
-    //     ,jump: function(obj){
-    //         console.log(obj)
-    //     }
-    // });
 </script>
 </head>
 <body>
@@ -547,7 +558,20 @@
         </table>
     </div>
     <div class="home_right_bottom_div">
-        <div id="paging" class="home_right_bottom_paging"></div>
+        <div id="paging" class="home_right_bottom_paging">
+            <span class="tiao">共条</span>&nbsp;&nbsp;
+            <button class="paging_button" onclick="shouPage">首页</button>
+            <button class="paging_button" onclick="shang()">上一页</button>
+            <span>
+                <button onclick="" class="an2"></button>
+            </span>
+            <button class="paging_button" onclick="">下一页</button>
+            <button class="paging_button" onclick="">尾页</button>
+            <select>
+                <option value=0>选择页码</option>
+            </select>
+            <button class="paging_button" onclick="">确定</button>
+        </div>
     </div>
 </div>
 </body>
