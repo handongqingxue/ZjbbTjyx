@@ -110,35 +110,46 @@
 var path='<%=basePath%>';
     $(function () {
     	getLeftMenuData("");
-        typeQuery("M");
+        //typeQuery("M");
     })
     
     function getLeftMenuData(type){
+    	alert("type==="+type)
     	$.post(path+"report/getLeftMenuData",
    			{type:type},
    			function(result){
    				if(type==""){
 	   				var mWscPcjlList=result.mWscPcjlList;
 	   				var mWscPcjlListDl=$("#mWscPcjlList_dl");
+	   				mWscPcjlListDl.empty();
+	   				for (var i = 0; i < mWscPcjlList.length; i++) {
+	   					var mWscPcjl=mWscPcjlList[i];
+	   	   				mWscPcjlListDl.append("<dd><a onclick=\"showCreateArea('M','"+mWscPcjl.batchID+"')\">"+mWscPcjl.batchID+"</a></dd>");
+					}
+	   				
+	   				var uWscPcjlList=result.uWscPcjlList;
+	   				var uWscPcjlListDl=$("#uWscPcjlList_dl");
+	   				uWscPcjlListDl.empty();
+	   				for (var i = 0; i < uWscPcjlList.length; i++) {
+	   					var uWscPcjl=uWscPcjlList[i];
+	   	   				uWscPcjlListDl.append("<dd><a onclick=\"showCreateArea('U','"+mWscPcjl.batchID+"')\">"+uWscPcjl.batchID+"</a></dd>");
+					}
+	   				
+	   				var defaultBatchID=mWscPcjlList[0].batchID;
+	   				showCreateArea("M",defaultBatchID);
+	   				getUnCreRepVarList(defaultBatchID);
+   				}
+   				else if(type=="mWsc"){
+   					var mWscPcjlList=result.mWscPcjlList;
+	   				var mWscPcjlListDl=$("#mWscPcjlList_dl");
+	   				mWscPcjlListDl.empty();
 	   				for (var i = 0; i < mWscPcjlList.length; i++) {
 	   					var mWscPcjl=mWscPcjlList[i];
 	   	   				mWscPcjlListDl.append("<dd><a onclick=\"typeQuery('M')\">"+mWscPcjl.batchID+"</a></dd>");
 					}
 	   				
-	   				var uWscPcjlList=result.uWscPcjlList;
-	   				var uWscPcjlListDl=$("#uWscPcjlList_dl");
-	   				for (var i = 0; i < uWscPcjlList.length; i++) {
-	   					var uWscPcjl=uWscPcjlList[i];
-	   	   				uWscPcjlListDl.append("<dd><a onclick=\"typeQuery('U')\">"+uWscPcjl.batchID+"</a></dd>");
-					}
-   				}
-   				else if(type=="mWsc"){
-   					var mWscPcjlList=result.mWscPcjlList;
-	   				var mWscPcjlListDl=$("#mWscPcjlList_dl");
-	   				for (var i = 0; i < mWscPcjlList.length; i++) {
-	   					var mWscPcjl=mWscPcjlList[i];
-	   	   				mWscPcjlListDl.append("<dd><a onclick=\"typeQuery('M')\">"+mWscPcjl.batchID+"</a></dd>");
-					}
+	   				var defaultBatchID=mWscPcjlList[0].batchID;
+	   				getUnCreRepVarList(defaultBatchID);
    				}
     		}
     	,"json");
@@ -152,6 +163,28 @@ var path='<%=basePath%>';
             document.getElementById("right-body-head-span2").innerHTML="报表查询页面";
             document.getElementById("right-body-head-icon").classList.replace("layui-icon-add-circle","layui-icon-search");
         }
+    }
+    
+    function showCreateArea(recType,batchID){
+    	alert(recType+","+batchID);
+    	var createMDisplay;
+    	var createUDisplay;
+    	var searchMDisplay;
+    	var searchUDisplay;
+    	if (recType=="M"){
+    		createMDisplay="block";
+    		createUDisplay="none";
+    		searchMDisplay="none";
+    		searchUDisplay="none"
+    	}
+		$("#createM").css("display",createMDisplay);
+        $("#createU").css("display",createUDisplay);
+        $("#searchM").css("display",searchMDisplay);
+        $("#searchU").css("display",searchUDisplay);
+        
+        $("#right-body-head-span2").text("报表生成页面");
+        
+        getUnCreRepVarList(batchID);
     }
 
     function typeQuery(type) {

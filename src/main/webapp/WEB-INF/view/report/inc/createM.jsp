@@ -96,12 +96,16 @@
 <script type="text/javascript">
 var path='<%=basePath%>';
 $(function () {
-	getUnCreRepVarList();
+	
 })
-function getUnCreRepVarList(){
+function getUnCreRepVarList(batchID){
 	$.post(path+"report/getUnCreRepVarList",
-		{batchID:"MA202300000018"},
+		//{batchID:"MA202300000018"},
+		{batchID:batchID},
 		function(result){
+			$("#opcMCTable td[id^='td']").text("");//先清除表格里的数据
+			$("#batchID_hid").val(batchID);//设置表格里的批次id
+			
 			var varMapList=result.varMapList;
 			for (var i = 0; i < varMapList.length; i++) {
 				var varMap=varMapList[i];
@@ -116,8 +120,9 @@ function getUnCreRepVarList(){
 }
 
 function addReportFByBatchID(){
+	var batchID=$("#batchID_hid").val();
 	$.post(path+"report/addReportFByBatchID",
-		{batchID:"MA202300000018"},
+		{batchID:batchID},
 		function(result){
 			if(result.message=="ok"){
 				alert(result.info);
@@ -172,6 +177,7 @@ function addReportFByBatchID(){
         <table class="m_body_table" border="1px" id="opcMCTable">
             <tr class="tr1">
                 <td colspan="13">
+                	<input type="hidden" id="batchID_hid"/>
                     <span class="onetd1">M类 （ ）胶 生产记录</span>
                     <%--                    <span class="onetd4">自动表单设计：张发 设计号：ZJZD20211225</span>--%>
                 </td>
