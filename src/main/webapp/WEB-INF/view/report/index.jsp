@@ -110,16 +110,18 @@
 var path='<%=basePath%>';
     $(function () {
     	getLeftMenuData("");
-        typeQuery("M");
+        //typeQuery("M");
     })
     
     function getLeftMenuData(type){
+    	alert("type==="+type)
     	$.post(path+"report/getLeftMenuData",
    			{type:type},
    			function(result){
    				if(type==""){
 	   				var mWscPcjlList=result.mWscPcjlList;
 	   				var mWscPcjlListDl=$("#mWscPcjlList_dl");
+	   				mWscPcjlListDl.empty();
 	   				for (var i = 0; i < mWscPcjlList.length; i++) {
 	   					var mWscPcjl=mWscPcjlList[i];
 	   	   				mWscPcjlListDl.append("<dd><a onclick=\"showCreateArea('M','"+mWscPcjl.batchID+"')\">"+mWscPcjl.batchID+"</a></dd>");
@@ -127,18 +129,27 @@ var path='<%=basePath%>';
 	   				
 	   				var uWscPcjlList=result.uWscPcjlList;
 	   				var uWscPcjlListDl=$("#uWscPcjlList_dl");
+	   				uWscPcjlListDl.empty();
 	   				for (var i = 0; i < uWscPcjlList.length; i++) {
 	   					var uWscPcjl=uWscPcjlList[i];
 	   	   				uWscPcjlListDl.append("<dd><a onclick=\"showCreateArea('U','"+mWscPcjl.batchID+"')\">"+uWscPcjl.batchID+"</a></dd>");
 					}
+	   				
+	   				var defaultBatchID=mWscPcjlList[0].batchID;
+	   				showCreateArea("M",defaultBatchID);
+	   				getUnCreRepVarList(defaultBatchID);
    				}
    				else if(type=="mWsc"){
    					var mWscPcjlList=result.mWscPcjlList;
 	   				var mWscPcjlListDl=$("#mWscPcjlList_dl");
+	   				mWscPcjlListDl.empty();
 	   				for (var i = 0; i < mWscPcjlList.length; i++) {
 	   					var mWscPcjl=mWscPcjlList[i];
 	   	   				mWscPcjlListDl.append("<dd><a onclick=\"typeQuery('M')\">"+mWscPcjl.batchID+"</a></dd>");
 					}
+	   				
+	   				var defaultBatchID=mWscPcjlList[0].batchID;
+	   				getUnCreRepVarList(defaultBatchID);
    				}
     		}
     	,"json");
@@ -170,6 +181,10 @@ var path='<%=basePath%>';
         $("#createU").css("display",createUDisplay);
         $("#searchM").css("display",searchMDisplay);
         $("#searchU").css("display",searchUDisplay);
+        
+        $("#right-body-head-span2").text("报表生成页面");
+        
+        getUnCreRepVarList(batchID);
     }
 
     function typeQuery(type) {

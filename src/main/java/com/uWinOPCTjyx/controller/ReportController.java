@@ -149,9 +149,9 @@ public class ReportController {
 
 		Map<String,Object> json=new HashMap<String, Object>();
 		
+		int count=0;
 		List<ERecord> eRecordList=eRecordService.getListByBatchID(batchID);
 		
-		int count=0;
 		String recType = batchID.substring(0,1);
 		if(ERecord.M.equals(recType)) {
 			count=reportF_MService.addByERecordList(eRecordList);
