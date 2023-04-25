@@ -97,6 +97,13 @@
         }
     </style>
 <script>
+$(function(){
+	initPagerDiv();
+});
+
+function initPagerDiv(){
+	
+}
 
     function getReportFMList() {
         var glueType = $("#glue").text();
@@ -109,6 +116,7 @@
             function(result){
                 if(result.msg=="ok"){
                     var list=result.data;
+                    alert(list.length);
                     var reportFMListlist=list[0];
                     for (var i = 0; i < reportFMListlist.length; i++) {
                         var varMap=reportFMListlist[i];
