@@ -25,6 +25,7 @@ import java.util.Map;
 public class ReportController {
 	
 	//http://localhost:8080/UWinOPCTjyx/report/goIndex
+	//http://localhost:8080/UWinOPCTjyx/report/goTest
 	public static final String MODULE_NAME="report";
 
     @Autowired
@@ -48,6 +49,12 @@ public class ReportController {
     public String goSearchM(HttpServletRequest request){
         
         return MODULE_NAME+"/searchM";
+    }
+
+    @RequestMapping("/goTest")
+    public String goTest(){
+        
+        return MODULE_NAME+"/test";
     }
     
     /**

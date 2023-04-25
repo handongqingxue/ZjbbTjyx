@@ -3,35 +3,111 @@
 <html>
 <head>
     <script type="text/javascript" src="<%=basePath%>resource/js/jquery-3.3.1.js"></script>
+<%--    <link rel="stylesheet" href="<%=basePath%>resource/css/layui.css">--%>
+<%--    <script type="text/javascript" src="<%=basePath%>resource/js/layui.js"></script>--%>
 <title>Title</title>
-
-    <style>
-        .tiao{
-            font: normal 400 10px "微软雅黑";
-            color: #0C0C0C;
-
+    <style type="text/css">
+        .m_body_table .tr1{
+            height: 50px;
         }
-        .paging_button{
-            background-color: #FFFFFF;
-            color: #0C0C0C;
-            /*background: rgba(54, 166, 240, 0.1);*/
-            font: normal 400 12px "微软雅黑";
-            /*box-shadow: 0 0 8px #14678f inset;*/
-            width: 46px;
-            border: 1px #e0dddd solid;
-            height: 28px;
-            cursor: pointer;
-            /*margin-right: 10px;*/
+        .m_body_table .tr2,
+        .m_body_table .tr4{
+            height: 30px;
+        }
+        .m_body_table .td2_1,
+        .m_body_table .td2_2,
+        .m_body_table .td2_3{
+            width: 7%;
+        }
+        .m_body_table .td2_4{
+            width: 9%;
+        }
+        .m_body_table .td2_5{
+            width: 9%;
+        }
+        .m_body_table .td2_6,
+        .m_body_table .td2_8{
+            width: 15%;
+        }
+        .m_body_table .td2_7,
+        .m_body_table .td2_9{
+            width: 15%;
+        }
+
+        .m_body_table .tr3{
+            height: 70px;
+        }
+
+        .m_body_table .tr5{
+            height: 150px;
+        }
+        .m_body_table .tr6{
+            height: 40px;
+        }
+        .m_body_table .tr6_1{
+            height: 40px;
+        }
+        .m_body_table .tr7,
+        .m_body_table .tr8,
+        .m_body_table .tr9{
+            height: 40px;
+        }
+        .m_body_table .tr10,
+        .m_body_table .tr12{
+            height: 60px;
+        }
+        .m_body_table .tr13{
+            height: 40px;
+        }
+        .m_body_table .tr14{
+            height: 100px;
+        }
+        .m_body_table .tr15{
+            height: 60px;
+        }
+        .m_body_table .tr16{
+            height: 60px;
+        }
+        .m_body_table .tr17{
+            height: 60px;
+        }
+        .m_body_table .tr18{
+            height: 60px;
+        }
+        .m_body_table .tr19{
+            height: 60px;
+        }
+        .m_body_table .tr20{
+            height: 100px;
+        }
+        .m_body_table .tr21{
+            height: 20px;
+        }
+        .m_body_table .tr22{
+            height: 100px;
+        }
+        .m_body_table .tr23{
+            height: 50px;
+        }
+        .m_body_table .tr24{
+            height: 80px;
+        }
+        .m_body_table .tr25{
+            height: 100px;
         }
     </style>
 <script>
-    // $(function () {
-    //     getReportFMList(0);
-    // })
-    function getReportFMList(currentPage,type) {
+$(function(){
+	initPagerDiv();
+});
+
+function initPagerDiv(){
+	
+}
+
+    function getReportFMList() {
         var glueType = $("#glue").text();
-        // var typeSelect = $("#typeSelect").val()
-        var typeSelect = type
+        var typeSelect = $("#typeSelect").val()
         $.post("<%=basePath%>report/getReportFMList",
             {
                 type:glueType,
@@ -40,7 +116,8 @@
             function(result){
                 if(result.msg=="ok"){
                     var list=result.data;
-                    var reportFMListlist=list[currentPage];
+                    alert(list.length);
+                    var reportFMListlist=list[0];
                     for (var i = 0; i < reportFMListlist.length; i++) {
                         var varMap=reportFMListlist[i];
                         var rowNumber=varMap.rowNumber;
@@ -53,6 +130,14 @@
             }
             ,"json");
     }
+    // laypage.render({
+    //     elem: 'paging'
+    //     ,count: 100
+    //     ,layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
+    //     ,jump: function(obj){
+    //         console.log(obj)
+    //     }
+    // });
 </script>
 </head>
 <body>
@@ -90,7 +175,7 @@
             </tr>
         </table>
     </div>
-    <div class="home_right_sbody_div">
+    <div class="home_right_body_div">
         <table class="m_body_table" border="1px" id="opcMSTable">
             <tr class="tr1">
                 <td colspan="13">
@@ -470,20 +555,7 @@
         </table>
     </div>
     <div class="home_right_bottom_div">
-        <div id="paging" class="home_right_bottom_paging">
-            <span class="tiao">共条</span>&nbsp;&nbsp;
-            <button class="paging_button" onclick="shouPage">首页</button>
-            <button class="paging_button" onclick="shang()">上一页</button>
-            <span>
-                <button onclick="" class="an2"></button>
-            </span>
-            <button class="paging_button" onclick="">下一页</button>
-            <button class="paging_button" onclick="">尾页</button>
-            <select>
-                <option value=0>选择页码</option>
-            </select>
-            <button class="paging_button" onclick="">确定</button>
-        </div>
+        <div id="paging" class="home_right_bottom_paging"></div>
     </div>
 </div>
 </body>
