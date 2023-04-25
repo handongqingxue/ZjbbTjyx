@@ -109,7 +109,7 @@ function getUnCreRepVarList(){
 				var colNumber=varMap.colNumber;
 				var value=varMap.value;
 				console.log(rowNumber+","+colNumber+","+value);
-				$("#td"+rowNumber+"_"+colNumber).text(value);
+				$("#opcMCTable #td"+rowNumber+"_"+colNumber).text(value);
 			}
 		}
 	,"json");
@@ -169,7 +169,7 @@ function addReportFByBatchID(){
         </div>
     </div>
     <div class="home_right_body_div">
-        <table class="m_body_table" border="1px" id="opcMTable">
+        <table class="m_body_table" border="1px" id="opcMCTable">
             <tr class="tr1">
                 <td colspan="13">
                     <span class="onetd1">M类 （ ）胶 生产记录</span>
