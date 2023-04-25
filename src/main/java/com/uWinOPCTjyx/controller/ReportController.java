@@ -108,10 +108,20 @@ public class ReportController {
 	}
     @RequestMapping("/getReportFMList")
     @ResponseBody
-	public PlanResult getReportFMList(String type, Integer currentPage){
+	public PlanResult getReportFMList(String type, String createTime, String batchID, String endTime, Integer currentPage){
         //返回值对象
         PlanResult result=new PlanResult();
-
-        return result;
+        try {
+            List<List<ReportF_M>> reportFMList = reportF_mService.getReportFMList(type, null, null, null, 0);
+            result.setData(reportFMList);
+            result.setMsg("ok");
+            result.setStatus(1);
+        } catch (Exception e) {
+            e.printStackTrace();
+            result.setMsg("no");
+            result.setStatus(0);
+        } finally {
+            return result;
+        }
     }
 }

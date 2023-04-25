@@ -294,15 +294,20 @@ public class ReportF_MServiceImpl implements ReportF_MService {
 	}
 
 	public List<List<ReportF_M>> getReportFMList(String type, String createTime, String batchID, String endTime, Integer currentPage) {
+		List<List<ReportF_M>> list = new ArrayList<List<ReportF_M>>();
 		List<ERecord> yscPcjlListByType = eRecordService.getYscPcjlListByType(type);
-		List<String> batchIDs = new ArrayList<String>();//存放已生成的batchID
-		//遍历出该类型所以的已生成的batchID
-		for (ERecord eRecord : yscPcjlListByType) {
-			batchIDs.add(eRecord.getBatchID());//存入
+		List<String> batchIDs = new ArrayList<String>();//存放batchID
+		if (batchID!=null){
+			batchIDs.add(batchID);
+		}else {
+			//遍历出该类型所以的已生成的batchID
+			for (ERecord eRecord : yscPcjlListByType) {
+				batchIDs.add(eRecord.getBatchID());//存入
+			}
 		}
 		List<ReportF_M> reportFMList = reportF_MMapper.getReportFMList(null, null, batchIDs);
-
-		return null;
+		list.add(reportFMList);
+		return list;
 	}
 
 	/**

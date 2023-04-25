@@ -2,24 +2,25 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-
+    <script type="text/javascript" src="<%=basePath%>resource/js/jquery-3.3.1.js"></script>
 <title>Title</title>
 <script>
 
+    function getReportFMList() {
+        var glueType = $("#glue").text();
+        var typeSelect = $("#typeSelect").val()
+        $.post("<%=basePath%>report/getReportFMList",
+            {
+                type:glueType,
+                batchID: typeSelect,
+            },
+            function(result){
+                if(result.msg=="ok"){
 
-// layui.use('laypage', function(){
-//     var laypage = layui.laypage;
-//
-//     //完整功能
-//     laypage.render({
-//         elem: 'paging'
-//         ,count: 100
-//         ,layout: ['count', 'prev', 'page', 'next', 'refresh', 'skip']
-//         ,jump: function(obj){
-//         }
-//     });
-// });
-
+                }
+            }
+            ,"json");
+    }
 </script>
 </head>
 <body>
@@ -37,9 +38,7 @@
                 </td>
                 <td>
                     选择批次&nbsp;&nbsp;
-                    <select class="m_query_head_input" id="typeSelect">
-                        <%--<option></option>--%>
-                    </select>
+                    <select class="m_query_head_input" id="typeSelect"></select>
                 </td>
             </tr>
             <tr>
@@ -48,10 +47,10 @@
                     <input type="date" placeholder="请选择时间" class="m_query_head_input">
                 </td>
                 <td>
-                    当前胶种&nbsp;&nbsp;<span id="glue"></span>
+                    当前胶种&nbsp;&nbsp;<span id="glue">MA</span>
                 </td>
                 <td>
-                    <button class="m_query_head_button">
+                    <button class="m_query_head_button" onclick="getReportFMList()">
                         <i class="layui-icon layui-icon-search" style="font-size: 16px; color: #ffffff;"></i>
                         查询
                     </button>

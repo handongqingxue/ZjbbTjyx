@@ -155,17 +155,13 @@
                     var typeSelect=$("#typeSelect");
                     typeSelect.empty();
                     var list=result.data;
-                    typeSelect.append("<option>请选择</option>")
+                    typeSelect.append("<option value=''>请选择</option>")
                     for (var i=0;i<list.length;i++){
-                        typeSelect.append("<option>"+list[i].batchID+"</option>")
+                        typeSelect.append("<option value=\""+list[i].batchID+"\">"+list[i].batchID+"</option>")
                     }
                 }
             }
             ,"json");
-    }
-
-    function getReportFMList() {
-
     }
 
 </script>
