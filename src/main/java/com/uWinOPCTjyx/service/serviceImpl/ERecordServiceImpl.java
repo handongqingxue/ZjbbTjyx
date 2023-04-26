@@ -1,10 +1,6 @@
 package com.uWinOPCTjyx.service.serviceImpl;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -1402,17 +1398,17 @@ public class ERecordServiceImpl implements ERecordService {
 
 	public Map<String,Object> getListByPcjl(String type) {
 		Map<String,Object> map = new HashMap<String, Object>();
-		List<ERecord> mYscPcjlList = new ArrayList<ERecord>();//M类已生成的批次记录集合
-		List<ERecord> uYscPcjlList = new ArrayList<ERecord>();//U类已生成的批次记录集合
-		List<ERecord> mWscPcjlList = new ArrayList<ERecord>();//M类未生成的批次记录集合
-		List<ERecord> uWscPcjlList = new ArrayList<ERecord>();//U类未生成的批次记录集合
+		List<String> mYscPcjlList = new ArrayList<String>();//M类已生成的批次记录集合
+		List<String> uYscPcjlList = new ArrayList<String>();//U类已生成的批次记录集合
+		List<String> mWscPcjlList = new ArrayList<String>();//M类未生成的批次记录集合
+		List<String> uWscPcjlList = new ArrayList<String>();//U类未生成的批次记录集合
 		List<ERecord> pcjlList = eRecordMapper.getListByPcjl();//查询全部批次记录
 		
 		if(Constant.M_WSC.equals(type)) {
 			for (ERecord pcjl : pcjlList) {
 				if (pcjl.getRemark().equals(ERecord.WSCBB+"")){
 					if (pcjl.getRecType().equals(ERecord.M)){
-						mWscPcjlList.add(pcjl);
+						mWscPcjlList.add(pcjl.getBatchID());
 					}
 				}
 			}
@@ -1423,7 +1419,7 @@ public class ERecordServiceImpl implements ERecordService {
 			for (ERecord pcjl : pcjlList) {
 				if (pcjl.getRemark().equals(ERecord.WSCBB+"")){
 					if (pcjl.getRecType().equals(ERecord.U)){
-						mWscPcjlList.add(pcjl);
+						mWscPcjlList.add(pcjl.getBatchID());
 					}
 				}
 			}
@@ -1434,20 +1430,21 @@ public class ERecordServiceImpl implements ERecordService {
 			for (ERecord pcjl : pcjlList) {
 				if (pcjl.getRemark().equals(ERecord.WSCBB+"")){
 					if (pcjl.getRecType().equals(ERecord.M)){
-						mWscPcjlList.add(pcjl);
+						mWscPcjlList.add(pcjl.getBatchID());
 					}else if(pcjl.getRecType().equals(ERecord.U)){
-						uWscPcjlList.add(pcjl);
+						uWscPcjlList.add(pcjl.getBatchID());
 					}
 				}
 				else if (pcjl.getRemark().equals(ERecord.YSCBB+"")){
 					if (pcjl.getRecType().equals(ERecord.M)){
-						mYscPcjlList.add(pcjl);
+						//查找m类胶种
+						mYscPcjlList = checkGlueTypeIfExistInList(pcjl.getBatchID(), pcjlList);
 					}else if(pcjl.getRecType().equals(ERecord.U)){
-						uYscPcjlList.add(pcjl);
+						//查找u类胶种
+						uYscPcjlList = checkGlueTypeIfExistInList(pcjl.getBatchID(), pcjlList);
 					}
 				}
 			}
-			
 			map.put("mWscPcjlList",mWscPcjlList);
 			map.put("uWscPcjlList",uWscPcjlList);
 			map.put("mYscPcjlList",mYscPcjlList);
@@ -1455,6 +1452,32 @@ public class ERecordServiceImpl implements ERecordService {
 		}
 		
 		return map;
+	}
+
+	/**
+	 * 验证批次id是否存在与批次组里
+	 * @param batchID
+	 * @param eRecordList
+	 * @return
+	 */
+	private List<String> checkGlueTypeIfExistInList(String batchID, List<ERecord> eRecordList) {
+		List<String> glueTypeList = new ArrayList<String>();
+		for (ERecord eRecord : eRecordList) {
+			String eRdBatchID = eRecord.getBatchID();
+			String eRdBatchIDSub = eRdBatchID.substring(0, 2);
+			String batchIDSub = batchID.substring(0, 2);
+			if (eRdBatchIDSub.equals(batchIDSub)){
+				if (glueTypeList.size()==0){
+					glueTypeList.add(batchIDSub);
+				}
+				for (String glueType : glueTypeList) {
+					if (!batchIDSub.equals(glueType)){
+						glueTypeList.add(batchIDSub);
+					}
+				}
+			}
+		}
+		return glueTypeList;
 	}
 
 	public List<ERecord> getYscPcjlListByType(String type) {
@@ -1982,4 +2005,7 @@ public class ERecordServiceImpl implements ERecordService {
 		}
 		return varMapList;
 	}
+
+
+
 }
