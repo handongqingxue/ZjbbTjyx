@@ -5,11 +5,8 @@ import com.uWinOPCTjyx.dao.*;
 import com.uWinOPCTjyx.service.*;
 import com.uWinOPCTjyx.util.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -290,11 +287,11 @@ public class ReportF_MServiceImpl implements ReportF_MService {
 		for (ReportF_M reportF_M : reportF_MList) {
 			count+=reportF_MMapper.add(reportF_M);
 		}
-		
 		return count;
 	}
 
 	public List<List<ReportF_M>> getReportFMPageList(String type, String startTime, String endTime, String batchID) {
+
 		List<List<ReportF_M>> reportFMPageList = new ArrayList<List<ReportF_M>>();
 		//通过条件查询批次记录
 		List<ReportF_M> reportFMList = reportF_MMapper.getReportFMList(type, startTime, endTime, batchID);
@@ -305,7 +302,6 @@ public class ReportF_MServiceImpl implements ReportF_MService {
 			List<ReportF_M> batchRepFMList = batchGroupMap.get(key);
 			reportFMPageList.add(batchRepFMList);
 		}
-		
 		return reportFMPageList;
 	}
 	
@@ -321,22 +317,17 @@ public class ReportF_MServiceImpl implements ReportF_MService {
 		for (ReportF_M reportF_M : reportFMList) {
 			//获取批次记录batchID
 			String batchID = reportF_M.getBatchID();
-			System.out.println("获取的batchId:"+batchID);
 			boolean exist=checkBatchIDIfExistInGroupMap(batchID,batchGroupMap);
 			if(exist) {
-				System.out.println("通过，获取batchID"+batchID);
 				List<ReportF_M> batchRepFMList = batchGroupMap.get(batchID);
 				batchRepFMList.add(reportF_M);
 			}
 			else {
-				System.out.println("没通过，加入");
 				List<ReportF_M> batchRepFMList = new ArrayList<ReportF_M>();
 				batchRepFMList.add(reportF_M);
 				batchGroupMap.put(batchID, batchRepFMList);
 			}
 		}
-		
-		
 		return batchGroupMap;
 	}
 	
@@ -347,17 +338,14 @@ public class ReportF_MServiceImpl implements ReportF_MService {
 	 * @return
 	 */
 	private boolean checkBatchIDIfExistInGroupMap(String batchID, Map<String, List<ReportF_M>> batchGroupMap) {
-		System.out.println("进入checkBatchIDIfExistInGroupMap方法:"+batchGroupMap.toString());
 		boolean exist=false;
 		Set<String> keySet = batchGroupMap.keySet();
 		for (String key : keySet) {
-			//System.out.println("key==="+key);
 			if(key.equals(batchID)) {
 				exist=true;
 				break;
 			}
 		}
-		System.out.println("exist:"+exist);
 		return exist;
 	}
 

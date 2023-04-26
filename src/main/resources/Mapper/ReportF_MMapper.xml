@@ -47,10 +47,11 @@
 	<select id="getReportFMList" resultType="com.uWinOPCTjyx.entity.ReportF_M">
 		select * from ReportF_M where LEFT(BatchID,2)=#{type}
 		<if test="startTime!=''&amp;endTime!=null">
-			createTime between #{startTime} and #{endTime}
+
+			and createTime between #{startTime} and #{endTime}
 		</if>
 		<if test="batchID!=''&amp;batchID!=null">
-			batchID=#{batchID}
+			and BatchID=#{batchID}
 		</if>
 		order by createTime
 	</select>

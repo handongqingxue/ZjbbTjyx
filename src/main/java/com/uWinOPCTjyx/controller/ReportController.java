@@ -138,7 +138,6 @@ public class ReportController {
         PlanResult result=new PlanResult();
         try {
             List<List<ReportF_M>> reportFMPageList = reportF_MService.getReportFMPageList(type, startTime, endTime, batchID);
-            System.out.println("reportFMPageList长度："+reportFMPageList.size());
             result.setData(reportFMPageList);
             result.setStatus(Constant.OK_STATUS);
         } catch (Exception e) {

@@ -1,5 +1,8 @@
 package com.uWinOPCTjyx.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class ReportF_M {
 	
 	/**

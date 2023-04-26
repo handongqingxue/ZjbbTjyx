@@ -1,28 +1,10 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: lilekang
-  Date: 2023/4/19
-  Time: 9:15 上午
-  To change this template use File | Settings | File Templates.
---%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
-<%
-    String basePath=request.getScheme()+"://"+request.getServerName()+":"
-            +request.getServerPort()+request.getContextPath()+"/";
-%>
 <html>
 <head>
     <title>永兴制胶数据报表系统</title>
-    <link rel="stylesheet" href="<%=basePath%>resource/css/form_style.css">
-    <script type="text/javascript" src="<%=basePath%>resource/js/jquery-3.3.1.js"></script>
-    <link rel="stylesheet" href="<%=basePath%>resource/css/system_style.css">
-    <link rel="stylesheet" href="<%=basePath%>resource/css/layui.css">
-    <script type="text/javascript" src="<%=basePath%>resource/js/layui.js"></script>
-    <script type="text/javascript" src="<%=basePath%>resource/js/opc.js"></script>
 </head>
 <body>
+<%@include file="../report/inc/js.jsp"%>
 <div class="home">
     <%--头部--%>
     <div class="home-head">
