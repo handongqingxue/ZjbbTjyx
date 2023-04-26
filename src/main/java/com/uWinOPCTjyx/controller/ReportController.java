@@ -89,7 +89,6 @@ public class ReportController {
     		List<ERecord> uYscPcjlList = (List<ERecord>)pcjlMap.get("uYscPcjlList");
     		map.put("uYscPcjlList", uYscPcjlList);
     	}
-
     	return map;
 	}
 
@@ -183,4 +182,5 @@ public class ReportController {
 		
 		return json;
 	}
+
 }

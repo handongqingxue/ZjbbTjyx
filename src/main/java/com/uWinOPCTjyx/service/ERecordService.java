@@ -38,4 +38,5 @@ public interface ERecordService {
 	List<ERecord> getYscPcjlListByType(String type);
 
 	List<Map<String, Object>> getUnCreRepVarList(String batchID);
+
 }
