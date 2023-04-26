@@ -75,6 +75,8 @@ function initPagerHtml(reportFMPageList){
 }
 
 function outputPdf(){
+	alert($("#home_right_div").html())
+	
     html2canvas(
         //document.getElementById("outputPdf_div"),
         $("#home_right_div"),
@@ -111,10 +113,9 @@ function outputPdf(){
                         }
                     }
                 }
-                var qpbh=$("#home_right_div #aaaa").text();
                 // var zzrqY=$("#outputPdf_div #zzrqY_span").text();
                 // var zzrqM=$("#outputPdf_div #zzrqM_span").text();
-                pdf.save(qpbh+'.pdf');
+                pdf.save('1111.pdf');
                 // $("#pdf_div").css("border-color","#000");
 
                 $("#home_right_div").empty();
@@ -184,7 +185,7 @@ function outputPdf(){
 
 <%--&lt;%&ndash;未显示变量的报表模版&ndash;%&gt;--%>
 <div id="noVarRep_div" style="display: none;">
-    <table class="m_body_table" border="1px" id="aaaa">
+    <table class="m_body_table" border="1px">
         <tr class="tr1">
             <td colspan="13">
                 <span class="onetd1">M类 （ ）胶 生产记录</span>
