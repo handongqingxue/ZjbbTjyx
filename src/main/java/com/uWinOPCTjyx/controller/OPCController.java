@@ -47,7 +47,6 @@ public class OPCController {
 		return MODULE_NAME+"/opc";
 	}
 
-
 	@RequestMapping(value = "/editTriggerVarByReqBody", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> editTriggerVarByReqBody(@RequestBody String bodyStr){
@@ -72,6 +71,22 @@ public class OPCController {
 		finally {
 			return json;
 		}
+	}
+
+	/**
+	 * 同步触发器变量
+	 * @return
+	 */
+	@RequestMapping(value = "/syncTriggerVar", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> syncTriggerVar() {
+
+		Map<String,Object> json=new HashMap<String, Object>();
+		
+		List<String> opcTVNameList=OpcUtil.getOpcTVNameList();
+		OpcUtil.syncTVByOpcVNList(opcTVNameList);
+		
+		return json;
 	}
 	
 	@RequestMapping(value = "/initFMap", method = RequestMethod.POST)

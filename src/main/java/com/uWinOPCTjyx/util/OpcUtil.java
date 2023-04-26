@@ -746,4 +746,67 @@ public class OpcUtil {
 		}
     	return opcItemList;
 	}
+    
+    /**
+     * 获取待从opc上读取的触发变量列表
+     * @return
+     */
+    public static List<String> getOpcTVNameList() {
+    	List<String> opcTVNameList=new ArrayList<String>();
+    	
+    	List<String> opcTVNamePreList=new ArrayList<String>();//前缀集合
+    	opcTVNamePreList.add(Constant.BEI_LIAO_KAI_SHI);//备料开始前缀
+    	
+    	for (String opcTVNamePre : opcTVNamePreList) {//循环拼接上反应釜号作为完整的变量
+    		for (String fMName : Constant.BSF_F_M_ARR) {
+    			String opcTVName = opcTVNamePre+"_"+fMName+"_AV";
+    			opcTVNameList.add(opcTVName);
+			}
+    		for (String fMName : Constant.BSF_F_U_ARR) {
+    			String opcTVName = opcTVNamePre+"_"+fMName+"_AV";
+    			opcTVNameList.add(opcTVName);
+			}
+		}
+    	
+    	return opcTVNameList;
+	}
+    
+    /**
+     * 从opc服务器端同步数据库的触发器变量
+     * @param opcVarNameList
+     */
+    public static void syncTVByOpcVNList(List<String> opcVarNameList) {
+        OpcGroup group = new OpcGroup("_System", true, 500, 0.0f);
+    	for (String opcVarName : opcVarNameList) {
+        	group.addItem(new OpcItem( opcVarName, true, ""));
+		}
+
+        jopc.addGroup(group);   //添加组
+
+        OpcGroup responseGroup = null;
+
+        try {
+            jopc.connect();   //连接
+            jopc.registerGroups();  //注册组
+        } catch (ConnectivityException e1) {
+            System.out.println("ConnectivityException="+e1.getMessage());
+            //logger.error(e1.getMessage());
+        } catch (UnableAddGroupException e) {
+            System.out.println("UnableAddGroupException="+e.getMessage());
+            //logger.error(e.getMessage());
+        } catch (UnableAddItemException e) {
+            System.out.println("UnableAddItemException="+e.getMessage());
+            //logger.error(e.getMessage());
+        }
+        synchronized(test) {
+            try {
+                test.wait(50);
+            } catch (InterruptedException e) {
+                //logger.error(e.getMessage());
+            }
+        }
+        
+        ArrayList<OpcItem> opcItemList = responseGroup.getItems();
+		APIUtil.addVar("addTriggerVarFromOpc",opcItemList);
+	}
 }
