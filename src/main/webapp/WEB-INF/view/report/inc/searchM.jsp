@@ -83,7 +83,7 @@ function outputPdf(){
         $("#reportFMPageList_div table"),
         {
             scale: '5',
-            dpi: '300',//导出pdf清晰度
+            dpi: '500',//导出pdf清晰度
             //dpi: '172',//导出pdf清晰度
             onrendered: function (canvas) {
                 var contentWidth = canvas.width;
