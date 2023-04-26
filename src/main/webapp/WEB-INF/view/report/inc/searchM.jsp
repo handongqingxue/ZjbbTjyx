@@ -73,6 +73,58 @@ function initPagerHtml(reportFMPageList){
 		});
 	});
 }
+
+function outputPdf(){
+    html2canvas(
+        //document.getElementById("outputPdf_div"),
+        $("#home_right_div"),
+        {
+            scale: '5',
+            dpi: '300',//导出pdf清晰度
+            //dpi: '172',//导出pdf清晰度
+            onrendered: function (canvas) {
+                var contentWidth = canvas.width;
+                var contentHeight = canvas.height;
+                //一页pdf显示html页面生成的canvas高度;
+                var pageHeight = contentWidth / 592.28 * 841.89;
+                //未生成pdf的html页面高度
+                var leftHeight = contentHeight;
+                //pdf页面偏移
+                var position = 0;
+                //html页面生成的canvas在pdf中图片的宽高（a4纸的尺寸[595.28,841.89]）
+                var imgWidth = 595.28;
+                var imgHeight = 592.28 / contentWidth * contentHeight;
+                var pageData = canvas.toDataURL('image/jpeg', 1.0);
+                var pdf = new jsPDF('', 'pt', 'a4');
+                //有两个高度需要区分，一个是html页面的实际高度，和生成pdf的页面高度(841.89)
+                //当内容未超过pdf一页显示的范围，无需分页
+                if (leftHeight < pageHeight) {
+                    pdf.addImage(pageData, 'JPEG', 0, 0, imgWidth, imgHeight);
+                } else {
+                    while (leftHeight > 0) {
+                        pdf.addImage(pageData, 'JPEG', 0, position, imgWidth, imgHeight)
+                        leftHeight -= pageHeight;
+                        position -= 841.89;
+                        //避免添加空白页
+                        if (leftHeight > 0) {
+                            pdf.addPage();
+                        }
+                    }
+                }
+                var qpbh=$("#home_right_div #aaaa").text();
+                // var zzrqY=$("#outputPdf_div #zzrqY_span").text();
+                // var zzrqM=$("#outputPdf_div #zzrqM_span").text();
+                pdf.save(qpbh+'.pdf');
+                // $("#pdf_div").css("border-color","#000");
+
+                $("#home_right_div").empty();
+                resizeOutputPdfDiv(0);
+            },
+            //背景设为白色（默认为黑色）
+            background: "#fff"
+        }
+    )
+}
 </script>
 </head>
 <body>
@@ -101,7 +153,7 @@ function initPagerHtml(reportFMPageList){
                 <td>
                     <span class="dayin">
                         <i class="layui-icon layui-icon-print" style="font-size: 30px; color: #000000;"></i>
-                        <i class="layui-icon layui-icon-export" style="font-size: 30px; color: #000000;"></i>
+                        <i class="layui-icon layui-icon-export" style="font-size: 30px; color: #000000;" onclick="outputPdf()"></i>
                     </span>
                 </td>
             </tr>
@@ -132,7 +184,7 @@ function initPagerHtml(reportFMPageList){
 
 <%--&lt;%&ndash;未显示变量的报表模版&ndash;%&gt;--%>
 <div id="noVarRep_div" style="display: none;">
-    <table class="m_body_table" border="1px">
+    <table class="m_body_table" border="1px" id="aaaa">
         <tr class="tr1">
             <td colspan="13">
                 <span class="onetd1">M类 （ ）胶 生产记录</span>

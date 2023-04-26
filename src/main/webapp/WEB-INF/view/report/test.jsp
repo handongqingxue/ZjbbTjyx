@@ -8,6 +8,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript" src="<%=basePath%>resource/js/pdf/jspdf.debug.js"></script>
+    <script type="text/javascript" src="<%=basePath%>resource/js/pdf/html2canvas.min.js"></script>
 <title>Insert title here</title>
     <style type="text/css">
         #outputPdf_div{
@@ -111,7 +113,7 @@
 // 	});
 // });
 
-function outputPdf(){
+function outputPdf1(){
     html2canvas(
         //document.getElementById("outputPdf_div"),
         $("#outputPdf_div"),
@@ -171,6 +173,6 @@ function outputPdf(){
     <div id="outputPdf_div">
         <span id="qpbh_span">aaaa</span>
     </div>
-    <button onclick="outputPdf()">打印pdf</button>
+    <button onclick="outputPdf1()">打印pdf</button>
 </body>
 </html>

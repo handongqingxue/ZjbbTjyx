@@ -30,39 +30,26 @@
                 <li class="layui-nav-item">
                     <a href="javascript:;">M类报表生成</a>
                     <dl class="layui-nav-child" id="mWscBatchIdList_dl" style="color: #79e6e8">
-                    	<!-- 
                         <c:forEach items="${mWscBatchIdList}" var="item">
-                            <dd><a href="javascript:;" onclick="typeQuery('M')">${item.batchID}</a></dd>
+                            <dd><a href="javascript:;">${item.batchID}</a></dd>
                         </c:forEach>
-                         -->
                     </dl>
                 </li>
                 <li class="layui-nav-item">
                     <a href="javascript:;">U类报表生成</a>
                     <dl class="layui-nav-child" id="uWscBatchIdList_dl">
-                    	<!-- 
                         <c:forEach items="${uWscBatchIdList}" var="item">
-                            <dd><a href="javascript:;" onclick="typeQuery('U')">${item.batchID}</a></dd>
+                            <dd><a href="javascript:;">${item.batchID}</a></dd>
                         </c:forEach>
-                         -->
                     </dl>
                 </li>
                 <li class="layui-nav-item">
                     <a href="javascript:;">M类报表查询</a>
-                    <dl class="layui-nav-child" id="mYscGlueTypeList_dl">
-                    	<!-- 
-                        <dd><a href="javascript:;" onclick="typeQuery('MA')">MA胶种</a></dd>
-                        <dd><a href="javascript:;" onclick="typeQuery('MB')">MB胶种</a></dd>
-                         -->
-                    </dl>
+                    <dl class="layui-nav-child" id="mYscGlueTypeList_dl"></dl>
                 </li>
                 <li class="layui-nav-item">
                     <a href="javascript:;">U类报表查询</a>
-                    <dl class="layui-nav-child">
-                    	<!-- 
-                        <dd><a href="javascript:;" onclick="typeQuery('UD')">UD胶种</a></dd>
-                         -->
-                    </dl>
+                    <dl class="layui-nav-child"></dl>
                 </li>
             </ul>
         </div>
