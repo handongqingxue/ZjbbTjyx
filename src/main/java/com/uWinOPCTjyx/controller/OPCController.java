@@ -84,7 +84,7 @@ public class OPCController {
 		Map<String,Object> json=new HashMap<String, Object>();
 		
 		List<String> opcTVNameList=OpcUtil.getOpcTVNameList();
-		OpcUtil.syncTVByOpcVNList(opcTVNameList);
+		//OpcUtil.syncTVByOpcVNList(opcTVNameList);
 		
 		return json;
 	}

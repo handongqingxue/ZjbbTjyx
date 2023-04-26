@@ -767,7 +767,6 @@ public class OpcUtil {
         opcTVNamePreList.add((Constant.SHENG_WEN_KAI_SHI));//升温开始
         opcTVNamePreList.add((Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING));//温度85与二次投料提醒
         opcTVNamePreList.add((Constant.ER_CI_ZHU_JI_HOU_CE_PH_TI_XING));//二次助剂后测PH提醒
-        opcTVNamePreList.add((Constant.ER_CI_TOU_LIAO_PH_SHU_RU_ZHI));//二次投料PH输入值
         opcTVNamePreList.add((Constant.YUN_XU_ER_CI_JIA_ZHU_JI));//允许二次加助剂
         opcTVNamePreList.add((Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2));//所有助剂加料完成2
         opcTVNamePreList.add((Constant.SHENG_WEN_WAN_CHENG));//升温完成

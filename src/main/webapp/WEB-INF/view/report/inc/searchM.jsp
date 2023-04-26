@@ -56,6 +56,7 @@ function initPagerHtml(reportFMPageList){
                 var noVarRepDiv=$("#noVarRep_div");
                 var noVarRepTab=noVarRepDiv.find("table");//获取未显示变量的报表模版
                 if (repFMList.length>0){
+                	noVarRepTab.find("#batchID_hid").val(repFMList[0].batchID);
                     for (var i = 0; i < repFMList.length; i++) {
                         var repFM=repFMList[i];
                         var rowNumber=repFM.rowNumber;
@@ -66,6 +67,7 @@ function initPagerHtml(reportFMPageList){
                     }
                 }
                 arr.push(noVarRepDiv.html());
+                noVarRepTab.find("#batchID_hid").val("");
                 noVarRepTab.find("td[id^='td']").text("");//模版和变量一起添加到正式报表后，清空未显示变量的报表模版里的变量值
 		      });
 		      // console.log(arr)
@@ -78,7 +80,7 @@ function initPagerHtml(reportFMPageList){
 
 function outputPdf(){
     html2canvas(
-        $("#reportFMPageList_div"),
+        $("#reportFMPageList_div table"),
         {
             scale: '5',
             dpi: '500',//导出pdf清晰度
@@ -112,13 +114,14 @@ function outputPdf(){
                         }
                     }
                 }
-                var qpbh=$("#pdf-title").text();
+                
+                var batchID=$("#reportFMPageList_div table #batchID_hid").val();
+                //var qpbh=$("#pdf-title").text();
                 // var zzrqY=$("#outputPdf_div #zzrqY_span").text();
                 // var zzrqM=$("#outputPdf_div #zzrqM_span").text();
-                pdf.save(qpbh+'.pdf');
+                pdf.save(batchID+'.pdf');
                 // $("#pdf_div").css("border-color","#000");
-                $("#pdf-title").empty();
-                resizeOutputPdfDiv(0);
+                //$("#pdf-title").empty();
             },
             //背景设为白色（默认为黑色）
             background: "#fff"
@@ -184,9 +187,10 @@ function outputPdf(){
 
 <%--&lt;%&ndash;未显示变量的报表模版&ndash;%&gt;--%>
 <div id="noVarRep_div" style="display: none;">
-    <table class="m_body_table" border="1px" id="aaaa">
+    <table class="m_body_table" border="1px">
         <tr class="tr1">
             <td colspan="13">
+                <input type="hidden" id="batchID_hid"/>
                 <span class="onetd1" id="pdf-title">M类 （ ）胶 生产记录</span>
                 <%-- <span class="onetd4">自动表单设计：张发 设计号：ZJZD20211225</span>--%>
             </td>
