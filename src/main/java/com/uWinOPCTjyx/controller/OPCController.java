@@ -1169,7 +1169,7 @@ public class OPCController {
 
 		System.out.println("getTriVarListGroupMap方法:");
 		for (TriggerVar triggerVar : triggerVarList) {
-			System.out.println("分组方法"+triggerVar.toString());
+				System.out.println("分组方法"+triggerVar.toString());
 		}
 		Map<String, List<TriggerVar>> tvGroupMap=new HashMap<String, List<TriggerVar>>();
 		List<TriggerVar> blksTVList=new ArrayList<TriggerVar>();//备料开始新集合,用来存放对象
