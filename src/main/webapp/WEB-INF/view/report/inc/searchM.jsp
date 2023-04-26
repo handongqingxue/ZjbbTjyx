@@ -18,10 +18,11 @@ $(function(){
 function getReportFMPageList() {
    var glueType = $("#glue").text();
    var typeSelect = $("#typeSelect").val()
-    var createTime = $("#createTime").val();
+    var startTime = $("#startTime").val();
     var endTime = $("#endTime").val();
+    alert(startTime)
    $.post(path+"report/getReportFMPageList",
-       {type:glueType,batchID:typeSelect,startTime:createTime,endTime:endTime},
+       {type:glueType,batchID:typeSelect,startTime:startTime,endTime:endTime},
        function(result){
     	   // console.log(result)
            if(result.status==1){
@@ -86,7 +87,7 @@ function initPagerHtml(reportFMPageList){
             <tr>
                 <td>
                     起始时间&nbsp;&nbsp;
-                    <input type="datetime-local" placeholder="请选择时间" id="createTime" class="m_query_head_input">
+                    <input type="datetime-local" placeholder="请选择时间" id="startTime" class="m_query_head_input">
                 </td>
                 <td>
                     选择批次&nbsp;&nbsp;
