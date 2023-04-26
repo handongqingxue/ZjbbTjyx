@@ -756,7 +756,27 @@ public class OpcUtil {
     	
     	List<String> opcTVNamePreList=new ArrayList<String>();//前缀集合
     	opcTVNamePreList.add(Constant.BEI_LIAO_KAI_SHI);//备料开始前缀
-    	
+        opcTVNamePreList.add(Constant.FAN_YING_JIE_SHU);//反应结束
+        opcTVNamePreList.add(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI);//甲醛备料开始
+        opcTVNamePreList.add(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG);//甲醛放料完成
+        opcTVNamePreList.add(Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG);//加碱PH值正常
+        opcTVNamePreList.add(Constant.YUN_XU_YI_CI_JIA_ZHU_JI);//允许一次加助剂
+        opcTVNamePreList.add(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1);//所有助剂加料完成1
+        opcTVNamePreList.add(Constant.JIA_FEN_LIAO_TI_XING);//加粉料提醒
+        opcTVNamePreList.add(Constant.JIA_FEN_LIAO_PH_HE_GE);//加粉料PH合格
+        opcTVNamePreList.add((Constant.SHENG_WEN_KAI_SHI));//升温开始
+        opcTVNamePreList.add((Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING));//温度85与二次投料提醒
+        opcTVNamePreList.add((Constant.ER_CI_ZHU_JI_HOU_CE_PH_TI_XING));//二次助剂后测PH提醒
+        opcTVNamePreList.add((Constant.ER_CI_TOU_LIAO_PH_SHU_RU_ZHI));//二次投料PH输入值
+        opcTVNamePreList.add((Constant.YUN_XU_ER_CI_JIA_ZHU_JI));//允许二次加助剂
+        opcTVNamePreList.add((Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2));//所有助剂加料完成2
+        opcTVNamePreList.add((Constant.SHENG_WEN_WAN_CHENG));//升温完成
+        opcTVNamePreList.add((Constant.WEN_DU_98_PH));//温度98PH合格
+        opcTVNamePreList.add((Constant.CE_LIANG_BING_SHUI_WU_DIAN_TI_XING));//测量冰水雾点提醒
+        opcTVNamePreList.add((Constant.CE_SHUI_SHU_TI_XING));//测水数提醒
+        opcTVNamePreList.add((Constant.JU_HE_ZHONG_DIAN));//聚合终点
+        opcTVNamePreList.add((Constant.JIANG_WEN_WAN_CHENG));//降温完成
+
     	for (String opcTVNamePre : opcTVNamePreList) {//循环拼接上反应釜号作为完整的变量
     		for (String fMName : Constant.BSF_F_M_ARR) {
     			String opcTVName = opcTVNamePre+"_"+fMName+"_AV";

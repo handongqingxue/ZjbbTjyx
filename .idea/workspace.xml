@@ -17,10 +17,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9bfab7cf-a4c1-4d31-9c53-df2a94b39f3e" name="Default Changelist" comment="11">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/report/inc/searchM.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/report/inc/searchM.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/report/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/report/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/report/test.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/report/test.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resource/css/system_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resource/css/system_style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/util/OpcUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/util/OpcUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -284,13 +281,6 @@
       <workItem from="1682240029531" duration="564000" />
       <workItem from="1682240750035" duration="18450000" />
     </task>
-    <task id="LOCAL-00037" summary="11">
-      <created>1681796401420</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1681796401420</updated>
-    </task>
     <task id="LOCAL-00038" summary="11">
       <created>1681804965566</created>
       <option name="number" value="00038" />
@@ -481,7 +471,7 @@
       <option name="project" value="LOCAL" />
       <updated>1682316405880</updated>
       <workItem from="1682316406094" duration="25763000" />
-      <workItem from="1682398075197" duration="46537000" />
+      <workItem from="1682398075197" duration="47466000" />
     </task>
     <task id="LOCAL-00065" summary="11">
       <created>1682218772669</created>
@@ -630,7 +620,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682494434375</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL-00086" summary="11">
+      <created>1682498362313</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1682498362313</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -918,7 +915,7 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="712" y="262" key="git4idea.merge.GitMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1681725750849" />
-    <state x="421" y="238" key="git4idea.merge.GitPullDialog" timestamp="1682494440055">
+    <state x="421" y="238" key="git4idea.merge.GitPullDialog" timestamp="1682498377110">
       <screen x="0" y="23" width="1280" height="732" />
     </state>
     <state x="632" y="306" key="git4idea.merge.GitPullDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1681796468754" />
@@ -926,7 +923,7 @@
     <state x="421" y="236" key="git4idea.merge.GitPullDialog/0.23.1280.724@0.23.1280.724" timestamp="1682218905563" />
     <state x="421" y="236" key="git4idea.merge.GitPullDialog/0.23.1280.725@0.23.1280.725" timestamp="1682321031680" />
     <state x="421" y="237" key="git4idea.merge.GitPullDialog/0.23.1280.728@0.23.1280.728" timestamp="1682048384837" />
-    <state x="421" y="238" key="git4idea.merge.GitPullDialog/0.23.1280.732@0.23.1280.732" timestamp="1682494440055" />
+    <state x="421" y="238" key="git4idea.merge.GitPullDialog/0.23.1280.732@0.23.1280.732" timestamp="1682498377110" />
     <state x="421" y="239" key="git4idea.merge.GitPullDialog/0.23.1280.734@0.23.1280.734" timestamp="1682387707480" />
     <state x="421" y="251" key="git4idea.merge.GitPullDialog/0.23.1280.777@0.23.1280.777" timestamp="1682325067103" />
     <state x="539" y="5" width="840" height="1034" key="search.everywhere.popup" timestamp="1681797754335">
@@ -943,7 +940,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/uWinOPCTjyx/controller/OPCController.java</url>
-          <line>335</line>
+          <line>350</line>
           <option name="timeStamp" value="54" />
         </line-breakpoint>
       </breakpoints>
