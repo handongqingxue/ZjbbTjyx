@@ -3,6 +3,8 @@
 <html>
 <head>
     <script type="text/javascript" src="<%=basePath%>resource/js/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="<%=basePath%>resource/js/pdf/jspdf.debug.js"></script>
+    <script type="text/javascript" src="<%=basePath%>resource/js/pdf/html2canvas.min.js"></script>
 <title>Title</title>
     <style>
         .dayin{
@@ -54,6 +56,7 @@ function initPagerHtml(reportFMPageList){
                 var noVarRepDiv=$("#noVarRep_div");
                 var noVarRepTab=noVarRepDiv.find("table");//获取未显示变量的报表模版
                 if (repFMList.length>0){
+                	noVarRepTab.find("#batchID_hid").val(repFMList[0].batchID);
                     for (var i = 0; i < repFMList.length; i++) {
                         var repFM=repFMList[i];
                         var rowNumber=repFM.rowNumber;
@@ -64,6 +67,7 @@ function initPagerHtml(reportFMPageList){
                     }
                 }
                 arr.push(noVarRepDiv.html());
+                noVarRepTab.find("#batchID_hid").val("");
                 noVarRepTab.find("td[id^='td']").text("");//模版和变量一起添加到正式报表后，清空未显示变量的报表模版里的变量值
 		      });
 		      // console.log(arr)
@@ -75,11 +79,8 @@ function initPagerHtml(reportFMPageList){
 }
 
 function outputPdf(){
-	alert($("#home_right_div").html())
-	
     html2canvas(
-        //document.getElementById("outputPdf_div"),
-        $("#home_right_div"),
+        $("#reportFMPageList_div table"),
         {
             scale: '5',
             dpi: '300',//导出pdf清晰度
@@ -113,13 +114,14 @@ function outputPdf(){
                         }
                     }
                 }
+                
+                var batchID=$("#reportFMPageList_div table #batchID_hid").val();
+                //var qpbh=$("#pdf-title").text();
                 // var zzrqY=$("#outputPdf_div #zzrqY_span").text();
                 // var zzrqM=$("#outputPdf_div #zzrqM_span").text();
-                pdf.save('1111.pdf');
+                pdf.save(batchID+'.pdf');
                 // $("#pdf_div").css("border-color","#000");
-
-                $("#home_right_div").empty();
-                resizeOutputPdfDiv(0);
+                //$("#pdf-title").empty();
             },
             //背景设为白色（默认为黑色）
             background: "#fff"
@@ -131,7 +133,7 @@ function outputPdf(){
 <body>
 <div class="home_right_div">
     <div class="home_right_head_div">
-        <table class="m_query_head_table">
+        <table class="m_query_head_table" id="m_query_head_table">
             <tr>
                 <td style="font-size: 17px">设置检索条件:</td>
                 <td></td>
@@ -188,7 +190,8 @@ function outputPdf(){
     <table class="m_body_table" border="1px">
         <tr class="tr1">
             <td colspan="13">
-                <span class="onetd1">M类 （ ）胶 生产记录</span>
+                <input type="hidden" id="batchID_hid"/>
+                <span class="onetd1" id="pdf-title">M类 （ ）胶 生产记录</span>
                 <%-- <span class="onetd4">自动表单设计：张发 设计号：ZJZD20211225</span>--%>
             </td>
         </tr>
