@@ -61,7 +61,6 @@ public class MainController {
     public String exit(HttpSession session){
         Subject currentUser = SecurityUtils.getSubject();
         currentUser.logout();
-        System.out.println("跳转");
         return "login";
     }
 

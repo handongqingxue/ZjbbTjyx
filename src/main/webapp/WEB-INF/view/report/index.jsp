@@ -16,7 +16,7 @@
             <li>|</li>
             <li class="layui-nav-item">
                 <span>欢迎您!</span>
-                <a style="cursor:pointer;">超级管理员</a>
+                <a style="cursor:pointer;">${sessionScope.user.userName}</a>
             </li>
             <li>|</li>
             <li><a href="<%=basePath%>main/exit">退出</a></li>

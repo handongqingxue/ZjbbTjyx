@@ -78,10 +78,10 @@ function initPagerHtml(reportFMPageList){
 
 function outputPdf(){
     html2canvas(
-        $("#m_query_head_table"),
+        $("#reportFMPageList_div"),
         {
             scale: '5',
-            dpi: '300',//导出pdf清晰度
+            dpi: '500',//导出pdf清晰度
             //dpi: '172',//导出pdf清晰度
             onrendered: function (canvas) {
                 var contentWidth = canvas.width;
