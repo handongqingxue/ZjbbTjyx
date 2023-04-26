@@ -104,7 +104,7 @@ var path='<%=basePath%>';
 	   				mWscPcjlListDl.empty();
 	   				for (var i = 0; i < mWscPcjlList.length; i++) {
 	   					var mWscPcjl=mWscPcjlList[i];
-	   	   				mWscPcjlListDl.append("<dd><a onclick=\"showCreateArea('M','"+mWscPcjl.batchID+"')\">"+mWscPcjl.batchID+"</a></dd>");
+	   	   				mWscPcjlListDl.append("<dd><a onclick=\"showCreateArea('"+mWscPcjl.batchID+"')\">"+mWscPcjl.batchID+"</a></dd>");
 					}
 	   				
 	   				var uWscPcjlList=result.uWscPcjlList;
@@ -112,11 +112,11 @@ var path='<%=basePath%>';
 	   				uWscPcjlListDl.empty();
 	   				for (var i = 0; i < uWscPcjlList.length; i++) {
 	   					var uWscPcjl=uWscPcjlList[i];
-	   	   				uWscPcjlListDl.append("<dd><a onclick=\"showCreateArea('U','"+mWscPcjl.batchID+"')\">"+uWscPcjl.batchID+"</a></dd>");
+	   	   				uWscPcjlListDl.append("<dd><a onclick=\"showCreateArea('"+uWscPcjl.batchID+"')\">"+uWscPcjl.batchID+"</a></dd>");
 					}
 	   				
 	   				var defaultBatchID=mWscPcjlList[0].batchID;
-	   				showCreateArea("M",defaultBatchID);
+	   				showCreateArea(defaultBatchID);
 	   				getUnCreRepVarList(defaultBatchID);
    				}
    				else if(type=="mWsc"){
@@ -145,11 +145,13 @@ var path='<%=basePath%>';
         }
     }
     
-    function showCreateArea(recType,batchID){
+    function showCreateArea(batchID){
     	var createMDisplay;
     	var createUDisplay;
     	var searchMDisplay;
     	var searchUDisplay;
+    	
+    	var recType=batchID.substring(0,1);
     	if (recType=="M"){
     		createMDisplay="block";
     		createUDisplay="none";
@@ -162,8 +164,33 @@ var path='<%=basePath%>';
         $("#searchU").css("display",searchUDisplay);
         
         $("#right-body-head-span2").text("报表生成页面");
+        document.getElementById("right-body-head-icon").classList.replace("layui-icon-search","layui-icon-add-circle");
         
         getUnCreRepVarList(batchID);
+    }
+    
+    function showSearchArea(glueType){
+    	var createMDisplay;
+    	var createUDisplay;
+    	var searchMDisplay;
+    	var searchUDisplay;
+    	
+    	var recType=glueType.substring(0,1);
+    	if (recType=="M"){
+    		createMDisplay="none";
+    		createUDisplay="none";
+    		searchMDisplay="block";
+    		searchUDisplay="none"
+    	}
+		$("#createM").css("display",createMDisplay);
+        $("#createU").css("display",createUDisplay);
+        $("#searchM").css("display",searchMDisplay);
+        $("#searchU").css("display",searchUDisplay);
+        
+        $("#right-body-head-span2").text("报表查询页面");
+        document.getElementById("right-body-head-icon").classList.replace("layui-icon-add-circle","layui-icon-search");
+        
+        getPcjlListByType(recType);
     }
 
     function typeQuery(type) {
