@@ -20,7 +20,6 @@ function getReportFMPageList() {
    var typeSelect = $("#typeSelect").val()
     var startTime = $("#startTime").val();
     var endTime = $("#endTime").val();
-    alert(startTime)
    $.post(path+"report/getReportFMPageList",
        {type:glueType,batchID:typeSelect,startTime:startTime,endTime:endTime},
        function(result){
@@ -87,7 +86,13 @@ function initPagerHtml(reportFMPageList){
             <tr>
                 <td>
                     起始时间&nbsp;&nbsp;
+                    <!-- 
                     <input type="datetime-local" placeholder="请选择时间" id="startTime" class="m_query_head_input">
+                     -->
+                    <input placeholder="请选择时间" id="startTime" class="Wdate m_query_head_input" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" readonly="readonly"/>
+                    <!-- 
+                    开始：<input type="text" id="begin" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd',minDate:'2012-01-01',maxDate:'%y-%M-%d'})" class="Wdate"/>
+                     -->
                 </td>
                 <td>
                     选择批次&nbsp;&nbsp;
@@ -103,7 +108,7 @@ function initPagerHtml(reportFMPageList){
             <tr>
                 <td>
                     结束时间&nbsp;&nbsp;
-                    <input type="datetime-local" placeholder="请选择时间" id="endTime" class="m_query_head_input">
+                    <input placeholder="请选择时间" id="endTime" class="Wdate m_query_head_input" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" readonly="readonly"/>
                 </td>
                 <td>
                     当前胶种:&nbsp;&nbsp;&nbsp;<span id="glue" class="glue"></span>
