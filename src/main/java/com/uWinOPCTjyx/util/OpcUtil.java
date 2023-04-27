@@ -23,16 +23,8 @@ import com.uWinOPCTjyx.entity.*;
 
 public class OpcUtil {
 	
-	private static SynchReadItemExample test = null;
-	private static JOpc jopc = null;
 	private static boolean IS_TEST=true;
 	
-	static {
-		test = new SynchReadItemExample();
-		JOpc.coInitialize();   //初始化JOpc        JOpc继承父类JCustomOpc
-		jopc = new JOpc("127.0.0.1", "Kepware.KEPServerEX.V6", "OPS3-PC");
-	}
-
     public static void main(String[] args) {
         SynchReadItemExample test = new SynchReadItemExample();
 
@@ -339,6 +331,10 @@ public class OpcUtil {
                 group.addItem(new OpcItem( opcVarName, true, ""));
             }
         }
+        
+    	SynchReadItemExample test = new SynchReadItemExample();
+    	JOpc.coInitialize();   //初始化JOpc        JOpc继承父类JCustomOpc
+		JOpc jopc = new JOpc("127.0.0.1", "UWinTech.UWinOPCS.1", "MM-202303181234");
 
         jopc.addGroup(group);   //添加组
 
@@ -753,8 +749,10 @@ public class OpcUtil {
      */
     public static List<String> getOpcTVNameList() {
     	List<String> opcTVNameList=new ArrayList<String>();
+    	opcTVNameList.add(Constant.BEI_LIAO_KAI_SHI+"_F1_AV");
     	
     	List<String> opcTVNamePreList=new ArrayList<String>();//前缀集合
+    	/*
     	opcTVNamePreList.add(Constant.BEI_LIAO_KAI_SHI);//备料开始前缀
         opcTVNamePreList.add(Constant.FAN_YING_JIE_SHU);//反应结束
         opcTVNamePreList.add(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI);//甲醛备料开始
@@ -775,6 +773,7 @@ public class OpcUtil {
         opcTVNamePreList.add((Constant.CE_SHUI_SHU_TI_XING));//测水数提醒
         opcTVNamePreList.add((Constant.JU_HE_ZHONG_DIAN));//聚合终点
         opcTVNamePreList.add((Constant.JIANG_WEN_WAN_CHENG));//降温完成
+        */
 
     	for (String opcTVNamePre : opcTVNamePreList) {//循环拼接上反应釜号作为完整的变量
     		for (String fMName : Constant.BSF_F_M_ARR) {
@@ -795,12 +794,25 @@ public class OpcUtil {
      * @param opcVarNameList
      */
     public static void syncTVByOpcVNList(List<String> opcVarNameList) {
-        OpcGroup group = new OpcGroup("_System", true, 500, 0.0f);
+    	SynchReadItemExample test = new SynchReadItemExample();
+    	JOpc.coInitialize();   //初始化JOpc        JOpc继承父类JCustomOpc
+		JOpc jopc = new JOpc("127.0.0.1", "UWinTech.UWinOPCS.1", "MM-202303181234");
+    	
+    	String groupName="Group1";
+    	System.out.println("groupName==="+groupName);
+        OpcGroup group = new OpcGroup(groupName, true, 1000, 0.0f);
     	for (String opcVarName : opcVarNameList) {
         	group.addItem(new OpcItem( opcVarName, true, ""));
 		}
 
         jopc.addGroup(group);   //添加组
+        
+        OpcGroup[] groups = jopc.getGroupsAsArray();
+        System.out.println("groups.length==="+groups.length);
+        for (int i = 0; i < groups.length; i++) {
+            System.out.println("getGroupName"+i+"==="+groups[i].getGroupName());
+		}
+        
 
         OpcGroup responseGroup = null;
 
@@ -826,6 +838,9 @@ public class OpcUtil {
         }
         
         ArrayList<OpcItem> opcItemList = responseGroup.getItems();
-		APIUtil.addVar("addTriggerVarFromOpc",opcItemList);
+        for (OpcItem opcItem : opcItemList) {
+            System.out.println("getItemName==="+opcItem.getItemName());
+		}
+		//APIUtil.addVar("addTriggerVarFromOpc",opcItemList);
 	}
 }
