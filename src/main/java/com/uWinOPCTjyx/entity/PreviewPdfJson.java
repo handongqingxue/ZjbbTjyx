@@ -2,30 +2,18 @@ package com.uWinOPCTjyx.entity;
 
 public class PreviewPdfJson {
 
-    private String uuid;
-    private String data;
-
-    public PreviewPdfJson(String uuid, String data) {
-        this.uuid = uuid;
-        this.data = data;
-    }
-
-    public PreviewPdfJson() {
-    }
-
-    public String getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
-    }
-
-    public String getData() {
-        return data;
-    }
-
-    public void setData(String data) {
-        this.data = data;
-    }
+    private String Uuid;
+    private String Data;
+	public String getUuid() {
+		return Uuid;
+	}
+	public void setUuid(String uuid) {
+		Uuid = uuid;
+	}
+	public String getData() {
+		return Data;
+	}
+	public void setData(String data) {
+		Data = data;
+	}
 }

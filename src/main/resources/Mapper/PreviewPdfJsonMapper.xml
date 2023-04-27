@@ -3,5 +3,27 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.uWinOPCTjyx.dao.PreviewPdfJsonMapper">
-
+	<insert id="add" parameterType="com.uWinOPCTjyx.entity.PreviewPdfJson">
+		insert into PreviewPdfJson
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="Uuid!=null">
+				Uuid,
+			</if>
+			<if test="Data!=null">
+				Data,
+			</if>
+		</trim>
+		values
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="Uuid!=null">
+				#{Uuid},
+			</if>
+			<if test="Data!=null">
+				#{Data},
+			</if>
+		</trim>
+	</insert>
+	<select id="getByUuid" resultType="com.uWinOPCTjyx.entity.PreviewPdfJson">
+		select * from PreviewPdfJson where uuid=#{uuid}
+	</select>
 </mapper>

@@ -1,11 +1,8 @@
 package com.uWinOPCTjyx.controller;
 
-import com.uWinOPCTjyx.entity.ERecord;
-import com.uWinOPCTjyx.entity.ReportF_M;
-import com.uWinOPCTjyx.service.ERecordService;
-import com.uWinOPCTjyx.service.ReportF_MService;
-import com.uWinOPCTjyx.util.Constant;
-import com.uWinOPCTjyx.util.PlanResult;
+import com.uWinOPCTjyx.entity.*;
+import com.uWinOPCTjyx.service.*;
+import com.uWinOPCTjyx.util.*;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 @Controller
 @RequestMapping("/report")
@@ -33,6 +31,8 @@ public class ReportController {
     private ERecordService eRecordService;
 	@Autowired
 	private ReportF_MService reportF_MService;
+	@Autowired
+	private PreviewPdfJsonService previewPdfJsonService;
 
     @RequestMapping("/goIndex")
     public String goIndex(HttpServletRequest request){
@@ -187,11 +187,44 @@ public class ReportController {
 
 	@RequestMapping(value = "/savePreReportHtml", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> savePreReportHtml(String repHtmlStr) {
+	public String savePreReportHtml(String repHtmlStr) {
 		
 		System.out.println("repHtmlStr==="+repHtmlStr);
 
-		Map<String,Object> json=new HashMap<String, Object>();
+		PlanResult plan=new PlanResult();
+		String json;
+
+		String uuid = UUID.randomUUID().toString().replaceAll("-", "");
+		
+		PreviewPdfJson prePdfJson=new PreviewPdfJson();
+		prePdfJson.setUuid(uuid);
+		prePdfJson.setData(repHtmlStr);
+		
+		int count=previewPdfJsonService.add(prePdfJson);
+		if(count==0) {
+			plan.setStatus(Constant.NO_STATUS);
+			plan.setMsg("失败！");
+			json=JsonUtil.getJsonFromObject(plan);
+		}
+		else {
+			plan.setStatus(Constant.OK_STATUS);
+			plan.setData(uuid);;
+			json=JsonUtil.getJsonFromObject(plan);
+		}
+		
+		return json;
+	}
+	
+	@RequestMapping(value="/getPrePdfJsonByUuid",produces="plain/text; charset=UTF-8")
+	@ResponseBody
+	public String getPrePdfJsonByUuid(String uuid) {
+
+		PlanResult plan=new PlanResult();
+		String json;
+
+		PreviewPdfJson ppf = previewPdfJsonService.getByUuid(uuid);
+		plan.setData(ppf.getData());
+		json=JsonUtil.getJsonFromObject(plan);
 		
 		return json;
 	}

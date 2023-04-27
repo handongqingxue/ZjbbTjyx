@@ -2,9 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <script type="text/javascript" src="<%=basePath%>resource/js/jquery-3.3.1.js"></script>
-    <script type="text/javascript" src="<%=basePath%>resource/js/pdf/jspdf.debug.js"></script>
-    <script type="text/javascript" src="<%=basePath%>resource/js/pdf/html2canvas.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>resource/js/jquery-3.3.1.js"></script>
 <title>Title</title>
 <script>
 var path='<%=basePath%>';
@@ -60,7 +58,7 @@ function prePdf(){
 	   {repHtmlStr:repHtmlStr},
 	   function(result){
 		   if(result.status==1){
-			  //window.open("toPreviewCRSPdf?uuid="+result.data,"newwindow","width=300;");
+			  window.open("goPreviewPdf?uuid="+result.data,"newwindow","width=300;");
 		   }
 		   else{
 			  alert(result.msg);
