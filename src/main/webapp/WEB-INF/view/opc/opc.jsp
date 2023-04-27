@@ -16,16 +16,10 @@
     <script type="text/javascript" src="<%=basePath%>resource/js/jquery-3.3.1.js"></script>
     <title>Title</title>
     <link rel="stylesheet" href="<%=basePath%>resource/css/layui.css">
-
-    <script type="text/javascript">
-
-    </script>
 </head>
 <body>
 <div>
-
     <div id="demo2"></div>
-
 </div>
 </body>
 </html>

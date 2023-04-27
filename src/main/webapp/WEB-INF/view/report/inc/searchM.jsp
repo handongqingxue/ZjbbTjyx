@@ -17,7 +17,7 @@ function base64 (content) {
 }
 
 function exportExcel() {
-    var table = $("#opcMTable");
+    var table = $("#reportFMPageList_div");
     var excelContent = table[0].innerHTML;
     var excelFile = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:x='urn:schemas-microsoft-com:office:excel' xmlns='http://www.w3.org/TR/REC-html40'>";
     excelFile += "<head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head>";
@@ -27,8 +27,8 @@ function exportExcel() {
     excelFile += "</html>";
     var link = "data:application/vnd.ms-excel;base64," + base64(excelFile);
     var a = document.createElement("a");
-    // var batchID=$("#reportFMPageList_div table #batchID_hid").val();
-    a.download = "M类()胶生产记录.xlsx";
+    var batchID=$("#reportFMPageList_div table #batchID_hid").val();
+    a.download = batchID+".xlsx";
     a.href = link;
     a.click();
 }
@@ -161,7 +161,7 @@ function outputPdf(){
                     <select class="m_query_head_input" id="typeSelect"></select>
                 </td>
                 <td class="dayin-td">
-                    <i class="layui-icon layui-icon-print" style="font-size: 30px; color: #000000;"></i>
+                    <i class="layui-icon layui-icon-print" style="font-size: 30px; color: #000000;" onclick="exportExcel()"></i>
 
                     <i class="layui-icon layui-icon-export" style="font-size: 30px; color: #000000;" onclick="outputPdf()"></i>
                 </td>
