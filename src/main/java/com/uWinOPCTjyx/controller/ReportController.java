@@ -25,6 +25,7 @@ import java.util.Map;
 public class ReportController {
 	
 	//http://localhost:8080/UWinOPCTjyx/report/goIndex
+	//http://localhost:8080/UWinOPCTjyx/report/goPreviewPdf
 	//http://localhost:8080/UWinOPCTjyx/report/goTest
 	public static final String MODULE_NAME="report";
 
@@ -49,6 +50,12 @@ public class ReportController {
     public String goSearchM(HttpServletRequest request){
         
         return MODULE_NAME+"/searchM";
+    }
+
+    @RequestMapping("/goPreviewPdf")
+    public String goPreviewPdf(){
+        
+        return MODULE_NAME+"/previewPdf";
     }
 
     @RequestMapping("/goTest")
@@ -174,6 +181,17 @@ public class ReportController {
 			json.put("message","no");
 			json.put("info","生成报表失败");
 		}
+		
+		return json;
+	}
+
+	@RequestMapping(value = "/savePreReportHtml", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> savePreReportHtml(String repHtmlStr) {
+		
+		System.out.println("repHtmlStr==="+repHtmlStr);
+
+		Map<String,Object> json=new HashMap<String, Object>();
 		
 		return json;
 	}

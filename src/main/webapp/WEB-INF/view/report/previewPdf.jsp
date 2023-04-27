@@ -1,218 +1,15 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <script type="text/javascript" src="<%=basePath%>resource/js/jquery-3.3.1.js"></script>
-    <script type="text/javascript" src="<%=basePath%>resource/js/pdf/jspdf.debug.js"></script>
-    <script type="text/javascript" src="<%=basePath%>resource/js/pdf/html2canvas.min.js"></script>
-<title>Title</title>
-<script>
-var path='<%=basePath%>';
-$(function(){
-	getReportFMPageList();
-});
-
-function base64 (content) {
-    return window.btoa(unescape(encodeURIComponent(content)));
-}
-
-function exportExcel() {
-    var table = $("#opcMTable");
-    var excelContent = table[0].innerHTML;
-    var excelFile = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:x='urn:schemas-microsoft-com:office:excel' xmlns='http://www.w3.org/TR/REC-html40'>";
-    excelFile += "<head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head>";
-    excelFile += "<body><table>";
-    excelFile += excelContent;
-    excelFile += "</table></body>";
-    excelFile += "</html>";
-    var link = "data:application/vnd.ms-excel;base64," + base64(excelFile);
-    var a = document.createElement("a");
-    // var batchID=$("#reportFMPageList_div table #batchID_hid").val();
-    a.download = "M类()胶生产记录.xlsx";
-    a.href = link;
-    a.click();
-}
-
-
-function getReportFMPageList() {
-   var glueType = $("#glue").text();
-   var typeSelect = $("#typeSelect").val()
-    var startTime = $("#startTime").val();
-    var endTime = $("#endTime").val();
-   $.post(path+"report/getReportFMPageList",
-       {type:glueType,batchID:typeSelect,startTime:startTime,endTime:endTime},
-       function(result){
-    	   // console.log(result)
-           if(result.status==1){
-               var reportFMPageList=result.data;
-               initPagerHtml(reportFMPageList);
-           }
-       }
-    ,"json");
-}
-
-function prePdf(){
-	var repHtmlStr=$("#reportFMPageList_div").html();
-	//console.log(repHtmlStr);
-	//return false;
-	
-	$.post("savePreReportHtml",
-	   {repHtmlStr:repHtmlStr},
-	   function(result){
-		   if(result.status==1){
-			  //window.open("toPreviewCRSPdf?uuid="+result.data,"newwindow","width=300;");
-		   }
-		   else{
-			  alert(result.msg);
-		   }
-   	   }
-   ,"json");
-}
-
-function initPagerHtml(reportFMPageList){
-	layui.use(['laypage', 'layer'], function(){
-		var laypage = layui.laypage,layer = layui.layer;
-		//调用分页
-		laypage.render({
-		  elem: 'paging'
-		  ,count: reportFMPageList.length,
-            limit: 1,
-		   prev: '<em><</em>',
-		   next: '<em>></em>',
-		  theme: '#1E9FFF',
-		  layout: ['count', 'prev', 'page', 'next',  'skip'],
-		  jump: function(obj){
-		    //模拟渲染
-		    document.getElementById('reportFMPageList_div').innerHTML = function(){
-		      var arr = []
-		      ,thisData = reportFMPageList.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
-		      layui.each(thisData, function(index, item){
-                var repFMList=item;
-                var noVarRepDiv=$("#noVarRep_div");
-                var noVarRepTab=noVarRepDiv.find("table");//获取未显示变量的报表模版
-                if (repFMList.length>0){
-                	noVarRepTab.find("#batchID_hid").val(repFMList[0].batchID);
-                    for (var i = 0; i < repFMList.length; i++) {
-                        var repFM=repFMList[i];
-                        var rowNumber=repFM.rowNumber;
-                        var colNumber=repFM.colNumber;
-                        var value=repFM.value;
-                        //console.log(repFM)
-                        noVarRepTab.find("#td"+rowNumber+"_"+colNumber).text(value);//暂时把变量添加到未显示变量的报表模版里
-                    }
-                }
-                arr.push(noVarRepDiv.html());
-                noVarRepTab.find("#batchID_hid").val("");
-                noVarRepTab.find("td[id^='td']").text("");//模版和变量一起添加到正式报表后，清空未显示变量的报表模版里的变量值
-		      });
-		      // console.log(arr)
-		      return arr.join('');
-		    }();
-		  }
-		});
-	});
-}
-
-function outputPdf(){
-    html2canvas(
-        $("#reportFMPageList_div"),
-        {
-            scale: '5',
-            dpi: '500',//导出pdf清晰度
-            //dpi: '172',//导出pdf清晰度
-            onrendered: function (canvas) {
-                var contentWidth = canvas.width;
-                var contentHeight = canvas.height;
-                //一页pdf显示html页面生成的canvas高度;
-                var pageHeight = contentWidth / 592.28 * 841.89;
-                //未生成pdf的html页面高度
-                var leftHeight = contentHeight;
-                //pdf页面偏移
-                var position = 0;
-                //html页面生成的canvas在pdf中图片的宽高（a4纸的尺寸[595.28,841.89]）
-                var imgWidth = 595.28;
-                var imgHeight = 592.28 / contentWidth * contentHeight;
-                var pageData = canvas.toDataURL('image/jpeg', 1.0);
-                var pdf = new jsPDF('', 'pt', 'a4');
-                //有两个高度需要区分，一个是html页面的实际高度，和生成pdf的页面高度(841.89)
-                //当内容未超过pdf一页显示的范围，无需分页
-                if (leftHeight < pageHeight) {
-                    pdf.addImage(pageData, 'JPEG', 0, 0, imgWidth, imgHeight);
-                } else {
-                    while (leftHeight > 0) {
-                        pdf.addImage(pageData, 'JPEG', 0, position, imgWidth, imgHeight)
-                        leftHeight -= pageHeight;
-                        position -= 841.89;
-                        //避免添加空白页
-                        if (leftHeight > 0) {
-                            pdf.addPage();
-                        }
-                    }
-                }
-                var batchID=$("#reportFMPageList_div table #batchID_hid").val();
-                pdf.save(batchID+'.pdf');
-            },
-            //背景设为白色（默认为黑色）
-            background: "#fff"
-        }
-    )
-}
-
-
-</script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Insert title here</title>
 </head>
 <body>
-<div class="home_right_div">
-    <div class="home_right_head_div">
-        <table class="m_query_head_table" id="m_query_head_table">
-            <tr>
-                <td style="font-size: 17px">设置检索条件:</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>
-                    起始时间&nbsp;&nbsp;
-                    <input placeholder="请选择时间" id="startTime" class="Wdate m_query_head_input" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" readonly="readonly"/>
-                </td>
-                <td>
-                    选择批次&nbsp;&nbsp;
-                    <select class="m_query_head_input" id="typeSelect"></select>
-                </td>
-                <td class="dayin-td">
-                    <i class="layui-icon layui-icon-print" style="font-size: 30px; color: #000000;"></i>
-					<!-- 
-                    <i class="layui-icon layui-icon-export" style="font-size: 30px; color: #000000;" onclick="outputPdf()"></i>
-                     -->
-                    <i class="layui-icon layui-icon-export" style="font-size: 30px; color: #000000;" onclick="prePdf()"></i>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    结束时间&nbsp;&nbsp;
-                    <input placeholder="请选择时间" id="endTime" class="Wdate m_query_head_input" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" readonly="readonly"/>
-                </td>
-                <td>
-                    当前胶种:&nbsp;&nbsp;&nbsp;<span id="glue" class="glue"></span>
-                </td>
-                <td>
-                    <button class="m_query_head_button" onclick="getReportFMPageList()">
-                        <i class="layui-icon layui-icon-search" style="font-size: 16px; color: #ffffff;"></i>
-                        查询
-                    </button>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="home_right_sbody_div" id="reportFMPageList_div">
-
-    </div>
-    <div class="home_right_bottom_div">
-        <div id="paging" class="home_right_bottom_paging"></div>
-    </div>
-</div>
-
-<%--&lt;%&ndash;未显示变量的报表模版&ndash;%&gt;--%>
-<div id="noVarRep_div" style="display: none;">
+<%@include file="../report/inc/js.jsp"%>
+<input type="button" value="导出pdf" onclick="outputPdf()"/>
+<div id="noVarRep_div" style="display: block;">
     <table class="m_body_table" border="1px">
         <tr class="tr1">
             <td colspan="13">
@@ -583,5 +380,60 @@ function outputPdf(){
         </tr>
     </table>
 </div>
+<script type="text/javascript">
+$(function(){
+	
+});
+
+function outputPdf(){
+	html2canvas(
+	        $("#noVarRep_div"),
+	        {
+	            scale: '5',
+	            dpi: '500',//导出pdf清晰度
+	            //dpi: '172',//导出pdf清晰度
+	            onrendered: function (canvas) {
+	                var contentWidth = canvas.width;
+	                var contentHeight = canvas.height;
+	                //一页pdf显示html页面生成的canvas高度;
+	                var pageHeight = contentWidth / 592.28 * 841.89;
+	                //未生成pdf的html页面高度
+	                var leftHeight = contentHeight;
+	                //pdf页面偏移
+	                var position = 0;
+	                //html页面生成的canvas在pdf中图片的宽高（a4纸的尺寸[595.28,841.89]）
+	                var imgWidth = 595.28;
+	                var imgHeight = 592.28 / contentWidth * contentHeight;
+	                var pageData = canvas.toDataURL('image/jpeg', 1.0);
+	                var pdf = new jsPDF('', 'pt', 'a4');
+	                //有两个高度需要区分，一个是html页面的实际高度，和生成pdf的页面高度(841.89)
+	                //当内容未超过pdf一页显示的范围，无需分页
+	                if (leftHeight < pageHeight) {
+	                    pdf.addImage(pageData, 'JPEG', 0, 0, imgWidth, imgHeight);
+	                } else {
+	                    while (leftHeight > 0) {
+	                        pdf.addImage(pageData, 'JPEG', 0, position, imgWidth, imgHeight)
+	                        leftHeight -= pageHeight;
+	                        position -= 841.89;
+	                        //避免添加空白页
+	                        if (leftHeight > 0) {
+	                            pdf.addPage();
+	                        }
+	                    }
+	                }
+	                
+	                //var qpbh=$("#pdf-title").text();
+	                // var zzrqY=$("#outputPdf_div #zzrqY_span").text();
+	                // var zzrqM=$("#outputPdf_div #zzrqM_span").text();
+	                pdf.save('111.pdf');
+	                // $("#pdf_div").css("border-color","#000");
+	                //$("#pdf-title").empty();
+	            },
+	            //背景设为白色（默认为黑色）
+	            background: "#fff"
+	        }
+	    )
+}
+</script>
 </body>
 </html>

@@ -23,6 +23,19 @@
 <body>
 
 <script>
+var path='<%=basePath%>';
+$(function(){
+	syncTriggerVar();
+});
+
+function syncTriggerVar(){
+	$.post(path+"opc/syncTriggerVar",
+		function(){
+		
+		}
+	,"json");
+}
+
 // layui.use(['laypage', 'layer'], function(){
 // 	var laypage = layui.laypage,layer = layui.layer;
 // 	//测试数据
