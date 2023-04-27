@@ -304,7 +304,11 @@ public class ReportF_MServiceImpl implements ReportF_MService {
 		}
 		return reportFMPageList;
 	}
-	
+
+	public List<ReportF_M> getReportFMByBatchID(String batchID) {
+		return reportF_MMapper.getReportFMByBatchID(batchID);
+	}
+
 	/**
 	 * 创建批次分组map
 	 * @param reportFMList

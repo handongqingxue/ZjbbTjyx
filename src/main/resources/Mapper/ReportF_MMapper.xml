@@ -55,4 +55,8 @@
 		</if>
 		order by createTime
 	</select>
+
+	<select id="getReportFMByBatchID" resultType="com.uWinOPCTjyx.entity.ReportF_M">
+		select * from ReportF_M where BatchID=#{batchId}
+	</select>
 </mapper>

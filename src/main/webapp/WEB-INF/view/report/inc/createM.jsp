@@ -75,7 +75,7 @@ function addReportFByBatchID(){
         <table class="m_body_table" border="1px" id="opcMCTable">
             <tr class="tr1">
                 <td colspan="13">
-                	<input type="hidden" id="batchID_hid"/>
+<%--                	<input type="hidden" id="batchID_hid"/>--%>
                     <span class="onetd1">M类 （ ）胶 生产记录</span>
                     <%--                    <span class="onetd4">自动表单设计：张发 设计号：ZJZD20211225</span>--%>
                 </td>

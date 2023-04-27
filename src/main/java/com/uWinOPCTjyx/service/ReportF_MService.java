@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.uWinOPCTjyx.entity.*;
+import org.apache.ibatis.annotations.Param;
 
 public interface ReportF_MService {
 
@@ -20,4 +21,11 @@ public interface ReportF_MService {
 	 * @return
 	 */
 	List<List<ReportF_M>> getReportFMPageList(String type, String startTime, String endTime,String batchID);
+
+	/**
+	 * 通过batchId获取批次记录
+	 * @param batchID
+	 * @return
+	 */
+	List<ReportF_M> getReportFMByBatchID( String batchID);
 }
