@@ -57,6 +57,10 @@ public class ReportController {
         
         return MODULE_NAME+"/previewPdf";
     }
+	@RequestMapping("/goPreExcelM")
+	public String goPreExcelM(){
+		return MODULE_NAME+"/preExcelM";
+	}
 
     @RequestMapping("/goTest")
     public String goTest(){
@@ -229,4 +233,21 @@ public class ReportController {
 		return json;
 	}
 
+	@RequestMapping("/getReportFMByBatchID")
+	@ResponseBody
+	public PlanResult getReportFMByBatchID(String batchID){
+    	PlanResult result = new PlanResult();
+		try {
+			List<ReportF_M> reportFMByBatchID = reportF_MService.getReportFMByBatchID(batchID);
+			result.setData(reportFMByBatchID);
+			result.setStatus(1);
+			result.setMsg("ok");
+		} catch (Exception e) {
+			e.printStackTrace();
+			result.setStatus(0);
+			result.setMsg("no");
+		} finally {
+			return result;
+		}
+	}
 }

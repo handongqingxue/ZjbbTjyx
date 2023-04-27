@@ -11,4 +11,5 @@ public interface ReportF_MMapper {
 
 	List<ReportF_M> getReportFMList(@Param("type") String type, @Param("startTime") String startTime, @Param("endTime") String endTime,@Param("batchID") String batchID);
 
+	List<ReportF_M> getReportFMByBatchID(@Param("batchId") String batchID);
 }

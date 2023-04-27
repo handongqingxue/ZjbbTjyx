@@ -10,10 +10,6 @@ $(function(){
 	getReportFMPageList();
 });
 
-function base64 (content) {
-    return window.btoa(unescape(encodeURIComponent(content)));
-}
-
 function exportExcel() {
     var table = $("#reportFMPageList_div");
     var excelContent = table[0].innerHTML;
@@ -25,8 +21,14 @@ function exportExcel() {
     excelFile += "</html>";
     var link = "data:application/vnd.ms-excel;base64," + base64(excelFile);
     var a = document.createElement("a");
-    // var batchID=$("#reportFMPageList_div table #batchID_hid").val();
-    a.download = "M类()胶生产记录.xlsx";
+    var batchID=$("#reportFMPageList_div table #batchID_hid").val();
+    // var glueType=$("#glue").text();
+    // var glueType2=$("#glue").val();
+    // console.log(glueType+"dddddddd")
+    // console.log(glueType2+"cccccc")
+    var type=glueType.slice(0,1);
+    var glue = glueType.slice(1,2);
+    a.download = batchID+"-"+type+"类("+glue+")胶生产记录.xlsx";
     a.href = link;
     a.click();
 }
@@ -66,6 +68,12 @@ function prePdf(){
    	   }
    ,"json");
 }
+
+function prePreExcelM(){
+    var batchID=$("#batchID_hid").val();
+    window.open("goPreExcelM?batchID="+batchID,"newwindow","width=300;");
+}
+
 
 function initPagerHtml(reportFMPageList){
 	layui.use(['laypage', 'layer'], function(){
@@ -110,53 +118,6 @@ function initPagerHtml(reportFMPageList){
 		});
 	});
 }
-
-function outputPdf(){
-    html2canvas(
-        $("#reportFMPageList_div"),
-        {
-            scale: '5',
-            dpi: '500',//导出pdf清晰度
-            //dpi: '172',//导出pdf清晰度
-            onrendered: function (canvas) {
-                var contentWidth = canvas.width;
-                var contentHeight = canvas.height;
-                //一页pdf显示html页面生成的canvas高度;
-                var pageHeight = contentWidth / 592.28 * 841.89;
-                //未生成pdf的html页面高度
-                var leftHeight = contentHeight;
-                //pdf页面偏移
-                var position = 0;
-                //html页面生成的canvas在pdf中图片的宽高（a4纸的尺寸[595.28,841.89]）
-                var imgWidth = 595.28;
-                var imgHeight = 592.28 / contentWidth * contentHeight;
-                var pageData = canvas.toDataURL('image/jpeg', 1.0);
-                var pdf = new jsPDF('', 'pt', 'a4');
-                //有两个高度需要区分，一个是html页面的实际高度，和生成pdf的页面高度(841.89)
-                //当内容未超过pdf一页显示的范围，无需分页
-                if (leftHeight < pageHeight) {
-                    pdf.addImage(pageData, 'JPEG', 0, 0, imgWidth, imgHeight);
-                } else {
-                    while (leftHeight > 0) {
-                        pdf.addImage(pageData, 'JPEG', 0, position, imgWidth, imgHeight)
-                        leftHeight -= pageHeight;
-                        position -= 841.89;
-                        //避免添加空白页
-                        if (leftHeight > 0) {
-                            pdf.addPage();
-                        }
-                    }
-                }
-                var batchID=$("#reportFMPageList_div table #batchID_hid").val();
-                pdf.save(batchID+'.pdf');
-            },
-            //背景设为白色（默认为黑色）
-            background: "#fff"
-        }
-    )
-}
-
-
 </script>
 </head>
 <body>
@@ -177,7 +138,7 @@ function outputPdf(){
                     <select class="m_query_head_input" id="typeSelect"></select>
                 </td>
                 <td class="dayin-td">
-                    <i class="layui-icon layui-icon-print" style="font-size: 30px; color: #000000;" onclick="exportExcel()"></i>
+                    <i class="layui-icon layui-icon-print" style="font-size: 30px; color: #000000;" onclick="prePreExcelM()"></i>
 					<!-- 
                     <i class="layui-icon layui-icon-export" style="font-size: 30px; color: #000000;" onclick="outputPdf()"></i>
                      -->
