@@ -8,8 +8,9 @@
 <link rel="stylesheet" href="<%=basePath%>resource/css/system_style.css">
 <link rel="stylesheet" href="<%=basePath%>resource/css/layui.css">
 <script type="text/javascript" src="<%=basePath%>resource/js/layui.js"></script>
-<script type="text/javascript" src="<%=basePath%>resource/js/opc.js"></script>
 <script type="text/javascript" src="<%=basePath%>resource/js/pdf/jspdf.debug.js"></script>
 <script type="text/javascript" src="<%=basePath%>resource/js/pdf/html2canvas.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>resource/js/calendar/calendar.js"></script>
 <script type="text/javascript" src="<%=basePath%>resource/js/calendar/WdatePicker.js"></script>
+<script type="text/javascript" src="<%=basePath%>resource/js/login.js"></script>
+<script type="text/javascript" src="<%=basePath%>resource/js/MD5.js"></script>

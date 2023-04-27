@@ -67,8 +67,6 @@ public class MainController {
     //注册用户
     @RequestMapping("/addUser")
     public void addUser(UserList user){
-        System.out.println("add");
-        System.out.println(user.toString());
         userListService.addUser(user);
     }
 

@@ -51,10 +51,7 @@ public class MyRealm extends AuthorizingRealm {
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authcToken) throws AuthenticationException {
 		UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
 		UserList msg=new UserList(token.getUsername(),String.valueOf(token.getPassword()));
-
 		UserList resultMsg=userListMapper.getUser(msg);
-		System.out.println("是否"+resultMsg);
-		System.out.println(resultMsg+";;;");
 		if(token.getUsername().equals(resultMsg.getUserName())
 				&&
 				String.valueOf(token.getPassword()).equals(resultMsg.getPsd())){

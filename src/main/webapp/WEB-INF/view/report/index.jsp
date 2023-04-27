@@ -5,6 +5,8 @@
 </head>
 <body>
 <%@include file="../report/inc/js.jsp"%>
+<script type="text/javascript" src="<%=basePath%>resource/js/opc.js"></script>
+
 <div class="home">
     <%--头部--%>
     <div class="home-head">
@@ -175,8 +177,7 @@ function showCreateArea(batchID){
     $("#searchU").css("display",searchUDisplay);
       
     $("#right-body-head-span2").text("报表生成页面");
-    document.getElementById("right-body-head-icon").classList.replace("layui-icon-search","layui-icon-add-circle");
-      
+    document.getElementById("right-body-head-icon").classList.add("layui-icon-add-circle");
     getUnCreRepVarList(batchID);
 }
     

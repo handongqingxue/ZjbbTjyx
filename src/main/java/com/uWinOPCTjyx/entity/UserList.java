@@ -1,6 +1,8 @@
 package com.uWinOPCTjyx.entity;
 
-public class UserList {
+import java.io.Serializable;
+
+public class UserList implements Serializable {
     private Integer id;
     private String UserName;
     private String Psd;

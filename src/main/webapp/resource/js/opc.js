@@ -1,6 +1,5 @@
-
-
 var i=0;
+
 function myDate(){
     var now=new Date();
     var year=now.getFullYear();

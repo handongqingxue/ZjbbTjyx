@@ -6,16 +6,33 @@
     <script type="text/javascript" src="<%=basePath%>resource/js/pdf/jspdf.debug.js"></script>
     <script type="text/javascript" src="<%=basePath%>resource/js/pdf/html2canvas.min.js"></script>
 <title>Title</title>
-    <style>
-        .dayin{
-            padding-left: 70px;
-        }
-    </style>
 <script>
 var path='<%=basePath%>';
 $(function(){
 	getReportFMPageList();
 });
+
+function base64 (content) {
+    return window.btoa(unescape(encodeURIComponent(content)));
+}
+
+function exportExcel() {
+    var table = $("#opcMTable");
+    var excelContent = table[0].innerHTML;
+    var excelFile = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:x='urn:schemas-microsoft-com:office:excel' xmlns='http://www.w3.org/TR/REC-html40'>";
+    excelFile += "<head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head>";
+    excelFile += "<body><table>";
+    excelFile += excelContent;
+    excelFile += "</table></body>";
+    excelFile += "</html>";
+    var link = "data:application/vnd.ms-excel;base64," + base64(excelFile);
+    var a = document.createElement("a");
+    // var batchID=$("#reportFMPageList_div table #batchID_hid").val();
+    a.download = "M类()胶生产记录.xlsx";
+    a.href = link;
+    a.click();
+}
+
 
 function getReportFMPageList() {
    var glueType = $("#glue").text();
@@ -132,20 +149,16 @@ function outputPdf(){
                         }
                     }
                 }
-                
                 var batchID=$("#reportFMPageList_div table #batchID_hid").val();
-                //var qpbh=$("#pdf-title").text();
-                // var zzrqY=$("#outputPdf_div #zzrqY_span").text();
-                // var zzrqM=$("#outputPdf_div #zzrqM_span").text();
                 pdf.save(batchID+'.pdf');
-                // $("#pdf_div").css("border-color","#000");
-                //$("#pdf-title").empty();
             },
             //背景设为白色（默认为黑色）
             background: "#fff"
         }
     )
 }
+
+
 </script>
 </head>
 <body>
@@ -159,26 +172,18 @@ function outputPdf(){
             <tr>
                 <td>
                     起始时间&nbsp;&nbsp;
-                    <!-- 
-                    <input type="datetime-local" placeholder="请选择时间" id="startTime" class="m_query_head_input">
-                     -->
                     <input placeholder="请选择时间" id="startTime" class="Wdate m_query_head_input" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" readonly="readonly"/>
-                    <!-- 
-                    开始：<input type="text" id="begin" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd',minDate:'2012-01-01',maxDate:'%y-%M-%d'})" class="Wdate"/>
-                     -->
                 </td>
                 <td>
                     选择批次&nbsp;&nbsp;
                     <select class="m_query_head_input" id="typeSelect"></select>
                 </td>
-                <td>
-                    <span class="dayin">
-                        <i class="layui-icon layui-icon-print" style="font-size: 30px; color: #000000;"></i>
-                        <!-- 
-                        <i class="layui-icon layui-icon-export" style="font-size: 30px; color: #000000;" onclick="outputPdf()"></i>
-                         -->
-                        <i class="layui-icon layui-icon-export" style="font-size: 30px; color: #000000;" onclick="prePdf()"></i>
-                    </span>
+                <td class="dayin-td">
+                    <i class="layui-icon layui-icon-print" style="font-size: 30px; color: #000000;"></i>
+					<!-- 
+                    <i class="layui-icon layui-icon-export" style="font-size: 30px; color: #000000;" onclick="outputPdf()"></i>
+                     -->
+                    <i class="layui-icon layui-icon-export" style="font-size: 30px; color: #000000;" onclick="prePdf()"></i>
                 </td>
             </tr>
             <tr>
