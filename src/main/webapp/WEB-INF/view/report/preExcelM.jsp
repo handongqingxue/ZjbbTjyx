@@ -67,38 +67,37 @@
 </head>
 <body>
 <div class="opExcel_but_div" onclick="exportExcel()">导出Excel</div>
-<div id="noVarRep_div">
-    <table border="1px" style="width: 100%;height: 150%;text-align:center;font: normal 400 16px '微软雅黑';">
+<div id="noVarRep_div" style="text-align:center;">
+    <table border="1px" style="width:100%;border-collapse:collapse;text-align:center;font: normal 400 16px '微软雅黑';">
         <tr>
-            <td colspan="13">
+            <td colspan="13" style="height: 50px;">
                 <input type="hidden" id="batchID_hid"/>
                 <span id="pdf-title" style="font: normal 600 24px '微软雅黑'">M类 （ ）胶 生产记录</span>
                 <%-- <span>自动表单设计：张发 设计号：ZJZD20211225</span>--%>
             </td>
         </tr>
         <%--第二行--%>
-        <tr>
-            <td>YSD101信息</td>
-            <td style="background-color: #5b9bd5">
+        <tr style="height: 30px;">
+            <td style="height:7%">YSD101信息</td>
+            <td style="background-color: #5b9bd5;height: 7%">
                 <%--甲醛厂家信息，可后期录入--%>
-                <%--<input type="text" id="ysd101_input" placeholder="甲醛厂家信息"/>--%>
             </td>
-            <td>YSD102信息</td>
-            <td style="background-color: #5b9bd5">
+            <td style="width: 7%">YSD102信息</td>
+            <td style="background-color: #5b9bd5;width: 9%">
                 <%--三安厂家信息可后期录入--%>
             </td>
-            <td></td>
-            <td colspan="2">当班操作员：</td>
-            <td colspan="2" style="background-color: #c6e0b4">
+            <td style="width: 9%;"></td>
+            <td colspan="2" style="width: 15%">当班操作员：</td>
+            <td colspan="2" style="background-color: #c6e0b4;width: 15%">
                 <%--直接摘抄登录名--%>
             </td>
-            <td colspan="2">接班操作员：</td>
-            <td colspan="2" style="background-color: #c6e0b4">
+            <td colspan="2" style="width: 15%">接班操作员：</td>
+            <td colspan="2" style="background-color: #c6e0b4;width: 15%">
                 <%--直接摘抄登录名--%>
             </td>
         </tr>
         <%--第三行--%>
-        <tr>
+        <tr style="height: 70px">
             <td>生产编号</td>
             <td id="td3_2" style="background-color: #fee699">
                 <%--每生产1釜加1--%>
@@ -124,7 +123,7 @@
             </td>
         </tr>
         <%--第四行--%>
-        <tr>
+        <tr style="height: 30px;">
             <td>在用F料罐</td>
             <td style="background-color: #5b9bd5">  □ 1罐</td>
             <td style="background-color: #5b9bd5">浓度：</td>
@@ -136,7 +135,7 @@
             <td colspan="5" rowspan="2">备注</td>
         </tr>
         <%--第五行--%>
-        <tr>
+        <tr style="height: 150px">
             <td>1号罐用前重</td>
             <td style="background-color: #fee699"></td>
             <td>1号罐用后重</td>
@@ -147,7 +146,7 @@
             <td style="background-color: #fee699"></td>
         </tr>
         <%--第六行--%>
-        <tr>
+        <tr style="height: 40px">
             <td rowspan="2">原 辅 料kg</td>
             <td rowspan="2" colspan="2">实际重量kg</td>
             <td colspan="2">操作时间</td>
@@ -159,7 +158,7 @@
             <td rowspan="2">操作时间min</td>
             <td style="width: 200px">备  注</td>
         </tr>
-        <tr>
+        <tr style="height: 40px">
             <td>动作开始</td>
             <td>动作结束</td>
             <td>加料前kg</td>
@@ -167,7 +166,7 @@
             <td></td>
         </tr>
         <%--第七行--%>
-        <tr>
+        <tr style="height: 40px">
             <td>YSD101</td>
             <%--甲醛实际进料重量--%>
             <td style="background-color: #c6e0b4" id="td7_2" colspan="2"></td>
@@ -191,14 +190,14 @@
             <td></td>
         </tr>
         <%--第八行--%>
-        <tr>
+        <tr style="height: 40px">
             <td>纯净水</td>
             <%-- 加水实际重量 --%>
             <td style="background-color: #c6e0b4" id="td8_2" colspan="2"></td>
             <td></td>
         </tr>
         <%--第九行--%>
-        <tr>
+        <tr style="height: 40px">
             <td>YSD109</td>
             <%-- 加碱量提示 --%>
             <td style="background-color: #c6e0b4" id="td9_2" colspan="2"></td>
@@ -210,7 +209,7 @@
             <td></td>
         </tr>
         <%--第十行--%>
-        <tr>
+        <tr style="height: 60px">
             <td>YSD106</td>
             <%-- 助剂计量罐1-2称重 --%>
             <td style="background-color: #c6e0b4" id="td10_2" colspan="2"></td>
@@ -232,11 +231,11 @@
             <td></td>
         </tr>
         <%--第十一行--%>
-        <tr>
+        <tr style="height: 20px;">
             <td colspan="13">1投料前后一定确定料斗重量 2关闭取样器下阀门  3关闭主通风管道  4打开除尘箱2阀门    4加入过滤棉</td>
         </tr>
         <%--第十二行--%>
-        <tr>
+        <tr style="height: 60px;">
             <td>YSD102</td>
             <td style="background-color: #c6e0b4" id="td12_2" colspan="2"></td>
             <td style="background-color: #c6e0b4" id="td12_3"></td>
@@ -251,7 +250,7 @@
             <td></td>
         </tr>
         <%--第十三行--%>
-        <tr>
+        <tr style="height: 40px">
             <td>开始升温</td>
             <td style="background-color: #aeaaaa"></td>
             <td style="background-color: #aeaaaa"></td>
@@ -262,7 +261,7 @@
             <td></td>
         </tr>
         <%--第十四行--%>
-        <tr>
+        <tr style="height: 100px">
             <td>PH检测（中温温度）</td>
             <td style="background-color: #aeaaaa"></td>
             <td style="background-color: #aeaaaa"></td>
@@ -273,7 +272,7 @@
             <td></td>
         </tr>
         <%--第十五行--%>
-        <tr>
+        <tr style="height: 60px">
             <td>YSD104</td>
             <td style="background-color: #c6e0b4" colspan="2"></td>
             <td style="background-color: #c6e0b4" id="td15_3"></td>
@@ -288,7 +287,7 @@
             <td></td>
         </tr>
         <%--第十六行--%>
-        <tr>
+        <tr style="height: 60px">
             <td>停汽</td>
             <td style="background-color: #aeaaaa" colspan="2"></td>
             <td style="background-color: #c6e0b4" id="td16_3" colspan="2"></td>
@@ -302,7 +301,7 @@
             <td></td>
         </tr>
         <%--第十七行--%>
-        <tr>
+        <tr style="height: 60px">
             <td rowspan="3">保温</td>
             <td style="background-color: #aeaaaa">冰水检测</td>
             <td style="background-color: #c6e0b4"></td>
@@ -318,7 +317,7 @@
             <td></td>
         </tr>
         <%--第十八行--%>
-        <tr>
+        <tr style="height: 60px">
             <td style="background-color: #aeaaaa">20度检测</td>
             <td style="background-color: #c6e0b4"></td>
             <td style="background-color: #c6e0b4"></td>
@@ -333,7 +332,7 @@
             <td></td>
         </tr>
         <%--第十九行--%>
-        <tr>
+        <tr style="height: 60px">
             <td>降温水数</td>
             <td style="background-color: #fee699"></td>
             <td style="background-color: #fee699"></td>
@@ -348,7 +347,7 @@
             <td></td>
         </tr>
         <%--第二十行--%>
-        <tr>
+        <tr style="height: 100px">
             <td>冷却</td>
             <td colspan="2">夏季（35）℃，</br>冬季（43）℃</td>
             <td style="background-color: #5b9bd5" id="td20_3"></td>
@@ -363,7 +362,7 @@
             <td></td>
         </tr>
         <%--第二十一行--%>
-        <tr>
+        <tr style="height: 20px">
             <td rowspan="3">质量终检</td>
             <td style="background-color: #aeaaaa"></td>
             <td style="background-color: #aeaaaa"></td>
@@ -379,7 +378,7 @@
             <td></td>
         </tr>
         <%--第二十二行--%>
-        <tr>
+        <tr style="height: 100px">
             <td>生产总重</td>
             <td style="background-color: #c6e0b4"></td>
             <td rowspan="2"></td>
@@ -394,7 +393,7 @@
             <td></td>
         </tr>
         <%--第二十三行--%>
-        <tr>
+        <tr style="height: 50px">
             <td style="background-color: #aeaaaa"></td>
             <td style="background-color: #aeaaaa"></td>
             <td>实测：</td>
@@ -408,7 +407,7 @@
             <td></td>
         </tr>
         <%--第二十四行--%>
-        <tr>
+        <tr style="height: 80px;">
             <td rowspan="2">排 胶</td>
             <td>日期与时间：</td>
             <td style="background-color: #c6e0b4"></td>
@@ -424,7 +423,7 @@
             <td></td>
         </tr>
         <%--第二十五行--%>
-        <tr>
+        <tr style="height: 100px">
             <td>反应釜打胶前后重量</td>
             <td style="background-color: #c6e0b4"></td>
             <td style="background-color: #c6e0b4"> </td>

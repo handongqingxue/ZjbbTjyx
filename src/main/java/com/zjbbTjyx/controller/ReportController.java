@@ -238,13 +238,13 @@ public class ReportController {
 	public PlanResult getReportFMByBatchID(String batchID){
     	PlanResult result = new PlanResult();
 		try {
-			List<ReportF_M> reportFMByBatchID = reportF_MService.getReportFMByBatchID(batchID);
-			result.setData(reportFMByBatchID);
-			result.setStatus(1);
+			List<ReportF_M> reportFMByList = reportF_MService.getReportFMByBatchID(batchID);
+			result.setData(reportFMByList);
+			result.setStatus(Constant.OK_STATUS);
 			result.setMsg("ok");
 		} catch (Exception e) {
 			e.printStackTrace();
-			result.setStatus(0);
+			result.setStatus(Constant.NO_STATUS);
 			result.setMsg("no");
 		} finally {
 			return result;
