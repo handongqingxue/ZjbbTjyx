@@ -30,9 +30,9 @@ public class OpcUtil {
 
         JOpc.coInitialize();   //初始化JOpc        JOpc继承父类JCustomOpc
 
-        JOpc jopc = new JOpc("127.0.0.1", "Kepware.KEPServerEX.V6", "OPS3-PC");
+        JOpc jopc = new JOpc(Constant.OPC_HOST, Constant.OPC_SERVER_PROG_ID, Constant.OPC_SERVER_CLIENT_HANDLE);
 
-        OpcGroup group = new OpcGroup("_System", true, 500, 0.0f);
+        OpcGroup group = new OpcGroup(Constant.OPC_GROUP_NAME, true, 500, 0.0f);
 
 //        if (varNameList.size()>0){
 //            for (String varName : varNameList) {
@@ -68,11 +68,11 @@ public class OpcUtil {
         List<String> varNameList = new ArrayList<String>();
 //		ArrayList<OpcItem> opcItems = responseGroup.getItems();
         List<OpcItem> opcItems = new ArrayList<OpcItem>();
-        OpcItem opcItem1 = new OpcItem("甲醛实际进料重量_F1"+Constant.XHX+Constant.AV,false,"111");
+        OpcItem opcItem1 = new OpcItem(Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG+Constant.XHX+Constant.BSF_F1+Constant.XHX+Constant.AV,false,"111");
         opcItem1.setValue(new Variant("0"));
         opcItems.add(opcItem1);
         
-        OpcItem opcItem2 = new OpcItem("加水实际重量_F1"+Constant.XHX+Constant.AV,false,"111");
+        OpcItem opcItem2 = new OpcItem(Constant.JIA_SHUI_SHI_JI_ZHONG_LIANG+Constant.XHX+Constant.BSF_F1+Constant.XHX+Constant.AV,false,"111");
         opcItem2.setValue(new Variant("0"));
         opcItems.add(opcItem2);
         
@@ -98,7 +98,7 @@ public class OpcUtil {
 
         JOpc jopc = new JOpc("127.0.0.1", "Kepware.KEPServerEX.V6", "OPS3-PC");
         */
-        OpcGroup group = new OpcGroup("_System", true, 500, 0.0f);
+        OpcGroup group = new OpcGroup(Constant.OPC_GROUP_NAME, true, 500, 0.0f);
         
         TriggerVar triggerVar1 = null;//第一个触发器变量，可能是上升沿，也可能是下降沿
         TriggerVar triggerVar2 = null;//第二个触发器变量，可能是上升沿，也可能是下降沿
@@ -121,16 +121,16 @@ public class OpcUtil {
         }
         
         //甲醛放料完成
-        if(tv1VarName.startsWith(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+"_")) {//甲醛放料完成要记录(甲醛实际进料重量、加水实际重量、釜1称重、反应釜1温度)
+        if(tv1VarName.startsWith(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.XHX)) {//甲醛放料完成要记录(甲醛实际进料重量、加水实际重量、釜1称重、反应釜1温度)
         	Integer tvFId = triggerVar1.getFId();
         	String tvRecType = triggerVar1.getRecType();
         	String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
         	//甲醛实际进料重量
             String jqsjjlzlPvVarNameQz=Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG;
-            String jqsjjlzlOpcVarName = jqsjjlzlPvVarNameQz+"_"+opcFName+Constant.XHX+Constant.AV;
+            String jqsjjlzlOpcVarName = jqsjjlzlPvVarNameQz+Constant.XHX+opcFName+Constant.XHX+Constant.AV;
             //加水实际重量
             String jssjzlPvVarNameQz=Constant.JIA_SHUI_SHI_JI_ZHONG_LIANG;
-            String jssjzlOpcVarName=jssjzlPvVarNameQz+"_"+opcFName+Constant.XHX+Constant.AV;
+            String jssjzlOpcVarName=jssjzlPvVarNameQz+Constant.XHX+opcFName+Constant.XHX+Constant.AV;
             //反应釜(反应釜号)温度
             String fyfwdPvVarNameQz=Constant.FAN_YING_FU+tvFId+Constant.WEN_DU;
             String fyfwdOpcVarName=fyfwdPvVarNameQz+Constant.XHX+Constant.AV;
@@ -141,7 +141,7 @@ public class OpcUtil {
             opcVarNameList.add(jssjzlOpcVarName);
             opcVarNameList.add(fyfwdOpcVarName);
             opcVarNameList.add(fhczOpcVarName);
-        } else if (tv1VarName.startsWith(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+"_")){//甲醛备料开始要记录(釜(号)称重)
+        } else if (tv1VarName.startsWith(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+Constant.XHX)){//甲醛备料开始要记录(釜(号)称重)
             Integer tvFId = triggerVar1.getFId();
             String tvRecType = triggerVar1.getRecType();
             String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
@@ -149,19 +149,19 @@ public class OpcUtil {
             String fhczPvVarNameQz=Constant.FU+tvFId+Constant.CHENG_ZHONG;
             String fhczOpcVarName=fhczPvVarNameQz+Constant.XHX+Constant.AV;
             opcVarNameList.add(fhczOpcVarName);
-        } else if (tv1VarName.startsWith(Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+"_")){//加碱PH值正常要记录(加碱前PH输入值、加碱量提示、加碱后PH输入值、助剂计量罐1称重、助剂计量罐2称重)
+        } else if (tv1VarName.startsWith(Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+Constant.XHX)){//加碱PH值正常要记录(加碱前PH输入值、加碱量提示、加碱后PH输入值、助剂计量罐1称重、助剂计量罐2称重)
             Integer tvFId = triggerVar1.getFId();
             String tvRecType = triggerVar1.getRecType();
             String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
             //加碱前PH输入值
             String jjqsrzPvVarName= Constant.JIA_JIAN_QIAN_PH_SHU_RU_ZHI;
-            String jjqsrzOpcVarName=jjqsrzPvVarName+"_"+opcFName+Constant.XHX+Constant.AV;
+            String jjqsrzOpcVarName=jjqsrzPvVarName+Constant.XHX+opcFName+Constant.XHX+Constant.AV;
             //加碱量提示
             String jjltsPvVarNameQz= Constant.JIA_JIAN_LIANG_TI_SHI;
-            String jjltsOpcVarName=jjltsPvVarNameQz+"_"+Constant.BSF_PF+tvFId+Constant.XHX+Constant.AV;
+            String jjltsOpcVarName=jjltsPvVarNameQz+Constant.XHX+Constant.BSF_PF+tvFId+Constant.XHX+Constant.AV;
             //加碱后PH输入值
             String jjhsrzPvVarName=Constant.JIA_JIAN_HOU_PH_SHU_RU_ZHI;
-            String jjhsrzOpcVarName=jjhsrzPvVarName+"_"+opcFName+Constant.XHX+Constant.AV;
+            String jjhsrzOpcVarName=jjhsrzPvVarName+Constant.XHX+opcFName+Constant.XHX+Constant.AV;
             //助剂计量罐1称重
             String zjjlg1czPvVarName=Constant.ZHU_JI_JI_LIANG_GUAN+Constant.BSF_ZJJLG1+Constant.CHENG_ZHONG;
             String zjjlg1czOpcVarName=zjjlg1czPvVarName+Constant.XHX+Constant.AV;
@@ -173,7 +173,7 @@ public class OpcUtil {
             opcVarNameList.add(jjhsrzOpcVarName);
             opcVarNameList.add(zjjlg1czOpcVarName);
             opcVarNameList.add(zjjlg2czOpcVarName);
-        } else if (tv1VarName.startsWith(Constant.YUN_XU_YI_CI_JIA_ZHU_JI+"_")){//允许一次加助剂要记录(釜(号)称重)
+        } else if (tv1VarName.startsWith(Constant.YUN_XU_YI_CI_JIA_ZHU_JI+Constant.XHX)){//允许一次加助剂要记录(釜(号)称重)
             Integer tvFId = triggerVar1.getFId();
             String tvRecType = triggerVar1.getRecType();
             String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
@@ -181,7 +181,7 @@ public class OpcUtil {
             String fhczPvVarNameQz=Constant.FU+tvFId+Constant.CHENG_ZHONG;
             String fhczOpcVarName=fhczPvVarNameQz+Constant.XHX+Constant.AV;
             opcVarNameList.add(fhczOpcVarName);
-        } else if (tv1VarName.startsWith(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+"_")){//所有助剂加料完成1要记录(反应釜(号)温度、釜(号)称重)
+        } else if (tv1VarName.startsWith(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.XHX)){//所有助剂加料完成1要记录(反应釜(号)温度、釜(号)称重)
             Integer tvFId = triggerVar1.getFId();
             String tvRecType = triggerVar1.getRecType();
             String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
@@ -194,15 +194,15 @@ public class OpcUtil {
             opcVarNameList.add(fhczOpcVarName);
             opcVarNameList.add(fyfwdOpcVarName);
         }
-        else if (tv1VarName.startsWith(Constant.JIA_FEN_LIAO_TI_XING+"_")&&tv2VarName==null) {
+        else if (tv1VarName.startsWith(Constant.JIA_FEN_LIAO_TI_XING+Constant.XHX)&&tv2VarName==null) {
             Integer tvFId = triggerVar1.getFId();
             
             //粉料重量设定
-        	String flzlsdVarNameQz = Constant.FEN_LIAO_ZHONG_LIANG_SHE_DING+"_"+Constant.BSF_PF+tvFId;
+        	String flzlsdVarNameQz = Constant.FEN_LIAO_ZHONG_LIANG_SHE_DING+Constant.XHX+Constant.BSF_PF+tvFId;
         	String flzlsdVarName = flzlsdVarNameQz+Constant.XHX+Constant.AV;
             opcVarNameList.add(flzlsdVarName);
         }
-        else if (tv1VarName.startsWith(Constant.JIA_FEN_LIAO_TI_XING+"_")&&tv2VarName!=null) {
+        else if (tv1VarName.startsWith(Constant.JIA_FEN_LIAO_TI_XING+Constant.XHX)&&tv2VarName!=null) {
             Integer tvFId = triggerVar1.getFId();
         	if(tv2VarName.startsWith(Constant.FU+tvFId+Constant.NIAO_SU_FANG_LIAO_FA)) {
                 //釜(反应釜号)称重
@@ -222,10 +222,10 @@ public class OpcUtil {
         	String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
         	//加粉料PH输入值
             String jflphsrzPvVarNameQz=Constant.JIA_FEN_LIAO_PH_SHU_RU_ZHI;
-            String jflphsrzOpcVarName=jflphsrzPvVarNameQz+"_"+opcFName+Constant.XHX+Constant.AV;
+            String jflphsrzOpcVarName=jflphsrzPvVarNameQz+Constant.XHX+opcFName+Constant.XHX+Constant.AV;
             opcVarNameList.add(jflphsrzOpcVarName);
         }
-        else if (tv1VarName.startsWith(Constant.SHENG_WEN_KAI_SHI+"_")){//升温开始要记录(蒸汽压力MPa)
+        else if (tv1VarName.startsWith(Constant.SHENG_WEN_KAI_SHI+Constant.XHX)){//升温开始要记录(蒸汽压力MPa)
             Integer tvFId = triggerVar1.getFId();
             String tvRecType = triggerVar1.getRecType();
             String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
@@ -233,7 +233,7 @@ public class OpcUtil {
             String zqylmpaPvVarNameQz=Constant.ZHENG_QI_YA_LI+Constant.MPA;
             String zqylOpcVarName=zqylmpaPvVarNameQz+Constant.XHX+Constant.AV;
             opcVarNameList.add(zqylOpcVarName);
-        } else if (tv1VarName.startsWith(Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING+"_")){//温度85与二次投料提醒要记录(反应釜(号)温度)
+        } else if (tv1VarName.startsWith(Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING+Constant.XHX)){//温度85与二次投料提醒要记录(反应釜(号)温度)
             Integer tvFId = triggerVar1.getFId();
             String tvRecType = triggerVar1.getRecType();
             String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
@@ -241,15 +241,15 @@ public class OpcUtil {
             String fyfwdPvVarNameQz=Constant.FAN_YING_FU+tvFId+Constant.WEN_DU;
             String fyfwdOpcVarName=fyfwdPvVarNameQz+Constant.XHX+Constant.AV;
             opcVarNameList.add(fyfwdOpcVarName);
-        } else if (tv1VarName.startsWith(Constant.ER_CI_ZHU_JI_HOU_CE_PH_TI_XING+"_")) {//二次助剂后测PH提醒要记录(二次投料PH输入)
+        } else if (tv1VarName.startsWith(Constant.ER_CI_ZHU_JI_HOU_CE_PH_TI_XING+Constant.XHX)) {//二次助剂后测PH提醒要记录(二次投料PH输入)
             Integer tvFId = triggerVar1.getFId();
             String tvRecType = triggerVar1.getRecType();
             String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
             //二次投料PH输入
             String ectlphsrPvVarNameQz=Constant.ER_CI_TOU_LIAO_PH_SHU_RU_ZHI;
-            String ectlphsrVarName=ectlphsrPvVarNameQz+"_"+opcFName+Constant.XHX+Constant.AV;
+            String ectlphsrVarName=ectlphsrPvVarNameQz+Constant.XHX+opcFName+Constant.XHX+Constant.AV;
             opcVarNameList.add(ectlphsrVarName);
-        } else if (tv1VarName.startsWith(Constant.YUN_XU_ER_CI_JIA_ZHU_JI+"_")){//允许二次加助剂要记录(釜(号)称重)
+        } else if (tv1VarName.startsWith(Constant.YUN_XU_ER_CI_JIA_ZHU_JI+Constant.XHX)){//允许二次加助剂要记录(釜(号)称重)
             Integer tvFId = triggerVar1.getFId();
             String tvRecType = triggerVar1.getRecType();
             String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
@@ -257,7 +257,7 @@ public class OpcUtil {
             String fhczPvVarNameQz=Constant.FU+tvFId+Constant.CHENG_ZHONG;
             String fhczOpcVarName=fhczPvVarNameQz+Constant.XHX+Constant.AV;
             opcVarNameList.add(fhczOpcVarName);
-        } else if (tv1VarName.startsWith(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+"_")){//所有助剂加料完成2要记录(反应釜(号)温度、釜(号)称重)
+        } else if (tv1VarName.startsWith(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+Constant.XHX)){//所有助剂加料完成2要记录(反应釜(号)温度、釜(号)称重)
             Integer tvFId = triggerVar1.getFId();
             String tvRecType = triggerVar1.getRecType();
             String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
@@ -269,7 +269,7 @@ public class OpcUtil {
             String fyfwdOpcVarName=fyfwdPvVarNameQz+Constant.XHX+Constant.AV;
             opcVarNameList.add(fyfwdOpcVarName);
             opcVarNameList.add(fhczOpcVarName);
-        } else if (tv1VarName.startsWith(Constant.SHENG_WEN_WAN_CHENG+"_")){//升温完成要记录(反应釜(号)温度)
+        } else if (tv1VarName.startsWith(Constant.SHENG_WEN_WAN_CHENG+Constant.XHX)){//升温完成要记录(反应釜(号)温度)
             Integer tvFId = triggerVar1.getFId();
             String tvRecType = triggerVar1.getRecType();
             String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
@@ -277,35 +277,35 @@ public class OpcUtil {
             String fyfwdPvVarNameQz=Constant.FAN_YING_FU+tvFId+Constant.WEN_DU;
             String fyfwdOpcVarName=fyfwdPvVarNameQz+Constant.XHX+Constant.AV;
             opcVarNameList.add(fyfwdOpcVarName);
-        } else if (tv1VarName.startsWith(Constant.WEN_DU_98_PH+Constant.HE_GE+"_")){//温度98PH合格要记录(温度98PH)
+        } else if (tv1VarName.startsWith(Constant.WEN_DU_98_PH+Constant.HE_GE+Constant.XHX)){//温度98PH合格要记录(温度98PH)
             Integer tvFId = triggerVar1.getFId();
             String tvRecType = triggerVar1.getRecType();
             String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
             //温度98PH
             String wd98phPvVarNameQz=Constant.WEN_DU_98_PH;
-            String wd98phOpcVarName=wd98phPvVarNameQz+"_"+opcFName+Constant.XHX+Constant.AV;
+            String wd98phOpcVarName=wd98phPvVarNameQz+Constant.XHX+opcFName+Constant.XHX+Constant.AV;
             opcVarNameList.add(wd98phOpcVarName);
-        } else if (tv1VarName.startsWith(Constant.CE_LIANG_BING_SHUI_WU_DIAN_TI_XING+"_")){//测量冰水雾点提醒要记录(测量冰水雾点输入值、测20雾点输入值、停热降温水数输入值)
+        } else if (tv1VarName.startsWith(Constant.CE_LIANG_BING_SHUI_WU_DIAN_TI_XING+Constant.XHX)){//测量冰水雾点提醒要记录(测量冰水雾点输入值、测20雾点输入值、停热降温水数输入值)
             Integer tvFId = triggerVar1.getFId();
             String tvRecType = triggerVar1.getRecType();
             String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
             //测量冰水雾点输入值
             String clbswdsrzPvVarNameQz=Constant.CE_LIANG_BSWD_SRZ;
-            String clbswdsrzOpcVarName=clbswdsrzPvVarNameQz+"_"+opcFName+Constant.XHX+Constant.AV;
+            String clbswdsrzOpcVarName=clbswdsrzPvVarNameQz+Constant.XHX+opcFName+Constant.XHX+Constant.AV;
             //测20雾点输入值
             String c20wdsrzPvVarNameQz=Constant.CE_20_WU_DIAN_SRZ;
-            String c20wdsrzOpcVarName=c20wdsrzPvVarNameQz+"_"+opcFName+Constant.XHX+Constant.AV;
+            String c20wdsrzOpcVarName=c20wdsrzPvVarNameQz+Constant.XHX+opcFName+Constant.XHX+Constant.AV;
             opcVarNameList.add(clbswdsrzOpcVarName);
             opcVarNameList.add(c20wdsrzOpcVarName);
-        } else if (tv1VarName.startsWith(Constant.CE_SHUI_SHU_TI_XING+"_")){//测水数提醒
+        } else if (tv1VarName.startsWith(Constant.CE_SHUI_SHU_TI_XING+Constant.XHX)){//测水数提醒
             Integer tvFId = triggerVar1.getFId();
             String tvRecType = triggerVar1.getRecType();
             String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
             //停热降温水数输入值
             String trjwsssrzPvVarNameQz=Constant.TING_RE_JIANG_WEN_SHUI_SHU_SRZ;
-            String trjwsssrzOpcVarName=trjwsssrzPvVarNameQz+"_"+opcFName+Constant.XHX+Constant.AV;
+            String trjwsssrzOpcVarName=trjwsssrzPvVarNameQz+Constant.XHX+opcFName+Constant.XHX+Constant.AV;
             opcVarNameList.add(trjwsssrzOpcVarName);
-        } else if(tv1VarName.startsWith(Constant.JU_HE_ZHONG_DIAN+"_")){//聚合终点要记录(反应釜温度)
+        } else if(tv1VarName.startsWith(Constant.JU_HE_ZHONG_DIAN+Constant.XHX)){//聚合终点要记录(反应釜温度)
             Integer tvFId = triggerVar1.getFId();
             String tvRecType = triggerVar1.getRecType();
             String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
@@ -313,7 +313,7 @@ public class OpcUtil {
             String fyfwdPvVarNameQz=Constant.FAN_YING_FU+tvFId+Constant.WEN_DU;
             String fyfwdOpcVarName=fyfwdPvVarNameQz+Constant.XHX+Constant.AV;
             opcVarNameList.add(fyfwdOpcVarName);
-        } else if(tv1VarName.startsWith(Constant.JIANG_WEN_WAN_CHENG+"_")){//降温完成要记录(反应釜温度)
+        } else if(tv1VarName.startsWith(Constant.JIANG_WEN_WAN_CHENG+Constant.XHX)){//降温完成要记录(反应釜温度)
             Integer tvFId = triggerVar1.getFId();
             String tvRecType = triggerVar1.getRecType();
             String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
@@ -334,7 +334,7 @@ public class OpcUtil {
         
     	SynchReadItemExample test = new SynchReadItemExample();
     	JOpc.coInitialize();   //初始化JOpc        JOpc继承父类JCustomOpc
-		JOpc jopc = new JOpc("127.0.0.1", "UWinTech.UWinOPCS.1", "MM-202303181234");
+		JOpc jopc = new JOpc(Constant.OPC_HOST, Constant.OPC_SERVER_PROG_ID, Constant.OPC_SERVER_CLIENT_HANDLE);
 
         jopc.addGroup(group);   //添加组
 
@@ -387,11 +387,11 @@ public class OpcUtil {
 	        	String sysTime = DateUtil.getTimeStrByFormatStr(new Date(),DateUtil.YEAR_TO_SECOND);//系统时间
 	        	
 	        	String varName=null;
-	        	if(tv1VarName.startsWith(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+"_")) {//甲醛放料完成
-	        		if(itemName.startsWith(Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG+"_")) {
+	        	if(tv1VarName.startsWith(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.XHX)) {//甲醛放料完成
+	        		if(itemName.startsWith(Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG+Constant.XHX)) {
 	        			varName=Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG;
 	        		}
-	        		else if(itemName.startsWith(Constant.JIA_SHUI_SHI_JI_ZHONG_LIANG+"_")){
+	        		else if(itemName.startsWith(Constant.JIA_SHUI_SHI_JI_ZHONG_LIANG+Constant.XHX)){
 	                    varName=Constant.JIA_SHUI_SHI_JI_ZHONG_LIANG;
 	                }
 	        		else if(itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)) {
@@ -401,43 +401,43 @@ public class OpcUtil {
 	                    varName=Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
 	                }
 	        	}
-	        	else if (tv1VarName.startsWith(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+"_")){//甲醛备料开始
+	        	else if (tv1VarName.startsWith(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+Constant.XHX)){//甲醛备料开始
 	                if(itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)){
 	                    varName=Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
 	                }
 	            }
-	        	else if(tv1VarName.startsWith(Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+"_")){//加碱PH值正常
-	                if(itemName.startsWith(Constant.JIA_JIAN_QIAN_PH_SHU_RU_ZHI+"_")) {
+	        	else if(tv1VarName.startsWith(Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+Constant.XHX)){//加碱PH值正常
+	                if(itemName.startsWith(Constant.JIA_JIAN_QIAN_PH_SHU_RU_ZHI+Constant.XHX)) {
 	                    varName=Constant.JIA_JIAN_QIAN_PH_SHU_RU_ZHI;
 	                }
-	                else if(itemName.startsWith(Constant.JIA_JIAN_LIANG_TI_SHI+"_")){
+	                else if(itemName.startsWith(Constant.JIA_JIAN_LIANG_TI_SHI+Constant.XHX)){
 	                    varName=Constant.JIA_JIAN_LIANG_TI_SHI;
 	                }
-	                else if(itemName.startsWith(Constant.JIA_JIAN_HOU_PH_SHU_RU_ZHI+"_")){
+	                else if(itemName.startsWith(Constant.JIA_JIAN_HOU_PH_SHU_RU_ZHI+Constant.XHX)){
 	                    varName=Constant.JIA_JIAN_HOU_PH_SHU_RU_ZHI;
 	                }
 	                else if(itemName.startsWith(Constant.ZHU_JI_JI_LIANG_GUAN)){
 	                    varName=Constant.ZHU_JI_JI_LIANG_GUAN+tv1FId+Constant.CHENG_ZHONG;
 	                }
 	            }
-	        	else if(tv1VarName.startsWith(Constant.YUN_XU_YI_CI_JIA_ZHU_JI+"_")){//允许一次加助剂
+	        	else if(tv1VarName.startsWith(Constant.YUN_XU_YI_CI_JIA_ZHU_JI+Constant.XHX)){//允许一次加助剂
 	        	    if (itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)){
 	                    varName=Constant.YUN_XU_YI_CI_JIA_ZHU_JI+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
 	                }
 	            }
-	        	else if(tv1VarName.startsWith(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+"_")){//所有助剂加料完成1
+	        	else if(tv1VarName.startsWith(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.XHX)){//所有助剂加料完成1
 	                if (itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)){
 	                    varName=Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
 	                }else if (itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)){
 	                    varName=Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
 	                }
 	            }
-	        	else if(tv1VarName.startsWith(Constant.JIA_FEN_LIAO_TI_XING+"_")&&tv2VarName==null){//加粉料提醒
-	                if (itemName.startsWith(Constant.FEN_LIAO_ZHONG_LIANG_SHE_DING+"_")){
+	        	else if(tv1VarName.startsWith(Constant.JIA_FEN_LIAO_TI_XING+Constant.XHX)&&tv2VarName==null){//加粉料提醒
+	                if (itemName.startsWith(Constant.FEN_LIAO_ZHONG_LIANG_SHE_DING+Constant.XHX)){
 	                    varName=Constant.FEN_LIAO_ZHONG_LIANG_SHE_DING;
 	                }
 	            }
-	        	else if(tv1VarName.startsWith(Constant.JIA_FEN_LIAO_TI_XING+"_")&&tv2VarName!=null) {
+	        	else if(tv1VarName.startsWith(Constant.JIA_FEN_LIAO_TI_XING+Constant.XHX)&&tv2VarName!=null) {
 	        		if(tv2VarName.contains(Constant.NIAO_SU_FANG_LIAO_FA)) {
 	        			if (itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)){
 		        			if(tv2VarValue==TriggerVar.UP) {
@@ -454,67 +454,67 @@ public class OpcUtil {
 	        			}
 	        		}
 	        	}
-	        	else if(tv1VarName.startsWith(Constant.JIA_FEN_LIAO_PH_HE_GE+"_")){//加粉料PH合格
-	                if(itemName.startsWith(Constant.JIA_FEN_LIAO_PH_SHU_RU_ZHI+"_")){
+	        	else if(tv1VarName.startsWith(Constant.JIA_FEN_LIAO_PH_HE_GE+Constant.XHX)){//加粉料PH合格
+	                if(itemName.startsWith(Constant.JIA_FEN_LIAO_PH_SHU_RU_ZHI+Constant.XHX)){
 	                    varName=Constant.JIA_FEN_LIAO_PH_SHU_RU_ZHI;
 	                }
 	            }
-	        	else if(tv1VarName.startsWith(Constant.SHENG_WEN_KAI_SHI+"_")){//升温开始
+	        	else if(tv1VarName.startsWith(Constant.SHENG_WEN_KAI_SHI+Constant.XHX)){//升温开始
 	                if (itemName.startsWith(Constant.ZHENG_QI_YA_LI+Constant.MPA)){
 	                    varName=Constant.ZHENG_QI_YA_LI+Constant.MPA;
 	                }
 	            }
-	        	else if(tv1VarName.startsWith(Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING+"_")){//温度85与二次投料提醒
+	        	else if(tv1VarName.startsWith(Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING+Constant.XHX)){//温度85与二次投料提醒
 	        	    if(itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)){
 	                    varName=Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
 	                }
 	            }
-	        	else if(tv1VarName.startsWith(Constant.ER_CI_ZHU_JI_HOU_CE_PH_TI_XING+"_")){//二次助剂后测PH提醒
-	        	    if (itemName.startsWith(Constant.ER_CI_TOU_LIAO_PH_SHU_RU_ZHI+"_")){
+	        	else if(tv1VarName.startsWith(Constant.ER_CI_ZHU_JI_HOU_CE_PH_TI_XING+Constant.XHX)){//二次助剂后测PH提醒
+	        	    if (itemName.startsWith(Constant.ER_CI_TOU_LIAO_PH_SHU_RU_ZHI+Constant.XHX)){
 	                    varName=Constant.ER_CI_TOU_LIAO_PH_SHU_RU_ZHI;
 	                }
 	            }
-	        	else if(tv1VarName.startsWith(Constant.YUN_XU_ER_CI_JIA_ZHU_JI+"_")){//允许二次加助剂
+	        	else if(tv1VarName.startsWith(Constant.YUN_XU_ER_CI_JIA_ZHU_JI+Constant.XHX)){//允许二次加助剂
 	        	    if(itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)){
 	                    varName=Constant.YUN_XU_ER_CI_JIA_ZHU_JI+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
 	                }
 	            }
-	        	else if(tv1VarName.startsWith(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+"_")){//'所有助剂加料完成2
+	        	else if(tv1VarName.startsWith(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+Constant.XHX)){//'所有助剂加料完成2
 	                if (itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)){
 	                    varName=Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
 	                }else if (itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)){
 	                    varName=Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
 	                }
 	            }
-	        	else if(tv1VarName.startsWith(Constant.SHENG_WEN_WAN_CHENG+"_")){//升温完成
+	        	else if(tv1VarName.startsWith(Constant.SHENG_WEN_WAN_CHENG+Constant.XHX)){//升温完成
 	        	    if (itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)){
 	                    varName=Constant.SHENG_WEN_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
 	                }
 	            }
-	        	else if(tv1VarName.startsWith(Constant.WEN_DU_98_PH+Constant.HE_GE+"_")){//温度98PH合格
-	                if (itemName.startsWith(Constant.WEN_DU_98_PH+"_")){
+	        	else if(tv1VarName.startsWith(Constant.WEN_DU_98_PH+Constant.HE_GE+Constant.XHX)){//温度98PH合格
+	                if (itemName.startsWith(Constant.WEN_DU_98_PH+Constant.XHX)){
 	                    varName=Constant.WEN_DU_98_PH;
 	                }
 	            }
-	        	else if(tv1VarName.startsWith(Constant.CE_LIANG_BING_SHUI_WU_DIAN_TI_XING+"_")){//测量冰水雾点提醒
-	                if (itemName.startsWith(Constant.CE_LIANG_BSWD_SRZ+"_")){
+	        	else if(tv1VarName.startsWith(Constant.CE_LIANG_BING_SHUI_WU_DIAN_TI_XING+Constant.XHX)){//测量冰水雾点提醒
+	                if (itemName.startsWith(Constant.CE_LIANG_BSWD_SRZ+Constant.XHX)){
 	                    varName=Constant.CE_LIANG_BSWD_SRZ;
 	                }
-	                else if(itemName.startsWith(Constant.CE_20_WU_DIAN_SRZ+"_")){
+	                else if(itemName.startsWith(Constant.CE_20_WU_DIAN_SRZ+Constant.XHX)){
 	                    varName=Constant.CE_20_WU_DIAN_SRZ;
 	                }
 	            }
-	            else if(tv1VarName.startsWith(Constant.CE_SHUI_SHU_TI_XING+"_")){//测水数提醒
-	                if(itemName.startsWith(Constant.TING_RE_JIANG_WEN_SHUI_SHU_SRZ+"_")){
+	            else if(tv1VarName.startsWith(Constant.CE_SHUI_SHU_TI_XING+Constant.XHX)){//测水数提醒
+	                if(itemName.startsWith(Constant.TING_RE_JIANG_WEN_SHUI_SHU_SRZ+Constant.XHX)){
 	                    varName=Constant.TING_RE_JIANG_WEN_SHUI_SHU_SRZ;
 	                }
 	            }
-	        	else if(tv1VarName.startsWith(Constant.JU_HE_ZHONG_DIAN+"_")){//聚合终点
+	        	else if(tv1VarName.startsWith(Constant.JU_HE_ZHONG_DIAN+Constant.XHX)){//聚合终点
 	        	    if (itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)){
 	                    varName=Constant.JU_HE_ZHONG_DIAN+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
 	                }
 	            }
-	            else if(tv1VarName.startsWith(Constant.JIANG_WEN_WAN_CHENG+"_")){//降温完成
+	            else if(tv1VarName.startsWith(Constant.JIANG_WEN_WAN_CHENG+Constant.XHX)){//降温完成
 	                if (itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)){
 	                    varName=Constant.JIANG_WEN_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
 	                }
@@ -582,22 +582,22 @@ public class OpcUtil {
 
         //以下是报表里所需的系统时间，opc上没有这些变量，就得根据服务器的系统时间获取，再存入集合里
         String itemName = null;
-        if(tv1VarName.startsWith(Constant.BEI_LIAO_KAI_SHI+"_")) {//备料开始
+        if(tv1VarName.startsWith(Constant.BEI_LIAO_KAI_SHI+Constant.XHX)) {//备料开始
         	itemName = Constant.BEI_LIAO_KAI_SHI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
         }
-        else if(tv1VarName.startsWith(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+"_")) {//甲醛备料开始
+        else if(tv1VarName.startsWith(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+Constant.XHX)) {//甲醛备料开始
         	itemName = Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
         }
-        else if(tv1VarName.startsWith(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+"_")) { //甲醛放料完成
+        else if(tv1VarName.startsWith(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.XHX)) { //甲醛放料完成
         	itemName = Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
         }
-        else if(tv1VarName.startsWith(Constant.YUN_XU_YI_CI_JIA_ZHU_JI+"_")) {//允许一次加助剂
+        else if(tv1VarName.startsWith(Constant.YUN_XU_YI_CI_JIA_ZHU_JI+Constant.XHX)) {//允许一次加助剂
         	itemName = Constant.YUN_XU_YI_CI_JIA_ZHU_JI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
         }
-        else if (tv1VarName.startsWith(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+"_")){//所有助剂加料完成1
+        else if (tv1VarName.startsWith(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.XHX)){//所有助剂加料完成1
         	itemName = Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
         }
-        else if(tv1VarName.startsWith(Constant.JIA_FEN_LIAO_TI_XING+"_")&&tv2VarName!=null) {
+        else if(tv1VarName.startsWith(Constant.JIA_FEN_LIAO_TI_XING+Constant.XHX)&&tv2VarName!=null) {
         	if(tv2VarName.contains(Constant.NIAO_SU_FANG_LIAO_FA)) {
     			if(tv2VarValue==TriggerVar.UP) {
     				itemName=Constant.FU+Constant.NIAO_SU_FANG_LIAO_FA+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
@@ -607,46 +607,46 @@ public class OpcUtil {
     			}
     		}
         }
-        else if(tv1VarName.startsWith(Constant.SHENG_WEN_KAI_SHI+"_")){//升温开始
+        else if(tv1VarName.startsWith(Constant.SHENG_WEN_KAI_SHI+Constant.XHX)){//升温开始
         	itemName = Constant.SHENG_WEN_KAI_SHI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
         }
-        else if (tv1VarName.startsWith(Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING+"_")){//温度85与二次投料提醒
+        else if (tv1VarName.startsWith(Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING+Constant.XHX)){//温度85与二次投料提醒
         	itemName = Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
         }
-        else if (tv1VarName.startsWith(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+"_")){//所有助剂加料完成2
+        else if (tv1VarName.startsWith(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+Constant.XHX)){//所有助剂加料完成2
             itemName = Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
         }
-        else if (tv1VarName.startsWith(Constant.YUN_XU_ER_CI_JIA_ZHU_JI+"_")){//允许二次加助剂
+        else if (tv1VarName.startsWith(Constant.YUN_XU_ER_CI_JIA_ZHU_JI+Constant.XHX)){//允许二次加助剂
             itemName = Constant.YUN_XU_ER_CI_JIA_ZHU_JI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
         }
-        else if (tv1VarName.startsWith(Constant.SHENG_WEN_WAN_CHENG+"_")){//升温完成
+        else if (tv1VarName.startsWith(Constant.SHENG_WEN_WAN_CHENG+Constant.XHX)){//升温完成
             itemName = Constant.SHENG_WEN_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
         }
-        else if (tv1VarName.startsWith(Constant.JU_HE_ZHONG_DIAN+"_")){//聚合终点
+        else if (tv1VarName.startsWith(Constant.JU_HE_ZHONG_DIAN+Constant.XHX)){//聚合终点
             itemName = Constant.JU_HE_ZHONG_DIAN+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
         }
-        else if (tv1VarName.startsWith(Constant.JIANG_WEN_WAN_CHENG+"_")){//降温完成
+        else if (tv1VarName.startsWith(Constant.JIANG_WEN_WAN_CHENG+Constant.XHX)){//降温完成
             itemName = Constant.JIANG_WEN_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
         }
-        else if (tv1VarName.startsWith(Constant.FAN_YING_JIE_SHU+"_")){//反应结束
+        else if (tv1VarName.startsWith(Constant.FAN_YING_JIE_SHU+Constant.XHX)){//反应结束
             itemName = Constant.FAN_YING_JIE_SHU+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
         }
         
         //触发器变量1在满足以上几种情况时，说明需要添加系统时间，就调用下面这个逻辑。若加在上面代码量太多，就简化一下加在下面
-        if(tv1VarName.startsWith(Constant.BEI_LIAO_KAI_SHI+"_")||
-		   tv1VarName.startsWith(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+"_")||
-		   tv1VarName.startsWith(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+"_")||
-		   tv1VarName.startsWith(Constant.YUN_XU_YI_CI_JIA_ZHU_JI+"_")||
-		   tv1VarName.startsWith(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+"_")||
-		   tv1VarName.startsWith(Constant.JIA_FEN_LIAO_TI_XING+"_")&&tv2VarName!=null&&itemName.contains(Constant.SHI_JIAN)||
-		   tv1VarName.startsWith(Constant.SHENG_WEN_KAI_SHI+"_")||
-		   tv1VarName.startsWith(Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING+"_")||
-           tv1VarName.startsWith(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+"_")||
-           tv1VarName.startsWith(Constant.YUN_XU_ER_CI_JIA_ZHU_JI+"_")||
-           tv1VarName.startsWith(Constant.SHENG_WEN_WAN_CHENG+"_")||
-           tv1VarName.startsWith(Constant.JU_HE_ZHONG_DIAN+"_")||
-           tv1VarName.startsWith(Constant.JIANG_WEN_WAN_CHENG+"_")||
-           tv1VarName.startsWith(Constant.FAN_YING_JIE_SHU+"_")
+        if(tv1VarName.startsWith(Constant.BEI_LIAO_KAI_SHI+Constant.XHX)||
+		   tv1VarName.startsWith(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+Constant.XHX)||
+		   tv1VarName.startsWith(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.XHX)||
+		   tv1VarName.startsWith(Constant.YUN_XU_YI_CI_JIA_ZHU_JI+Constant.XHX)||
+		   tv1VarName.startsWith(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.XHX)||
+		   tv1VarName.startsWith(Constant.JIA_FEN_LIAO_TI_XING+Constant.XHX)&&tv2VarName!=null&&itemName.contains(Constant.SHI_JIAN)||
+		   tv1VarName.startsWith(Constant.SHENG_WEN_KAI_SHI+Constant.XHX)||
+		   tv1VarName.startsWith(Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING+Constant.XHX)||
+           tv1VarName.startsWith(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+Constant.XHX)||
+           tv1VarName.startsWith(Constant.YUN_XU_ER_CI_JIA_ZHU_JI+Constant.XHX)||
+           tv1VarName.startsWith(Constant.SHENG_WEN_WAN_CHENG+Constant.XHX)||
+           tv1VarName.startsWith(Constant.JU_HE_ZHONG_DIAN+Constant.XHX)||
+           tv1VarName.startsWith(Constant.JIANG_WEN_WAN_CHENG+Constant.XHX)||
+           tv1VarName.startsWith(Constant.FAN_YING_JIE_SHU+Constant.XHX)
         ) {
         	String sysTime = DateUtil.getTimeStrByFormatStr(new Date(),DateUtil.YEAR_TO_SECOND);//系统时间
         	
@@ -756,12 +756,12 @@ public class OpcUtil {
     	opcTVNameList.add(Constant.BEI_LIAO_KAI_SHI+"_F4_AV");
     	opcTVNameList.add(Constant.BEI_LIAO_KAI_SHI+"_F5_AV");
         */
-        opcTVNameList.add(Constant.CE_SHUI_SHU_TI_XING+"_F2"+Constant.XHX+Constant.AV);//测水数提醒
+        opcTVNameList.add(Constant.CE_SHUI_SHU_TI_XING+Constant.XHX+"F2"+Constant.XHX+Constant.AV);//测水数提醒
         
-        opcTVNameList.add(Constant.JU_HE_ZHONG_DIAN+"_F1"+Constant.XHX+Constant.AV);//聚合终点
-        opcTVNameList.add(Constant.JU_HE_ZHONG_DIAN+"_F2"+Constant.XHX+Constant.AV);//聚合终点
-        opcTVNameList.add(Constant.JU_HE_ZHONG_DIAN+"_F3"+Constant.XHX+Constant.AV);//聚合终点
-        opcTVNameList.add(Constant.JU_HE_ZHONG_DIAN+"_F4"+Constant.XHX+Constant.AV);//聚合终点
+        opcTVNameList.add(Constant.JU_HE_ZHONG_DIAN+Constant.XHX+"F1"+Constant.XHX+Constant.AV);//聚合终点
+        opcTVNameList.add(Constant.JU_HE_ZHONG_DIAN+Constant.XHX+"F2"+Constant.XHX+Constant.AV);//聚合终点
+        opcTVNameList.add(Constant.JU_HE_ZHONG_DIAN+Constant.XHX+"F3"+Constant.XHX+Constant.AV);//聚合终点
+        opcTVNameList.add(Constant.JU_HE_ZHONG_DIAN+Constant.XHX+"F4"+Constant.XHX+Constant.AV);//聚合终点
 
     	List<String> opcTVNamePreList=new ArrayList<String>();//前缀集合
     	opcTVNamePreList.add(Constant.BEI_LIAO_KAI_SHI);//备料开始前缀
@@ -794,7 +794,7 @@ public class OpcUtil {
     			if(Constant.FAN_YING_JIE_SHU.equals(opcTVNamePre))
     				opcTVName = opcTVNamePre+fMName+Constant.XHX+Constant.AV;
     			else
-    				opcTVName = opcTVNamePre+"_"+fMName+Constant.XHX+Constant.AV;
+    				opcTVName = opcTVNamePre+Constant.XHX+fMName+Constant.XHX+Constant.AV;
     			
     			System.out.println("opcTVName==="+opcTVName);
     			opcTVNameList.add(opcTVName);
