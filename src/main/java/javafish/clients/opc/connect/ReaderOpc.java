@@ -3,7 +3,7 @@ package javafish.clients.opc.connect;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.uWinOPCTjyx.util.APIUtil;
+import com.zjbbTjyx.util.APIUtil;
 
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;

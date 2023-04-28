@@ -5,7 +5,7 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.Properties;
 
-import com.uWinOPCTjyx.util.*;
+import com.zjbbTjyx.util.*;
 
 /**
  * Properties loader
@@ -88,7 +88,7 @@ public class PropertyLoader {
     	//clazz.getResource("/javafish/clients/opc/JCustomOpc.properties").getPath();
     	System.out.println(filePath);
     	
-    	//File file = new File("D:/eclipse-workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/UWinOPCTjyx/WEB-INF/classes/javafish/clients/opc/JCustomOpc.properties");
+    	//File file = new File("D:/eclipse-workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/ZjbbTjyx/WEB-INF/classes/javafish/clients/opc/JCustomOpc.properties");
     	
     	in = new FileInputStream(new File(filePath));
     	//in = cl.getResourceAsStream(name);

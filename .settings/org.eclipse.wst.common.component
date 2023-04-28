@@ -2,7 +2,7 @@
                 
     
     
-    <wb-module deploy-name="UWinOPCTjyx">
+    <wb-module deploy-name="ZjbbTjyx">
                                 
         
         
@@ -22,11 +22,8 @@
                                 
         
         
-        <property name="context-root" value="UWinOPCTjyx"/>
-                                
-        
-        
-        <property name="java-output-path" value="/UWinOPCTjyx/target/classes"/>
+        <property name="java-output-path" value="/ZjbbTjyx/target/classes"/>
+        <property name="context-root" value="ZjbbTjyx"/>
                             
     
     
