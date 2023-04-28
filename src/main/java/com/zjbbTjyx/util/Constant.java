@@ -1,7 +1,35 @@
 package com.zjbbTjyx.util;
 
 public class Constant {
+	
+	/**
+	 * 运行opc服务的服务器ip
+	 */
+	public static final String OPC_HOST="127.0.0.1";
+	/**
+	 * opc服务名
+	 */
+	public static final String OPC_SERVER_PROG_ID="UWinTech.UWinOPCS.1";
+	
+	/**
+	 * opc服务器计算机名
+	 */
+	public static final String OPC_SERVER_CLIENT_HANDLE="MM-202303181234";
+	
+	/**
+	 * opc变量组名
+	 */
+	public static final String OPC_GROUP_NAME="Group1";
 
+	/**
+	 * 下划线
+	 */
+	public static final String XHX="_";
+	/**
+	 * AV后缀
+	 */
+	public static final String AV="AV";
+	
 	/**
 	 * 反应釜初始值
 	 */

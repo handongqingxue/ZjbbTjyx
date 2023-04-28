@@ -818,22 +818,22 @@ public class OpcUtil {
         try {
 	    	SynchReadItemExample test = new SynchReadItemExample();
 	    	JOpc.coInitialize();   //初始化JOpc        JOpc继承父类JCustomOpc
-			JOpc jopc = new JOpc("127.0.0.1", "UWinTech.UWinOPCS.1", "MM-202303181234");
+			JOpc jopc = new JOpc(Constant.OPC_HOST, Constant.OPC_SERVER_PROG_ID, Constant.OPC_SERVER_CLIENT_HANDLE);
 	    	
-	    	String groupName="Group1";
-	    	System.out.println("groupName==="+groupName);
-	        OpcGroup group = new OpcGroup(groupName, true, 500, 0.0f);
+	        OpcGroup group = new OpcGroup(Constant.OPC_GROUP_NAME, true, 500, 0.0f);
 	    	for (String opcVarName : opcVarNameList) {
 	        	group.addItem(new OpcItem( opcVarName, true, ""));
 			}
 	
 	        jopc.addGroup(group);   //添加组
 	        
+	        /*
 	        OpcGroup[] groups = jopc.getGroupsAsArray();
 	        System.out.println("groups.length==="+groups.length);
 	        for (int i = 0; i < groups.length; i++) {
 	            System.out.println("getGroupName"+i+"==="+groups[i].getGroupName());
 			}
+			*/
 	        
 	        OpcGroup responseGroup = null;
 	
