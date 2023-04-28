@@ -2,14 +2,14 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.uWinOPCTjyx.dao.ProcessVarMapper">
-    <select id="getUnDealListByFIdList" resultType="com.uWinOPCTjyx.entity.ProcessVar">
-		select * from ProcessVar where DealBz=${@com.uWinOPCTjyx.entity.ProcessVar@WCL}
+<mapper namespace="com.zjbbTjyx.dao.ProcessVarMapper">
+    <select id="getUnDealListByFIdList" resultType="com.zjbbTjyx.entity.ProcessVar">
+		select * from ProcessVar where DealBz=${@com.zjbbTjyx.entity.ProcessVar@WCL}
 		<foreach collection="fIdList" item="fId" open=" and cast(fId as char) in (" separator="," close=")">
 		#{fId}
 		</foreach>
 	</select>
-	<insert id="add" parameterType="com.uWinOPCTjyx.entity.ProcessVar">
+	<insert id="add" parameterType="com.zjbbTjyx.entity.ProcessVar">
 		insert into ProcessVar
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="VarName!=null">
@@ -79,18 +79,18 @@
 	</update>
 	<select id="getPreValueByPreName" resultType="java.lang.String">
 		select 
-		<if test="preName.contains(@com.uWinOPCTjyx.util.Constant@CHENG_ZHONG)">
+		<if test="preName.contains(@com.zjbbTjyx.util.Constant@CHENG_ZHONG)">
 		VarValue 
 		</if>
-		<if test="preName.contains(@com.uWinOPCTjyx.util.Constant@SHI_JIAN)">
+		<if test="preName.contains(@com.zjbbTjyx.util.Constant@SHI_JIAN)">
 		UpdateTime 
 		</if>
-		from ProcessVar where VarName=#{preName} and DealBz=${@com.uWinOPCTjyx.entity.ProcessVar@WCL}
+		from ProcessVar where VarName=#{preName} and DealBz=${@com.zjbbTjyx.entity.ProcessVar@WCL}
 	</select>
 	<select id="getDealedCount" resultType="java.lang.Integer">
-		select count(*) from ProcessVar WHERE DealBz=${@com.uWinOPCTjyx.entity.ProcessVar@YCL} and FId=#{fId}
+		select count(*) from ProcessVar WHERE DealBz=${@com.zjbbTjyx.entity.ProcessVar@YCL} and FId=#{fId}
 	</select>
 	<delete id="deleteDealed">
-		DELETE FROM ProcessVar WHERE DealBz=${@com.uWinOPCTjyx.entity.ProcessVar@YCL} and FId=#{fId}
+		DELETE FROM ProcessVar WHERE DealBz=${@com.zjbbTjyx.entity.ProcessVar@YCL} and FId=#{fId}
 	</delete>
 </mapper>

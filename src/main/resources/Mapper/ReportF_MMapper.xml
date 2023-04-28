@@ -2,8 +2,8 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.uWinOPCTjyx.dao.ReportF_MMapper">
-	<insert id="add" parameterType="com.uWinOPCTjyx.entity.ReportF_M">
+<mapper namespace="com.zjbbTjyx.dao.ReportF_MMapper">
+	<insert id="add" parameterType="com.zjbbTjyx.entity.ReportF_M">
 		insert into ReportF_M
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="RowNumber!=null">
@@ -44,7 +44,7 @@
 		</trim>
 	</insert>
 
-	<select id="getReportFMList" resultType="com.uWinOPCTjyx.entity.ReportF_M">
+	<select id="getReportFMList" resultType="com.zjbbTjyx.entity.ReportF_M">
 		select * from ReportF_M where LEFT(BatchID,2)=#{type}
 		<if test="startTime!=''&amp;endTime!=null">
 
@@ -56,7 +56,7 @@
 		order by createTime
 	</select>
 
-	<select id="getReportFMByBatchID" resultType="com.uWinOPCTjyx.entity.ReportF_M">
+	<select id="getReportFMByBatchID" resultType="com.zjbbTjyx.entity.ReportF_M">
 		select * from ReportF_M where BatchID=#{batchId}
 	</select>
 </mapper>

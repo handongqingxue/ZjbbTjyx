@@ -2,13 +2,13 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.uWinOPCTjyx.dao.UserListMapper">
+<mapper namespace="com.zjbbTjyx.dao.UserListMapper">
 
-    <select id="getUser" resultType="com.uWinOPCTjyx.entity.UserList">
+    <select id="getUser" resultType="com.zjbbTjyx.entity.UserList">
         select * from UserList where UserName=#{userName} and Psd=#{psd}
     </select>
 
-    <insert id="addUser" parameterType="com.uWinOPCTjyx.entity.UserList">
+    <insert id="addUser" parameterType="com.zjbbTjyx.entity.UserList">
         INSERT into UserList (UserName,Psd,CTime,Type) VALUES (#{userName},#{psd},getDate(),1)
     </insert>
 
