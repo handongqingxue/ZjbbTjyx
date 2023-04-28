@@ -809,6 +809,29 @@ public class OpcUtil {
     	
     	return opcTVNameList;
 	}
+
+	public static List<String> getOpcPVNameList() {
+		// TODO Auto-generated method stub
+    	List<String> opcPVNameList=new ArrayList<String>();
+    	
+		for (int fId : Constant.F_ID_ARR) {
+			opcPVNameList.add(Constant.FAN_YING_FU+fId+Constant.WEN_DU+Constant.XHX+Constant.AV);
+			opcPVNameList.add(Constant.FU+fId+Constant.CHENG_ZHONG+Constant.XHX+Constant.AV);
+		}
+    	
+    	List<String> opcPVNamePreList=new ArrayList<String>();//前缀集合
+    	opcPVNamePreList.add(Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG);//甲醛实际进料重量前缀
+    	opcPVNamePreList.add(Constant.JIA_SHUI_SHI_JI_ZHONG_LIANG);//加水实际重量
+    	opcPVNamePreList.add(Constant.JIA_JIAN_QIAN_PH_SHU_RU_ZHI);
+    	for (String opcPVNamePre : opcPVNamePreList) {//循环拼接上反应釜号作为完整的变量
+    		for (String fMName : Constant.BSF_F_M_ARR) {
+    			String opcPVName = opcPVNamePre+Constant.XHX+fMName+Constant.XHX+Constant.AV;
+    			opcPVNameList.add(opcPVName);
+			}
+    	}
+    	
+		return opcPVNameList;
+	}
     
     /**
      * 从opc服务器端同步数据库的触发器变量
@@ -860,6 +883,54 @@ public class OpcUtil {
 	            System.out.println("getItemName==="+opcItem.getItemName()+",getValue==="+opcItem.getValue().toString());
 			}
 			APIUtil.addVar("addTriggerVarFromOpc",opcItemList);
+        } catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * 读取opc服务器端过程变量
+	 * @param opcPVNameList
+	 */
+	public static void readPVByOpcVNList(List<String> opcVarNameList) {
+		// TODO Auto-generated method stub
+        try {
+			SynchReadItemExample test = new SynchReadItemExample();
+	    	JOpc.coInitialize();   //初始化JOpc        JOpc继承父类JCustomOpc
+			JOpc jopc = new JOpc(Constant.OPC_HOST, Constant.OPC_SERVER_PROG_ID, Constant.OPC_SERVER_CLIENT_HANDLE);
+	    	
+	        OpcGroup group = new OpcGroup(Constant.OPC_GROUP_NAME, true, 500, 0.0f);
+	    	for (String opcVarName : opcVarNameList) {
+	        	group.addItem(new OpcItem( opcVarName, true, ""));
+			}
+	
+	        jopc.addGroup(group);   //添加组
+	
+	        OpcGroup responseGroup = null;
+	
+	        try {
+	            jopc.connect();   //连接
+	            jopc.registerGroups();  //注册组
+	        } catch (ConnectivityException e1) {
+	            System.out.println("ConnectivityException="+e1.getMessage());
+	            //logger.error(e1.getMessage());
+	        } catch (UnableAddGroupException e) {
+	            System.out.println("UnableAddGroupException="+e.getMessage());
+	            //logger.error(e.getMessage());
+	        } catch (UnableAddItemException e) {
+	            System.out.println("UnableAddItemException="+e.getMessage());
+	            //logger.error(e.getMessage());
+	        }
+	        synchronized(test) {
+	            test.wait(50);
+	        }
+	
+			responseGroup = jopc.synchReadGroup(group);
+	        ArrayList<OpcItem> opcItemList = responseGroup.getItems();
+	        for (OpcItem opcItem : opcItemList) {
+	            System.out.println("getItemName==="+opcItem.getItemName()+",getValue==="+opcItem.getValue().toString());
+			}
         } catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

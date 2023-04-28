@@ -25,11 +25,20 @@
 <script>
 var path='<%=basePath%>';
 $(function(){
-	syncTriggerVar();
+	//syncTriggerVar();
+	readOpcProVarList();
 });
 
 function syncTriggerVar(){
 	$.post(path+"opc/syncTriggerVar",
+		function(){
+		
+		}
+	,"json");
+}
+
+function readOpcProVarList(){
+	$.post(path+"opc/readOpcProVarList",
 		function(){
 		
 		}

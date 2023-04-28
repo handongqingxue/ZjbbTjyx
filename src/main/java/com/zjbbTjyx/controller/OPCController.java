@@ -88,6 +88,18 @@ public class OPCController {
 		
 		return json;
 	}
+
+	@RequestMapping(value = "/readOpcProVarList", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> readOpcProVarList() {
+
+		Map<String,Object> json=new HashMap<String, Object>();
+		
+		List<String> opcPVNameList=OpcUtil.getOpcPVNameList();
+		OpcUtil.readPVByOpcVNList(opcPVNameList);
+		
+		return json;
+	}
 	
 	@RequestMapping(value = "/initFMap", method = RequestMethod.POST)
 	@ResponseBody
