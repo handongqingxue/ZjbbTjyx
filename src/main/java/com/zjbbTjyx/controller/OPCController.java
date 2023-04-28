@@ -1237,8 +1237,6 @@ public class OPCController {
 		List<TriggerVar> upJwwcTVList = getUpDownVarValueListFromList(jwwcTVList, TriggerVar.UP);//获取上升的降温完成变量
 		for (TriggerVar upJwwcTV : upJwwcTVList) {
 			Integer upFId = upJwwcTV.getFId();
-			String upRecType = upJwwcTV.getRecType();
-			String upVarName = upJwwcTV.getVarName();//上次变量名和本次变量名其实是一致的
 			switch (upFId) {
 				case Constant.F1_ID:
 					Map<String,Object> paramF1Map=new HashMap<String,Object>();
@@ -1248,11 +1246,6 @@ public class OPCController {
 					paramF1Map.put("preValueFUMap",preValueF1UMap);
 					paramF1Map.put("jwwcFIdList",jwwcFIdList);
 					addProVarByParamMap(paramF1Map);
-					
-					
-					
-					
-					
 					break;
 			}
 		}
