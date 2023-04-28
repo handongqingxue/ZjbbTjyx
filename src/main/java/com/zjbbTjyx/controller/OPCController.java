@@ -636,44 +636,29 @@ public class OPCController {
 		
 		
 		//测水数提醒
-		List<TriggerVar> csstxTVList = (List<TriggerVar>)triggerVarMap.get(Constant.CE_SHUI_SHU_TI_XING);//获取测水数提醒变量,不管是否是上升沿
+		String csstxTVVarNamePre=Constant.CE_SHUI_SHU_TI_XING;
+		List<TriggerVar> csstxTVList = (List<TriggerVar>)triggerVarMap.get(csstxTVVarNamePre);//获取测水数提醒变量,不管是否是上升沿
 		List<TriggerVar> downCsstxTVList = getUpDownVarValueListFromList(csstxTVList, TriggerVar.DOWN);//获取下降的测水数提醒变量
 		for (TriggerVar downCsstxTV : downCsstxTVList) {
 			Integer downFId = downCsstxTV.getFId();//获取反应釜号
-			String downRecType = downCsstxTV.getRecType();//获取配方类型
-			String downVarName = downCsstxTV.getVarName();//上次变量名和本次变量名其实是一致的
 			switch (downFId) {//匹配反应釜号
 				case Constant.F1_ID:
-					if(TriggerVar.M.equals(downRecType)) {
-						Float preValue = Float.valueOf(preValueF1MMap.get(downVarName).toString());
-						if(preValue==TriggerVar.UP) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-							List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
-							opcTVList.add(downCsstxTV);
-							Map<String, Object> csstxMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据测水数提醒变量从opc端查找对应的过程变量
-							List<ProcessVar> csstxMResPVList = (List<ProcessVar>)csstxMResMap.get("proVarList");
-							int i = processVarService.addFromList(csstxMResPVList);//调用添加过程接口
-							System.out.println("添加"+i);
-						}
-					}
-					else if(TriggerVar.U.equals(downRecType)) {
-						Float preValue = Float.valueOf(preValueF1UMap.get(downVarName).toString());
-						if(preValue==TriggerVar.UP) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-							List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
-							opcTVList.add(downCsstxTV);
-							Map<String, Object> csstxMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据测水数提醒变量从opc端查找对应的过程变量
-							List<ProcessVar> csstxMResPVList = (List<ProcessVar>)csstxMResMap.get("proVarList");
-							int i = processVarService.addFromList(csstxMResPVList);//调用添加过程接口
-							System.out.println("添加"+i);
-						}
-					}
+					Map<String,Object> paramF1Map=new HashMap<String,Object>();
+					paramF1Map.put("tvVarNamePre",csstxTVVarNamePre);
+					paramF1Map.put("downCsstxTV",downCsstxTV);
+					paramF1Map.put("preValueFMMap",preValueF1MMap);
+					paramF1Map.put("preValueFUMap",preValueF1UMap);
+					addProVarByParamMap(paramF1Map);
 					break;
 			}
 		}
 
+		
 		//if(false) {
 		//降温完成
 		List<Integer> jwwcFIdList = new ArrayList<Integer>();//降温完成反应釜号集合(M类和U类共用)
-		List<TriggerVar> jwwcTVList = (List<TriggerVar>) triggerVarMap.get(Constant.JIANG_WEN_WAN_CHENG);//先获取所有反应釜降温完成触发量,不管是否是上升沿
+		String jwwcTVVarNamePre=Constant.JIANG_WEN_WAN_CHENG;
+		List<TriggerVar> jwwcTVList = (List<TriggerVar>) triggerVarMap.get(jwwcTVVarNamePre);//先获取所有反应釜降温完成触发量,不管是否是上升沿
 		List<TriggerVar> upJwwcTVList = getUpDownVarValueListFromList(jwwcTVList, TriggerVar.UP);//获取上升的降温完成变量
 		for (TriggerVar upJwwcTV : upJwwcTVList) {
 			Integer upFId = upJwwcTV.getFId();
@@ -681,38 +666,18 @@ public class OPCController {
 			String upVarName = upJwwcTV.getVarName();//上次变量名和本次变量名其实是一致的
 			switch (upFId) {
 				case Constant.F1_ID:
-					if (TriggerVar.M.equals(upRecType)) {
-						Float preValue = Float.valueOf(preValueF1MMap.get(upVarName).toString());
-						if (preValue == TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-							jwwcFIdList.add(upFId);
-							List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
-							opcTVList.add(upJwwcTV);
-							Map<String, Object> jwwcMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据降温完成变量从opc端查找对应的过程变量
-							List<ProcessVar> jwwcMResPVList = (List<ProcessVar>)jwwcMResMap.get("proVarList");
-							
-							//获取降温完成时间变量名
-							String jwwcSjVarName = Constant.JIANG_WEN_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
-							ProcessVar jwwcSjPV = OpcUtil.getProVarInListByVarName(jwwcSjVarName, jwwcMResPVList);
-							String jwwcSjVarValue = jwwcSjPV.getUpdateTime();
-							ProcessVar ptnSjPV = processVarService.getPtnValuePV(jwwcSjVarName,jwwcSjVarValue+"",jwwcSjPV);
-							jwwcMResPVList.add(ptnSjPV);//将时间差对象添加到集合里
-
-							int i = processVarService.addFromList(jwwcMResPVList);//调用添加过程接口
-							System.out.println("添加"+i);
-							
-						}
-					} else if (TriggerVar.U.equals(upRecType)) {
-						Float preValue = Float.valueOf(preValueF1UMap.get(upVarName).toString());
-						if (preValue == TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-							jwwcFIdList.add(upFId);
-							List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
-							opcTVList.add(upJwwcTV);
-							Map<String, Object> jwwcMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据降温完成变量从opc端查找对应的过程变量
-							List<ProcessVar> jwwcMResPVList = (List<ProcessVar>)jwwcMResMap.get("proVarList");
-							int i = processVarService.addFromList(jwwcMResPVList);//调用添加过程接口
-							System.out.println("添加"+i);
-						}
-					}
+					Map<String,Object> paramF1Map=new HashMap<String,Object>();
+					paramF1Map.put("tvVarNamePre",jwwcTVVarNamePre);
+					paramF1Map.put("upJwwcTV",upJwwcTV);
+					paramF1Map.put("preValueFMMap",preValueF1MMap);
+					paramF1Map.put("preValueFUMap",preValueF1UMap);
+					paramF1Map.put("jwwcFIdList",jwwcFIdList);
+					addProVarByParamMap(paramF1Map);
+					
+					
+					
+					
+					
 					break;
 			}
 		}
@@ -1396,6 +1361,79 @@ public class OPCController {
 					Map<String, Object> jhzdMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据聚合终点变量从opc端查找对应的过程变量
 					List<ProcessVar> jhzdMResPVList = (List<ProcessVar>)jhzdMResMap.get("proVarList");
 					int i = processVarService.addFromList(jhzdMResPVList);//调用添加过程接口
+					System.out.println("添加"+i);
+				}
+			}
+		}
+		else if(Constant.CE_SHUI_SHU_TI_XING.equals(tvVarNamePre)) {
+			TriggerVar downCsstxTV = (TriggerVar)paramMap.get("downCsstxTV");
+			String downRecType = downCsstxTV.getRecType();//获取配方类型
+			if(TriggerVar.M.equals(downRecType)) {
+				HashMap<String, Object> preValueFMMap = (HashMap<String,Object>)paramMap.get("preValueFMMap");
+				String downVarName = downCsstxTV.getVarName();
+				Float preValue = Float.valueOf(preValueFMMap.get(downVarName).toString());
+				if(preValue==TriggerVar.UP) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
+					List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
+					opcTVList.add(downCsstxTV);
+					Map<String, Object> csstxMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据测水数提醒变量从opc端查找对应的过程变量
+					List<ProcessVar> csstxMResPVList = (List<ProcessVar>)csstxMResMap.get("proVarList");
+					int i = processVarService.addFromList(csstxMResPVList);//调用添加过程接口
+					System.out.println("添加"+i);
+				}
+			}
+			else if(TriggerVar.U.equals(downRecType)) {
+				HashMap<String, Object> preValueFUMap = (HashMap<String,Object>)paramMap.get("preValueFUMap");
+				String downVarName = downCsstxTV.getVarName();
+				Float preValue = Float.valueOf(preValueFUMap.get(downVarName).toString());
+				if(preValue==TriggerVar.UP) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
+					List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
+					opcTVList.add(downCsstxTV);
+					Map<String, Object> csstxMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据测水数提醒变量从opc端查找对应的过程变量
+					List<ProcessVar> csstxMResPVList = (List<ProcessVar>)csstxMResMap.get("proVarList");
+					int i = processVarService.addFromList(csstxMResPVList);//调用添加过程接口
+					System.out.println("添加"+i);
+				}
+			}
+		}
+		else if(Constant.JIANG_WEN_WAN_CHENG.equals(tvVarNamePre)) {
+			List<Integer> jwwcFIdList=(List<Integer>)paramMap.get("jwwcFIdList");
+			TriggerVar upJwwcTV = (TriggerVar)paramMap.get("upJwwcTV");
+			Integer upFId = upJwwcTV.getFId();
+			String upRecType = upJwwcTV.getRecType();//获取配方类型
+			if (TriggerVar.M.equals(upRecType)) {
+				HashMap<String, Object> preValueFMMap = (HashMap<String,Object>)paramMap.get("preValueFMMap");
+				String upVarName = upJwwcTV.getVarName();
+				Float preValue = Float.valueOf(preValueFMMap.get(upVarName).toString());
+				if (preValue == TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
+					jwwcFIdList.add(upFId);
+					List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
+					opcTVList.add(upJwwcTV);
+					Map<String, Object> jwwcMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据降温完成变量从opc端查找对应的过程变量
+					List<ProcessVar> jwwcMResPVList = (List<ProcessVar>)jwwcMResMap.get("proVarList");
+					
+					//获取降温完成时间变量名
+					String jwwcSjVarName = Constant.JIANG_WEN_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+					ProcessVar jwwcSjPV = OpcUtil.getProVarInListByVarName(jwwcSjVarName, jwwcMResPVList);
+					String jwwcSjVarValue = jwwcSjPV.getUpdateTime();
+					ProcessVar ptnSjPV = processVarService.getPtnValuePV(jwwcSjVarName,jwwcSjVarValue+"",jwwcSjPV);
+					jwwcMResPVList.add(ptnSjPV);//将时间差对象添加到集合里
+
+					int i = processVarService.addFromList(jwwcMResPVList);//调用添加过程接口
+					System.out.println("添加"+i);
+					
+				}
+			} 
+			else if (TriggerVar.U.equals(upRecType)) {
+				HashMap<String, Object> preValueFUMap = (HashMap<String,Object>)paramMap.get("preValueFUMap");
+				String upVarName = upJwwcTV.getVarName();
+				Float preValue = Float.valueOf(preValueFUMap.get(upVarName).toString());
+				if (preValue == TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
+					jwwcFIdList.add(upFId);
+					List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
+					opcTVList.add(upJwwcTV);
+					Map<String, Object> jwwcMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据降温完成变量从opc端查找对应的过程变量
+					List<ProcessVar> jwwcMResPVList = (List<ProcessVar>)jwwcMResMap.get("proVarList");
+					int i = processVarService.addFromList(jwwcMResPVList);//调用添加过程接口
 					System.out.println("添加"+i);
 				}
 			}
