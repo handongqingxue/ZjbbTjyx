@@ -1,14 +1,14 @@
 <component name="ArtifactManager">
-  <artifact type="war" name="ZjbbTjyx:war">
+  <artifact type="war" name="UWinOPCTjyx:war">
     <output-path>$PROJECT_DIR$/target</output-path>
     <properties id="maven-jee-properties">
       <options>
-        <module>ZjbbTjyx</module>
+        <module>UWinOPCTjyx</module>
         <packaging>war</packaging>
       </options>
     </properties>
-    <root id="archive" name="zjbbTjyx.war">
-      <element id="artifact" artifact-name="ZjbbTjyx:war exploded" />
+    <root id="archive" name="UWinOPCTjyx.war">
+      <element id="artifact" artifact-name="UWinOPCTjyx:war exploded" />
     </root>
   </artifact>
 </component>

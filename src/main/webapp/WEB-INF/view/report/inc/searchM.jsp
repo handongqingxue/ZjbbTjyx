@@ -70,7 +70,7 @@ function prePdf(){
 }
 
 function prePreExcelM(){
-    var batchID=$("#batchID_hid").val();
+    var batchID=$("#opcMSTable #batchID_hid").val();
     window.open("goPreExcelM?batchID="+batchID,"newwindow","width=300;");
 }
 
@@ -172,7 +172,7 @@ function initPagerHtml(reportFMPageList){
 
 <%--&lt;%&ndash;未显示变量的报表模版&ndash;%&gt;--%>
 <div id="noVarRep_div" style="display: none;">
-    <table class="m_body_table" border="1px">
+    <table class="m_body_table" border="1px" id="opcMSTable">
         <tr class="tr1">
             <td colspan="13">
                 <input type="hidden" id="batchID_hid"/>
