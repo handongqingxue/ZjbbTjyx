@@ -244,6 +244,21 @@ public class OPCController {
 		HashMap<String,Object> preValueF2UMap=(HashMap<String,Object>)f2Map.get("f2UMap");//获取2号釜U类
 		System.out.println("2号釜M类"+preValueF2MMap.toString());
 		System.out.println("2号釜U类"+preValueF2UMap.toString());
+
+		HashMap<String,Object> preValueF3MMap=(HashMap<String,Object>)f3Map.get("f3MMap");//获取3号釜M类
+		HashMap<String,Object> preValueF3UMap=(HashMap<String,Object>)f3Map.get("f3UMap");//获取3号釜U类
+		System.out.println("3号釜M类"+preValueF3MMap.toString());
+		System.out.println("3号釜U类"+preValueF3UMap.toString());
+
+		HashMap<String,Object> preValueF4MMap=(HashMap<String,Object>)f4Map.get("f4MMap");//获取4号釜M类
+		HashMap<String,Object> preValueF4UMap=(HashMap<String,Object>)f4Map.get("f4UMap");//获取4号釜U类
+		System.out.println("4号釜M类"+preValueF4MMap.toString());
+		System.out.println("4号釜U类"+preValueF4UMap.toString());
+
+		HashMap<String,Object> preValueF5MMap=(HashMap<String,Object>)f5Map.get("f5MMap");//获取5号釜M类
+		HashMap<String,Object> preValueF5UMap=(HashMap<String,Object>)f5Map.get("f5UMap");//获取5号釜U类
+		System.out.println("5号釜M类"+preValueF5MMap.toString());
+		System.out.println("5号釜U类"+preValueF5UMap.toString());
 		
 		//每次检索只获取一次所有的触发量就行，下面的逻辑里会根据不同的变量从反应釜列表里读取
 		List<TriggerVar> triggerVarList = triggerVarService.getListByFIdList(runFIdList);//先获取所有运行的反应釜触发量,不管是否是上升沿
