@@ -145,19 +145,6 @@ function getLeftMenuData(type){
 	,"json");
 }
 
-/*
-function inspect(id){
-    if (id==0){
-        document.getElementById("right-body-head-span2").innerHTML="报表生成页面";
-        document.getElementById("right-body-head-icon").classList.replace("layui-icon-search","layui-icon-add-circle");
-    }
-    else if(id==1){
-        document.getElementById("right-body-head-span2").innerHTML="报表查询页面";
-        document.getElementById("right-body-head-icon").classList.replace("layui-icon-add-circle","layui-icon-search");
-    }
-}
-*/
-    
 function showCreateArea(batchID){
   	var createMDisplay;
   	var createUDisplay;
@@ -204,41 +191,6 @@ function showSearchArea(glueType){
       
     getPcjlListByType(glueType);
 }
-
-/*
-function typeQuery(type) {
-    if (type=="M"){
-        $("#createM").css('display','block');
-        $("#createU").css('display','none');
-        $("#searchM").css('display','none');
-        $("#searchU").css('display','none');
-        inspect(0);
-    }
-    else if(type=="U"){
-        $("#createM").css('display','none');
-        $("#createU").css('display','block');
-        $("#searchM").css('display','none');
-        $("#searchU").css('display','none');
-        inspect(0);
-    } 
-    else if (type=="MA"||type=="MB"){
-        $("#createM").css('display','none');
-        $("#createU").css('display','none');
-        $("#searchM").css('display','block');
-        $("#searchU").css('display','none');
-        inspect(1);
-        getPcjlListByType(type);
-    }
-    else if (type=="UD"){
-        $("#createM").css('display','none');
-        $("#createU").css('display','none');
-        $("#searchM").css('display','none');
-        $("#searchU").css('display','block');
-        inspect(1);
-        getPcjlListByType(type);
-    }
-}
-*/
 
 function getPcjlListByType(type) {
     $.post("<%=basePath%>report/getPcjlListByType",

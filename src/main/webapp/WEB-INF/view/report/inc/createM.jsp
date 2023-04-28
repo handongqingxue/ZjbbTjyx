@@ -85,23 +85,19 @@ function addReportFByBatchID(){
                 <td class="td2_1">YSD101信息</td>
                 <td class="td2_2 blue">
                     <%--甲醛厂家信息，可后期录入--%>
-                    <%--<input type="text" id="ysd101_input" placeholder="甲醛厂家信息"/>--%>
                 </td>
                 <td class="td2_3">YSD102信息</td>
                 <td class="td2_4 blue">
                     <%--三安厂家信息可后期录入--%>
-                    <%--                    <input type="text" id="ysd102_input" placeholder="三安厂家信息">--%>
                 </td>
                 <td class="td2_5"></td>
                 <td class="td2_6" colspan="2">当班操作员：</td>
                 <td class="td2_7 green" colspan="2">
                     <%--直接摘抄登录名--%>
-                    <%--                    <input type="text" id="dbczyBsh_input" placeholder="登录名">--%>
                 </td>
                 <td class="td2_8" colspan="2">接班操作员：</td>
                 <td class="td2_9 green" colspan="2">
                     <%--直接摘抄登录名--%>
-                    <%--                    <input type="text" id="jbczyBsh_input" placeholder="登录名">--%>
                 </td>
             </tr>
             <%--第三行--%>
@@ -109,31 +105,25 @@ function addReportFByBatchID(){
                 <td>生产编号</td>
                 <td class="yellow" id="td3_2">
                     <%--每生产1釜加1--%>
-                    <%--                    <input type="text" id="scbh_input" placeholder="生产编号">--%>
                 </td>
                 <td>反应釜：</td>
                 <td class="green" id="td3_4" colspan="2">
                     <%--反应釜号--%>
-                    <%--                    <input type="text" id="fyfh_input" placeholder="反应釜号">--%>
                 </td>
                 <td>开始时间</td>
                 <td class="green" id="td3_6">
                     <%--备料开始时间--%>
-                    <%--                    <input type="datetime-local" id="kssj_input">--%>
                 </td>
                 <td>结束时间</td>
                 <td class="green" id="td3_8">
                     <%--冷却结束时间--%>
-                    <%--                    <input type="datetime-local" id="jssj_input">--%>
                 </td>
                 <td>生产工时</td>
                 <td class="yellow" id="td3_10">
                     <%--min--%>
-                    <%--                    <input type="text" id="scgs_input" placeholder="min/分">--%>
                 </td>
                 <td>生产日期： </td>
                 <td class="green">
-                    <%--                    <input type="date" id="scrq_input">--%>
                 </td>
             </tr>
             <%--第四行--%>
@@ -451,9 +441,6 @@ function addReportFByBatchID(){
             </tr>
         </table>
     </div>
-<%--    <div class="home_right_bottom_div">--%>
-<%--        <div id="paging" class="home_right_bottom_paging"></div>--%>
-<%--    </div>--%>
 </div>
 </body>
 </html>

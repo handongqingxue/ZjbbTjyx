@@ -10,29 +10,6 @@ $(function(){
 	getReportFMPageList();
 });
 
-function exportExcel() {
-    var table = $("#reportFMPageList_div");
-    var excelContent = table[0].innerHTML;
-    var excelFile = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:x='urn:schemas-microsoft-com:office:excel' xmlns='http://www.w3.org/TR/REC-html40'>";
-    excelFile += "<head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head>";
-    excelFile += "<body><table>";
-    excelFile += excelContent;
-    excelFile += "</table></body>";
-    excelFile += "</html>";
-    var link = "data:application/vnd.ms-excel;base64," + base64(excelFile);
-    var a = document.createElement("a");
-    var batchID=$("#reportFMPageList_div table #batchID_hid").val();
-    // var glueType=$("#glue").text();
-    // var glueType2=$("#glue").val();
-    // console.log(glueType+"dddddddd")
-    // console.log(glueType2+"cccccc")
-    var type=glueType.slice(0,1);
-    var glue = glueType.slice(1,2);
-    a.download = batchID+"-"+type+"类("+glue+")胶生产记录.xlsx";
-    a.href = link;
-    a.click();
-}
-
 
 function getReportFMPageList() {
    var glueType = $("#glue").text();
@@ -53,9 +30,6 @@ function getReportFMPageList() {
 
 function prePdf(){
 	var repHtmlStr=$("#reportFMPageList_div").html();
-	//console.log(repHtmlStr);
-	//return false;
-	
 	$.post("savePreReportHtml",
 	   {repHtmlStr:repHtmlStr},
 	   function(result){
@@ -139,9 +113,6 @@ function initPagerHtml(reportFMPageList){
                 </td>
                 <td class="dayin-td">
                     <i class="layui-icon layui-icon-print" style="font-size: 30px; color: #000000;" onclick="prePreExcelM()"></i>
-					<!-- 
-                    <i class="layui-icon layui-icon-export" style="font-size: 30px; color: #000000;" onclick="outputPdf()"></i>
-                     -->
                     <i class="layui-icon layui-icon-export" style="font-size: 30px; color: #000000;" onclick="prePdf()"></i>
                 </td>
             </tr>
@@ -185,7 +156,6 @@ function initPagerHtml(reportFMPageList){
             <td class="td2_1">YSD101信息</td>
             <td class="td2_2 blue">
                 <%--甲醛厂家信息，可后期录入--%>
-                <%--<input type="text" id="ysd101_input" placeholder="甲醛厂家信息"/>--%>
             </td>
             <td class="td2_3">YSD102信息</td>
             <td class="td2_4 blue">
@@ -336,7 +306,7 @@ function initPagerHtml(reportFMPageList){
             <td></td>
         </tr>
         <%--第十一行--%>
-        <tr class="tr11">
+        <tr class="tr11" style="height: 20px;">
             <td colspan="13">1投料前后一定确定料斗重量 2关闭取样器下阀门  3关闭主通风管道  4打开除尘箱2阀门    4加入过滤棉</td>
         </tr>
         <%--第十二行--%>
