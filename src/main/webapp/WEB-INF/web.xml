@@ -31,6 +31,8 @@
 			classpath:spring-Mvc.xml
 			</param-value>
     </init-param>
+    <!-- 优先启动 -->
+    <load-on-startup>1</load-on-startup>
   </servlet>
   <servlet-mapping>
     <servlet-name>zjbbTjyx</servlet-name>

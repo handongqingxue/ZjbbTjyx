@@ -67,7 +67,7 @@
 </head>
 <body>
 <div class="opExcel_but_div" onclick="exportExcel()">导出Excel</div>
-<div id="noVarRep_div" style="text-align:center;">
+<div id="noVarRep_div">
     <table border="1px" style="width:100%;border-collapse:collapse;text-align:center;font: normal 400 16px '微软雅黑';">
         <tr>
             <td colspan="13" style="height: 50px;">
@@ -78,21 +78,21 @@
         </tr>
         <%--第二行--%>
         <tr style="height: 30px;">
-            <td style="height:7%">YSD101信息</td>
-            <td style="background-color: #5b9bd5;height: 7%">
+            <td style="height:5%">YSD101信息</td>
+            <td style="background-color: #5b9bd5;height: 5%">
                 <%--甲醛厂家信息，可后期录入--%>
             </td>
-            <td style="width: 7%">YSD102信息</td>
-            <td style="background-color: #5b9bd5;width: 9%">
+            <td style="width: 5%">YSD102信息</td>
+            <td style="background-color: #5b9bd5;width: 7%">
                 <%--三安厂家信息可后期录入--%>
             </td>
-            <td style="width: 9%;"></td>
-            <td colspan="2" style="width: 15%">当班操作员：</td>
-            <td colspan="2" style="background-color: #c6e0b4;width: 15%">
+            <td style="width: 7%;"></td>
+            <td colspan="2" style="width: 13%">当班操作员：</td>
+            <td colspan="2" style="background-color: #c6e0b4;width: 13%">
                 <%--直接摘抄登录名--%>
             </td>
-            <td colspan="2" style="width: 15%">接班操作员：</td>
-            <td colspan="2" style="background-color: #c6e0b4;width: 15%">
+            <td colspan="2" style="width: 13%">接班操作员：</td>
+            <td colspan="2" style="background-color: #c6e0b4;width: 13%">
                 <%--直接摘抄登录名--%>
             </td>
         </tr>
