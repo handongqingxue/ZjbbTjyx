@@ -273,48 +273,48 @@ public class OPCController {
 		//李工的代码逻辑从这里开始写
 		//if(false) {
 		//备料开始触发量
-		List<Integer> blksFIdList=new ArrayList<Integer>();
 		String blksTVVarNamePre=Constant.BEI_LIAO_KAI_SHI;
 		List<TriggerVar> blksTVList = (List<TriggerVar>)triggerVarMap.get(blksTVVarNamePre);//获取备料开始触发变量,不管是否是上升沿
 		System.out.println("备料开始==="+blksTVList.toString());
 		List<TriggerVar> upBlksTVList = getUpDownVarValueListFromList(blksTVList, TriggerVar.UP);//获取上升的备料开始变量
 		System.out.println("upBlksTVList的长度"+upBlksTVList.size());
-		if (upBlksTVList.size()>0){
-			System.out.println("upBlksTVList"+upBlksTVList.toString());
-			for (TriggerVar upBlksTV : upBlksTVList) {
-				Integer upFId = upBlksTV.getFId();//获取反应釜号
-				switch (upFId) {//匹配反应釜号
-					case Constant.F1_ID:
-						Map<String,Object> paramF1Map=new HashMap<String,Object>();
-						paramF1Map.put("tvVarNamePre",blksTVVarNamePre);
-						paramF1Map.put("upBlksTV",upBlksTV);
-						paramF1Map.put("preValueFMMap",preValueF1MMap);
-						paramF1Map.put("preValueFUMap",preValueF1UMap);
-						addProVarByParamMap(paramF1Map);
-						break;
-					case Constant.F2_ID:
-						Map<String,Object> paramF2Map=new HashMap<String,Object>();
-						paramF2Map.put("tvVarNamePre",blksTVVarNamePre);
-						paramF2Map.put("upBlksTV",upBlksTV);
-						paramF2Map.put("preValueFMMap",preValueF2MMap);
-						paramF2Map.put("preValueFUMap",preValueF2UMap);
-						addProVarByParamMap(paramF2Map);
-						break;
-				}
+		System.out.println("upBlksTVList"+upBlksTVList.toString());
+		for (TriggerVar upBlksTV : upBlksTVList) {
+			Integer upFId = upBlksTV.getFId();//获取反应釜号
+			switch (upFId) {//匹配反应釜号
+				case Constant.F1_ID:
+					Map<String,Object> paramF1Map=new HashMap<String,Object>();
+					paramF1Map.put("tvVarNamePre",blksTVVarNamePre);
+					paramF1Map.put("upBlksTV",upBlksTV);
+					paramF1Map.put("preValueFMMap",preValueF1MMap);
+					paramF1Map.put("preValueFUMap",preValueF1UMap);
+					addProVarByParamMap(paramF1Map);
+					break;
+				case Constant.F2_ID:
+					Map<String,Object> paramF2Map=new HashMap<String,Object>();
+					paramF2Map.put("tvVarNamePre",blksTVVarNamePre);
+					paramF2Map.put("upBlksTV",upBlksTV);
+					paramF2Map.put("preValueFMMap",preValueF2MMap);
+					paramF2Map.put("preValueFUMap",preValueF2UMap);
+					addProVarByParamMap(paramF2Map);
+					break;
 			}
 		}
 		//}
 
 		//反应结束
-		List<Integer> fyjsFIdList=new ArrayList<Integer>();
-		List<TriggerVar> fyjsTVList = (List<TriggerVar>)triggerVarMap.get(Constant.FAN_YING_JIE_SHU);//获取反应结束变量,不管是否是上升沿
+		String fyjsTVVarNamePre=Constant.FAN_YING_JIE_SHU;
+		List<TriggerVar> fyjsTVList = (List<TriggerVar>)triggerVarMap.get(fyjsTVVarNamePre);//获取反应结束变量,不管是否是上升沿
 		List<TriggerVar> upFyjsTVList = getUpDownVarValueListFromList(fyjsTVList, TriggerVar.UP);//获取上升的反应结束变量
 		for (TriggerVar upFyjsTV : upFyjsTVList) {
 			Integer upFId = upFyjsTV.getFId();//获取反应釜号
 			String upRecType = upFyjsTV.getRecType();//获取配方类型
-			String upVarName = upFyjsTV.getVarName();//上次变量名和本次变量名其实是一致的
+			String upVarName = upFyjsTV.getVarName();
 			switch (upFId) {//匹配反应釜号
 				case Constant.F1_ID:
+					
+					
+					
 					if(TriggerVar.M.equals(upRecType)) {
 						Float preValue = Float.valueOf(preValueF1MMap.get(upVarName).toString());
 						if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
@@ -346,6 +346,7 @@ public class OPCController {
 							System.out.println("添加"+i);
 						}
 					}
+					
 					break;
 			}
 		}
@@ -1181,6 +1182,9 @@ public class OPCController {
 					System.out.println("添加"+i);
 				}
 			}
+		}
+		else if(Constant.FAN_YING_JIE_SHU.equals(tvVarNamePre)) {
+			
 		}
 	}
 
