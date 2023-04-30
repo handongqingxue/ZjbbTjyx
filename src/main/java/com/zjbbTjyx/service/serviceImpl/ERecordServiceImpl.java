@@ -876,7 +876,7 @@ public class ERecordServiceImpl implements ERecordService {
 
 				eRecordList.add(eRecord);
 			}
-			else if(pvVarName.startsWith(Constant.ER_CI_TOU_LIAO_PH_SHU_RU_ZHI)) {//二次投料PH输入值
+			else if(pvVarName.startsWith(Constant.ER_CI_TOU_LIAO_PH_SHU_RU)) {//二次投料PH输入
 				Float pvVarValue = processVar.getVarValue();
 				String pvRecType = processVar.getRecType();
 				Integer pvFId = processVar.getFId();
@@ -1826,7 +1826,7 @@ public class ERecordServiceImpl implements ERecordService {
 				varMap.put(Constant.COL_NUMBER, ReportF_M.WD85YECTLTXFYFWD_CN);
 				varMapList.add(varMap);
 			}
-			else if(Constant.ER_CI_TOU_LIAO_PH_SHU_RU_ZHI.equals(varName)) {//二次投料PH输入值
+			else if(Constant.ER_CI_TOU_LIAO_PH_SHU_RU.equals(varName)) {//二次投料PH输入
 				String varValue = eRecord.getVarValue();
 				
 				varMap = new HashMap<String, Object>();
