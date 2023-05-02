@@ -1280,6 +1280,24 @@ public class ERecordServiceImpl implements ERecordService {
 				eRecord.setPtnValue(varValue+"");
 				eRecord.setUnit(unit);
 			}//冷却阶段结束
+			else if(pvVarName.startsWith(Constant.ZHONG_JIAN_SHUI_SHU)||//终检水数
+					pvVarName.startsWith(Constant.ZHONG_JIAN_PH)) {//终检PH
+				Float pvVarValue = processVar.getVarValue();
+				String pvRecType = processVar.getRecType();
+				Integer pvFId = processVar.getFId();
+				String batchID = batchIDMap.get(pvFId).toString();
+
+				eRecord=new ERecord();
+				eRecord.setVarName(pvVarName);
+				eRecord.setVarValue(pvVarValue+"");
+				eRecord.setRecType(pvRecType);
+				eRecord.setFId(pvFId);
+				eRecord.setRecordTime(recordTime);
+				eRecord.setBatchID(batchID);
+				eRecord.setPhaseName(Constant.ZHI_LIANG_ZHONG_JIAN);
+				
+				eRecordList.add(eRecord);
+			}
 			else if(pvVarName.startsWith(ERecord.YXKSPJSSYSJ)) {//允许开始排胶上升沿时间
 				Integer pvFId = processVar.getFId();
 				String batchID = batchIDMap.get(pvFId).toString();
@@ -1621,7 +1639,7 @@ public class ERecordServiceImpl implements ERecordService {
 		List<ERecord> eRecordList = eRecordMapper.getListByBatchID(batchID);
 		for (ERecord eRecord : eRecordList) {
 			String varName = eRecord.getVarName();
-			if(Constant.SHENG_CHAN_BIAN_HAO.equals(varName)) {
+			if(Constant.SHENG_CHAN_BIAN_HAO.equals(varName)) {//生产编号
 				String varValue = eRecord.getVarValue();
 				
 				varMap = new HashMap<String, Object>();
@@ -1630,7 +1648,7 @@ public class ERecordServiceImpl implements ERecordService {
 				varMap.put(Constant.COL_NUMBER, ReportF_M.SCBH_CN);
 				varMapList.add(varMap);
 			}
-			else if(Constant.FAN_YING_FU.equals(varName)) {
+			else if(Constant.FAN_YING_FU.equals(varName)) {//反应釜
 				String varValue = eRecord.getVarValue();
 				
 				varMap = new HashMap<String, Object>();
@@ -1639,7 +1657,7 @@ public class ERecordServiceImpl implements ERecordService {
 				varMap.put(Constant.COL_NUMBER, ReportF_M.FYF_CN);
 				varMapList.add(varMap);
 			}
-			else if(Constant.PI_CI_JI_LU.equals(varName)) {
+			else if(Constant.PI_CI_JI_LU.equals(varName)) {//批次记录
 				String preValue = eRecord.getPreValue();
 				String nxtValue = eRecord.getNxtValue();
 				String ptnValue = eRecord.getPtnValue();
@@ -1663,7 +1681,7 @@ public class ERecordServiceImpl implements ERecordService {
 				ptnVarMap.put(Constant.COL_NUMBER, ReportF_M.SCGS_CN);
 				varMapList.add(ptnVarMap);
 			}
-			else if(Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG.equals(varName)) {
+			else if(Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG.equals(varName)) {//甲醛实际进料重量
 				String varValue = eRecord.getVarValue();
 				
 				varMap = new HashMap<String, Object>();
@@ -1672,7 +1690,7 @@ public class ERecordServiceImpl implements ERecordService {
 				varMap.put(Constant.COL_NUMBER, ReportF_M.JQSJJLZL_CN);
 				varMapList.add(varMap);
 			}
-			else if(Constant.JIA_SHUI_SHI_JI_ZHONG_LIANG.equals(varName)) {
+			else if(Constant.JIA_SHUI_SHI_JI_ZHONG_LIANG.equals(varName)) {//加水实际重量
 				String varValue = eRecord.getVarValue();
 				
 				varMap = new HashMap<String, Object>();
@@ -1681,7 +1699,7 @@ public class ERecordServiceImpl implements ERecordService {
 				varMap.put(Constant.COL_NUMBER, ReportF_M.JSSJZL_CN);
 				varMapList.add(varMap);
 			}
-			else if(ERecord.JQBLKSDJQFLWCSJ.equals(varName)) {
+			else if(ERecord.JQBLKSDJQFLWCSJ.equals(varName)) {//甲醛备料开始到甲醛放料完成时间
 				String preValue = eRecord.getPreValue();
 				String nxtValue = eRecord.getNxtValue();
 				String ptnValue = eRecord.getPtnValue();
@@ -2128,6 +2146,78 @@ public class ERecordServiceImpl implements ERecordService {
 				varMap.put(Constant.ROW_NUMBER, ReportF_M.JWWCFYFWD_RN);
 				varMap.put(Constant.COL_NUMBER, ReportF_M.JWWCFYFWD_CN);
 				varMapList.add(varMap);
+			}
+			else if(Constant.ZHONG_JIAN_SHUI_SHU.equals(varName)) {//终检水数
+				String varValue = eRecord.getVarValue();
+				
+				varMap = new HashMap<String, Object>();
+				varMap.put(Constant.VALUE, varValue);
+				varMap.put(Constant.ROW_NUMBER, ReportF_M.ZJSS_RN);
+				varMap.put(Constant.COL_NUMBER, ReportF_M.ZJSS_CN);
+				varMapList.add(varMap);
+			}
+			else if(Constant.ZHONG_JIAN_PH.equals(varName)) {//终检PH
+				String varValue = eRecord.getVarValue();
+				
+				varMap = new HashMap<String, Object>();
+				varMap.put(Constant.VALUE, varValue);
+				varMap.put(Constant.ROW_NUMBER, ReportF_M.ZJPH_RN);
+				varMap.put(Constant.COL_NUMBER, ReportF_M.ZJPH_CN);
+				varMapList.add(varMap);
+			}
+			else if(ERecord.YXKSPJDPJWCSJ.equals(varName)) {//允许开始排胶到排胶完成时间
+				String preValue = eRecord.getPreValue();
+				String nxtValue = eRecord.getNxtValue();
+				String ptnValue = eRecord.getPtnValue();
+				String unit = eRecord.getUnit();
+				
+				HashMap<String, Object> preVarMap = new HashMap<String, Object>();
+				preVarMap.put(Constant.VALUE, preValue);
+				preVarMap.put(Constant.ROW_NUMBER, ReportF_M.YXKSPJSJ_RN);
+				preVarMap.put(Constant.COL_NUMBER, ReportF_M.YXKSPJSJ_CN);
+				varMapList.add(preVarMap);
+				
+				HashMap<String, Object> nxtVarMap = new HashMap<String, Object>();
+				nxtVarMap.put(Constant.VALUE, nxtValue);
+				nxtVarMap.put(Constant.ROW_NUMBER, ReportF_M.PJWCSJ_RN);
+				nxtVarMap.put(Constant.COL_NUMBER, ReportF_M.PJWCSJ_CN);
+				varMapList.add(nxtVarMap);
+				
+				HashMap<String, Object> ptnVarMap = new HashMap<String, Object>();
+				ptnVarMap.put(Constant.VALUE, ptnValue+unit);
+				ptnVarMap.put(Constant.ROW_NUMBER, ReportF_M.PJSJC_RN);
+				ptnVarMap.put(Constant.COL_NUMBER, ReportF_M.PJSJC_CN);
+				varMapList.add(ptnVarMap);
+			}
+			else if(ERecord.YXKSPJDPJWCFCZ.equals(varName)) {//允许开始排胶到排胶完成釜称重
+				String preValue = eRecord.getPreValue();
+				String nxtValue = eRecord.getNxtValue();
+				String ptnValue = eRecord.getPtnValue();
+				String unit = eRecord.getUnit();
+				
+				HashMap<String, Object> sczzVarMap = new HashMap<String, Object>();
+				sczzVarMap.put(Constant.VALUE, preValue);
+				sczzVarMap.put(Constant.ROW_NUMBER, ReportF_M.YXKSPJFCZ_RN);
+				sczzVarMap.put(Constant.COL_NUMBER, ReportF_M.YXKSPJFCZ_CN);
+				varMapList.add(sczzVarMap);
+				
+				HashMap<String, Object> preVarMap = new HashMap<String, Object>();
+				preVarMap.put(Constant.VALUE, preValue);
+				preVarMap.put(Constant.ROW_NUMBER, ReportF_M.YXKSPJFCZ_RN);
+				preVarMap.put(Constant.COL_NUMBER, ReportF_M.YXKSPJFCZ_CN);
+				varMapList.add(preVarMap);
+				
+				HashMap<String, Object> nxtVarMap = new HashMap<String, Object>();
+				nxtVarMap.put(Constant.VALUE, nxtValue);
+				nxtVarMap.put(Constant.ROW_NUMBER, ReportF_M.PJWCFCZ_RN);
+				nxtVarMap.put(Constant.COL_NUMBER, ReportF_M.PJWCFCZ_CN);
+				varMapList.add(nxtVarMap);
+				
+				HashMap<String, Object> ptnVarMap = new HashMap<String, Object>();
+				ptnVarMap.put(Constant.VALUE, ptnValue+unit);
+				ptnVarMap.put(Constant.ROW_NUMBER, ReportF_M.PJZLC_RN);
+				ptnVarMap.put(Constant.COL_NUMBER, ReportF_M.PJZLC_CN);
+				varMapList.add(ptnVarMap);
 			}
 		}
 		return varMapList;
