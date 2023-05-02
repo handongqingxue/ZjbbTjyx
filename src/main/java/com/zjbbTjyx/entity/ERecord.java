@@ -43,6 +43,10 @@ public class ERecord {
 	 */
 	public static final String JQBLKSSSYSJ=Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
 	/**
+	 * 甲醛放料完成上升沿时间
+	 */
+	public static final String JQFLWCSSYSJ=Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+	/**
 	 * 甲醛备料开始到甲醛放料完成时间
 	 */
 	public static final String JQBLKSDJQFLWCSJ=Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+Constant.DAO+Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.SHI_JIAN;
@@ -114,6 +118,10 @@ public class ERecord {
 	 * 釜尿素放料阀上升沿时间
 	 */
 	public static final String FNSFLFSSYSJ=Constant.FU+Constant.NIAO_SU_FANG_LIAO_FA+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+	/**
+	 * 釜尿素放料阀下降沿时间
+	 */
+	public static final String FNSFLFXJYSJ=Constant.FU+Constant.NIAO_SU_FANG_LIAO_FA+Constant.XIA_JIANG_YAN+Constant.SHI_JIAN;
 	/**
 	 * 釜尿素放料阀上升沿到下降沿时间
 	 */
@@ -265,7 +273,8 @@ public class ERecord {
 	/**
 	 * 允许开始排胶到排胶完成时间
 	 */
-	public static final String YXKSPJDPJWCSJ=Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.DAO+Constant.PAI_JIAO_WAN_CHENG+Constant.SHI_JIAN;/**
+	public static final String YXKSPJDPJWCSJ=Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.DAO+Constant.PAI_JIAO_WAN_CHENG+Constant.SHI_JIAN;
+	/**
 	 * 允许开始排胶到排胶完成时间差
 	 */
 	public static final String YXKSPJDPJWCSJC=Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.DAO+Constant.PAI_JIAO_WAN_CHENG+Constant.SHI_JIAN+Constant.CHA;
