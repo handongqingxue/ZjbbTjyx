@@ -290,15 +290,19 @@ public class OpcUtil {
             Integer tvFId = triggerVar1.getFId();
             String tvRecType = triggerVar1.getRecType();
             String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
+            
             //测量冰水雾点输入值
             String clbswdsrzPvVarNameQz=Constant.CE_LIANG_BSWD_SRZ;
             String clbswdsrzOpcVarName=clbswdsrzPvVarNameQz+Constant.XHX+opcFName+Constant.XHX+Constant.AV;
+            
             //测20雾点输入值
             String c20wdsrzPvVarNameQz=Constant.CE_20_WU_DIAN_SRZ;
             String c20wdsrzOpcVarName=c20wdsrzPvVarNameQz+Constant.XHX+opcFName+Constant.XHX+Constant.AV;
+            
             opcVarNameList.add(clbswdsrzOpcVarName);
             opcVarNameList.add(c20wdsrzOpcVarName);
-        } else if (tv1VarName.startsWith(Constant.CE_SHUI_SHU_TI_XING+Constant.XHX)){//测水数提醒
+        }
+        else if (tv1VarName.startsWith(Constant.CE_SHUI_SHU_TI_XING+Constant.XHX)){//测水数提醒
             Integer tvFId = triggerVar1.getFId();
             String tvRecType = triggerVar1.getRecType();
             String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
@@ -306,7 +310,8 @@ public class OpcUtil {
             String trjwsssrzPvVarNameQz=Constant.TING_RE_JIANG_WEN_SHUI_SHU_SRZ;
             String trjwsssrzOpcVarName=trjwsssrzPvVarNameQz+Constant.XHX+opcFName+Constant.XHX+Constant.AV;
             opcVarNameList.add(trjwsssrzOpcVarName);
-        } else if(tv1VarName.startsWith(Constant.JU_HE_ZHONG_DIAN+Constant.XHX)){//聚合终点要记录(反应釜温度)
+        }
+        else if(tv1VarName.startsWith(Constant.JU_HE_ZHONG_DIAN+Constant.XHX)){//聚合终点要记录(反应釜温度)
             Integer tvFId = triggerVar1.getFId();
             String tvRecType = triggerVar1.getRecType();
             String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
@@ -314,14 +319,30 @@ public class OpcUtil {
             String fyfwdPvVarNameQz=Constant.FAN_YING_FU+tvFId+Constant.WEN_DU;
             String fyfwdOpcVarName=fyfwdPvVarNameQz+Constant.XHX+Constant.AV;
             opcVarNameList.add(fyfwdOpcVarName);
-        } else if(tv1VarName.startsWith(Constant.JIANG_WEN_WAN_CHENG+Constant.XHX)){//降温完成要记录(反应釜温度)
+        }
+        else if(tv1VarName.startsWith(Constant.JIANG_WEN_WAN_CHENG+Constant.XHX)){//降温完成要记录(反应釜温度)
             Integer tvFId = triggerVar1.getFId();
-            String tvRecType = triggerVar1.getRecType();
-            String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
+            
             //反应釜(反应釜号)温度
             String fyfwdPvVarNameQz=Constant.FAN_YING_FU+tvFId+Constant.WEN_DU;
             String fyfwdOpcVarName=fyfwdPvVarNameQz+Constant.XHX+Constant.AV;
             opcVarNameList.add(fyfwdOpcVarName);
+        }
+        else if (tv1VarName.startsWith(Constant.ZHONG_JIAN_SHUI_PH_TI_XING+Constant.XHX)){//终检水PH提醒
+            Integer tvFId = triggerVar1.getFId();
+            String tvRecType = triggerVar1.getRecType();
+            String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
+            
+            //终检水数
+            String zjssPvVarNameQz=Constant.ZHONG_JIAN_SHUI_SHU;
+            String zjssOpcVarName=zjssPvVarNameQz+Constant.XHX+opcFName+Constant.XHX+Constant.AV;
+            
+            //终检PH
+            String zjphPvVarNameQz=Constant.ZHONG_JIAN_PH;
+            String zjphOpcVarName=zjphPvVarNameQz+Constant.XHX+opcFName+Constant.XHX+Constant.AV;
+            
+            opcVarNameList.add(zjssOpcVarName);
+            opcVarNameList.add(zjphOpcVarName);
         }
 
 
