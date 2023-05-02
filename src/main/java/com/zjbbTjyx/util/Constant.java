@@ -529,6 +529,14 @@ public class Constant {
 	 * 冷却
 	 */
 	public static final String LENG_QUE="冷却";
+	/**
+	 * 质量终检
+	 */
+	public static final String ZHI_LIANG_ZHONG_JIAN="质量终检";
+	/**
+	 * 排胶
+	 */
+	public static final String PAI_JIAO="排胶";
 	
 	public static final String VALUE="value";
 	public static final String UNIT="unit";

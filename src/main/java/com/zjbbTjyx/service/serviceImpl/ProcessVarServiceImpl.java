@@ -84,6 +84,14 @@ public class ProcessVarServiceImpl implements ProcessVarService {
 			preName=Constant.JU_HE_ZHONG_DIAN+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
 			ptnName=Constant.KAI_SHI_JIANG_WEN+Constant.DAO+Constant.TING_ZHI_JIANG_WEN+Constant.SHI_JIAN+Constant.CHA;//开始降温到停止降温时间差
 		}
+		else if((Constant.PAI_JIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG).equals(nxtName)){
+			preName=Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
+			ptnName=Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.DAO+Constant.PAI_JIAO_WAN_CHENG+Constant.FU+Constant.ZHONG_LIANG+Constant.CHA;//允许开始排胶到排胶完成的重量差
+		}
+		else if((Constant.PAI_JIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN).equals(nxtName)){
+			preName=Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+			ptnName=Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.DAO+Constant.PAI_JIAO_WAN_CHENG+Constant.SHI_JIAN+Constant.CHA;//允许开始排胶到排胶完成时间差
+		}
 		else if((Constant.FAN_YING_JIE_SHU+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN).equals(nxtName)){
 			preName=Constant.BEI_LIAO_KAI_SHI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
 			ptnName=Constant.BEI_LIAO_KAI_SHI+Constant.DAO+Constant.FAN_YING_JIE_SHU+Constant.SHI_JIAN+Constant.CHA;//备料开始时间到反应结束时间差

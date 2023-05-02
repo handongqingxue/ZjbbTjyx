@@ -1280,6 +1280,27 @@ public class ERecordServiceImpl implements ERecordService {
 				eRecord.setPtnValue(varValue+"");
 				eRecord.setUnit(unit);
 			}
+			else if(pvVarName.startsWith(ERecord.YXKSPJSSYSJ)) {//允许开始排胶上升沿时间
+				Integer pvFId = processVar.getFId();
+				String batchID = batchIDMap.get(pvFId).toString();
+				String updateTime = processVar.getUpdateTime();
+				
+				eRecord=getFromList(ERecord.YXKSPJDPJWCSJ, batchID, eRecordList);
+				if(eRecord==null) {
+					String pvRecType = processVar.getRecType();
+					
+					eRecord=new ERecord();
+					eRecord.setVarName(ERecord.YXKSPJDPJWCSJ);
+					eRecord.setRecType(pvRecType);
+					eRecord.setFId(pvFId);
+					eRecord.setRecordTime(recordTime);
+					eRecord.setBatchID(batchID);
+					eRecord.setPhaseName(Constant.PAI_JIAO);
+				}
+				eRecord.setPreValue(updateTime);
+				
+				eRecordList.add(eRecord);
+			}
 		}
 		
 		//处理完批记录集合的信息后，通过循环一起插入数据库表

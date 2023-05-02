@@ -238,6 +238,30 @@ public class ERecord {
 	 * 从开始降温到停止降温时间差
 	 */
 	public static final String KSJWDTZJWSJC=Constant.KAI_SHI_JIANG_WEN+Constant.DAO+Constant.TING_ZHI_JIANG_WEN+Constant.SHI_JIAN+Constant.CHA;
+	/**
+	 * 允许开始排胶上升沿釜称重
+	 */
+	public static final String YXKSPJSSYFCZ=Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
+	/**
+	 * 排胶完成上升沿釜称重
+	 */
+	public static final String PJWCSSYFCZ=Constant.PAI_JIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
+	/**
+	 * 允许开始排胶到排胶完成釜称重
+	 */
+	public static final String YXKSPJDPJWCFCZ=Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.DAO+Constant.PAI_JIAO_WAN_CHENG+Constant.FU+Constant.CHENG_ZHONG;
+	/**
+	 * 允许开始排胶上升沿时间
+	 */
+	public static final String YXKSPJSSYSJ=Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+	/**
+	 * 排胶完成上升沿时间
+	 */
+	public static final String PJWCSSYSJ=Constant.PAI_JIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+	/**
+	 * 允许开始排胶到排胶完成时间
+	 */
+	public static final String YXKSPJDPJWCSJ=Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.DAO+Constant.PAI_JIAO_WAN_CHENG+Constant.SHI_JIAN;
 
 	private Integer Id;
 	public Integer getId() {

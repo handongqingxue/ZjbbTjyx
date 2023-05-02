@@ -526,7 +526,7 @@ public class OpcUtil {
 	            }
 	        	else if(tv1VarName.startsWith(Constant.SHENG_WEN_WAN_CHENG+Constant.XHX)){//升温完成
 	        	    if (itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)){
-	                    varName=Constant.SHENG_WEN_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
+	                    varName=ERecord.SWWCSSYFYFWD;
 	                }
 	            }
 	        	else if(tv1VarName.startsWith(Constant.WEN_DU_98_PH+Constant.HE_GE+Constant.XHX)){//温度98PH合格
@@ -549,41 +549,23 @@ public class OpcUtil {
 	            }
 	        	else if(tv1VarName.startsWith(Constant.JU_HE_ZHONG_DIAN+Constant.XHX)){//聚合终点
 	        	    if (itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)){
-	                    varName=Constant.JU_HE_ZHONG_DIAN+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
+	                    varName=ERecord.JHZDSSYFYFWD;
 	                }
 	            }
 	            else if(tv1VarName.startsWith(Constant.JIANG_WEN_WAN_CHENG+Constant.XHX)){//降温完成
 	                if (itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)){
-	                    varName=Constant.JIANG_WEN_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
+	                    varName=ERecord.JWWCSSYFYFWD;
 	                }
 	            }
 	            else if(tv1VarName.startsWith(Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.XHX)) {//允许开始排胶
-	            	String varName1=Constant.SHENG_CHAN_ZONG_ZHONG;
-	            	String varName2=Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
-
-		        	proVar=new ProcessVar();
-		        	proVar.setVarName(varName1);
-		        	proVar.setVarValue(value);
-		        	proVar.setDealBz(ProcessVar.WCL);
-		        	proVar.setUpdateTime(sysTime);
-		        	proVar.setFId(triggerVar1.getFId());
-		        	proVar.setRecType(triggerVar1.getRecType());
-		        	proVar.setUnit(Constant.KG);
-		        	proVar.setParaType(ProcessVar.YLCS);
-		        	proVarList.add(proVar);
-		        	
-		        	proVar=new ProcessVar();
-		        	proVar.setVarName(varName2);
-		        	proVar.setVarValue(value);
-		        	proVar.setDealBz(ProcessVar.WCL);
-		        	proVar.setUpdateTime(sysTime);
-		        	proVar.setFId(triggerVar1.getFId());
-		        	proVar.setRecType(triggerVar1.getRecType());
-		        	proVar.setUnit(Constant.KG);
-		        	proVar.setParaType(ProcessVar.YLCS);
-		        	proVarList.add(proVar);
-		        	
-		            System.out.println("Item名:" + itemName + "  Item值: " + value);
+	            	if (itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)) {
+	            		varName=ERecord.YXKSPJSSYFCZ;
+	            	}
+	            }
+	            else if(tv1VarName.startsWith(Constant.PAI_JIAO_WAN_CHENG+Constant.XHX)) {//排胶完成
+	            	if (itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)) {
+	            		varName=ERecord.PJWCSSYFCZ;
+	            	}
 	            }
 	
 	        	if(StringUtils.isEmpty(varName))
@@ -695,7 +677,10 @@ public class OpcUtil {
             itemName = Constant.JIANG_WEN_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
         }
         else if(tv1VarName.startsWith(Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.XHX)) {//允许开始排胶
-        	itemName = Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+        	itemName = ERecord.YXKSPJSSYSJ;
+        }
+        else if(tv1VarName.startsWith(Constant.PAI_JIAO_WAN_CHENG+Constant.XHX)) {//排胶完成
+        	itemName = ERecord.PJWCSSYSJ;
         }
         else if (tv1VarName.startsWith(Constant.FAN_YING_JIE_SHU+Constant.XHX)){//反应结束
             itemName = Constant.FAN_YING_JIE_SHU+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
