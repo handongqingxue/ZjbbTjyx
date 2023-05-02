@@ -393,6 +393,10 @@ public class Constant {
 	 */
 	public static final String TING_ZHI_JIANG_WEN="停止降温";
 	/**
+	 * 生产总重
+	 */
+	public static final String SHENG_CHAN_ZONG_ZHONG="生产总重";
+	/**
 	 * 终检水PH提醒
 	 */
 	public static final String ZHONG_JIAN_SHUI_PH_TI_XING="终检水PH提醒";
