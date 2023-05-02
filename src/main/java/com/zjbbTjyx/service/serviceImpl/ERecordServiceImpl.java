@@ -1279,7 +1279,7 @@ public class ERecordServiceImpl implements ERecordService {
 				}
 				eRecord.setPtnValue(varValue+"");
 				eRecord.setUnit(unit);
-			}
+			}//冷却阶段结束
 			else if(pvVarName.startsWith(ERecord.YXKSPJSSYSJ)) {//允许开始排胶上升沿时间
 				Integer pvFId = processVar.getFId();
 				String batchID = batchIDMap.get(pvFId).toString();
@@ -1301,6 +1301,115 @@ public class ERecordServiceImpl implements ERecordService {
 				
 				eRecordList.add(eRecord);
 			}
+			else if(pvVarName.startsWith(ERecord.PJWCSSYSJ)) {//排胶完成上升沿时间
+				Integer pvFId = processVar.getFId();
+				String batchID = batchIDMap.get(pvFId).toString();
+				String updateTime = processVar.getUpdateTime();
+
+				eRecord=getFromList(ERecord.YXKSPJDPJWCSJ, batchID, eRecordList);
+				if(eRecord==null) {
+					String pvRecType = processVar.getRecType();
+					
+					eRecord=new ERecord();
+					eRecord.setVarName(ERecord.YXKSPJDPJWCSJ);
+					eRecord.setRecType(pvRecType);
+					eRecord.setFId(pvFId);
+					eRecord.setRecordTime(recordTime);
+					eRecord.setBatchID(batchID);
+					eRecord.setPhaseName(Constant.PAI_JIAO);
+					
+					eRecordList.add(eRecord);
+				}
+				eRecord.setNxtValue(updateTime);
+			}
+			else if(pvVarName.startsWith(ERecord.YXKSPJDPJWCSJC)) {//允许开始排胶到排胶完成时间差
+				Integer pvFId = processVar.getFId();
+				String batchID = batchIDMap.get(pvFId).toString();
+				Float varValue = processVar.getVarValue();
+				String unit = processVar.getUnit();
+
+				eRecord=getFromList(ERecord.YXKSPJDPJWCSJC, batchID, eRecordList);
+				if(eRecord==null) {
+					String pvRecType = processVar.getRecType();
+					
+					eRecord=new ERecord();
+					eRecord.setVarName(pvVarName);
+					eRecord.setRecType(pvRecType);
+					eRecord.setFId(pvFId);
+					eRecord.setRecordTime(recordTime);
+					eRecord.setBatchID(batchID);
+					eRecord.setPhaseName(Constant.PAI_JIAO);
+					
+					eRecordList.add(eRecord);
+				}
+				eRecord.setPtnValue(varValue+"");
+				eRecord.setUnit(unit);
+			}
+			else if(pvVarName.startsWith(ERecord.YXKSPJSSYFCZ)) {//允许开始排胶上升沿釜称重
+				Integer pvFId = processVar.getFId();
+				String batchID = batchIDMap.get(pvFId).toString();
+				Float varValue = processVar.getVarValue();
+
+				eRecord=getFromList(ERecord.YXKSPJDPJWCFCZ, batchID, eRecordList);
+				if(eRecord==null) {
+					String pvRecType = processVar.getRecType();
+					
+					eRecord=new ERecord();
+					eRecord.setVarName(ERecord.YXKSPJDPJWCFCZ);
+					eRecord.setRecType(pvRecType);
+					eRecord.setFId(pvFId);
+					eRecord.setRecordTime(recordTime);
+					eRecord.setBatchID(batchID);
+					eRecord.setPhaseName(Constant.PAI_JIAO);
+					
+					eRecordList.add(eRecord);
+				}
+				eRecord.setPreValue(varValue+"");
+			}
+			else if(pvVarName.startsWith(ERecord.PJWCSSYFCZ)) {//排胶完成上升沿釜称重
+				Integer pvFId = processVar.getFId();
+				String batchID = batchIDMap.get(pvFId).toString();
+				Float varValue = processVar.getVarValue();
+
+				eRecord=getFromList(ERecord.YXKSPJDPJWCFCZ, batchID, eRecordList);
+				if(eRecord==null) {
+					String pvRecType = processVar.getRecType();
+					
+					eRecord=new ERecord();
+					eRecord.setVarName(ERecord.YXKSPJDPJWCFCZ);
+					eRecord.setRecType(pvRecType);
+					eRecord.setFId(pvFId);
+					eRecord.setRecordTime(recordTime);
+					eRecord.setBatchID(batchID);
+					eRecord.setPhaseName(Constant.PAI_JIAO);
+					
+					eRecordList.add(eRecord);
+				}
+				eRecord.setNxtValue(varValue+"");
+			}
+			else if(pvVarName.startsWith(ERecord.YXKSPJDPJWCFZLC)) {//允许开始排胶到排胶完成釜重量差
+				Integer pvFId = processVar.getFId();
+				String batchID = batchIDMap.get(pvFId).toString();
+				Float varValue = processVar.getVarValue();
+				String unit = processVar.getUnit();
+
+				eRecord=getFromList(ERecord.YXKSPJDPJWCFCZ, batchID, eRecordList);
+				if(eRecord==null) {
+					String pvRecType = processVar.getRecType();
+					
+					eRecord=new ERecord();
+					eRecord.setVarName(ERecord.YXKSPJDPJWCFCZ);
+					eRecord.setRecType(pvRecType);
+					eRecord.setFId(pvFId);
+					eRecord.setRecordTime(recordTime);
+					eRecord.setBatchID(batchID);
+					eRecord.setPhaseName(Constant.PAI_JIAO);
+					
+					eRecordList.add(eRecord);
+				}
+				eRecord.setPtnValue(varValue+"");
+				eRecord.setUnit(unit);
+			}//排胶阶段结束
 		}
 		
 		//处理完批记录集合的信息后，通过循环一起插入数据库表

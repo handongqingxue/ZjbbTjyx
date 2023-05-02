@@ -251,6 +251,10 @@ public class ERecord {
 	 */
 	public static final String YXKSPJDPJWCFCZ=Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.DAO+Constant.PAI_JIAO_WAN_CHENG+Constant.FU+Constant.CHENG_ZHONG;
 	/**
+	 * 允许开始排胶到排胶完成釜重量差
+	 */
+	public static final String YXKSPJDPJWCFZLC=Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.DAO+Constant.PAI_JIAO_WAN_CHENG+Constant.FU+Constant.ZHONG_LIANG+Constant.CHA;
+	/**
 	 * 允许开始排胶上升沿时间
 	 */
 	public static final String YXKSPJSSYSJ=Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
@@ -261,7 +265,10 @@ public class ERecord {
 	/**
 	 * 允许开始排胶到排胶完成时间
 	 */
-	public static final String YXKSPJDPJWCSJ=Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.DAO+Constant.PAI_JIAO_WAN_CHENG+Constant.SHI_JIAN;
+	public static final String YXKSPJDPJWCSJ=Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.DAO+Constant.PAI_JIAO_WAN_CHENG+Constant.SHI_JIAN;/**
+	 * 允许开始排胶到排胶完成时间差
+	 */
+	public static final String YXKSPJDPJWCSJC=Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.DAO+Constant.PAI_JIAO_WAN_CHENG+Constant.SHI_JIAN+Constant.CHA;
 
 	private Integer Id;
 	public Integer getId() {
