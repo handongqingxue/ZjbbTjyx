@@ -433,15 +433,15 @@ public class OpcUtil {
 	                    varName=Constant.JIA_SHUI_SHI_JI_ZHONG_LIANG;
 	                }
 	        		else if(itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)) {
-	        			varName=Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
+	        			varName=ERecord.JQFLWCSSYFYFWD;//甲醛放料完成上升沿反应釜温度
 	        		}
 	        		else if(itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)){
-	                    varName=Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
+	                    varName=ERecord.JQFLWCSSYFCZ;//甲醛放料完成上升沿釜称重
 	                }
 	        	}
 	        	else if (tv1VarName.startsWith(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+Constant.XHX)){//甲醛备料开始
 	                if(itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)){
-	                    varName=Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
+	                    varName=ERecord.JQBLKSSSYFCZ;//甲醛备料开始上升沿釜称重
 	                }
 	            }
 	        	else if(tv1VarName.startsWith(Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+Constant.XHX)){//加碱PH值正常
@@ -460,14 +460,14 @@ public class OpcUtil {
 	            }
 	        	else if(tv1VarName.startsWith(Constant.YUN_XU_YI_CI_JIA_ZHU_JI+Constant.XHX)){//允许一次加助剂
 	        	    if (itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)){
-	                    varName=Constant.YUN_XU_YI_CI_JIA_ZHU_JI+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
+	                    varName=ERecord.YXYCJZJSSYFCZ;//允许一次加助剂上升沿釜称重
 	                }
 	            }
 	        	else if(tv1VarName.startsWith(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.XHX)){//所有助剂加料完成1
 	                if (itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)){
-	                    varName=Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
+	                    varName=ERecord.SYZJJLWC1SSYFCZ;//所有助剂加料完成1上升沿釜称重
 	                }else if (itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)){
-	                    varName=Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
+	                    varName=ERecord.SYZJJLWC1SSYFYFWD;//所有助剂加料完成1上升沿反应釜温度
 	                }
 	            }
 	        	else if(tv1VarName.startsWith(Constant.JIA_FEN_LIAO_TI_XING+Constant.XHX)&&tv2VarName==null){//加粉料提醒
@@ -479,15 +479,15 @@ public class OpcUtil {
 	        		if(tv2VarName.contains(Constant.NIAO_SU_FANG_LIAO_FA)) {
 	        			if (itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)){
 		        			if(tv2VarValue==TriggerVar.UP) {
-		        				varName=Constant.FU+Constant.NIAO_SU_FANG_LIAO_FA+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
+		        				varName=ERecord.FNSFLFSSYFCZ;//釜尿素放料阀上升沿釜称重
 		        			}
 		        			else {
-		        				varName=Constant.FU+Constant.NIAO_SU_FANG_LIAO_FA+Constant.XIA_JIANG_YAN+Constant.FU+Constant.CHENG_ZHONG;
+		        				varName=ERecord.FNSFLFXJYFCZ;//釜尿素放料阀下降沿釜称重
 		        			}
 	        			}
 	        			else if (itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)){
 		        			if(tv2VarValue==TriggerVar.DOWN) {
-		        				varName=Constant.FU+Constant.NIAO_SU_FANG_LIAO_FA+Constant.XIA_JIANG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
+		        				varName=ERecord.FNSFLFXJYFYFWD;//釜尿素放料阀下降沿反应釜温度
 		        			}
 	        			}
 	        		}
@@ -631,59 +631,59 @@ public class OpcUtil {
         //以下是报表里所需的系统时间，opc上没有这些变量，就得根据服务器的系统时间获取，再存入集合里
         String itemName = null;
         if(tv1VarName.startsWith(Constant.BEI_LIAO_KAI_SHI+Constant.XHX)) {//备料开始
-        	itemName = Constant.BEI_LIAO_KAI_SHI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+        	itemName = ERecord.BLKSSSYSJ;//备料开始上升沿时间
         }
         else if(tv1VarName.startsWith(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+Constant.XHX)) {//甲醛备料开始
-        	itemName = Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+        	itemName = ERecord.JQBLKSSSYSJ;//甲醛备料开始上升沿时间
         }
         else if(tv1VarName.startsWith(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.XHX)) { //甲醛放料完成
-        	itemName = Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+        	itemName = ERecord.JQFLWCSSYSJ;//甲醛放料完成上升沿时间
         }
         else if(tv1VarName.startsWith(Constant.YUN_XU_YI_CI_JIA_ZHU_JI+Constant.XHX)) {//允许一次加助剂
-        	itemName = Constant.YUN_XU_YI_CI_JIA_ZHU_JI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+        	itemName = ERecord.YXYCJZJSSYSJ;//允许一次加助剂上升沿时间
         }
         else if (tv1VarName.startsWith(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.XHX)){//所有助剂加料完成1
-        	itemName = Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+        	itemName = ERecord.SYZJJLWC1SSYSJ;//所有助剂加料完成1上升沿时间
         }
         else if(tv1VarName.startsWith(Constant.JIA_FEN_LIAO_TI_XING+Constant.XHX)&&tv2VarName!=null) {
         	if(tv2VarName.contains(Constant.NIAO_SU_FANG_LIAO_FA)) {
     			if(tv2VarValue==TriggerVar.UP) {
-    				itemName=Constant.FU+Constant.NIAO_SU_FANG_LIAO_FA+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+    				itemName=ERecord.FNSFLFSSYSJ;//釜尿素放料阀上升沿时间
     			}
     			else {
-    				itemName=Constant.FU+Constant.NIAO_SU_FANG_LIAO_FA+Constant.XIA_JIANG_YAN+Constant.SHI_JIAN;
+    				itemName=ERecord.FNSFLFXJYSJ;//釜尿素放料阀下降沿时间
     			}
     		}
         }
         else if(tv1VarName.startsWith(Constant.SHENG_WEN_KAI_SHI+Constant.XHX)){//升温开始
-        	itemName = Constant.SHENG_WEN_KAI_SHI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+        	itemName = ERecord.SWKSSSYSJ;//升温开始上升沿时间
         }
         else if (tv1VarName.startsWith(Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING+Constant.XHX)){//温度85与二次投料提醒
-        	itemName = Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+        	itemName = ERecord.WD85YECTLTXSSYSJ;//温度85与二次投料提醒上升沿时间
         }
         else if (tv1VarName.startsWith(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+Constant.XHX)){//所有助剂加料完成2
-            itemName = Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+            itemName = ERecord.SYZJJLWC2SSYSJ;//所有助剂加料完成2上升沿时间
         }
         else if (tv1VarName.startsWith(Constant.YUN_XU_ER_CI_JIA_ZHU_JI+Constant.XHX)){//允许二次加助剂
-            itemName = Constant.YUN_XU_ER_CI_JIA_ZHU_JI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+            itemName = ERecord.YXECJZJSSYSJ;//允许二次加助剂上升沿时间
         }
         else if (tv1VarName.startsWith(Constant.SHENG_WEN_WAN_CHENG+Constant.XHX)){//升温完成
-            itemName = Constant.SHENG_WEN_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+            itemName = ERecord.SWWCSSYSJ;//升温完成上升沿时间
         }
         else if (tv1VarName.startsWith(Constant.JU_HE_ZHONG_DIAN+Constant.XHX)){//聚合终点
-            itemName = Constant.JU_HE_ZHONG_DIAN+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+            itemName = ERecord.JHZDSSYSJ;//聚合终点上升沿时间
         }
         else if (tv1VarName.startsWith(Constant.JIANG_WEN_WAN_CHENG+Constant.XHX)){//降温完成
-            itemName = Constant.JIANG_WEN_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+            itemName = ERecord.JWWCSSYSJ;//降温完成上升沿时间
         }
         else if(tv1VarName.startsWith(Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.XHX)) {//允许开始排胶
-        	itemName = ERecord.YXKSPJSSYSJ;
+        	itemName = ERecord.YXKSPJSSYSJ;//允许开始排胶上升沿时间
         }
         else if(tv1VarName.startsWith(Constant.PAI_JIAO_WAN_CHENG+Constant.XHX)) {//排胶完成
-        	itemName = ERecord.PJWCSSYSJ;
+        	itemName = ERecord.PJWCSSYSJ;//排胶完成上升沿时间
         }
         else if (tv1VarName.startsWith(Constant.FAN_YING_JIE_SHU+Constant.XHX)){//反应结束
-            itemName = Constant.FAN_YING_JIE_SHU+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+            itemName = ERecord.FYJSSSYSJ;//反应结束上升沿时间
         }
         
         //触发器变量1在满足以上几种情况时，说明需要添加系统时间，就调用下面这个逻辑。若加在上面代码量太多，就简化一下加在下面

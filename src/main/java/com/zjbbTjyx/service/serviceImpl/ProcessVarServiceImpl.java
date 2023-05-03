@@ -40,21 +40,21 @@ public class ProcessVarServiceImpl implements ProcessVarService {
 		String preName=null;
 		String ptnName=null;
 		Float ptnValue=null;
-		if((Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG).equals(nxtName)) {
-			preName=Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
-			ptnName=Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+Constant.DAO+Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.FU+Constant.ZHONG_LIANG+Constant.CHA;//甲醛备料开始到甲醛放料完成的重量差
+		if(ERecord.JQFLWCSSYFCZ.equals(nxtName)) {//甲醛放料完成上升沿釜称重
+			preName=ERecord.JQBLKSSSYFCZ;//甲醛备料开始上升沿釜称重
+			ptnName=ERecord.JQBLKSDJQFLWCFZLC;//甲醛备料开始到甲醛放料完成的重量差
 		}
-		else if((Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN).equals(nxtName)){
-			preName=Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
-			ptnName=Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+Constant.DAO+Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.SHI_JIAN+Constant.CHA;//甲醛备料开始到甲醛放料完成时间差
+		else if(ERecord.JQFLWCSSYSJ.equals(nxtName)){//甲醛放料完成上升沿时间
+			preName=ERecord.JQBLKSSSYSJ;//甲醛备料开始上升沿时间
+			ptnName=ERecord.JQBLKSDJQFLWCSJC;//甲醛备料开始到甲醛放料完成时间差
 		}
-		else if((Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG).equals(nxtName)){
-			preName=Constant.YUN_XU_YI_CI_JIA_ZHU_JI+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
-			ptnName=Constant.YUN_XU_YI_CI_JIA_ZHU_JI+Constant.DAO+Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.FU+Constant.ZHONG_LIANG+Constant.CHA;//允许一次加助剂到所有助剂加料完成1的重量差
+		else if(ERecord.SYZJJLWC1SSYFCZ.equals(nxtName)){//所有助剂加料完成1上升沿釜称重
+			preName=ERecord.YXYCJZJSSYFCZ;//允许一次加助剂上升沿釜称重
+			ptnName=ERecord.YXYCJZJDSYZJJLWC1FZLC;//允许一次加助剂到所有助剂加料完成1的重量差
 		}
-		else if((Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN).equals(nxtName)){
-			preName=Constant.YUN_XU_YI_CI_JIA_ZHU_JI+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
-			ptnName=Constant.YUN_XU_YI_CI_JIA_ZHU_JI+Constant.DAO+Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.SHI_JIAN+Constant.CHA;//允许一次加助剂到所有助剂加料完成时间差
+		else if(ERecord.SYZJJLWC1SSYSJ.equals(nxtName)){//所有助剂加料完成1上升沿时间
+			preName=ERecord.YXYCJZJSSYSJ;//允许一次加助剂上升沿时间
+			ptnName=ERecord.YXYCJZJDSYZJJLWC1SJC;//允许一次加助剂到所有助剂加料完成时间差
 		}
 		else if(ERecord.SYZJJLWC2SSYFCZ.equals(nxtName)){//所有助剂加料完成2上升沿釜称重
 			preName=ERecord.YXECJZJSSYFCZ;//允许二次加助剂上升沿釜称重
