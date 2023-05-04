@@ -258,6 +258,7 @@ public class ERecord {
 	 * 允许开始排胶到排胶完成釜称重
 	 */
 	public static final String YXKSPJDPJWCFCZ=Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.DAO+Constant.PAI_JIAO_WAN_CHENG+Constant.FU+Constant.CHENG_ZHONG;
+
 	/**
 	 * 允许开始排胶到排胶完成釜重量差
 	 */
