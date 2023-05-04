@@ -339,6 +339,7 @@ public class OPCController {
 		//}
 
 		//反应结束
+		List<Integer> fyjsFIdList = new ArrayList<Integer>();//反应结束反应釜号集合(M类和U类共用)
 		String fyjsTVVarNamePre=Constant.FAN_YING_JIE_SHU;
 		List<TriggerVar> fyjsTVList = (List<TriggerVar>)triggerVarMap.get(fyjsTVVarNamePre);//获取反应结束变量,不管是否是上升沿
 		List<TriggerVar> upFyjsTVList = getUpDownVarValueListFromList(fyjsTVList, TriggerVar.UP);//获取上升的反应结束变量
@@ -351,6 +352,7 @@ public class OPCController {
 					paramF1Map.put("upFyjsTV",upFyjsTV);
 					paramF1Map.put("preValueFMMap",preValueF1MMap);
 					paramF1Map.put("preValueFUMap",preValueF1UMap);
+					paramF1Map.put("fyjsFIdList",fyjsFIdList);
 					addProVarByParamMap(paramF1Map);
 					break;
 				case Constant.F2_ID:
@@ -359,6 +361,7 @@ public class OPCController {
 					paramF2Map.put("upFyjsTV",upFyjsTV);
 					paramF2Map.put("preValueFMMap",preValueF2MMap);
 					paramF2Map.put("preValueFUMap",preValueF2UMap);
+					paramF2Map.put("fyjsFIdList",fyjsFIdList);
 					addProVarByParamMap(paramF2Map);
 					break;
 				case Constant.F3_ID:
@@ -367,6 +370,7 @@ public class OPCController {
 					paramF3Map.put("upFyjsTV",upFyjsTV);
 					paramF3Map.put("preValueFMMap",preValueF3MMap);
 					paramF3Map.put("preValueFUMap",preValueF3UMap);
+					paramF3Map.put("fyjsFIdList",fyjsFIdList);
 					addProVarByParamMap(paramF3Map);
 					break;
 				case Constant.F4_ID:
@@ -375,6 +379,7 @@ public class OPCController {
 					paramF4Map.put("upFyjsTV",upFyjsTV);
 					paramF4Map.put("preValueFMMap",preValueF4MMap);
 					paramF4Map.put("preValueFUMap",preValueF4UMap);
+					paramF4Map.put("fyjsFIdList",fyjsFIdList);
 					addProVarByParamMap(paramF4Map);
 					break;
 				case Constant.F5_ID:
@@ -383,6 +388,7 @@ public class OPCController {
 					paramF5Map.put("upFyjsTV",upFyjsTV);
 					paramF5Map.put("preValueFMMap",preValueF5MMap);
 					paramF5Map.put("preValueFUMap",preValueF5UMap);
+					paramF5Map.put("fyjsFIdList",fyjsFIdList);
 					addProVarByParamMap(paramF5Map);
 					break;
 
@@ -1471,7 +1477,8 @@ public class OPCController {
 					paramF3Map.put("preValueFMMap",preValueF3MMap);
 					paramF3Map.put("preValueFUMap",preValueF3UMap);
 					addProVarByParamMap(paramF3Map);
-					break;case Constant.F4_ID:
+					break;
+				case Constant.F4_ID:
 					Map<String,Object> paramF4Map=new HashMap<String,Object>();
 					paramF4Map.put("tvVarNamePre",yxkspjTVVarNamePre);
 					paramF4Map.put("upPjwcTV",upPjwcTV);
@@ -1544,13 +1551,16 @@ public class OPCController {
 			}
 		}
 		else if(Constant.FAN_YING_JIE_SHU.equals(tvVarNamePre)) {//反应结束
+			List<Integer> fyjsFIdList=(List<Integer>)paramMap.get("fyjsFIdList");
 			TriggerVar upFyjsTV = (TriggerVar)paramMap.get("upFyjsTV");
+			Integer upFId = upFyjsTV.getFId();
 			String upRecType = upFyjsTV.getRecType();//获取配方类型
 			if(TriggerVar.M.equals(upRecType)) {
 				HashMap<String, Object> preValueFMMap = (HashMap<String,Object>)paramMap.get("preValueFMMap");
 				String upVarName = upFyjsTV.getVarName();
 				Float preValue = Float.valueOf(preValueFMMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
+					fyjsFIdList.add(upFId);
 					List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
 					opcTVList.add(upFyjsTV);
 					Map<String, Object> fyjsMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据反应结束触发变量从opc端查找对应的过程变量
@@ -1572,6 +1582,7 @@ public class OPCController {
 				String upVarName = upFyjsTV.getVarName();
 				Float preValue = Float.valueOf(preValueFUMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
+					fyjsFIdList.add(upFId);
 					List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
 					opcTVList.add(upFyjsTV);
 					Map<String, Object> fyjsMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据反应结束触发变量从opc端查找对应的过程变量
