@@ -24,7 +24,7 @@ import com.zjbbTjyx.entity.*;
 
 public class OpcUtil {
 	
-	private static boolean IS_TEST=false;
+	private static boolean IS_TEST=true;
 	
     public static void main(String[] args) {
         SynchReadItemExample test = new SynchReadItemExample();

@@ -400,6 +400,7 @@ public class OPCController {
 			if (fyjsFIdList.size() > 0) {//若有需要处理的反应结束节点的反应釜，说明这些反应釜的批次执行完成，就从过程变量表(ProcessVar)里读取已采集好的变量，经过加工处理存入批记录表(ERecord)里
 				List<ProcessVar> udProVarList = processVarService.getUnDealListByFIdList(fyjsFIdList);
 				int c = eRecordService.addFromProVarList(udProVarList);
+				eRecordService.clearBatchIDMap(fyjsFIdList);
 			}
 
 			//甲醛备料开始
