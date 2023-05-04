@@ -1237,6 +1237,39 @@ public class OPCController {
 					paramF1Map.put("preValueFUMap",preValueF1UMap);
 					addProVarByParamMap(paramF1Map);
 					break;
+				case Constant.F2_ID:
+					Map<String,Object> paramF2Map=new HashMap<String,Object>();
+					paramF2Map.put("tvVarNamePre",csstxTVVarNamePre);
+					paramF2Map.put("downCsstxTV",downCsstxTV);
+					paramF2Map.put("preValueFMMap",preValueF2MMap);
+					paramF2Map.put("preValueFUMap",preValueF2UMap);
+					addProVarByParamMap(paramF2Map);
+					break;
+				case Constant.F3_ID:
+					Map<String,Object> paramF3Map=new HashMap<String,Object>();
+					paramF3Map.put("tvVarNamePre",csstxTVVarNamePre);
+					paramF3Map.put("downCsstxTV",downCsstxTV);
+					paramF3Map.put("preValueFMMap",preValueF3MMap);
+					paramF3Map.put("preValueFUMap",preValueF3UMap);
+					addProVarByParamMap(paramF3Map);
+					break;
+				case Constant.F4_ID:
+					Map<String,Object> paramF4Map=new HashMap<String,Object>();
+					paramF4Map.put("tvVarNamePre",csstxTVVarNamePre);
+					paramF4Map.put("downCsstxTV",downCsstxTV);
+					paramF4Map.put("preValueFMMap",preValueF4MMap);
+					paramF4Map.put("preValueFUMap",preValueF4UMap);
+					addProVarByParamMap(paramF4Map);
+					break;
+				case Constant.F5_ID:
+					Map<String,Object> paramF5Map=new HashMap<String,Object>();
+					paramF5Map.put("tvVarNamePre",csstxTVVarNamePre);
+					paramF5Map.put("downCsstxTV",downCsstxTV);
+					paramF5Map.put("preValueFMMap",preValueF5MMap);
+					paramF5Map.put("preValueFUMap",preValueF5UMap);
+					addProVarByParamMap(paramF5Map);
+					break;
+
 			}
 		}
 
@@ -1258,6 +1291,42 @@ public class OPCController {
 					paramF1Map.put("preValueFUMap",preValueF1UMap);
 					paramF1Map.put("jwwcFIdList",jwwcFIdList);
 					addProVarByParamMap(paramF1Map);
+					break;
+				case Constant.F2_ID:
+					Map<String,Object> paramF2Map=new HashMap<String,Object>();
+					paramF2Map.put("tvVarNamePre",jwwcTVVarNamePre);
+					paramF2Map.put("upJwwcTV",upJwwcTV);
+					paramF2Map.put("preValueFMMap",preValueF2MMap);
+					paramF2Map.put("preValueFUMap",preValueF2UMap);
+					paramF2Map.put("jwwcFIdList",jwwcFIdList);
+					addProVarByParamMap(paramF2Map);
+					break;
+				case Constant.F3_ID:
+					Map<String,Object> paramF3Map=new HashMap<String,Object>();
+					paramF3Map.put("tvVarNamePre",jwwcTVVarNamePre);
+					paramF3Map.put("upJwwcTV",upJwwcTV);
+					paramF3Map.put("preValueFMMap",preValueF3MMap);
+					paramF3Map.put("preValueFUMap",preValueF3UMap);
+					paramF3Map.put("jwwcFIdList",jwwcFIdList);
+					addProVarByParamMap(paramF3Map);
+					break;
+				case Constant.F4_ID:
+					Map<String,Object> paramF4Map=new HashMap<String,Object>();
+					paramF4Map.put("tvVarNamePre",jwwcTVVarNamePre);
+					paramF4Map.put("upJwwcTV",upJwwcTV);
+					paramF4Map.put("preValueFMMap",preValueF4MMap);
+					paramF4Map.put("preValueFUMap",preValueF4UMap);
+					paramF4Map.put("jwwcFIdList",jwwcFIdList);
+					addProVarByParamMap(paramF4Map);
+					break;
+				case Constant.F5_ID:
+					Map<String,Object> paramF5Map=new HashMap<String,Object>();
+					paramF5Map.put("tvVarNamePre",jwwcTVVarNamePre);
+					paramF5Map.put("upJwwcTV",upJwwcTV);
+					paramF5Map.put("preValueFMMap",preValueF5MMap);
+					paramF5Map.put("preValueFUMap",preValueF5UMap);
+					paramF5Map.put("jwwcFIdList",jwwcFIdList);
+					addProVarByParamMap(paramF5Map);
 					break;
 			}
 		}
@@ -1284,6 +1353,39 @@ public class OPCController {
 					paramF1Map.put("preValueFUMap",preValueF1UMap);
 					addProVarByParamMap(paramF1Map);
 					break;
+				case Constant.F2_ID:
+					Map<String,Object> paramF2Map=new HashMap<String,Object>();
+					paramF2Map.put("tvVarNamePre",zjsphtxTVVarNamePre);
+					paramF2Map.put("downZjsphtxTV",downZjsphtxTV);
+					paramF2Map.put("preValueFMMap",preValueF2MMap);
+					paramF2Map.put("preValueFUMap",preValueF2UMap);
+					addProVarByParamMap(paramF2Map);
+					break;
+				case Constant.F3_ID:
+					Map<String,Object> paramF3Map=new HashMap<String,Object>();
+					paramF3Map.put("tvVarNamePre",zjsphtxTVVarNamePre);
+					paramF3Map.put("downZjsphtxTV",downZjsphtxTV);
+					paramF3Map.put("preValueFMMap",preValueF3MMap);
+					paramF3Map.put("preValueFUMap",preValueF3UMap);
+					addProVarByParamMap(paramF3Map);
+					break;
+				case Constant.F4_ID:
+					Map<String,Object> paramF4Map=new HashMap<String,Object>();
+					paramF4Map.put("tvVarNamePre",zjsphtxTVVarNamePre);
+					paramF4Map.put("downZjsphtxTV",downZjsphtxTV);
+					paramF4Map.put("preValueFMMap",preValueF4MMap);
+					paramF4Map.put("preValueFUMap",preValueF4UMap);
+					addProVarByParamMap(paramF4Map);
+					break;
+				case Constant.F5_ID:
+					Map<String,Object> paramF5Map=new HashMap<String,Object>();
+					paramF5Map.put("tvVarNamePre",zjsphtxTVVarNamePre);
+					paramF5Map.put("downZjsphtxTV",downZjsphtxTV);
+					paramF5Map.put("preValueFMMap",preValueF5MMap);
+					paramF5Map.put("preValueFUMap",preValueF5UMap);
+					addProVarByParamMap(paramF5Map);
+					break;
+
 			}
 		}
 		
@@ -1303,6 +1405,38 @@ public class OPCController {
 					paramF1Map.put("preValueFUMap",preValueF1UMap);
 					addProVarByParamMap(paramF1Map);
 					break;
+				case Constant.F2_ID:
+					Map<String,Object> paramF2Map=new HashMap<String,Object>();
+					paramF2Map.put("tvVarNamePre",yxkspjTVVarNamePre);
+					paramF2Map.put("upYxkspjTV",upYxkspjTV);
+					paramF2Map.put("preValueFMMap",preValueF2MMap);
+					paramF2Map.put("preValueFUMap",preValueF2UMap);
+					addProVarByParamMap(paramF2Map);
+					break;
+				case Constant.F3_ID:
+					Map<String,Object> paramF3Map=new HashMap<String,Object>();
+					paramF3Map.put("tvVarNamePre",yxkspjTVVarNamePre);
+					paramF3Map.put("upYxkspjTV",upYxkspjTV);
+					paramF3Map.put("preValueFMMap",preValueF3MMap);
+					paramF3Map.put("preValueFUMap",preValueF3UMap);
+					addProVarByParamMap(paramF3Map);
+					break;
+				case Constant.F4_ID:
+					Map<String,Object> paramF4Map=new HashMap<String,Object>();
+					paramF4Map.put("tvVarNamePre",yxkspjTVVarNamePre);
+					paramF4Map.put("upYxkspjTV",upYxkspjTV);
+					paramF4Map.put("preValueFMMap",preValueF4MMap);
+					paramF4Map.put("preValueFUMap",preValueF4UMap);
+					addProVarByParamMap(paramF4Map);
+					break;
+				case Constant.F5_ID:
+					Map<String,Object> paramF5Map=new HashMap<String,Object>();
+					paramF5Map.put("tvVarNamePre",yxkspjTVVarNamePre);
+					paramF5Map.put("upYxkspjTV",upYxkspjTV);
+					paramF5Map.put("preValueFMMap",preValueF5MMap);
+					paramF5Map.put("preValueFUMap",preValueF5UMap);
+					addProVarByParamMap(paramF5Map);
+					break;
 			}
 		}
 		
@@ -1321,6 +1455,37 @@ public class OPCController {
 					paramF1Map.put("preValueFMMap",preValueF1MMap);
 					paramF1Map.put("preValueFUMap",preValueF1UMap);
 					addProVarByParamMap(paramF1Map);
+					break;
+				case Constant.F2_ID:
+					Map<String,Object> paramF2Map=new HashMap<String,Object>();
+					paramF2Map.put("tvVarNamePre",yxkspjTVVarNamePre);
+					paramF2Map.put("upPjwcTV",upPjwcTV);
+					paramF2Map.put("preValueFMMap",preValueF2MMap);
+					paramF2Map.put("preValueFUMap",preValueF2UMap);
+					addProVarByParamMap(paramF2Map);
+					break;
+				case Constant.F3_ID:
+					Map<String,Object> paramF3Map=new HashMap<String,Object>();
+					paramF3Map.put("tvVarNamePre",yxkspjTVVarNamePre);
+					paramF3Map.put("upPjwcTV",upPjwcTV);
+					paramF3Map.put("preValueFMMap",preValueF3MMap);
+					paramF3Map.put("preValueFUMap",preValueF3UMap);
+					addProVarByParamMap(paramF3Map);
+					break;case Constant.F4_ID:
+					Map<String,Object> paramF4Map=new HashMap<String,Object>();
+					paramF4Map.put("tvVarNamePre",yxkspjTVVarNamePre);
+					paramF4Map.put("upPjwcTV",upPjwcTV);
+					paramF4Map.put("preValueFMMap",preValueF4MMap);
+					paramF4Map.put("preValueFUMap",preValueF4UMap);
+					addProVarByParamMap(paramF4Map);
+					break;
+				case Constant.F5_ID:
+					Map<String,Object> paramF5Map=new HashMap<String,Object>();
+					paramF5Map.put("tvVarNamePre",yxkspjTVVarNamePre);
+					paramF5Map.put("upPjwcTV",upPjwcTV);
+					paramF5Map.put("preValueFMMap",preValueF5MMap);
+					paramF5Map.put("preValueFUMap",preValueF5UMap);
+					addProVarByParamMap(paramF5Map);
 					break;
 			}
 		}
