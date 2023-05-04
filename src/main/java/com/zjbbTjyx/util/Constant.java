@@ -143,11 +143,48 @@ public class Constant {
 	 * 助剂计量罐5(M类)
 	 */
 	public static final int BSF_ZJJLG5=5;
+	
+	/**
+	 * 胶罐1
+	 */
+	public static final int BSF_JG1=1;
+	/**
+	 * 胶罐2
+	 */
+	public static final int BSF_JG2=2;
+	/**
+	 * 胶罐3
+	 */
+	public static final int BSF_JG3=3;
+	/**
+	 * 胶罐4
+	 */
+	public static final int BSF_JG4=4;
+	/**
+	 * 胶罐5
+	 */
+	public static final int BSF_JG5=5;
+	/**
+	 * 胶罐6
+	 */
+	public static final int BSF_JG6=6;
+	/**
+	 * 胶罐7
+	 */
+	public static final int BSF_JG7=7;
+	/**
+	 * 胶罐8
+	 */
+	public static final int BSF_JG8=8;
+	/**
+	 * 胶罐9
+	 */
+	public static final int BSF_JG9=9;
 
 	/**
 	 * 反应釜号数组
 	 */
-	public static final Integer[] F_ID_ARR=new Integer[]{F1_ID,F2_ID,F3_ID,F4_ID,F5_ID};
+	public static final int[] F_ID_ARR=new int[]{F1_ID,F2_ID,F3_ID,F4_ID,F5_ID};
 
 	/**
 	 * 反应釜标识符数组(M类)
@@ -166,11 +203,13 @@ public class Constant {
 	/**
 	 * 助剂计量罐1-2标识符数组(M类)
 	 */
-	public static final Integer[] BSF_ZJJLG_1_2_M_ARR=new Integer[] {BSF_ZJJLG1,BSF_ZJJLG2};
+	public static final int[] BSF_ZJJLG_1_2_M_ARR=new int[] {BSF_ZJJLG1,BSF_ZJJLG2};
 	/**
 	 * 助剂计量罐3-5标识符数组(M类)
 	 */
-	public static final Integer[] BSF_ZJJLG_3_5_M_ARR=new Integer[] {BSF_ZJJLG3,BSF_ZJJLG4,BSF_ZJJLG5};
+	public static final int[] BSF_ZJJLG_3_5_M_ARR=new int[] {BSF_ZJJLG3,BSF_ZJJLG4,BSF_ZJJLG5};
+	
+	public static final int[] BSF_JG_ARR=new int[] {BSF_JG1,BSF_JG2,BSF_JG3,BSF_JG4,BSF_JG5,BSF_JG6,BSF_JG7,BSF_JG8,BSF_JG9};
 	
 	/**
 	 * 批次记录
@@ -208,6 +247,10 @@ public class Constant {
 	 * 生产日期
 	 */
 	public static final String SHENG_CHAN_RI_QI="生产日期";
+	/**
+	 * 当前胶种显示
+	 */
+	public static final String DANG_QIAN_JIAO_ZHONG_XIAN_SHI="当前胶种显示";
 	/**
 	 * 甲醛实际进料重量
 	 */
@@ -290,9 +333,9 @@ public class Constant {
 	 */
 	public static final String ER_CI_ZHU_JI_HOU_CE_PH_TI_XING="二次助剂后测PH提醒";
 	/**
-	 * 二次投料PH输入值
+	 * 二次投料PH输入
 	 */
-	public static final String ER_CI_TOU_LIAO_PH_SHU_RU_ZHI="二次投料PH输入值";
+	public static final String ER_CI_TOU_LIAO_PH_SHU_RU="二次投料PH输入";
 	/**
 	 * 允许二次加助剂
 	 */
@@ -349,6 +392,34 @@ public class Constant {
 	 * 停止降温
 	 */
 	public static final String TING_ZHI_JIANG_WEN="停止降温";
+	/**
+	 * 生产总重
+	 */
+	public static final String SHENG_CHAN_ZONG_ZHONG="生产总重";
+	/**
+	 * 终检水PH提醒
+	 */
+	public static final String ZHONG_JIAN_SHUI_PH_TI_XING="终检水PH提醒";
+	/**
+	 * 终检水数
+	 */
+	public static final String ZHONG_JIAN_SHUI_SHU="终检水数";
+	/**
+	 * 终检PH
+	 */
+	public static final String ZHONG_JIAN_PH="终检PH";
+	/**
+	 * 允许开始排胶
+	 */
+	public static final String YUN_XU_KAI_SHI_PAI_JIAO="允许开始排胶";
+	/**
+	 * 排胶完成
+	 */
+	public static final String PAI_JIAO_WAN_CHENG="排胶完成";
+	/**
+	 * 胶罐
+	 */
+	public static final String JIAO_GUAN="胶灌";
 	
 	/**
 	 * 百分号
@@ -458,6 +529,14 @@ public class Constant {
 	 * 冷却
 	 */
 	public static final String LENG_QUE="冷却";
+	/**
+	 * 质量终检
+	 */
+	public static final String ZHI_LIANG_ZHONG_JIAN="质量终检";
+	/**
+	 * 排胶
+	 */
+	public static final String PAI_JIAO="排胶";
 	
 	public static final String VALUE="value";
 	public static final String UNIT="unit";

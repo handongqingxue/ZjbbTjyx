@@ -194,7 +194,7 @@ public class ReportF_MServiceImpl implements ReportF_MService {
 				int wd85yectltxfyfwdColNumber=ReportF_M.WD85YECTLTXFYFWD_CN;
 				reportF_MList.add(createByParams(wd85yectltxfyfwdRowNumber, wd85yectltxfyfwdColNumber, varValue+unit, batchID));
 			}
-			else if(Constant.ER_CI_TOU_LIAO_PH_SHU_RU_ZHI.equals(varName)) {//二次投料PH输入值
+			else if(Constant.ER_CI_TOU_LIAO_PH_SHU_RU.equals(varName)) {//二次投料PH输入
 				int ectlphsrzRowNumber=ReportF_M.ECTLPHSRZ_RN;
 				int ectlphsrzColNumber=ReportF_M.ECTLPHSRZ_CN;
 				reportF_MList.add(createByParams(ectlphsrzRowNumber, ectlphsrzColNumber, varValue, batchID));

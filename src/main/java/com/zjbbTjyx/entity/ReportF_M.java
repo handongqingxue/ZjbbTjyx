@@ -615,6 +615,87 @@ public class ReportF_M {
 	 */
 	public static final int KSJWDTZJWSJC_CN=11;
 	
+	/**
+	 * 生产总重釜称重行号
+	 */
+	public static final int SCZZFCZ_RN=22;
+	/**
+	 * 生产总重釜称重列号
+	 */
+	public static final int SCZZFCZ_CN=3;
+	
+	/**
+	 * 终检水数行号
+	 */
+	public static final int ZJSS_RN=23;
+	/**
+	 * 终检水数列号
+	 */
+	public static final int ZJSS_CN=6;
+	
+	/**
+	 * 终检PH行号
+	 */
+	public static final int ZJPH_RN=23;
+	/**
+	 * 终检PH列号
+	 */
+	public static final int ZJPH_CN=7;
+	
+	/**
+	 * 允许开始排胶时间行号
+	 */
+	public static final int YXKSPJSJ_RN=24;
+	/**
+	 * 允许开始排胶时间列号
+	 */
+	public static final int YXKSPJSJ_CN=3;
+	
+	/**
+	 * 排胶完成时间行号
+	 */
+	public static final int PJWCSJ_RN=24;
+	/**
+	 * 排胶完成时间列号
+	 */
+	public static final int PJWCSJ_CN=4;
+	
+	/**
+	 * 排胶时间差行号
+	 */
+	public static final int PJSJC_RN=24;
+	/**
+	 * 排胶时间差列号
+	 */
+	public static final int PJSJC_CN=5;
+
+	/**
+	 * 允许开始排胶釜称重行号
+	 */
+	public static final int YXKSPJFCZ_RN=25;
+	/**
+	 * 允许开始排胶釜称重列号
+	 */
+	public static final int YXKSPJFCZ_CN=3;
+
+	/**
+	 * 排胶完成釜称重行号
+	 */
+	public static final int PJWCFCZ_RN=25;
+	/**
+	 * 排胶完成釜称重列号
+	 */
+	public static final int PJWCFCZ_CN=4;
+	
+	/**
+	 * 排胶重量差行号
+	 */
+	public static final int PJZLC_RN=25;
+	/**
+	 * 排胶重量差列号
+	 */
+	public static final int PJZLC_CN=5;
+	
 	
     private Integer Id;
     private String RowNumber;//行号
