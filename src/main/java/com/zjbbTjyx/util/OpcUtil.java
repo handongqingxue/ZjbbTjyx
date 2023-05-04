@@ -853,7 +853,7 @@ public class OpcUtil {
         opcTVNamePreList.add(Constant.CE_LIANG_BING_SHUI_WU_DIAN_TI_XING);//测量冰水雾点提醒
         //opcTVNamePreList.add(Constant.CE_SHUI_SHU_TI_XING);//测水数提醒----这个只有F2有值
         opcTVNamePreList.add("停热降温水数提醒");
-        //opcTVNamePreList.add(Constant.JU_HE_ZHONG_DIAN);//聚合终点----这个F5没值
+        //opcTVNamePreList.add(Constant.JU_HE_ZHONG_DIAN);//聚合终点----这个F5没值,因为5号的生产流程还没有做，报表可以先不做5号的
         //opcTVNamePreList.add(Constant.JIANG_WEN_WAN_CHENG);//降温完成----这个变量好像没有
         opcTVNamePreList.add(Constant.YUN_XU_KAI_SHI_PAI_JIAO);//允许开始排胶
         //opcTVNamePreList.add(Constant.PAI_JIAO_WAN_CHENG);//排胶完成---F5没有
