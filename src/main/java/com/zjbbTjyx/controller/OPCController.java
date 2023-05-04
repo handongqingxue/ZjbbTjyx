@@ -1557,7 +1557,7 @@ public class OPCController {
 					List<ProcessVar> fyjsMResPVList = (List<ProcessVar>)fyjsMResMap.get("proVarList");
 
 					//获取反应结束时间变量名
-					String fyjsSjVarName = Constant.FAN_YING_JIE_SHU+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+					String fyjsSjVarName = ERecord.FYJSSSYSJ;
 					ProcessVar fyjsSjPV = OpcUtil.getProVarInListByVarName(fyjsSjVarName, fyjsMResPVList);
 					String fyjsSjVarValue = fyjsSjPV.getUpdateTime();
 					ProcessVar ptnSjPV = processVarService.getPtnValuePV(fyjsSjVarName,fyjsSjVarValue+"",fyjsSjPV);
@@ -1626,7 +1626,7 @@ public class OPCController {
 					List<ProcessVar> jqflwcMResPVList = (List<ProcessVar>)jqflwcMResMap.get("proVarList");
 					
 					//获取甲醛放料完成釜称重变量名
-					String jqflwcFczVarName = Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
+					String jqflwcFczVarName = ERecord.JQBLKSSSYFCZ;
 					ProcessVar jqflwcFczPV = OpcUtil.getProVarInListByVarName(jqflwcFczVarName, jqflwcMResPVList);
 					Float jqflwcFczVarValue = jqflwcFczPV.getVarValue();
 					
@@ -1634,7 +1634,7 @@ public class OPCController {
 					jqflwcMResPVList.add(ptnFczPV);//将重量差对象添加到集合里
 					
 					//获取甲醛放料完成时间变量名
-					String jqflwcSjVarName = Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+					String jqflwcSjVarName = ERecord.JQFLWCSSYSJ;
 					ProcessVar jqflwcSjPV = OpcUtil.getProVarInListByVarName(jqflwcSjVarName, jqflwcMResPVList);
 					String jqflwcSjVarValue = jqflwcSjPV.getUpdateTime();
 					ProcessVar ptnSjPV = processVarService.getPtnValuePV(jqflwcSjVarName,jqflwcSjVarValue+"",jqflwcSjPV);
@@ -1733,14 +1733,14 @@ public class OPCController {
 					List<ProcessVar> syzjjlwc1MResPVList = (List<ProcessVar>)syzjjlwc1MResMap.get("proVarList");
 
                     //获取所有助剂加料完成1釜称重变量名
-                    String syzjjlwc1FczVarName = Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
+                    String syzjjlwc1FczVarName = ERecord.SYZJJLWC1SSYFCZ;
                     ProcessVar syzjjlwc1FczPV = OpcUtil.getProVarInListByVarName(syzjjlwc1FczVarName, syzjjlwc1MResPVList);
                     Float syzjjlwc1FczVarValue = syzjjlwc1FczPV.getVarValue();
                     ProcessVar ptnFczPV = processVarService.getPtnValuePV(syzjjlwc1FczVarName,syzjjlwc1FczVarValue+"",syzjjlwc1FczPV);
                     syzjjlwc1MResPVList.add(ptnFczPV);//将重量差对象添加到集合里
 
                     //获取所有助剂加料完成1时间变量名
-                    String syzjjlwc1SjVarName = Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+                    String syzjjlwc1SjVarName = ERecord.SYZJJLWC1SSYSJ;
                     ProcessVar syzjjlwc1SjPV = OpcUtil.getProVarInListByVarName(syzjjlwc1SjVarName, syzjjlwc1MResPVList);
                     String syzjjlwc1SjVarValue = syzjjlwc1SjPV.getUpdateTime();
                     ProcessVar ptnSjPV = processVarService.getPtnValuePV(syzjjlwc1SjVarName,syzjjlwc1SjVarValue+"",syzjjlwc1SjPV);
@@ -1825,14 +1825,14 @@ public class OPCController {
 					List<ProcessVar> fhnsflfMResPVList = (List<ProcessVar>)fhnsflfMResMap.get("proVarList");
 
 					//获取尿素放料阀釜称重变量名
-					String nsflfFczVarName = Constant.FU+Constant.NIAO_SU_FANG_LIAO_FA+Constant.XIA_JIANG_YAN+Constant.FU+Constant.CHENG_ZHONG;
+					String nsflfFczVarName = ERecord.FNSFLFXJYFCZ;
 					ProcessVar nsflfFczFczPV = OpcUtil.getProVarInListByVarName(nsflfFczVarName, fhnsflfMResPVList);
 					Float nsflfFczFczVarValue = nsflfFczFczPV.getVarValue();
 					ProcessVar ptnFczPV = processVarService.getPtnValuePV(nsflfFczVarName,nsflfFczFczVarValue+"",nsflfFczFczPV);
 					fhnsflfMResPVList.add(ptnFczPV);//将重量差对象添加到集合里
 
 					//获取尿素放料阀时间变量名
-					String nsflfSjVarName = Constant.FU+Constant.NIAO_SU_FANG_LIAO_FA+Constant.XIA_JIANG_YAN+Constant.SHI_JIAN;
+					String nsflfSjVarName = ERecord.FNSFLFXJYSJ;
 					ProcessVar nsflfSjPV = OpcUtil.getProVarInListByVarName(nsflfSjVarName, fhnsflfMResPVList);
 					String nsflfSjVarValue = nsflfSjPV.getUpdateTime();
 					ProcessVar ptnSjPV = processVarService.getPtnValuePV(nsflfSjVarName,nsflfSjVarValue+"",nsflfSjPV);
@@ -1916,7 +1916,7 @@ public class OPCController {
 					List<ProcessVar> wd85yectltxMResPVList = (List<ProcessVar>)wd85yectltxMResMap.get("proVarList");
 
                     //获取温度85与二次投料提醒时间变量名
-                    String wd85yectltxSjVarName = Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+                    String wd85yectltxSjVarName =ERecord.WD85YECTLTXSSYSJ;
                     ProcessVar wd85yectltxSjPV = OpcUtil.getProVarInListByVarName(wd85yectltxSjVarName, wd85yectltxMResPVList);
                     String wd85yectltxSjVarValue = wd85yectltxSjPV.getUpdateTime();
                     ProcessVar ptnSjPV = processVarService.getPtnValuePV(wd85yectltxSjVarName,wd85yectltxSjVarValue+"",wd85yectltxSjPV);
@@ -2014,14 +2014,14 @@ public class OPCController {
 					List<ProcessVar> syzjjlwc2MResPVList = (List<ProcessVar>)syzjjlwc2MResMap.get("proVarList");
 
                     //获取所有助剂加料完成2釜称重变量名
-                    String syzjjlwc2FczVarName = Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
+                    String syzjjlwc2FczVarName = ERecord.SYZJJLWC2SSYFCZ;
                     ProcessVar syzjjlwc2FczPV = OpcUtil.getProVarInListByVarName(syzjjlwc2FczVarName, syzjjlwc2MResPVList);
                     Float syzjjlwc2FczVarValue = syzjjlwc2FczPV.getVarValue();
                     ProcessVar ptnFczPV = processVarService.getPtnValuePV(syzjjlwc2FczVarName,syzjjlwc2FczVarValue+"",syzjjlwc2FczPV);
                     syzjjlwc2MResPVList.add(ptnFczPV);//将重量差对象添加到集合里
                     
                     //获取所有助剂加料完成2时间变量名
-                    String syzjjlwc2SjVarName = Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+                    String syzjjlwc2SjVarName = ERecord.SYZJJLWC2SSYSJ;
                     ProcessVar syzjjlwc2SjPV = OpcUtil.getProVarInListByVarName(syzjjlwc2SjVarName, syzjjlwc2MResPVList);
                     String syzjjlwc2SjVarValue = syzjjlwc2SjPV.getUpdateTime();
                     ProcessVar ptnSjPV = processVarService.getPtnValuePV(syzjjlwc2SjVarName,syzjjlwc2SjVarValue+"",syzjjlwc2SjPV);
@@ -2058,7 +2058,7 @@ public class OPCController {
 					Map<String, Object> swwcMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据升温完成变量从opc端查找对应的过程变量
 					List<ProcessVar> swwcMResPVList = (List<ProcessVar>)swwcMResMap.get("proVarList");
                     //获取所有助剂加料完成2时间变量名
-                    String swwcSjVarName = Constant.SHENG_WEN_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+                    String swwcSjVarName = ERecord.SWWCSSYSJ;
                     ProcessVar swwcSjPV = OpcUtil.getProVarInListByVarName(swwcSjVarName, swwcMResPVList);
                     String swwcSjVarValue = swwcSjPV.getUpdateTime();
                     ProcessVar ptnSjPV = processVarService.getPtnValuePV(swwcSjVarName,swwcSjVarValue+"",swwcSjPV);
@@ -2218,7 +2218,7 @@ public class OPCController {
 					List<ProcessVar> jwwcMResPVList = (List<ProcessVar>)jwwcMResMap.get("proVarList");
 					
 					//获取降温完成时间变量名
-					String jwwcSjVarName = Constant.JIANG_WEN_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+					String jwwcSjVarName = ERecord.JWWCSSYSJ;
 					ProcessVar jwwcSjPV = OpcUtil.getProVarInListByVarName(jwwcSjVarName, jwwcMResPVList);
 					String jwwcSjVarValue = jwwcSjPV.getUpdateTime();
 					ProcessVar ptnSjPV = processVarService.getPtnValuePV(jwwcSjVarName,jwwcSjVarValue+"",jwwcSjPV);
@@ -2318,14 +2318,14 @@ public class OPCController {
 					List<ProcessVar> pjwcMResPVList = (List<ProcessVar>)pjwcMResMap.get("proVarList");
 					
                     //获取排胶完成釜称重变量名
-                    String pjwcFczVarName = Constant.PAI_JIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
+                    String pjwcFczVarName = ERecord.PJWCSSYFCZ;
                     ProcessVar pjwcFczPV = OpcUtil.getProVarInListByVarName(pjwcFczVarName, pjwcMResPVList);
                     Float pjwcFczVarValue = pjwcFczPV.getVarValue();
                     ProcessVar ptnFczPV = processVarService.getPtnValuePV(pjwcFczVarName,pjwcFczVarValue+"",pjwcFczPV);
                     pjwcMResPVList.add(ptnFczPV);//将重量差对象添加到集合里
                     
                     //获取排胶完成时间变量名
-                    String pjwcSjVarName = Constant.PAI_JIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+                    String pjwcSjVarName = ERecord.PJWCSSYSJ;
                     ProcessVar pjwcSjPV = OpcUtil.getProVarInListByVarName(pjwcSjVarName, pjwcMResPVList);
                     String pjwcSjVarValue = pjwcSjPV.getUpdateTime();
                     ProcessVar ptnSjPV = processVarService.getPtnValuePV(pjwcSjVarName,pjwcSjVarValue+"",pjwcSjPV);
