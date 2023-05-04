@@ -36,7 +36,15 @@ public class ERecordServiceImpl implements ERecordService {
 			Integer pvId = processVar.getId();
 			String pvVarName = processVar.getVarName();
 			
-			pvIdList.add(pvId);
+			if(pvVarName.startsWith(ERecord.BLKSSSYSJ)) {
+				//获取反应结束时间变量名
+				String fyjsSjVarName = ERecord.FYJSSSYSJ;
+				ProcessVar fyjsSjPV = OpcUtil.getProVarInListByVarName(fyjsSjVarName, processVarList);
+				if(fyjsSjPV!=null)
+					pvIdList.add(pvId);
+			}
+			else
+				pvIdList.add(pvId);
 			
 			if(pvVarName.startsWith(ERecord.BLKSSSYSJ)) {//备料开始上升沿时间 //生产编号阶段开始
 				String pvRecType = processVar.getRecType();

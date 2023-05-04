@@ -360,6 +360,15 @@ public class OpcUtil {
             
             opcVarNameList.add(fhczOpcVarName);
         }
+        else if (tv1VarName.startsWith(Constant.PAI_JIAO_WAN_CHENG+Constant.XHX)) {//排胶完成
+        	Integer tvFId = triggerVar1.getFId();
+            
+            //釜(反应釜号)称重
+            String fhczPvVarNameQz=Constant.FU+tvFId+Constant.CHENG_ZHONG;
+            String fhczOpcVarName=fhczPvVarNameQz+Constant.XHX+Constant.AV;
+            
+            opcVarNameList.add(fhczOpcVarName);
+        }
 
 
         if(false){
@@ -557,6 +566,14 @@ public class OpcUtil {
 	                    varName=ERecord.JWWCSSYFYFWD;
 	                }
 	            }
+	            else if(tv1VarName.startsWith(Constant.ZHONG_JIAN_SHUI_PH_TI_XING+Constant.XHX)){//终检水PH提醒
+	                if(itemName.startsWith(Constant.ZHONG_JIAN_SHUI_SHU+Constant.XHX)){
+	                    varName=Constant.ZHONG_JIAN_SHUI_SHU;
+	                }
+	                else if(itemName.startsWith(Constant.ZHONG_JIAN_PH+Constant.XHX)){
+	                    varName=Constant.ZHONG_JIAN_PH;
+	                }
+	            }
 	            else if(tv1VarName.startsWith(Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.XHX)) {//允许开始排胶
 	            	if (itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)) {
 	            		varName=ERecord.YXKSPJSSYFCZ;
@@ -682,7 +699,7 @@ public class OpcUtil {
         else if(tv1VarName.startsWith(Constant.PAI_JIAO_WAN_CHENG+Constant.XHX)) {//排胶完成
         	itemName = ERecord.PJWCSSYSJ;//排胶完成上升沿时间
         }
-        else if (tv1VarName.startsWith(Constant.FAN_YING_JIE_SHU+Constant.XHX)){//反应结束
+        else if (tv1VarName.startsWith(Constant.FAN_YING_JIE_SHU)){//反应结束
             itemName = ERecord.FYJSSSYSJ;//反应结束上升沿时间
         }
         
@@ -701,7 +718,8 @@ public class OpcUtil {
            tv1VarName.startsWith(Constant.JU_HE_ZHONG_DIAN+Constant.XHX)||
            tv1VarName.startsWith(Constant.JIANG_WEN_WAN_CHENG+Constant.XHX)||
 		   tv1VarName.startsWith(Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.XHX)||
-           tv1VarName.startsWith(Constant.FAN_YING_JIE_SHU+Constant.XHX)
+		   tv1VarName.startsWith(Constant.PAI_JIAO_WAN_CHENG+Constant.XHX)||
+           tv1VarName.startsWith(Constant.FAN_YING_JIE_SHU)
         ) {
         	String sysTime = DateUtil.getTimeStrByFormatStr(new Date(),DateUtil.YEAR_TO_SECOND);//系统时间
         	
