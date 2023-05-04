@@ -12,13 +12,13 @@
     <script type="text/javascript" src="<%=basePath%>resource/js/pdf/jspdf.debug.js"></script>
     <script type="text/javascript" src="<%=basePath%>resource/js/pdf/html2canvas.min.js"></script>
 <title>Insert title here</title>
-    <style type="text/css">
-        #outputPdf_div{
-            background-color: #00FF00;
-            width: 500px;
-            height: 300px;
-        }
-    </style>
+<style type="text/css">
+#outputPdf_div{
+    background-color: #00FF00;
+    width: 500px;
+    height: 300px;
+}
+</style>
 </head>
 <body>
 
