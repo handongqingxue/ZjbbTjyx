@@ -2068,7 +2068,7 @@ public class OPCController {
 					opcTVList.add(upSwwcTV);
 					Map<String, Object> swwcMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据升温完成变量从opc端查找对应的过程变量
 					List<ProcessVar> swwcMResPVList = (List<ProcessVar>)swwcMResMap.get("proVarList");
-                    //获取所有助剂加料完成2时间变量名
+                    //获取升温完成时间变量名
                     String swwcSjVarName = ERecord.SWWCSSYSJ;
                     ProcessVar swwcSjPV = OpcUtil.getProVarInListByVarName(swwcSjVarName, swwcMResPVList);
                     String swwcSjVarValue = swwcSjPV.getUpdateTime();
