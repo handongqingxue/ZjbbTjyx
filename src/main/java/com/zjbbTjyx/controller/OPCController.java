@@ -1626,7 +1626,7 @@ public class OPCController {
 					List<ProcessVar> jqflwcMResPVList = (List<ProcessVar>)jqflwcMResMap.get("proVarList");
 					
 					//获取甲醛放料完成釜称重变量名
-					String jqflwcFczVarName = ERecord.JQBLKSSSYFCZ;
+					String jqflwcFczVarName = ERecord.JQFLWCSSYFCZ;
 					ProcessVar jqflwcFczPV = OpcUtil.getProVarInListByVarName(jqflwcFczVarName, jqflwcMResPVList);
 					Float jqflwcFczVarValue = jqflwcFczPV.getVarValue();
 					
