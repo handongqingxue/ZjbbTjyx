@@ -416,6 +416,79 @@ public class Constant {
 	 * 排胶完成
 	 */
 	public static final String PAI_JIAO_WAN_CHENG="排胶完成";
+
+
+	/**
+	 * 开始加料
+	 */
+	public static final String KAI_SHI_JIA_LIAO="开始加料";
+
+	/**
+	 * 助剂六一次添加完成
+	 */
+	public static final String ZHU_JI_LIU_YI_CI_TIAN_JIA_WAN_CHENG="助剂六一次添加完成";
+
+	/**
+	 * 助剂六二次备料完成
+	 */
+	public static final String ZHU_JI_LIU_ER_CI_BEI_LIAO_WAN_CHENG="助剂六二次备料完成";
+
+	/**
+	 * 助剂六二次添加完成
+	 */
+	public static final String ZHU_JI_LIU_ER_CI_TIAN_JIA_WAN_CHENG="助剂六二次添加完成";
+
+	/**
+	 * 第一次保温启动
+	 */
+	public static final String DI_YI_CI_BAO_WEN_QI_DONG="第一次保温启动";
+
+	/**
+	 * 第一次保温合格
+	 */
+	public static final String DI_YI_CI_BAO_WEN_HE_GE="第一次保温合格";
+
+	/**
+	 * 一次降温加酸提醒
+	 */
+	public static final String YI_CI_JIANG_WEN_JIA_SUAN_TI_XING="一次降温加酸提醒";
+
+	/**
+	 * 一次降温加酸合格
+	 */
+	public static final String YI_CI_JIANG_WEN_JIA_SUAN_HE_GE="一次降温加酸合格";
+
+	/**
+	 * 二次投粉
+	 */
+	public static final String ER_CI_TOU_FEN="二次投粉";
+
+	/**
+	 * 二次加215启动
+	 */
+	public static final String ER_CI_JIA_215_QI_DONG="二次加215启动";
+
+	/**
+	 * 二次加215完成
+	 */
+	public static final String ER_CI_JIA_215_WAN_CHENG="二次加215完成";
+
+	/**
+	 * 二次加小料和水提醒
+	 */
+	public static final String ER_CI_JIA_XIAO_LIAO_HE_SHUI_TI_XING="二次加小料和水提醒";
+
+	/**
+	 * 二次加水启动
+	 */
+	public static final String ER_CI_JIA_SHUI_QI_DONG="二次加水启动";
+
+	/**
+	 * 二次加水完成
+	 */
+	public static final String ER_CI_JIA_SHUI_WAN_CHENG="二次加水完成";
+
+
 	/**
 	 * 胶罐
 	 */
