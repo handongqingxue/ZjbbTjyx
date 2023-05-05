@@ -17,7 +17,7 @@
             <li id="system-time"></li>
             <li>|</li>
             <li class="layui-nav-item">
-                <span>欢迎您!</span>
+                <span onclick="exit()">欢迎您!</span>
                 <a style="cursor:pointer;">${sessionScope.user.userName}</a>
             </li>
             <li>|</li>
@@ -86,7 +86,20 @@ var path='<%=basePath%>';
 $(function () {
 	getLeftMenuData("");
 })
-    
+
+function exit() {
+    console.log(path)
+    if (confirm('是否要退出当前用户？')){
+        $.post(path+"main/exit",
+            function (result) {
+                console.log('jin')
+                alert(result)
+                // window.location.href=path+result;
+            }
+        )
+    }
+}
+
 function getLeftMenuData(type){
 	$.post(path+"report/getLeftMenuData",
 		{type:type},
@@ -212,6 +225,8 @@ function getPcjlListByType(type) {
         }
      ,"json");
 }
+
+
 </script>
 </body>
 </html>
