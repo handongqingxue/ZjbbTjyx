@@ -210,6 +210,11 @@ public class Constant {
 	public static final int[] BSF_ZJJLG_3_5_M_ARR=new int[] {BSF_ZJJLG3,BSF_ZJJLG4,BSF_ZJJLG5};
 	
 	public static final int[] BSF_JG_ARR=new int[] {BSF_JG1,BSF_JG2,BSF_JG3,BSF_JG4,BSF_JG5,BSF_JG6,BSF_JG7,BSF_JG8,BSF_JG9};
+
+	/**
+	 * 至
+	 */
+	public static final String ZHI="至";
 	
 	/**
 	 * 批次记录
@@ -610,6 +615,79 @@ public class Constant {
 	 * 排胶
 	 */
 	public static final String PAI_JIAO="排胶";
+	
+	/**
+	 * YSD215一次阶段
+	 */
+	public static final String YSD215_YI_CI="YSD215一次";
+	/**
+	 * YSD215二次阶段
+	 */
+	public static final String YSD215_ER_CI="YSD215二次";
+	/**
+	 * YSD103阶段
+	 */
+	public static final String YSD103="YSD103";
+	/**
+	 * 升温至高温度
+	 */
+	public static final String SHENG_WEN_ZHI_GAO_WEN_DU="升温至高温度";
+	/**
+	 * 一次保温10分钟测PH
+	 */
+	public static final String YCBWSFZCPH="一次保温10分钟测PH";
+	/**
+	 * 降温开始
+	 */
+	public static final String JIANG_WEN_KAI_SHI="降温开始";
+	/**
+	 * 降温停止
+	 */
+	public static final String JIANG_WEN_TING_ZHI="降温停止";
+	/**
+	 * 加酸并计时
+	 */
+	public static final String JIA_SUAN_BING_JI_SHI="加酸并计时";
+	/**
+	 * 冰水雾点
+	 */
+	public static final String BING_SHUI_WU_DIAN="冰水雾点";
+	/**
+	 * 20度雾点
+	 */
+	public static final String ER_SHI_DU_WU_DIAN="20度雾点";
+	/**
+	 * 降温
+	 */
+	public static final String JIANG_WEN="降温";
+	/**
+	 * 加碱
+	 */
+	public static final String JIA_JIAN="加碱";
+	/**
+	 * 70度终止降温
+	 */
+	public static final String QI_SHI_DU_ZHONG_ZHI_JIANG_WEN="70度终止降温";
+	/**
+	 * 二次粉料加入
+	 */
+	public static final String ER_CI_FEN_LIAO_JIA_RU="二次粉料加入";
+	/**
+	 * 二次保温时间20
+	 */
+	public static final String ECBWSJES="二次保温时间20";
+	/**
+	 * 助剂6加入
+	 */
+	public static final String ZHU_JI_LIU_JIA_RU="助剂6加入";
+	/**
+	 * 水加入
+	 */
+	public static final String SHUI_JIA_RU="水加入";
+	/**
+	 * 冷却至结束
+	 */
+	public static final String LQZJS=LENG_QUE+ZHI+JIE_SHU;
 	
 	public static final String VALUE="value";
 	public static final String UNIT="unit";

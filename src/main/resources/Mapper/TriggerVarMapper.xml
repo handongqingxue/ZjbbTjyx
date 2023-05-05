@@ -3,6 +3,9 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zjbbTjyx.dao.TriggerVarMapper">
+	<select id="getCountByVarName" resultType="java.lang.Integer">
+		select count(*) from TriggerVar where VarName=#{varName}
+	</select>
 	<insert id="add" parameterType="com.zjbbTjyx.entity.TriggerVar">
 		insert into TriggerVar
 		<trim prefix="(" suffix=")" suffixOverrides=",">
@@ -63,9 +66,13 @@
 	<update id="editByVarName">
 		update TriggerVar set VarValue=#{VarValue} where VarName=#{VarName}
 	</update>
-	<select id="getCountByVarName" resultType="java.lang.Integer">
-		select count(*) from TriggerVar where VarName=#{varName}
-	</select>
+	<update id="editByList">
+		update TriggerVar set VarValue= case VarName
+		<foreach collection="triggerVarList" item="triggerVar">
+			when #{triggerVar.varName} then #{triggerVar.varValue}
+		</foreach>
+		 end
+	</update>
 	<select id="getListByFIdList" resultType="com.zjbbTjyx.entity.TriggerVar">
 		select * from TriggerVar where 1=1
 		<foreach collection="runFIdList" item="runFId" open=" and cast(FId as char) in (" separator="," close=")">
@@ -79,11 +86,4 @@
 			#{varName}
 		</foreach>
 	</select>
-	<update id="editByList">
-		update TriggerVar set VarValue= case VarName
-		<foreach collection="triggerVarList" item="triggerVar">
-			when #{triggerVar.varName} then #{triggerVar.varValue}
-		</foreach>
-		 end
-	</update>
 </mapper>

@@ -1,6 +1,7 @@
 package com.zjbbTjyx.entity;
 
 public class ReporF_U {
+	
     /**
      * 自动表单设计行号
      */
@@ -214,14 +215,6 @@ public class ReporF_U {
      */
     public static final int JJLTS_CN=2;
 
-
-
-
-
-
-
-
-
     /**
      * 加碱后PH输入值行号
      */
@@ -231,6 +224,7 @@ public class ReporF_U {
      */
     public static final int JJHPHSRZ_CN=6;
 
+    //YSD215一次-10
     /**
      * 开始加料酸计量筒称重行号
      */
@@ -299,6 +293,7 @@ public class ReporF_U {
      */
     public static final int ZJLYCTJWCDJJPHZZCSJC_CN=11;
 
+    //YSD215二次-11
     /**
      * 助剂六二次备料完成酸计量筒称重行号
      */
@@ -364,6 +359,8 @@ public class ReporF_U {
      * 助剂六二次添加完成到备料完成时间差列号
      */
     public static final int ZJLECTJWCDBLWCSJC_CN=11;
+    
+    //YSD103-13
     /**
      * 粉料重量设定行号
      */
@@ -440,6 +437,7 @@ public class ReporF_U {
      */
     public static final int FNSFLFSSYDXJYSJC_CN=12;
 
+    //开始升温-15
     /**
      * 升温开始时间行号
      */
@@ -456,6 +454,8 @@ public class ReporF_U {
      * 蒸汽压力列号
      */
     public static final int ZQYL_CN=6;
+    
+    //升温至高温度-16
     /**
      * 升温完成时间行号
      */
@@ -480,6 +480,8 @@ public class ReporF_U {
      * 温度98PH行号
      */
     public static final int WD98PH_CN=8;
+    
+    //一次保温10分钟测PH-17
     /**
      * 第一次保温启动时间行号
      */
@@ -500,6 +502,7 @@ public class ReporF_U {
      * 第一次保温完成PH录入  ？？？？
      */
 
+    //降温开始-18
     /**
      * 第一次保温合格时间行号
      */
@@ -516,6 +519,8 @@ public class ReporF_U {
      * 第一次保温合格反应釜温度列号
      */
     public static final int DYCBWHGFYFWD_CN=6;
+    
+    //降温停止-19
     /**
      * 一次降温加酸提醒时间行号
      */
@@ -536,6 +541,7 @@ public class ReporF_U {
      * 降温时间  ？？？？
      */
 
+    //加酸并计时-20
     /**
      * 一次降温加酸量行号
      */
@@ -560,6 +566,8 @@ public class ReporF_U {
      * 一次降温加酸PH输入列号
      */
     public static final int YCJWJSPHSZ_CN=8;
+    
+    //冰水雾点-21
     /**
      * 测量冰水雾点输入值行号
      */
@@ -568,6 +576,8 @@ public class ReporF_U {
      * 测量冰水雾点输入值列号
      */
     public static final int CLBSWDSRZ_CN=6;
+    
+    //20度雾点-22
     /**
      * 测20雾点输入值行号
      */
@@ -576,6 +586,8 @@ public class ReporF_U {
      * 测20雾点输入值列号
      */
     public static final int C20WDSRZ_CN=6;
+    
+    //降温-23
     /**
      * 一次降温加酸PH输入行号
      */
@@ -584,6 +596,8 @@ public class ReporF_U {
      * 一次降温加酸PH输入列号
      */
     public static final int YCJWJSPHSR_CN=7;
+    
+    //加碱-24
     /**
      * 加碱量范围下限行号
      */
@@ -600,6 +614,8 @@ public class ReporF_U {
      * 加碱PH输入列号
      */
     public static final int JJPHSR_CN=7;
+    
+    //70度终止降温-25
     /**
      * 二次投粉时间行号
      */
@@ -608,12 +624,15 @@ public class ReporF_U {
      * 二次投粉时间列号
      */
     public static final int ECTFSJ_CN=4;
+    
+    //二次粉料加入-26
     /**
      * 二次加料粉料1重量设定行号   ？？？
      */
     /**
      * 二次加料粉料1重量设定列号   ？？？？
      */
+    
     /**
      * 二次投粉釜尿素放料阀上升沿时间行号
      */
@@ -638,6 +657,8 @@ public class ReporF_U {
      * 二次投粉釜尿素放料阀下降沿反应釜温度列号
      */
     public static final int ECTFFNSFLFXJYFYFWD_CN=6;
+    
+    //助剂6加入-28
     /**
      * 保温后加助剂6量设定行号
      */
@@ -670,6 +691,8 @@ public class ReporF_U {
      * 二次加小料和水提醒下降沿反应釜温度列号
      */
     public static final int ECJXLHSTXXJYFYFWD_CN=6;
+    
+    //水加入-29
     /**
      * 保温后加水量设定行号
      */
@@ -694,6 +717,8 @@ public class ReporF_U {
      * 二次加水完成时间列号
      */
     public static final int ECJSWCSJ_CN=5;
+    
+    //冷却至结束-30
     /**
      * 反应结束时间行号
      */
@@ -710,6 +735,8 @@ public class ReporF_U {
      * 反应结束反应釜温度列号
      */
     public static final int FYJSFYFWD_CN=5;
+    
+    //生产总重-32
     /**
      * 允许开始排胶釜称重行号
      */
@@ -734,6 +761,7 @@ public class ReporF_U {
      * 终检PH列号
      */
     public static final int ZJPH_CN=5;
+    
     private Integer Id;
     private String RowNumber;//行号
     private String ColNumber;//列号
