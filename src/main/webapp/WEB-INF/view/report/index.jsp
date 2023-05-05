@@ -88,9 +88,15 @@ $(function () {
 })
 
 function exit() {
+    console.log(path)
     if (confirm('是否要退出当前用户？')){
-        $.post(path+"main/exit")
-    }else {
+        $.post(path+"main/exit",
+            function (result) {
+                console.log('jin')
+                alert(result)
+                // window.location.href=path+result;
+            }
+        )
     }
 }
 

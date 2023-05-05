@@ -33,7 +33,7 @@ public class MainController {
     @ResponseBody
     public PlanResult login(UserList user, HttpServletRequest request){
         //返回值对象
-        PlanResult plan=new PlanResult();
+        PlanResult result=new PlanResult();
         HttpSession session = request.getSession();
         try {
             UsernamePasswordToken token = new UsernamePasswordToken(user.getUserName(), user.getPsd());
@@ -45,16 +45,16 @@ public class MainController {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            plan.setStatus(0);
-            plan.setMsg("验证失败");
-            return plan;
+            result.setStatus(0);
+            result.setMsg("验证失败");
+            return result;
         }
         UserList principal = (UserList) SecurityUtils.getSubject().getPrincipal();
         session.setAttribute("user",principal);
-        plan.setStatus(1);
-        plan.setMsg("验证成功");
-        plan.setUrl("/report/goIndex");
-        return plan;
+        result.setStatus(1);
+        result.setMsg("验证成功");
+        result.setUrl("/report/goIndex");
+        return result;
     }
 
     //注销
