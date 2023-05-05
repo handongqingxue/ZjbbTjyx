@@ -32,8 +32,8 @@ public class TriggerVarServiceImpl implements TriggerVarService {
 			varNameList.add(triggerVar.getVarName());
 		}
 		
-		//https://blog.csdn.net/weixin_45137708/article/details/120866268
-		//https://blog.csdn.net/weixin_38423249/article/details/80503491
+		//批量添加sql语句:https://blog.csdn.net/weixin_45137708/article/details/120866268
+		//批量更新sql语句:https://blog.csdn.net/weixin_38423249/article/details/80503491
 		List<TriggerVar> existTVList=triggerVarMapper.getListByVarNameList(varNameList);
 		for (TriggerVar triggerVar : triggerVarList) {
 			String varName = triggerVar.getVarName();
@@ -82,7 +82,8 @@ public class TriggerVarServiceImpl implements TriggerVarService {
 			editCount+=triggerVarMapper.editByList(editTVList);
 		System.out.println("editCount==="+editCount);
 		
-		/*
+		/**
+		 * 这块代码是单条添加或编辑的，太耗资源先屏蔽掉
 		for (TriggerVar triggerVar : triggerVarList) {
 			String varName = triggerVar.getVarName();
 			int count=triggerVarMapper.getCountByVarName(varName);
@@ -105,7 +106,7 @@ public class TriggerVarServiceImpl implements TriggerVarService {
 			else
 				editCount+=triggerVarMapper.editByVarName(triggerVar);
 		}
-		*/
+		**/
 		
 		
 		return editCount;
