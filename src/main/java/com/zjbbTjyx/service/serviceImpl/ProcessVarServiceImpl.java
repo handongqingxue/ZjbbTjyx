@@ -3,6 +3,7 @@ package com.zjbbTjyx.service.serviceImpl;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +29,7 @@ public class ProcessVarServiceImpl implements ProcessVarService {
 	}
 
 	public int addFromList(List<ProcessVar> proVarList) {
+		System.out.println("proVarList==="+proVarList);
 		int count = 0;
 		for (ProcessVar proVar : proVarList) {
 			count+=processVarMapper.add(proVar);
@@ -99,15 +101,17 @@ public class ProcessVarServiceImpl implements ProcessVarService {
 		String preValue=null;
 		String ptnUnit = null;
 		preValue=processVarMapper.getPreValueByPreName(preName);
-		if(nxtName.contains(Constant.FU+Constant.CHENG_ZHONG)) {//计算重量差
-			ptnValue=Float.valueOf(nxtValue)-Float.valueOf(preValue);
-			ptnUnit = nxtPV.getUnit();
-		}
-		else if(nxtName.contains(Constant.SHI_JIAN)) {//计算时间差，需要调用日期工具类方法处理下
-			long preValueLong = DateUtil.convertStrToLong(preValue);
-			long nxtValueLong = DateUtil.convertStrToLong(nxtValue);
-			ptnValue = (float)DateUtil.betweenTime(preValueLong, nxtValueLong, DateUtil.FEN);
-			ptnUnit = Constant.MIN;
+		if(!StringUtils.isEmpty(preValue)) {
+			if(nxtName.contains(Constant.FU+Constant.CHENG_ZHONG)) {//计算重量差
+				ptnValue=Float.valueOf(nxtValue)-Float.valueOf(preValue);
+				ptnUnit = nxtPV.getUnit();
+			}
+			else if(nxtName.contains(Constant.SHI_JIAN)) {//计算时间差，需要调用日期工具类方法处理下
+				long preValueLong = DateUtil.convertStrToLong(preValue);
+				long nxtValueLong = DateUtil.convertStrToLong(nxtValue);
+				ptnValue = (float)DateUtil.betweenTime(preValueLong, nxtValueLong, DateUtil.FEN);
+				ptnUnit = Constant.MIN;
+			}
 		}
 		
 		String nxtUpdateTime = nxtPV.getUpdateTime();

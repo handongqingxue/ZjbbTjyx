@@ -39,4 +39,6 @@ public interface ERecordService {
 
 	List<Map<String, Object>> getUnCreRepVarList(String batchID);
 
+	void clearBatchIDMap(List<Integer> fIdList);
+
 }
