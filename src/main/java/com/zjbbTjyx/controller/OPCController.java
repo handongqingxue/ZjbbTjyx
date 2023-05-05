@@ -1575,7 +1575,6 @@ public class OPCController {
 					String status = fyjsMResMap.get("status").toString();
 					if("ok".equals(status)) {
 						List<ProcessVar> fyjsMResPVList = (List<ProcessVar>)fyjsMResMap.get("proVarList");
-	
 						//获取反应结束时间变量名
 						String fyjsSjVarName = ERecord.FYJSSSYSJ;
 						ProcessVar fyjsSjPV = OpcUtil.getProVarInListByVarName(fyjsSjVarName, fyjsMResPVList);
