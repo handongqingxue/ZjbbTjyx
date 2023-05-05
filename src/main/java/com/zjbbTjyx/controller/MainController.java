@@ -59,10 +59,11 @@ public class MainController {
 
     //注销
     @RequestMapping("/exit")
+    @ResponseBody
     public String exit(HttpSession session){
         Subject currentUser = SecurityUtils.getSubject();
         currentUser.logout();
-        return "login";
+        return "main/goLogin";
     }
 
     //注册用户
