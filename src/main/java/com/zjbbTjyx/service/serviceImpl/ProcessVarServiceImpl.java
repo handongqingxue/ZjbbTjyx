@@ -29,6 +29,7 @@ public class ProcessVarServiceImpl implements ProcessVarService {
 	}
 
 	public int addFromList(List<ProcessVar> proVarList) {
+		System.out.println("proVarList==="+proVarList);
 		int count = 0;
 		for (ProcessVar proVar : proVarList) {
 			count+=processVarMapper.add(proVar);

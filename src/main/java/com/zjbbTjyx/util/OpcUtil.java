@@ -24,7 +24,7 @@ import com.zjbbTjyx.entity.*;
 
 public class OpcUtil {
 	
-	private static boolean IS_TEST=true;
+	private static boolean IS_TEST=false;
 	
     public static void main(String[] args) {
         SynchReadItemExample test = new SynchReadItemExample();
@@ -238,7 +238,7 @@ public class OpcUtil {
 	            String tvRecType = triggerVar1.getRecType();
 	            String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
 	            //蒸汽压力MPa
-	            String zqylmpaPvVarNameQz=Constant.ZHENG_QI_YA_LI+Constant.MPA;
+	            String zqylmpaPvVarNameQz=Constant.ZHENG_QI_YA_LI;
 	            String zqylOpcVarName=zqylmpaPvVarNameQz+Constant.XHX+Constant.AV;
 	            opcVarNameList.add(zqylOpcVarName);
 	        }
@@ -513,8 +513,8 @@ public class OpcUtil {
 		                }
 		            }
 		        	else if(tv1VarName.startsWith(Constant.SHENG_WEN_KAI_SHI+Constant.XHX)){//升温开始
-		                if (itemName.startsWith(Constant.ZHENG_QI_YA_LI+Constant.MPA)){
-		                    varName=Constant.ZHENG_QI_YA_LI+Constant.MPA;
+		                if (itemName.startsWith(Constant.ZHENG_QI_YA_LI)){
+		                    varName=Constant.ZHENG_QI_YA_LI;
 		                }
 		            }
 		        	else if(tv1VarName.startsWith(Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING+Constant.XHX)){//温度85与二次投料提醒
@@ -620,7 +620,7 @@ public class OpcUtil {
 		                itemName.startsWith(Constant.JIA_JIAN_LIANG_TI_SHI)||
 		                itemName.startsWith(Constant.JIA_JIAN_HOU_PH_SHU_RU_ZHI)||
 		                itemName.startsWith(Constant.JIA_FEN_LIAO_PH_SHU_RU_ZHI)||
-		                itemName.startsWith(Constant.ZHENG_QI_YA_LI+Constant.MPA)||
+		                itemName.startsWith(Constant.ZHENG_QI_YA_LI)||
 		                itemName.startsWith(Constant.ER_CI_TOU_LIAO_PH_SHU_RU)||
 		                itemName.startsWith(Constant.WEN_DU_98_PH)||
 		                itemName.startsWith(Constant.CE_LIANG_BING_SHUI_WU_DIAN_TI_XING)||
@@ -738,11 +738,20 @@ public class OpcUtil {
 	        	proVarList.add(proVar);
 	        }
         
-	        json.put("status", "ok");
-	        json.put("proVarList", proVarList);
+	        if(proVarList.size()>0) {
+		        json.put("status", "ok");
+		        json.put("proVarList", proVarList);
+	        }
+	        else {
+	        	json.put("status", "no");
+	        	json.put("message", "没有找到变量");
+	        }
         
 		} catch (Exception e) {
 			// TODO: handle exception
+	        json.put("status", "no");
+        	json.put("message", "异常");
+        	e.printStackTrace();
 		}
     	finally {
             return json;
