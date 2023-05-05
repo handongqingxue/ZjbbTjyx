@@ -1490,7 +1490,7 @@ public class ERecordServiceImpl implements ERecordService {
 	 * @return
 	 */
 	private HashMap<Integer,String> getBatchIDMap(Date date, List<Map<String,Object>> fMapList) {
-		List<Map<String,Object>> unAddFMapList=new ArrayList<>();
+		List<Map<String,Object>> unAddFMapList=new ArrayList<Map<String,Object>>();
 		for (Map<String, Object> fMap : fMapList) {
 			Integer fId = Integer.valueOf(fMap.get("fId").toString());
 			Set<Integer> fIdSet = batchIDMap.keySet();

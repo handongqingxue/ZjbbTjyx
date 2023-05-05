@@ -17,11 +17,12 @@
             <li id="system-time"></li>
             <li>|</li>
             <li class="layui-nav-item">
-                <span onclick="exit()">欢迎您!</span>
+                <span>欢迎您!</span>
                 <a style="cursor:pointer;">${sessionScope.user.userName}</a>
             </li>
             <li>|</li>
-            <li><a href="<%=basePath%>main/exit">退出</a></li>
+            <%--href="<%=basePath%>main/exit"--%>
+            <li><a href="#" onclick="exit()">退出</a></li>
         </ul>
     </div>
     <%--身体--%>
@@ -88,13 +89,10 @@ $(function () {
 })
 
 function exit() {
-    console.log(path)
     if (confirm('是否要退出当前用户？')){
         $.post(path+"main/exit",
             function (result) {
-                console.log('jin')
-                alert(result)
-                // window.location.href=path+result;
+                window.location.href=path+result;
             }
         )
     }

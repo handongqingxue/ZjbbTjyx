@@ -506,7 +506,7 @@ public class OPCController {
 						paramF2Map.put("tvVarNamePre",jjphzzcTVVarNamePre);
 						paramF2Map.put("upJjphzzcTV",upJjphzzcTV);
 						paramF2Map.put("preValueFMMap",preValueF2MMap);
-						paramF2Map.put("preValueFUMap",preValueF3UMap);
+						paramF2Map.put("preValueFUMap",preValueF2UMap);
 						addProVarByParamMap(paramF2Map);
 						break;
 					case Constant.F3_ID:
@@ -535,8 +535,549 @@ public class OPCController {
 						break;
 				}
 			}
-			
-	
+
+			//开始加料
+			String ksjlTVVarNamePre=Constant.KAI_SHI_JIA_LIAO;
+			List<TriggerVar> ksjlTVList = (List<TriggerVar>)triggerVarMap.get(ksjlTVVarNamePre);//获取开始加料变量,不管是否是上升沿
+			List<TriggerVar> upKsjlTVList = getUpDownVarValueListFromList(ksjlTVList, TriggerVar.UP);//获取上升的开始加料完成变量
+			for (TriggerVar upKsjlTV : upKsjlTVList) {
+				Integer upFId = upKsjlTV.getFId();//获取反应釜号
+				switch (upFId) {//匹配反应釜号
+					case Constant.F1_ID:
+						Map<String,Object> paramF1Map=new HashMap<String,Object>();
+						paramF1Map.put("tvVarNamePre",ksjlTVVarNamePre);
+						paramF1Map.put("upKsjlTV",upKsjlTV);
+						paramF1Map.put("preValueFUMap",preValueF1UMap);
+						addProVarByParamMap(paramF1Map);
+						break;
+					case Constant.F2_ID:
+						Map<String,Object> paramF2Map=new HashMap<String,Object>();
+						paramF2Map.put("tvVarNamePre",ksjlTVVarNamePre);
+						paramF2Map.put("upKsjlTV",upKsjlTV);
+						paramF2Map.put("preValueFUMap",preValueF2UMap);
+						addProVarByParamMap(paramF2Map);
+						break;
+					case Constant.F3_ID:
+						Map<String,Object> paramF3Map=new HashMap<String,Object>();
+						paramF3Map.put("tvVarNamePre",ksjlTVVarNamePre);
+						paramF3Map.put("upKsjlTV",upKsjlTV);
+						paramF3Map.put("preValueFUMap",preValueF3UMap);
+						addProVarByParamMap(paramF3Map);
+						break;
+					case Constant.F4_ID:
+						Map<String,Object> paramF4Map=new HashMap<String,Object>();
+						paramF4Map.put("tvVarNamePre",ksjlTVVarNamePre);
+						paramF4Map.put("upKsjlTV",upKsjlTV);
+						paramF4Map.put("preValueFUMap",preValueF4UMap);
+						addProVarByParamMap(paramF4Map);
+						break;
+					case Constant.F5_ID:
+						Map<String,Object> paramF5Map=new HashMap<String,Object>();
+						paramF5Map.put("tvVarNamePre",ksjlTVVarNamePre);
+						paramF5Map.put("upKsjlTV",upKsjlTV);
+						paramF5Map.put("preValueFUMap",preValueF5UMap);
+						addProVarByParamMap(paramF5Map);
+						break;
+				}
+			}
+
+
+			//助剂六一次添加完成
+			String zjlyctjwcTVVarNamePre=Constant.ZHU_JI_LIU_YI_CI_TIAN_JIA_WAN_CHENG;
+			List<TriggerVar> zjlyctjwcTVList = (List<TriggerVar>)triggerVarMap.get(zjlyctjwcTVVarNamePre);//获取助剂六一次添加完成变量,不管是否是上升沿
+			List<TriggerVar> upZjlyctjwcTVList = getUpDownVarValueListFromList(zjlyctjwcTVList, TriggerVar.UP);//获取上升的助剂六一次添加完成变量
+			for (TriggerVar upZjlyctjwcTV : upZjlyctjwcTVList) {
+				Integer upFId = upZjlyctjwcTV.getFId();//获取反应釜号
+				switch (upFId) {//匹配反应釜号
+					case Constant.F1_ID:
+						Map<String,Object> paramF1Map=new HashMap<String,Object>();
+						paramF1Map.put("tvVarNamePre",zjlyctjwcTVVarNamePre);
+						paramF1Map.put("upZjlyctjwcTV",upZjlyctjwcTV);
+						paramF1Map.put("preValueFUMap",preValueF1UMap);
+						addProVarByParamMap(paramF1Map);
+						break;
+					case Constant.F2_ID:
+						Map<String,Object> paramF2Map=new HashMap<String,Object>();
+						paramF2Map.put("tvVarNamePre",zjlyctjwcTVVarNamePre);
+						paramF2Map.put("upZjlyctjwcTV",upZjlyctjwcTV);
+						paramF2Map.put("preValueFUMap",preValueF2UMap);
+						addProVarByParamMap(paramF2Map);
+						break;
+					case Constant.F3_ID:
+						Map<String,Object> paramF3Map=new HashMap<String,Object>();
+						paramF3Map.put("tvVarNamePre",zjlyctjwcTVVarNamePre);
+						paramF3Map.put("upZjlyctjwcTV",upZjlyctjwcTV);
+						paramF3Map.put("preValueFUMap",preValueF3UMap);
+						addProVarByParamMap(paramF3Map);
+						break;
+					case Constant.F4_ID:
+						Map<String,Object> paramF4Map=new HashMap<String,Object>();
+						paramF4Map.put("tvVarNamePre",zjlyctjwcTVVarNamePre);
+						paramF4Map.put("upZjlyctjwcTV",upZjlyctjwcTV);
+						paramF4Map.put("preValueFUMap",preValueF4UMap);
+						addProVarByParamMap(paramF4Map);
+						break;
+					case Constant.F5_ID:
+						Map<String,Object> paramF5Map=new HashMap<String,Object>();
+						paramF5Map.put("tvVarNamePre",zjlyctjwcTVVarNamePre);
+						paramF5Map.put("upZjlyctjwcTV",upZjlyctjwcTV);
+						paramF5Map.put("preValueFUMap",preValueF5UMap);
+						addProVarByParamMap(paramF5Map);
+						break;
+				}
+			}
+
+			//助剂六二次备料完成
+			String zjlecblwcTVVarNamePre=Constant.ZHU_JI_LIU_ER_CI_BEI_LIAO_WAN_CHENG;
+			List<TriggerVar> zjlecblwcTVList = (List<TriggerVar>)triggerVarMap.get(zjlecblwcTVVarNamePre);//获取助剂六二次备料完成变量,不管是否是上升沿
+			List<TriggerVar> upZjlecblwcTVList = getUpDownVarValueListFromList(zjlecblwcTVList, TriggerVar.UP);//获取上升的助剂六二次备料完成变量
+			for (TriggerVar upZjlecblwcTV : upZjlecblwcTVList) {
+				Integer upFId = upZjlecblwcTV.getFId();//获取反应釜号
+				switch (upFId) {//匹配反应釜号
+					case Constant.F1_ID:
+						Map<String,Object> paramF1Map=new HashMap<String,Object>();
+						paramF1Map.put("tvVarNamePre",zjlecblwcTVVarNamePre);
+						paramF1Map.put("upZjlecblwcTV",upZjlecblwcTV);
+						paramF1Map.put("preValueFUMap",preValueF1UMap);
+						addProVarByParamMap(paramF1Map);
+						break;
+					case Constant.F2_ID:
+						Map<String,Object> paramF2Map=new HashMap<String,Object>();
+						paramF2Map.put("tvVarNamePre",zjlecblwcTVVarNamePre);
+						paramF2Map.put("upZjlecblwcTV",upZjlecblwcTV);
+						paramF2Map.put("preValueFUMap",preValueF2UMap);
+						addProVarByParamMap(paramF2Map);
+						break;
+					case Constant.F3_ID:
+						Map<String,Object> paramF3Map=new HashMap<String,Object>();
+						paramF3Map.put("tvVarNamePre",zjlecblwcTVVarNamePre);
+						paramF3Map.put("upZjlecblwcTV",upZjlecblwcTV);
+						paramF3Map.put("preValueFUMap",preValueF3UMap);
+						addProVarByParamMap(paramF3Map);
+						break;
+					case Constant.F4_ID:
+						Map<String,Object> paramF4Map=new HashMap<String,Object>();
+						paramF4Map.put("tvVarNamePre",zjlecblwcTVVarNamePre);
+						paramF4Map.put("upZjlecblwcTV",upZjlecblwcTV);
+						paramF4Map.put("preValueFUMap",preValueF4UMap);
+						addProVarByParamMap(paramF4Map);
+						break;
+					case Constant.F5_ID:
+						Map<String,Object> paramF5Map=new HashMap<String,Object>();
+						paramF5Map.put("tvVarNamePre",zjlecblwcTVVarNamePre);
+						paramF5Map.put("upZjlecblwcTV",upZjlecblwcTV);
+						paramF5Map.put("preValueFUMap",preValueF5UMap);
+						addProVarByParamMap(paramF5Map);
+						break;
+				}
+			}
+
+			//助剂六二次添加完成
+			String zjlectjwcTVVarNamePre=Constant.ZHU_JI_LIU_ER_CI_TIAN_JIA_WAN_CHENG;
+			List<TriggerVar> zjlectjwcTVList = (List<TriggerVar>)triggerVarMap.get(zjlectjwcTVVarNamePre);//获取助剂六二次添加完成变量,不管是否是上升沿
+			List<TriggerVar> upZjlectjwcTVList = getUpDownVarValueListFromList(zjlectjwcTVList, TriggerVar.UP);//获取上升的助剂六二次添加完成变量
+			for (TriggerVar upZjlectjwcTV : upZjlectjwcTVList) {
+				Integer upFId = upZjlectjwcTV.getFId();//获取反应釜号
+				switch (upFId) {//匹配反应釜号
+					case Constant.F1_ID:
+						Map<String,Object> paramF1Map=new HashMap<String,Object>();
+						paramF1Map.put("tvVarNamePre",zjlectjwcTVVarNamePre);
+						paramF1Map.put("upZjlectjwcTV",upZjlectjwcTV);
+						paramF1Map.put("preValueFUMap",preValueF1UMap);
+						addProVarByParamMap(paramF1Map);
+						break;
+					case Constant.F2_ID:
+						Map<String,Object> paramF2Map=new HashMap<String,Object>();
+						paramF2Map.put("tvVarNamePre",zjlectjwcTVVarNamePre);
+						paramF2Map.put("upZjlectjwcTV",upZjlectjwcTV);
+						paramF2Map.put("preValueFUMap",preValueF2UMap);
+						addProVarByParamMap(paramF2Map);
+						break;
+					case Constant.F3_ID:
+						Map<String,Object> paramF3Map=new HashMap<String,Object>();
+						paramF3Map.put("tvVarNamePre",zjlectjwcTVVarNamePre);
+						paramF3Map.put("upZjlectjwcTV",upZjlectjwcTV);
+						paramF3Map.put("preValueFUMap",preValueF3UMap);
+						addProVarByParamMap(paramF3Map);
+						break;
+					case Constant.F4_ID:
+						Map<String,Object> paramF4Map=new HashMap<String,Object>();
+						paramF4Map.put("tvVarNamePre",zjlectjwcTVVarNamePre);
+						paramF4Map.put("upZjlectjwcTV",upZjlectjwcTV);
+						paramF4Map.put("preValueFUMap",preValueF4UMap);
+						addProVarByParamMap(paramF4Map);
+						break;
+					case Constant.F5_ID:
+						Map<String,Object> paramF5Map=new HashMap<String,Object>();
+						paramF5Map.put("tvVarNamePre",zjlectjwcTVVarNamePre);
+						paramF5Map.put("upZjlectjwcTV",upZjlectjwcTV);
+						paramF5Map.put("preValueFUMap",preValueF5UMap);
+						addProVarByParamMap(paramF5Map);
+						break;
+				}
+			}
+
+			//第一次保温启动
+			String dycbwqdTVVarNamePre=Constant.DI_YI_CI_BAO_WEN_QI_DONG;
+			List<TriggerVar> dycbwqdTVList = (List<TriggerVar>)triggerVarMap.get(dycbwqdTVVarNamePre);//获取第一次保温启动变量,不管是否是上升沿
+			List<TriggerVar> upDycbwqdTVList = getUpDownVarValueListFromList(dycbwqdTVList, TriggerVar.UP);//获取上升的第一次保温启动变量
+			for (TriggerVar upDycbwqdTV : upDycbwqdTVList) {
+				Integer upFId = upDycbwqdTV.getFId();//获取反应釜号
+				switch (upFId) {//匹配反应釜号
+					case Constant.F1_ID:
+						Map<String,Object> paramF1Map=new HashMap<String,Object>();
+						paramF1Map.put("tvVarNamePre",dycbwqdTVVarNamePre);
+						paramF1Map.put("upDycbwqdTV",upDycbwqdTV);
+						paramF1Map.put("preValueFUMap",preValueF1UMap);
+						addProVarByParamMap(paramF1Map);
+						break;
+					case Constant.F2_ID:
+						Map<String,Object> paramF2Map=new HashMap<String,Object>();
+						paramF2Map.put("tvVarNamePre",dycbwqdTVVarNamePre);
+						paramF2Map.put("upDycbwqdTV",upDycbwqdTV);
+						paramF2Map.put("preValueFUMap",preValueF2UMap);
+						addProVarByParamMap(paramF2Map);
+						break;
+					case Constant.F3_ID:
+						Map<String,Object> paramF3Map=new HashMap<String,Object>();
+						paramF3Map.put("tvVarNamePre",dycbwqdTVVarNamePre);
+						paramF3Map.put("upDycbwqdTV",upDycbwqdTV);
+						paramF3Map.put("preValueFUMap",preValueF3UMap);
+						addProVarByParamMap(paramF3Map);
+						break;
+					case Constant.F4_ID:
+						Map<String,Object> paramF4Map=new HashMap<String,Object>();
+						paramF4Map.put("tvVarNamePre",dycbwqdTVVarNamePre);
+						paramF4Map.put("upDycbwqdTV",upDycbwqdTV);
+						paramF4Map.put("preValueFUMap",preValueF4UMap);
+						addProVarByParamMap(paramF4Map);
+						break;
+					case Constant.F5_ID:
+						Map<String,Object> paramF5Map=new HashMap<String,Object>();
+						paramF5Map.put("tvVarNamePre",dycbwqdTVVarNamePre);
+						paramF5Map.put("upDycbwqdTV",upDycbwqdTV);
+						paramF5Map.put("preValueFUMap",preValueF5UMap);
+						addProVarByParamMap(paramF5Map);
+						break;
+				}
+			}
+
+			//第一次保温合格
+			String dycbwhgTVVarNamePre=Constant.DI_YI_CI_BAO_WEN_HE_GE;
+			List<TriggerVar> dycbwhgTVList = (List<TriggerVar>)triggerVarMap.get(dycbwhgTVVarNamePre);//获取第一次保温合格变量,不管是否是上升沿
+			List<TriggerVar> upDycbwhgTVList = getUpDownVarValueListFromList(dycbwhgTVList, TriggerVar.UP);//获取上升的第一次保温合格变量
+			for (TriggerVar upDycbwhgTV : upDycbwhgTVList) {
+				Integer upFId = upDycbwhgTV.getFId();//获取反应釜号
+				switch (upFId) {//匹配反应釜号
+					case Constant.F1_ID:
+						Map<String,Object> paramF1Map=new HashMap<String,Object>();
+						paramF1Map.put("tvVarNamePre",dycbwhgTVVarNamePre);
+						paramF1Map.put("upDycbwhgTV",upDycbwhgTV);
+						paramF1Map.put("preValueFUMap",preValueF1UMap);
+						addProVarByParamMap(paramF1Map);
+						break;
+					case Constant.F2_ID:
+						Map<String,Object> paramF2Map=new HashMap<String,Object>();
+						paramF2Map.put("tvVarNamePre",dycbwhgTVVarNamePre);
+						paramF2Map.put("upDycbwhgTV",upDycbwhgTV);
+						paramF2Map.put("preValueFUMap",preValueF2UMap);
+						addProVarByParamMap(paramF2Map);
+						break;
+					case Constant.F3_ID:
+						Map<String,Object> paramF3Map=new HashMap<String,Object>();
+						paramF3Map.put("tvVarNamePre",dycbwhgTVVarNamePre);
+						paramF3Map.put("upDycbwhgTV",upDycbwhgTV);
+						paramF3Map.put("preValueFUMap",preValueF3UMap);
+						addProVarByParamMap(paramF3Map);
+						break;
+					case Constant.F4_ID:
+						Map<String,Object> paramF4Map=new HashMap<String,Object>();
+						paramF4Map.put("tvVarNamePre",dycbwhgTVVarNamePre);
+						paramF4Map.put("upDycbwhgTV",upDycbwhgTV);
+						paramF4Map.put("preValueFUMap",preValueF4UMap);
+						addProVarByParamMap(paramF4Map);
+						break;
+					case Constant.F5_ID:
+						Map<String,Object> paramF5Map=new HashMap<String,Object>();
+						paramF5Map.put("tvVarNamePre",dycbwhgTVVarNamePre);
+						paramF5Map.put("upDycbwhgTV",upDycbwhgTV);
+						paramF5Map.put("preValueFUMap",preValueF5UMap);
+						addProVarByParamMap(paramF5Map);
+						break;
+				}
+			}
+			//一次降温加酸提醒
+			String ycjwjstxTVVarNamePre=Constant.YI_CI_JIANG_WEN_JIA_SUAN_TI_XING;
+			List<TriggerVar> ycjwjstxTVList = (List<TriggerVar>)triggerVarMap.get(ycjwjstxTVVarNamePre);//获取一次降温加酸提醒变量,不管是否是上升沿
+			List<TriggerVar> upYcjwjstxTVList = getUpDownVarValueListFromList(ycjwjstxTVList, TriggerVar.UP);//获取上升的第一次降温加酸提醒变量
+			for (TriggerVar upYcjwjstxTV : upYcjwjstxTVList) {
+				Integer upFId = upYcjwjstxTV.getFId();//获取反应釜号
+				switch (upFId) {//匹配反应釜号
+					case Constant.F1_ID:
+						Map<String,Object> paramF1Map=new HashMap<String,Object>();
+						paramF1Map.put("tvVarNamePre",ycjwjstxTVVarNamePre);
+						paramF1Map.put("upYcjwjstxTV",upYcjwjstxTV);
+						paramF1Map.put("preValueFUMap",preValueF1UMap);
+						addProVarByParamMap(paramF1Map);
+						break;
+					case Constant.F2_ID:
+						Map<String,Object> paramF2Map=new HashMap<String,Object>();
+						paramF2Map.put("tvVarNamePre",ycjwjstxTVVarNamePre);
+						paramF2Map.put("upYcjwjstxTV",upYcjwjstxTV);
+						paramF2Map.put("preValueFUMap",preValueF2UMap);
+						addProVarByParamMap(paramF2Map);
+						break;
+					case Constant.F3_ID:
+						Map<String,Object> paramF3Map=new HashMap<String,Object>();
+						paramF3Map.put("tvVarNamePre",ycjwjstxTVVarNamePre);
+						paramF3Map.put("upYcjwjstxTV",upYcjwjstxTV);
+						paramF3Map.put("preValueFUMap",preValueF3UMap);
+						addProVarByParamMap(paramF3Map);
+						break;
+					case Constant.F4_ID:
+						Map<String,Object> paramF4Map=new HashMap<String,Object>();
+						paramF4Map.put("tvVarNamePre",ycjwjstxTVVarNamePre);
+						paramF4Map.put("upYcjwjstxTV",upYcjwjstxTV);
+						paramF4Map.put("preValueFUMap",preValueF4UMap);
+						addProVarByParamMap(paramF4Map);
+						break;
+					case Constant.F5_ID:
+						Map<String,Object> paramF5Map=new HashMap<String,Object>();
+						paramF5Map.put("tvVarNamePre",ycjwjstxTVVarNamePre);
+						paramF5Map.put("upYcjwjstxTV",upYcjwjstxTV);
+						paramF5Map.put("preValueFUMap",preValueF5UMap);
+						addProVarByParamMap(paramF5Map);
+						break;
+				}
+			}
+
+			//一次降温加酸合格
+			String ycjwjshgTVVarNamePre=Constant.YI_CI_JIANG_WEN_JIA_SUAN_HE_GE;
+			List<TriggerVar> ycjwjshgTVList = (List<TriggerVar>)triggerVarMap.get(ycjwjshgTVVarNamePre);//获取一次降温加酸合格变量,不管是否是上升沿
+			List<TriggerVar> upYcjwjshgTVList = getUpDownVarValueListFromList(ycjwjshgTVList, TriggerVar.UP);//获取上升的一次降温加酸合格变量
+			for (TriggerVar upYcjwjshgTV : upYcjwjshgTVList) {
+				Integer upFId = upYcjwjshgTV.getFId();//获取反应釜号
+				switch (upFId) {//匹配反应釜号
+					case Constant.F1_ID:
+						Map<String,Object> paramF1Map=new HashMap<String,Object>();
+						paramF1Map.put("tvVarNamePre",ycjwjshgTVVarNamePre);
+						paramF1Map.put("upYcjwjshgTV",upYcjwjshgTV);
+						paramF1Map.put("preValueFUMap",preValueF1UMap);
+						addProVarByParamMap(paramF1Map);
+						break;
+					case Constant.F2_ID:
+						Map<String,Object> paramF2Map=new HashMap<String,Object>();
+						paramF2Map.put("tvVarNamePre",ycjwjshgTVVarNamePre);
+						paramF2Map.put("upYcjwjshgTV",upYcjwjshgTV);
+						paramF2Map.put("preValueFUMap",preValueF2UMap);
+						addProVarByParamMap(paramF2Map);
+						break;
+					case Constant.F3_ID:
+						Map<String,Object> paramF3Map=new HashMap<String,Object>();
+						paramF3Map.put("tvVarNamePre",ycjwjshgTVVarNamePre);
+						paramF3Map.put("upYcjwjshgTV",upYcjwjshgTV);
+						paramF3Map.put("preValueFUMap",preValueF3UMap);
+						addProVarByParamMap(paramF3Map);
+						break;
+					case Constant.F4_ID:
+						Map<String,Object> paramF4Map=new HashMap<String,Object>();
+						paramF4Map.put("tvVarNamePre",ycjwjshgTVVarNamePre);
+						paramF4Map.put("upYcjwjshgTV",upYcjwjshgTV);
+						paramF4Map.put("preValueFUMap",preValueF4UMap);
+						addProVarByParamMap(paramF4Map);
+						break;
+					case Constant.F5_ID:
+						Map<String,Object> paramF5Map=new HashMap<String,Object>();
+						paramF5Map.put("tvVarNamePre",ycjwjshgTVVarNamePre);
+						paramF5Map.put("upYcjwjshgTV",upYcjwjshgTV);
+						paramF5Map.put("preValueFUMap",preValueF5UMap);
+						addProVarByParamMap(paramF5Map);
+						break;
+				}
+			}
+
+
+			//二次投粉
+			String ectfTVVarNamePre=Constant.ER_CI_TOU_FEN;
+			List<TriggerVar> ectfTVList = (List<TriggerVar>)triggerVarMap.get(ectfTVVarNamePre);//获取二次投粉变量,不管是否是上升沿
+			List<TriggerVar> upEctfTVList = getUpDownVarValueListFromList(ectfTVList, TriggerVar.UP);//获取上升的二次投粉变量
+			for (TriggerVar upEctfTV : upEctfTVList) {
+				Integer upFId = upEctfTV.getFId();//获取反应釜号
+				switch (upFId) {//匹配反应釜号
+					case Constant.F1_ID:
+						Map<String,Object> paramF1Map=new HashMap<String,Object>();
+						paramF1Map.put("tvVarNamePre",ectfTVVarNamePre);
+						paramF1Map.put("upEctfTV",upEctfTV);
+						paramF1Map.put("preValueFUMap",preValueF1UMap);
+						addProVarByParamMap(paramF1Map);
+						break;
+					case Constant.F2_ID:
+						Map<String,Object> paramF2Map=new HashMap<String,Object>();
+						paramF2Map.put("tvVarNamePre",ectfTVVarNamePre);
+						paramF2Map.put("upEctfTV",upEctfTV);
+						paramF2Map.put("preValueFUMap",preValueF2UMap);
+						addProVarByParamMap(paramF2Map);
+						break;
+					case Constant.F3_ID:
+						Map<String,Object> paramF3Map=new HashMap<String,Object>();
+						paramF3Map.put("tvVarNamePre",ectfTVVarNamePre);
+						paramF3Map.put("upEctfTV",upEctfTV);
+						paramF3Map.put("preValueFUMap",preValueF3UMap);
+						addProVarByParamMap(paramF3Map);
+						break;
+					case Constant.F4_ID:
+						Map<String,Object> paramF4Map=new HashMap<String,Object>();
+						paramF4Map.put("tvVarNamePre",ectfTVVarNamePre);
+						paramF4Map.put("upEctfTV",upEctfTV);
+						paramF4Map.put("preValueFUMap",preValueF4UMap);
+						addProVarByParamMap(paramF4Map);
+						break;
+					case Constant.F5_ID:
+						Map<String,Object> paramF5Map=new HashMap<String,Object>();
+						paramF5Map.put("tvVarNamePre",ectfTVVarNamePre);
+						paramF5Map.put("upEctfTV",upEctfTV);
+						paramF5Map.put("preValueFUMap",preValueF5UMap);
+						addProVarByParamMap(paramF5Map);
+						break;
+				}
+			}
+
+			//二次加215启动
+			String ecj215qdTVVarNamePre=Constant.ER_CI_JIA_215_QI_DONG;
+			List<TriggerVar> ecj215qdTVList = (List<TriggerVar>)triggerVarMap.get(ecj215qdTVVarNamePre);//获取二次加215启动,不管是否是上升沿
+			List<TriggerVar> upEcj215qdTVList = getUpDownVarValueListFromList(ecj215qdTVList, TriggerVar.UP);//获取上升的二次加215启动变量
+			for (TriggerVar upEcj215qdTV : upEcj215qdTVList) {
+				Integer upFId = upEcj215qdTV.getFId();//获取反应釜号
+				switch (upFId) {//匹配反应釜号
+					case Constant.F1_ID:
+						Map<String,Object> paramF1Map=new HashMap<String,Object>();
+						paramF1Map.put("tvVarNamePre",ecj215qdTVVarNamePre);
+						paramF1Map.put("upEcj215qdTV",upEcj215qdTV);
+						paramF1Map.put("preValueFUMap",preValueF1UMap);
+						addProVarByParamMap(paramF1Map);
+						break;
+					case Constant.F2_ID:
+						Map<String,Object> paramF2Map=new HashMap<String,Object>();
+						paramF2Map.put("tvVarNamePre",ecj215qdTVVarNamePre);
+						paramF2Map.put("upEcj215qdTV",upEcj215qdTV);
+						paramF2Map.put("preValueFUMap",preValueF2UMap);
+						addProVarByParamMap(paramF2Map);
+						break;
+					case Constant.F3_ID:
+						Map<String,Object> paramF3Map=new HashMap<String,Object>();
+						paramF3Map.put("tvVarNamePre",ecj215qdTVVarNamePre);
+						paramF3Map.put("upEcj215qdTV",upEcj215qdTV);
+						paramF3Map.put("preValueFUMap",preValueF3UMap);
+						addProVarByParamMap(paramF3Map);
+						break;
+					case Constant.F4_ID:
+						Map<String,Object> paramF4Map=new HashMap<String,Object>();
+						paramF4Map.put("tvVarNamePre",ecj215qdTVVarNamePre);
+						paramF4Map.put("upEcj215qdTV",upEcj215qdTV);
+						paramF4Map.put("preValueFUMap",preValueF4UMap);
+						addProVarByParamMap(paramF4Map);
+						break;
+					case Constant.F5_ID:
+						Map<String,Object> paramF5Map=new HashMap<String,Object>();
+						paramF5Map.put("tvVarNamePre",ecj215qdTVVarNamePre);
+						paramF5Map.put("upEcj215qdTV",upEcj215qdTV);
+						paramF5Map.put("preValueFUMap",preValueF5UMap);
+						addProVarByParamMap(paramF5Map);
+						break;
+				}
+			}
+
+			//二次加小料和水提醒
+			String ecjxlhstxTVVarNamePre=Constant.ER_CI_JIA_XIAO_LIAO_HE_SHUI_TI_XING;
+			List<TriggerVar> ecjxlhstxTVList = (List<TriggerVar>)triggerVarMap.get(ecjxlhstxTVVarNamePre);//获取二次加小料和水提醒,不管是否是上升沿
+			List<TriggerVar> upEcjxlhstxTVList = getUpDownVarValueListFromList(ecjxlhstxTVList, TriggerVar.DOWN);//获取下降的二次加小料和水提醒变量
+			for (TriggerVar upEcjxlhstxTV : upEcjxlhstxTVList) {
+				Integer upFId = upEcjxlhstxTV.getFId();//获取反应釜号
+				switch (upFId) {//匹配反应釜号
+					case Constant.F1_ID:
+						Map<String,Object> paramF1Map=new HashMap<String,Object>();
+						paramF1Map.put("tvVarNamePre",ecjxlhstxTVVarNamePre);
+						paramF1Map.put("upEcjxlhstxTV",upEcjxlhstxTV);
+						paramF1Map.put("preValueFUMap",preValueF1UMap);
+						addProVarByParamMap(paramF1Map);
+						break;
+					case Constant.F2_ID:
+						Map<String,Object> paramF2Map=new HashMap<String,Object>();
+						paramF2Map.put("tvVarNamePre",ecjxlhstxTVVarNamePre);
+						paramF2Map.put("upEcjxlhstxTV",upEcjxlhstxTV);
+						paramF2Map.put("preValueFUMap",preValueF2UMap);
+						addProVarByParamMap(paramF2Map);
+						break;
+					case Constant.F3_ID:
+						Map<String,Object> paramF3Map=new HashMap<String,Object>();
+						paramF3Map.put("tvVarNamePre",ecjxlhstxTVVarNamePre);
+						paramF3Map.put("upEcjxlhstxTV",upEcjxlhstxTV);
+						paramF3Map.put("preValueFUMap",preValueF3UMap);
+						addProVarByParamMap(paramF3Map);
+						break;
+					case Constant.F4_ID:
+						Map<String,Object> paramF4Map=new HashMap<String,Object>();
+						paramF4Map.put("tvVarNamePre",ecjxlhstxTVVarNamePre);
+						paramF4Map.put("upEcjxlhstxTV",upEcjxlhstxTV);
+						paramF4Map.put("preValueFUMap",preValueF4UMap);
+						addProVarByParamMap(paramF4Map);
+						break;
+					case Constant.F5_ID:
+						Map<String,Object> paramF5Map=new HashMap<String,Object>();
+						paramF5Map.put("tvVarNamePre",ecjxlhstxTVVarNamePre);
+						paramF5Map.put("upEcjxlhstxTV",upEcjxlhstxTV);
+						paramF5Map.put("preValueFUMap",preValueF5UMap);
+						addProVarByParamMap(paramF5Map);
+						break;
+				}
+			}
+
+			//二次加水启动
+			String ecjsqdTVVarNamePre=Constant.ER_CI_TOU_FEN;
+			List<TriggerVar> ecjsqdTVList = (List<TriggerVar>)triggerVarMap.get(ecjsqdTVVarNamePre);//获取二次加水启动,不管是否是上升沿
+			List<TriggerVar> upEcjsqdTVList = getUpDownVarValueListFromList(ecjsqdTVList, TriggerVar.DOWN);//获取下降的二次加水启动变量
+			for (TriggerVar upEcjsqdTV : upEcjsqdTVList) {
+				Integer upFId = upEcjsqdTV.getFId();//获取反应釜号
+				switch (upFId) {//匹配反应釜号
+					case Constant.F1_ID:
+						Map<String,Object> paramF1Map=new HashMap<String,Object>();
+						paramF1Map.put("tvVarNamePre",ecjsqdTVVarNamePre);
+						paramF1Map.put("upEcjsqdTV",upEcjsqdTV);
+						paramF1Map.put("preValueFUMap",preValueF1UMap);
+						addProVarByParamMap(paramF1Map);
+						break;
+					case Constant.F2_ID:
+						Map<String,Object> paramF2Map=new HashMap<String,Object>();
+						paramF2Map.put("tvVarNamePre",ecjsqdTVVarNamePre);
+						paramF2Map.put("upEcjsqdTV",upEcjsqdTV);
+						paramF2Map.put("preValueFUMap",preValueF2UMap);
+						addProVarByParamMap(paramF2Map);
+						break;
+					case Constant.F3_ID:
+						Map<String,Object> paramF3Map=new HashMap<String,Object>();
+						paramF3Map.put("tvVarNamePre",ecjsqdTVVarNamePre);
+						paramF3Map.put("upEcjsqdTV",upEcjsqdTV);
+						paramF3Map.put("preValueFUMap",preValueF3UMap);
+						addProVarByParamMap(paramF3Map);
+						break;
+					case Constant.F4_ID:
+						Map<String,Object> paramF4Map=new HashMap<String,Object>();
+						paramF4Map.put("tvVarNamePre",ecjsqdTVVarNamePre);
+						paramF4Map.put("upEcjsqdTV",upEcjsqdTV);
+						paramF4Map.put("preValueFUMap",preValueF4UMap);
+						addProVarByParamMap(paramF4Map);
+						break;
+					case Constant.F5_ID:
+						Map<String,Object> paramF5Map=new HashMap<String,Object>();
+						paramF5Map.put("tvVarNamePre",ecjsqdTVVarNamePre);
+						paramF5Map.put("upEcjsqdTV",upEcjsqdTV);
+						paramF5Map.put("preValueFUMap",preValueF5UMap);
+						addProVarByParamMap(paramF5Map);
+						break;
+				}
+			}
+
+
 			//允许一次加助剂
 			String yxycjzjTVVarNamePre=Constant.YUN_XU_YI_CI_JIA_ZHU_JI;
 			List<TriggerVar> yxycjzjTVList = (List<TriggerVar>)triggerVarMap.get(yxycjzjTVVarNamePre);//获取允许一次加助剂变量,不管是否是上升沿
@@ -549,7 +1090,7 @@ public class OPCController {
 						paramF1Map.put("tvVarNamePre",yxycjzjTVVarNamePre);
 						paramF1Map.put("upYxycjzjTV",upYxycjzjTV);
 						paramF1Map.put("preValueFMMap",preValueF1MMap);
-						paramF1Map.put("preValueFUMap",preValueF1UMap);
+//						paramF1Map.put("preValueFUMap",preValueF1UMap);
 						addProVarByParamMap(paramF1Map);
 						break;
 					case Constant.F2_ID:
@@ -557,7 +1098,7 @@ public class OPCController {
 						paramF2Map.put("tvVarNamePre",yxycjzjTVVarNamePre);
 						paramF2Map.put("upYxycjzjTV",upYxycjzjTV);
 						paramF2Map.put("preValueFMMap",preValueF2MMap);
-						paramF2Map.put("preValueFUMap",preValueF2UMap);
+//						paramF2Map.put("preValueFUMap",preValueF2UMap);
 						addProVarByParamMap(paramF2Map);
 						break;
 					case Constant.F3_ID:
@@ -565,7 +1106,7 @@ public class OPCController {
 						paramF3Map.put("tvVarNamePre",yxycjzjTVVarNamePre);
 						paramF3Map.put("upYxycjzjTV",upYxycjzjTV);
 						paramF3Map.put("preValueFMMap",preValueF3MMap);
-						paramF3Map.put("preValueFUMap",preValueF3UMap);
+//						paramF3Map.put("preValueFUMap",preValueF3UMap);
 						addProVarByParamMap(paramF3Map);
 						break;
 					case Constant.F4_ID:
@@ -573,7 +1114,7 @@ public class OPCController {
 						paramF4Map.put("tvVarNamePre",yxycjzjTVVarNamePre);
 						paramF4Map.put("upYxycjzjTV",upYxycjzjTV);
 						paramF4Map.put("preValueFMMap",preValueF4MMap);
-						paramF4Map.put("preValueFUMap",preValueF4UMap);
+//						paramF4Map.put("preValueFUMap",preValueF4UMap);
 						addProVarByParamMap(paramF4Map);
 						break;
 					case Constant.F5_ID:
@@ -581,7 +1122,7 @@ public class OPCController {
 						paramF5Map.put("tvVarNamePre",yxycjzjTVVarNamePre);
 						paramF5Map.put("upYxycjzjTV",upYxycjzjTV);
 						paramF5Map.put("preValueFMMap",preValueF5MMap);
-						paramF5Map.put("preValueFUMap",preValueF5UMap);
+//						paramF5Map.put("preValueFUMap",preValueF5UMap);
 						addProVarByParamMap(paramF5Map);
 						break;
 				}
@@ -600,7 +1141,7 @@ public class OPCController {
 						paramF1Map.put("tvVarNamePre",syzjjlwc1TVVarNamePre);
 						paramF1Map.put("upSyzjjlwc1TV",upSyzjjlwc1TV);
 						paramF1Map.put("preValueFMMap",preValueF1MMap);
-						paramF1Map.put("preValueFUMap",preValueF1UMap);
+//						paramF1Map.put("preValueFUMap",preValueF1UMap);
 						addProVarByParamMap(paramF1Map);
 						break;
 					case Constant.F2_ID:
@@ -608,7 +1149,7 @@ public class OPCController {
 						paramF2Map.put("tvVarNamePre",syzjjlwc1TVVarNamePre);
 						paramF2Map.put("upSyzjjlwc1TV",upSyzjjlwc1TV);
 						paramF2Map.put("preValueFMMap",preValueF2MMap);
-						paramF2Map.put("preValueFUMap",preValueF2UMap);
+//						paramF2Map.put("preValueFUMap",preValueF2UMap);
 						addProVarByParamMap(paramF2Map);
 						break;
 					case Constant.F3_ID:
@@ -616,7 +1157,7 @@ public class OPCController {
 						paramF3Map.put("tvVarNamePre",syzjjlwc1TVVarNamePre);
 						paramF3Map.put("upSyzjjlwc1TV",upSyzjjlwc1TV);
 						paramF3Map.put("preValueFMMap",preValueF3MMap);
-						paramF3Map.put("preValueFUMap",preValueF3UMap);
+//						paramF3Map.put("preValueFUMap",preValueF3UMap);
 						addProVarByParamMap(paramF3Map);
 						break;
 					case Constant.F4_ID:
@@ -624,7 +1165,7 @@ public class OPCController {
 						paramF4Map.put("tvVarNamePre",syzjjlwc1TVVarNamePre);
 						paramF4Map.put("upSyzjjlwc1TV",upSyzjjlwc1TV);
 						paramF4Map.put("preValueFMMap",preValueF4MMap);
-						paramF4Map.put("preValueFUMap",preValueF4UMap);
+//						paramF4Map.put("preValueFUMap",preValueF4UMap);
 						addProVarByParamMap(paramF4Map);
 						break;
 					case Constant.F5_ID:
@@ -632,7 +1173,7 @@ public class OPCController {
 						paramF5Map.put("tvVarNamePre",syzjjlwc1TVVarNamePre);
 						paramF5Map.put("upSyzjjlwc1TV",upSyzjjlwc1TV);
 						paramF5Map.put("preValueFMMap",preValueF5MMap);
-						paramF5Map.put("preValueFUMap",preValueF5UMap);
+//						paramF5Map.put("preValueFUMap",preValueF5UMap);
 						addProVarByParamMap(paramF5Map);
 						break;
 				}
@@ -712,7 +1253,7 @@ public class OPCController {
 						paramF1Map.put("tvVarNamePre",jflphhgTVVarNamePre);
 						paramF1Map.put("upJflphhgTV",upJflphhgTV);
 						paramF1Map.put("preValueFMMap",preValueF1MMap);
-						paramF1Map.put("preValueFUMap",preValueF1UMap);
+//						paramF1Map.put("preValueFUMap",preValueF1UMap);
 						addProVarByParamMap(paramF1Map);
 						break;
 					case Constant.F2_ID:
@@ -720,7 +1261,7 @@ public class OPCController {
 						paramF2Map.put("tvVarNamePre",jflphhgTVVarNamePre);
 						paramF2Map.put("upJflphhgTV",upJflphhgTV);
 						paramF2Map.put("preValueFMMap",preValueF2MMap);
-						paramF2Map.put("preValueFUMap",preValueF2UMap);
+//						paramF2Map.put("preValueFUMap",preValueF2UMap);
 						addProVarByParamMap(paramF2Map);
 						break;
 					case Constant.F3_ID:
@@ -728,7 +1269,7 @@ public class OPCController {
 						paramF3Map.put("tvVarNamePre",jflphhgTVVarNamePre);
 						paramF3Map.put("upJflphhgTV",upJflphhgTV);
 						paramF3Map.put("preValueFMMap",preValueF3MMap);
-						paramF3Map.put("preValueFUMap",preValueF3UMap);
+//						paramF3Map.put("preValueFUMap",preValueF3UMap);
 						addProVarByParamMap(paramF3Map);
 						break;
 					case Constant.F4_ID:
@@ -736,7 +1277,7 @@ public class OPCController {
 						paramF4Map.put("tvVarNamePre",jflphhgTVVarNamePre);
 						paramF4Map.put("upJflphhgTV",upJflphhgTV);
 						paramF4Map.put("preValueFMMap",preValueF4MMap);
-						paramF4Map.put("preValueFUMap",preValueF4UMap);
+//						paramF4Map.put("preValueFUMap",preValueF4UMap);
 						addProVarByParamMap(paramF4Map);
 						break;
 					case Constant.F5_ID:
@@ -744,7 +1285,7 @@ public class OPCController {
 						paramF5Map.put("tvVarNamePre",jflphhgTVVarNamePre);
 						paramF5Map.put("upJflphhgTV",upJflphhgTV);
 						paramF5Map.put("preValueFMMap",preValueF5MMap);
-						paramF5Map.put("preValueFUMap",preValueF5UMap);
+//						paramF5Map.put("preValueFUMap",preValueF5UMap);
 						addProVarByParamMap(paramF5Map);
 						break;
 				}
@@ -814,7 +1355,7 @@ public class OPCController {
 						paramF1Map.put("tvVarNamePre",wd85yectltxTVVarNamePre);
 						paramF1Map.put("upWd85yectltxTV",upWd85yectltxTV);
 						paramF1Map.put("preValueFMMap",preValueF1MMap);
-						paramF1Map.put("preValueFUMap",preValueF1UMap);
+//						paramF1Map.put("preValueFUMap",preValueF1UMap);
 						addProVarByParamMap(paramF1Map);
 						break;
 					case Constant.F2_ID:
@@ -822,7 +1363,7 @@ public class OPCController {
 						paramF2Map.put("tvVarNamePre",wd85yectltxTVVarNamePre);
 						paramF2Map.put("upWd85yectltxTV",upWd85yectltxTV);
 						paramF2Map.put("preValueFMMap",preValueF2MMap);
-						paramF2Map.put("preValueFUMap",preValueF2UMap);
+//						paramF2Map.put("preValueFUMap",preValueF2UMap);
 						addProVarByParamMap(paramF2Map);
 						break;
 					case Constant.F3_ID:
@@ -830,7 +1371,7 @@ public class OPCController {
 						paramF3Map.put("tvVarNamePre",wd85yectltxTVVarNamePre);
 						paramF3Map.put("upWd85yectltxTV",upWd85yectltxTV);
 						paramF3Map.put("preValueFMMap",preValueF3MMap);
-						paramF3Map.put("preValueFUMap",preValueF3UMap);
+//						paramF3Map.put("preValueFUMap",preValueF3UMap);
 						addProVarByParamMap(paramF3Map);
 						break;
 					case Constant.F4_ID:
@@ -838,7 +1379,7 @@ public class OPCController {
 						paramF4Map.put("tvVarNamePre",wd85yectltxTVVarNamePre);
 						paramF4Map.put("upWd85yectltxTV",upWd85yectltxTV);
 						paramF4Map.put("preValueFMMap",preValueF4MMap);
-						paramF4Map.put("preValueFUMap",preValueF4UMap);
+//						paramF4Map.put("preValueFUMap",preValueF4UMap);
 						addProVarByParamMap(paramF4Map);
 						break;
 					case Constant.F5_ID:
@@ -846,7 +1387,7 @@ public class OPCController {
 						paramF5Map.put("tvVarNamePre",wd85yectltxTVVarNamePre);
 						paramF5Map.put("upWd85yectltxTV",upWd85yectltxTV);
 						paramF5Map.put("preValueFMMap",preValueF5MMap);
-						paramF5Map.put("preValueFUMap",preValueF5UMap);
+//						paramF5Map.put("preValueFUMap",preValueF5UMap);
 						addProVarByParamMap(paramF5Map);
 						break;
 				}
@@ -865,7 +1406,7 @@ public class OPCController {
 						paramF1Map.put("tvVarNamePre",eczjhcphtxTVVarNamePre);
 						paramF1Map.put("upEczjhcphtxTV",upEczjhcphtxTV);
 						paramF1Map.put("preValueFMMap",preValueF1MMap);
-						paramF1Map.put("preValueFUMap",preValueF1UMap);
+//						paramF1Map.put("preValueFUMap",preValueF1UMap);
 						addProVarByParamMap(paramF1Map);
 						break;
 					case Constant.F2_ID:
@@ -873,7 +1414,7 @@ public class OPCController {
 						paramF2Map.put("tvVarNamePre",eczjhcphtxTVVarNamePre);
 						paramF2Map.put("upEczjhcphtxTV",upEczjhcphtxTV);
 						paramF2Map.put("preValueFMMap",preValueF2MMap);
-						paramF2Map.put("preValueFUMap",preValueF2UMap);
+//						paramF2Map.put("preValueFUMap",preValueF2UMap);
 						addProVarByParamMap(paramF2Map);
 						break;
 					case Constant.F3_ID:
@@ -881,7 +1422,7 @@ public class OPCController {
 						paramF3Map.put("tvVarNamePre",eczjhcphtxTVVarNamePre);
 						paramF3Map.put("upEczjhcphtxTV",upEczjhcphtxTV);
 						paramF3Map.put("preValueFMMap",preValueF3MMap);
-						paramF3Map.put("preValueFUMap",preValueF3UMap);
+//						paramF3Map.put("preValueFUMap",preValueF3UMap);
 						addProVarByParamMap(paramF3Map);
 						break;
 					case Constant.F4_ID:
@@ -889,7 +1430,7 @@ public class OPCController {
 						paramF4Map.put("tvVarNamePre",eczjhcphtxTVVarNamePre);
 						paramF4Map.put("upEczjhcphtxTV",upEczjhcphtxTV);
 						paramF4Map.put("preValueFMMap",preValueF4MMap);
-						paramF4Map.put("preValueFUMap",preValueF4UMap);
+//						paramF4Map.put("preValueFUMap",preValueF4UMap);
 						addProVarByParamMap(paramF4Map);
 						break;
 					case Constant.F5_ID:
@@ -897,7 +1438,7 @@ public class OPCController {
 						paramF5Map.put("tvVarNamePre",eczjhcphtxTVVarNamePre);
 						paramF5Map.put("upEczjhcphtxTV",upEczjhcphtxTV);
 						paramF5Map.put("preValueFMMap",preValueF5MMap);
-						paramF5Map.put("preValueFUMap",preValueF5UMap);
+//						paramF5Map.put("preValueFUMap",preValueF5UMap);
 						addProVarByParamMap(paramF5Map);
 						break;
 				}
@@ -916,7 +1457,7 @@ public class OPCController {
 						paramF1Map.put("tvVarNamePre",yxecjzjTVVarNamePre);
 						paramF1Map.put("upYxecjzjTV",upYxecjzjTV);
 						paramF1Map.put("preValueFMMap",preValueF1MMap);
-						paramF1Map.put("preValueFUMap",preValueF1UMap);
+//						paramF1Map.put("preValueFUMap",preValueF1UMap);
 						addProVarByParamMap(paramF1Map);
 						break;
 					case Constant.F2_ID:
@@ -924,7 +1465,7 @@ public class OPCController {
 						paramF2Map.put("tvVarNamePre",yxecjzjTVVarNamePre);
 						paramF2Map.put("upYxecjzjTV",upYxecjzjTV);
 						paramF2Map.put("preValueFMMap",preValueF2MMap);
-						paramF2Map.put("preValueFUMap",preValueF2UMap);
+//						paramF2Map.put("preValueFUMap",preValueF2UMap);
 						addProVarByParamMap(paramF2Map);
 						break;
 					case Constant.F3_ID:
@@ -932,7 +1473,7 @@ public class OPCController {
 						paramF3Map.put("tvVarNamePre",yxecjzjTVVarNamePre);
 						paramF3Map.put("upYxecjzjTV",upYxecjzjTV);
 						paramF3Map.put("preValueFMMap",preValueF3MMap);
-						paramF3Map.put("preValueFUMap",preValueF3UMap);
+//						paramF3Map.put("preValueFUMap",preValueF3UMap);
 						addProVarByParamMap(paramF3Map);
 						break;
 					case Constant.F4_ID:
@@ -940,7 +1481,7 @@ public class OPCController {
 						paramF4Map.put("tvVarNamePre",yxecjzjTVVarNamePre);
 						paramF4Map.put("upYxecjzjTV",upYxecjzjTV);
 						paramF4Map.put("preValueFMMap",preValueF4MMap);
-						paramF4Map.put("preValueFUMap",preValueF4UMap);
+//						paramF4Map.put("preValueFUMap",preValueF4UMap);
 						addProVarByParamMap(paramF4Map);
 						break;
 					case Constant.F5_ID:
@@ -948,7 +1489,7 @@ public class OPCController {
 						paramF5Map.put("tvVarNamePre",yxecjzjTVVarNamePre);
 						paramF5Map.put("upYxecjzjTV",upYxecjzjTV);
 						paramF5Map.put("preValueFMMap",preValueF5MMap);
-						paramF5Map.put("preValueFUMap",preValueF5UMap);
+//						paramF5Map.put("preValueFUMap",preValueF5UMap);
 						addProVarByParamMap(paramF5Map);
 						break;
 				}
@@ -967,7 +1508,7 @@ public class OPCController {
 						paramF1Map.put("tvVarNamePre",syzjjlwcTVVarNamePre);
 						paramF1Map.put("upSyzjjlwc2TV",upSyzjjlwc2TV);
 						paramF1Map.put("preValueFMMap",preValueF1MMap);
-						paramF1Map.put("preValueFUMap",preValueF1UMap);
+//						paramF1Map.put("preValueFUMap",preValueF1UMap);
 						addProVarByParamMap(paramF1Map);
 						break;
 					case Constant.F2_ID:
@@ -975,7 +1516,7 @@ public class OPCController {
 						paramF2Map.put("tvVarNamePre",syzjjlwcTVVarNamePre);
 						paramF2Map.put("upSyzjjlwc2TV",upSyzjjlwc2TV);
 						paramF2Map.put("preValueFMMap",preValueF2MMap);
-						paramF2Map.put("preValueFUMap",preValueF2UMap);
+//						paramF2Map.put("preValueFUMap",preValueF2UMap);
 						addProVarByParamMap(paramF2Map);
 						break;
 					case Constant.F3_ID:
@@ -983,7 +1524,7 @@ public class OPCController {
 						paramF3Map.put("tvVarNamePre",syzjjlwcTVVarNamePre);
 						paramF3Map.put("upSyzjjlwc2TV",upSyzjjlwc2TV);
 						paramF3Map.put("preValueFMMap",preValueF3MMap);
-						paramF3Map.put("preValueFUMap",preValueF3UMap);
+//						paramF3Map.put("preValueFUMap",preValueF3UMap);
 						addProVarByParamMap(paramF3Map);
 						break;
 					case Constant.F4_ID:
@@ -991,7 +1532,7 @@ public class OPCController {
 						paramF4Map.put("tvVarNamePre",syzjjlwcTVVarNamePre);
 						paramF4Map.put("upSyzjjlwc2TV",upSyzjjlwc2TV);
 						paramF4Map.put("preValueFMMap",preValueF4MMap);
-						paramF4Map.put("preValueFUMap",preValueF4UMap);
+//						paramF4Map.put("preValueFUMap",preValueF4UMap);
 						addProVarByParamMap(paramF4Map);
 						break;
 					case Constant.F5_ID:
@@ -999,7 +1540,7 @@ public class OPCController {
 						paramF5Map.put("tvVarNamePre",syzjjlwcTVVarNamePre);
 						paramF5Map.put("upSyzjjlwc2TV",upSyzjjlwc2TV);
 						paramF5Map.put("preValueFMMap",preValueF5MMap);
-						paramF5Map.put("preValueFUMap",preValueF5UMap);
+//						paramF5Map.put("preValueFUMap",preValueF5UMap);
 						addProVarByParamMap(paramF5Map);
 						break;
 				}
@@ -1707,6 +2248,20 @@ public class OPCController {
 					String status = jqflwcUResMap.get("status").toString();
 					if("ok".equals(status)) {
 						List<ProcessVar> jqflwcUResPVList = (List<ProcessVar>)jqflwcUResMap.get("proVarList");
+						//获取甲醛放料完成釜称重变量名
+						String jqflwcFczVarName = ERecord.JQFLWCSSYFCZ;
+						ProcessVar jqflwcFczPV = OpcUtil.getProVarInListByVarName(jqflwcFczVarName, jqflwcUResPVList);
+						Float jqflwcFczVarValue = jqflwcFczPV.getVarValue();
+
+						ProcessVar ptnFczPV = processVarService.getPtnValuePV(jqflwcFczVarName,jqflwcFczVarValue+"",jqflwcFczPV);
+						jqflwcUResPVList.add(ptnFczPV);//将重量差对象添加到集合里
+
+						//获取甲醛放料完成时间变量名
+						String jqflwcSjVarName = ERecord.JQFLWCSSYSJ;
+						ProcessVar jqflwcSjPV = OpcUtil.getProVarInListByVarName(jqflwcSjVarName, jqflwcUResPVList);
+						String jqflwcSjVarValue = jqflwcSjPV.getUpdateTime();
+						ProcessVar ptnSjPV = processVarService.getPtnValuePV(jqflwcSjVarName,jqflwcSjVarValue+"",jqflwcSjPV);
+						jqflwcUResPVList.add(ptnSjPV);//将时间差对象添加到集合里
 						int i = processVarService.addFromList(jqflwcUResPVList);//调用添加过程接口
 						System.out.println("U添加"+i);
 					}
