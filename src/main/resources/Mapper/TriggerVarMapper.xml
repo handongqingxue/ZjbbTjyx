@@ -41,6 +41,25 @@
 			</if>
 		</trim>
 	</insert>
+	<insert id="addByList" parameterType="com.zjbbTjyx.entity.TriggerVar">
+		insert into TriggerVar (VarName,VarValue,RecType,FId) values
+		<foreach collection="triggerVarList" item="triggerVar" separator=",">
+			<trim prefix="(" suffix=")" suffixOverrides=",">
+				<if test="triggerVar.varName!=null">
+					#{triggerVar.varName},
+				</if>
+				<if test="triggerVar.varValue!=null">
+					#{triggerVar.varValue},
+				</if>
+				<if test="triggerVar.recType!=null">
+					#{triggerVar.recType},
+				</if>
+				<if test="triggerVar.FId!=null">
+					#{triggerVar.FId},
+				</if>
+			</trim>
+		</foreach>
+	</insert>
 	<update id="editByVarName">
 		update TriggerVar set VarValue=#{VarValue} where VarName=#{VarName}
 	</update>
@@ -54,4 +73,17 @@
 		</foreach>
 		 order by Sort
 	</select>
+	<select id="getListByVarNameList" resultType="com.zjbbTjyx.entity.TriggerVar">
+		select * from TriggerVar where 1=1
+		<foreach collection="varNameList" item="varName" open=" and cast(varName as char) in (" separator="," close=")">
+			#{varName}
+		</foreach>
+	</select>
+	<update id="editByList">
+		update TriggerVar set VarValue= case VarName
+		<foreach collection="triggerVarList" item="triggerVar">
+			when #{triggerVar.varName} then #{triggerVar.varValue}
+		</foreach>
+		 end
+	</update>
 </mapper>
