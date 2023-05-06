@@ -289,6 +289,30 @@ public class ERecord {
 	 * 加碱PH值正常上升沿时间
 	 */
 	public static final String JJPHZZCSSYSJ=Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+	/**
+	 * 助剂六一次添加完成上升沿时间
+	 */
+	public static final String ZJLYCTJWCSSYSJ=Constant.ZHU_JI_LIU_YI_CI_TIAN_JIA_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+	/**
+	 * 助剂六一次添加完成上升沿反应釜温度
+	 */
+	public static final String ZJLYCTJWCSSYFYFWD=Constant.ZHU_JI_LIU_YI_CI_TIAN_JIA_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
+	/**
+	 * 加碱PH值正常上升沿釜称重
+	 */
+	public static final String JJPHZZCSSYFCZ=Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
+	/**
+	 * 助剂六一次添加完成上升沿釜称重
+	 */
+	public static final String ZJLYCTJWCSSYFCZ=Constant.ZHU_JI_LIU_YI_CI_TIAN_JIA_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
+	/**
+	 * 加碱PH值正常到助剂六一次添加完成重量差
+	 */
+	public static final String ZJPHZZCDZJLYCTJWCZLC=Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+Constant.DAO+Constant.ZHU_JI_LIU_YI_CI_TIAN_JIA_WAN_CHENG+Constant.ZHONG_LIANG+Constant.CHA;
+	/**
+	 * 加碱PH值正常到助剂六一次添加完成时间差
+	 */
+	public static final String ZJPHZZCDZJLYCTJWCSJC=Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+Constant.DAO+Constant.ZHU_JI_LIU_YI_CI_TIAN_JIA_WAN_CHENG+Constant.SHI_JIAN+Constant.CHA;
 
 	private Integer Id;
 	public Integer getId() {
