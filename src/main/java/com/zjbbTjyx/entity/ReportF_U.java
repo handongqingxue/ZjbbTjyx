@@ -1,6 +1,6 @@
 package com.zjbbTjyx.entity;
 
-public class ReporF_U {
+public class ReportF_U {
 	
     /**
      * 自动表单设计行号
