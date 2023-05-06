@@ -23,11 +23,11 @@ public class TriggerVarServiceImpl implements TriggerVarService {
 	public int editFromList(List<TriggerVar> triggerVarList) {
 		// TODO Auto-generated method stub
 		int editCount=0;
-		List<TriggerVar> addTVList=new ArrayList<>();
-		List<TriggerVar> editTVList=new ArrayList<>();
+		List<TriggerVar> addTVList=new ArrayList<TriggerVar>();
+		List<TriggerVar> editTVList=new ArrayList<TriggerVar>();
 		TriggerVar tv=null;
 		
-		List<String> varNameList=new ArrayList<>();
+		List<String> varNameList=new ArrayList<String>();
 		for (TriggerVar triggerVar : triggerVarList) {
 			varNameList.add(triggerVar.getVarName());
 		}

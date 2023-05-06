@@ -784,7 +784,7 @@ public class OpcUtil {
 		        	itemName = ERecord.JQFLWCSSYSJ;//甲醛放料完成上升沿时间
 		        }
 		        else if(tv1VarName.startsWith(Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+Constant.XHX)) { //加碱PH值正常
-		        	itemName = ERecord.JJPHZCSSYSJ;//加碱PH值正常上升沿时间
+		        	itemName = ERecord.JJPHZZCSSYSJ;//加碱PH值正常上升沿时间
 		        }
 
 		        if(tv1VarName.startsWith(Constant.BEI_LIAO_KAI_SHI+Constant.XHX)||

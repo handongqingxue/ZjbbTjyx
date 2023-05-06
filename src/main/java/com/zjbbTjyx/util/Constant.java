@@ -685,6 +685,10 @@ public class Constant {
 	 */
 	public static final String SHUI_JIA_RU="水加入";
 	/**
+	 * 酸计量筒称重
+	 */
+	public static final String SUAN_JI_LIANG_TONG_CHENG_ZHONG="酸计量筒称重";
+	/**
 	 * 冷却至结束
 	 */
 	public static final String LQZJS=LENG_QUE+ZHI+JIE_SHU;
