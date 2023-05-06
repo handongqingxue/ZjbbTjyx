@@ -279,7 +279,7 @@ public class ERecord {
 	 * 允许开始排胶到排胶完成时间差
 	 */
 	public static final String YXKSPJDPJWCSJC=Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.DAO+Constant.PAI_JIAO_WAN_CHENG+Constant.SHI_JIAN+Constant.CHA;
-
+	
 	private Integer Id;
 	public Integer getId() {
 		return Id;

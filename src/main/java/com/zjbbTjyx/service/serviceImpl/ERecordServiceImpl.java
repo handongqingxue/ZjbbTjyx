@@ -2258,7 +2258,51 @@ public class ERecordServiceImpl implements ERecordService {
 			}
 		}
 		else if(ERecord.U.equals(recType)) {
-			
+			for (ERecord eRecord : eRecordList) {
+				String varName = eRecord.getVarName();
+				if(Constant.SHENG_CHAN_BIAN_HAO.equals(varName)) {//生产编号
+					String varValue = eRecord.getVarValue();
+					
+					varMap = new HashMap<String, Object>();
+					varMap.put(Constant.VALUE, varValue);
+					varMap.put(Constant.ROW_NUMBER, ReportF_U.SCBH_RN);
+					varMap.put(Constant.COL_NUMBER, ReportF_U.SCBH_CN);
+					varMapList.add(varMap);
+				}
+				else if(Constant.FAN_YING_FU.equals(varName)) {//反应釜
+					String varValue = eRecord.getVarValue();
+					
+					varMap = new HashMap<String, Object>();
+					varMap.put(Constant.VALUE, varValue);
+					varMap.put(Constant.ROW_NUMBER, ReportF_U.FYF_RN);
+					varMap.put(Constant.COL_NUMBER, ReportF_U.FYF_CN);
+					varMapList.add(varMap);
+				}
+				else if(Constant.PI_CI_JI_LU.equals(varName)) {//批次记录
+					String preValue = eRecord.getPreValue();
+					String nxtValue = eRecord.getNxtValue();
+					String ptnValue = eRecord.getPtnValue();
+					String unit = eRecord.getUnit();
+					
+					HashMap<String, Object> preVarMap = new HashMap<String, Object>();
+					preVarMap.put(Constant.VALUE, preValue);
+					preVarMap.put(Constant.ROW_NUMBER, ReportF_U.KSSJ_RN);
+					preVarMap.put(Constant.COL_NUMBER, ReportF_U.KSSJ_CN);
+					varMapList.add(preVarMap);
+					
+					HashMap<String, Object> nxtVarMap = new HashMap<String, Object>();
+					nxtVarMap.put(Constant.VALUE, nxtValue);
+					nxtVarMap.put(Constant.ROW_NUMBER, ReportF_U.JSSJ_RN);
+					nxtVarMap.put(Constant.COL_NUMBER, ReportF_U.JSSJ_CN);
+					varMapList.add(nxtVarMap);
+					
+					HashMap<String, Object> ptnVarMap = new HashMap<String, Object>();
+					ptnVarMap.put(Constant.VALUE, ptnValue+unit);
+					ptnVarMap.put(Constant.ROW_NUMBER, ReportF_U.SCGS_RN);
+					ptnVarMap.put(Constant.COL_NUMBER, ReportF_U.SCGS_CN);
+					varMapList.add(ptnVarMap);
+				}
+			}
 		}
 		return varMapList;
 	}
