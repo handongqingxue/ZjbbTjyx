@@ -1698,6 +1698,22 @@ public class ERecordServiceImpl implements ERecordService {
 					
 					eRecordList.add(eRecord);
 				}//YSD109阶段结束
+				else if(pvVarName.startsWith(ERecord.KSJLSSYSJLTCZ)) {//开始加料上升沿酸计量筒称重   //YSD215一次阶段开始
+					Float pvVarValue = processVar.getVarValue();
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+	
+					eRecord=new ERecord();
+					eRecord.setVarName(pvVarName);
+					eRecord.setVarValue(pvVarValue+"");
+					eRecord.setRecType(pvRecType);
+					eRecord.setFId(pvFId);
+					eRecord.setRecordTime(recordTime);
+					eRecord.setBatchID(batchID);
+					eRecord.setPhaseName(Constant.YSD215_YI_CI);
+					
+					eRecordList.add(eRecord);
+				}
 				else if(pvVarName.startsWith(ERecord.JJPHZZCSSYSJ)) {//加碱PH值正常上升沿时间
 					Integer pvFId = processVar.getFId();
 					String batchID = batchIDMap.get(pvFId).toString();
