@@ -393,7 +393,7 @@ public class OpcUtil {
 		            String fhczOpcVarName=fhczPvVarNameQz+Constant.XHX+Constant.AV;
 		            opcVarNameList.add(fhczOpcVarName);
 		        } 
-		        else if (tv1VarName.startsWith(Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+Constant.XHX)){//加碱PH值正常要记录(加碱前PH输入值、加碱量提示、加碱后PH输入值、助剂计量罐1称重、助剂计量罐2称重)
+		        else if (tv1VarName.startsWith(Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+Constant.XHX)){//加碱PH值正常要记录(加碱前PH输入值、加碱量提示、加碱后PH输入值)
 		            Integer tvFId = triggerVar1.getFId();
 		            String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
 		            //加碱前PH输入值

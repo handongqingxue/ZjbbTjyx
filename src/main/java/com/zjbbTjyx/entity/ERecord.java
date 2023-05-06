@@ -290,14 +290,18 @@ public class ERecord {
 	 */
 	public static final String JJPHZZCSSYSJ=Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
 	/**
-	 * 加碱PH值正常到助剂六一次添加完成时间
-	 */
-	public static final String JJPHZZCDZJLYCTJWCSJ=Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+Constant.DAO+Constant.ZHU_JI_LIU_YI_CI_TIAN_JIA_WAN_CHENG+Constant.SHI_JIAN;
-
-	/**
 	 * 助剂六一次添加完成上升沿时间
 	 */
 	public static final String ZJLYCTJWCSSYSJ=Constant.ZHU_JI_LIU_YI_CI_TIAN_JIA_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+	/**
+	 * 加碱PH值正常到助剂六一次添加完成时间
+	 */
+	public static final String JJPHZZCDZJLYCTJWCSJ=Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+Constant.DAO+Constant.ZHU_JI_LIU_YI_CI_TIAN_JIA_WAN_CHENG+Constant.SHI_JIAN;
+	/**
+	 * 加碱PH值正常到助剂六一次添加完成时间差
+	 */
+	public static final String JJPHZZCDZJLYCTJWCSJC=Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+Constant.DAO+Constant.ZHU_JI_LIU_YI_CI_TIAN_JIA_WAN_CHENG+Constant.SHI_JIAN+Constant.CHA;
+
 	/**
 	 * 助剂六一次添加完成上升沿反应釜温度
 	 */
@@ -311,14 +315,14 @@ public class ERecord {
 	 */
 	public static final String ZJLYCTJWCSSYFCZ=Constant.ZHU_JI_LIU_YI_CI_TIAN_JIA_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
 	/**
-	 * 加碱PH值正常到助剂六一次添加完成重量差
+	 * 加碱PH值正常到助剂六一次添加完成釜重量
 	 */
-	public static final String JJPHZZCDZJLYCTJWCZLC=Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+Constant.DAO+Constant.ZHU_JI_LIU_YI_CI_TIAN_JIA_WAN_CHENG+Constant.ZHONG_LIANG+Constant.CHA;
+	public static final String JJPHZZCDZJLYCTJWCFZL=Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+Constant.DAO+Constant.ZHU_JI_LIU_YI_CI_TIAN_JIA_WAN_CHENG+Constant.ZHONG_LIANG;
 	/**
-	 * 加碱PH值正常到助剂六一次添加完成时间差
+	 * 加碱PH值正常到助剂六一次添加完成釜重量差
 	 */
-	public static final String JJPHZZCDZJLYCTJWCSJC=Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+Constant.DAO+Constant.ZHU_JI_LIU_YI_CI_TIAN_JIA_WAN_CHENG+Constant.SHI_JIAN+Constant.CHA;
-
+	public static final String JJPHZZCDZJLYCTJWCFZLC=Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+Constant.DAO+Constant.ZHU_JI_LIU_YI_CI_TIAN_JIA_WAN_CHENG+Constant.ZHONG_LIANG+Constant.CHA;
+	
 	/**
 	 * 助剂六二次备料完成上升沿酸计量筒称重
 	 */
@@ -348,13 +352,14 @@ public class ERecord {
 	 */
 	public static final String ZJLECBLWCDZJLECTJWCZLC=Constant.ZHU_JI_LIU_ER_CI_BEI_LIAO_WAN_CHENG+Constant.DAO+Constant.ZHU_JI_LIU_ER_CI_TIAN_JIA_WAN_CHENG+Constant.ZHONG_LIANG+Constant.CHA;
 	/**
-	 * 助剂六二次备料完成到助剂六二次添加完成时间差
-	 */
-	public static final String ZJLECBLWCDZJLECTJWCSJC=Constant.ZHU_JI_LIU_ER_CI_BEI_LIAO_WAN_CHENG+Constant.DAO+Constant.ZHU_JI_LIU_ER_CI_TIAN_JIA_WAN_CHENG+Constant.SHI_JIAN+Constant.CHA;
-	/**
 	 * 助剂六二次备料完成到助剂六二次添加完成时间
 	 */
 	public static final String ZJLECBLWCDZJLECTJWCSJ=Constant.ZHU_JI_LIU_ER_CI_BEI_LIAO_WAN_CHENG+Constant.DAO+Constant.ZHU_JI_LIU_ER_CI_TIAN_JIA_WAN_CHENG+Constant.SHI_JIAN;
+	/**
+	 * 助剂六二次备料完成到助剂六二次添加完成时间差
+	 */
+	public static final String ZJLECBLWCDZJLECTJWCSJC=Constant.ZHU_JI_LIU_ER_CI_BEI_LIAO_WAN_CHENG+Constant.DAO+Constant.ZHU_JI_LIU_ER_CI_TIAN_JIA_WAN_CHENG+Constant.SHI_JIAN+Constant.CHA;
+	
 	/**
 	 * 加粉料提醒粉料1重量设定
 	 */

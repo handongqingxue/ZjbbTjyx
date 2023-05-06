@@ -1698,6 +1698,22 @@ public class ERecordServiceImpl implements ERecordService {
 					
 					eRecordList.add(eRecord);
 				}//YSD109阶段结束
+				else if(pvVarName.startsWith(ERecord.KSJLSSYSJLTCZ)) {//开始加料上升沿酸计量筒称重   //YSD215一次阶段开始
+					Float pvVarValue = processVar.getVarValue();
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+	
+					eRecord=new ERecord();
+					eRecord.setVarName(pvVarName);
+					eRecord.setVarValue(pvVarValue+"");
+					eRecord.setRecType(pvRecType);
+					eRecord.setFId(pvFId);
+					eRecord.setRecordTime(recordTime);
+					eRecord.setBatchID(batchID);
+					eRecord.setPhaseName(Constant.YSD215_YI_CI);
+					
+					eRecordList.add(eRecord);
+				}
 				else if(pvVarName.startsWith(ERecord.JJPHZZCSSYSJ)) {//加碱PH值正常上升沿时间
 					Integer pvFId = processVar.getFId();
 					String batchID = batchIDMap.get(pvFId).toString();
@@ -1717,6 +1733,125 @@ public class ERecordServiceImpl implements ERecordService {
 					}
 					eRecord.setNxtValue(updateTime);
 				}
+				else if(pvVarName.startsWith(ERecord.ZJLYCTJWCSSYSJ)) {//助剂六一次添加完成上升沿时间
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+					String updateTime = processVar.getUpdateTime();
+					
+					eRecord=getFromList(ERecord.JJPHZZCDZJLYCTJWCSJ, batchID, eRecordList);
+					if(eRecord==null) {
+						eRecord=new ERecord();
+						eRecord.setVarName(ERecord.JJPHZZCDZJLYCTJWCSJ);
+						eRecord.setRecType(pvRecType);
+						eRecord.setFId(pvFId);
+						eRecord.setRecordTime(recordTime);
+						eRecord.setBatchID(batchID);
+						eRecord.setPhaseName(Constant.YSD215_YI_CI);
+						
+						eRecordList.add(eRecord);
+					}
+					eRecord.setNxtValue(updateTime);
+				}
+				else if(pvVarName.startsWith(ERecord.ZJLYCTJWCSSYFYFWD)) {//助剂六一次添加完成上升沿反应釜温度
+					Float pvVarValue = processVar.getVarValue();
+					String pvUnit = processVar.getUnit();
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+	
+					eRecord=new ERecord();
+					eRecord.setVarName(pvVarName);
+					eRecord.setVarValue(pvVarValue+"");
+					eRecord.setUnit(pvUnit);
+					eRecord.setRecType(pvRecType);
+					eRecord.setFId(pvFId);
+					eRecord.setRecordTime(recordTime);
+					eRecord.setBatchID(batchID);
+					eRecord.setPhaseName(Constant.YSD215_YI_CI);
+					
+					eRecordList.add(eRecord);
+				}
+				else if(pvVarName.startsWith(ERecord.JJPHZZCSSYFCZ)) {//加碱PH值正常上升沿釜称重
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+					Float varValue = processVar.getVarValue();
+					String unit = processVar.getUnit();
+	
+					eRecord=getFromList(ERecord.JJPHZZCDZJLYCTJWCFZL, batchID, eRecordList);
+					if(eRecord==null) {
+						eRecord=new ERecord();
+						eRecord.setVarName(ERecord.JJPHZZCDZJLYCTJWCFZL);
+						eRecord.setUnit(unit);
+						eRecord.setRecType(pvRecType);
+						eRecord.setFId(pvFId);
+						eRecord.setRecordTime(recordTime);
+						eRecord.setBatchID(batchID);
+						eRecord.setPhaseName(Constant.YSD215_YI_CI);
+						
+						eRecordList.add(eRecord);
+					}
+					eRecord.setPreValue(varValue+"");
+				}
+				else if(pvVarName.startsWith(ERecord.ZJLYCTJWCSSYFCZ)) {//助剂六一次添加完成上升沿釜称重
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+					Float varValue = processVar.getVarValue();
+	
+					eRecord=getFromList(ERecord.JJPHZZCDZJLYCTJWCFZL, batchID, eRecordList);
+					if(eRecord==null) {
+						eRecord=new ERecord();
+						eRecord.setVarName(ERecord.JJPHZZCDZJLYCTJWCFZL);
+						eRecord.setRecType(pvRecType);
+						eRecord.setFId(pvFId);
+						eRecord.setRecordTime(recordTime);
+						eRecord.setBatchID(batchID);
+						eRecord.setPhaseName(Constant.YSD215_YI_CI);
+						
+						eRecordList.add(eRecord);
+					}
+					eRecord.setNxtValue(varValue+"");
+				}
+				else if(pvVarName.startsWith(ERecord.JJPHZZCDZJLYCTJWCFZLC)) {//加碱PH值正常到助剂六一次添加完成釜重量差
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+					Float varValue = processVar.getVarValue();
+					String unit = processVar.getUnit();
+	
+					eRecord=getFromList(ERecord.JJPHZZCDZJLYCTJWCFZL, batchID, eRecordList);
+					if(eRecord==null) {
+						eRecord=new ERecord();
+						eRecord.setVarName(ERecord.JJPHZZCDZJLYCTJWCFZL);
+						eRecord.setRecType(pvRecType);
+						eRecord.setFId(pvFId);
+						eRecord.setRecordTime(recordTime);
+						eRecord.setBatchID(batchID);
+						eRecord.setPhaseName(Constant.YSD215_YI_CI);
+						
+						eRecordList.add(eRecord);
+					}
+					eRecord.setPtnValue(varValue+"");
+					eRecord.setUnit(unit);
+				}
+				else if(pvVarName.startsWith(ERecord.JJPHZZCDZJLYCTJWCSJC)) {//加碱PH值正常到助剂六一次添加完成时间差
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+					Float varValue = processVar.getVarValue();
+					String unit = processVar.getUnit();
+	
+					eRecord=getFromList(ERecord.JJPHZZCDZJLYCTJWCSJ, batchID, eRecordList);
+					if(eRecord==null) {
+						eRecord=new ERecord();
+						eRecord.setVarName(ERecord.JJPHZZCDZJLYCTJWCSJ);
+						eRecord.setRecType(pvRecType);
+						eRecord.setFId(pvFId);
+						eRecord.setRecordTime(recordTime);
+						eRecord.setBatchID(batchID);
+						eRecord.setPhaseName(Constant.YSD215_YI_CI);
+						
+						eRecordList.add(eRecord);
+					}
+					eRecord.setPtnValue(varValue+"");
+					eRecord.setUnit(unit);
+				}//YSD215一次阶段结束
 			}
 		}
 		
