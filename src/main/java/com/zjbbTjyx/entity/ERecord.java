@@ -348,9 +348,13 @@ public class ERecord {
 	 */
 	public static final String ZJLECTJWCSSYFCZ=Constant.ZHU_JI_LIU_ER_CI_TIAN_JIA_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
 	/**
-	 * 助剂六二次备料完成到助剂六二次添加完成重量差
+	 * 助剂六二次备料完成到助剂六二次添加完成釜重量
 	 */
-	public static final String ZJLECBLWCDZJLECTJWCZLC=Constant.ZHU_JI_LIU_ER_CI_BEI_LIAO_WAN_CHENG+Constant.DAO+Constant.ZHU_JI_LIU_ER_CI_TIAN_JIA_WAN_CHENG+Constant.ZHONG_LIANG+Constant.CHA;
+	public static final String ZJLECBLWCDZJLECTJWCFZL=Constant.ZHU_JI_LIU_ER_CI_BEI_LIAO_WAN_CHENG+Constant.DAO+Constant.ZHU_JI_LIU_ER_CI_TIAN_JIA_WAN_CHENG+Constant.ZHONG_LIANG;
+	/**
+	 * 助剂六二次备料完成到助剂六二次添加完成釜重量差
+	 */
+	public static final String ZJLECBLWCDZJLECTJWCFZLC=Constant.ZHU_JI_LIU_ER_CI_BEI_LIAO_WAN_CHENG+Constant.DAO+Constant.ZHU_JI_LIU_ER_CI_TIAN_JIA_WAN_CHENG+Constant.ZHONG_LIANG+Constant.CHA;
 	/**
 	 * 助剂六二次备料完成到助剂六二次添加完成时间
 	 */
@@ -361,10 +365,10 @@ public class ERecord {
 	public static final String ZJLECBLWCDZJLECTJWCSJC=Constant.ZHU_JI_LIU_ER_CI_BEI_LIAO_WAN_CHENG+Constant.DAO+Constant.ZHU_JI_LIU_ER_CI_TIAN_JIA_WAN_CHENG+Constant.SHI_JIAN+Constant.CHA;
 	
 	/**
-	 * 加粉料提醒粉料1重量设定
+	 * 加粉料提醒上升沿粉料1重量设定
 	 */
-	public static final String JFLTXFL1ZLSD=Constant.JIA_FEN_LIAO_TI_XING+Constant.FEN_LIAO_1_ZHONG_LIANG_SHE_DING;
-
+	public static final String JFLTXSSYFL1ZLSD=Constant.JIA_FEN_LIAO_TI_XING+Constant.SHANG_SHENG_YAN+Constant.FEN_LIAO_1_ZHONG_LIANG_SHE_DING;
+	
 	/**
 	 * 第一次保温合格上升沿时间
 	 */

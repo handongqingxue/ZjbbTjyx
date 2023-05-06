@@ -442,7 +442,7 @@ public class Constant {
 	 * 助剂六二次添加完成
 	 */
 	public static final String ZHU_JI_LIU_ER_CI_TIAN_JIA_WAN_CHENG="助剂六二次添加完成";
-
+	
 	/**
 	 * 第一次保温启动
 	 */
