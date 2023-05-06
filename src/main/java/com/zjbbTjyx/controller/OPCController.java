@@ -3040,6 +3040,39 @@ public class OPCController {
 				}
 			}
 		}
+		else if(Constant.ZHU_JI_LIU_YI_CI_TIAN_JIA_WAN_CHENG.equals(tvVarNamePre)) {
+			TriggerVar upZjlyctjwcTV = (TriggerVar)paramMap.get("upZjlyctjwcTV");
+			String upRecType = upZjlyctjwcTV.getRecType();//获取配方类型
+			if(TriggerVar.U.equals(upRecType)) {
+				HashMap<String, Object> preValueFUMap = (HashMap<String,Object>)paramMap.get("preValueFUMap");
+				String upVarName = upZjlyctjwcTV.getVarName();
+				Float preValue = Float.valueOf(preValueFUMap.get(upVarName).toString());
+				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
+					List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
+					opcTVList.add(upZjlyctjwcTV);
+					Map<String, Object> zjlyctjwcMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据排胶完成变量从opc端查找对应的过程变量
+					List<ProcessVar> zjlyctjwcMResPVList = (List<ProcessVar>)zjlyctjwcMResMap.get("proVarList");
+
+//					//获取排胶完成釜称重变量名
+//					String pjwcFczVarName = ERecord.PJWCSSYFCZ;
+//					ProcessVar pjwcFczPV = OpcUtil.getProVarInListByVarName(pjwcFczVarName, pjwcMResPVList);
+//					Float pjwcFczVarValue = pjwcFczPV.getVarValue();
+//					ProcessVar ptnFczPV = processVarService.getPtnValuePV(pjwcFczVarName,pjwcFczVarValue+"",pjwcFczPV);
+//					pjwcMResPVList.add(ptnFczPV);//将重量差对象添加到集合里
+//
+//					//获取排胶完成时间变量名
+//					String pjwcSjVarName = ERecord.PJWCSSYSJ;
+//					ProcessVar pjwcSjPV = OpcUtil.getProVarInListByVarName(pjwcSjVarName, pjwcMResPVList);
+//					String pjwcSjVarValue = pjwcSjPV.getUpdateTime();
+//					ProcessVar ptnSjPV = processVarService.getPtnValuePV(pjwcSjVarName,pjwcSjVarValue+"",pjwcSjPV);
+//					pjwcMResPVList.add(ptnSjPV);//将时间差对象添加到集合里
+//
+//					int i = processVarService.addFromList(pjwcMResPVList);//调用添加过程接口
+//					System.out.println("添加"+i);
+				}
+			}
+		}
+
 	}
 
 	/**

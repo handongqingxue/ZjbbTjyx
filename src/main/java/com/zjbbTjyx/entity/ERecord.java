@@ -280,6 +280,16 @@ public class ERecord {
 	 */
 	public static final String YXKSPJDPJWCSJC=Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.DAO+Constant.PAI_JIAO_WAN_CHENG+Constant.SHI_JIAN+Constant.CHA;
 
+	//U类
+	/**
+	 * 开始加料上升沿酸计量筒称重
+	 */
+	public static final String KSJLSSYSJLTCZ=Constant.KAI_SHI_JIA_LIAO+Constant.SHANG_SHENG_YAN+Constant.SUAN_JI_LIANG_TONG_CHENG_ZHONG;
+	/**
+	 * 加碱PH值正常上升沿时间
+	 */
+	public static final String JJPHZZCSSYSJ=Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+
 	private Integer Id;
 	public Integer getId() {
 		return Id;
