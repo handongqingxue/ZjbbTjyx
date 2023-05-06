@@ -289,6 +289,10 @@ public class ERecord {
 	 * 加碱PH值正常上升沿时间
 	 */
 	public static final String JJPHZZCSSYSJ=Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+	/**
+	 * 加碱PH值正常到助剂六一次添加完成时间
+	 */
+	public static final String JJPHZZCDZJLYCTJWCSJ=Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+Constant.DAO+Constant.ZHU_JI_LIU_YI_CI_TIAN_JIA_WAN_CHENG+Constant.SHI_JIAN;
 
 	private Integer Id;
 	public Integer getId() {

@@ -401,7 +401,7 @@ public class OpcUtil {
 		            String jjqsrzOpcVarName=jjqsrzPvVarName+Constant.XHX+opcFName+Constant.XHX+Constant.AV;
 		            //加碱量提示
 		            String jjltsPvVarNameQz= Constant.JIA_JIAN_LIANG_TI_SHI;
-		            String jjltsOpcVarName=jjltsPvVarNameQz+Constant.XHX+Constant.BSF_PF+tvFId+Constant.XHX+Constant.AV;
+		            String jjltsOpcVarName=jjltsPvVarNameQz+Constant.XHX+Constant.BSF_PF+tvFId+ERecord.U+Constant.XHX+Constant.AV;
 		            //加碱后PH输入值
 		            String jjhsrzPvVarName=Constant.JIA_JIAN_HOU_PH_SHU_RU_ZHI;
 		            String jjhsrzOpcVarName=jjhsrzPvVarName+Constant.XHX+opcFName+Constant.XHX+Constant.AV;
@@ -785,6 +785,9 @@ public class OpcUtil {
 		        }
 		        else if(tv1VarName.startsWith(Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+Constant.XHX)) { //加碱PH值正常
 		        	itemName = ERecord.JJPHZZCSSYSJ;//加碱PH值正常上升沿时间
+		        }
+		        else if (tv1VarName.startsWith(Constant.FAN_YING_JIE_SHU)){//反应结束
+		            itemName = ERecord.FYJSSSYSJ;//反应结束上升沿时间
 		        }
 
 		        if(tv1VarName.startsWith(Constant.BEI_LIAO_KAI_SHI+Constant.XHX)||
