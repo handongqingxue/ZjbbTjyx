@@ -493,7 +493,31 @@ public class Constant {
 	 */
 	public static final String ER_CI_JIA_SHUI_WAN_CHENG="二次加水完成";
 
+	/**
+	 * 粉料1重量设定
+	 */
+	public static final String FEN_LIAO_1_ZHONG_LIANG_SHE_DING="粉料1重量设定";
 
+	/**
+	 * 温度98PH合格
+	 */
+	public static final String WEN_DU_98_PH_HE_GE="温度98PH合格";
+	/**
+	 * 一次降温加酸量
+	 */
+	public static final String YI_CI_JIANG_WEN_JIA_SUAN_LIANG="一次降温加酸量";
+	/**
+	 * 一次降温加酸PH输入
+	 */
+	public static final String YI_CI_JIANG_WEN_JIA_SUAN_PH_SHU_RU="一次降温加酸PH输入";
+	/**
+	 * 加碱量范围下限
+	 */
+	public static final String JIA_JIA_LIANG_FAN_WEI_XIA_XIAN="加碱量范围下限";
+	/**
+	 * 加碱PH输入
+	 */
+	public static final String JIA_JIAN_PH_SHU_RU="加碱PH输入";
 	/**
 	 * 胶罐
 	 */
