@@ -1760,10 +1760,10 @@ public class ERecordServiceImpl implements ERecordService {
 					Float varValue = processVar.getVarValue();
 					String unit = processVar.getUnit();
 	
-					eRecord=getFromList(ERecord.ZJPHZZCDZJLYCTJWCFZL, batchID, eRecordList);
+					eRecord=getFromList(ERecord.JJPHZZCDZJLYCTJWCFZL, batchID, eRecordList);
 					if(eRecord==null) {
 						eRecord=new ERecord();
-						eRecord.setVarName(ERecord.ZJPHZZCDZJLYCTJWCFZL);
+						eRecord.setVarName(ERecord.JJPHZZCDZJLYCTJWCFZL);
 						eRecord.setUnit(unit);
 						eRecord.setRecType(pvRecType);
 						eRecord.setFId(pvFId);
@@ -1780,10 +1780,10 @@ public class ERecordServiceImpl implements ERecordService {
 					String batchID = batchIDMap.get(pvFId).toString();
 					Float varValue = processVar.getVarValue();
 	
-					eRecord=getFromList(ERecord.ZJPHZZCDZJLYCTJWCFZL, batchID, eRecordList);
+					eRecord=getFromList(ERecord.JJPHZZCDZJLYCTJWCFZL, batchID, eRecordList);
 					if(eRecord==null) {
 						eRecord=new ERecord();
-						eRecord.setVarName(ERecord.ZJPHZZCDZJLYCTJWCFZL);
+						eRecord.setVarName(ERecord.JJPHZZCDZJLYCTJWCFZL);
 						eRecord.setRecType(pvRecType);
 						eRecord.setFId(pvFId);
 						eRecord.setRecordTime(recordTime);
@@ -1794,16 +1794,16 @@ public class ERecordServiceImpl implements ERecordService {
 					}
 					eRecord.setNxtValue(varValue+"");
 				}
-				else if(pvVarName.startsWith(ERecord.ZJPHZZCDZJLYCTJWCFZLC)) {//加碱PH值正常到助剂六一次添加完成釜重量差
+				else if(pvVarName.startsWith(ERecord.JJPHZZCDZJLYCTJWCFZLC)) {//加碱PH值正常到助剂六一次添加完成釜重量差
 					Integer pvFId = processVar.getFId();
 					String batchID = batchIDMap.get(pvFId).toString();
 					Float varValue = processVar.getVarValue();
 					String unit = processVar.getUnit();
 	
-					eRecord=getFromList(ERecord.ZJPHZZCDZJLYCTJWCFZL, batchID, eRecordList);
+					eRecord=getFromList(ERecord.JJPHZZCDZJLYCTJWCFZL, batchID, eRecordList);
 					if(eRecord==null) {
 						eRecord=new ERecord();
-						eRecord.setVarName(ERecord.ZJPHZZCDZJLYCTJWCFZL);
+						eRecord.setVarName(ERecord.JJPHZZCDZJLYCTJWCFZL);
 						eRecord.setRecType(pvRecType);
 						eRecord.setFId(pvFId);
 						eRecord.setRecordTime(recordTime);

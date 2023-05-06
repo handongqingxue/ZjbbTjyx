@@ -313,15 +313,15 @@ public class ERecord {
 	/**
 	 * 加碱PH值正常到助剂六一次添加完成釜重量
 	 */
-	public static final String ZJPHZZCDZJLYCTJWCFZL=Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+Constant.DAO+Constant.ZHU_JI_LIU_YI_CI_TIAN_JIA_WAN_CHENG+Constant.ZHONG_LIANG;
+	public static final String JJPHZZCDZJLYCTJWCFZL=Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+Constant.DAO+Constant.ZHU_JI_LIU_YI_CI_TIAN_JIA_WAN_CHENG+Constant.ZHONG_LIANG;
 	/**
 	 * 加碱PH值正常到助剂六一次添加完成釜重量差
 	 */
-	public static final String ZJPHZZCDZJLYCTJWCFZLC=Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+Constant.DAO+Constant.ZHU_JI_LIU_YI_CI_TIAN_JIA_WAN_CHENG+Constant.ZHONG_LIANG+Constant.CHA;
+	public static final String JJPHZZCDZJLYCTJWCFZLC=Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+Constant.DAO+Constant.ZHU_JI_LIU_YI_CI_TIAN_JIA_WAN_CHENG+Constant.ZHONG_LIANG+Constant.CHA;
 	/**
 	 * 加碱PH值正常到助剂六一次添加完成时间差
 	 */
-	public static final String ZJPHZZCDZJLYCTJWCSJC=Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+Constant.DAO+Constant.ZHU_JI_LIU_YI_CI_TIAN_JIA_WAN_CHENG+Constant.SHI_JIAN+Constant.CHA;
+	public static final String JJPHZZCDZJLYCTJWCSJC=Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+Constant.DAO+Constant.ZHU_JI_LIU_YI_CI_TIAN_JIA_WAN_CHENG+Constant.SHI_JIAN+Constant.CHA;
 
 	/**
 	 * 助剂六二次备料完成上升沿酸计量筒称重
@@ -393,8 +393,29 @@ public class ERecord {
 	 */
 	public static final String YCJWJSHGSSYYCJWJSPHSR=Constant.YI_CI_JIANG_WEN_JIA_SUAN_HE_GE+Constant.SHANG_SHENG_YAN+Constant.YI_CI_JIANG_WEN_JIA_SUAN_PH_SHU_RU;
 	/**
-	 * 二次投粉
+	 * 二次投粉上升沿时间
 	 */
+	public static final String ECTFSSYSJ=Constant.ER_CI_TOU_FEN+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+	/**
+	 * 二次加215启动上升沿时间
+	 */
+	public static final String ECJ215QDSSYSJ=Constant.ER_CI_JIA_215_QI_DONG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+	/**
+	 * 二次加215完成上升沿时间
+	 */
+	public static final String ECJ215WCSSYSJ=Constant.ER_CI_JIA_215_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+	/**
+	 * 二次加水启动上升沿时间
+	 */
+	public static final String ECJSQDSSYSJ=Constant.ER_CI_JIA_SHUI_QI_DONG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+	/**
+	 * 二次加水完成上升沿时间
+	 */
+	public static final String ECJSWCSSYSJ=Constant.ER_CI_JIA_SHUI_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+	/**
+	 * 二次加小料和水提醒下降沿反应釜温度
+	 */
+	public static final String ECJXLHSTXXJYFYHWD=Constant.ER_CI_JIA_XIAO_LIAO_HE_SHUI_TI_XING+Constant.XIA_JIANG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
 
 	private Integer Id;
 	public Integer getId() {
