@@ -370,6 +370,15 @@ public class ERecord {
 	public static final String JFLTXSSYFL1ZLSD=Constant.JIA_FEN_LIAO_TI_XING+Constant.SHANG_SHENG_YAN+Constant.FEN_LIAO_1_ZHONG_LIANG_SHE_DING;
 	
 	/**
+	 * 第一次保温启动上升沿时间
+	 */
+	public static final String DYCBWQDSSYSJ=Constant.DI_YI_CI_BAO_WEN_QI_DONG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+	/**
+	 * 第一次保温启动上升沿反应釜温度
+	 */
+	public static final String DYCBWQDSSYFYFWD=Constant.DI_YI_CI_BAO_WEN_QI_DONG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+	
+	/**
 	 * 第一次保温合格上升沿时间
 	 */
 	public static final String DYCBWHGSSYSJ=Constant.DI_YI_CI_BAO_WEN_HE_GE+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
@@ -381,6 +390,14 @@ public class ERecord {
 	 * 一次降温加酸提醒上升沿时间
 	 */
 	public static final String YCJWJSTXSSYSJ=Constant.YI_CI_JIANG_WEN_JIA_SUAN_TI_XING+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+	/**
+	 * 第一次保温合格到一次降温加酸提醒时间
+	 */
+	public static final String DYCBWHGDYCJWJSTXSJ=Constant.DI_YI_CI_BAO_WEN_HE_GE+Constant.DAO+Constant.YI_CI_JIANG_WEN_JIA_SUAN_TI_XING+Constant.SHI_JIAN;
+	/**
+	 * 第一次保温合格到一次降温加酸提醒时间差
+	 */
+	public static final String DYCBWHGDYCJWJSTXSJC=Constant.DI_YI_CI_BAO_WEN_HE_GE+Constant.DAO+Constant.YI_CI_JIANG_WEN_JIA_SUAN_TI_XING+Constant.SHI_JIAN+Constant.CHA;
 	/**
 	 * 一次降温加酸提醒上升沿反应釜温度
 	 */

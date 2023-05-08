@@ -693,9 +693,9 @@ public class Constant {
 	 */
 	public static final String ER_SHI_DU_WU_DIAN="20度雾点";
 	/**
-	 * 降温
+	 * 二次降温
 	 */
-	public static final String JIANG_WEN="降温";
+	public static final String ER_CI_JIANG_WEN="二次降温";
 	/**
 	 * 加碱
 	 */
