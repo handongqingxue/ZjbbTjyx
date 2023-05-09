@@ -1852,6 +1852,744 @@ public class ERecordServiceImpl implements ERecordService {
 					eRecord.setPtnValue(varValue+"");
 					eRecord.setUnit(unit);
 				}//YSD215一次阶段结束
+				else if(pvVarName.startsWith(ERecord.ZJLECBLWCSSYSJLTCZ)) {//助剂六二次备料完成上升沿酸计量筒称重   //YSD215二次阶段开始
+					Float pvVarValue = processVar.getVarValue();
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+	
+					eRecord=new ERecord();
+					eRecord.setVarName(pvVarName);
+					eRecord.setVarValue(pvVarValue+"");
+					eRecord.setRecType(pvRecType);
+					eRecord.setFId(pvFId);
+					eRecord.setRecordTime(recordTime);
+					eRecord.setBatchID(batchID);
+					eRecord.setPhaseName(Constant.YSD215_ER_CI);
+					
+					eRecordList.add(eRecord);
+				}
+				else if(pvVarName.startsWith(ERecord.ZJLECBLWCSSYSJ)) {//助剂六二次备料完成上升沿时间
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+					String updateTime = processVar.getUpdateTime();
+					
+					eRecord=getFromList(ERecord.ZJLECBLWCDZJLECTJWCSJ, batchID, eRecordList);
+					if(eRecord==null) {
+						eRecord=new ERecord();
+						eRecord.setVarName(ERecord.ZJLECBLWCDZJLECTJWCSJ);
+						eRecord.setRecType(pvRecType);
+						eRecord.setFId(pvFId);
+						eRecord.setRecordTime(recordTime);
+						eRecord.setBatchID(batchID);
+						eRecord.setPhaseName(Constant.YSD215_ER_CI);
+						
+						eRecordList.add(eRecord);
+					}
+					eRecord.setNxtValue(updateTime);
+				}
+				else if(pvVarName.startsWith(ERecord.ZJLECTJWCSSYSJ)) {//助剂六二次添加完成上升沿时间
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+					String updateTime = processVar.getUpdateTime();
+					
+					eRecord=getFromList(ERecord.ZJLECBLWCDZJLECTJWCSJ, batchID, eRecordList);
+					if(eRecord==null) {
+						eRecord=new ERecord();
+						eRecord.setVarName(ERecord.ZJLECBLWCDZJLECTJWCSJ);
+						eRecord.setRecType(pvRecType);
+						eRecord.setFId(pvFId);
+						eRecord.setRecordTime(recordTime);
+						eRecord.setBatchID(batchID);
+						eRecord.setPhaseName(Constant.YSD215_ER_CI);
+						
+						eRecordList.add(eRecord);
+					}
+					eRecord.setNxtValue(updateTime);
+				}
+				else if(pvVarName.startsWith(ERecord.ZJLECTJWCSSYFYFWD)) {//助剂六二次添加完成上升沿反应釜温度
+					Float pvVarValue = processVar.getVarValue();
+					String pvUnit = processVar.getUnit();
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+	
+					eRecord=new ERecord();
+					eRecord.setVarName(pvVarName);
+					eRecord.setVarValue(pvVarValue+"");
+					eRecord.setUnit(pvUnit);
+					eRecord.setRecType(pvRecType);
+					eRecord.setFId(pvFId);
+					eRecord.setRecordTime(recordTime);
+					eRecord.setBatchID(batchID);
+					eRecord.setPhaseName(Constant.YSD215_ER_CI);
+					
+					eRecordList.add(eRecord);
+				}
+				else if(pvVarName.startsWith(ERecord.ZJLECBLWCSSYFCZ)) {//助剂六二次备料完成上升沿釜称重
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+					Float varValue = processVar.getVarValue();
+					String unit = processVar.getUnit();
+	
+					eRecord=getFromList(ERecord.ZJLECBLWCDZJLECTJWCFZL, batchID, eRecordList);
+					if(eRecord==null) {
+						eRecord=new ERecord();
+						eRecord.setVarName(ERecord.ZJLECBLWCDZJLECTJWCFZL);
+						eRecord.setUnit(unit);
+						eRecord.setRecType(pvRecType);
+						eRecord.setFId(pvFId);
+						eRecord.setRecordTime(recordTime);
+						eRecord.setBatchID(batchID);
+						eRecord.setPhaseName(Constant.YSD215_ER_CI);
+						
+						eRecordList.add(eRecord);
+					}
+					eRecord.setPreValue(varValue+"");
+				}
+				else if(pvVarName.startsWith(ERecord.ZJLECTJWCSSYFCZ)) {//助剂六二次添加完成上升沿釜称重
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+					Float varValue = processVar.getVarValue();
+	
+					eRecord=getFromList(ERecord.ZJLECBLWCDZJLECTJWCFZL, batchID, eRecordList);
+					if(eRecord==null) {
+						eRecord=new ERecord();
+						eRecord.setVarName(ERecord.ZJLECBLWCDZJLECTJWCFZL);
+						eRecord.setRecType(pvRecType);
+						eRecord.setFId(pvFId);
+						eRecord.setRecordTime(recordTime);
+						eRecord.setBatchID(batchID);
+						eRecord.setPhaseName(Constant.YSD215_ER_CI);
+						
+						eRecordList.add(eRecord);
+					}
+					eRecord.setNxtValue(varValue+"");
+				}
+				else if(pvVarName.startsWith(ERecord.ZJLECBLWCDZJLECTJWCFZLC)) {//助剂六二次备料完成到助剂六二次添加完成釜重量差
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+					Float varValue = processVar.getVarValue();
+					String unit = processVar.getUnit();
+	
+					eRecord=getFromList(ERecord.ZJLECBLWCDZJLECTJWCFZL, batchID, eRecordList);
+					if(eRecord==null) {
+						eRecord=new ERecord();
+						eRecord.setVarName(ERecord.ZJLECBLWCDZJLECTJWCFZL);
+						eRecord.setRecType(pvRecType);
+						eRecord.setFId(pvFId);
+						eRecord.setRecordTime(recordTime);
+						eRecord.setBatchID(batchID);
+						eRecord.setPhaseName(Constant.YSD215_ER_CI);
+						
+						eRecordList.add(eRecord);
+					}
+					eRecord.setPtnValue(varValue+"");
+					eRecord.setUnit(unit);
+				}
+				else if(pvVarName.startsWith(ERecord.ZJLECBLWCDZJLECTJWCSJC)) {//助剂六二次备料完成到助剂六二次添加完成时间差
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+					Float varValue = processVar.getVarValue();
+					String unit = processVar.getUnit();
+	
+					eRecord=getFromList(ERecord.ZJLECBLWCDZJLECTJWCFZL, batchID, eRecordList);
+					if(eRecord==null) {
+						eRecord=new ERecord();
+						eRecord.setVarName(ERecord.ZJLECBLWCDZJLECTJWCFZL);
+						eRecord.setRecType(pvRecType);
+						eRecord.setFId(pvFId);
+						eRecord.setRecordTime(recordTime);
+						eRecord.setBatchID(batchID);
+						eRecord.setPhaseName(Constant.YSD215_ER_CI);
+						
+						eRecordList.add(eRecord);
+					}
+					eRecord.setPtnValue(varValue+"");
+					eRecord.setUnit(unit);
+				}//YSD215二次阶段结束
+				else if(pvVarName.startsWith(ERecord.JFLTXSSYFL1ZLSD)) {//加粉料提醒上升沿粉料1重量设定   //YSD103阶段开始
+					Float pvVarValue = processVar.getVarValue();
+					String pvUnit = processVar.getUnit();
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+	
+					eRecord=new ERecord();
+					eRecord.setVarName(pvVarName);
+					eRecord.setVarValue(pvVarValue+"");
+					eRecord.setUnit(pvUnit);
+					eRecord.setRecType(pvRecType);
+					eRecord.setFId(pvFId);
+					eRecord.setRecordTime(recordTime);
+					eRecord.setBatchID(batchID);
+					eRecord.setPhaseName(Constant.YSD103);
+					
+					eRecordList.add(eRecord);
+				}
+				else if(pvVarName.startsWith(ERecord.FNSFLFSSYSJ)) {//釜尿素放料阀上升沿时间
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+					String updateTime = processVar.getUpdateTime();
+	
+					eRecord=getFromList(ERecord.FNSFLFSSYDXJYSJ, batchID, eRecordList);
+					if(eRecord==null) {
+						eRecord=new ERecord();
+						eRecord.setVarName(ERecord.FNSFLFSSYDXJYSJ);
+						eRecord.setRecType(pvRecType);
+						eRecord.setFId(pvFId);
+						eRecord.setRecordTime(recordTime);
+						eRecord.setBatchID(batchID);
+						eRecord.setPhaseName(Constant.YSD103);
+	
+						eRecordList.add(eRecord);
+					}
+					eRecord.setPreValue(updateTime);
+				}
+				else if(pvVarName.startsWith(ERecord.FNSFLFXJYSJ)) {//釜尿素放料阀下降沿时间
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+					String updateTime = processVar.getUpdateTime();
+	
+					eRecord=getFromList(ERecord.FNSFLFSSYDXJYSJ, batchID, eRecordList);
+					if(eRecord==null) {
+						eRecord=new ERecord();
+						eRecord.setVarName(ERecord.FNSFLFSSYDXJYSJ);
+						eRecord.setRecType(pvRecType);
+						eRecord.setFId(pvFId);
+						eRecord.setRecordTime(recordTime);
+						eRecord.setBatchID(batchID);
+						eRecord.setPhaseName(Constant.YSD103);
+	
+						eRecordList.add(eRecord);
+					}
+					eRecord.setNxtValue(updateTime);
+				}
+				else if(pvVarName.startsWith(ERecord.FNSFLFXJYFYFWD)) {//釜尿素放料阀下降沿反应釜温度
+					Float pvVarValue = processVar.getVarValue();
+					String pvUnit = processVar.getUnit();
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+	
+					eRecord=new ERecord();
+					eRecord.setVarName(pvVarName);
+					eRecord.setVarValue(pvVarValue+"");
+					//eRecord.setUnit(Constant.WEN_DU_DAN_WEI_SIGN);
+					eRecord.setUnit(pvUnit);
+					eRecord.setRecType(pvRecType);
+					eRecord.setFId(pvFId);
+					eRecord.setRecordTime(recordTime);
+					eRecord.setBatchID(batchID);
+					eRecord.setPhaseName(Constant.YSD103);
+	
+					eRecordList.add(eRecord);
+				}
+				else if(pvVarName.startsWith(Constant.JIA_FEN_LIAO_PH_SHU_RU_ZHI)) {//加粉料PH输入值
+					Float pvVarValue = processVar.getVarValue();
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+	
+					eRecord=new ERecord();
+					eRecord.setVarName(pvVarName);
+					eRecord.setVarValue(pvVarValue+"");
+					eRecord.setRecType(pvRecType);
+					eRecord.setFId(pvFId);
+					eRecord.setRecordTime(recordTime);
+					eRecord.setBatchID(batchID);
+					eRecord.setPhaseName(Constant.YSD103);
+	
+					eRecordList.add(eRecord);
+				}
+				else if(pvVarName.startsWith(ERecord.FNSFLFSSYFCZ)) {//釜尿素放料阀上升沿釜称重
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+					Float varValue = processVar.getVarValue();
+	
+					eRecord=getFromList(ERecord.FNSFLFSSYDXJYZL, batchID, eRecordList);
+					if(eRecord==null) {
+						eRecord=new ERecord();
+						eRecord.setVarName(ERecord.FNSFLFSSYDXJYZL);
+						eRecord.setRecType(pvRecType);
+						eRecord.setFId(pvFId);
+						eRecord.setRecordTime(recordTime);
+						eRecord.setBatchID(batchID);
+						eRecord.setPhaseName(Constant.YSD103);
+	
+						eRecordList.add(eRecord);
+					}
+					eRecord.setPreValue(varValue+"");
+				}
+				else if(pvVarName.startsWith(ERecord.FNSFLFXJYFCZ)) {//釜尿素放料阀下降沿釜称重
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+					Float varValue = processVar.getVarValue();
+	
+					eRecord=getFromList(ERecord.FNSFLFSSYDXJYZL, batchID, eRecordList);
+					if(eRecord==null) {
+						eRecord=new ERecord();
+						eRecord.setVarName(ERecord.FNSFLFSSYDXJYZL);
+						eRecord.setRecType(pvRecType);
+						eRecord.setFId(pvFId);
+						eRecord.setRecordTime(recordTime);
+						eRecord.setBatchID(batchID);
+						eRecord.setPhaseName(Constant.YSD103);
+	
+						eRecordList.add(eRecord);
+					}
+					eRecord.setNxtValue(varValue+"");
+				}
+				else if(pvVarName.startsWith(ERecord.FNSFLFSSYDXJYZLC)) {//釜尿素放料阀重量差
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+					Float varValue = processVar.getVarValue();
+					String unit = processVar.getUnit();
+	
+					eRecord=getFromList(ERecord.FNSFLFSSYDXJYZL, batchID, eRecordList);
+					if(eRecord==null) {
+						eRecord=new ERecord();
+						eRecord.setVarName(ERecord.FNSFLFSSYDXJYZL);
+						eRecord.setRecType(pvRecType);
+						eRecord.setFId(pvFId);
+						eRecord.setRecordTime(recordTime);
+						eRecord.setBatchID(batchID);
+						eRecord.setPhaseName(Constant.YSD103);
+	
+						eRecordList.add(eRecord);
+					}
+					eRecord.setPtnValue(varValue+"");
+					eRecord.setUnit(unit);
+				}
+				else if(pvVarName.startsWith(ERecord.FNSFLFSSYDXJYSJC)) {//釜尿素放料阀时间差
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+					Float varValue = processVar.getVarValue();
+					String unit = processVar.getUnit();
+	
+					eRecord=getFromList(ERecord.FNSFLFSSYDXJYSJ, batchID, eRecordList);
+					if(eRecord==null) {
+						eRecord=new ERecord();
+						eRecord.setVarName(ERecord.FNSFLFSSYDXJYSJ);
+						eRecord.setRecType(pvRecType);
+						eRecord.setFId(pvFId);
+						eRecord.setRecordTime(recordTime);
+						eRecord.setBatchID(batchID);
+						eRecord.setPhaseName(Constant.YSD103);
+	
+						eRecordList.add(eRecord);
+					}
+					eRecord.setPtnValue(varValue+"");
+					eRecord.setUnit(unit);
+				}//YSD103阶段结束
+				else if(pvVarName.startsWith(ERecord.SWKSSSYSJ)) {//升温开始上升沿时间    //开始升温阶段开始
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+					String updateTime = processVar.getUpdateTime();
+	
+					eRecord = getFromList(ERecord.SWKSDSWWCSJ, batchID, eRecordList);
+					if(eRecord==null) {
+						eRecord=new ERecord();
+						eRecord.setVarName(ERecord.SWKSDSWWCSJ);
+						eRecord.setRecType(pvRecType);
+						eRecord.setFId(pvFId);
+						eRecord.setRecordTime(recordTime);
+						eRecord.setBatchID(batchID);
+						eRecord.setPhaseName(Constant.KAI_SHI_SHENG_WEN);
+	
+						eRecordList.add(eRecord);
+					}
+					eRecord.setPreValue(updateTime);
+				}
+				else if(pvVarName.startsWith(Constant.ZHENG_QI_YA_LI)) {//蒸汽压力
+					Float pvVarValue = processVar.getVarValue();
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+	
+					eRecord=new ERecord();
+					eRecord.setVarName(pvVarName);
+					eRecord.setVarValue(pvVarValue+"");
+					eRecord.setUnit(Constant.MPA);
+					eRecord.setRecType(pvRecType);
+					eRecord.setFId(pvFId);
+					eRecord.setRecordTime(recordTime);
+					eRecord.setBatchID(batchID);
+					eRecord.setPhaseName(Constant.KAI_SHI_SHENG_WEN);
+	
+					eRecordList.add(eRecord);
+				}//开始升温阶段结束
+				else if(pvVarName.startsWith(ERecord.SWWCSSYSJ)) {//升温完成上升沿时间    //升温至高温度阶段开始
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+					String updateTime = processVar.getUpdateTime();
+	
+					eRecord=getFromList(ERecord.SWKSDSWWCSJ, batchID, eRecordList);
+					if(eRecord==null) {
+						eRecord=new ERecord();
+						eRecord.setVarName(ERecord.SWKSDSWWCSJ);
+						eRecord.setRecType(pvRecType);
+						eRecord.setFId(pvFId);
+						eRecord.setRecordTime(recordTime);
+						eRecord.setBatchID(batchID);
+						eRecord.setPhaseName(Constant.SHENG_WEN_ZHI_GAO_WEN_DU);
+	
+						eRecordList.add(eRecord);
+					}
+					eRecord.setNxtValue(updateTime);
+				}
+				else if(pvVarName.startsWith(ERecord.SWWCSSYFYFWD)) {//升温完成上升沿反应釜温度
+					Float pvVarValue = processVar.getVarValue();
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+	
+					eRecord=new ERecord();
+					eRecord.setVarName(pvVarName);
+					eRecord.setVarValue(pvVarValue+"");
+					eRecord.setUnit(Constant.WEN_DU_DAN_WEI_SIGN);
+					eRecord.setRecType(pvRecType);
+					eRecord.setFId(pvFId);
+					eRecord.setRecordTime(recordTime);
+					eRecord.setBatchID(batchID);
+					eRecord.setPhaseName(Constant.SHENG_WEN_ZHI_GAO_WEN_DU);
+	
+					eRecordList.add(eRecord);
+				}
+				else if(pvVarName.startsWith(Constant.WEN_DU_98_PH)) {//温度98PH
+					Float pvVarValue = processVar.getVarValue();
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+	
+					eRecord=new ERecord();
+					eRecord.setVarName(pvVarName);
+					eRecord.setVarValue(pvVarValue+"");
+					eRecord.setRecType(pvRecType);
+					eRecord.setFId(pvFId);
+					eRecord.setRecordTime(recordTime);
+					eRecord.setBatchID(batchID);
+					eRecord.setPhaseName(Constant.SHENG_WEN_ZHI_GAO_WEN_DU);
+	
+					eRecordList.add(eRecord);
+				}
+				else if(pvVarName.startsWith(ERecord.SWKSDSWWCSJC)) {//升温开始到升温完成时间差
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+					Float varValue = processVar.getVarValue();
+					String unit = processVar.getUnit();
+	
+					eRecord=getFromList(ERecord.SWKSDSWWCSJ, batchID, eRecordList);
+					if(eRecord==null) {
+						eRecord=new ERecord();
+						eRecord.setVarName(ERecord.SWKSDSWWCSJ);
+						eRecord.setRecType(pvRecType);
+						eRecord.setFId(pvFId);
+						eRecord.setRecordTime(recordTime);
+						eRecord.setBatchID(batchID);
+						eRecord.setPhaseName(Constant.SHENG_WEN_ZHI_GAO_WEN_DU);
+						
+						eRecordList.add(eRecord);
+					}
+					eRecord.setPtnValue(varValue+"");
+					eRecord.setUnit(unit);
+				}//升温至高温度阶段结束
+				else if(pvVarName.startsWith(ERecord.DYCBWQDSSYSJ)) {//第一次保温启动上升沿时间    //一次保温10分钟测PH阶段开始
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+					String updateTime = processVar.getUpdateTime();
+	
+					eRecord=new ERecord();
+					eRecord.setVarName(pvVarName);
+					eRecord.setRecType(pvRecType);
+					eRecord.setFId(pvFId);
+					eRecord.setRecordTime(updateTime);
+					eRecord.setBatchID(batchID);
+					eRecord.setPhaseName(Constant.YCBWSFZCPH);
+	
+					eRecordList.add(eRecord);
+				}
+				else if(pvVarName.startsWith(ERecord.DYCBWQDSSYFYFWD)) {//第一次保温启动上升沿反应釜温度
+					Float pvVarValue = processVar.getVarValue();
+					String pvUnit = processVar.getUnit();
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+	
+					eRecord=new ERecord();
+					eRecord.setVarName(pvVarName);
+					eRecord.setVarValue(pvVarValue+"");
+					eRecord.setUnit(pvUnit);
+					eRecord.setRecType(pvRecType);
+					eRecord.setFId(pvFId);
+					eRecord.setRecordTime(recordTime);
+					eRecord.setBatchID(batchID);
+					eRecord.setPhaseName(Constant.YCBWSFZCPH);
+	
+					eRecordList.add(eRecord);
+				}
+				else if(pvVarName.startsWith(ERecord.DYCBWHGSSYSJ)) {//第一次保温合格上升沿时间
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+					String updateTime = processVar.getUpdateTime();
+					
+					eRecord=getFromList(ERecord.DYCBWHGDYCJWJSTXSJ, batchID, eRecordList);
+					if(eRecord==null) {
+						eRecord=new ERecord();
+						eRecord.setVarName(ERecord.DYCBWHGDYCJWJSTXSJ);
+						eRecord.setRecType(pvRecType);
+						eRecord.setFId(pvFId);
+						eRecord.setRecordTime(recordTime);
+						eRecord.setBatchID(batchID);
+						eRecord.setPhaseName(Constant.JIANG_WEN_KAI_SHI);
+						
+						eRecordList.add(eRecord);
+					}
+					eRecord.setNxtValue(updateTime);
+				}
+				else if(pvVarName.startsWith(ERecord.DYCBWHGSSYFYFWD)) {//第一次保温合格上升沿反应釜温度
+					Float pvVarValue = processVar.getVarValue();
+					String pvUnit = processVar.getUnit();
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+	
+					eRecord=new ERecord();
+					eRecord.setVarName(pvVarName);
+					eRecord.setVarValue(pvVarValue+"");
+					eRecord.setUnit(pvUnit);
+					eRecord.setRecType(pvRecType);
+					eRecord.setFId(pvFId);
+					eRecord.setRecordTime(recordTime);
+					eRecord.setBatchID(batchID);
+					eRecord.setPhaseName(Constant.JIANG_WEN_KAI_SHI);
+	
+					eRecordList.add(eRecord);
+				}
+				else if(pvVarName.startsWith(ERecord.YCJWJSTXSSYSJ)) {//一次降温加酸提醒上升沿时间
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+					String updateTime = processVar.getUpdateTime();
+	
+					eRecord=getFromList(ERecord.DYCBWHGDYCJWJSTXSJ, batchID, eRecordList);
+					if(eRecord==null) {
+						eRecord=new ERecord();
+						eRecord.setVarName(ERecord.DYCBWHGDYCJWJSTXSJ);
+						eRecord.setRecType(pvRecType);
+						eRecord.setFId(pvFId);
+						eRecord.setRecordTime(recordTime);
+						eRecord.setBatchID(batchID);
+						eRecord.setPhaseName(Constant.JIANG_WEN_KAI_SHI);
+						
+						eRecordList.add(eRecord);
+					}
+					eRecord.setNxtValue(updateTime);
+				}
+				else if(pvVarName.startsWith(ERecord.YCJWJSTXSSYFYFWD)) {//一次降温加酸提醒上升沿反应釜温度
+					Float pvVarValue = processVar.getVarValue();
+					String pvUnit = processVar.getUnit();
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+	
+					eRecord=new ERecord();
+					eRecord.setVarName(pvVarName);
+					eRecord.setVarValue(pvVarValue+"");
+					eRecord.setUnit(pvUnit);
+					eRecord.setRecType(pvRecType);
+					eRecord.setFId(pvFId);
+					eRecord.setRecordTime(recordTime);
+					eRecord.setBatchID(batchID);
+					eRecord.setPhaseName(Constant.JIANG_WEN_TING_ZHI);
+	
+					eRecordList.add(eRecord);
+				}
+				else if(pvVarName.startsWith(ERecord.DYCBWHGDYCJWJSTXSJC)) {//第一次保温合格到一次降温加酸提醒时间差
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+					Float varValue = processVar.getVarValue();
+					String unit = processVar.getUnit();
+	
+					eRecord=getFromList(ERecord.DYCBWHGDYCJWJSTXSJ, batchID, eRecordList);
+					if(eRecord==null) {
+						eRecord=new ERecord();
+						eRecord.setVarName(ERecord.DYCBWHGDYCJWJSTXSJ);
+						eRecord.setRecType(pvRecType);
+						eRecord.setFId(pvFId);
+						eRecord.setRecordTime(recordTime);
+						eRecord.setBatchID(batchID);
+						eRecord.setPhaseName(Constant.JIANG_WEN_KAI_SHI);
+						
+						eRecordList.add(eRecord);
+					}
+					eRecord.setPtnValue(varValue+"");
+					eRecord.setUnit(unit);
+				}
+				else if(pvVarName.startsWith(ERecord.YCJWJSL)) {//一次降温加酸量
+					Float pvVarValue = processVar.getVarValue();
+					String pvUnit = processVar.getUnit();
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+	
+					eRecord=new ERecord();
+					eRecord.setVarName(pvVarName);
+					eRecord.setVarValue(pvVarValue+"");
+					eRecord.setUnit(pvUnit);
+					eRecord.setRecType(pvRecType);
+					eRecord.setFId(pvFId);
+					eRecord.setRecordTime(recordTime);
+					eRecord.setBatchID(batchID);
+					eRecord.setPhaseName(Constant.JIA_SUAN_BING_JI_SHI);
+	
+					eRecordList.add(eRecord);
+				}
+				else if(pvVarName.startsWith(ERecord.YCJWJSHGSSYFYFWD)) {//一次降温加酸合格上升沿反应釜温度
+					Float pvVarValue = processVar.getVarValue();
+					String pvUnit = processVar.getUnit();
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+	
+					eRecord=new ERecord();
+					eRecord.setVarName(pvVarName);
+					eRecord.setVarValue(pvVarValue+"");
+					eRecord.setUnit(pvUnit);
+					eRecord.setRecType(pvRecType);
+					eRecord.setFId(pvFId);
+					eRecord.setRecordTime(recordTime);
+					eRecord.setBatchID(batchID);
+					eRecord.setPhaseName(Constant.JIA_SUAN_BING_JI_SHI);
+	
+					eRecordList.add(eRecord);
+				}
+				else if(pvVarName.startsWith(ERecord.YCJWJSHGSSYYCJWJSPHSR)) {//一次降温加酸合格上升沿一次降温加酸PH输入
+					Float pvVarValue = processVar.getVarValue();
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+	
+					eRecord=new ERecord();
+					eRecord.setVarName(pvVarName);
+					eRecord.setVarValue(pvVarValue+"");
+					eRecord.setRecType(pvRecType);
+					eRecord.setFId(pvFId);
+					eRecord.setRecordTime(recordTime);
+					eRecord.setBatchID(batchID);
+					eRecord.setPhaseName(Constant.JIA_SUAN_BING_JI_SHI);
+	
+					eRecordList.add(eRecord);
+				}
+				else if(pvVarName.startsWith(Constant.CE_LIANG_BSWD_SRZ)) {//测量冰水雾点输入值
+					Float pvVarValue = processVar.getVarValue();
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+	
+					eRecord=new ERecord();
+					eRecord.setVarName(pvVarName);
+					eRecord.setVarValue(pvVarValue+"");
+					eRecord.setRecType(pvRecType);
+					eRecord.setFId(pvFId);
+					eRecord.setRecordTime(recordTime);
+					eRecord.setBatchID(batchID);
+					eRecord.setPhaseName(Constant.BING_SHUI_WU_DIAN);
+	
+					eRecordList.add(eRecord);
+				}
+				else if(pvVarName.startsWith(Constant.CE_20_WU_DIAN_SRZ)) { //测20雾点输入值
+					Float pvVarValue = processVar.getVarValue();
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+	
+					eRecord=new ERecord();
+					eRecord.setVarName(pvVarName);
+					eRecord.setVarValue(pvVarValue+"");
+					eRecord.setRecType(pvRecType);
+					eRecord.setFId(pvFId);
+					eRecord.setRecordTime(recordTime);
+					eRecord.setBatchID(batchID);
+					eRecord.setPhaseName(Constant.ER_SHI_DU_WU_DIAN);
+	
+					eRecordList.add(eRecord);
+				}
+				else if(pvVarName.startsWith(Constant.YI_CI_JIANG_WEN_JIA_SUAN_PH_SHU_RU)) {//一次降温加酸PH输入    //二次降温阶段开始
+					Float pvVarValue = processVar.getVarValue();
+					String pvUnit = processVar.getUnit();
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+	
+					eRecord=new ERecord();
+					eRecord.setVarName(pvVarName);
+					eRecord.setVarValue(pvVarValue+"");
+					eRecord.setUnit(pvUnit);
+					eRecord.setRecType(pvRecType);
+					eRecord.setFId(pvFId);
+					eRecord.setRecordTime(recordTime);
+					eRecord.setBatchID(batchID);
+					eRecord.setPhaseName(Constant.ER_CI_JIANG_WEN);
+	
+					eRecordList.add(eRecord);
+				}//二次降温阶段结束
+				else if(pvVarName.startsWith(Constant.JIA_JIA_LIANG_FAN_WEI_XIA_XIAN)) {//加碱量范围下限   //加碱阶段开始
+					Float pvVarValue = processVar.getVarValue();
+					String pvUnit = processVar.getUnit();
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+	
+					eRecord=new ERecord();
+					eRecord.setVarName(pvVarName);
+					eRecord.setVarValue(pvVarValue+"");
+					eRecord.setUnit(pvUnit);
+					eRecord.setRecType(pvRecType);
+					eRecord.setFId(pvFId);
+					eRecord.setRecordTime(recordTime);
+					eRecord.setBatchID(batchID);
+					eRecord.setPhaseName(Constant.JIA_JIAN);
+	
+					eRecordList.add(eRecord);
+				}
+				else if(pvVarName.startsWith(Constant.JIA_JIAN_PH_SHU_RU)) {//加碱PH输入
+					Float pvVarValue = processVar.getVarValue();
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+	
+					eRecord=new ERecord();
+					eRecord.setVarName(pvVarName);
+					eRecord.setVarValue(pvVarValue+"");
+					eRecord.setRecType(pvRecType);
+					eRecord.setFId(pvFId);
+					eRecord.setRecordTime(recordTime);
+					eRecord.setBatchID(batchID);
+					eRecord.setPhaseName(Constant.JIA_JIAN);
+	
+					eRecordList.add(eRecord);
+				}//加碱阶段结束
+				else if(pvVarName.startsWith(ERecord.ECTFSSYSJ)) {//二次投粉上升沿时间    //70度终止降温阶段开始
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+					String updateTime = processVar.getUpdateTime();
+	
+					eRecord=getFromList(ERecord.DYCBWHGDECTFSJ, batchID, eRecordList);
+					if(eRecord==null) {
+						eRecord=new ERecord();
+						eRecord.setVarName(ERecord.DYCBWHGDECTFSJ);
+						eRecord.setRecType(pvRecType);
+						eRecord.setFId(pvFId);
+						eRecord.setRecordTime(recordTime);
+						eRecord.setBatchID(batchID);
+						eRecord.setPhaseName(Constant.QI_SHI_DU_ZHONG_ZHI_JIANG_WEN);
+	
+						eRecordList.add(eRecord);
+					}
+					eRecord.setNxtValue(updateTime);
+				}
+				else if(pvVarName.startsWith(ERecord.DYCBWHGDECTFSJC)) {//第一次保温合格到二次投粉时间差
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+					Float varValue = processVar.getVarValue();
+					String unit = processVar.getUnit();
+	
+					eRecord=getFromList(ERecord.DYCBWHGDECTFSJ, batchID, eRecordList);
+					if(eRecord==null) {
+						eRecord=new ERecord();
+						eRecord.setVarName(ERecord.DYCBWHGDECTFSJ);
+						eRecord.setRecType(pvRecType);
+						eRecord.setFId(pvFId);
+						eRecord.setRecordTime(recordTime);
+						eRecord.setBatchID(batchID);
+						eRecord.setPhaseName(Constant.QI_SHI_DU_ZHONG_ZHI_JIANG_WEN);
+						
+						eRecordList.add(eRecord);
+					}
+					eRecord.setPtnValue(varValue+"");
+					eRecord.setUnit(unit);
+				}//70度终止降温阶段结束
 			}
 		}
 		
