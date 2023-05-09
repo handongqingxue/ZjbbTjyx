@@ -18,6 +18,9 @@
     <list default="true" id="9bfab7cf-a4c1-4d31-9c53-df2a94b39f3e" name="Default Changelist" comment="11">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/zjbbTjyx/controller/OPCController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zjbbTjyx/controller/OPCController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/zjbbTjyx/service/serviceImpl/ProcessVarServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zjbbTjyx/service/serviceImpl/ProcessVarServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/zjbbTjyx/util/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zjbbTjyx/util/Constant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/zjbbTjyx/util/OpcUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zjbbTjyx/util/OpcUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -302,14 +305,7 @@
       <workItem from="1683167515493" duration="62966000" />
       <workItem from="1683510937163" duration="13000" />
       <workItem from="1683512769927" duration="93000" />
-      <workItem from="1683593946896" duration="4405000" />
-    </task>
-    <task id="LOCAL-00070" summary="11">
-      <created>1682298108215</created>
-      <option name="number" value="00070" />
-      <option name="presentableId" value="LOCAL-00070" />
-      <option name="project" value="LOCAL" />
-      <updated>1682298108215</updated>
+      <workItem from="1683593946896" duration="26448000" />
     </task>
     <task id="LOCAL-00071" summary="11">
       <created>1682313713635</created>
@@ -640,7 +636,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683361798029</updated>
     </task>
-    <option name="localTasksCounter" value="118" />
+    <task id="LOCAL-00118" summary="11">
+      <created>1683598685966</created>
+      <option name="number" value="00118" />
+      <option name="presentableId" value="LOCAL-00118" />
+      <option name="project" value="LOCAL" />
+      <updated>1683598685968</updated>
+    </task>
+    <option name="localTasksCounter" value="119" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -973,14 +976,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="712" y="262" key="git4idea.merge.GitMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1681725750849" />
-    <state x="421" y="236" key="git4idea.merge.GitPullDialog" timestamp="1683361803354">
-      <screen x="0" y="23" width="1280" height="726" />
+    <state x="421" y="236" key="git4idea.merge.GitPullDialog" timestamp="1683598692787">
+      <screen x="0" y="23" width="1280" height="725" />
     </state>
     <state x="632" y="306" key="git4idea.merge.GitPullDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1681796468754" />
     <state x="421" y="235" key="git4idea.merge.GitPullDialog/0.23.1280.722@0.23.1280.722" timestamp="1682674738132" />
     <state x="421" y="236" key="git4idea.merge.GitPullDialog/0.23.1280.723@0.23.1280.723" timestamp="1681985547723" />
     <state x="421" y="236" key="git4idea.merge.GitPullDialog/0.23.1280.724@0.23.1280.724" timestamp="1682218905563" />
-    <state x="421" y="236" key="git4idea.merge.GitPullDialog/0.23.1280.725@0.23.1280.725" timestamp="1682321031680" />
+    <state x="421" y="236" key="git4idea.merge.GitPullDialog/0.23.1280.725@0.23.1280.725" timestamp="1683598692787" />
     <state x="421" y="236" key="git4idea.merge.GitPullDialog/0.23.1280.726@0.23.1280.726" timestamp="1683361803354" />
     <state x="421" y="237" key="git4idea.merge.GitPullDialog/0.23.1280.728@0.23.1280.728" timestamp="1683183369896" />
     <state x="421" y="238" key="git4idea.merge.GitPullDialog/0.23.1280.732@0.23.1280.732" timestamp="1682662463102" />

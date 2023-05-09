@@ -370,6 +370,14 @@ public class Constant {
 	 */
 	public static final String CE_LIANG_BSWD_SRZ="测量冰水雾点输入值";
 	/**
+	 * 测量冰水雾点输入值
+	 */
+	public static final String CE_LIANG_BING_SHUI_WU_DIAN_SHU_RU_ZHI="测量冰水雾点输入值";
+	/**
+	 * 保温分钟计时
+	 */
+	public static final String BAO_WEN_FEN_ZHONG_JI_SHI="保温分钟计时";
+	/**
 	 * 测20雾点输入值
 	 */
 	public static final String CE_20_WU_DIAN_SRZ="测20雾点输入值";
@@ -462,7 +470,10 @@ public class Constant {
 	 * 一次降温加酸合格
 	 */
 	public static final String YI_CI_JIANG_WEN_JIA_SUAN_HE_GE="一次降温加酸合格";
-
+	/**
+	 * 加碱PH合格
+	 */
+	public static final String JIA_JIAN_PH_HE_GE="加碱PH合格";
 	/**
 	 * 二次投粉
 	 */
@@ -518,11 +529,14 @@ public class Constant {
 	 * 加碱PH输入
 	 */
 	public static final String JIA_JIAN_PH_SHU_RU="加碱PH输入";
-	
+	/**
+	 * 加碱量范围下限
+	 */
+	public static final String JIA_JIAN_LIANG_FAN_WEi_XIA_XIAN="加碱量范围下限";
 	/**
 	 * 二次加料粉料1重量设定
 	 */
-	public static final String ER_CI_JIA_LIAO_FEN_LIAO_1_ZHONG_LIANG_SHE_DING="二次加料粉料1重量设定";
+	public static final String ER_CI_JIA_FEN_LIAO_1_ZHONG_LIANG_SHE_DING="二次加粉料1重量设定";
 	/**
 	 * 保温后加助剂6量设定
 	 */

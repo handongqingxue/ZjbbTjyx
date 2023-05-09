@@ -95,8 +95,34 @@ public class ProcessVarServiceImpl implements ProcessVarService {
 			ptnName=ERecord.YXKSPJDPJWCSJC;//允许开始排胶到排胶完成时间差
 		}
 		else if((ERecord.FYJSSSYSJ).equals(nxtName)){//反应结束上升沿时间
+
 			preName=ERecord.BLKSSSYSJ;
 			ptnName=ERecord.BLKSDFYJSSJC;
+
+		}
+		else if((ERecord.ZJLYCTJWCSSYFCZ).equals(nxtName)){//助剂六一次添加完成上升沿釜称重
+			preName=ERecord.JJPHZZCSSYFCZ;
+			ptnName=ERecord.JJPHZZCDZJLYCTJWCFZLC;
+		}
+		else if((ERecord.ZJLYCTJWCSSYSJ).equals(nxtName)){//助剂六一次添加完成上升沿时间
+			preName=ERecord.JJPHZZCSSYSJ;
+			ptnName=ERecord.JJPHZZCDZJLYCTJWCSJC;
+		}
+		else if((ERecord.ZJLECTJWCSSYFCZ).equals(nxtName)){//助剂六二次添加完成上升沿时间
+			preName=ERecord.ZJLECBLWCSSYFCZ;
+			ptnName=ERecord.ZJLECBLWCDZJLECTJWCFZLC;
+		}
+		else if((ERecord.ZJLECTJWCSSYSJ).equals(nxtName)){//助剂六二次添加完成上升沿时间
+			preName=ERecord.ZJLECBLWCSSYSJ;
+			ptnName=ERecord.ZJLECBLWCDZJLECTJWCSJC;
+		}
+		else if((ERecord.YCJWJSTXSSYSJ).equals(nxtName)){//一次降温加酸提醒上升沿时间
+			preName=ERecord.DYCBWHGSSYSJ;
+			ptnName=ERecord.DYCBWHGDYCJWJSTXSJC;
+		}
+		else if((ERecord.ECTFSSYSJ).equals(nxtName)){//二次投粉
+			preName=ERecord.DYCBWHGSSYSJ;
+			ptnName=ERecord.DYCBWHGDECTFSJC;
 		}
 		String preValue=null;
 		String ptnUnit = null;
