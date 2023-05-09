@@ -419,6 +419,15 @@ public class ERecord {
 	 */
 	public static final String ECTFSSYSJ=Constant.ER_CI_TOU_FEN+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
 	/**
+	 * 第一次保温合格到二次投粉时间
+	 */
+	public static final String DYCBWHGDECTFSJ=Constant.DI_YI_CI_BAO_WEN_HE_GE+Constant.DAO+Constant.ER_CI_TOU_FEN+Constant.SHI_JIAN;
+	/**
+	 * 第一次保温合格到二次投粉时间差
+	 */
+	public static final String DYCBWHGDECTFSJC=Constant.DI_YI_CI_BAO_WEN_HE_GE+Constant.DAO+Constant.ER_CI_TOU_FEN+Constant.SHI_JIAN+Constant.CHA;
+	
+	/**
 	 * 二次加215启动上升沿时间
 	 */
 	public static final String ECJ215QDSSYSJ=Constant.ER_CI_JIA_215_QI_DONG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;

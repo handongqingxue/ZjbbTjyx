@@ -2498,7 +2498,7 @@ public class ERecordServiceImpl implements ERecordService {
 	
 					eRecordList.add(eRecord);
 				}
-				else if(pvVarName.startsWith(Constant.YI_CI_JIANG_WEN_JIA_SUAN_PH_SHU_RU)) {//一次降温加酸PH输入
+				else if(pvVarName.startsWith(Constant.YI_CI_JIANG_WEN_JIA_SUAN_PH_SHU_RU)) {//一次降温加酸PH输入    //二次降温阶段开始
 					Float pvVarValue = processVar.getVarValue();
 					String pvUnit = processVar.getUnit();
 					Integer pvFId = processVar.getFId();
@@ -2515,8 +2515,8 @@ public class ERecordServiceImpl implements ERecordService {
 					eRecord.setPhaseName(Constant.ER_CI_JIANG_WEN);
 	
 					eRecordList.add(eRecord);
-				}
-				else if(pvVarName.startsWith(Constant.JIA_JIA_LIANG_FAN_WEI_XIA_XIAN)) {//加碱量范围下限
+				}//二次降温阶段结束
+				else if(pvVarName.startsWith(Constant.JIA_JIA_LIANG_FAN_WEI_XIA_XIAN)) {//加碱量范围下限   //加碱阶段开始
 					Float pvVarValue = processVar.getVarValue();
 					String pvUnit = processVar.getUnit();
 					Integer pvFId = processVar.getFId();
@@ -2549,7 +2549,47 @@ public class ERecordServiceImpl implements ERecordService {
 					eRecord.setPhaseName(Constant.JIA_JIAN);
 	
 					eRecordList.add(eRecord);
+				}//加碱阶段结束
+				else if(pvVarName.startsWith(ERecord.ECTFSSYSJ)) {//二次投粉上升沿时间    //70度终止降温阶段开始
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+					String updateTime = processVar.getUpdateTime();
+	
+					eRecord=getFromList(ERecord.DYCBWHGDECTFSJ, batchID, eRecordList);
+					if(eRecord==null) {
+						eRecord=new ERecord();
+						eRecord.setVarName(ERecord.DYCBWHGDECTFSJ);
+						eRecord.setRecType(pvRecType);
+						eRecord.setFId(pvFId);
+						eRecord.setRecordTime(recordTime);
+						eRecord.setBatchID(batchID);
+						eRecord.setPhaseName(Constant.QI_SHI_DU_ZHONG_ZHI_JIANG_WEN);
+	
+						eRecordList.add(eRecord);
+					}
+					eRecord.setNxtValue(updateTime);
 				}
+				else if(pvVarName.startsWith(ERecord.DYCBWHGDECTFSJC)) {//第一次保温合格到二次投粉时间差
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+					Float varValue = processVar.getVarValue();
+					String unit = processVar.getUnit();
+	
+					eRecord=getFromList(ERecord.DYCBWHGDECTFSJ, batchID, eRecordList);
+					if(eRecord==null) {
+						eRecord=new ERecord();
+						eRecord.setVarName(ERecord.DYCBWHGDECTFSJ);
+						eRecord.setRecType(pvRecType);
+						eRecord.setFId(pvFId);
+						eRecord.setRecordTime(recordTime);
+						eRecord.setBatchID(batchID);
+						eRecord.setPhaseName(Constant.QI_SHI_DU_ZHONG_ZHI_JIANG_WEN);
+						
+						eRecordList.add(eRecord);
+					}
+					eRecord.setPtnValue(varValue+"");
+					eRecord.setUnit(unit);
+				}//70度终止降温阶段结束
 			}
 		}
 		
