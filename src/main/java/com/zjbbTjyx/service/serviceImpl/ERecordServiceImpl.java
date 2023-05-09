@@ -2516,6 +2516,40 @@ public class ERecordServiceImpl implements ERecordService {
 	
 					eRecordList.add(eRecord);
 				}
+				else if(pvVarName.startsWith(Constant.JIA_JIA_LIANG_FAN_WEI_XIA_XIAN)) {//加碱量范围下限
+					Float pvVarValue = processVar.getVarValue();
+					String pvUnit = processVar.getUnit();
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+	
+					eRecord=new ERecord();
+					eRecord.setVarName(pvVarName);
+					eRecord.setVarValue(pvVarValue+"");
+					eRecord.setUnit(pvUnit);
+					eRecord.setRecType(pvRecType);
+					eRecord.setFId(pvFId);
+					eRecord.setRecordTime(recordTime);
+					eRecord.setBatchID(batchID);
+					eRecord.setPhaseName(Constant.JIA_JIAN);
+	
+					eRecordList.add(eRecord);
+				}
+				else if(pvVarName.startsWith(Constant.JIA_JIAN_PH_SHU_RU)) {//加碱PH输入
+					Float pvVarValue = processVar.getVarValue();
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+	
+					eRecord=new ERecord();
+					eRecord.setVarName(pvVarName);
+					eRecord.setVarValue(pvVarValue+"");
+					eRecord.setRecType(pvRecType);
+					eRecord.setFId(pvFId);
+					eRecord.setRecordTime(recordTime);
+					eRecord.setBatchID(batchID);
+					eRecord.setPhaseName(Constant.JIA_JIAN);
+	
+					eRecordList.add(eRecord);
+				}
 			}
 		}
 		
