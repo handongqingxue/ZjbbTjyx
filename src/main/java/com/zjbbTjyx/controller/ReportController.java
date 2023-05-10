@@ -32,6 +32,8 @@ public class ReportController {
 	@Autowired
 	private ReportF_MService reportF_MService;
 	@Autowired
+	private ReportF_UService reportF_UService;
+	@Autowired
 	private PreviewPdfJsonService previewPdfJsonService;
 
     @RequestMapping("/goIndex")
@@ -43,14 +45,20 @@ public class ReportController {
     @RequestMapping("/goCreateM")
     public String goCreateM(HttpServletRequest request){
         
-        return MODULE_NAME+"/createM";
+        return MODULE_NAME+"/inc/createM";
     }
 
     @RequestMapping("/goSearchM")
     public String goSearchM(HttpServletRequest request){
         
-        return MODULE_NAME+"/searchM";
+        return MODULE_NAME+"/inc/searchM";
     }
+
+	@RequestMapping("/goSearchU")
+	public String goSearchU(HttpServletRequest request){
+
+		return MODULE_NAME+"/inc/searchU";
+	}
 
     @RequestMapping("/goPreviewPdf")
     public String goPreviewPdf(){
@@ -160,6 +168,24 @@ public class ReportController {
         }
     }
 
+	@RequestMapping("/getReportFUPageList")
+	@ResponseBody
+	public PlanResult getReportFUPageList(String type, String startTime, String endTime, String batchID){
+
+		//返回值对象
+		PlanResult result=new PlanResult();
+		try {
+			List<List<ReportF_U>> reportFUPageList = reportF_UService.getReportFUPageList(type, startTime, endTime, batchID);
+			result.setData(reportFUPageList);
+			result.setStatus(Constant.OK_STATUS);
+		} catch (Exception e) {
+			e.printStackTrace();
+			result.setMsg("暂无信息");
+			result.setStatus(Constant.NO_STATUS);
+		} finally {
+			return result;
+		}
+	}
 	@RequestMapping(value = "/addReportFByBatchID", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> addReportFByBatchID(String batchID) {

@@ -152,6 +152,27 @@ function getLeftMenuData(type){
 					mYscGlueTypeListDl.append("<dd><a onclick=\"showSearchArea('"+mYscGlueType+"')\">"+mYscGlueType+"</a></dd>");
 				}
 			}
+            else if(type=="uWsc"){
+                var uWscBatchIdList=result.uWscBatchIdList;
+                var uWscBatchIdListDl=$("#uWscBatchIdList_dl");
+                uWscBatchIdListDl.empty();
+                for (var i = 0; i < uWscBatchIdList.length; i++) {
+                    var uWscBatchId=uWscBatchIdList[i];
+                    uWscBatchIdListDl.append("<dd><a onclick=\"showCreateArea('"+uWscBatchId+"')\">"+uWscBatchId+"</a></dd>");
+                }
+
+                var defaultBatchID=uWscBatchIdList[0];
+                getUnCreRepVarList(defaultBatchID);
+            }
+            else if(type=="uYsc"){
+                var uYscGlueTypeList=result.uYscGlueTypeList;
+                var uYscGlueTypeListDl=$("#uYscGlueTypeList_dl");
+                uYscGlueTypeListDl.empty();
+                for (var i = 0; i < uYscGlueTypeList.length; i++) {
+                    var uYscGlueType=uYscGlueTypeList[i];
+                    uYscGlueTypeListDl.append("<dd><a onclick=\"showSearchArea('"+uYscGlueType+"')\">"+uYscGlueType+"</a></dd>");
+                }
+            }
 		}
 	,"json");
 }
@@ -169,6 +190,12 @@ function showCreateArea(batchID){
   		searchMDisplay="none";
   		searchUDisplay="none"
   	}
+    if (recType=="U"){
+        createMDisplay="none";
+        createUDisplay="block";
+        searchMDisplay="none";
+        searchUDisplay="none"
+    }
 	$("#createM").css("display",createMDisplay);
     $("#createU").css("display",createUDisplay);
     $("#searchM").css("display",searchMDisplay);
@@ -192,6 +219,12 @@ function showSearchArea(glueType){
   		searchMDisplay="block";
   		searchUDisplay="none"
   	}
+    if (recType=="U"){
+        createMDisplay="none";
+        createUDisplay="none";
+        searchMDisplay="none";
+        searchUDisplay="block"
+    }
 	$("#createM").css("display",createMDisplay);
     $("#createU").css("display",createUDisplay);
     $("#searchM").css("display",searchMDisplay);

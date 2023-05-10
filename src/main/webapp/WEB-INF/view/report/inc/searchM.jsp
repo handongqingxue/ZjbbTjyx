@@ -28,7 +28,7 @@ function getReportFMPageList() {
     ,"json");
 }
 
-function prePdf(){
+function prePdfM(){
 	var repHtmlStr=$("#reportFMPageList_div").html();
 	$.post("savePreReportHtml",
 	   {repHtmlStr:repHtmlStr},
@@ -113,7 +113,7 @@ function initPagerHtml(reportFMPageList){
                 </td>
                 <td class="dayin-td">
                     <i class="layui-icon layui-icon-print" style="font-size: 30px; color: #000000;" onclick="prePreExcelM()"></i>
-                    <i class="layui-icon layui-icon-export" style="font-size: 30px; color: #000000;" onclick="prePdf()"></i>
+                    <i class="layui-icon layui-icon-export" style="font-size: 30px; color: #000000;" onclick="prePdfM()"></i>
                 </td>
             </tr>
             <tr>
