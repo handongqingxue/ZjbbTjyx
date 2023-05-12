@@ -228,11 +228,11 @@ public class ReportF_U {
     /**
      * 开始加料酸计量筒称重行号
      */
-    public static final int SJJLSJLTCZ_RN=10;
+    public static final int KSJLSJLTCZ_RN=10;
     /**
      * 酸计量筒称重列号
      */
-    public static final int SJJLSJLTCZ_CN=3;
+    public static final int KSJLSJLTCZ_CN=3;
     /**
      * 加碱PH值正常时间行号
      */

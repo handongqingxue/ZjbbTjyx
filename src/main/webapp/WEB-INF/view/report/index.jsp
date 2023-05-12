@@ -111,14 +111,6 @@ function getLeftMenuData(type){
 	   				mWscBatchIdListDl.append("<dd><a onclick=\"showCreateArea('"+mWscBatchId+"')\">"+mWscBatchId+"</a></dd>");
 				}
 				
-				var uWscBatchIdList=result.uWscBatchIdList;
-				var uWscBatchIdListDl=$("#uWscBatchIdList_dl");
-				uWscBatchIdListDl.empty();
-				for (var i = 0; i < uWscBatchIdList.length; i++) {
-					var uWscBatchId=uWscBatchIdList[i];
-	   				uWscBatchIdListDl.append("<dd><a onclick=\"showCreateArea('"+uWscBatchId+"')\">"+uWscBatchId+"</a></dd>");
-				}
-				
 				var mYscGlueTypeList=result.mYscGlueTypeList;
 				var mYscGlueTypeListDl=$("#mYscGlueTypeList_dl");
 				mYscGlueTypeListDl.empty();
@@ -126,7 +118,21 @@ function getLeftMenuData(type){
 					var mYscGlueType=mYscGlueTypeList[i];
 					mYscGlueTypeListDl.append("<dd><a onclick=\"showSearchArea('"+mYscGlueType+"')\">"+mYscGlueType+"</a></dd>");
 				}
-				
+                var uWscBatchIdList=result.uWscBatchIdList;
+                var uWscBatchIdListDl=$("#uWscBatchIdList_dl");
+                uWscBatchIdListDl.empty();
+                for (var i = 0; i < uWscBatchIdList.length; i++) {
+                	var uWscBatchId=uWscBatchIdList[i];
+                	uWscBatchIdListDl.append("<dd><a onclick=\"showCreateArea('"+uWscBatchId+"')\">"+uWscBatchId+"</a></dd>");
+                }
+
+                var uYscGlueTypeList=result.uYscGlueTypeList;
+                var uYscGlueTypeListDl=$("#uYscGlueTypeList_dl");
+                uYscGlueTypeListDl.empty();
+                for (var i = 0; i < uYscGlueTypeList.length; i++) {
+                    var uYscGlueType=uYscGlueTypeList[i];
+                    uYscGlueTypeListDl.append("<dd><a onclick=\"showSearchArea('"+uYscGlueType+"')\">"+uYscGlueType+"</a></dd>");
+                }
 				var defaultBatchID=mWscBatchIdList[0];
 				showCreateArea(defaultBatchID);
 				getUnCreRepVarList(defaultBatchID);

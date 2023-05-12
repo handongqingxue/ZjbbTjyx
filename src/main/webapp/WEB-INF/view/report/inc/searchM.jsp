@@ -10,7 +10,6 @@ $(function(){
 	getReportFMPageList();
 });
 
-
 function getReportFMPageList() {
    var glueType = $("#glue").text();
    var typeSelect = $("#typeSelect").val()
@@ -111,9 +110,9 @@ function initPagerHtml(reportFMPageList){
                     选择批次&nbsp;&nbsp;
                     <select class="m_query_head_input" id="typeSelect"></select>
                 </td>
-                <td class="dayin-td">
-                    <i class="layui-icon layui-icon-print" style="font-size: 30px; color: #000000;" onclick="prePreExcelM()"></i>
-                    <i class="layui-icon layui-icon-export" style="font-size: 30px; color: #000000;" onclick="prePdfM()"></i>
+                <td>
+                    <button class="printing_button" onclick="prePreExcelM()">导出Excel</button>
+                    <button class="printing_button" onclick="prePdfM()">导出PDF</button>
                 </td>
             </tr>
             <tr>
@@ -129,6 +128,10 @@ function initPagerHtml(reportFMPageList){
                         <i class="layui-icon layui-icon-search" style="font-size: 16px; color: #ffffff;"></i>
                         查询
                     </button>
+                    <button class="printing_button" onclick="doPrint()">
+                        <i class="layui-icon layui-icon-print" style="font-size: 16px; color: #ffffff;"></i>
+                        打印
+                    </button>
                 </td>
             </tr>
         </table>
@@ -143,6 +146,7 @@ function initPagerHtml(reportFMPageList){
 
 <%--&lt;%&ndash;未显示变量的报表模版&ndash;%&gt;--%>
 <div id="noVarRep_div" style="display: none;">
+    <!--startprint-->
     <table class="m_body_table" border="1px" id="opcMSTable">
         <tr class="tr1">
             <td colspan="13">
@@ -511,6 +515,21 @@ function initPagerHtml(reportFMPageList){
             <td></td>
         </tr>
     </table>
+    <!--endprint-->
 </div>
 </body>
+<script>
+    function doPrint() {
+
+        bdhtml=window.document.body.innerHTML;
+        sprnstr="<!--startprint-->"; //开始打印标识字符串有17个字符
+        eprnstr="<!--endprint-->"; //结束打印标识字符串
+        prnhtml=bdhtml.substr(bdhtml.indexOf(sprnstr)+17); //从开始打印标识之后的内容
+        prnhtml=prnhtml.substring(0,prnhtml.indexOf(eprnstr)); //截取开始标识和结束标识之间的内容
+        window.document.body.innerHTML=prnhtml; //把需要打印的指定内容赋给body.innerHTML
+        window.print(); //调用浏览器的打印功能打印指定区域
+        window.document.body.innerHTML=bdhtml; // 最后还原页面
+    }
+
+</script>
 </html>

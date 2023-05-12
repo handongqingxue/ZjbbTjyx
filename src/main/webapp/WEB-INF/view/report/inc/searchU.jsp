@@ -110,9 +110,9 @@ function prePreExcelU(){
                     选择批次&nbsp;&nbsp;
                     <select class="u_query_head_input" id="typeSelect"></select>
                 </td>
-                <td class="dayin-td">
-                    <i class="layui-icon layui-icon-print" style="font-size: 30px; color: #000000;" onclick="prePreExcelU()"></i>
-                    <i class="layui-icon layui-icon-export" style="font-size: 30px; color: #000000;" onclick="prePdfU()"></i>
+                <td>
+                    <button class="printing_button" onclick="prePreExcelU()">导出Excel</button>
+                    <button class="printing_button" onclick="prePdfU()">导出PDF</button>
                 </td>
             </tr>
             <tr>
@@ -128,6 +128,10 @@ function prePreExcelU(){
                         <i class="layui-icon layui-icon-search" style="font-size: 16px; color: #ffffff;"></i>
                         查询
                     </button>
+                    <button class="printing_button">
+                        <i class="layui-icon layui-icon-print" style="font-size: 16px; color: #ffffff;"></i>
+                        打印
+                    </button>
                 </td>
             </tr>
         </table>
@@ -141,7 +145,7 @@ function prePreExcelU(){
 </div>
 
 <%--&lt;%&ndash;未显示变量的报表模版&ndash;%&gt;--%>
-<div id="noVarRepU_div" style="display: none;">
+<div id="noVarRepU_div" style="display: block;">
     <table class="u_body_table" border="1px" id="opcUSTable">
         <tr class="tr1">
             <th colspan="13">

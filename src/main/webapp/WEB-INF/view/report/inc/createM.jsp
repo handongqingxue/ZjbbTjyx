@@ -41,9 +41,6 @@ function addReportFByBatchID(){
 }
 </script>
 </head>
-<script>
-
-</script>
 <body>
 <div class="home_right_div">
     <div class="home_right_head_div">
