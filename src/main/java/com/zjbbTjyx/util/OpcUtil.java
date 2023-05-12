@@ -959,7 +959,149 @@ public class OpcUtil {
 			                    varName=ERecord.ZJLECBLWCSSYFCZ;//助剂六二次备料完成上升沿釜称重
 			                }
 			        	}
-			
+						else if(tv1VarName.startsWith(Constant.ZHU_JI_LIU_ER_CI_TIAN_JIA_WAN_CHENG+Constant.XHX)){//助剂六二次添加完成
+							if (itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)){
+								varName=ERecord.ZJLECTJWCSSYFYFWD;//助剂六二次添加完成上升沿反应釜温度
+							}
+							else if (itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)){
+								varName=ERecord.ZJLECTJWCSSYFCZ;//助剂六二次添加完成上升沿釜称重
+							}
+						}
+						else if(tv1VarName.startsWith(Constant.JIA_FEN_LIAO_TI_XING+Constant.XHX)){//加粉料提醒
+							if (itemName.startsWith(Constant.FEN_LIAO_1_ZHONG_LIANG_SHE_DING)){
+								varName=ERecord.KSJLSSYSJLTCZ;//粉料1重量设定
+							}
+						}
+						else if(tv1VarName.startsWith(Constant.JIA_FEN_LIAO_TI_XING+Constant.XHX)&&tv2VarName!=null) {
+							if(tv2VarName.contains(Constant.NIAO_SU_FANG_LIAO_FA)) {
+								if (itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)){
+									if(tv2VarValue==TriggerVar.UP) {
+										varName=ERecord.FNSFLFSSYFCZ;//釜尿素放料阀上升沿釜称重
+									}
+									else {
+										varName=ERecord.FNSFLFXJYFCZ;//釜尿素放料阀下降沿釜称重
+									}
+								}
+								else if (itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)){
+									if(tv2VarValue==TriggerVar.DOWN) {
+										varName=ERecord.FNSFLFXJYFYFWD;//釜尿素放料阀下降沿反应釜温度
+									}
+								}
+							}
+						}
+						else if(tv1VarName.startsWith(Constant.JIA_FEN_LIAO_TI_XING+Constant.XHX)){//升温开始
+							if (itemName.startsWith(Constant.ZHENG_QI_YA_LI)){
+								varName=Constant.ZHENG_QI_YA_LI;//蒸汽压力
+							}
+						}
+						else if(tv1VarName.startsWith(Constant.SHENG_WEN_WAN_CHENG+Constant.XHX)){//升温完成
+							if (itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)){
+								varName=ERecord.SWWCSSYFYFWD;//升温完成上升沿反应釜温度
+							}
+						}
+						else if(tv1VarName.startsWith(Constant.WEN_DU_98_PH_HE_GE+Constant.XHX)){//温度98PH合格
+							if (itemName.startsWith(Constant.WEN_DU_98_PH)){
+								varName=Constant.WEN_DU_98_PH;//温度98PH
+							}
+						}
+						else if(tv1VarName.startsWith(Constant.DI_YI_CI_BAO_WEN_QI_DONG+Constant.XHX)){//第一次保温启动
+							if (itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)){
+								varName=ERecord.DYCBWQDSSYFYFWD;//第一次保温启动反应釜温度
+							}
+						}
+						else if(tv1VarName.startsWith(Constant.DI_YI_CI_BAO_WEN_HE_GE+Constant.XHX)){//第一次保温合格
+							if (itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)){
+								varName=ERecord.DYCBWHGSSYFYFWD;//第一次保温合格反应釜温度
+							}
+						}
+						else if(tv1VarName.startsWith(Constant.YI_CI_JIANG_WEN_JIA_SUAN_TI_XING+Constant.XHX)){//一次降温加酸提醒
+							if (itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)){
+								varName=ERecord.YCJWJSTXSSYFYFWD;//一次降温加酸提醒反应釜温度
+							}
+						}
+						else if(tv1VarName.startsWith(Constant.YI_CI_JIANG_WEN_JIA_SUAN_HE_GE+Constant.XHX)){//一次降温加酸合格
+							if (itemName.startsWith(Constant.YI_CI_JIANG_WEN_JIA_SUAN_LIANG)){
+								varName=ERecord.YCJWJSL;//一次降温加酸量
+							}
+							else if (itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)){
+								varName=ERecord.YCJWJSHGSSYFYFWD;//一次降温加酸合格反应釜温度
+							}
+							else if (itemName.startsWith(Constant.YI_CI_JIANG_WEN_JIA_SUAN_PH_SHU_RU)){
+								varName=ERecord.YCJWJSHGSSYYCJWJSPHSR;//一次降温加酸PH输入
+							}
+						}
+						else if(tv1VarName.startsWith(Constant.CE_LIANG_BING_SHUI_WU_DIAN_TI_XING+Constant.XHX)){//测量冰水雾点提醒
+							if (itemName.startsWith(Constant.CE_LIANG_BING_SHUI_WU_DIAN_SHU_RU_ZHI)){
+								varName=Constant.CE_LIANG_BING_SHUI_WU_DIAN_SHU_RU_ZHI;//测量冰水雾点输入值
+							}
+							else if (itemName.startsWith(Constant.BAO_WEN_FEN_ZHONG_JI_SHI)){
+								varName=Constant.BAO_WEN_FEN_ZHONG_JI_SHI;//保温分钟计时
+							}
+							else if (itemName.startsWith(Constant.CE_20_WU_DIAN_SRZ)){
+								varName=Constant.CE_20_WU_DIAN_SRZ;//测20雾点输入值
+							}
+						}
+						else if(tv1VarName.startsWith(Constant.JIA_JIAN_PH_HE_GE+Constant.XHX)){//加碱PH合格
+							if (itemName.startsWith(Constant.JIA_JIAN_LIANG_FAN_WEi_XIA_XIAN)){
+								varName=Constant.JIA_JIAN_LIANG_FAN_WEi_XIA_XIAN;//加碱量范围下限
+							}
+							else if (itemName.startsWith(Constant.JIA_JIAN_PH_SHU_RU)){
+								varName=Constant.JIA_JIAN_PH_SHU_RU;//加碱PH输入
+							}
+						}
+						else if(tv1VarName.startsWith(Constant.ER_CI_TOU_FEN+Constant.XHX)){//二次投粉
+							if (itemName.startsWith(Constant.ER_CI_JIA_FEN_LIAO_1_ZHONG_LIANG_SHE_DING)){
+								varName=Constant.ER_CI_JIA_FEN_LIAO_1_ZHONG_LIANG_SHE_DING;//二次加料粉料1重量设定
+							}else if(itemName.startsWith(Constant.BAO_WEN_HOU_JIA_ZHU_JI_6_LIANG_SHE_DING)){
+								varName=Constant.BAO_WEN_HOU_JIA_ZHU_JI_6_LIANG_SHE_DING;//保温后加助剂6量设定
+							}else if(itemName.startsWith(Constant.BAO_WEN_HOU_JIA_SHUI_LIANG_SHE_DING)){
+								varName=Constant.BAO_WEN_HOU_JIA_SHUI_LIANG_SHE_DING;//保温后加水量设定
+							}
+						}
+						else if(tv1VarName.startsWith(Constant.ER_CI_TOU_FEN+Constant.XHX)&&tv2VarName!=null) {
+							if(tv2VarName.contains(Constant.NIAO_SU_FANG_LIAO_FA)) {
+								if (itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)){
+									if(tv2VarValue==TriggerVar.UP) {
+										varName=ERecord.FNSFLFSSYFCZ;//釜尿素放料阀上升沿釜称重
+									}
+									else {
+										varName=ERecord.FNSFLFXJYFCZ;//釜尿素放料阀下降沿釜称重
+									}
+								}
+								else if (itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)){
+									if(tv2VarValue==TriggerVar.DOWN) {
+										varName=ERecord.FNSFLFXJYFYFWD;//釜尿素放料阀下降沿反应釜温度
+									}
+								}
+							}
+						}
+						else if(tv1VarName.startsWith(Constant.ER_CI_JIA_XIAO_LIAO_HE_SHUI_TI_XING+Constant.XHX)){//二次加小料和水提醒
+							if (itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)){
+								varName=ERecord.ECJXLHSTXXJYFYHWD;//二次加小料和水提醒下降沿反应釜温度
+							}
+						}
+						else if(tv1VarName.startsWith(Constant.FAN_YING_JIE_SHU+Constant.XHX)){//反应结束
+							if (itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)){
+								varName=ERecord.FYJSSSYFYFWD;//反应结束上升沿反应釜温度
+							}
+						}
+						else if(tv1VarName.startsWith(Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.XHX)){//允许开始排胶
+							if (itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)){
+								varName=ERecord.YXKSPJSSYFYFWD;//反应结束上升沿反应釜温度
+							}
+						}
+						else if(tv1VarName.startsWith(Constant.ZHONG_JIAN_SHUI_PH_TI_XING+Constant.XHX)){//终检水PH提醒
+							if (itemName.startsWith(Constant.ZHONG_JIAN_SHUI_SHU)){
+								varName=Constant.ZHONG_JIAN_SHUI_SHU;//终检水数
+							}else if (itemName.startsWith(Constant.ZHONG_JIAN_PH)){
+								varName=Constant.ZHONG_JIAN_PH;//终检PH
+							}
+						}
+						else if(tv1VarName.startsWith(Constant.PAI_JIAO_WAN_CHENG+Constant.XHX)){//排胶完成
+							if (itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)){
+								varName=ERecord.PJWCSSYFCZ;//排胶完成上升沿釜称重
+							}
+						}
 			        	if(StringUtils.isEmpty(varName))
 			        		continue;
 			        	

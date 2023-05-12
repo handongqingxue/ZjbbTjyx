@@ -451,6 +451,12 @@ public class ERecord {
 	 * 反应结束上升沿反应釜温度
 	 */
 	public static final String FYJSSSYFYFWD=Constant.FAN_YING_JIE_SHU+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
+	/**
+	 * 允许开始排胶上升沿反应釜温度
+	 */
+	public static final String YXKSPJSSYFYFWD=Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
+
+
 	private Integer Id;
 	public Integer getId() {
 		return Id;
