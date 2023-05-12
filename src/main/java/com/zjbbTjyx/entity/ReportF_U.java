@@ -454,7 +454,14 @@ public class ReportF_U {
      * 蒸汽压力列号
      */
     public static final int ZQYL_CN=6;
-    
+    /**
+     * 升温完成到升温开始时间差行号
+     */
+    public static final int SWWCDKSSJC_RN=15;
+    /**
+     * 升温完成到升温开始时间差列号
+     */
+    public static final int SWWCDKSSJC_CN=8;
     //升温至高温度-16
     /**
      * 升温完成时间行号
@@ -472,6 +479,7 @@ public class ReportF_U {
      * 升温完成反应釜温度列号
      */
     public static final int SWWCFYFWD_CN=6;
+
     /**
      * 温度98PH行号
      */
@@ -538,6 +546,14 @@ public class ReportF_U {
      */
     public static final int YCJWJSTXFYFWD_CN=6;
     /**
+     * 一次降温加酸提醒到第一次保温合格时间差行号
+     */
+    public static final int YCJWJSTXDDYCBWHGSJC_RN=19;
+    /**
+     * 一次降温加酸提醒到第一次保温合格时间差列号
+     */
+    public static final int YCJWJSTXDDYCBWHGSJC_CN=8;
+    /**
      * 降温时间  ？？？？
      */
 
@@ -561,11 +577,11 @@ public class ReportF_U {
     /**
      * 一次降温加酸PH输入行号
      */
-    public static final int YCJWJSPHSZ_RN=20;
+    public static final int YCJWJSHGSSYYCJWJSPHSZ_RN=20;
     /**
      * 一次降温加酸PH输入列号
      */
-    public static final int YCJWJSPHSZ_CN=8;
+    public static final int YCJWJSHGSSYYCJWJSPHSZ_CN=8;
     
     //冰水雾点-21
     /**
@@ -576,7 +592,15 @@ public class ReportF_U {
      * 测量冰水雾点输入值列号
      */
     public static final int CLBSWDSRZ_CN=6;
-    
+
+    /**
+     * 保温分钟计时1行号
+     */
+    public static final int BWFZJS1_RN=21;
+    /**
+     * 保温分钟计时1列号
+     */
+    public static final int BWFZJS1_CN=9;
     //20度雾点-22
     /**
      * 测20雾点输入值行号
@@ -586,16 +610,23 @@ public class ReportF_U {
      * 测20雾点输入值列号
      */
     public static final int C20WDSRZ_CN=6;
-    
+    /**
+     * 保温分钟计时2行号
+     */
+    public static final int BWFZJS2_RN=22;
+    /**
+     * 保温分钟计时1列号
+     */
+    public static final int BWFZJS2_CN=9;
     //降温-23
     /**
-     * 一次降温加酸PH输入行号
+     * 一次降温加酸提醒下降沿一次降温加酸PH输入行号
      */
-    public static final int YCJWJSPHSR_RN=23;
+    public static final int YCJWJSTXXJYYCJWJSPHSR_RN=23;
     /**
      * 一次降温加酸PH输入列号
      */
-    public static final int YCJWJSPHSR_CN=7;
+    public static final int YCJWJSTXXJYYCJWJSPHSR_CN=7;
     
     //加碱-24
     /**
@@ -624,15 +655,23 @@ public class ReportF_U {
      * 二次投粉时间列号
      */
     public static final int ECTFSJ_CN=4;
-    
+    /**
+     * 二次投粉到第一次保温合格时间行号
+     */
+    public static final int ECTFDDYCBWHGSJC_RN=25;
+    /**
+     * 二次投粉到第一次保温合格时间列号
+     */
+    public static final int ECTFDDYCBWHGSJC_CN=9;
     //二次粉料加入-26
     /**
-     * 二次加料粉料1重量设定行号   ？？？
+     * 二次加料粉料1重量设定行号
      */
+    public static final int ECJFL1ZLSD_RN=26;
     /**
-     * 二次加料粉料1重量设定列号   ？？？？
+     * 二次加料粉料1重量设定列号
      */
-    
+    public static final int ECJFL1ZLSD_CN=2;
     /**
      * 二次投粉釜尿素放料阀上升沿时间行号
      */
