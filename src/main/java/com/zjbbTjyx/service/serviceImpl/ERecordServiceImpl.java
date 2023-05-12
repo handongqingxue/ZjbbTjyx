@@ -1885,7 +1885,7 @@ public class ERecordServiceImpl implements ERecordService {
 						
 						eRecordList.add(eRecord);
 					}
-					eRecord.setNxtValue(updateTime);
+					eRecord.setPreValue(updateTime);
 				}
 				else if(pvVarName.startsWith(ERecord.ZJLECTJWCSSYSJ)) {//助剂六二次添加完成上升沿时间
 					Integer pvFId = processVar.getFId();
@@ -1991,10 +1991,10 @@ public class ERecordServiceImpl implements ERecordService {
 					Float varValue = processVar.getVarValue();
 					String unit = processVar.getUnit();
 	
-					eRecord=getFromList(ERecord.ZJLECBLWCDZJLECTJWCFZL, batchID, eRecordList);
+					eRecord=getFromList(ERecord.ZJLECBLWCDZJLECTJWCSJ, batchID, eRecordList);
 					if(eRecord==null) {
 						eRecord=new ERecord();
-						eRecord.setVarName(ERecord.ZJLECBLWCDZJLECTJWCFZL);
+						eRecord.setVarName(ERecord.ZJLECBLWCDZJLECTJWCSJ);
 						eRecord.setRecType(pvRecType);
 						eRecord.setFId(pvFId);
 						eRecord.setRecordTime(recordTime);
