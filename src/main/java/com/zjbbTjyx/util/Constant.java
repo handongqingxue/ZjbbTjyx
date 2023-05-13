@@ -532,7 +532,7 @@ public class Constant {
 	/**
 	 * 加碱量范围下限
 	 */
-	public static final String JIA_JIAN_LIANG_FAN_WEi_XIA_XIAN="加碱量范围下限";
+	public static final String JIA_JIAN_LIANG_FAN_WEI_XIA_XIAN="加碱量范围下限";
 	/**
 	 * 二次加料粉料1重量设定
 	 */
