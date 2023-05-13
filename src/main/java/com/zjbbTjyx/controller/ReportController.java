@@ -211,7 +211,7 @@ public class ReportController {
 			count=reportF_MService.addByERecordList(eRecordList);
 		}
 		else if(ERecord.U.equals(recType)) {
-			//count=reportF_UService.addByERecordList(eRecordList);
+			count=reportF_UService.addByERecordList(eRecordList);
 		}
 		
 		if(count>0)

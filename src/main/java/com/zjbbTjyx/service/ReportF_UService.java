@@ -1,10 +1,18 @@
 package com.zjbbTjyx.service;
 
-import com.zjbbTjyx.entity.ReportF_U;
+import com.zjbbTjyx.entity.*;
 
 import java.util.List;
 
 public interface ReportF_UService {
+	
+	/**
+	 * 把批记录集合转换成报表数据
+	 * @param eRecordList
+	 * @return
+	 */
+	int addByERecordList(List<ERecord> eRecordList);
+	
     /**
      * 根据条件查询u批记录
      * @param
