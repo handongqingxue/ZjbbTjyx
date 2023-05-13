@@ -609,7 +609,7 @@ public class ReportF_U {
     /**
      * 测20雾点输入值列号
      */
-    public static final int C20WDSRZ_CN=6;
+    public static final int C20WDSRZ_CN=5;
     /**
      * 保温分钟计时2行号
      */

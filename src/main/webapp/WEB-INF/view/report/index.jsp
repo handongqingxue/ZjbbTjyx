@@ -135,7 +135,7 @@ function getLeftMenuData(type){
                 }
 				var defaultBatchID=mWscBatchIdList[0];
 				showCreateArea(defaultBatchID);
-				getUnCreRepVarList(defaultBatchID);
+				getUnCreRepVarMList(defaultBatchID);
 			}
 			else if(type=="mWsc"){
 				var mWscBatchIdList=result.mWscBatchIdList;
@@ -147,7 +147,7 @@ function getLeftMenuData(type){
 				}
 				
 				var defaultBatchID=mWscBatchIdList[0];
-				getUnCreRepVarList(defaultBatchID);
+				getUnCreRepVarMList(defaultBatchID);
 			}
 			else if(type=="mYsc"){
 				var mYscGlueTypeList=result.mYscGlueTypeList;
@@ -168,7 +168,7 @@ function getLeftMenuData(type){
                 }
 
                 var defaultBatchID=uWscBatchIdList[0];
-                getUnCreRepVarList(defaultBatchID);
+                getUnCreRepVarUList(defaultBatchID);
             }
             else if(type=="uYsc"){
                 var uYscGlueTypeList=result.uYscGlueTypeList;
@@ -195,12 +195,16 @@ function showCreateArea(batchID){
   		createUDisplay="none";
   		searchMDisplay="none";
   		searchUDisplay="none"
-  	}
+        getUnCreRepVarMList(batchID);
+
+    }
     if (recType=="U"){
         createMDisplay="none";
         createUDisplay="block";
         searchMDisplay="none";
         searchUDisplay="none"
+        getUnCreRepVarUList(batchID);
+
     }
 	$("#createM").css("display",createMDisplay);
     $("#createU").css("display",createUDisplay);
@@ -209,7 +213,6 @@ function showCreateArea(batchID){
       
     $("#right-body-head-span2").text("报表生成页面");
     document.getElementById("right-body-head-icon").classList.add("layui-icon-add-circle");
-    getUnCreRepVarList(batchID);
 }
     
 function showSearchArea(glueType){
