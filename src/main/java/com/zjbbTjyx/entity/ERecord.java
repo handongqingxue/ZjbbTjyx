@@ -376,7 +376,7 @@ public class ERecord {
 	/**
 	 * 第一次保温启动上升沿反应釜温度
 	 */
-	public static final String DYCBWQDSSYFYFWD=Constant.DI_YI_CI_BAO_WEN_QI_DONG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+	public static final String DYCBWQDSSYFYFWD=Constant.DI_YI_CI_BAO_WEN_QI_DONG+Constant.SHANG_SHENG_YAN+Constant.WEN_DU;
 	
 	/**
 	 * 第一次保温合格上升沿时间
