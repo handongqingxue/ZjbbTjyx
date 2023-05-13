@@ -33,7 +33,7 @@ function prePdfM(){
 	   {repHtmlStr:repHtmlStr},
 	   function(result){
 		   if(result.status==1){
-			  window.open("goPreviewPdf?uuid="+result.data,"newwindow","width=300;");
+			  window.open("goPreviewPdfM?uuid="+result.data,"newwindow","width=300;");
 		   }
 		   else{
 			  alert(result.msg);

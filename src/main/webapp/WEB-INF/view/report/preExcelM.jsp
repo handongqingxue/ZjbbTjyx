@@ -78,8 +78,8 @@
         </tr>
         <%--第二行--%>
         <tr style="height: 30px;">
-            <td style="height:5%">YSD101信息</td>
-            <td style="background-color: #5b9bd5;height: 5%">
+            <td style="width:5%">YSD101信息</td>
+            <td style="background-color: #5b9bd5;width: 5%">
                 <%--甲醛厂家信息，可后期录入--%>
             </td>
             <td style="width: 5%">YSD102信息</td>

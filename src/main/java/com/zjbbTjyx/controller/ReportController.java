@@ -60,15 +60,26 @@ public class ReportController {
 		return MODULE_NAME+"/inc/searchU";
 	}
 
-    @RequestMapping("/goPreviewPdf")
-    public String goPreviewPdf(){
+    @RequestMapping("/goPreviewPdfM")
+    public String goPreviewPdfM(){
         
-        return MODULE_NAME+"/previewPdf";
+        return MODULE_NAME+"/previewPdfM";
     }
+	@RequestMapping("/goPreviewPdfU")
+	public String goPreviewPdfU(){
+
+		return MODULE_NAME+"/previewPdfU";
+	}
 	@RequestMapping("/goPreExcelM")
 	public String goPreExcelM(){
 		return MODULE_NAME+"/preExcelM";
 	}
+
+	@RequestMapping("/goPreExcelU")
+	public String goPreExcelU(){
+		return MODULE_NAME+"/preExcelU";
+	}
+
 
     @RequestMapping("/goTest")
     public String goTest(){
@@ -266,6 +277,24 @@ public class ReportController {
 		try {
 			List<ReportF_M> reportFMByList = reportF_MService.getReportFMByBatchID(batchID);
 			result.setData(reportFMByList);
+			result.setStatus(Constant.OK_STATUS);
+			result.setMsg("ok");
+		} catch (Exception e) {
+			e.printStackTrace();
+			result.setStatus(Constant.NO_STATUS);
+			result.setMsg("no");
+		} finally {
+			return result;
+		}
+	}
+
+	@RequestMapping("/getReportFUByBatchID")
+	@ResponseBody
+	public PlanResult getReportFUByBatchID(String batchID){
+		PlanResult result = new PlanResult();
+		try {
+			List<ReportF_U> reportFUByList = reportF_UService.getReportFUByBatchID(batchID);
+			result.setData(reportFUByList);
 			result.setStatus(Constant.OK_STATUS);
 			result.setMsg("ok");
 		} catch (Exception e) {
