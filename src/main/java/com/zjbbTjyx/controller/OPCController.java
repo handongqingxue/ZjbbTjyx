@@ -2518,6 +2518,7 @@ public class OPCController {
 					}
 				}
 			}
+			
 			List<TriggerVar> fnsflfTVList = (List<TriggerVar>)paramMap.get("fnsflfTVList");
 			TriggerVar fnsflfTV = getTriggerVarInListByFId(fnsflfTVList,Constant.FU+Constant.NIAO_SU_FANG_LIAO_FA,upFId);
 			String fnsflfVarName = fnsflfTV.getVarName();
@@ -3369,7 +3370,7 @@ public class OPCController {
 				}
 			}
 		}
-		else if(Constant.DI_YI_CI_BAO_WEN_HE_GE.equals(tvVarNamePre)) {//一次降温加酸合格
+		else if(Constant.YI_CI_JIANG_WEN_JIA_SUAN_HE_GE.equals(tvVarNamePre)) {//一次降温加酸合格
 			TriggerVar upYcjwjshgTV = (TriggerVar)paramMap.get("upYcjwjshgTV");
 			String upRecType = upYcjwjshgTV.getRecType();//获取配方类型
 			if(TriggerVar.U.equals(upRecType)) {
