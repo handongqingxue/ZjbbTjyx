@@ -344,105 +344,105 @@ function addReportF_UByBatchID(){
                 </tr>
                 <!--第二十四行-->
                 <tr class="tr24">
-                    <td>降温</td>
-                    <td class="green"></td>
-                    <td class="grey"></td>
-                    <td class="grey"></td>
-                    <td class="blue"></td>
-                    <td class="blue"></td>
-                    <td rowspan="3" colspan="3"></td>
-                    <td class="grey"></td>
-                    <td></td>
+                    <td>二次降温</td>
+                    <td class="green" id="td23_2"></td>
+                    <td class="grey" id="td23_3"></td>
+                    <td class="grey" id="td23_4"></td>
+                    <td class="blue" id="td23_5"></td>
+                    <td class="blue" id="td23_6"></td>
+                    <td rowspan="3" colspan="3" id="td23_7"></td>
+                    <td class="grey" id="td23_8"></td>
+                    <td id="td23_9"></td>
                 </tr>
                 <!--第二十五行-->
                 <tr class="tr25">
                     <td>加碱</td>
-                    <td class="green"></td>
-                    <td class="blue">录入加碱量</td>
-                    <td class="blue"></td>
-                    <td class="grey" colspan="2" rowspan="2"></td>
-                    <td class="blue">录入PH</td>
-                    <td class="blue"></td>
-                    <td class="grey"></td>
-                    <td></td>
+                    <td class="green" id="td24_2"></td>
+                    <td class="blue" id="td24_3">录入加碱量</td>
+                    <td class="blue" id="td24_4"></td>
+                    <td class="grey" colspan="2" rowspan="2" id="td24_5"></td>
+                    <td class="blue" id="td24_6">录入PH</td>
+                    <td class="blue" id="td24_7"></td>
+                    <td class="grey" id="td24_8"></td>
+                    <td id="td24_9"></td>
                 </tr>
                 <!--第二十六行-->
                 <tr class="tr26">
                     <td>70度终止降温</td>
-                    <td class="light_gray"></td>
-                    <td class="light_gray"></td>
-                    <td class="green"></td>
-                    <td class="grey"></td>
-                    <td class="grey"></td>
-                    <td class="yellow" rowspan="2">从降温到70度时间</td>
-                    <td></td>
+                    <td class="light_gray" id="td25_2"></td>
+                    <td class="light_gray" id="td25_3"></td>
+                    <td class="green" id="td25_4"></td>
+                    <td class="grey" id="td25_5"></td>
+                    <td class="grey" id="td25_6"></td>
+                    <td class="yellow" rowspan="2" id="td25_7">从降温到70度时间</td>
+                    <td id="td25_8"></td>
                 </tr>
                 <!--第二十七行-->
                 <tr class="tr27">
                     <td>二次粉料加入</td>
-                    <td class="green"></td>
-                    <td class="green"></td>
-                    <td class="green"></td>
-                    <td class="green"></td>
-                    <td class="green"></td>
-                    <td class="blue">录入PH</td>
-                    <td class="grey"></td>
-                    <td class="green"></td>
-                    <td class="green"></td>
-                    <td class="yellow"></td>
-                    <td></td>
+                    <td class="green" id="td26_2"></td>
+                    <td class="green" id="td26_3"></td>
+                    <td class="green" id="td26_4"></td>
+                    <td class="green" id="td26_5"></td>
+                    <td class="green" id="td26_6"></td>
+                    <td class="blue" id="td26_7">录入PH</td>
+                    <td class="grey" id="td26_8"></td>
+                    <td class="green" id="td26_9"></td>
+                    <td class="green" id="td26_10"></td>
+                    <td class="yellow" id="td26_11"></td>
+                    <td id="td26_12"></td>
                 </tr>
                 <!--第二十八行-->
                 <tr class="tr28">
                     <td>二次保温时间20</td>
-                    <td class="grey"></td>
-                    <td class="grey"></td>
-                    <td class="green">：</td>
-                    <td class="grey" colspan="2"></td>
-                    <td class="grey" rowspan="4"></td>
-                    <td class="grey"></td>
-                    <td class="grey" colspan="3"></td>
-                    <td class="grey"></td>
-                    <td></td>
+                    <td class="grey" id="td27_2"></td>
+                    <td class="grey" id="td27_3"></td>
+                    <td class="green" id="td27_4">：</td>
+                    <td class="grey" id="td27_5" colspan="2"></td>
+                    <td class="grey" id="td27_6" rowspan="4"></td>
+                    <td class="grey" id="td27_7"></td>
+                    <td class="grey" id="td27_8" colspan="3"></td>
+                    <td class="grey" id="td27_9"></td>
+                    <td id="td27_10"></td>
                 </tr>
                 <!--第二十九行-->
                 <tr class="tr29">
                     <td>助剂6加入</td>
-                    <td class="green"></td>
-                    <td class="green"></td>
-                    <td class="green"></td>
-                    <td class="green"></td>
-                    <td class="green" rowspan="2"></td>
-                    <td class="grey"></td>
-                    <td class="green" rowspan="2"></td>
-                    <td class="green" rowspan="2"></td>
-                    <td rowspan="2" class="yellow"></td>
-                    <td rowspan="2" class="yellow"></td>
-                    <td></td>
+                    <td class="green" id="td28_2"></td>
+                    <td class="green" id="td28_3"></td>
+                    <td class="green" id="td28_4"></td>
+                    <td class="green" id="td28_5"></td>
+                    <td class="green" id="td28_6" rowspan="2"></td>
+                    <td class="grey" id="td28_7"></td>
+                    <td class="green" id="td28_8" rowspan="2"></td>
+                    <td class="green" id="td28_9" rowspan="2"></td>
+                    <td rowspan="2" id="td28_10" class="yellow"></td>
+                    <td rowspan="2" id="td28_11" class="yellow"></td>
+                    <td id="td28_12"></td>
                 </tr>
                 <!--第三十行-->
                 <tr class="tr30">
                     <td>水加入</td>
-                    <td class="green"></td>
-                    <td class="green"></td>
-                    <td class="green"></td>
-                    <td class="green"></td>
-                    <td class="grey"></td>
-                    <td></td>
+                    <td class="green" id="td29_2"></td>
+                    <td class="green" id="td29_3"></td>
+                    <td class="green" id="td29_4"></td>
+                    <td class="green" id="td29_5"></td>
+                    <td class="grey" id="td29_6"></td>
+                    <td id="td29_7"></td>
                 </tr>
                 <!--第三十一行-->
                 <tr class="tr31">
                     <td>冷却至结束</td>
-                    <td colspan="2"></td>
-                    <td class="grey"></td>
-                    <td class="green"></td>
-                    <td class="green"></td>
-                    <td class="green"></td>
-                    <td class="green"></td>
-                    <td class="green"></td>
-                    <td class="grey"></td>
-                    <td class="yellow"></td>
-                    <td></td>
+                    <td colspan="2" id="td30_2"></td>
+                    <td class="grey" id="td30_3"></td>
+                    <td class="green" id="td30_4"></td>
+                    <td class="green" id="td30_5"></td>
+                    <td class="green" id="td30_6"></td>
+                    <td class="green" id="td30_7"></td>
+                    <td class="green" id="td30_8"></td>
+                    <td class="grey" id="td30_9"></td>
+                    <td class="yellow" id="td30_10"></td>
+                    <td id="td30_11"></td>
                 </tr>
                 <!--第三十二行-->
                 <tr class="tr32">
@@ -463,60 +463,60 @@ function addReportF_UByBatchID(){
                 <!-- 第三十三-->
                 <tr class="tr33">
                     <td>生产总重</td>
-                    <td class="green"></td>
-                    <td class="grey" rowspan="2"></td>
-                    <td>20℃标准：</td>
-                    <td>250-400</td>
-                    <td>7.4-8.0</td>
-                    <td class="grey"></td>
-                    <td class="grey"></td>
-                    <td class="grey"></td>
-                    <td class="grey"></td>
-                    <td class="grey"></td>
-                    <td></td>
+                    <td class="green" id="td32_2"></td>
+                    <td class="grey" rowspan="2" id="td32_3"></td>
+                    <td id="td32_4">20℃标准：</td>
+                    <td id="td32_5">250-400</td>
+                    <td id="td32_6">7.4-8.0</td>
+                    <td id="td32_7" class="grey"></td>
+                    <td id="td32_8" class="grey"></td>
+                    <td id="td32_9" class="grey"></td>
+                    <td id="td32_10" class="grey"></td>
+                    <td id="td32_11" class="grey"></td>
+                    <td id="td32_12"></td>
                 </tr>
                 <!-- 第三十四-->
                 <tr class="tr34">
-                    <td class="grey"></td>
-                    <td class="grey"></td>
-                    <td>实测：</td>
-                    <td class="blue"></td>
-                    <td class="blue"></td>
-                    <td class="grey"></td>
-                    <td class="grey"></td>
-                    <td class="grey"></td>
-                    <td class="grey"></td>
-                    <td class="grey"></td>
-                    <td></td>
+                    <td class="grey" id="td33_1"></td>
+                    <td class="grey" id="td33_2"></td>
+                    <td id="td33_3">实测：</td>
+                    <td class="blue" id="td33_4"></td>
+                    <td class="blue" id="td33_5"></td>
+                    <td class="grey" id="td33_6"></td>
+                    <td class="grey" id="td33_7"></td>
+                    <td class="grey" id="td33_8"></td>
+                    <td class="grey" id="td33_9"></td>
+                    <td class="grey" id="td33_10"></td>
+                    <td id="td33_11"></td>
                 </tr>
                 <!-- 第三十五-->
                 <tr class="tr35">
                     <td rowspan="2">排 胶</td>
                     <td>日期与时间：</td>
-                    <td class="green"></td>
-                    <td class="green"></td>
-                    <td class="yellow">时间差</td>
-                    <td></td>
-                    <td class="green">罐号1</td>
-                    <td class="green"></td>
-                    <td class="green"></td>
-                    <td class="yellow"></td>
-                    <td rowspan="2"></td>
-                    <td rowspan="2" class="yellow"></td>
-                    <td></td>
+                    <td class="green" id="td34_3"></td>
+                    <td class="green" id="td34_4"></td>
+                    <td class="yellow" id="td34_5">时间差</td>
+                    <td id="td34_6"></td>
+                    <td class="green" id="td34_7">罐号1</td>
+                    <td class="green" id="td34_8"></td>
+                    <td class="green" id="td34_9"></td>
+                    <td class="yellow" id="td34_10"></td>
+                    <td rowspan="2" id="td34_11"></td>
+                    <td rowspan="2" id="td34_12" class="yellow"></td>
+                    <td id="td34_13"></td>
                 </tr>
                 <!-- 第三十六-->
                 <tr>
                     <td>反应釜打胶前后重量</td>
-                    <td class="green"></td>
-                    <td class="green"></td>
-                    <td class="yellow">反应釜重量差</td>
-                    <td></td>
-                    <td class="green">罐号2</td>
-                    <td class="green"></td>
-                    <td class="green"></td>
-                    <td class="yellow"></td>
-                    <td></td>
+                    <td class="green" id="td35_2"></td>
+                    <td class="green" id="td35_3"></td>
+                    <td class="yellow" id="td35_4">反应釜重量差</td>
+                    <td id="td35_5"></td>
+                    <td class="green" id="td35_6">罐号2</td>
+                    <td class="green" id="td35_7"></td>
+                    <td class="green" id="td35_8"></td>
+                    <td class="yellow" id="td35_9"></td>
+                    <td id="td35_10"></td>
                 </tr>
             </table>
         </div>
