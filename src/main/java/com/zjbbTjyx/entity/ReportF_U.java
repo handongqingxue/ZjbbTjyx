@@ -437,6 +437,8 @@ public class ReportF_U {
      */
     public static final int FNSFLFSSYDXJYSJC_CN=12;
 
+
+
     //开始升温-15
     /**
      * 升温开始时间行号
@@ -626,7 +628,7 @@ public class ReportF_U {
     /**
      * 一次降温加酸PH输入列号
      */
-    public static final int YCJWJSTXXJYYCJWJSPHSR_CN=7;
+    public static final int YCJWJSTXXJYYCJWJSPHSR_CN=6;
     
     //加碱-24
     /**
@@ -783,7 +785,7 @@ public class ReportF_U {
     /**
      * 允许开始排胶釜称重列号
      */
-    public static final int YXKSPJFCZ_CN=3;
+    public static final int YXKSPJFCZ_CN=2;
     /**
      * 终检水数行号
      */
