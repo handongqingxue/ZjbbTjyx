@@ -7,13 +7,14 @@ var path='<%=basePath%>';
 $(function () {
 	
 })
+
 function getUnCreRepVarMList(batchID){
 	$.post(path+"report/getUnCreRepVarList",
 		//{batchID:"MA202300000018"},
 		{batchID:batchID},
 		function(result){
 			$("#opcMCTable td[id^='td']").text("");//先清除表格里的数据
-			$("#batchID_hid").val(batchID);//设置表格里的批次id
+			$("#opcMCTable #batchID_hid").val(batchID);//设置表格里的批次id
 			
 			var varMapList=result.varMapList;
 			for (var i = 0; i < varMapList.length; i++) {
@@ -27,8 +28,10 @@ function getUnCreRepVarMList(batchID){
 	,"json");
 }
 
-function addReportFByBatchID(){
+function addReportF_MByBatchID(){
 	var batchID=$("#opcMCTable #batchID_hid").val();
+	alert(batchID)
+	return false;
 	$.post(path+"report/addReportFByBatchID",
 		{batchID:batchID},
 		function(result){
@@ -61,7 +64,7 @@ function addReportFByBatchID(){
             <span class="gzlcssr2_span">2号罐重量初始输入</span>
             <input type="text" size="5" class="m_create_head_input"/>
             
-            <div class="but_div scbb_but_div" onclick="addReportFByBatchID()">生成报表</div>
+            <div class="but_div scbb_but_div" onclick="addReportF_MByBatchID()">生成报表</div>
             <div class="but_div sjfw_but_div">数据复位</div>
         </div>
     </div>

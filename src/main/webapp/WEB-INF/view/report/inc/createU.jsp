@@ -8,44 +8,47 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
-    <script type="text/javascript">
-        var path='<%=basePath%>';
+<title>Title</title>
+<script type="text/javascript">
+var path='<%=basePath%>';
 
-        function getUnCreRepVarUList(batchID){
-            $.post(path+"report/getUnCreRepVarList",
-                //{batchID:"MA202300000018"},
-                {batchID:batchID},
-                function(result){
-                    $("#opcUCTable td[id^='td']").text("");//先清除表格里的数据
-                    $("#batchID_hid").val(batchID);//设置表格里的批次id
-                    console.log(result)
-                    var varMapList=result.varMapList;
-                    console.log(varMapList)
-                    for (var i = 0; i < varMapList.length; i++) {
-                        var varMap=varMapList[i];
-                        console.log(varMap)
-                        var rowNumber=varMap.rowNumber;
-                        var colNumber=varMap.colNumber;
-                        var value=varMap.value;
-                        $("#opcUCTable #td"+rowNumber+"_"+colNumber).text(value);
-                    }
-                }
-                ,"json");
+function getUnCreRepVarUList(batchID){
+    $.post(path+"report/getUnCreRepVarList",
+        //{batchID:"MA202300000018"},
+        {batchID:batchID},
+        function(result){
+            $("#opcUCTable td[id^='td']").text("");//先清除表格里的数据
+            $("#opcUCTable #batchID_hid").val(batchID);//设置表格里的批次id
+            console.log(result)
+            var varMapList=result.varMapList;
+            console.log(varMapList)
+            for (var i = 0; i < varMapList.length; i++) {
+                var varMap=varMapList[i];
+                console.log(varMap)
+                var rowNumber=varMap.rowNumber;
+                var colNumber=varMap.colNumber;
+                var value=varMap.value;
+                $("#opcUCTable #td"+rowNumber+"_"+colNumber).text(value);
+            }
         }
-        function addReportFByBatchID(){
-            var batchID=$("#opcUCTable #batchID_hid").val();
-            $.post(path+"report/addReportFByBatchID",
-                {batchID:batchID},
-                function(result){
-                    if(result.message=="ok"){
-                        alert(result.info);
-                        getLeftMenuData("uWsc");
-                    }
-                }
-                ,"json");
+    ,"json");
+}
+
+function addReportF_UByBatchID(){
+    var batchID=$("#opcUCTable #batchID_hid").val();
+	alert(batchID+"U")
+	return false;
+    $.post(path+"report/addReportFByBatchID",
+        {batchID:batchID},
+        function(result){
+            if(result.message=="ok"){
+                alert(result.info);
+                getLeftMenuData("uWsc");
+            }
         }
-    </script>
+    ,"json");
+}
+</script>
 </head>
 <body>
     <div class="home_right_div">
@@ -67,7 +70,7 @@
                 <span class="gzlcssr2_span">2号罐重量初始输入</span>
                 <input type="text" size="5" class="u_create_head_input"/>
 
-                <div class="but_div scbb_but_div" onclick="addReportFByBatchID()">生成报表</div>
+                <div class="but_div scbb_but_div" onclick="addReportF_UByBatchID()">生成报表</div>
                 <div class="but_div sjfw_but_div">数据复位</div>
             </div>
         </div>
@@ -75,7 +78,7 @@
             <table class="u_body_table" border="1px" id="opcUCTable">
                 <tr class="tr1">
                     <th colspan="13">
-                        <input type="hidden" id="batchID_hid" value="1"/>
+                        <input type="hidden" id="batchID_hid"/>
                         <span class="onetd1">U类（）胶生产记录</span>
                         <%--<span class="onetd4">自动表单设计：张发 设计号：ZJZD20211225</span>--%>
                     </th>

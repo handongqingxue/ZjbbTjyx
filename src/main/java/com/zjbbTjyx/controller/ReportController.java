@@ -210,6 +210,9 @@ public class ReportController {
 		if(ERecord.M.equals(recType)) {
 			count=reportF_MService.addByERecordList(eRecordList);
 		}
+		else if(ERecord.U.equals(recType)) {
+			//count=reportF_UService.addByERecordList(eRecordList);
+		}
 		
 		if(count>0)
 			count=eRecordService.updatePCJLReportedByBatchID(batchID);
