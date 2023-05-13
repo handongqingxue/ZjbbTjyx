@@ -243,6 +243,7 @@ function showSearchArea(glueType){
 }
 
 function getPcjlListByType(type) {
+    console.log("jin"+type)
     $.post("<%=basePath%>report/getPcjlListByType",
         {type:type},
         function(result){
@@ -257,7 +258,12 @@ function getPcjlListByType(type) {
                 for (var i=0;i<list.length;i++){
                     typeSelect.append("<option value=\""+list[i].batchID+"\">"+list[i].batchID+"</option>")
                 }
-                getReportFMPageList();
+                var recType=type.substring(0,1);
+                if (recType=="M"){
+                    getReportFMPageList();
+                }else if(recType=="U"){
+                    getReportFUPageList();
+                }
             }
         }
      ,"json");

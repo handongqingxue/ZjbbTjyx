@@ -337,6 +337,12 @@
     background-color: #5ac980;
     cursor:pointer;
 }
+.u_create_head_row2_div{
+    display: flex;
+    align-items:center;/*上下居中*/
+    width: 100%;
+    height: 55px;
+}
 .u_body_table .tr1{
     height: 50px;
 }

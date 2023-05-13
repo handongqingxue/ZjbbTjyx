@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <%@include file="../inc/js.jsp"%>
+<%--    <%@include file="../inc/js.jsp"%>--%>
     <script type="text/javascript" src="<%=basePath%>resource/js/jquery-3.3.1.js"></script>
 <title>Title</title>
 <script type="text/javascript">

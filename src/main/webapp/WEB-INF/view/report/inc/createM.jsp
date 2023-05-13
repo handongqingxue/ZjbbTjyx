@@ -47,12 +47,10 @@ function addReportFByBatchID(){
         <div class="m_create_head_row1_div">
             <span class="cjxx_span">厂家信息</span>
             <input type="text" placeholder="录入厂家信息" class="m_create_head_input"/>
-            
             <span class="czy_span">操作员</span>
             <select class="m_create_head_input">
                 <option>张三</option>
             </select>
-            
             <span class="bbzt_span">报表状态:</span>
             <span class="wsc_span">未生成</span>
         </div>

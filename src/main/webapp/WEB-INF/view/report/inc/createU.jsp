@@ -12,37 +12,65 @@
     <script type="text/javascript">
         var path='<%=basePath%>';
 
+        function getUnCreRepVarList(batchID){
+            $.post(path+"report/getUnCreRepVarList",
+                //{batchID:"MA202300000018"},
+                {batchID:batchID},
+                function(result){
+                    $("#opcUCTable td[id^='td']").text("");//先清除表格里的数据
+                    $("#batchID_hid").val(batchID);//设置表格里的批次id
 
+                    var varMapList=result.varMapList;
+                    for (var i = 0; i < varMapList.length; i++) {
+                        var varMap=varMapList[i];
+                        var rowNumber=varMap.rowNumber;
+                        var colNumber=varMap.colNumber;
+                        var value=varMap.value;
+                        $("#opcUCTable #td"+rowNumber+"_"+colNumber).text(value);
+                    }
+                }
+                ,"json");
+        }
+        function addReportFByBatchID(){
+            var batchID=$("#opcUCTable #batchID_hid").val();
+            $.post(path+"report/addReportFByBatchID",
+                {batchID:batchID},
+                function(result){
+                    if(result.message=="ok"){
+                        alert(result.info);
+                        getLeftMenuData("uWsc");
+                    }
+                }
+                ,"json");
+        }
     </script>
 </head>
 <body>
     <div class="home_right_div">
         <div class="home_right_head_div">
-            <div class="m_create_head_row1_div">
+            <div class="u_create_head_row1_div">
                 <span class="cjxx_span">厂家信息</span>
                 <input type="text" placeholder="录入厂家信息" class="m_create_head_input"/>
-
                 <span class="czy_span">操作员</span>
-                <select class="m_create_head_input">
+                <select class="u_create_head_input">
                     <option>张三</option>
                 </select>
-
                 <span class="bbzt_span">报表状态:</span>
                 <span class="wsc_span">未生成</span>
             </div>
-            <div class="m_create_head_row2_div">
+            <div class="u_create_head_row2_div">
                 <span class="gzlcssr1_span">1号罐重量初始输入</span>
-                <input type="text" size="5" class="m_create_head_input"/>
+                <input type="text" size="5" class="u_create_head_input"/>
 
                 <span class="gzlcssr2_span">2号罐重量初始输入</span>
-                <input type="text" size="5" class="m_create_head_input"/>
+                <input type="text" size="5" class="u_create_head_input"/>
 
                 <div class="but_div scbb_but_div" onclick="addReportFByBatchID()">生成报表</div>
                 <div class="but_div sjfw_but_div">数据复位</div>
             </div>
         </div>
         <div class="home_right_cbody_div">
-            <table class="u_body_table" border="1px" id="opcUSTable">
+            <table class="u_body_table" border="1px" id="opcUCTable">
                 <tr class="tr1">
                     <th colspan="13">
                         <input type="hidden" id="batchID_hid" value="1"/>
