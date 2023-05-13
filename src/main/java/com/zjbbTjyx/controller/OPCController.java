@@ -261,6 +261,8 @@ public class OPCController {
 			List<TriggerVar> triggerVarList = triggerVarService.getListByFIdList(runFIdList);//先获取所有运行的反应釜触发量,不管是否是上升沿
 	
 			Map<String,List<TriggerVar>> triggerVarMap=getTriVarListGroupMap(triggerVarList);//将获取的变量分组
+			
+			
 			//李工的代码逻辑从这里开始写
 			//if(false) {
 			//备料开始触发量
@@ -380,6 +382,7 @@ public class OPCController {
 				eRecordService.clearBatchIDMap(fyjsFIdList);
 			}
 
+			
 			//甲醛备料开始
 			String jqblksTVVarNamePre=Constant.JIA_QUAN_BEI_LIAO_KAI_SHI;
 			List<TriggerVar> jqblksTVList = (List<TriggerVar>)triggerVarMap.get(jqblksTVVarNamePre);//获取甲醛备料开始变量,不管是否是上升沿
@@ -432,6 +435,7 @@ public class OPCController {
 			}
 
 
+			
 			//if(false) {
 			//甲醛放料完成
 			String jqflwcTVVarNamePre=Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG;
@@ -536,6 +540,7 @@ public class OPCController {
 				}
 			}
 
+			
 			//开始加料
 			String ksjlTVVarNamePre=Constant.KAI_SHI_JIA_LIAO;
 			List<TriggerVar> ksjlTVList = (List<TriggerVar>)triggerVarMap.get(ksjlTVVarNamePre);//获取开始加料变量,不管是否是上升沿
@@ -627,6 +632,7 @@ public class OPCController {
 				}
 			}
 
+			
 			//助剂六二次备料完成
 			String zjlecblwcTVVarNamePre=Constant.ZHU_JI_LIU_ER_CI_BEI_LIAO_WAN_CHENG;
 			List<TriggerVar> zjlecblwcTVList = (List<TriggerVar>)triggerVarMap.get(zjlecblwcTVVarNamePre);//获取助剂六二次备料完成变量,不管是否是上升沿
@@ -672,6 +678,7 @@ public class OPCController {
 				}
 			}
 
+			
 			//助剂六二次添加完成
 			String zjlectjwcTVVarNamePre=Constant.ZHU_JI_LIU_ER_CI_TIAN_JIA_WAN_CHENG;
 			List<TriggerVar> zjlectjwcTVList = (List<TriggerVar>)triggerVarMap.get(zjlectjwcTVVarNamePre);//获取助剂六二次添加完成变量,不管是否是上升沿
@@ -717,6 +724,7 @@ public class OPCController {
 				}
 			}
 
+			
 			//第一次保温启动
 			String dycbwqdTVVarNamePre=Constant.DI_YI_CI_BAO_WEN_QI_DONG;
 			List<TriggerVar> dycbwqdTVList = (List<TriggerVar>)triggerVarMap.get(dycbwqdTVVarNamePre);//获取第一次保温启动变量,不管是否是上升沿
@@ -762,6 +770,7 @@ public class OPCController {
 				}
 			}
 
+			
 			//第一次保温合格
 			String dycbwhgTVVarNamePre=Constant.DI_YI_CI_BAO_WEN_HE_GE;
 			List<TriggerVar> dycbwhgTVList = (List<TriggerVar>)triggerVarMap.get(dycbwhgTVVarNamePre);//获取第一次保温合格变量,不管是否是上升沿
@@ -806,6 +815,8 @@ public class OPCController {
 						break;
 				}
 			}
+			
+			
 			//一次降温加酸提醒
 			String ycjwjstxTVVarNamePre=Constant.YI_CI_JIANG_WEN_JIA_SUAN_TI_XING;
 			List<TriggerVar> ycjwjstxTVList = (List<TriggerVar>)triggerVarMap.get(ycjwjstxTVVarNamePre);//获取一次降温加酸提醒变量,不管是否是上升沿
@@ -816,6 +827,7 @@ public class OPCController {
 					case Constant.F1_ID:
 						Map<String,Object> paramF1Map=new HashMap<String,Object>();
 						paramF1Map.put("tvVarNamePre",ycjwjstxTVVarNamePre);
+						paramF1Map.put("tvVarValue",TriggerVar.UP);
 						paramF1Map.put("upYcjwjstxTV",upYcjwjstxTV);
 						paramF1Map.put("preValueFUMap",preValueF1UMap);
 						addProVarByParamMap(paramF1Map);
@@ -823,6 +835,7 @@ public class OPCController {
 					case Constant.F2_ID:
 						Map<String,Object> paramF2Map=new HashMap<String,Object>();
 						paramF2Map.put("tvVarNamePre",ycjwjstxTVVarNamePre);
+						paramF2Map.put("tvVarValue",TriggerVar.UP);
 						paramF2Map.put("upYcjwjstxTV",upYcjwjstxTV);
 						paramF2Map.put("preValueFUMap",preValueF2UMap);
 						addProVarByParamMap(paramF2Map);
@@ -830,6 +843,7 @@ public class OPCController {
 					case Constant.F3_ID:
 						Map<String,Object> paramF3Map=new HashMap<String,Object>();
 						paramF3Map.put("tvVarNamePre",ycjwjstxTVVarNamePre);
+						paramF3Map.put("tvVarValue",TriggerVar.UP);
 						paramF3Map.put("upYcjwjstxTV",upYcjwjstxTV);
 						paramF3Map.put("preValueFUMap",preValueF3UMap);
 						addProVarByParamMap(paramF3Map);
@@ -837,6 +851,7 @@ public class OPCController {
 					case Constant.F4_ID:
 						Map<String,Object> paramF4Map=new HashMap<String,Object>();
 						paramF4Map.put("tvVarNamePre",ycjwjstxTVVarNamePre);
+						paramF4Map.put("tvVarValue",TriggerVar.UP);
 						paramF4Map.put("upYcjwjstxTV",upYcjwjstxTV);
 						paramF4Map.put("preValueFUMap",preValueF4UMap);
 						addProVarByParamMap(paramF4Map);
@@ -844,13 +859,62 @@ public class OPCController {
 					case Constant.F5_ID:
 						Map<String,Object> paramF5Map=new HashMap<String,Object>();
 						paramF5Map.put("tvVarNamePre",ycjwjstxTVVarNamePre);
+						paramF5Map.put("tvVarValue",TriggerVar.UP);
 						paramF5Map.put("upYcjwjstxTV",upYcjwjstxTV);
 						paramF5Map.put("preValueFUMap",preValueF5UMap);
 						addProVarByParamMap(paramF5Map);
 						break;
 				}
 			}
+			
+			List<TriggerVar> downYcjwjstxTVList = getUpDownVarValueListFromList(ycjwjstxTVList, TriggerVar.DOWN);//获取下降的第一次降温加酸提醒变量
+			for (TriggerVar downYcjwjstxTV : downYcjwjstxTVList) {
+				Integer downFId = downYcjwjstxTV.getFId();//获取反应釜号
+				switch (downFId) {//匹配反应釜号
+					case Constant.F1_ID:
+						Map<String,Object> paramF1Map=new HashMap<String,Object>();
+						paramF1Map.put("tvVarNamePre",ycjwjstxTVVarNamePre);
+						paramF1Map.put("tvVarValue",TriggerVar.DOWN);
+						paramF1Map.put("downYcjwjstxTV",downYcjwjstxTV);
+						paramF1Map.put("preValueFUMap",preValueF1UMap);
+						addProVarByParamMap(paramF1Map);
+						break;
+					case Constant.F2_ID:
+						Map<String,Object> paramF2Map=new HashMap<String,Object>();
+						paramF2Map.put("tvVarNamePre",ycjwjstxTVVarNamePre);
+						paramF2Map.put("tvVarValue",TriggerVar.DOWN);
+						paramF2Map.put("downYcjwjstxTV",downYcjwjstxTV);
+						paramF2Map.put("preValueFUMap",preValueF2UMap);
+						addProVarByParamMap(paramF2Map);
+						break;
+					case Constant.F3_ID:
+						Map<String,Object> paramF3Map=new HashMap<String,Object>();
+						paramF3Map.put("tvVarNamePre",ycjwjstxTVVarNamePre);
+						paramF3Map.put("tvVarValue",TriggerVar.DOWN);
+						paramF3Map.put("downYcjwjstxTV",downYcjwjstxTV);
+						paramF3Map.put("preValueFUMap",preValueF3UMap);
+						addProVarByParamMap(paramF3Map);
+						break;
+					case Constant.F4_ID:
+						Map<String,Object> paramF4Map=new HashMap<String,Object>();
+						paramF4Map.put("tvVarNamePre",ycjwjstxTVVarNamePre);
+						paramF4Map.put("tvVarValue",TriggerVar.DOWN);
+						paramF4Map.put("downYcjwjstxTV",downYcjwjstxTV);
+						paramF4Map.put("preValueFUMap",preValueF4UMap);
+						addProVarByParamMap(paramF4Map);
+						break;
+					case Constant.F5_ID:
+						Map<String,Object> paramF5Map=new HashMap<String,Object>();
+						paramF5Map.put("tvVarNamePre",ycjwjstxTVVarNamePre);
+						paramF5Map.put("tvVarValue",TriggerVar.DOWN);
+						paramF5Map.put("downYcjwjstxTV",downYcjwjstxTV);
+						paramF5Map.put("preValueFUMap",preValueF5UMap);
+						addProVarByParamMap(paramF5Map);
+						break;
+				}
+			}
 
+			
 			//一次降温加酸合格
 			String ycjwjshgTVVarNamePre=Constant.YI_CI_JIANG_WEN_JIA_SUAN_HE_GE;
 			List<TriggerVar> ycjwjshgTVList = (List<TriggerVar>)triggerVarMap.get(ycjwjshgTVVarNamePre);//获取一次降温加酸合格变量,不管是否是上升沿
@@ -895,6 +959,8 @@ public class OPCController {
 						break;
 				}
 			}
+			
+			
 			//加碱PH合格
 			String jjphhgTVVarNamePre=Constant.JIA_JIAN_PH_HE_GE;
 			List<TriggerVar> jjphhgTVList = (List<TriggerVar>)triggerVarMap.get(jjphhgTVVarNamePre);//获取加碱PH合格变量,不管是否是上升沿
@@ -940,6 +1006,7 @@ public class OPCController {
 				}
 			}
 
+			
 			//二次投粉
 			String ectfTVVarNamePre=Constant.ER_CI_TOU_FEN;
 			List<TriggerVar> ectfTVList = (List<TriggerVar>)triggerVarMap.get(ectfTVVarNamePre);//获取二次投粉变量,不管是否是上升沿
@@ -985,6 +1052,7 @@ public class OPCController {
 				}
 			}
 
+			
 			//二次加215启动
 			String ecj215qdTVVarNamePre=Constant.ER_CI_JIA_215_QI_DONG;
 			List<TriggerVar> ecj215qdTVList = (List<TriggerVar>)triggerVarMap.get(ecj215qdTVVarNamePre);//获取二次加215启动,不管是否是上升沿
@@ -1030,6 +1098,7 @@ public class OPCController {
 				}
 			}
 
+			
 			//二次加小料和水提醒
 			String ecjxlhstxTVVarNamePre=Constant.ER_CI_JIA_XIAO_LIAO_HE_SHUI_TI_XING;
 			List<TriggerVar> ecjxlhstxTVList = (List<TriggerVar>)triggerVarMap.get(ecjxlhstxTVVarNamePre);//获取二次加小料和水提醒,不管是否是上升沿
@@ -1075,6 +1144,7 @@ public class OPCController {
 				}
 			}
 
+			
 			//二次加水启动
 			String ecjsqdTVVarNamePre=Constant.ER_CI_JIA_SHUI_QI_DONG;
 			List<TriggerVar> ecjsqdTVList = (List<TriggerVar>)triggerVarMap.get(ecjsqdTVVarNamePre);//获取二次加水启动,不管是否是上升沿
@@ -3334,38 +3404,51 @@ public class OPCController {
 			}
 		}
 		else if(Constant.YI_CI_JIANG_WEN_JIA_SUAN_TI_XING.equals(tvVarNamePre)) {//一次降温加酸提醒
-			TriggerVar upYcjwjstxTV = (TriggerVar)paramMap.get("upYcjwjstxTV");
-			String upRecType = upYcjwjstxTV.getRecType();//获取配方类型
-			if(TriggerVar.U.equals(upRecType)) {
-				HashMap<String, Object> preValueFUMap = (HashMap<String,Object>)paramMap.get("preValueFUMap");
-				String upVarName = upYcjwjstxTV.getVarName();
-				Float preValue = Float.valueOf(preValueFUMap.get(upVarName).toString());
-				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
-					opcTVList.add(upYcjwjstxTV);
-					Map<String, Object> ycjwjstxUResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据一次降温加酸提醒变量从opc端查找对应的过程变量
-					String status = ycjwjstxUResMap.get("status").toString();
-					if("ok".equals(status)) {
-						List<ProcessVar> ycjwjstxUResPVList = (List<ProcessVar>) ycjwjstxUResMap.get("proVarList");
-						//获取一次降温加酸提醒时间变量名
-						String ycjwjstxSjVarName = ERecord.YCJWJSTXSSYSJ;
-						ProcessVar ycjwjstxSjPV = OpcUtil.getProVarInListByVarName(ycjwjstxSjVarName, ycjwjstxUResPVList);
-						String ycjwjstxSjVarValue = ycjwjstxSjPV.getUpdateTime();
-						ProcessVar ptnSjPV = processVarService.getPtnValuePV(ycjwjstxSjVarName, ycjwjstxSjVarValue + "", ycjwjstxSjPV);
-						ycjwjstxUResPVList.add(ptnSjPV);//将时间差对象添加到集合里
+			Integer tvVarValue = Integer.valueOf(paramMap.get("tvVarValue").toString());
+			if(TriggerVar.UP==tvVarValue) {
+				TriggerVar upYcjwjstxTV = (TriggerVar)paramMap.get("upYcjwjstxTV");
+				String upRecType = upYcjwjstxTV.getRecType();//获取配方类型
+				if(TriggerVar.U.equals(upRecType)) {
+					HashMap<String, Object> preValueFUMap = (HashMap<String,Object>)paramMap.get("preValueFUMap");
+					String upVarName = upYcjwjstxTV.getVarName();
+					Float preValue = Float.valueOf(preValueFUMap.get(upVarName).toString());
+					if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
+						List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
+						opcTVList.add(upYcjwjstxTV);
+						Map<String, Object> ycjwjstxUResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据一次降温加酸提醒变量从opc端查找对应的过程变量
+						String status = ycjwjstxUResMap.get("status").toString();
+						if("ok".equals(status)) {
+							List<ProcessVar> ycjwjstxUResPVList = (List<ProcessVar>) ycjwjstxUResMap.get("proVarList");
+							//获取一次降温加酸提醒时间变量名
+							String ycjwjstxSjVarName = ERecord.YCJWJSTXSSYSJ;
+							ProcessVar ycjwjstxSjPV = OpcUtil.getProVarInListByVarName(ycjwjstxSjVarName, ycjwjstxUResPVList);
+							String ycjwjstxSjVarValue = ycjwjstxSjPV.getUpdateTime();
+							ProcessVar ptnSjPV = processVarService.getPtnValuePV(ycjwjstxSjVarName, ycjwjstxSjVarValue + "", ycjwjstxSjPV);
+							ycjwjstxUResPVList.add(ptnSjPV);//将时间差对象添加到集合里
 
-						int i = processVarService.addFromList(ycjwjstxUResPVList);//调用添加过程接口
-						System.out.println("添加" + i);
+							int i = processVarService.addFromList(ycjwjstxUResPVList);//调用添加过程接口
+							System.out.println("添加" + i);
+						}
 					}
-				}else if(preValue==TriggerVar.UP) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
-					opcTVList.add(upYcjwjstxTV);
-					Map<String, Object> ycjwjstxUResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据一次降温加酸提醒变量从opc端查找对应的过程变量
-					String status = ycjwjstxUResMap.get("status").toString();
-					if("ok".equals(status)) {
-						List<ProcessVar> ycjwjstxUResPVList = (List<ProcessVar>) ycjwjstxUResMap.get("proVarList");
-						int i = processVarService.addFromList(ycjwjstxUResPVList);//调用添加过程接口
-						System.out.println("添加" + i);
+				}
+			}
+			else if(TriggerVar.DOWN==tvVarValue) {
+				TriggerVar downYcjwjstxTV = (TriggerVar)paramMap.get("downYcjwjstxTV");
+				String downRecType = downYcjwjstxTV.getRecType();//获取配方类型
+				if(TriggerVar.U.equals(downRecType)) {
+					HashMap<String, Object> preValueFUMap = (HashMap<String,Object>)paramMap.get("preValueFUMap");
+					String downVarName = downYcjwjstxTV.getVarName();
+					Float preValue = Float.valueOf(preValueFUMap.get(downVarName).toString());
+					if(preValue==TriggerVar.UP) {//当上一次的变量值为1，说明这次刚下降，变量刚从1变为0，就记录一下反应釜id
+						List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
+						opcTVList.add(downYcjwjstxTV);
+						Map<String, Object> ycjwjstxUResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据一次降温加酸提醒变量从opc端查找对应的过程变量
+						String status = ycjwjstxUResMap.get("status").toString();
+						if("ok".equals(status)) {
+							List<ProcessVar> ycjwjstxUResPVList = (List<ProcessVar>) ycjwjstxUResMap.get("proVarList");
+							int i = processVarService.addFromList(ycjwjstxUResPVList);//调用添加过程接口
+							System.out.println("添加" + i);
+						}
 					}
 				}
 			}
@@ -3444,6 +3527,7 @@ public class OPCController {
 					}
 				}
 			}
+			
 			List<TriggerVar> fnsflfTVList = (List<TriggerVar>)paramMap.get("fnsflfTVList");
 			TriggerVar fnsflfTV = getTriggerVarInListByFId(fnsflfTVList,Constant.FU+Constant.NIAO_SU_FANG_LIAO_FA,upFId);
 			String fnsflfVarName = fnsflfTV.getVarName();

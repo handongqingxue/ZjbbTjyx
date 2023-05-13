@@ -3891,7 +3891,7 @@ public class ERecordServiceImpl implements ERecordService {
 					varMap.put(Constant.COL_NUMBER, ReportF_U.YCJWJSTXXJYYCJWJSPHSR_CN);
 					varMapList.add(varMap);
 				}
-				else if((Constant.JIA_JIAN_LIANG_FAN_WEi_XIA_XIAN).equals(varName)) {//加碱量范围下限
+				else if((Constant.JIA_JIAN_LIANG_FAN_WEI_XIA_XIAN).equals(varName)) {//加碱量范围下限
 					String varValue = eRecord.getVarValue();
 
 					varMap = new HashMap<String, Object>();
