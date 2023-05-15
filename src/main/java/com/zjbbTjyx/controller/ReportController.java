@@ -199,7 +199,7 @@ public class ReportController {
 	}
 	@RequestMapping(value = "/addReportFByBatchID", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> addReportFByBatchID(String batchID) {
+	public Map<String, Object> addResportFByBatchID(String batchID) {
 
 		Map<String,Object> json=new HashMap<String, Object>();
 		

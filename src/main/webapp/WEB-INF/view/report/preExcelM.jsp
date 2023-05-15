@@ -25,6 +25,8 @@
 
         function getPreExcel(){
             var batchID='${param.batchID}';
+            var typeExcelM=batchID.substring(1,2);
+            $("#typeExcelM").html(typeExcelM);
             $.post(path+"report/getReportFMByBatchID",
                 {batchID:batchID},
                 function(result){
@@ -72,7 +74,7 @@
         <tr>
             <td colspan="13" style="height: 50px;">
                 <input type="hidden" id="batchID_hid"/>
-                <span id="pdf-title" style="font: normal 600 24px '微软雅黑'">M类 （ ）胶 生产记录</span>
+                <span id="pdf-title" style="font: normal 600 24px '微软雅黑'">M类（<span id="typeExcelM"></span>）胶 生产记录</span>
                 <%-- <span>自动表单设计：张发 设计号：ZJZD20211225</span>--%>
             </td>
         </tr>

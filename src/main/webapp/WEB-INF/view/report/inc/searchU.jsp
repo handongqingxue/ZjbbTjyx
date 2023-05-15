@@ -2,7 +2,7 @@
 <html>
 <head>
 <%--    <%@include file="../inc/js.jsp"%>--%>
-    <script type="text/javascript" src="<%=basePath%>resource/js/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="<%=basePath%>resource/js/jquery-3.3.1.js"></script>
 <title>Title</title>
 <script type="text/javascript">
 
@@ -14,6 +14,8 @@ $(function(){
 
 function getReportFUPageList() {
     var glueType = $("#glue").text();
+    var typeU = glueType.substring(1,2);
+    $("#typeU").html(typeU);
     var typeSelect = $("#typeSelect").val()
     var startTime = $("#startTime").val();
     var endTime = $("#endTime").val();
@@ -150,7 +152,7 @@ function prePreExcelU(){
         <tr class="tr1">
             <th colspan="13">
                 <input type="hidden" id="batchID_hid" value="1"/>
-                <span class="onetd1">U类（）胶生产记录</span>
+                <span class="onetd1">U类（<span id="typeU"></span>）胶 生产记录</span>
 <%--                <span class="onetd4">自动表单设计：张发 设计号：ZJZD20211225</span>--%>
             </th>
         </tr>
@@ -577,7 +579,7 @@ function prePreExcelU(){
             <td></td>
         </tr>
         <!-- 第三十六-->
-        <tr>
+        <tr class="tr36">
             <td>反应釜打胶前后重量</td>
             <td class="green"></td>
             <td class="green"></td>

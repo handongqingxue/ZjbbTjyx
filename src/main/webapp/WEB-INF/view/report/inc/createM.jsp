@@ -2,6 +2,7 @@
 <html>
 <head>
 <title>Title</title>
+<script type="text/javascript" src="<%=basePath%>resource/js/jquery-3.3.1.js"></script>
 <script type="text/javascript">
 var path='<%=basePath%>';
 $(function () {
@@ -15,7 +16,8 @@ function getUnCreRepVarMList(batchID){
 		function(result){
 			$("#opcMCTable td[id^='td']").text("");//先清除表格里的数据
 			$("#opcMCTable #batchID_hid").val(batchID);//设置表格里的批次id
-			
+            var glueM=batchID.substring(1,2);
+            $("#glueM").html(glueM);
 			var varMapList=result.varMapList;
 			for (var i = 0; i < varMapList.length; i++) {
 				var varMap=varMapList[i];
@@ -73,7 +75,7 @@ function addReportF_MByBatchID(){
             <tr class="tr1">
                 <td colspan="13">
                 	<input type="hidden" id="batchID_hid"/>
-                    <span class="onetd1">M类 （ ）胶 生产记录</span>
+                    <span class="onetd1">M类（<span id="glueM"></span>）胶 生产记录</span>
                     <%--<span class="onetd4">自动表单设计：张发 设计号：ZJZD20211225</span>--%>
                 </td>
             </tr>
@@ -111,7 +113,7 @@ function addReportF_MByBatchID(){
                 <td class="green" id="td3_6">
                     <%--备料开始时间--%>
                 </td>
-                <td>结束时间</td>
+                <td style="width: 150px">结束时间</td>
                 <td class="green" id="td3_8">
                     <%--冷却结束时间--%>
                 </td>
@@ -119,7 +121,7 @@ function addReportF_MByBatchID(){
                 <td class="yellow" id="td3_10">
                     <%--min--%>
                 </td>
-                <td>生产日期： </td>
+                <td style="width: 150px;">生产日期： </td>
                 <td class="green">
                 </td>
             </tr>

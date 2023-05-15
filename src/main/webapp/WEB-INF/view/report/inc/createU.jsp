@@ -9,22 +9,23 @@
 <html>
 <head>
 <title>Title</title>
+<script type="text/javascript" src="<%=basePath%>resource/js/jquery-3.3.1.js"></script>
 <script type="text/javascript">
 var path='<%=basePath%>';
 
 function getUnCreRepVarUList(batchID){
+
     $.post(path+"report/getUnCreRepVarList",
         //{batchID:"MA202300000018"},
         {batchID:batchID},
         function(result){
             $("#opcUCTable td[id^='td']").text("");//先清除表格里的数据
             $("#opcUCTable #batchID_hid").val(batchID);//设置表格里的批次id
-            console.log(result)
+            var glueU=batchID.substring(1,2);
+            $("#glueU").html(glueU);
             var varMapList=result.varMapList;
-            console.log(varMapList)
             for (var i = 0; i < varMapList.length; i++) {
                 var varMap=varMapList[i];
-                console.log(varMap)
                 var rowNumber=varMap.rowNumber;
                 var colNumber=varMap.colNumber;
                 var value=varMap.value;
@@ -35,6 +36,8 @@ function getUnCreRepVarUList(batchID){
 }
 
 function addReportF_UByBatchID(){
+    var glueU=batchID.substring(1,2);
+    $("glueU").html(glueU);
     var batchID=$("#opcUCTable #batchID_hid").val();
 	alert(batchID+"U")
 	return false;
@@ -79,20 +82,20 @@ function addReportF_UByBatchID(){
                 <tr class="tr1">
                     <th colspan="13">
                         <input type="hidden" id="batchID_hid"/>
-                        <span class="onetd1">U类（）胶生产记录</span>
+                        <span class="onetd1">U类（<span id="glueU"></span>）胶 生产记录</span>
                         <%--<span class="onetd4">自动表单设计：张发 设计号：ZJZD20211225</span>--%>
                     </th>
                 </tr>
                 <!--第二行-->
                 <tr class="tr2">
-                    <td id="td2_1">YSD101信息</td>
-                    <td id="td2_2 blue"></td>
-                    <td id="td2_3">YSD102信息</td>
-                    <td id="td2_4 blue"></td>
+                    <td style="width: 100px">YSD101信息</td>
+                    <td id="td2_2" class="blue"></td>
+                    <td style="width: 100px">YSD102信息</td>
+                    <td id="td2_4" class="blue"></td>
                     <td id="td2_5"></td>
-                    <td id="td2_6" colspan="2">当班操作员：</td>
+                    <td style="width: 120px" colspan="2">当班操作员：</td>
                     <td id="td2_7" colspan="2" class="green"></td>
-                    <td id="td2_8" colspan="2">接班操作员：</td>
+                    <td  style="width: 120px" colspan="2">接班操作员：</td>
                     <td id="td2_9" colspan="2" class="green"></td>
                 </tr>
                 <!--第三行-->
@@ -103,11 +106,11 @@ function addReportF_UByBatchID(){
                     <td colspan="2" class="green" id="td3_4"></td>
                     <td>开始时间</td>
                     <td class="green"  id="td3_6"></td>
-                    <td>结束时间</td>
+                    <td style="width: 100px">结束时间</td>
                     <td class="green"  id="td3_8"></td>
                     <td>生产工时</td>
                     <td class="yellow"  id="td3_10"></td>
-                    <td>生产日期</td>
+                    <td style="width: 150px;">生产日期：</td>
                     <td class="green"  id="td3_12"></td>
                 </tr>
                 <!--第四行-->
@@ -326,7 +329,7 @@ function addReportF_UByBatchID(){
                     <td class="blue" id="td21_6"></td>
                     <td class="grey" colspan="2" id="td21_7"></td>
                     <td>冰水时间</td>
-                    <td class="green" id="td21_9"></td>
+                    <td class="blue" id="td21_9"></td>
                     <td id="td21_10"></td>
                 </tr>
                 <!--第二十三行-->
@@ -339,7 +342,7 @@ function addReportF_UByBatchID(){
                     <td class="grey" id="td22_6"></td>
                     <td class="grey" id="td22_7"></td>
                     <td>缩聚总时间</td>
-                    <td class="green" id="td22_9"></td>
+                    <td class="blue" id="td22_9"></td>
                     <td id="td22_10"></td>
                 </tr>
                 <!--第二十四行-->
@@ -350,7 +353,7 @@ function addReportF_UByBatchID(){
                     <td class="grey" id="td23_4"></td>
                     <td class="blue" id="td23_5"></td>
                     <td class="blue" id="td23_6"></td>
-                    <td rowspan="3" colspan="3" id="td23_7"></td>
+                    <td rowspan="3" class="grey" colspan="3" id="td23_7"></td>
                     <td class="grey" id="td23_8"></td>
                     <td id="td23_9"></td>
                 </tr>
@@ -506,7 +509,7 @@ function addReportF_UByBatchID(){
                     <td id="td34_13"></td>
                 </tr>
                 <!-- 第三十六-->
-                <tr>
+                <tr class="tr36">
                     <td>反应釜打胶前后重量</td>
                     <td class="green" id="td35_2"></td>
                     <td class="green" id="td35_3"></td>

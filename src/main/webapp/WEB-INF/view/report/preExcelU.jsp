@@ -25,6 +25,8 @@
 
         function getPreExcelU(){
             var batchID='${param.batchID}';
+            var typeExcelU=batchID.substring(1,2);
+            $("#typeExcelU").html(typeExcelU);
             $.post(path+"report/getReportFMByBatchID",
                 {batchID:batchID},
                 function(result){
@@ -72,7 +74,7 @@
         <tr>
             <th colspan="13" style="height: 50px;">
                 <input type="hidden" id="batchID_hid" value="1"/>
-                <span class="onetd1">U类（）胶生产记录</span>
+                <span class="onetd1">U类（<span id="typeExcelU"></span>）胶生产记录</span>
                 <%--<span class="onetd4">自动表单设计：张发 设计号：ZJZD20211225</span>--%>
             </th>
         </tr>
