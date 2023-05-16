@@ -3578,8 +3578,8 @@ public class ERecordServiceImpl implements ERecordService {
 
 					HashMap<String, Object> ptnVarMap = new HashMap<String, Object>();
 					ptnVarMap.put(Constant.VALUE, ptnValue+unit);
-					ptnVarMap.put(Constant.ROW_NUMBER, ReportF_U.ZJLYCTJWCDJJPHZZCZLC_RN);
-					ptnVarMap.put(Constant.COL_NUMBER, ReportF_U.ZJLYCTJWCDJJPHZZCZLC_CN);
+					ptnVarMap.put(Constant.ROW_NUMBER, ReportF_U.JJPHZZCDZJLYCTJWCZLC_RN);
+					ptnVarMap.put(Constant.COL_NUMBER, ReportF_U.JJPHZZCDZJLYCTJWCZLC_CN);
 					varMapList.add(ptnVarMap);
 				}
 				else if(ERecord.JQBLKSDJQFLWCSJ.equals(varName)) {//加碱PH值正常到助剂六一次添加完成时间
@@ -3602,8 +3602,8 @@ public class ERecordServiceImpl implements ERecordService {
 
 					HashMap<String, Object> ptnVarMap = new HashMap<String, Object>();
 					ptnVarMap.put(Constant.VALUE, ptnValue+unit);
-					ptnVarMap.put(Constant.ROW_NUMBER, ReportF_U.ZJLYCTJWCDJJPHZZCSJC_RN);
-					ptnVarMap.put(Constant.COL_NUMBER, ReportF_U.ZJLYCTJWCDJJPHZZCSJC_CN);
+					ptnVarMap.put(Constant.ROW_NUMBER, ReportF_U.JJPHZZCDZJLYCTJWCSJC_RN);
+					ptnVarMap.put(Constant.COL_NUMBER, ReportF_U.JJPHZZCDZJLYCTJWCSJC_CN);
 					varMapList.add(ptnVarMap);
 				}
 				else if (ERecord.ZJLECBLWCSSYSJLTCZ.equals(varName)){//助剂六二次备料完成酸计量筒称重
@@ -3636,8 +3636,8 @@ public class ERecordServiceImpl implements ERecordService {
 
 					HashMap<String, Object> ptnVarMap = new HashMap<String, Object>();
 					ptnVarMap.put(Constant.VALUE, ptnValue+unit);
-					ptnVarMap.put(Constant.ROW_NUMBER, ReportF_U.ZJLECTJWCDBLWCSJC_RN);
-					ptnVarMap.put(Constant.COL_NUMBER, ReportF_U.ZJLECTJWCDBLWCSJC_CN);
+					ptnVarMap.put(Constant.ROW_NUMBER, ReportF_U.ZJLECBLWCDTJWCSJC_RN);
+					ptnVarMap.put(Constant.COL_NUMBER, ReportF_U.ZJLECBLWCDTJWCSJC_CN);
 					varMapList.add(ptnVarMap);
 				}
 				else if(ERecord.ZJLECBLWCDZJLECTJWCFZL.equals(varName)) {//助剂六二次备料完成到助剂六二次添加完成釜称重
@@ -3660,8 +3660,8 @@ public class ERecordServiceImpl implements ERecordService {
 
 					HashMap<String, Object> ptnVarMap = new HashMap<String, Object>();
 					ptnVarMap.put(Constant.VALUE, ptnValue+unit);
-					ptnVarMap.put(Constant.ROW_NUMBER, ReportF_U.ZJLECTJWCDBLWCZLC_RN);
-					ptnVarMap.put(Constant.COL_NUMBER, ReportF_U.ZJLECTJWCDBLWCZLC_CN);
+					ptnVarMap.put(Constant.ROW_NUMBER, ReportF_U.ZJLECBLWCDTJWCZLC_RN);
+					ptnVarMap.put(Constant.COL_NUMBER, ReportF_U.ZJLECBLWCDTJWCZLC_CN);
 					varMapList.add(ptnVarMap);
 				}
 				else if (Constant.FEN_LIAO_1_ZHONG_LIANG_SHE_DING.equals(varName)){//粉料重量设定
@@ -3693,8 +3693,8 @@ public class ERecordServiceImpl implements ERecordService {
 
 					HashMap<String, Object> ptnVarMap = new HashMap<String, Object>();
 					ptnVarMap.put(Constant.VALUE, ptnValue+unit);
-					ptnVarMap.put(Constant.ROW_NUMBER, ReportF_U.FNSFLFSSYDXJYSJC_RN);
-					ptnVarMap.put(Constant.COL_NUMBER, ReportF_U.FNSFLFSSYDXJYSJC_CN);
+					ptnVarMap.put(Constant.ROW_NUMBER, ReportF_U.JFLTXFNSFLFSSYDXJYSJC_RN);
+					ptnVarMap.put(Constant.COL_NUMBER, ReportF_U.JFLTXFNSFLFSSYDXJYSJC_CN);
 					varMapList.add(ptnVarMap);
 				}
 				else if(ERecord.FNSFLFXJYFYFWD.equals(varName)) {//釜尿素放料阀下降沿反应釜温度
@@ -3736,8 +3736,8 @@ public class ERecordServiceImpl implements ERecordService {
 
 					HashMap<String, Object> ptnVarMap = new HashMap<String, Object>();
 					ptnVarMap.put(Constant.VALUE, ptnValue+unit);
-					ptnVarMap.put(Constant.ROW_NUMBER, ReportF_U.FNSFLFSSYDXJYZLC_RN);
-					ptnVarMap.put(Constant.COL_NUMBER, ReportF_U.FNSFLFSSYDXJYZLC_CN);
+					ptnVarMap.put(Constant.ROW_NUMBER, ReportF_U.JFLTXFNSFLFSSYDXJYZLC_RN);
+					ptnVarMap.put(Constant.COL_NUMBER, ReportF_U.JFLTXFNSFLFSSYDXJYZLC_CN);
 					varMapList.add(ptnVarMap);
 				}
 				else if(ERecord.SWKSDSWWCSJ.equals(varName)) {//升温开始到升温完成时间
@@ -3760,8 +3760,8 @@ public class ERecordServiceImpl implements ERecordService {
 
 					HashMap<String, Object> ptnVarMap = new HashMap<String, Object>();
 					ptnVarMap.put(Constant.VALUE, ptnValue+unit);
-					ptnVarMap.put(Constant.ROW_NUMBER, ReportF_U.SWWCDKSSJC_RN);
-					ptnVarMap.put(Constant.COL_NUMBER, ReportF_U.SWWCDKSSJC_CN);
+					ptnVarMap.put(Constant.ROW_NUMBER, ReportF_U.SWKSDSWWCSJC_RN);
+					ptnVarMap.put(Constant.COL_NUMBER, ReportF_U.SWKSDSWWCSJC_CN);
 					varMapList.add(ptnVarMap);
 				}
 				else if((Constant.SHENG_WEN_KAI_SHI+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU).equals(varName)) {//升温完成反应釜温度
@@ -3804,8 +3804,8 @@ public class ERecordServiceImpl implements ERecordService {
 
 					HashMap<String, Object> ptnVarMap = new HashMap<String, Object>();
 					ptnVarMap.put(Constant.VALUE, ptnValue+unit);
-					ptnVarMap.put(Constant.ROW_NUMBER, ReportF_U.YCJWJSTXDDYCBWHGSJC_RN);
-					ptnVarMap.put(Constant.COL_NUMBER, ReportF_U.YCJWJSTXDDYCBWHGSJC_CN);
+					ptnVarMap.put(Constant.ROW_NUMBER, ReportF_U.DYCBWHGDYCJWJSTXSJC_RN);
+					ptnVarMap.put(Constant.COL_NUMBER, ReportF_U.DYCBWHGDYCJWJSTXSJC_CN);
 					varMapList.add(ptnVarMap);
 				}
 				else if((Constant.DI_YI_CI_BAO_WEN_HE_GE+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU).equals(varName)) {//第一次保温合格上升沿反应釜温度
@@ -3929,8 +3929,8 @@ public class ERecordServiceImpl implements ERecordService {
 
 					HashMap<String, Object> ptnVarMap = new HashMap<String, Object>();
 					ptnVarMap.put(Constant.VALUE, ptnValue+unit);
-					ptnVarMap.put(Constant.ROW_NUMBER, ReportF_U.ECTFDDYCBWHGSJC_RN);
-					ptnVarMap.put(Constant.COL_NUMBER, ReportF_U.ECTFDDYCBWHGSJC_CN);
+					ptnVarMap.put(Constant.ROW_NUMBER, ReportF_U.DYCBWHGDECTFSJC_RN);
+					ptnVarMap.put(Constant.COL_NUMBER, ReportF_U.DYCBWHGDECTFSJC_CN);
 					varMapList.add(ptnVarMap);
 				}
 				else if((Constant.ER_CI_JIA_FEN_LIAO_1_ZHONG_LIANG_SHE_DING).equals(varName)) {//二次加料粉料1重量设定

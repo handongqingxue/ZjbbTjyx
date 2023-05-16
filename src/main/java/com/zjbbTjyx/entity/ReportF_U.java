@@ -277,21 +277,21 @@ public class ReportF_U {
     public static final int ZJLYCTJWCFCZ_CN=9;
 
     /**
-     * 助剂六一次添加完成到加碱PH值正常重量差行号
+     * 加碱PH值正常到助剂六一次添加完成重量差行号
      */
-    public static final int ZJLYCTJWCDJJPHZZCZLC_RN=10;
+    public static final int JJPHZZCDZJLYCTJWCZLC_RN=10;
     /**
-     * 助剂六一次添加完成到加碱PH值正常重量差列号
+     * 加碱PH值正常到助剂六一次添加完成重量差列号
      */
-    public static final int ZJLYCTJWCDJJPHZZCZLC_CN=10;
+    public static final int JJPHZZCDZJLYCTJWCZLC_CN=10;
     /**
-     * 助剂六一次添加完成到加碱PH值正常时间差行号
+     * 加碱PH值正常到助剂六一次添加完成时间差行号
      */
-    public static final int ZJLYCTJWCDJJPHZZCSJC_RN=10;
+    public static final int JJPHZZCDZJLYCTJWCSJC_RN=10;
     /**
-     * 助剂六一次添加完成到加碱PH值正常时间差列号
+     * 加碱PH值正常到助剂六一次添加完成时间差列号
      */
-    public static final int ZJLYCTJWCDJJPHZZCSJC_CN=11;
+    public static final int JJPHZZCDZJLYCTJWCSJC_CN=11;
 
     //YSD215二次-11
     /**
@@ -344,21 +344,21 @@ public class ReportF_U {
      */
     public static final int ZJLECTJWCFCZ_CN=9;
     /**
-     * 助剂六二次添加完成到备料完成重量差行号
+     * 助剂六二次备料完成到添加完成重量差行号
      */
-    public static final int ZJLECTJWCDBLWCZLC_RN=11;
+    public static final int ZJLECBLWCDTJWCZLC_RN=11;
     /**
-     * 助剂六二次添加完成到备料完成重量差列号
+     * 助剂六二次备料完成到添加完成重量差列号
      */
-    public static final int ZJLECTJWCDBLWCZLC_CN=10;
+    public static final int ZJLECBLWCDTJWCZLC_CN=10;
     /**
      * 助剂六二次添加完成到备料完成时间差行号
      */
-    public static final int ZJLECTJWCDBLWCSJC_RN=11;
+    public static final int ZJLECBLWCDTJWCSJC_RN=11;
     /**
-     * 助剂六二次添加完成到备料完成时间差列号
+     * 助剂六二次备料完成到添加完成时间差列号
      */
-    public static final int ZJLECTJWCDBLWCSJC_CN=11;
+    public static final int ZJLECBLWCDTJWCSJC_CN=11;
     
     //YSD103-13
     /**
@@ -422,20 +422,20 @@ public class ReportF_U {
     /**
      * 釜尿素放料阀上升沿到下降沿重量差行号
      */
-    public static final int FNSFLFSSYDXJYZLC_RN=13;
+    public static final int JFLTXFNSFLFSSYDXJYZLC_RN=13;
     /**
      * 釜尿素放料阀上升沿到下降沿重量差列号
      */
-    public static final int FNSFLFSSYDXJYZLC_CN=11;
+    public static final int JFLTXFNSFLFSSYDXJYZLC_CN=11;
 
     /**
      * 釜尿素放料阀上升沿到下降沿时间差行号
      */
-    public static final int FNSFLFSSYDXJYSJC_RN=13;
+    public static final int JFLTXFNSFLFSSYDXJYSJC_RN=13;
     /**
      * 釜尿素放料阀上升沿到下降沿时间差列号
      */
-    public static final int FNSFLFSSYDXJYSJC_CN=12;
+    public static final int JFLTXFNSFLFSSYDXJYSJC_CN=12;
 
 
 
@@ -457,13 +457,13 @@ public class ReportF_U {
      */
     public static final int ZQYL_CN=6;
     /**
-     * 升温完成到升温开始时间差行号
+     * 升温开始到升温完成时间差行号
      */
-    public static final int SWWCDKSSJC_RN=15;
+    public static final int SWKSDSWWCSJC_RN=15;
     /**
-     * 升温完成到升温开始时间差列号
+     * 升温开始到升温完成时间差列号
      */
-    public static final int SWWCDKSSJC_CN=8;
+    public static final int SWKSDSWWCSJC_CN=8;
     //升温至高温度-16
     /**
      * 升温完成时间行号
@@ -548,13 +548,13 @@ public class ReportF_U {
      */
     public static final int YCJWJSTXFYFWD_CN=6;
     /**
-     * 一次降温加酸提醒到第一次保温合格时间差行号
+     * 第一次保温合格到一次降温加酸提醒时间差行号
      */
-    public static final int YCJWJSTXDDYCBWHGSJC_RN=19;
+    public static final int DYCBWHGDYCJWJSTXSJC_RN=19;
     /**
-     * 一次降温加酸提醒到第一次保温合格时间差列号
+     *第一次保温合格到一次降温加酸提醒时间差列号
      */
-    public static final int YCJWJSTXDDYCBWHGSJC_CN=8;
+    public static final int DYCBWHGDYCJWJSTXSJC_CN=8;
     /**
      * 降温时间  ？？？？
      */
@@ -658,13 +658,13 @@ public class ReportF_U {
      */
     public static final int ECTFSJ_CN=4;
     /**
-     * 二次投粉到第一次保温合格时间行号
+     * 第一次保温合格到二次投粉时间差行号
      */
-    public static final int ECTFDDYCBWHGSJC_RN=25;
+    public static final int DYCBWHGDECTFSJC_RN=25;
     /**
-     * 二次投粉到第一次保温合格时间列号
+     * 第一次保温合格到二次投粉时间差列号
      */
-    public static final int ECTFDDYCBWHGSJC_CN=9;
+    public static final int DYCBWHGDECTFSJC_CN=9;
     //二次粉料加入-26
     /**
      * 二次加料粉料1重量设定行号
@@ -719,11 +719,11 @@ public class ReportF_U {
     /**
      * 二次加215完成行号
      */
-    public static final int ECJ215WC_RN=28;
+    public static final int ECJ215WCSJ_RN=28;
     /**
      * 二次加215完成列号
      */
-    public static final int ECJ215WC_CN=5;
+    public static final int ECJ215WCSJ_CN=5;
     /**
      * 二次加小料和水提醒下降沿反应釜温度行号
      */
@@ -776,7 +776,15 @@ public class ReportF_U {
      * 反应结束反应釜温度列号
      */
     public static final int FYJSFYFWD_CN=5;
-    
+
+    /**
+     * 第一次保温合格到反应结束行号
+     */
+    public static final int DYCBWHGDFYJSSJC_RN=30;
+    /**
+     * 第一次保温合格到反应结束列号
+     */
+    public static final int DYCBWHGDFYJSSJC_CN=10;
     //生产总重-32
     /**
      * 允许开始排胶釜称重行号
@@ -789,11 +797,11 @@ public class ReportF_U {
     /**
      * 终检水数行号
      */
-    public static final int ZJSH_RN=33;
+    public static final int ZJSS_RN=33;
     /**
      * 终检水数列号
      */
-    public static final int ZJSH_CN=4;
+    public static final int ZJSS_CN=4;
     /**
      * 终检PH行号
      */
