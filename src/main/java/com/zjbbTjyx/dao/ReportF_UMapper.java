@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface ReportF_UMapper {
+    int add(ReportF_U reportF_U);
 
     List<ReportF_U> getReportFUList(@Param("type") String type, @Param("startTime") String startTime, @Param("endTime") String endTime, @Param("batchID") String batchID);
 

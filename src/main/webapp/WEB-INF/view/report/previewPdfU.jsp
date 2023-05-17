@@ -74,7 +74,7 @@
                             }
                         }
 
-                        var batchID=$("#rep_div table #batchID_hid").val();
+                        var batchID=$("#rep_div table #batchID_hid_U").val();
                         pdf.save(batchID+'.pdf');
                     },
                     //背景设为白色（默认为黑色）

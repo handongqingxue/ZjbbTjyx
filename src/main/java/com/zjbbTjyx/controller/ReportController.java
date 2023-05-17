@@ -182,7 +182,7 @@ public class ReportController {
 	@RequestMapping("/getReportFUPageList")
 	@ResponseBody
 	public PlanResult getReportFUPageList(String type, String startTime, String endTime, String batchID){
-
+		System.out.println(type+"/"+startTime+"/"+endTime+"/"+batchID);
 		//返回值对象
 		PlanResult result=new PlanResult();
 		try {
@@ -233,7 +233,7 @@ public class ReportController {
 	@ResponseBody
 	public String savePreReportHtml(String repHtmlStr) {
 		
-		System.out.println("repHtmlStr==="+repHtmlStr);
+//		System.out.println("repHtmlStr==="+repHtmlStr);
 
 		PlanResult plan=new PlanResult();
 		String json;

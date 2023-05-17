@@ -47,7 +47,6 @@
 	<select id="getReportFMList" resultType="com.zjbbTjyx.entity.ReportF_M">
 		select * from ReportF_M where LEFT(BatchID,2)=#{type}
 		<if test="startTime!=''&amp;endTime!=null">
-
 			and createTime between #{startTime} and #{endTime}
 		</if>
 		<if test="batchID!=''&amp;batchID!=null">

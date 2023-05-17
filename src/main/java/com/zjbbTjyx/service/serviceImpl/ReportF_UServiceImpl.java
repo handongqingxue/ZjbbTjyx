@@ -21,6 +21,9 @@ public class ReportF_UServiceImpl implements ReportF_UService {
 		int count=0;
 		List<ReportF_U> reportF_UList=new ArrayList<ReportF_U>();
 		for (ERecord eRecord : eRecordList) {
+
+			System.out.println(eRecord.toString());
+			System.out.println("-------------------------开始生成---------------------------");
 			String varName = eRecord.getVarName();
 			String varValue = eRecord.getVarValue();
 			String unit = eRecord.getUnit();
@@ -381,7 +384,10 @@ public class ReportF_UServiceImpl implements ReportF_UService {
 				reportF_UList.add(createByParams(zjphRowNumber, zjphColNumber, varValue+unit, batchID));
 			}
 		}
-		return 0;
+		for (ReportF_U reportF_U : reportF_UList) {
+			count+=reportF_UMapper.add(reportF_U);
+		}
+		return count;
 	}
 
     @Override

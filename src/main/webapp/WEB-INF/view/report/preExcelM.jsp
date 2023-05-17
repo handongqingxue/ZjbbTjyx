@@ -38,7 +38,6 @@
                         var rowNumber=repFM.rowNumber;
                         var colNumber=repFM.colNumber;
                         var value=repFM.value;
-                        //console.log(repFM)
                         noVarRepTab.find("#td"+rowNumber+"_"+colNumber).text(value);//暂时把变量添加到未显示变量的报表模版里
                     }
                 }
@@ -60,7 +59,6 @@
             excelFile += "</html>";
             var link = "data:application/vnd.ms-excel;base64," + base64(excelFile);
             var a = document.createElement("a");
-            var batchID=$("#batchID_hid").val();
             a.download = '${param.batchID}'+".xlsx";
             a.href = link;
             a.click();
@@ -73,7 +71,7 @@
     <table border="1px" style="width:100%;border-collapse:collapse;text-align:center;font: normal 400 16px '微软雅黑';">
         <tr>
             <td colspan="13" style="height: 50px;">
-                <input type="hidden" id="batchID_hid"/>
+                <input type="hidden"/>
                 <span id="pdf-title" style="font: normal 600 24px '微软雅黑'">M类（<span id="typeExcelM"></span>）胶 生产记录</span>
                 <%-- <span>自动表单设计：张发 设计号：ZJZD20211225</span>--%>
             </td>

@@ -3,11 +3,49 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zjbbTjyx.dao.ReportF_UMapper">
-
+    <insert id="add" parameterType="com.zjbbTjyx.entity.ReportF_U">
+        insert into ReportF_U
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="RowNumber!=null">
+                RowNumber,
+            </if>
+            <if test="ColNumber!=null">
+                ColNumber,
+            </if>
+            <if test="Value!=null">
+                Value,
+            </if>
+            <if test="BatchID!=null">
+                BatchID,
+            </if>
+            CreateTime,
+            <if test="Remark!=null">
+                Remark,
+            </if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="RowNumber!=null">
+                #{RowNumber},
+            </if>
+            <if test="ColNumber!=null">
+                #{ColNumber},
+            </if>
+            <if test="Value!=null">
+                #{Value},
+            </if>
+            <if test="BatchID!=null">
+                #{BatchID},
+            </if>
+            GETDATE(),
+            <if test="Remark!=null">
+                #{Remark},
+            </if>
+        </trim>
+    </insert>
     <select id="getReportFUList" resultType="com.zjbbTjyx.entity.ReportF_U">
         select * from ReportF_U where LEFT(BatchID,2)=#{type}
         <if test="startTime!=''&amp;endTime!=null">
-
             and createTime between #{startTime} and #{endTime}
         </if>
         <if test="batchID!=''&amp;batchID!=null">

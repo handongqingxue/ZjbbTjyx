@@ -52,7 +52,7 @@
                 </li>
                 <li class="layui-nav-item">
                     <a href="javascript:;">U类报表查询</a>
-                    <dl class="layui-nav-child"></dl>
+                    <dl class="layui-nav-child" id="uYscGlueTypeList_dl"></dl>
                 </li>
             </ul>
         </div>
@@ -246,25 +246,32 @@ function showSearchArea(glueType){
 }
 
 function getPcjlListByType(type) {
-    console.log("jin"+type)
     $.post("<%=basePath%>report/getPcjlListByType",
         {type:type},
         function(result){
             if(result.msg=="ok"){
-                var typeSelect=$("#typeSelect");
-                var glue=$("#glue");
-                glue.text(type)
-                typeSelect.empty();
                 var list=result.data;
                 //完整功能
-                typeSelect.append("<option value=''>请选择</option>")
-                for (var i=0;i<list.length;i++){
-                    typeSelect.append("<option value=\""+list[i].batchID+"\">"+list[i].batchID+"</option>")
-                }
                 var recType=type.substring(0,1);
                 if (recType=="M"){
+                    var current_glue_m=$("#current_glue_m");
+                    current_glue_m.text(type)
+                    var typeSelect=$("#typeSelectM");
+                    typeSelect.empty();
+                    typeSelect.append("<option value=''>请选择</option>")
+                    for (var i=0;i<list.length;i++){
+                        typeSelect.append("<option value=\""+list[i].batchID+"\">"+list[i].batchID+"</option>")
+                    }
                     getReportFMPageList();
                 }else if(recType=="U"){
+                    var current_glue_u=$("#current_glue_u");
+                    current_glue_u.text(type)
+                    var typeSelect=$("#typeSelectU");
+                    typeSelect.empty();
+                    typeSelect.append("<option value=''>请选择</option>")
+                    for (var i=0;i<list.length;i++){
+                        typeSelect.append("<option value=\""+list[i].batchID+"\">"+list[i].batchID+"</option>")
+                    }
                     getReportFUPageList();
                 }
             }

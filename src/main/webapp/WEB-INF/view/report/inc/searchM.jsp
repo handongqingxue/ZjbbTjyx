@@ -11,14 +11,14 @@ $(function(){
 });
 
 function getReportFMPageList() {
-    var glueType = $("#glue").text();
-    var typeM = glueType.substring(1,2);
+    var current_glue_m = $("#current_glue_m").text();
+    var typeM = current_glue_m.substring(1,2);
     $("#typeM").html(typeM);
-    var typeSelect = $("#typeSelect").val()
-    var startTime = $("#startTime").val();
-    var endTime = $("#endTime").val();
+    var typeSelectM = $("#typeSelectM").val()
+    var startTime = $("#startTime_M").val();
+    var endTime = $("#endTime_M").val();
    $.post(path+"report/getReportFMPageList",
-       {type:glueType,batchID:typeSelect,startTime:startTime,endTime:endTime},
+       {type:current_glue_m,batchID:typeSelectM,startTime:startTime,endTime:endTime},
        function(result){
     	   // console.log(result)
            if(result.status==1){
@@ -45,7 +45,7 @@ function prePdfM(){
 }
 
 function prePreExcelM(){
-    var batchID=$("#opcMSTable #batchID_hid").val();
+    var batchID=$("#opcMSTable #batchID_hid_M").val();
     window.open("goPreExcelM?batchID="+batchID,"newwindow","width=300;");
 }
 
@@ -55,7 +55,7 @@ function initPagerHtml(reportFMPageList){
 		var laypage = layui.laypage,layer = layui.layer;
 		//调用分页
 		laypage.render({
-		  elem: 'paging'
+		  elem: 'paging_m'
 		  ,count: reportFMPageList.length,
             limit: 1,
 		   prev: '<em><</em>',
@@ -69,10 +69,10 @@ function initPagerHtml(reportFMPageList){
 		      ,thisData = reportFMPageList.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
 		      layui.each(thisData, function(index, item){
                 var repFMList=item;
-                var noVarRepDiv=$("#noVarRep_div");
+                var noVarRepDiv=$("#noVarRepM_div");
                 var noVarRepTab=noVarRepDiv.find("table");//获取未显示变量的报表模版
                 if (repFMList.length>0){
-                	noVarRepTab.find("#batchID_hid").val(repFMList[0].batchID);
+                	noVarRepTab.find("#batchID_hid_M").val(repFMList[0].batchID);
                     for (var i = 0; i < repFMList.length; i++) {
                         var repFM=repFMList[i];
                         var rowNumber=repFM.rowNumber;
@@ -83,7 +83,7 @@ function initPagerHtml(reportFMPageList){
                     }
                 }
                 arr.push(noVarRepDiv.html());
-                noVarRepTab.find("#batchID_hid").val("");
+                noVarRepTab.find("#batchID_hid_M").val("");
                 noVarRepTab.find("td[id^='td']").text("");//模版和变量一起添加到正式报表后，清空未显示变量的报表模版里的变量值
 		      });
 		      // console.log(arr)
@@ -106,11 +106,11 @@ function initPagerHtml(reportFMPageList){
             <tr>
                 <td>
                     起始时间&nbsp;&nbsp;
-                    <input placeholder="请选择时间" id="startTime" class="Wdate m_query_head_input" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" readonly="readonly"/>
+                    <input placeholder="请选择时间" id="startTime_M" class="Wdate m_query_head_input" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" readonly="readonly"/>
                 </td>
                 <td>
                     选择批次&nbsp;&nbsp;
-                    <select class="m_query_head_input" id="typeSelect"></select>
+                    <select class="m_query_head_input" id="typeSelectM"></select>
                 </td>
                 <td>
                     <button class="printing_button" onclick="prePreExcelM()">导出Excel</button>
@@ -120,10 +120,10 @@ function initPagerHtml(reportFMPageList){
             <tr>
                 <td>
                     结束时间&nbsp;&nbsp;
-                    <input placeholder="请选择时间" id="endTime" class="Wdate m_query_head_input" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" readonly="readonly"/>
+                    <input placeholder="请选择时间" id="endTime_M" class="Wdate m_query_head_input" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" readonly="readonly"/>
                 </td>
                 <td>
-                    当前胶种:&nbsp;&nbsp;&nbsp;<span id="glue" class="glue"></span>
+                    当前胶种:&nbsp;&nbsp;&nbsp;<span id="current_glue_m" class="glue"></span>
                 </td>
                 <td>
                     <button class="m_query_head_button" onclick="getReportFMPageList()">
@@ -142,17 +142,17 @@ function initPagerHtml(reportFMPageList){
 
     </div>
     <div class="home_right_bottom_div">
-        <div id="paging" class="home_right_bottom_paging"></div>
+        <div id="paging_m" class="home_right_bottom_paging"></div>
     </div>
 </div>
 
 <%--&lt;%&ndash;未显示变量的报表模版&ndash;%&gt;--%>
-<div id="noVarRep_div" style="display: none;">
+<div id="noVarRepM_div" style="display: none;">
     <!--startprint-->
     <table class="m_body_table" border="1px" id="opcMSTable">
         <tr class="tr1">
             <td colspan="13">
-                <input type="hidden" id="batchID_hid"/>
+                <input type="hidden" id="batchID_hid_M"/>
                 <span class="onetd1" id="pdf-title">M类（<span id="typeM"></span>）胶 生产记录</span>
                 <%-- <span class="onetd4">自动表单设计：张发 设计号：ZJZD20211225</span>--%>
             </td>
@@ -191,7 +191,7 @@ function initPagerHtml(reportFMPageList){
             <td class="green" id="td3_6">
                 <%--备料开始时间--%>
             </td>
-            <td>结束时间</td>
+            <td style="width: 150px;">结束时间</td>
             <td class="green" id="td3_8">
                 <%--冷却结束时间--%>
             </td>
@@ -199,7 +199,7 @@ function initPagerHtml(reportFMPageList){
             <td class="yellow" id="td3_10">
                 <%--min--%>
             </td>
-            <td>生产日期： </td>
+            <td style="width: 150px;">生产日期： </td>
             <td class="green">
             </td>
         </tr>
