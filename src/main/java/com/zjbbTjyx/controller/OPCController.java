@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.alibaba.fastjson.JSONObject;
 import javafish.clients.opc.component.OpcItem;
+import javafish.clients.opc.variant.Variant;
+
 import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -96,7 +98,9 @@ public class OPCController {
 		Map<String,Object> json=new HashMap<String, Object>();
 		
 		List<String> opcPVNameList=OpcUtil.getOpcPVNameList();
-		OpcUtil.readPVByOpcVNList(opcPVNameList);
+		for (String opcPVName : opcPVNameList) {
+			OpcUtil.readOpcItemByName(opcPVName);
+		}
 		
 		return json;
 	}

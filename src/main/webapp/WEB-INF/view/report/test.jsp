@@ -25,8 +25,8 @@
 <script>
 var path='<%=basePath%>';
 $(function(){
-	syncTriggerVar();
-	//readOpcProVarList();
+	//syncTriggerVar();
+	readOpcProVarList();
 });
 
 function syncTriggerVar(){
