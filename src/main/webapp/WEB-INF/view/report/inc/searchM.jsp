@@ -20,7 +20,6 @@ function getReportFMPageList() {
    $.post(path+"report/getReportFMPageList",
        {type:current_glue_m,batchID:typeSelectM,startTime:startTime,endTime:endTime},
        function(result){
-    	   // console.log(result)
            if(result.status==1){
                var reportFMPageList=result.data;
                initPagerHtml(reportFMPageList);
@@ -78,7 +77,6 @@ function initPagerHtml(reportFMPageList){
                         var rowNumber=repFM.rowNumber;
                         var colNumber=repFM.colNumber;
                         var value=repFM.value;
-                        //console.log(repFM)
                         noVarRepTab.find("#td"+rowNumber+"_"+colNumber).text(value);//暂时把变量添加到未显示变量的报表模版里
                     }
                 }
@@ -86,7 +84,6 @@ function initPagerHtml(reportFMPageList){
                 noVarRepTab.find("#batchID_hid_M").val("");
                 noVarRepTab.find("td[id^='td']").text("");//模版和变量一起添加到正式报表后，清空未显示变量的报表模版里的变量值
 		      });
-		      // console.log(arr)
 		      return arr.join('');
 		    }();
 		  }
@@ -138,14 +135,11 @@ function initPagerHtml(reportFMPageList){
             </tr>
         </table>
     </div>
-    <div class="home_right_sbody_div" id="reportFMPageList_div">
-
-    </div>
+    <div class="home_right_sbody_div" id="reportFMPageList_div"></div>
     <div class="home_right_bottom_div">
         <div id="paging_m" class="home_right_bottom_paging"></div>
     </div>
 </div>
-
 <%--&lt;%&ndash;未显示变量的报表模版&ndash;%&gt;--%>
 <div id="noVarRepM_div" style="display: none;">
     <!--startprint-->
@@ -522,7 +516,6 @@ function initPagerHtml(reportFMPageList){
 </body>
 <script>
     function doPrint() {
-
         bdhtml=window.document.body.innerHTML;
         sprnstr="<!--startprint-->"; //开始打印标识字符串有17个字符
         eprnstr="<!--endprint-->"; //结束打印标识字符串
@@ -532,6 +525,5 @@ function initPagerHtml(reportFMPageList){
         window.print(); //调用浏览器的打印功能打印指定区域
         window.document.body.innerHTML=bdhtml; // 最后还原页面
     }
-
 </script>
 </html>

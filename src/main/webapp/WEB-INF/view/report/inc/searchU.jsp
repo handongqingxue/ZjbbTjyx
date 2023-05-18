@@ -1,17 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-<%--    <%@include file="../inc/js.jsp"%>--%>
 <script type="text/javascript" src="<%=basePath%>resource/js/jquery-3.3.1.js"></script>
 <title>Title</title>
 <script type="text/javascript">
-
 var path='<%=basePath%>';
 $(function(){
     getReportFUPageList();
 });
-
-
 function getReportFUPageList() {
     var current_glue_u = $("#current_glue_u").text();
     var typeU = current_glue_u.substring(1,2);
@@ -49,6 +45,7 @@ function prePreExcelU(){
     var batchID=$("#opcUSTable #batchID_hid_U").val();
     window.open("goPreExcelU?batchID="+batchID,"newwindow","width=300;");
 }
+
 function initPagerHtmlU(reportFUPageList){
     layui.use(['laypage', 'layer'], function(){
         var laypage = layui.laypage,layer = layui.layer;
@@ -150,7 +147,7 @@ function initPagerHtmlU(reportFUPageList){
             <th colspan="13">
                 <input type="hidden" id="batchID_hid_U" value="1"/>
                 <span class="onetd1">U类（<span id="typeU"></span>）胶 生产记录</span>
-<%--                <span class="onetd4">自动表单设计：张发 设计号：ZJZD20211225</span>--%>
+                <%--<span class="onetd4">自动表单设计：张发 设计号：ZJZD20211225</span>--%>
             </th>
         </tr>
         <!--第二行-->
