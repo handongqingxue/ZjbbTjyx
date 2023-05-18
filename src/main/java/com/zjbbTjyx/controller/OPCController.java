@@ -76,7 +76,7 @@ public class OPCController {
 	}
 
 	/**
-	 * 同步触发器变量
+	 * 从opc服务器端同步数据库的触发器变量
 	 * @return
 	 */
 	@RequestMapping(value = "/syncTriggerVar", method = RequestMethod.POST)
@@ -85,8 +85,15 @@ public class OPCController {
 
 		Map<String,Object> json=new HashMap<String, Object>();
 		
+		ArrayList<OpcItem> opcItemList = new ArrayList<OpcItem>();
 		List<String> opcTVNameList=OpcUtil.getOpcTVNameList();
-		OpcUtil.syncTVByOpcVNList(opcTVNameList);
+		System.out.println("opcTVNameListSize==="+opcTVNameList.size());
+		for (String opcTVName : opcTVNameList) {
+			OpcItem opcItem=OpcUtil.readOpcItemByName(opcTVName);
+			opcItemList.add(opcItem);
+		}
+
+		APIUtil.addVar("addTriggerVarFromOpc",opcItemList);
 		
 		return json;
 	}
