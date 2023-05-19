@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
 import org.json.JSONArray;
@@ -25,6 +26,9 @@ import com.zjbbTjyx.entity.*;
 public class OpcUtil {
 	
 	private static boolean IS_TEST=true;
+	private static Map<String,Object> jOpcTVNameMap=new HashMap<String,Object>();
+	private static List<OpcItem> imiOpcItemTVList=new ArrayList<OpcItem>();
+	private static List<String> opcTVNameExistList=new ArrayList<String>();
 	
     public static void main(String[] args) {
         SynchReadItemExample test = new SynchReadItemExample();
@@ -718,12 +722,6 @@ public class OpcUtil {
 	    		opcItems = responseGroup.getItems();
 	        }
 	
-	        /*
-	        OpcItem opcItem1 = new OpcItem("甲醛实际进料重量_F1_AV",false,"111");
-	        opcItem1.setValue(new Variant("0"));
-	        opcItems.add(opcItem1);
-	        */
-        
 	        ProcessVar proVar=null;
 	        if(opcItems!=null) {
 	        	if(TriggerVar.M.equals(tvRecType)) {
@@ -1516,33 +1514,14 @@ public class OpcUtil {
      */
     public static List<String> getOpcTVNameList() {
     	List<String> opcTVNameList=new ArrayList<String>();
+    	for(int i=0;i<3;i++) {
+    		opcTVNameList.add("_System._DateTime");
+    	}
     	
-        opcTVNameList.add(Constant.CE_SHUI_SHU_TI_XING+Constant.XHX+"F2"+Constant.XHX+Constant.AV);//测水数提醒
-        
-        opcTVNameList.add(Constant.JU_HE_ZHONG_DIAN+Constant.XHX+"F1"+Constant.XHX+Constant.AV);//聚合终点
-        opcTVNameList.add(Constant.JU_HE_ZHONG_DIAN+Constant.XHX+"F2"+Constant.XHX+Constant.AV);//聚合终点
-        opcTVNameList.add(Constant.JU_HE_ZHONG_DIAN+Constant.XHX+"F3"+Constant.XHX+Constant.AV);//聚合终点
-        opcTVNameList.add(Constant.JU_HE_ZHONG_DIAN+Constant.XHX+"F4"+Constant.XHX+Constant.AV);//聚合终点
-        
-        opcTVNameList.add(Constant.PAI_JIAO_WAN_CHENG+Constant.XHX+"F1"+Constant.XHX+Constant.AV);//排胶完成
-        opcTVNameList.add(Constant.PAI_JIAO_WAN_CHENG+Constant.XHX+"F2"+Constant.XHX+Constant.AV);//排胶完成
-        opcTVNameList.add(Constant.PAI_JIAO_WAN_CHENG+Constant.XHX+"F3"+Constant.XHX+Constant.AV);//排胶完成
-        opcTVNameList.add(Constant.PAI_JIAO_WAN_CHENG+Constant.XHX+"F4"+Constant.XHX+Constant.AV);//排胶完成
-        
-        opcTVNameList.add(Constant.ER_CI_ZHU_JI_HOU_CE_PH_TI_XING+Constant.XHX+"F1"+Constant.XHX+Constant.AV);//二次助剂后测PH提醒
-        opcTVNameList.add(Constant.ER_CI_ZHU_JI_HOU_CE_PH_TI_XING+Constant.XHX+"F3"+Constant.XHX+Constant.AV);//二次助剂后测PH提醒
-        opcTVNameList.add(Constant.ER_CI_ZHU_JI_HOU_CE_PH_TI_XING+Constant.XHX+"F4"+Constant.XHX+Constant.AV);//二次助剂后测PH提醒
-        opcTVNameList.add(Constant.ER_CI_ZHU_JI_HOU_CE_PH_TI_XING+Constant.XHX+"F5"+Constant.XHX+Constant.AV);//二次助剂后测PH提醒
-        
-        opcTVNameList.add(Constant.JIANG_WEN_WAN_CHENG+Constant.XHX+"F1"+Constant.XHX+Constant.AV);//降温完成
-        opcTVNameList.add(Constant.JIANG_WEN_WAN_CHENG+Constant.XHX+"F2"+Constant.XHX+Constant.AV);//降温完成
-        opcTVNameList.add(Constant.JIANG_WEN_WAN_CHENG+Constant.XHX+"F3"+Constant.XHX+Constant.AV);//降温完成
-        opcTVNameList.add(Constant.JIANG_WEN_WAN_CHENG+Constant.XHX+"F4"+Constant.XHX+Constant.AV);//降温完成
-
     	List<String> opcTVNamePreList=new ArrayList<String>();//前缀集合
     	opcTVNamePreList.add(Constant.BEI_LIAO_KAI_SHI);//备料开始前缀
         opcTVNamePreList.add(Constant.FAN_YING_JIE_SHU);//反应结束
-        //opcTVNamePreList.add(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI);//甲醛备料开始
+        opcTVNamePreList.add(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI);//甲醛备料开始
         opcTVNamePreList.add(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG);//甲醛放料完成
         opcTVNamePreList.add(Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG);//加碱PH值正常
         opcTVNamePreList.add(Constant.YUN_XU_YI_CI_JIA_ZHU_JI);//允许一次加助剂
@@ -1551,18 +1530,17 @@ public class OpcUtil {
         opcTVNamePreList.add(Constant.JIA_FEN_LIAO_PH_HE_GE);//加粉料PH合格
         opcTVNamePreList.add(Constant.SHENG_WEN_KAI_SHI);//升温开始
         opcTVNamePreList.add(Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING);//温度85与二次投料提醒
-        //opcTVNamePreList.add(Constant.ER_CI_ZHU_JI_HOU_CE_PH_TI_XING);//二次助剂后测PH提醒----这个变量F2没有
         opcTVNamePreList.add(Constant.YUN_XU_ER_CI_JIA_ZHU_JI);//允许二次加助剂
         opcTVNamePreList.add(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2);//所有助剂加料完成2
         opcTVNamePreList.add(Constant.SHENG_WEN_WAN_CHENG);//升温完成
         opcTVNamePreList.add(Constant.WEN_DU_98_PH);//温度98PH合格
         opcTVNamePreList.add(Constant.CE_LIANG_BING_SHUI_WU_DIAN_TI_XING);//测量冰水雾点提醒
-        //opcTVNamePreList.add(Constant.CE_SHUI_SHU_TI_XING);//测水数提醒----这个只有F2有值
+        opcTVNamePreList.add(Constant.CE_SHUI_SHU_TI_XING);//测水数提醒----这个只有F2有值
         opcTVNamePreList.add("停热降温水数提醒");
-        //opcTVNamePreList.add(Constant.JU_HE_ZHONG_DIAN);//聚合终点----这个F5没值,因为5号的生产流程还没有做，报表可以先不做5号的
-        //opcTVNamePreList.add(Constant.JIANG_WEN_WAN_CHENG);//降温完成----这个变量F5没有
+        opcTVNamePreList.add(Constant.JU_HE_ZHONG_DIAN);//聚合终点----这个F5没值,因为5号的生产流程还没有做，报表可以先不做5号的
+        opcTVNamePreList.add(Constant.JIANG_WEN_WAN_CHENG);//降温完成----这个变量F5没有
         opcTVNamePreList.add(Constant.YUN_XU_KAI_SHI_PAI_JIAO);//允许开始排胶
-        //opcTVNamePreList.add(Constant.PAI_JIAO_WAN_CHENG);//排胶完成---F5没有
+        opcTVNamePreList.add(Constant.PAI_JIAO_WAN_CHENG);//排胶完成---F5没有
 
     	for (String opcTVNamePre : opcTVNamePreList) {//循环拼接上反应釜号作为完整的变量
     		for (String fMName : Constant.BSF_F_M_ARR) {
@@ -1575,15 +1553,26 @@ public class OpcUtil {
     			else
     				opcTVName = opcTVNamePre+Constant.XHX+fMName+Constant.XHX+Constant.AV;
     			
-    			System.out.println("opcTVName==="+opcTVName);
     			opcTVNameList.add(opcTVName);
 			}
-    		/*
-    		for (String fMName : Constant.BSF_F_U_ARR) {
-    			String opcTVName = opcTVNamePre+"_"+fMName+"_AV";
+    		for (String fUName : Constant.BSF_F_U_ARR) {
+    			String opcTVName = opcTVNamePre+Constant.XHX+fUName+Constant.XHX+Constant.AV;
     			opcTVNameList.add(opcTVName);
 			}
-			*/
+		}
+    	
+    	List<String> opcTVNamePhPreList=new ArrayList<String>();
+    	opcTVNamePhPreList.add(Constant.ER_CI_ZHU_JI_HOU_CE_PH_TI_XING);//二次助剂后测PH提醒----这个变量F2没有
+
+    	for (String opcTVNamePhPre : opcTVNamePhPreList) {//循环拼接上反应釜号作为完整的变量
+    		for (String fMName : Constant.BSF_PF_M_ARR) {
+    			String opcTVName = opcTVNamePhPre+Constant.XHX+fMName+Constant.XHX+Constant.AV;
+    			opcTVNameList.add(opcTVName);
+			}
+    		for (String fUName : Constant.BSF_PF_U_ARR) {
+    			String opcTVName = opcTVNamePhPre+Constant.XHX+fUName+Constant.XHX+Constant.AV;
+    			opcTVNameList.add(opcTVName);
+			}
 		}
     	
     	return opcTVNameList;
@@ -1600,31 +1589,14 @@ public class OpcUtil {
 		}
 		
 		for (String pFM : Constant.BSF_PF_M_ARR) {
-			//opcPVNameList.add(Constant.JIA_JIAN_LIANG_TI_SHI+Constant.XHX+pFM+Constant.XHX+Constant.AV);//加碱量提示---F2找不到
+			opcPVNameList.add(Constant.JIA_JIAN_LIANG_TI_SHI+Constant.XHX+pFM+Constant.XHX+Constant.AV);//加碱量提示---F2找不到
+			opcPVNameList.add("加碱量范围上限"+Constant.XHX+pFM+Constant.XHX+Constant.AV);//加碱量范围上限----这个F3-F5没有变量
 			opcPVNameList.add(Constant.FEN_LIAO_ZHONG_LIANG_SHE_DING+Constant.XHX+pFM+Constant.XHX+Constant.AV);//粉料重量设定
 		}
 		
-		opcPVNameList.add(Constant.JIA_JIAN_LIANG_TI_SHI+Constant.XHX+"PF1"+Constant.XHX+Constant.AV);//加碱量提示
-		//opcPVNameList.add(Constant.JIA_JIAN_LIANG_TI_SHI+Constant.XHX+"PF2"+Constant.XHX+Constant.AV);//加碱量提示
-		opcPVNameList.add(Constant.JIA_JIAN_LIANG_TI_SHI+Constant.XHX+"PF3"+Constant.XHX+Constant.AV);//加碱量提示
-		opcPVNameList.add(Constant.JIA_JIAN_LIANG_TI_SHI+Constant.XHX+"PF4"+Constant.XHX+Constant.AV);//加碱量提示
-		opcPVNameList.add(Constant.JIA_JIAN_LIANG_TI_SHI+Constant.XHX+"PF5"+Constant.XHX+Constant.AV);//加碱量提示
-		
 		opcPVNameList.add(Constant.ZHENG_QI_YA_LI+Constant.XHX+Constant.AV);//蒸汽压力
 		
-		opcPVNameList.add(Constant.TING_RE_JIANG_WEN_SHUI_SHU_SRZ+Constant.XHX+"F1"+Constant.XHX+Constant.AV);//停热降温水数输入值
-		opcPVNameList.add(Constant.TING_RE_JIANG_WEN_SHUI_SHU_SRZ+Constant.XHX+"F3"+Constant.XHX+Constant.AV);
-		opcPVNameList.add(Constant.TING_RE_JIANG_WEN_SHUI_SHU_SRZ+Constant.XHX+"F4"+Constant.XHX+Constant.AV);
-		opcPVNameList.add(Constant.TING_RE_JIANG_WEN_SHUI_SHU_SRZ+Constant.XHX+"F5"+Constant.XHX+Constant.AV);
-        
-		opcPVNameList.add(Constant.JIA_JIAN_LIANG_TI_SHI+Constant.XHX+"PF1"+Constant.XHX+Constant.AV);
-		opcPVNameList.add("加碱量范围上限"+Constant.XHX+"PF2"+Constant.XHX+Constant.AV);//----这个F3-F5没有变量
-        //opcPVNameList.add("加碱量范围上限"+Constant.XHX+"PF3"+Constant.XHX+Constant.AV);
-        //opcPVNameList.add("加碱量范围上限"+Constant.XHX+"PF4"+Constant.XHX+Constant.AV);
-        //opcPVNameList.add("加碱量范围上限"+Constant.XHX+"PF5"+Constant.XHX+Constant.AV);
-        
-        //opcPVNameList.add("反应釜1胶种类型"+Constant.XHX+Constant.AV);//这个变量没有
-
+        opcPVNameList.add("反应釜1胶种类型"+Constant.XHX+Constant.AV);//这个变量没有
     	
     	List<String> opcPVNamePreList=new ArrayList<String>();//前缀集合
 
@@ -1651,7 +1623,7 @@ public class OpcUtil {
     	opcPVNamePreList.add(Constant.WEN_DU_98_PH);//温度98PH
     	opcPVNamePreList.add(Constant.CE_LIANG_BSWD_SRZ);//测量冰水雾点输入值
     	opcPVNamePreList.add(Constant.CE_20_WU_DIAN_SRZ);//测20雾点输入值
-    	//opcPVNamePreList.add(Constant.TING_RE_JIANG_WEN_SHUI_SHU_SRZ);//停热降温水数输入值-----这个缺少F2变量
+    	opcPVNamePreList.add(Constant.TING_RE_JIANG_WEN_SHUI_SHU_SRZ);//停热降温水数输入值-----这个缺少F2变量
     	
     	for (String opcPVNamePre : opcPVNamePreList) {//循环拼接上反应釜号作为完整的变量
     		for (String fMName : Constant.BSF_F_M_ARR) {
@@ -1662,83 +1634,85 @@ public class OpcUtil {
     	
 		return opcPVNameList;
 	}
-    
-    /**
-     * 从opc服务器端同步数据库的触发器变量
-     * @param opcVarNameList
-     */
-    public static void syncTVByOpcVNList(List<String> opcVarNameList) {
+	
+	/**
+	 * 初始化opc服务器端变量map(为了判断变量是否存在与opc服务器上，只能单个读取,包括触发器变量和过程变量.若opc端不存在某个变量,就用模拟变量代替.读取完单个变量后,一个个放进map里)
+	 * @param opcTVNameList
+	 */
+	public static void initJOpcTVMap(List<String> opcTVNameList) {
         try {
-	    	SynchReadItemExample test = new SynchReadItemExample();
-	    	JOpc.coInitialize();   //初始化JOpc        JOpc继承父类JCustomOpc
-			JOpc jopc = new JOpc(Constant.OPC_HOST, Constant.OPC_SERVER_PROG_ID, Constant.OPC_SERVER_CLIENT_HANDLE);
-	    	
-	        OpcGroup group = new OpcGroup(Constant.OPC_GROUP_NAME, true, 500, 0.0f);
-	    	for (String opcVarName : opcVarNameList) {
-	        	group.addItem(new OpcItem( opcVarName, true, ""));
+        	Map<String,Object> jOpcTVMap=null;
+			for (String opcTVName : opcTVNameList) {
+				System.out.println("wwwwwwwwwwwwwwww");
+				SynchReadItemExample test = new SynchReadItemExample();
+		    	JOpc.coInitialize();   //初始化JOpc        JOpc继承父类JCustomOpc
+				JOpc jopc = new JOpc(Constant.OPC_HOST, Constant.OPC_SERVER_PROG_ID, Constant.OPC_SERVER_CLIENT_HANDLE);
+		    	
+		        OpcGroup group = new OpcGroup(Constant.OPC_GROUP_NAME, true, 500, 0.0f);
+		        group.addItem(new OpcItem(opcTVName, true, ""));
+		
+		        jopc.addGroup(group);   //添加组
+		
+		        boolean tvExist=true;
+		        try {
+		            jopc.connect();   //连接
+		            jopc.registerGroups();  //注册组
+		        } catch (ConnectivityException e1) {
+		            System.out.println("ConnectivityException="+e1.getMessage());
+		            //logger.error(e1.getMessage());
+		        } catch (UnableAddGroupException e) {
+		            System.out.println("UnableAddGroupException="+e.getMessage());
+		            //logger.error(e.getMessage());
+		        } catch (UnableAddItemException e) {
+		            System.out.println("UnableAddItemException="+e.getMessage());
+		            //logger.error(e.getMessage());
+		            OpcItem opcItem = getImiOpcItem(opcTVName);
+		            imiOpcItemTVList.add(opcItem);
+		            tvExist=false;
+		        }
+		        synchronized(test) {
+		            test.wait(50);
+		        }
+		        
+		        if(tvExist)
+		        	opcTVNameExistList.add(opcTVName);
+		        
+		        jOpcTVMap=new HashMap<String,Object>();
+		        jOpcTVMap.put("jopc", jopc);
+		        jOpcTVMap.put("group", group);
+		        
+		        jOpcTVNameMap.put(opcTVName, jOpcTVMap);
 			}
-	
-	        jopc.addGroup(group);   //添加组
-	        
-	        /*
-	        OpcGroup[] groups = jopc.getGroupsAsArray();
-	        System.out.println("groups.length==="+groups.length);
-	        for (int i = 0; i < groups.length; i++) {
-	            System.out.println("getGroupName"+i+"==="+groups[i].getGroupName());
-			}
-			*/
-	        
-	        OpcGroup responseGroup = null;
-	
-	        try {
-	            jopc.connect();   //连接
-	            jopc.registerGroups();  //注册组
-	        } catch (ConnectivityException e1) {
-	            System.out.println("ConnectivityException="+e1.getMessage());
-	            //logger.error(e1.getMessage());
-	        } catch (UnableAddGroupException e) {
-	            System.out.println("UnableAddGroupException="+e.getMessage());
-	            //logger.error(e.getMessage());
-	        } catch (UnableAddItemException e) {
-	            System.out.println("UnableAddItemException="+e.getMessage());
-	            //logger.error(e.getMessage());
-	        }
-	        synchronized(test) {
-	            test.wait(50);
-	        }
-	
-			responseGroup = jopc.synchReadGroup(group);
-	        ArrayList<OpcItem> opcItemList = responseGroup.getItems();
-	        for (OpcItem opcItem : opcItemList) {
-	            System.out.println("getItemName==="+opcItem.getItemName()+",getValue==="+opcItem.getValue().toString());
-			}
-			APIUtil.addVar("addTriggerVarFromOpc",opcItemList);
         } catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-
+    
 	/**
-	 * 读取opc服务器端过程变量
-	 * @param opcVarNameList
+	 * 读取opc服务器端变量
+	 * @param itemName
+	 * @return
 	 */
-	public static void readPVByOpcVNList(List<String> opcVarNameList) {
-		// TODO Auto-generated method stub
+	/**
+	 * @param opcTVNameList
+	 * @return
+	 */
+	public static ArrayList<OpcItem> readJOpcTVMap() {
+		ArrayList<OpcItem> opcItemList = new ArrayList<OpcItem>();
+		OpcItem opcItem = null;
         try {
+        	/*
 			SynchReadItemExample test = new SynchReadItemExample();
 	    	JOpc.coInitialize();   //初始化JOpc        JOpc继承父类JCustomOpc
 			JOpc jopc = new JOpc(Constant.OPC_HOST, Constant.OPC_SERVER_PROG_ID, Constant.OPC_SERVER_CLIENT_HANDLE);
 	    	
 	        OpcGroup group = new OpcGroup(Constant.OPC_GROUP_NAME, true, 500, 0.0f);
-	    	for (String opcVarName : opcVarNameList) {
-	        	group.addItem(new OpcItem( opcVarName, true, ""));
-			}
+	        group.addItem(new OpcItem(itemName, true, ""));
 	
 	        jopc.addGroup(group);   //添加组
 	
 	        OpcGroup responseGroup = null;
-	
 	        try {
 	            jopc.connect();   //连接
 	            jopc.registerGroups();  //注册组
@@ -1751,19 +1725,77 @@ public class OpcUtil {
 	        } catch (UnableAddItemException e) {
 	            System.out.println("UnableAddItemException="+e.getMessage());
 	            //logger.error(e.getMessage());
+	            opcItem = getImiOpcItem(itemName);
 	        }
 	        synchronized(test) {
 	            test.wait(50);
 	        }
+	        */
 	
-			responseGroup = jopc.synchReadGroup(group);
-	        ArrayList<OpcItem> opcItemList = responseGroup.getItems();
-	        for (OpcItem opcItem : opcItemList) {
-	            System.out.println("getItemName==="+opcItem.getItemName()+",getValue==="+opcItem.getValue().toString());
+	        OpcGroup responseGroup = null;
+        	Map<String,Object> jOpcTVMap=null;
+        	//Set<String> keySet = jOpcTVNameMap.keySet();
+			//for (String key : keySet) {
+			for (String key : opcTVNameExistList) {
+        		jOpcTVMap=(Map<String,Object>)jOpcTVNameMap.get(key);
+        		JOpc jOpc=(JOpc)jOpcTVMap.get("jopc");
+        		OpcGroup group=(OpcGroup)jOpcTVMap.get("group");
+				responseGroup = jOpc.synchReadGroup(group);
+		        ArrayList<OpcItem> opcItems = responseGroup.getItems();
+		        opcItem = opcItems.get(0);
+		        String valueStr = opcItem.getValue().toString();
+		        if(StringUtils.isEmpty(valueStr)) {
+		        	opcItem.setValue(new Variant(0));
+		        }
+		        System.out.println("getItemName==="+opcItem.getItemName()+",getValue==="+opcItem.getValue().toString());
+				opcItemList.add(opcItem);
 			}
+			
+			opcItemList.addAll(imiOpcItemTVList);
         } catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+        finally {
+        	return opcItemList;
+		}
+	}
+	
+	public static OpcItem getImiOpcItem(String itemName) {
+		//System.out.println("getImiOpcItem..........");
+		float value=0;
+		if(
+		   itemName.startsWith(Constant.BEI_LIAO_KAI_SHI)||//备料开始
+		   itemName.startsWith(Constant.FAN_YING_JIE_SHU)||//反应结束
+		   itemName.startsWith(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI)||//甲醛备料开始
+		   itemName.startsWith(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG)||//甲醛放料完成
+		   itemName.startsWith(Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG)||//加碱PH值正常
+		   itemName.startsWith(Constant.YUN_XU_YI_CI_JIA_ZHU_JI)||//允许一次加助剂
+		   itemName.startsWith(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1)||//所有助剂加料完成1
+		   itemName.startsWith(Constant.JIA_FEN_LIAO_TI_XING)||//加粉料提醒
+		   itemName.startsWith(Constant.JIA_FEN_LIAO_PH_HE_GE)||//加粉料PH合格
+		   itemName.startsWith(Constant.SHENG_WEN_KAI_SHI)||//升温开始
+		   itemName.startsWith(Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING)||//温度85与二次投料提醒
+		   itemName.startsWith(Constant.ER_CI_ZHU_JI_HOU_CE_PH_TI_XING)||//二次助剂后测PH提醒
+		   itemName.startsWith(Constant.YUN_XU_ER_CI_JIA_ZHU_JI)||//允许二次加助剂
+		   itemName.startsWith(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2)||//所有助剂加料完成2
+		   itemName.startsWith(Constant.SHENG_WEN_WAN_CHENG)||//升温完成
+		   itemName.startsWith(Constant.WEN_DU_98_PH)||//温度98PH合格
+		   itemName.startsWith(Constant.CE_LIANG_BING_SHUI_WU_DIAN_TI_XING)||//测量冰水雾点提醒
+		   itemName.startsWith(Constant.CE_SHUI_SHU_TI_XING)||//测水数提醒
+		   itemName.startsWith("停热降温水数提醒")||//停热降温水数提醒
+		   itemName.startsWith(Constant.JU_HE_ZHONG_DIAN)||//聚合终点
+		   itemName.startsWith(Constant.JIANG_WEN_WAN_CHENG)||//降温完成
+		   itemName.startsWith(Constant.YUN_XU_KAI_SHI_PAI_JIAO)||//允许开始排胶
+		   itemName.startsWith(Constant.PAI_JIAO_WAN_CHENG)||//排胶完成
+		   itemName.startsWith("加碱量范围上限")||
+		   itemName.startsWith("反应釜1胶种类型")
+		   )
+			value=0;
+		
+		OpcItem opcItem = new OpcItem(itemName,true,"");
+		opcItem.setValue(new Variant(value));
+        System.out.println("getItemName1==="+opcItem.getItemName()+",getValue1==="+opcItem.getValue().toString());
+		return opcItem;
 	}
 }

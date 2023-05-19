@@ -9,17 +9,20 @@ public class Constant {
 	/**
 	 * opc服务名
 	 */
-	public static final String OPC_SERVER_PROG_ID="UWinTech.UWinOPCS.1";
+	//public static final String OPC_SERVER_PROG_ID="UWinTech.UWinOPCS.1";
+	public static final String OPC_SERVER_PROG_ID="kepware.KEPServerEX.V6";
 	
 	/**
 	 * opc服务器计算机名
 	 */
-	public static final String OPC_SERVER_CLIENT_HANDLE="MM-202303181234";
+	//public static final String OPC_SERVER_CLIENT_HANDLE="MM-202303181234";
+	public static final String OPC_SERVER_CLIENT_HANDLE="M3N881PM37O1M1D";
 	
 	/**
 	 * opc变量组名
 	 */
-	public static final String OPC_GROUP_NAME="Group1";
+	//public static final String OPC_GROUP_NAME="Group1";
+	public static final String OPC_GROUP_NAME="_System";
 
 	/**
 	 * 下划线
@@ -122,6 +125,27 @@ public class Constant {
 	 * 5号反应釜Ph值(M类)
 	 */
 	public static final String BSF_PF5="PF5";
+
+	/**
+	 * 1号反应釜Ph值(U类)
+	 */
+	public static final String BSF_PF1U="PF1U";
+	/**
+	 * 2号反应釜Ph值(U类)
+	 */
+	public static final String BSF_PF2U="PF2U";
+	/**
+	 * 3号反应釜Ph值(U类)
+	 */
+	public static final String BSF_PF3U="PF3U";
+	/**
+	 * 4号反应釜Ph值(U类)
+	 */
+	public static final String BSF_PF4U="PF4U";
+	/**
+	 * 5号反应釜Ph值(U类)
+	 */
+	public static final String BSF_PF5U="PF5U";
 	
 	/**
 	 * 助剂计量罐1(M类)
@@ -199,6 +223,11 @@ public class Constant {
 	 * 反应釜Ph标识符数组(M类)
 	 */
 	public static final String[] BSF_PF_M_ARR=new String[] {BSF_PF1,BSF_PF2,BSF_PF3,BSF_PF4,BSF_PF5};
+	
+	/**
+	 * 反应釜Ph标识符数组(U类)
+	 */
+	public static final String[] BSF_PF_U_ARR=new String[] {BSF_PF1U,BSF_PF2U,BSF_PF3U,BSF_PF4U,BSF_PF5U};
 	
 	/**
 	 * 助剂计量罐1-2标识符数组(M类)
