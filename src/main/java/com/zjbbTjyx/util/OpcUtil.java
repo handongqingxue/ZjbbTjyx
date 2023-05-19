@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
 import org.json.JSONArray;
@@ -25,6 +26,9 @@ import com.zjbbTjyx.entity.*;
 public class OpcUtil {
 	
 	private static boolean IS_TEST=true;
+	private static Map<String,Object> jOpcTVNameMap=new HashMap<String,Object>();
+	private static List<OpcItem> imiOpcItemTVList=new ArrayList<OpcItem>();
+	private static List<String> opcTVNameExistList=new ArrayList<String>();
 	
     public static void main(String[] args) {
         SynchReadItemExample test = new SynchReadItemExample();
@@ -1510,6 +1514,9 @@ public class OpcUtil {
      */
     public static List<String> getOpcTVNameList() {
     	List<String> opcTVNameList=new ArrayList<String>();
+    	for(int i=0;i<3;i++) {
+    		opcTVNameList.add("_System._DateTime");
+    	}
     	
     	List<String> opcTVNamePreList=new ArrayList<String>();//前缀集合
     	opcTVNamePreList.add(Constant.BEI_LIAO_KAI_SHI);//备料开始前缀
@@ -1627,15 +1634,75 @@ public class OpcUtil {
     	
 		return opcPVNameList;
 	}
+	
+	/**
+	 * 初始化opc服务器端变量map(为了判断变量是否存在与opc服务器上，只能单个读取,包括触发器变量和过程变量.若opc端不存在某个变量,就用模拟变量代替.读取完单个变量后,一个个放进map里)
+	 * @param opcTVNameList
+	 */
+	public static void initJOpcTVMap(List<String> opcTVNameList) {
+        try {
+        	Map<String,Object> jOpcTVMap=null;
+			for (String opcTVName : opcTVNameList) {
+				System.out.println("wwwwwwwwwwwwwwww");
+				SynchReadItemExample test = new SynchReadItemExample();
+		    	JOpc.coInitialize();   //初始化JOpc        JOpc继承父类JCustomOpc
+				JOpc jopc = new JOpc(Constant.OPC_HOST, Constant.OPC_SERVER_PROG_ID, Constant.OPC_SERVER_CLIENT_HANDLE);
+		    	
+		        OpcGroup group = new OpcGroup(Constant.OPC_GROUP_NAME, true, 500, 0.0f);
+		        group.addItem(new OpcItem(opcTVName, true, ""));
+		
+		        jopc.addGroup(group);   //添加组
+		
+		        boolean tvExist=true;
+		        try {
+		            jopc.connect();   //连接
+		            jopc.registerGroups();  //注册组
+		        } catch (ConnectivityException e1) {
+		            System.out.println("ConnectivityException="+e1.getMessage());
+		            //logger.error(e1.getMessage());
+		        } catch (UnableAddGroupException e) {
+		            System.out.println("UnableAddGroupException="+e.getMessage());
+		            //logger.error(e.getMessage());
+		        } catch (UnableAddItemException e) {
+		            System.out.println("UnableAddItemException="+e.getMessage());
+		            //logger.error(e.getMessage());
+		            OpcItem opcItem = getImiOpcItem(opcTVName);
+		            imiOpcItemTVList.add(opcItem);
+		            tvExist=false;
+		        }
+		        synchronized(test) {
+		            test.wait(50);
+		        }
+		        
+		        if(tvExist)
+		        	opcTVNameExistList.add(opcTVName);
+		        
+		        jOpcTVMap=new HashMap<String,Object>();
+		        jOpcTVMap.put("jopc", jopc);
+		        jOpcTVMap.put("group", group);
+		        
+		        jOpcTVNameMap.put(opcTVName, jOpcTVMap);
+			}
+        } catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
     
 	/**
-	 * 读取opc服务器端变量(为了判断变量是否存在与opc服务器上，只能单个读取,包括触发器变量和过程变量.若opc端不存在某个变量,就用模拟变量代替)
+	 * 读取opc服务器端变量
 	 * @param itemName
 	 * @return
 	 */
-	public static OpcItem readOpcItemByName(String itemName) {
+	/**
+	 * @param opcTVNameList
+	 * @return
+	 */
+	public static ArrayList<OpcItem> readJOpcTVMap() {
+		ArrayList<OpcItem> opcItemList = new ArrayList<OpcItem>();
 		OpcItem opcItem = null;
         try {
+        	/*
 			SynchReadItemExample test = new SynchReadItemExample();
 	    	JOpc.coInitialize();   //初始化JOpc        JOpc继承父类JCustomOpc
 			JOpc jopc = new JOpc(Constant.OPC_HOST, Constant.OPC_SERVER_PROG_ID, Constant.OPC_SERVER_CLIENT_HANDLE);
@@ -1656,28 +1723,41 @@ public class OpcUtil {
 	            System.out.println("UnableAddGroupException="+e.getMessage());
 	            //logger.error(e.getMessage());
 	        } catch (UnableAddItemException e) {
-	            //System.out.println("UnableAddItemException="+e.getMessage());
+	            System.out.println("UnableAddItemException="+e.getMessage());
 	            //logger.error(e.getMessage());
 	            opcItem = getImiOpcItem(itemName);
 	        }
 	        synchronized(test) {
 	            test.wait(50);
 	        }
+	        */
 	
-			responseGroup = jopc.synchReadGroup(group);
-	        ArrayList<OpcItem> opcItems = responseGroup.getItems();
-	        opcItem = opcItems.get(0);
-	        String valueStr = opcItem.getValue().toString();
-	        if(StringUtils.isEmpty(valueStr)) {
-	        	opcItem.setValue(new Variant(0));
-	        }
-	        //System.out.println("getItemName==="+opcItem.getItemName()+",getValue==="+opcItem.getValue().toString());
+	        OpcGroup responseGroup = null;
+        	Map<String,Object> jOpcTVMap=null;
+        	//Set<String> keySet = jOpcTVNameMap.keySet();
+			//for (String key : keySet) {
+			for (String key : opcTVNameExistList) {
+        		jOpcTVMap=(Map<String,Object>)jOpcTVNameMap.get(key);
+        		JOpc jOpc=(JOpc)jOpcTVMap.get("jopc");
+        		OpcGroup group=(OpcGroup)jOpcTVMap.get("group");
+				responseGroup = jOpc.synchReadGroup(group);
+		        ArrayList<OpcItem> opcItems = responseGroup.getItems();
+		        opcItem = opcItems.get(0);
+		        String valueStr = opcItem.getValue().toString();
+		        if(StringUtils.isEmpty(valueStr)) {
+		        	opcItem.setValue(new Variant(0));
+		        }
+		        System.out.println("getItemName==="+opcItem.getItemName()+",getValue==="+opcItem.getValue().toString());
+				opcItemList.add(opcItem);
+			}
+			
+			opcItemList.addAll(imiOpcItemTVList);
         } catch (Exception e) {
 			// TODO Auto-generated catch block
-			//e.printStackTrace();
+			e.printStackTrace();
 		}
         finally {
-        	return opcItem;
+        	return opcItemList;
 		}
 	}
 	
@@ -1715,7 +1795,7 @@ public class OpcUtil {
 		
 		OpcItem opcItem = new OpcItem(itemName,true,"");
 		opcItem.setValue(new Variant(value));
-        //System.out.println("getItemName1==="+opcItem.getItemName()+",getValue1==="+opcItem.getValue().toString());
+        System.out.println("getItemName1==="+opcItem.getItemName()+",getValue1==="+opcItem.getValue().toString());
 		return opcItem;
 	}
 }

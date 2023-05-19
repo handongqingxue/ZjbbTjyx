@@ -76,6 +76,26 @@ public class OPCController {
 	}
 
 	/**
+	 * 初始化opc服务器的触发器变量到java端,为之后的同步变量做好准备
+	 * @return
+	 */
+	@RequestMapping(value = "/initJOpcTV", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> initJOpcTV() {
+		
+		Map<String,Object> json=new HashMap<String, Object>();
+
+		List<String> opcTVNameList=OpcUtil.getOpcTVNameList();
+		System.out.println("opcTVNameListSize==="+opcTVNameList.size());
+		
+		OpcUtil.initJOpcTVMap(opcTVNameList);
+		
+		json.put("status", "ok");
+		
+		return json;
+	}
+
+	/**
 	 * 从opc服务器端同步数据库的触发器变量
 	 * @return
 	 */
@@ -85,15 +105,12 @@ public class OPCController {
 
 		Map<String,Object> json=new HashMap<String, Object>();
 		
-		ArrayList<OpcItem> opcItemList = new ArrayList<OpcItem>();
-		List<String> opcTVNameList=OpcUtil.getOpcTVNameList();
-		System.out.println("opcTVNameListSize==="+opcTVNameList.size());
-		for (String opcTVName : opcTVNameList) {
-			OpcItem opcItem=OpcUtil.readOpcItemByName(opcTVName);
-			opcItemList.add(opcItem);
-		}
+		ArrayList<OpcItem> opcItemList = OpcUtil.readJOpcTVMap();
+		System.out.println("opcItemListSize==="+opcItemList.size());
 
+		/*
 		APIUtil.addVar("addTriggerVarFromOpc",opcItemList);
+		*/
 		
 		return json;
 	}
@@ -106,7 +123,7 @@ public class OPCController {
 		
 		List<String> opcPVNameList=OpcUtil.getOpcPVNameList();
 		for (String opcPVName : opcPVNameList) {
-			OpcUtil.readOpcItemByName(opcPVName);
+			//OpcUtil.readOpcItemByName(opcPVName);
 		}
 		
 		return json;

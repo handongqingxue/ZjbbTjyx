@@ -25,9 +25,18 @@
 <script>
 var path='<%=basePath%>';
 $(function(){
-	syncTriggerVar();
+	initJOpcTV();
 	//readOpcProVarList();
 });
+
+function initJOpcTV(){
+	$.post(path+"opc/initJOpcTV",
+		function(result){
+			if(result.status=="ok")
+				setInterval("syncTriggerVar()",3000);
+		}
+	,"json");
+}
 
 function syncTriggerVar(){
 	$.post(path+"opc/syncTriggerVar",
