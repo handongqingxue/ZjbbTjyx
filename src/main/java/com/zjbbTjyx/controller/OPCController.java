@@ -122,9 +122,8 @@ public class OPCController {
 		Map<String,Object> json=new HashMap<String, Object>();
 		
 		List<String> opcPVNameList=OpcUtil.getOpcPVNameList();
-		for (String opcPVName : opcPVNameList) {
-			//OpcUtil.readOpcItemByName(opcPVName);
-		}
+		OpcUtil.initJOpcPVMap(opcPVNameList);
+		OpcUtil.readJOpcPVInMap(opcPVNameList);
 		
 		return json;
 	}
@@ -245,6 +244,9 @@ public class OPCController {
 				System.out.println("初始化反应釜Map........");
 				initFMap("");
 				initFMap=true;
+				
+				List<String> opcPVNameList=OpcUtil.getOpcPVNameList();
+				OpcUtil.initJOpcPVMap(opcPVNameList);
 			}
 
 			List<Integer> runFIdList=new ArrayList<Integer>();//用于存放运行的反应釜号的集合
