@@ -96,6 +96,26 @@ public class OPCController {
 	}
 
 	/**
+	 * 初始化opc服务器的过程变量到java端,为之后的同步变量做好准备
+	 * @return
+	 */
+	@RequestMapping(value = "/initJOpcPV", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> initJOpcPV() {
+		
+		Map<String,Object> json=new HashMap<String, Object>();
+
+		List<String> opcPVNameList=OpcUtil.getOpcPVNameList();
+		System.out.println("opcPVNameListSize==="+opcPVNameList.size());
+		
+		OpcUtil.initJOpcPVMap(opcPVNameList);
+		
+		json.put("status", "ok");
+		
+		return json;
+	}
+
+	/**
 	 * 从opc服务器端同步数据库的触发器变量
 	 * @return
 	 */
@@ -106,11 +126,9 @@ public class OPCController {
 		Map<String,Object> json=new HashMap<String, Object>();
 		
 		ArrayList<OpcItem> opcItemList = OpcUtil.readJOpcTVMap();
-		System.out.println("opcItemListSize==="+opcItemList.size());
+		System.out.println("opcItemList111==="+opcItemList.toString());
 
-		/*
 		APIUtil.addVar("addTriggerVarFromOpc",opcItemList);
-		*/
 		
 		return json;
 	}
@@ -245,8 +263,7 @@ public class OPCController {
 				initFMap("");
 				initFMap=true;
 				
-				List<String> opcPVNameList=OpcUtil.getOpcPVNameList();
-				OpcUtil.initJOpcPVMap(opcPVNameList);
+				//initJOpcPV();
 			}
 
 			List<Integer> runFIdList=new ArrayList<Integer>();//用于存放运行的反应釜号的集合
@@ -4017,6 +4034,7 @@ public class OPCController {
 		if(triggerVarList!=null) {
 			for (TriggerVar triggerVar : triggerVarList) {
 				Float varValue = triggerVar.getVarValue();
+				System.out.println("varValue==="+varValue);
 				if(varValue==flag) {
 					upDownVarValueTVList.add(triggerVar);
 				}

@@ -1478,9 +1478,11 @@ public class OpcUtil {
      */
     public static List<String> getOpcTVNameList() {
     	List<String> opcTVNameList=new ArrayList<String>();
+    	/*
     	for(int i=0;i<3;i++) {
     		opcTVNameList.add("_System._DateTime");
     	}
+    	*/
     	
     	List<String> opcTVNamePreList=new ArrayList<String>();//前缀集合
     	opcTVNamePreList.add(Constant.BEI_LIAO_KAI_SHI);//备料开始前缀
@@ -1521,6 +1523,14 @@ public class OpcUtil {
 			}
     		for (String fUName : Constant.BSF_F_U_ARR) {
     			String opcTVName = opcTVNamePre+Constant.XHX+fUName+Constant.XHX+Constant.AV;
+    			if(Constant.WEN_DU_98_PH.equals(opcTVNamePre))
+    				continue;
+				
+				if(Constant.FAN_YING_JIE_SHU.equals(opcTVNamePre))
+					opcTVName = opcTVNamePre+fUName+Constant.XHX+Constant.AV;
+				else
+					opcTVName = opcTVNamePre+Constant.XHX+fUName+Constant.XHX+Constant.AV;
+			
     			opcTVNameList.add(opcTVName);
 			}
 		}
@@ -1632,7 +1642,7 @@ public class OpcUtil {
 		            System.out.println("UnableAddGroupException="+e.getMessage());
 		            //logger.error(e.getMessage());
 		        } catch (UnableAddItemException e) {
-		            System.out.println("UnableAddItemException="+e.getMessage());
+		            //System.out.println("UnableAddItemException="+e.getMessage());
 		            //logger.error(e.getMessage());
 		            OpcItem opcItem = getImiOpcItem(opcTVName);
 		            imiOpcItemTVList.add(opcItem);
@@ -1653,7 +1663,7 @@ public class OpcUtil {
 			}
         } catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 	}
 	
@@ -1686,7 +1696,7 @@ public class OpcUtil {
 		            System.out.println("UnableAddGroupException="+e.getMessage());
 		            //logger.error(e.getMessage());
 		        } catch (UnableAddItemException e) {
-		            System.out.println("UnableAddItemException="+e.getMessage());
+		            //System.out.println("UnableAddItemException="+e.getMessage());
 		            //logger.error(e.getMessage());
 		            OpcItem opcItem = getImiOpcItem(opcPVName);
 		            imiOpcItemPVList.add(opcItem);
@@ -1821,6 +1831,7 @@ public class OpcUtil {
 		   itemName.startsWith(Constant.JIANG_WEN_WAN_CHENG)||//降温完成
 		   itemName.startsWith(Constant.YUN_XU_KAI_SHI_PAI_JIAO)||//允许开始排胶
 		   itemName.startsWith(Constant.PAI_JIAO_WAN_CHENG)||//排胶完成
+		   itemName.startsWith(Constant.KAI_SHI_JIA_LIAO)||//开始加料
 		   itemName.startsWith(Constant.FAN_YING_FU)&&itemName.endsWith(Constant.WEN_DU+Constant.XHX+Constant.AV)||//反应釜温度
 		   itemName.startsWith(Constant.FU)&&itemName.endsWith(Constant.CHENG_ZHONG+Constant.XHX+Constant.AV)||//釜称重
 		   itemName.startsWith(Constant.JIA_JIAN_LIANG_TI_SHI)||//加碱量提示
