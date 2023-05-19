@@ -25,8 +25,8 @@
 <script>
 var path='<%=basePath%>';
 $(function(){
-	initJOpcTV();
-	//readOpcProVarList();
+	//initJOpcTV();
+	readOpcProVarList();
 });
 
 function initJOpcTV(){
