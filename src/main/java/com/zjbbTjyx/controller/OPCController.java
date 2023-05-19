@@ -86,7 +86,7 @@ public class OPCController {
 		Map<String,Object> json=new HashMap<String, Object>();
 
 		List<String> opcTVNameList=OpcUtil.getOpcTVNameList();
-		System.out.println("opcTVNameListSize==="+opcTVNameList.size());
+		System.out.println("opcTVNameList==="+opcTVNameList.toString());
 		
 		OpcUtil.initJOpcTVMap(opcTVNameList);
 		
@@ -106,7 +106,7 @@ public class OPCController {
 		Map<String,Object> json=new HashMap<String, Object>();
 
 		List<String> opcPVNameList=OpcUtil.getOpcPVNameList();
-		System.out.println("opcPVNameListSize==="+opcPVNameList.size());
+		System.out.println("opcPVNameList==="+opcPVNameList.toString());
 		
 		OpcUtil.initJOpcPVMap(opcPVNameList);
 		
@@ -4033,8 +4033,9 @@ public class OPCController {
 		List<TriggerVar> upDownVarValueTVList=new ArrayList<TriggerVar>();
 		if(triggerVarList!=null) {
 			for (TriggerVar triggerVar : triggerVarList) {
+				String varName = triggerVar.getVarName();
 				Float varValue = triggerVar.getVarValue();
-				System.out.println("varValue==="+varValue);
+				System.out.println("varName==="+varName+",varValue==="+varValue);
 				if(varValue==flag) {
 					upDownVarValueTVList.add(triggerVar);
 				}
