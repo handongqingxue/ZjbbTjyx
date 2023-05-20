@@ -1496,15 +1496,17 @@ public class OpcUtil {
         opcTVNamePreMList.add(Constant.JIA_FEN_LIAO_PH_HE_GE);//加粉料PH合格
         opcTVNamePreMList.add(Constant.SHENG_WEN_KAI_SHI);//升温开始
         opcTVNamePreMList.add(Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING);//温度85与二次投料提醒
+    	opcTVNamePreMList.add(Constant.ER_CI_ZHU_JI_HOU_CE_PH_TI_XING);//二次助剂后测PH提醒----这个变量F2没有
         opcTVNamePreMList.add(Constant.YUN_XU_ER_CI_JIA_ZHU_JI);//允许二次加助剂
         opcTVNamePreMList.add(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2);//所有助剂加料完成2
         opcTVNamePreMList.add(Constant.SHENG_WEN_WAN_CHENG);//升温完成
-        opcTVNamePreMList.add(Constant.WEN_DU_98_PH);//温度98PH合格
+        opcTVNamePreMList.add(Constant.WEN_DU_98_PH+Constant.HE_GE);//温度98PH合格
         opcTVNamePreMList.add(Constant.CE_LIANG_BING_SHUI_WU_DIAN_TI_XING);//测量冰水雾点提醒
         opcTVNamePreMList.add(Constant.CE_SHUI_SHU_TI_XING);//测水数提醒----这个只有F2有值
         opcTVNamePreMList.add("停热降温水数提醒");
         opcTVNamePreMList.add(Constant.JU_HE_ZHONG_DIAN);//聚合终点----这个F5没值,因为5号的生产流程还没有做，报表可以先不做5号的
         opcTVNamePreMList.add(Constant.JIANG_WEN_WAN_CHENG);//降温完成----这个变量F5没有
+        opcTVNamePreMList.add(Constant.ZHONG_JIAN_SHUI_PH_TI_XING);//终检水PH提醒
         opcTVNamePreMList.add(Constant.YUN_XU_KAI_SHI_PAI_JIAO);//允许开始排胶
         opcTVNamePreMList.add(Constant.PAI_JIAO_WAN_CHENG);//排胶完成---F5没有
         
@@ -1512,9 +1514,6 @@ public class OpcUtil {
     	for (String opcTVNamePreM : opcTVNamePreMList) {//循环拼接上反应釜号作为完整的变量
     		for (String fMName : Constant.BSF_F_M_ARR) {
     			String opcTVName = null;
-    			if(Constant.WEN_DU_98_PH.equals(opcTVNamePreM))
-    				continue;
-    				
     			if(Constant.FAN_YING_JIE_SHU.equals(opcTVNamePreM))
     				opcTVName = opcTVNamePreM+fMName+Constant.XHX+Constant.AV;
     			else
@@ -1525,7 +1524,6 @@ public class OpcUtil {
 		}
     	
     	List<String> opcTVNamePhPreMList=new ArrayList<String>();
-    	opcTVNamePhPreMList.add(Constant.ER_CI_ZHU_JI_HOU_CE_PH_TI_XING);//二次助剂后测PH提醒----这个变量F2没有
 
     	for (String opcTVNamePhPreM : opcTVNamePhPreMList) {//循环拼接上反应釜号作为完整的变量
     		for (String fMName : Constant.BSF_PF_M_ARR) {
@@ -1541,38 +1539,31 @@ public class OpcUtil {
     	opcTVNamePreUList.add(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI);//甲醛备料开始
     	opcTVNamePreUList.add(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG);//甲醛放料完成
     	opcTVNamePreUList.add(Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG);//加碱PH值正常
-    	opcTVNamePreUList.add(Constant.YUN_XU_YI_CI_JIA_ZHU_JI);//允许一次加助剂
-    	opcTVNamePreUList.add(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1);//所有助剂加料完成1
-    	opcTVNamePreUList.add(Constant.JIA_FEN_LIAO_TI_XING);//加粉料提醒
-    	opcTVNamePreUList.add(Constant.JIA_FEN_LIAO_PH_HE_GE);//加粉料PH合格
-    	opcTVNamePreUList.add(Constant.SHENG_WEN_KAI_SHI);//升温开始
-    	opcTVNamePreUList.add(Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING);//温度85与二次投料提醒
-    	opcTVNamePreUList.add(Constant.YUN_XU_ER_CI_JIA_ZHU_JI);//允许二次加助剂
-    	opcTVNamePreUList.add(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2);//所有助剂加料完成2
-    	opcTVNamePreUList.add(Constant.SHENG_WEN_WAN_CHENG);//升温完成
-    	opcTVNamePreUList.add(Constant.WEN_DU_98_PH);//温度98PH合格
-    	opcTVNamePreUList.add(Constant.CE_LIANG_BING_SHUI_WU_DIAN_TI_XING);//测量冰水雾点提醒
-    	opcTVNamePreUList.add(Constant.CE_SHUI_SHU_TI_XING);//测水数提醒----这个只有F2有值
-    	opcTVNamePreUList.add("停热降温水数提醒");
-    	opcTVNamePreUList.add(Constant.JU_HE_ZHONG_DIAN);//聚合终点----这个F5没值,因为5号的生产流程还没有做，报表可以先不做5号的
-    	opcTVNamePreUList.add(Constant.JIANG_WEN_WAN_CHENG);//降温完成----这个变量F5没有
-    	opcTVNamePreUList.add(Constant.YUN_XU_KAI_SHI_PAI_JIAO);//允许开始排胶
-    	opcTVNamePreUList.add(Constant.PAI_JIAO_WAN_CHENG);//排胶完成---F5没有
     	opcTVNamePreUList.add(Constant.KAI_SHI_JIA_LIAO);//开始加料
     	opcTVNamePreUList.add(Constant.ZHU_JI_LIU_YI_CI_TIAN_JIA_WAN_CHENG);//助剂六一次添加完成
     	opcTVNamePreUList.add(Constant.ZHU_JI_LIU_ER_CI_BEI_LIAO_WAN_CHENG);//助剂六二次备料完成
     	opcTVNamePreUList.add(Constant.ZHU_JI_LIU_ER_CI_TIAN_JIA_WAN_CHENG);//助剂六二次添加完成
+    	opcTVNamePreUList.add(Constant.JIA_FEN_LIAO_TI_XING);//加粉料提醒
+    	opcTVNamePreUList.add(Constant.SHENG_WEN_KAI_SHI);//升温开始
+    	opcTVNamePreUList.add(Constant.SHENG_WEN_WAN_CHENG);//升温完成
+    	opcTVNamePreUList.add(Constant.WEN_DU_98_PH+Constant.HE_GE);//温度98PH合格
     	opcTVNamePreUList.add(Constant.DI_YI_CI_BAO_WEN_QI_DONG);//第一次保温启动
     	opcTVNamePreUList.add(Constant.DI_YI_CI_BAO_WEN_HE_GE);//第一次保温合格
     	opcTVNamePreUList.add(Constant.YI_CI_JIANG_WEN_JIA_SUAN_TI_XING);//一次降温加酸提醒
     	opcTVNamePreUList.add(Constant.YI_CI_JIANG_WEN_JIA_SUAN_HE_GE);//一次降温加酸合格
+    	opcTVNamePreUList.add(Constant.CE_LIANG_BING_SHUI_WU_DIAN_TI_XING);//测量冰水雾点提醒
+    	opcTVNamePreUList.add(Constant.JIA_JIAN_PH_HE_GE);//加碱PH合格
+    	opcTVNamePreUList.add(Constant.ER_CI_TOU_FEN);//二次投粉
+    	opcTVNamePreUList.add(Constant.ER_CI_JIA_215_QI_DONG);//二次加215启动
+    	opcTVNamePreUList.add(Constant.ER_CI_JIA_XIAO_LIAO_HE_SHUI_TI_XING);//二次加小料和水提醒
+    	opcTVNamePreUList.add(Constant.ER_CI_JIA_SHUI_QI_DONG);//二次加水启动
+        opcTVNamePreUList.add(Constant.ZHONG_JIAN_SHUI_PH_TI_XING);//终检水PH提醒
+    	opcTVNamePreUList.add(Constant.YUN_XU_KAI_SHI_PAI_JIAO);//允许开始排胶
+    	opcTVNamePreUList.add(Constant.PAI_JIAO_WAN_CHENG);//排胶完成---F5没有
         
         for (String opcTVNamePreU : opcTVNamePreUList) {
     		for (String fUName : Constant.BSF_F_U_ARR) {
     			String opcTVName = opcTVNamePreU+Constant.XHX+fUName+Constant.XHX+Constant.AV;
-    			if(Constant.WEN_DU_98_PH.equals(opcTVNamePreU))
-    				continue;
-				
 				if(Constant.FAN_YING_JIE_SHU.equals(opcTVNamePreU))
 					opcTVName = opcTVNamePreU+fUName+Constant.XHX+Constant.AV;
 				else
@@ -1874,6 +1865,7 @@ public class OpcUtil {
 		   itemName.startsWith("停热降温水数提醒")||//停热降温水数提醒
 		   itemName.startsWith(Constant.JU_HE_ZHONG_DIAN)||//聚合终点
 		   itemName.startsWith(Constant.JIANG_WEN_WAN_CHENG)||//降温完成
+		   itemName.startsWith(Constant.ZHONG_JIAN_SHUI_PH_TI_XING)||//终检水PH提醒
 		   itemName.startsWith(Constant.YUN_XU_KAI_SHI_PAI_JIAO)||//允许开始排胶
 		   itemName.startsWith(Constant.PAI_JIAO_WAN_CHENG)||//排胶完成
 		   itemName.startsWith(Constant.KAI_SHI_JIA_LIAO)||//开始加料
@@ -1884,6 +1876,9 @@ public class OpcUtil {
 		   itemName.startsWith(Constant.DI_YI_CI_BAO_WEN_HE_GE)||//第一次保温合格
 		   itemName.startsWith(Constant.YI_CI_JIANG_WEN_JIA_SUAN_TI_XING)||//一次降温加酸提醒
 		   itemName.startsWith(Constant.YI_CI_JIANG_WEN_JIA_SUAN_HE_GE)||//一次降温加酸合格
+		   itemName.startsWith(Constant.JIA_JIAN_PH_HE_GE)||//加碱PH合格
+		   itemName.startsWith(Constant.ER_CI_TOU_FEN)||//二次投粉
+		   itemName.startsWith(Constant.ER_CI_JIA_215_QI_DONG)||//二次加215启动
 		   itemName.startsWith(Constant.FAN_YING_FU)&&itemName.endsWith(Constant.WEN_DU+Constant.XHX+Constant.AV)||//反应釜温度
 		   itemName.startsWith(Constant.FU)&&itemName.endsWith(Constant.CHENG_ZHONG+Constant.XHX+Constant.AV)||//釜称重
 		   itemName.startsWith(Constant.JIA_JIAN_LIANG_TI_SHI)||//加碱量提示
@@ -1903,7 +1898,8 @@ public class OpcUtil {
 		   itemName.startsWith(Constant.WEN_DU_98_PH)||//温度98PH
 		   itemName.startsWith(Constant.CE_LIANG_BSWD_SRZ)||//测量冰水雾点输入值
 		   itemName.startsWith(Constant.CE_20_WU_DIAN_SRZ)||//测20雾点输入值
-		   itemName.startsWith(Constant.TING_RE_JIANG_WEN_SHUI_SHU_SRZ)//停热降温水数输入值
+		   itemName.startsWith(Constant.TING_RE_JIANG_WEN_SHUI_SHU_SRZ)||//停热降温水数输入值
+		   itemName.startsWith(Constant.ER_CI_JIA_SHUI_QI_DONG)//二次加水启动
 		   )
 			value=0;
 		
