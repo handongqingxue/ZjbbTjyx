@@ -1555,8 +1555,10 @@ public class OpcUtil {
     	opcTVNamePreUList.add(Constant.JIA_JIAN_PH_HE_GE);//加碱PH合格
     	opcTVNamePreUList.add(Constant.ER_CI_TOU_FEN);//二次投粉
     	opcTVNamePreUList.add(Constant.ER_CI_JIA_215_QI_DONG);//二次加215启动
+    	opcTVNamePreUList.add(Constant.ER_CI_JIA_215_WAN_CHENG);//二次加215完成
     	opcTVNamePreUList.add(Constant.ER_CI_JIA_XIAO_LIAO_HE_SHUI_TI_XING);//二次加小料和水提醒
     	opcTVNamePreUList.add(Constant.ER_CI_JIA_SHUI_QI_DONG);//二次加水启动
+    	opcTVNamePreUList.add(Constant.ER_CI_JIA_SHUI_WAN_CHENG);//二次加水完成
         opcTVNamePreUList.add(Constant.ZHONG_JIAN_SHUI_PH_TI_XING);//终检水PH提醒
     	opcTVNamePreUList.add(Constant.YUN_XU_KAI_SHI_PAI_JIAO);//允许开始排胶
     	opcTVNamePreUList.add(Constant.PAI_JIAO_WAN_CHENG);//排胶完成---F5没有
@@ -1657,7 +1659,12 @@ public class OpcUtil {
         	
         	Map<String,Object> jOpcTVMap=null;
 			for (String opcTVName : opcTVNameList) {
-				System.out.println("wwwwwwwwwwwwwwww");
+				if(opcTVName.endsWith(TriggerVar.U+Constant.XHX+Constant.AV)) {
+					if(opcTVName.startsWith(Constant.ER_CI_JIA_SHUI_WAN_CHENG)) {
+						opcTVName=reverseVarSuffix(opcTVName);
+					}
+				}
+				
 				SynchReadItemExample test = new SynchReadItemExample();
 		    	JOpc.coInitialize();   //初始化JOpc        JOpc继承父类JCustomOpc
 				JOpc jopc = new JOpc(Constant.OPC_HOST, Constant.OPC_SERVER_PROG_ID, Constant.OPC_SERVER_CLIENT_HANDLE);
@@ -1711,7 +1718,12 @@ public class OpcUtil {
         	
         	Map<String,Object> jOpcPVMap=null;
 			for (String opcPVName : opcPVNameList) {
-				System.out.println("oooooooooooooo");
+				if(opcPVName.endsWith(TriggerVar.U+Constant.XHX+Constant.AV)) {
+					if(opcPVName.startsWith(Constant.ER_CI_JIA_SHUI_WAN_CHENG)) {
+						opcPVName=reverseVarSuffix(opcPVName);
+					}
+				}
+				
 				SynchReadItemExample test = new SynchReadItemExample();
 		    	JOpc.coInitialize();   //初始化JOpc        JOpc继承父类JCustomOpc
 				JOpc jopc = new JOpc(Constant.OPC_HOST, Constant.OPC_SERVER_PROG_ID, Constant.OPC_SERVER_CLIENT_HANDLE);
@@ -1783,6 +1795,16 @@ public class OpcUtil {
 			}
 			
 			opcItemList.addAll(imiOpcItemTVList);
+			
+			for (OpcItem opcItem1 : opcItemList) {
+				String itemName = opcItem1.getItemName();
+				if(itemName.contains("FU")) {
+					if(itemName.startsWith(Constant.ER_CI_JIA_SHUI_WAN_CHENG)) {
+						itemName=reverseVarSuffix(itemName);
+						opcItem1.setItemName(itemName);
+					}
+				}
+			}
         } catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -1790,6 +1812,18 @@ public class OpcUtil {
         finally {
         	return opcItemList;
 		}
+	}
+	
+	public static String reverseVarSuffix(String varName) {
+		//System.out.println("varName==="+varName);
+		char preChar = varName.charAt(varName.length()-5);
+		char nxtChar = varName.charAt(varName.length()-4);
+		//System.out.println("preChar==="+preChar+",nxtChar==="+nxtChar);
+		varName=varName.replace(preChar, nxtChar);
+		//System.out.println("varName==="+varName);
+		varName=varName.replace(nxtChar+""+nxtChar, nxtChar+""+preChar);
+		//System.out.println("itemName==="+varName);
+		return varName;
 	}
 	
 	public static ArrayList<OpcItem> readJOpcPVInMap(List<String> opcPVNameList) {
@@ -1830,6 +1864,16 @@ public class OpcUtil {
 						}
 					}
         		}
+			}
+        	
+        	for (OpcItem opcItem1 : opcItemList) {
+				String itemName = opcItem1.getItemName();
+				if(itemName.contains("FU")) {
+					if(itemName.startsWith(Constant.ER_CI_JIA_SHUI_WAN_CHENG)) {
+						itemName=reverseVarSuffix(itemName);
+						opcItem1.setItemName(itemName);
+					}
+				}
 			}
         } catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -1879,6 +1923,9 @@ public class OpcUtil {
 		   itemName.startsWith(Constant.JIA_JIAN_PH_HE_GE)||//加碱PH合格
 		   itemName.startsWith(Constant.ER_CI_TOU_FEN)||//二次投粉
 		   itemName.startsWith(Constant.ER_CI_JIA_215_QI_DONG)||//二次加215启动
+		   itemName.startsWith(Constant.ER_CI_JIA_215_WAN_CHENG)||//二次加215完成
+		   itemName.startsWith(Constant.ER_CI_JIA_SHUI_QI_DONG)||//二次加水启动
+		   itemName.startsWith(Constant.ER_CI_JIA_SHUI_WAN_CHENG)||//二次加水完成
 		   itemName.startsWith(Constant.FAN_YING_FU)&&itemName.endsWith(Constant.WEN_DU+Constant.XHX+Constant.AV)||//反应釜温度
 		   itemName.startsWith(Constant.FU)&&itemName.endsWith(Constant.CHENG_ZHONG+Constant.XHX+Constant.AV)||//釜称重
 		   itemName.startsWith(Constant.JIA_JIAN_LIANG_TI_SHI)||//加碱量提示

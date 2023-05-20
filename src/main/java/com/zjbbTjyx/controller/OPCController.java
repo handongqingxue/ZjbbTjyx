@@ -114,7 +114,7 @@ public class OPCController {
 		
 		return json;
 	}
-
+	
 	/**
 	 * 从opc服务器端同步数据库的触发器变量
 	 * @return

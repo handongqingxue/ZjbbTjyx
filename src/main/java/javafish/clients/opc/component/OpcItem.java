@@ -177,7 +177,11 @@ public class OpcItem implements Cloneable, Serializable {
     return itemName;
   }
   
-  /**
+  public void setItemName(String itemName) {
+	this.itemName = itemName;
+  }
+
+/**
    * Return clone of opc-item
    * 
    * @return item Object
