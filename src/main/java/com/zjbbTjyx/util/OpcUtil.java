@@ -1682,6 +1682,7 @@ public class OpcUtil {
 		            System.out.println("ConnectivityException="+e1.getMessage());
 		            //logger.error(e1.getMessage());
 		        } catch (UnableAddGroupException e) {
+		        	System.out.println("GroupName===="+group.getGroupName());
 		            System.out.println("UnableAddGroupException="+e.getMessage());
 		            //logger.error(e.getMessage());
 		        } catch (UnableAddItemException e) {
@@ -1703,6 +1704,8 @@ public class OpcUtil {
 		        jOpcTVMap.put("group", group);
 		        
 		        jOpcTVNameMap.put(opcTVName, jOpcTVMap);
+		        
+		        Thread.sleep(500);
 			}
         } catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -1741,6 +1744,7 @@ public class OpcUtil {
 		            System.out.println("ConnectivityException="+e1.getMessage());
 		            //logger.error(e1.getMessage());
 		        } catch (UnableAddGroupException e) {
+		        	System.out.println("GroupName===="+group.getGroupName());
 		            System.out.println("UnableAddGroupException="+e.getMessage());
 		            //logger.error(e.getMessage());
 		        } catch (UnableAddItemException e) {
@@ -1762,6 +1766,8 @@ public class OpcUtil {
 		        jOpcPVMap.put("group", group);
 		        
 		        jOpcPVNameMap.put(opcPVName, jOpcPVMap);
+
+		        Thread.sleep(500);
 			}
         } catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -1835,12 +1841,14 @@ public class OpcUtil {
         	
         	for (String opcPVName : opcPVNameList) {
             	boolean exist=false;
-        		for (String opcPVNameExist : opcPVNameExistList) {
-        			if(opcPVNameExist.equals(opcPVName)) {
-        				exist=true;
-        				break;
-        			}
-        		}
+            	if(opcPVNameExistList!=null) {
+	        		for (String opcPVNameExist : opcPVNameExistList) {
+	        			if(opcPVNameExist.equals(opcPVName)) {
+	        				exist=true;
+	        				break;
+	        			}
+	        		}
+            	}
         		
         		if(exist) {
             		jOpcPVMap=(Map<String,Object>)jOpcPVNameMap.get(opcPVName);
