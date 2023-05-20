@@ -86,9 +86,29 @@ public class OPCController {
 		Map<String,Object> json=new HashMap<String, Object>();
 
 		List<String> opcTVNameList=OpcUtil.getOpcTVNameList();
-		System.out.println("opcTVNameListSize==="+opcTVNameList.size());
+		System.out.println("opcTVNameList==="+opcTVNameList.toString());
 		
 		OpcUtil.initJOpcTVMap(opcTVNameList);
+		
+		json.put("status", "ok");
+		
+		return json;
+	}
+
+	/**
+	 * 初始化opc服务器的过程变量到java端,为之后的同步变量做好准备
+	 * @return
+	 */
+	@RequestMapping(value = "/initJOpcPV", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> initJOpcPV() {
+		
+		Map<String,Object> json=new HashMap<String, Object>();
+
+		List<String> opcPVNameList=OpcUtil.getOpcPVNameList();
+		System.out.println("opcPVNameList==="+opcPVNameList.toString());
+		
+		OpcUtil.initJOpcPVMap(opcPVNameList);
 		
 		json.put("status", "ok");
 		
@@ -106,11 +126,9 @@ public class OPCController {
 		Map<String,Object> json=new HashMap<String, Object>();
 		
 		ArrayList<OpcItem> opcItemList = OpcUtil.readJOpcTVMap();
-		System.out.println("opcItemListSize==="+opcItemList.size());
+		//System.out.println("opcItemList111==="+opcItemList.toString());
 
-		/*
 		APIUtil.addVar("addTriggerVarFromOpc",opcItemList);
-		*/
 		
 		return json;
 	}
@@ -245,8 +263,7 @@ public class OPCController {
 				initFMap("");
 				initFMap=true;
 				
-				List<String> opcPVNameList=OpcUtil.getOpcPVNameList();
-				OpcUtil.initJOpcPVMap(opcPVNameList);
+				//initJOpcPV();
 			}
 
 			List<Integer> runFIdList=new ArrayList<Integer>();//用于存放运行的反应釜号的集合
@@ -4016,7 +4033,9 @@ public class OPCController {
 		List<TriggerVar> upDownVarValueTVList=new ArrayList<TriggerVar>();
 		if(triggerVarList!=null) {
 			for (TriggerVar triggerVar : triggerVarList) {
+				String varName = triggerVar.getVarName();
 				Float varValue = triggerVar.getVarValue();
+				System.out.println("varName==="+varName+",varValue==="+varValue);
 				if(varValue==flag) {
 					upDownVarValueTVList.add(triggerVar);
 				}
