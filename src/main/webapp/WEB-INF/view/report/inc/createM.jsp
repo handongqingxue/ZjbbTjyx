@@ -32,8 +32,6 @@ function getUnCreRepVarMList(batchID){
 
 function addReportF_MByBatchID(){
 	var batchID=$("#opcMCTable #batchID_hid").val();
-	alert(batchID)
-	return false;
 	$.post(path+"report/addReportFByBatchID",
 		{batchID:batchID},
 		function(result){
