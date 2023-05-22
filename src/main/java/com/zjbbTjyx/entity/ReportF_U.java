@@ -810,7 +810,23 @@ public class ReportF_U {
      * 终检PH列号
      */
     public static final int ZJPH_CN=5;
-    
+    /**
+     * 允许开始排胶时间行号
+     */
+    public static final int YXKSPJSJ_RN=35;
+    /**
+     * 允许开始排胶时间列号
+     */
+    public static final int YXKSPJSJ_CN=3;
+    /**
+     * 排胶完成时间行号
+     */
+    public static final int PJWCSJ_RN=35;
+    /**
+     * 排胶完成时间列号
+     */
+    public static final int PJWCSJ_CN=4;
+
     private Integer Id;
     private String RowNumber;//行号
     private String ColNumber;//列号

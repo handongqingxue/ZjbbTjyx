@@ -3967,7 +3967,7 @@ public class ERecordServiceImpl implements ERecordService {
 					varMap.put(Constant.COL_NUMBER, ReportF_U.JFLPHSRZ_CN);
 					varMapList.add(varMap);
 				}
-				else if(ERecord.FNSFLFSSYDXJYZL.equals(varName)) {//釜尿素放料阀上升沿到下降沿重量
+				else if((Constant.JIA_FEN_LIAO_TI_XING+ERecord.FNSFLFSSYDXJYZL).equals(varName)) {//加粉料提醒釜尿素放料阀上升沿到下降沿重量
 					String preValue = eRecord.getPreValue();
 					String nxtValue = eRecord.getNxtValue();
 					String ptnValue = eRecord.getPtnValue();
@@ -4184,13 +4184,178 @@ public class ERecordServiceImpl implements ERecordService {
 					ptnVarMap.put(Constant.COL_NUMBER, ReportF_U.DYCBWHGDECTFSJC_CN);
 					varMapList.add(ptnVarMap);
 				}
-				else if((Constant.ER_CI_JIA_FEN_LIAO_1_ZHONG_LIANG_SHE_DING).equals(varName)) {//二次加料粉料1重量设定
+				else if((Constant.ER_CI_JIA_FEN_LIAO_1_ZHONG_LIANG_SHE_DING).equals(varName)) {//二次加粉料1重量设定
 					String varValue = eRecord.getVarValue();
 
 					varMap = new HashMap<String, Object>();
 					varMap.put(Constant.VALUE, varValue);
 					varMap.put(Constant.ROW_NUMBER, ReportF_U.ECJFL1ZLSD_RN);
 					varMap.put(Constant.COL_NUMBER, ReportF_U.ECJFL1ZLSD_CN);
+					varMapList.add(varMap);
+				}
+				else if((Constant.ER_CI_TOU_FEN+ERecord.FNSFLFSSYDXJYZL).equals(varName)) {//二次投粉釜尿素放料阀上升沿到下降沿时间
+					String preValue = eRecord.getPreValue();
+					String nxtValue = eRecord.getNxtValue();
+					String ptnValue = eRecord.getPtnValue();
+					String unit = eRecord.getUnit();
+
+					HashMap<String, Object> preVarMap = new HashMap<String, Object>();
+					preVarMap.put(Constant.VALUE, preValue);
+					preVarMap.put(Constant.ROW_NUMBER, ReportF_U.ECTFFNSFLFSSYSJ_RN);
+					preVarMap.put(Constant.COL_NUMBER, ReportF_U.ECTFFNSFLFSSYSJ_CN);
+					varMapList.add(preVarMap);
+
+					HashMap<String, Object> nxtVarMap = new HashMap<String, Object>();
+					nxtVarMap.put(Constant.VALUE, nxtValue);
+					nxtVarMap.put(Constant.ROW_NUMBER, ReportF_U.ECTFFNSFLFXJYSJ_RN);
+					nxtVarMap.put(Constant.COL_NUMBER, ReportF_U.ECTFFNSFLFXJYSJ_CN);
+					varMapList.add(nxtVarMap);
+
+//					HashMap<String, Object> ptnVarMap = new HashMap<String, Object>();
+//					ptnVarMap.put(Constant.VALUE, ptnValue+unit);
+//					ptnVarMap.put(Constant.ROW_NUMBER, ReportF_U.ECTFFNSFLFSSYDXJYSJC_RN);
+//					ptnVarMap.put(Constant.COL_NUMBER, ReportF_U.ECTFFNSFLFSSYDXJYZLC_CN);
+//					varMapList.add(ptnVarMap);
+				}
+				else if((Constant.BAO_WEN_HOU_JIA_ZHU_JI_6_LIANG_SHE_DING).equals(varName)) {//保温后加助剂6量设定
+					String varValue = eRecord.getVarValue();
+
+					varMap = new HashMap<String, Object>();
+					varMap.put(Constant.VALUE, varValue);
+					varMap.put(Constant.ROW_NUMBER, ReportF_U.BWHJZJ6LSD_RN);
+					varMap.put(Constant.COL_NUMBER, ReportF_U.BWHJZJ6LSD_CN);
+					varMapList.add(varMap);
+				}
+				else if((Constant.ER_CI_JIA_215_QI_DONG).equals(varName)) {//二次加215启动上升沿记录系统时间
+					String varValue = eRecord.getVarValue();
+
+					varMap = new HashMap<String, Object>();
+					varMap.put(Constant.VALUE, varValue);
+					varMap.put(Constant.ROW_NUMBER, ReportF_U.ECJ215QDSJ_RN);
+					varMap.put(Constant.COL_NUMBER, ReportF_U.ECJ215QDSJ_CN);
+					varMapList.add(varMap);
+				}
+				else if((Constant.ER_CI_JIA_215_WAN_CHENG).equals(varName)) {//二次加215完成上升沿记录系统时间
+					String varValue = eRecord.getVarValue();
+
+					varMap = new HashMap<String, Object>();
+					varMap.put(Constant.VALUE, varValue);
+					varMap.put(Constant.ROW_NUMBER, ReportF_U.ECJ215WCSJ_RN);
+					varMap.put(Constant.COL_NUMBER, ReportF_U.ECJ215WCSJ_CN);
+					varMapList.add(varMap);
+				}
+				else if((Constant.ER_CI_JIA_XIAO_LIAO_HE_SHUI_TI_XING).equals(varName)) {//二次加小料和水提醒
+					String varValue = eRecord.getVarValue();
+
+					varMap = new HashMap<String, Object>();
+					varMap.put(Constant.VALUE, varValue);
+					varMap.put(Constant.ROW_NUMBER, ReportF_U.ECJXLHSTXXJYFYFWD_RN);
+					varMap.put(Constant.COL_NUMBER, ReportF_U.ECJXLHSTXXJYFYFWD_CN);
+					varMapList.add(varMap);
+				}
+				else if((Constant.ER_CI_JIA_SHUI_QI_DONG).equals(varName)) {//二次加水启动上升沿记录系统时间
+					String varValue = eRecord.getVarValue();
+
+					varMap = new HashMap<String, Object>();
+					varMap.put(Constant.VALUE, varValue);
+					varMap.put(Constant.ROW_NUMBER, ReportF_U.ECJSQDSJ_RN);
+					varMap.put(Constant.COL_NUMBER, ReportF_U.ECJSQDSJ_CN);
+					varMapList.add(varMap);
+				}
+				else if((Constant.ER_CI_JIA_SHUI_WAN_CHENG).equals(varName)) {//二次加水完成上升沿记录系统时间
+					String varValue = eRecord.getVarValue();
+
+					varMap = new HashMap<String, Object>();
+					varMap.put(Constant.VALUE, varValue);
+					varMap.put(Constant.ROW_NUMBER, ReportF_U.ECJSWCSJ_RN);
+					varMap.put(Constant.COL_NUMBER, ReportF_U.ECJSWCSJ_CN);
+					varMapList.add(varMap);
+				}
+				else if((Constant.FAN_YING_JIE_SHU_SHI_JIAN).equals(varName)) {//反应结束上升沿记录系统时间
+					String varValue = eRecord.getVarValue();
+
+					varMap = new HashMap<String, Object>();
+					varMap.put(Constant.VALUE, varValue);
+					varMap.put(Constant.ROW_NUMBER, ReportF_U.FYJSSJ_RN);
+					varMap.put(Constant.COL_NUMBER, ReportF_U.FYJSSJ_CN);
+					varMapList.add(varMap);
+				}
+				else if((Constant.FAN_YING_JIE_SHU_SHI_JIAN+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU).equals(varName)) {//反应结束上升沿记录反应釜温度
+					String varValue = eRecord.getVarValue();
+
+					varMap = new HashMap<String, Object>();
+					varMap.put(Constant.VALUE, varValue);
+					varMap.put(Constant.ROW_NUMBER, ReportF_U.FYJSFYFWD_RN);
+					varMap.put(Constant.COL_NUMBER, ReportF_U.FYJSFYFWD_CN);
+					varMapList.add(varMap);
+				}
+				else if(ERecord.DYCBWHGDFYJSSJC.equals(varName)) {//第一次保温合格到反应结束时间
+					String preValue = eRecord.getPreValue();
+					String nxtValue = eRecord.getNxtValue();
+					String ptnValue = eRecord.getPtnValue();
+					String unit = eRecord.getUnit();
+
+					HashMap<String, Object> preVarMap = new HashMap<String, Object>();
+					preVarMap.put(Constant.VALUE, preValue);
+					preVarMap.put(Constant.ROW_NUMBER, ReportF_U.DYCBWHGSJ_RN);
+					preVarMap.put(Constant.COL_NUMBER, ReportF_U.DYCBWHGSJ_CN);
+					varMapList.add(preVarMap);
+
+					HashMap<String, Object> nxtVarMap = new HashMap<String, Object>();
+					nxtVarMap.put(Constant.VALUE, nxtValue);
+					nxtVarMap.put(Constant.ROW_NUMBER, ReportF_U.FYJSSJ_RN);
+					nxtVarMap.put(Constant.COL_NUMBER, ReportF_U.FYJSSJ_CN);
+					varMapList.add(nxtVarMap);
+
+					HashMap<String, Object> ptnVarMap = new HashMap<String, Object>();
+					ptnVarMap.put(Constant.VALUE, ptnValue+unit);
+					ptnVarMap.put(Constant.ROW_NUMBER, ReportF_U.DYCBWHGDFYJSSJC_RN);
+					ptnVarMap.put(Constant.COL_NUMBER, ReportF_U.DYCBWHGDFYJSSJC_CN);
+					varMapList.add(ptnVarMap);
+				}
+				else if((ERecord.YXKSPJSSYFCZ).equals(varName)) {//允许开始排胶上升沿记录釜称重
+					String varValue = eRecord.getVarValue();
+
+					varMap = new HashMap<String, Object>();
+					varMap.put(Constant.VALUE, varValue);
+					varMap.put(Constant.ROW_NUMBER, ReportF_U.YXKSPJFCZ_RN);
+					varMap.put(Constant.COL_NUMBER, ReportF_U.YXKSPJFCZ_CN);
+					varMapList.add(varMap);
+				}
+				else if((ERecord.ZJSPHTXXJYZJSS).equals(varName)) {//终检水PH提醒降沿记录终检水数
+					String varValue = eRecord.getVarValue();
+
+					varMap = new HashMap<String, Object>();
+					varMap.put(Constant.VALUE, varValue);
+					varMap.put(Constant.ROW_NUMBER, ReportF_U.ZJSS_RN);
+					varMap.put(Constant.COL_NUMBER, ReportF_U.ZJSS_CN);
+					varMapList.add(varMap);
+				}
+				else if((ERecord.ZJSPHTXXJYZJPH).equals(varName)) {//终检水PH提醒降沿记录终检PH
+					String varValue = eRecord.getVarValue();
+
+					varMap = new HashMap<String, Object>();
+					varMap.put(Constant.VALUE, varValue);
+					varMap.put(Constant.ROW_NUMBER, ReportF_U.ZJPH_RN);
+					varMap.put(Constant.COL_NUMBER, ReportF_U.ZJPH_CN);
+					varMapList.add(varMap);
+				}
+				else if((ERecord.YXKSPJSSYSJ).equals(varName)) {//允许开始排胶上升沿时间
+					String varValue = eRecord.getVarValue();
+
+					varMap = new HashMap<String, Object>();
+					varMap.put(Constant.VALUE, varValue);
+					varMap.put(Constant.ROW_NUMBER, ReportF_U.YXKSPJSJ_RN);
+					varMap.put(Constant.COL_NUMBER, ReportF_U.YXKSPJSJ_CN);
+					varMapList.add(varMap);
+				}
+				else if((ERecord.PJWCSSYSJ).equals(varName)) {//排胶完成上升沿时间
+					String varValue = eRecord.getVarValue();
+
+					varMap = new HashMap<String, Object>();
+					varMap.put(Constant.VALUE, varValue);
+					varMap.put(Constant.ROW_NUMBER, ReportF_U.PJWCSJ_RN);
+					varMap.put(Constant.COL_NUMBER, ReportF_U.PJWCSJ_CN);
 					varMapList.add(varMap);
 				}
 			}
