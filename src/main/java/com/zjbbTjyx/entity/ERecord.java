@@ -452,10 +452,21 @@ public class ERecord {
 	 */
 	public static final String FYJSSSYFYFWD=Constant.FAN_YING_JIE_SHU+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
 	/**
+	 * 第一次保温合格到反应结束时间差
+	 */
+	public static final String DYCBWHGDFYJSSJC=Constant.DI_YI_CI_BAO_WEN_HE_GE+Constant.DAO+Constant.FAN_YING_JIE_SHU+Constant.SHI_JIAN+Constant.CHA;
+	/**
 	 * 允许开始排胶上升沿反应釜温度
 	 */
 	public static final String YXKSPJSSYFYFWD=Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
-
+	/**
+	 * 终检水PH提醒下降沿终检水数
+	 */
+	public static final String ZJSPHTXXJYZJSS=Constant.ZHONG_JIAN_SHUI_PH_TI_XING+Constant.XIA_JIANG_YAN+Constant.ZHONG_JIAN_SHUI_SHU;
+	/**
+	 * 终检水PH提醒下降沿终检PH
+	 */
+	public static final String ZJSPHTXXJYZJPH=Constant.ZHONG_JIAN_SHUI_PH_TI_XING+Constant.XIA_JIANG_YAN+Constant.ZHONG_JIAN_PH;
 
 	private Integer Id;
 	public Integer getId() {

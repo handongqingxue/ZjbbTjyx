@@ -86,7 +86,7 @@ public class OPCController {
 		Map<String,Object> json=new HashMap<String, Object>();
 
 		List<String> opcTVNameList=OpcUtil.getOpcTVNameList();
-		System.out.println("opcTVNameList==="+opcTVNameList.toString());
+		//System.out.println("opcTVNameListaaa==="+opcTVNameList.toString());
 		
 		OpcUtil.initJOpcTVMap(opcTVNameList);
 		

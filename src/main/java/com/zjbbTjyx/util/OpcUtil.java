@@ -1857,8 +1857,6 @@ public class OpcUtil {
 		        jOpcTVMap.put("group", group);
 		        
 		        jOpcTVNameMap.put(opcTVName, jOpcTVMap);
-		        
-		        Thread.sleep(500);
 			}
         } catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -1930,8 +1928,6 @@ public class OpcUtil {
 		        jOpcPVMap.put("group", group);
 		        
 		        jOpcPVNameMap.put(opcPVName, jOpcPVMap);
-
-		        Thread.sleep(500);
 			}
         } catch (Exception e) {
 			// TODO Auto-generated catch block
