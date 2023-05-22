@@ -263,7 +263,8 @@ public class OPCController {
 				initFMap("");
 				initFMap=true;
 				
-				//initJOpcPV();
+				initJOpcTV();
+				initJOpcPV();
 			}
 
 			List<Integer> runFIdList=new ArrayList<Integer>();//用于存放运行的反应釜号的集合
