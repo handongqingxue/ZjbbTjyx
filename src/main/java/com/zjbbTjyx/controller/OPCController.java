@@ -86,7 +86,7 @@ public class OPCController {
 		Map<String,Object> json=new HashMap<String, Object>();
 
 		List<String> opcTVNameList=OpcUtil.getOpcTVNameList();
-		System.out.println("opcTVNameList==="+opcTVNameList.toString());
+		//System.out.println("opcTVNameListaaa==="+opcTVNameList.toString());
 		
 		OpcUtil.initJOpcTVMap(opcTVNameList);
 		
@@ -114,7 +114,7 @@ public class OPCController {
 		
 		return json;
 	}
-
+	
 	/**
 	 * 从opc服务器端同步数据库的触发器变量
 	 * @return
@@ -289,20 +289,20 @@ public class OPCController {
 				runFIdList.add(Constant.F5_ID);
 			}
 		
-			HashMap<String,Object> preValueF1MMap=(HashMap<String,Object>)f1Map.get("f1MMap");//获取1号釜M类
-			HashMap<String,Object> preValueF1UMap=(HashMap<String,Object>)f1Map.get("f1UMap");//获取1号釜U类
+			HashMap<String,Object> preValueF1MMap=(HashMap<String,Object>)f1Map.get("f1MMap");//获取1号釜M类上次触发器变量
+			HashMap<String,Object> preValueF1UMap=(HashMap<String,Object>)f1Map.get("f1UMap");//获取1号釜U类上次触发器变量
 	
-			HashMap<String,Object> preValueF2MMap=(HashMap<String,Object>)f2Map.get("f2MMap");//获取2号釜M类
-			HashMap<String,Object> preValueF2UMap=(HashMap<String,Object>)f2Map.get("f2UMap");//获取2号釜U类
+			HashMap<String,Object> preValueF2MMap=(HashMap<String,Object>)f2Map.get("f2MMap");//获取2号釜M类上次触发器变量
+			HashMap<String,Object> preValueF2UMap=(HashMap<String,Object>)f2Map.get("f2UMap");//获取2号釜U类上次触发器变量
 	
-			HashMap<String,Object> preValueF3MMap=(HashMap<String,Object>)f3Map.get("f3MMap");//获取3号釜M类
-			HashMap<String,Object> preValueF3UMap=(HashMap<String,Object>)f3Map.get("f3UMap");//获取3号釜U类
+			HashMap<String,Object> preValueF3MMap=(HashMap<String,Object>)f3Map.get("f3MMap");//获取3号釜M类上次触发器变量
+			HashMap<String,Object> preValueF3UMap=(HashMap<String,Object>)f3Map.get("f3UMap");//获取3号釜U类上次触发器变量
 	
-			HashMap<String,Object> preValueF4MMap=(HashMap<String,Object>)f4Map.get("f4MMap");//获取4号釜M类
-			HashMap<String,Object> preValueF4UMap=(HashMap<String,Object>)f4Map.get("f4UMap");//获取4号釜U类
+			HashMap<String,Object> preValueF4MMap=(HashMap<String,Object>)f4Map.get("f4MMap");//获取4号釜M类上次触发器变量
+			HashMap<String,Object> preValueF4UMap=(HashMap<String,Object>)f4Map.get("f4UMap");//获取4号釜U类上次触发器变量
 	
-			HashMap<String,Object> preValueF5MMap=(HashMap<String,Object>)f5Map.get("f5MMap");//获取5号釜M类
-			HashMap<String,Object> preValueF5UMap=(HashMap<String,Object>)f5Map.get("f5UMap");//获取5号釜U类
+			HashMap<String,Object> preValueF5MMap=(HashMap<String,Object>)f5Map.get("f5MMap");//获取5号釜M类上次触发器变量
+			HashMap<String,Object> preValueF5UMap=(HashMap<String,Object>)f5Map.get("f5UMap");//获取5号釜U类上次触发器变量
 		
 			//每次检索只获取一次所有的触发量就行，下面的逻辑里会根据不同的变量从反应釜列表里读取
 			List<TriggerVar> triggerVarList = triggerVarService.getListByFIdList(runFIdList);//先获取所有运行的反应釜触发量,不管是否是上升沿
@@ -4017,6 +4017,50 @@ public class OPCController {
 				if(TriggerVar.M.equals(recType)||TriggerVar.MU.equals(recType)) {
 					HashMap<String,Object> preValueF1MMap=(HashMap<String,Object>)f1Map.get("f1MMap");
 					putTriVarValueInPreMap(varValue,varName,preValueF1MMap);
+				}
+				else if(TriggerVar.U.equals(recType)||TriggerVar.MU.equals(recType)) {
+					HashMap<String,Object> preValueF1UMap=(HashMap<String,Object>)f1Map.get("f1UMap");
+					putTriVarValueInPreMap(varValue,varName,preValueF1UMap);
+				}
+				break;
+			case Constant.F2_ID:
+				if(TriggerVar.M.equals(recType)||TriggerVar.MU.equals(recType)) {
+					HashMap<String,Object> preValueF2MMap=(HashMap<String,Object>)f2Map.get("f2MMap");
+					putTriVarValueInPreMap(varValue,varName,preValueF2MMap);
+				}
+				else if(TriggerVar.U.equals(recType)||TriggerVar.MU.equals(recType)) {
+					HashMap<String,Object> preValueF2UMap=(HashMap<String,Object>)f2Map.get("f2UMap");
+					putTriVarValueInPreMap(varValue,varName,preValueF2UMap);
+				}
+				break;
+			case Constant.F3_ID:
+				if(TriggerVar.M.equals(recType)||TriggerVar.MU.equals(recType)) {
+					HashMap<String,Object> preValueF3MMap=(HashMap<String,Object>)f3Map.get("f3MMap");
+					putTriVarValueInPreMap(varValue,varName,preValueF3MMap);
+				}
+				else if(TriggerVar.U.equals(recType)||TriggerVar.MU.equals(recType)) {
+					HashMap<String,Object> preValueF3UMap=(HashMap<String,Object>)f3Map.get("f3UMap");
+					putTriVarValueInPreMap(varValue,varName,preValueF3UMap);
+				}
+				break;
+			case Constant.F4_ID:
+				if(TriggerVar.M.equals(recType)||TriggerVar.MU.equals(recType)) {
+					HashMap<String,Object> preValueF4MMap=(HashMap<String,Object>)f4Map.get("f4MMap");
+					putTriVarValueInPreMap(varValue,varName,preValueF4MMap);
+				}
+				else if(TriggerVar.U.equals(recType)||TriggerVar.MU.equals(recType)) {
+					HashMap<String,Object> preValueF4UMap=(HashMap<String,Object>)f4Map.get("f4UMap");
+					putTriVarValueInPreMap(varValue,varName,preValueF4UMap);
+				}
+				break;
+			case Constant.F5_ID:
+				if(TriggerVar.M.equals(recType)||TriggerVar.MU.equals(recType)) {
+					HashMap<String,Object> preValueF5MMap=(HashMap<String,Object>)f5Map.get("f1MMap");
+					putTriVarValueInPreMap(varValue,varName,preValueF5MMap);
+				}
+				else if(TriggerVar.U.equals(recType)||TriggerVar.MU.equals(recType)) {
+					HashMap<String,Object> preValueF5UMap=(HashMap<String,Object>)f5Map.get("f5UMap");
+					putTriVarValueInPreMap(varValue,varName,preValueF5UMap);
 				}
 				break;
 			}

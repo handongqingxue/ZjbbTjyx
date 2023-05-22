@@ -9,20 +9,20 @@ public class Constant {
 	/**
 	 * opc服务名
 	 */
-	//public static final String OPC_SERVER_PROG_ID="UWinTech.UWinOPCS.1";
-	public static final String OPC_SERVER_PROG_ID="kepware.KEPServerEX.V6";
+	public static final String OPC_SERVER_PROG_ID="UWinTech.UWinOPCS.1";
+	//public static final String OPC_SERVER_PROG_ID="kepware.KEPServerEX.V6";
 	
 	/**
 	 * opc服务器计算机名
 	 */
-	//public static final String OPC_SERVER_CLIENT_HANDLE="MM-202303181234";
-	public static final String OPC_SERVER_CLIENT_HANDLE="M3N881PM37O1M1D";
+	public static final String OPC_SERVER_CLIENT_HANDLE="MM-202303181234";
+	//public static final String OPC_SERVER_CLIENT_HANDLE="M3N881PM37O1M1D";
 	
 	/**
 	 * opc变量组名
 	 */
-	//public static final String OPC_GROUP_NAME="Group1";
-	public static final String OPC_GROUP_NAME="_System";
+	public static final String OPC_GROUP_NAME="Group1";
+	//public static final String OPC_GROUP_NAME="_System";
 
 	/**
 	 * 下划线
