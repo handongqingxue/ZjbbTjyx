@@ -3915,13 +3915,22 @@ public class ERecordServiceImpl implements ERecordService {
 					ptnVarMap.put(Constant.COL_NUMBER, ReportF_U.ZJLECBLWCDTJWCZLC_CN);
 					varMapList.add(ptnVarMap);
 				}
-				else if (Constant.FEN_LIAO_1_ZHONG_LIANG_SHE_DING.equals(varName)){//粉料重量设定
+				else if (Constant.FEN_LIAO_1_ZHONG_LIANG_SHE_DING.equals(varName)){//粉料1重量设定
 					String varValue = eRecord.getVarValue();
 
 					varMap = new HashMap<String, Object>();
 					varMap.put(Constant.VALUE, varValue);
-					varMap.put(Constant.ROW_NUMBER, ReportF_U.FLZLSD_RN);
-					varMap.put(Constant.COL_NUMBER, ReportF_U.FLZLSD_CN);
+					varMap.put(Constant.ROW_NUMBER, ReportF_U.JFLTXSSYFL1ZLSD_RN);
+					varMap.put(Constant.COL_NUMBER, ReportF_U.JFLTXSSYFL1ZLSD_CN);
+					varMapList.add(varMap);
+				}
+				else if (Constant.FEN_LIAO_2_ZHONG_LIANG_SHE_DING.equals(varName)){//粉料2重量设定
+					String varValue = eRecord.getVarValue();
+
+					varMap = new HashMap<String, Object>();
+					varMap.put(Constant.VALUE, varValue);
+					varMap.put(Constant.ROW_NUMBER, ReportF_U.JFLTXSSYFL2ZLSD_RN);
+					varMap.put(Constant.COL_NUMBER, ReportF_U.JFLTXSSYFL2ZLSD_CN);
 					varMapList.add(varMap);
 				}
 				else if(ERecord.FNSFLFSSYDXJYSJ.equals(varName)) {//釜尿素放料阀上升沿到下降沿时间

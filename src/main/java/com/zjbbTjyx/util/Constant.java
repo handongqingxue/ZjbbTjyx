@@ -539,6 +539,11 @@ public class Constant {
 	public static final String FEN_LIAO_1_ZHONG_LIANG_SHE_DING="粉料1重量设定";
 
 	/**
+	 * 粉料2重量设定
+	 */
+	public static final String FEN_LIAO_2_ZHONG_LIANG_SHE_DING="粉料2重量设定";
+
+	/**
 	 * 温度98PH合格
 	 */
 	public static final String WEN_DU_98_PH_HE_GE="温度98PH合格";

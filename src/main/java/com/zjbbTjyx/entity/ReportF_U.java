@@ -224,13 +224,12 @@ public class ReportF_U {
      */
     public static final int JJHPHSRZ_CN=6;
 
-    //YSD215一次-10
     /**
      * 开始加料酸计量筒称重行号
      */
     public static final int KSJLSJLTCZ_RN=11;
     /**
-     * 酸计量筒称重列号
+     * 开始加料酸计量筒称重列号
      */
     public static final int KSJLSJLTCZ_CN=3;
     /**
@@ -362,13 +361,13 @@ public class ReportF_U {
     
     //YSD103-13
     /**
-     * 粉料重量设定行号
+     * 加粉料提醒粉料1重量设定行号
      */
-    public static final int FLZLSD_RN=14;
+    public static final int JFLTXSSYFL1ZLSD_RN=14;
     /**
-     * 粉料重量设定列号
+     * 加粉料提醒粉料1重量设定列号
      */
-    public static final int FLZLSD_CN=3;
+    public static final int JFLTXSSYFL1ZLSD_CN=3;
     /**
      * 加粉料提醒釜尿素放料阀上升沿时间行号
      */
@@ -437,7 +436,14 @@ public class ReportF_U {
      */
     public static final int JFLTXFNSFLFSSYDXJYSJC_CN=12;
 
-
+    /**
+     * 加粉料提醒粉料2重量设定行号
+     */
+    public static final int JFLTXSSYFL2ZLSD_RN=15;
+    /**
+     * 加粉料提醒粉料2重量设定列号
+     */
+    public static final int JFLTXSSYFL2ZLSD_CN=3;
 
     //开始升温-15
     /**

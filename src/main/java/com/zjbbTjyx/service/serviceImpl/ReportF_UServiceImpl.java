@@ -147,6 +147,11 @@ public class ReportF_UServiceImpl implements ReportF_UService {
 				int zjlyctjwcfyfwdColNumber=ReportF_U.ZJLYCTJWCFYFWD_CN;
 				reportF_UList.add(createByParams(zjlyctjwcfyfwdRowNumber, zjlyctjwcfyfwdColNumber, varValue+unit, batchID));
 			}
+			else if((Constant.ZHU_JI_LIU_ER_CI_BEI_LIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SUAN_JI_LIANG_TONG_CHENG_ZHONG).equals(varName)) {//剂六二次备料完成酸计量筒称重
+				int zjlecblwcsjltczRowNumber=ReportF_U.ZJLECBLWCSJLTCZ_RN;
+				int zjlecblwcsjltczColNumber=ReportF_U.ZJLECBLWCSJLTCZ_CN;
+				reportF_UList.add(createByParams(zjlecblwcsjltczRowNumber, zjlecblwcsjltczColNumber, varValue, batchID));
+			}
 			else if((Constant.ZHU_JI_LIU_ER_CI_BEI_LIAO_WAN_CHENG+Constant.DAO+Constant.ZHU_JI_LIU_ER_CI_TIAN_JIA_WAN_CHENG+Constant.SHI_JIAN).equals(varName)) {//剂六二次备料完成到剂六二次添加完成时间
 				int zjlecblwcsjRowNumber=ReportF_U.ZJLECBLWCSJ_RN;
 				int zjlecblwcsjColNumber=ReportF_U.ZJLECBLWCSJ_CN;
@@ -173,7 +178,12 @@ public class ReportF_UServiceImpl implements ReportF_UService {
 				int zjlectjwcdblwczlcColNumber=ReportF_U.ZJLECBLWCDTJWCZLC_CN;
 				reportF_UList.add(createByParams(zjlectjwcdblwczlcRowNumber, zjlectjwcdblwczlcColNumber, ptnValue+unit, batchID));
 			}
-			else if((Constant.JIA_FEN_LIAO_TI_XING+Constant.FU+Constant.NIAO_SU_FANG_LIAO_FA+Constant.SHANG_SHENG_YAN+Constant.DAO+Constant.XIA_JIANG_YAN+Constant.SHI_JIAN).equals(varName)) {//釜尿素放料阀上升沿到下降沿时间
+			else if((Constant.ZHU_JI_LIU_ER_CI_TIAN_JIA_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU).equals(varName)) {//助剂六二次添加完成上升沿反应釜温度
+				int zjlectjwcfyfwdRowNumber=ReportF_U.ZJLECTJWCFYFWD_RN;
+				int zjlectjwcfyfwdColNumber=ReportF_U.ZJLECTJWCFYFWD_CN;
+				reportF_UList.add(createByParams(zjlectjwcfyfwdRowNumber, zjlectjwcfyfwdColNumber, varValue+unit, batchID));
+			}
+			else if((Constant.JIA_FEN_LIAO_TI_XING+Constant.FU+Constant.NIAO_SU_FANG_LIAO_FA+Constant.SHANG_SHENG_YAN+Constant.DAO+Constant.XIA_JIANG_YAN+Constant.SHI_JIAN).equals(varName)) {//加粉料提醒为1釜尿素放料阀上升沿到下降沿时间
 				int jfltxfnsflfssysjRowNumber=ReportF_U.JFLTXFNSFLFSSYSJ_RN;
 				int jfltxfnsflfssysjColNumber=ReportF_U.JFLTXFNSFLFSSYSJ_CN;
 				reportF_UList.add(createByParams(jfltxfnsflfssysjRowNumber, jfltxfnsflfssysjColNumber, preValue, batchID));
@@ -186,12 +196,22 @@ public class ReportF_UServiceImpl implements ReportF_UService {
 				int jfltxfnsflfssydxjysjcColNumber=ReportF_U.JFLTXFNSFLFSSYDXJYSJC_CN;
 				reportF_UList.add(createByParams(jfltxfnsflfssydxjysjcRowNumber, jfltxfnsflfssydxjysjcColNumber, ptnValue+unit, batchID));
 			}
-			else if((Constant.JIA_FEN_LIAO_TI_XING+Constant.FU+Constant.NIAO_SU_FANG_LIAO_FA+Constant.XIA_JIANG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU).equals(varName)) {//釜尿素放料阀下降沿反应釜温度
+			else if((Constant.JIA_FEN_LIAO_TI_XING+Constant.FEN_LIAO_1_ZHONG_LIANG_SHE_DING).equals(varName)) {//加粉料提醒粉料1重量设定
+				int jfltxssyfl1zlsdRowNumber=ReportF_U.JFLTXSSYFL1ZLSD_RN;
+				int jfltxssyfl1zlsdColNumber=ReportF_U.JFLTXSSYFL1ZLSD_CN;
+				reportF_UList.add(createByParams(jfltxssyfl1zlsdRowNumber, jfltxssyfl1zlsdColNumber, varValue+unit, batchID));
+			}
+			else if((Constant.JIA_FEN_LIAO_TI_XING+Constant.FEN_LIAO_2_ZHONG_LIANG_SHE_DING).equals(varName)) {//加粉料提醒粉料2重量设定
+				int jfltxssyfl2zlsdRowNumber=ReportF_U.JFLTXSSYFL2ZLSD_RN;
+				int jfltxssyfl2zlsdColNumber=ReportF_U.JFLTXSSYFL2ZLSD_CN;
+				reportF_UList.add(createByParams(jfltxssyfl2zlsdRowNumber, jfltxssyfl2zlsdColNumber, varValue+unit, batchID));
+			}
+			else if((Constant.JIA_FEN_LIAO_TI_XING+Constant.FU+Constant.NIAO_SU_FANG_LIAO_FA+Constant.XIA_JIANG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU).equals(varName)) {//加粉料提醒为1釜尿素放料阀下降沿反应釜温度
 				int fnsflfxjyfyfwdRowNumber=ReportF_U.JFLTXFNSFLFXJYFYFWD_RN;
 				int fnsflfxjyfyfwdColNumber=ReportF_U.JFLTXFNSFLFXJYFYFWD_CN;
 				reportF_UList.add(createByParams(fnsflfxjyfyfwdRowNumber, fnsflfxjyfyfwdColNumber, varValue+unit, batchID));
 			}
-			else if((Constant.JIA_FEN_LIAO_TI_XING+Constant.FU+Constant.NIAO_SU_FANG_LIAO_FA+Constant.SHANG_SHENG_YAN+Constant.DAO+Constant.XIA_JIANG_YAN+Constant.FU+Constant.CHENG_ZHONG).equals(varName)) {//釜尿素放料阀上升沿到下降沿釜称重
+			else if((Constant.JIA_FEN_LIAO_TI_XING+Constant.FU+Constant.NIAO_SU_FANG_LIAO_FA+Constant.SHANG_SHENG_YAN+Constant.DAO+Constant.XIA_JIANG_YAN+Constant.FU+Constant.CHENG_ZHONG).equals(varName)) {//加粉料提醒为1釜尿素放料阀上升沿到下降沿釜称重
 				int jfltxfnsflfssyfczRowNumber=ReportF_U.JFLTXFNSFLFSSYFCZ_RN;
 				int jfltxfnsflfssyfczColNumber=ReportF_U.JFLTXFNSFLFSSYFCZ_CN;
 				reportF_UList.add(createByParams(jfltxfnsflfssyfczRowNumber, jfltxfnsflfssyfczColNumber, preValue, batchID));
@@ -260,6 +280,11 @@ public class ReportF_UServiceImpl implements ReportF_UService {
 				int ycjwjstxddycbwhgsjcColNumber=ReportF_U.DYCBWHGDYCJWJSTXSJC_CN;
 				reportF_UList.add(createByParams(ycjwjstxddycbwhgsjcRowNumber, ycjwjstxddycbwhgsjcColNumber, ptnValue+unit, batchID));
 			}
+			else if((Constant.YI_CI_JIANG_WEN_JIA_SUAN_TI_XING+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU).equals(varName)) {//一次降温加酸提醒上升沿反应釜温度
+				int ycjwjstxfyfwdRowNumber=ReportF_U.YCJWJSTXFYFWD_RN;
+				int ycjwjstxfyfwdColNumber=ReportF_U.YCJWJSTXFYFWD_CN;
+				reportF_UList.add(createByParams(ycjwjstxfyfwdRowNumber, ycjwjstxfyfwdColNumber, varValue+unit, batchID));
+			}
 			else if(Constant.YI_CI_JIANG_WEN_JIA_SUAN_LIANG.equals(varName)) {//一次降温加酸量
 				int ycjwjslRowNumber=ReportF_U.YCJWJSL_RN;
 				int ycjwjslColNumber=ReportF_U.YCJWJSL_CN;
@@ -280,6 +305,11 @@ public class ReportF_UServiceImpl implements ReportF_UService {
 				int clbswdsrzColNumber=ReportF_U.CLBSWDSRZ_CN;
 				reportF_UList.add(createByParams(clbswdsrzRowNumber, clbswdsrzColNumber, varValue+unit, batchID));
 			}
+			else if(Constant.BAO_WEN_FEN_ZHONG_JI_SHI.equals(varName)) {//保温分钟计时
+				int bwfzjs1RowNumber=ReportF_U.BWFZJS1_RN;
+				int bwfzjs1ColNumber=ReportF_U.BWFZJS1_CN;
+				reportF_UList.add(createByParams(bwfzjs1RowNumber, bwfzjs1ColNumber, varValue+unit, batchID));
+			}
 			else if(Constant.CE_20_WU_DIAN_SRZ.equals(varName)) {//测20雾点输入值
 				int c20wdsrzRowNumber=ReportF_U.C20WDSRZ_RN;
 				int c20wdsrzColNumber=ReportF_U.C20WDSRZ_CN;
@@ -289,6 +319,11 @@ public class ReportF_UServiceImpl implements ReportF_UService {
 				int ycjwjstxxjyycjwjsphsrRowNumber=ReportF_U.YCJWJSTXXJYYCJWJSPHSR_RN;
 				int ycjwjstxxjyycjwjsphsrColNumber=ReportF_U.YCJWJSTXXJYYCJWJSPHSR_CN;
 				reportF_UList.add(createByParams(ycjwjstxxjyycjwjsphsrRowNumber, ycjwjstxxjyycjwjsphsrColNumber, varValue+unit, batchID));
+			}
+			else if((Constant.JIA_JIAN_LIANG_FAN_WEI_XIA_XIAN).equals(varName)) {//加碱量范围下限
+				int jjlfwxxRowNumber=ReportF_U.JJLFWXX_RN;
+				int jjlfwxxColNumber=ReportF_U.JJLFWXX_CN;
+				reportF_UList.add(createByParams(jjlfwxxRowNumber, jjlfwxxColNumber, varValue+unit, batchID));
 			}
 			else if((Constant.JIA_JIAN_PH_SHU_RU).equals(varName)) {//加碱PH输入
 				int jjphsrRowNumber=ReportF_U.JJPHSR_RN;
