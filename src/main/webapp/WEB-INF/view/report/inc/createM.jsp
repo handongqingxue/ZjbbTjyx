@@ -6,12 +6,31 @@
 <script type="text/javascript">
 var path='<%=basePath%>';
 $(function () {
-	
+    dataResetM();
 })
 
+function dataResetM() {
+    $("#formaldehydeInformationM").val('');//初始化甲醛厂家信息
+    $("#sanAnInformationM").val('');//初始化三安厂家信息
+    var onDutyOperatorSelectM=$("#onDutyOperatorSelectM");//初始化当班操作员信息
+    onDutyOperatorSelectM.empty();
+    onDutyOperatorSelectM.append("<option value=''>请选择</option>")
+    onDutyOperatorSelectM.append("<option value='张三'>张三</option>")
+    var successionOperatorSelectM=$("#successionOperatorSelectM");//初始化接班操作员信息
+    successionOperatorSelectM.empty();
+    successionOperatorSelectM.append("<option value=''>请选择</option>")
+    successionOperatorSelectM.append("<option value='张三'>张三</option>")
+    $("#tank1DataM").val('');//初始化罐1数据信息
+    $("#tank2DataM").val('');//初始化罐2数据信息
+    $("#jqInformationM").html("");
+    $("#onDutyOperatorM").html("");
+    $("#successionOperatorM").html("");
+    $("#saInformationM").html("");
+    $("#tank1AgoM").html("");
+    $("#tank2AgoM").html("");
+}
 function getUnCreRepVarMList(batchID){
 	$.post(path+"report/getUnCreRepVarList",
-		//{batchID:"MA202300000018"},
 		{batchID:batchID},
 		function(result){
 			$("#opcMCTable td[id^='td']").text("");//先清除表格里的数据
@@ -28,6 +47,7 @@ function getUnCreRepVarMList(batchID){
 			}
 		}
 	,"json");
+    dataResetM();//初始化输入框
 }
 
 function addReportF_MByBatchID(){
@@ -42,30 +62,48 @@ function addReportF_MByBatchID(){
 		}
 	,"json");
 }
+function manuallyEnteringInformationM(){
+    //获取值步骤
+    var formaldehydeInformationM = $("#formaldehydeInformationM").val();
+    var sanAnInformationM = $("#sanAnInformationM").val();
+    var onDutyOperatorSelectM = $("#onDutyOperatorSelectM").val();
+    var successionOperatorSelectM = $("#successionOperatorSelectM").val();
+    var tank1DataM = $("#tank1DataM").val();
+    var tank2DataM = $("#tank2DataM").val();
+    //插入表格步骤
+    $("#jqInformationM").html(formaldehydeInformationM);
+    $("#saInformationM").html(sanAnInformationM);
+    $("#onDutyOperatorM").html(onDutyOperatorSelectM);
+    $("#successionOperatorM").html(successionOperatorSelectM);
+    $("#tank1AgoM").html(tank1DataM);
+    $("#tank2AgoM").html(tank2DataM);
+}
 </script>
 </head>
 <body>
 <div class="home_right_div">
     <div class="home_right_head_div">
         <div class="m_create_head_row1_div">
-            <span class="cjxx_span">厂家信息</span>
-            <input type="text" placeholder="录入厂家信息" class="m_create_head_input"/>
-            <span class="czy_span">操作员</span>
-            <select class="m_create_head_input">
-                <option>张三</option>
-            </select>
+            <span class="jqcjxx_span">甲醛厂家信息</span>
+            <input type="text" placeholder="录入甲醛厂家信息" id="formaldehydeInformationM" oninput="manuallyEnteringInformationM()" class="m_create_head_input"/>
+            <span class="sacjxx_span">三安厂家信息</span>
+            <input type="text" placeholder="录入三安厂家信息" id="sanAnInformationM" oninput="manuallyEnteringInformationM()" class="m_create_head_input"/>
+            <span class="dbczy_span">当班操作员</span>
+            <select class="m_create_head_input" id="onDutyOperatorSelectM" onchange="manuallyEnteringInformationM()"></select>
             <span class="bbzt_span">报表状态:</span>
             <span class="wsc_span">未生成</span>
         </div>
         <div class="m_create_head_row2_div">
             <span class="gzlcssr1_span">1号罐重量初始输入</span>
-            <input type="text" size="5" class="m_create_head_input"/>
+            <input type="text" size="5" id="tank1DataM" class="m_create_head_input" oninput="manuallyEnteringInformationM()"/>
             
             <span class="gzlcssr2_span">2号罐重量初始输入</span>
-            <input type="text" size="5" class="m_create_head_input"/>
-            
+            <input type="text" size="5" id="tank2DataM" class="m_create_head_input" oninput="manuallyEnteringInformationM()"/>
+
+            <span class="jbczy_span">接班操作员</span>
+            <select class="m_create_head_input" id="successionOperatorSelectM" onchange="manuallyEnteringInformationM()"></select>
             <div class="but_div scbb_but_div" onclick="addReportF_MByBatchID()">生成报表</div>
-            <div class="but_div sjfw_but_div">数据复位</div>
+            <div class="but_div sjfw_but_div" onclick="dataResetM()">数据复位</div>
         </div>
     </div>
     <div class="home_right_cbody_div">
@@ -80,20 +118,20 @@ function addReportF_MByBatchID(){
             <%--第二行--%>
             <tr class="tr2">
                 <td class="td2_1">YSD101信息</td>
-                <td class="td2_2 blue">
+                <td class="td2_2 blue" id="jqInformationM">
                     <%--甲醛厂家信息，可后期录入--%>
                 </td>
                 <td class="td2_3">YSD102信息</td>
-                <td class="td2_4 blue">
+                <td class="td2_4 blue" id="saInformationM">
                     <%--三安厂家信息可后期录入--%>
                 </td>
                 <td class="td2_5"></td>
                 <td class="td2_6" colspan="2">当班操作员：</td>
-                <td class="td2_7 green" colspan="2">
+                <td class="td2_7 green" colspan="2" id="onDutyOperatorM">
                     <%--直接摘抄登录名--%>
                 </td>
                 <td class="td2_8" colspan="2">接班操作员：</td>
-                <td class="td2_9 green" colspan="2">
+                <td class="td2_9 green" colspan="2" id="successionOperatorM">
                     <%--直接摘抄登录名--%>
                 </td>
             </tr>
@@ -138,11 +176,11 @@ function addReportF_MByBatchID(){
             <%--第五行--%>
             <tr class="tr5">
                 <td>1号罐用前重</td>
-                <td class="yellow"></td>
+                <td class="yellow" id="tank1AgoM"></td>
                 <td>1号罐用后重</td>
                 <td class="yellow"></td>
                 <td>2号罐用前重</td>
-                <td class="yellow"></td>
+                <td class="yellow" id="tank2AgoM"></td>
                 <td>2号罐用后重</td>
                 <td class="yellow"></td>
             </tr>

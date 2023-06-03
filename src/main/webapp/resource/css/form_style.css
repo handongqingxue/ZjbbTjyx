@@ -111,8 +111,7 @@
 }
 .m_create_head_input{
     margin-left: 10px;
-    width: 200px;
-    color: #c2c2c2;
+    width: 150px;
     border: #c2c2c2 1px solid;
     border-radius: 3px;
     height: 25px;
@@ -135,36 +134,47 @@
     border-top: 1px #d4cfcf solid;
 }
 .m_create_head_row1_div{
+    color: #6d6d6d;
     overflow: auto;
     display: flex;
     align-items:center;/*上下居中*/
     width: 100%;
     height: 55px;
-    font: normal 600 14px "微软雅黑";
+    font: normal 400 14px "微软雅黑";
 }
 .m_create_head_row2_div{
+    color: #6d6d6d;
     display: flex;
     align-items:center;/*上下居中*/
     width: 100%;
     height: 55px;
+    font: normal 400 14px "微软雅黑";
 }
 
-.cjxx_span{
-	margin-left:85px;
+.jqcjxx_span{
+	margin-left:55px;
+    color: #242424;
+}
+.sacjxx_span{
+    margin-left:90px;
     color: #242424;
 }
 /*.cjxx_input{*/
 /*	margin-left:10px;*/
 /*}*/
-.czy_span{
-	margin-left:250px;
+.dbczy_span{
+	margin-left:90px;
+    color: #242424;
+}
+.jbczy_span{
+    margin-left:90px;
     color: #242424;
 }
 .czy_select{
 	margin-left:10px;
 }
 .bbzt_span{
-	margin-left:250px;
+	margin-left:150px;
 }
 .wsc_span{
 	margin-left:10px;
@@ -173,12 +183,10 @@
 }
 .gzlcssr1_span{
 	margin-left:20px;
-    font: normal 600 14px "微软雅黑";
     color: #242424;
 }
 .gzlcssr2_span{
-	margin-left:173px;
-    font: normal 600 14px "微软雅黑";
+	margin-left:55px;
     color: #242424;
 }
 
@@ -192,7 +200,7 @@
 	border-radius:5px;
 }
 .scbb_but_div{
-	margin-left: 220px;
+	margin-left: 100px;
 	background-color: #55CA7D;
     color: #FFFFFF;
 }
@@ -295,6 +303,14 @@
 .m_body_table .tr25{
     height: 100px;
 }
+
+.m_create_head_input::placeholder{
+    font: normal 400 14px "微软雅黑";
+    color: #c2c2c2;
+    margin-left: 20px;
+    position:relative;
+    left:15px;
+}
 .glue{
     color: #f61c27;
     font-weight:bolder;
@@ -341,10 +357,12 @@
     cursor:pointer;
 }
 .u_create_head_row2_div{
+    color: #6d6d6d;
     display: flex;
     align-items:center;/*上下居中*/
     width: 100%;
     height: 55px;
+    font: normal 400 14px "微软雅黑";
 }
 .u_body_table .tr1{
     height: 50px;
@@ -464,20 +482,25 @@
 
 
 .u_create_head_row1_div{
+    color: #6d6d6d;
     overflow: auto;
     display: flex;
     align-items:center;/*上下居中*/
     width: 100%;
     height: 55px;
-    font: normal 600 14px "微软雅黑";
+    font: normal 400 14px "微软雅黑";
 }
 .u_create_head_input{
     margin-left: 10px;
-    width: 200px;
-    color: #c2c2c2;
+    width: 150px;
     border: #c2c2c2 1px solid;
     border-radius: 3px;
     height: 25px;
 }
-
-
+.u_create_head_input::placeholder{
+    font: normal 400 14px "微软雅黑";
+    color: #c2c2c2;
+    margin-left: 20px;
+    position:relative;
+    left:15px;
+}

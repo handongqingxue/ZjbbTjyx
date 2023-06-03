@@ -12,7 +12,30 @@
 <script type="text/javascript" src="<%=basePath%>resource/js/jquery-3.3.1.js"></script>
 <script type="text/javascript">
 var path='<%=basePath%>';
+$(function () {
+    dataResetU();
+})
 
+function dataResetU() {
+    $("#formaldehydeInformationU").val('');//初始化甲醛厂家信息
+    $("#sanAnInformationU").val('');//初始化三安厂家信息
+    var onDutyOperatorSelectU=$("#onDutyOperatorSelectU");//初始化当班操作员信息
+    onDutyOperatorSelectU.empty();
+    onDutyOperatorSelectU.append("<option value=''>请选择</option>")
+    onDutyOperatorSelectU.append("<option value='张三'>张三</option>")
+    var successionOperatorSelectU=$("#successionOperatorSelectU");//初始化接班操作员信息
+    successionOperatorSelectU.empty();
+    successionOperatorSelectU.append("<option value=''>请选择</option>")
+    successionOperatorSelectU.append("<option value='张三'>张三</option>")
+    $("#tank1DataU").val('');//初始化罐1数据信息
+    $("#tank2DataU").val('');//初始化罐2数据信息
+    $("#jqInformationU").html("");
+    $("#onDutyOperatorU").html("");
+    $("#successionOperatorU").html("");
+    $("#saInformationU").html("");
+    $("#tank1AgoU").html("");
+    $("#tank2AgoU").html("");
+}
 function getUnCreRepVarUList(batchID){
 
     $.post(path+"report/getUnCreRepVarList",
@@ -33,6 +56,7 @@ function getUnCreRepVarUList(batchID){
             }
         }
     ,"json");
+    dataResetU();//初始化输入框
 }
 
 function addReportF_UByBatchID(){
@@ -47,30 +71,48 @@ function addReportF_UByBatchID(){
         }
     ,"json");
 }
+function manuallyEnteringInformationU(){
+    //获取值步骤
+    var formaldehydeInformationU = $("#formaldehydeInformationU").val();
+    var sanAnInformationU = $("#sanAnInformationU").val();
+    var onDutyOperatorSelectU = $("#onDutyOperatorSelectU").val();
+    var successionOperatorSelectU = $("#successionOperatorSelectU").val();
+    var tank1DataU = $("#tank1DataU").val();
+    var tank2DataU = $("#tank2DataU").val();
+    //插入表格步骤
+    $("#jqInformationU").html(formaldehydeInformationU);
+    $("#saInformationU").html(sanAnInformationU);
+    $("#onDutyOperatorU").html(onDutyOperatorSelectU);
+    $("#successionOperatorU").html(successionOperatorSelectU);
+    $("#tank1AgoU").html(tank1DataU);
+    $("#tank2AgoU").html(tank2DataU);
+}
 </script>
 </head>
 <body>
     <div class="home_right_div">
         <div class="home_right_head_div">
             <div class="u_create_head_row1_div">
-                <span class="cjxx_span">厂家信息</span>
-                <input type="text" placeholder="录入厂家信息" class="m_create_head_input"/>
-                <span class="czy_span">操作员</span>
-                <select class="u_create_head_input">
-                    <option>张三</option>
-                </select>
+                <span class="jqcjxx_span">甲醛厂家信息</span>
+                <input type="text" placeholder="录入甲醛厂家信息"oninput="manuallyEnteringInformationU()" id="formaldehydeInformationU" class="u_create_head_input"/>
+                <span class="sacjxx_span">三安厂家信息</span>
+                <input type="text" placeholder="录入三安厂家信息"oninput="manuallyEnteringInformationU()" id="sanAnInformationU" class="u_create_head_input"/>
+                <span class="dbczy_span">当班操作员</span>
+                <select class="u_create_head_input" id="onDutyOperatorSelectU" onchange="manuallyEnteringInformationU()"></select>
                 <span class="bbzt_span">报表状态:</span>
                 <span class="wsc_span">未生成</span>
             </div>
             <div class="u_create_head_row2_div">
                 <span class="gzlcssr1_span">1号罐重量初始输入</span>
-                <input type="text" size="5" class="u_create_head_input"/>
+                <input type="text" size="5" id="tank1DataU" class="u_create_head_input" oninput="manuallyEnteringInformationU()"/>
 
                 <span class="gzlcssr2_span">2号罐重量初始输入</span>
-                <input type="text" size="5" class="u_create_head_input"/>
+                <input type="text" size="5" id="tank2DataU" class="u_create_head_input" oninput="manuallyEnteringInformationU()"/>
 
+                <span class="jbczy_span">接班操作员</span>
+                <select class="m_create_head_input" id="successionOperatorSelectU" onchange="manuallyEnteringInformationU()"></select>
                 <div class="but_div scbb_but_div" onclick="addReportF_UByBatchID()">生成报表</div>
-                <div class="but_div sjfw_but_div">数据复位</div>
+                <div class="but_div sjfw_but_div" onclick="dataResetU()">数据复位</div>
             </div>
         </div>
         <div class="home_right_cbody_div">
@@ -85,14 +127,14 @@ function addReportF_UByBatchID(){
                 <!--第二行-->
                 <tr class="tr2">
                     <td class="td2_1">YSD101信息</td>
-                    <td id="td2_2" class="td2_2 blue"></td>
+                    <td class="td2_2 blue" id="jqInformationU"></td>
                     <td class="td2_3">YSD102信息</td>
-                    <td id="td2_4" class="td2_4 blue"></td>
+                    <td class="td2_4 blue" id="saInformationU"></td>
                     <td id="td2_5" class="td2_5"></td>
                     <td colspan="2" class="td2_6">当班操作员：</td>
-                    <td id="td2_7" colspan="2" class="td2_7 green"></td>
+                    <td colspan="2" class="td2_7 green" id="onDutyOperatorU"></td>
                     <td colspan="2" class="td2_8">接班操作员：</td>
-                    <td colspan="2" class="td2_9 green"></td>
+                    <td colspan="2" class="td2_9 green" id="successionOperatorU"></td>
                 </tr>
                 <!--第三行-->
                 <tr class="tr3">
@@ -124,11 +166,11 @@ function addReportF_UByBatchID(){
                 <!--第五行-->
                 <tr class="tr5">
                     <td>1号罐用前重</td>
-                    <td class="yellow" id="td5_2"></td>
+                    <td class="yellow" id="tank1AgoU"></td>
                     <td>1号罐用后重</td>
                     <td class="yellow" id="td5_4"></td>
                     <td>2号罐用前重</td>
-                    <td class="yellow" id="td5_6"></td>
+                    <td class="yellow" id="tank2AgoU"></td>
                     <td>2号罐用后重</td>
                     <td class="yellow" id="td5_8"></td>
                 </tr>
