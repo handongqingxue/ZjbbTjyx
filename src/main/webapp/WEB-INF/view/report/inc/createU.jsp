@@ -60,16 +60,18 @@ function getUnCreRepVarUList(batchID){
 }
 
 function addReportF_UByBatchID(){
-    var batchID=$("#opcUCTable #batchID_hid").val();
-    $.post(path+"report/addReportFByBatchID",
-        {batchID:batchID},
-        function(result){
-            if(result.message=="ok"){
-                alert(result.info);
-                getLeftMenuData("uWsc");
+    if(confirm('是否要生成报表 ?')) {
+        var batchID = $("#opcUCTable #batchID_hid").val();
+        $.post(path + "report/addReportFByBatchID",
+            {batchID: batchID},
+            function (result) {
+                if (result.message == "ok") {
+                    alert(result.info);
+                    getLeftMenuData("uWsc");
+                }
             }
-        }
-    ,"json");
+            , "json");
+    }
 }
 function manuallyEnteringInformationU(){
     //获取值步骤

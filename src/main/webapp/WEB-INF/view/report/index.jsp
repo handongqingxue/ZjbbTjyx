@@ -30,31 +30,71 @@
         <div class="home-left-body">
             <ul class="layui-nav layui-nav-tree" lay-filter="test">
                 <%--layui-nav-itemed 自动展开--%>
-                <li class="layui-nav-item">
-                    <a href="javascript:;">M类报表生成</a>
-                    <dl class="layui-nav-child" id="mWscBatchIdList_dl" style="color: #79e6e8">
-                        <c:forEach items="${mWscBatchIdList}" var="item">
-                            <dd><a href="javascript:;">${item.batchID}</a></dd>
-                        </c:forEach>
-                    </dl>
-                </li>
-                <li class="layui-nav-item">
-                    <a href="javascript:;">U类报表生成</a>
-                    <dl class="layui-nav-child" id="uWscBatchIdList_dl">
-                        <c:forEach items="${uWscBatchIdList}" var="item">
-                            <dd><a href="javascript:;">${item.batchID}</a></dd>
-                        </c:forEach>
-                    </dl>
-                </li>
-                <li class="layui-nav-item">
-                    <a href="javascript:;">M类报表查询</a>
-                    <dl class="layui-nav-child" id="mYscGlueTypeList_dl"></dl>
-                </li>
-                <li class="layui-nav-item">
-                    <a href="javascript:;">U类报表查询</a>
-                    <dl class="layui-nav-child" id="uYscGlueTypeList_dl"></dl>
-                </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">报表生成</a>
+                        <dl class="layui-nav-child" style="color: #79e6e8">
+                            <li class="layui-nav-item">
+                                <a href="javascript:;">M类</a>
+                                <dl class="layui-nav-child" id="mWscBatchIdList_dl" style="color: #79e6e8">
+                                    <c:forEach items="${mWscBatchIdList}" var="item">
+                                        <dd><a href="javascript:;">${item.batchID}</a></dd>
+                                    </c:forEach>
+                                </dl>
+                            </li>
+                            <li class="layui-nav-item">
+                                <a href="javascript:;">U类</a>
+                                <dl class="layui-nav-child" id="uWscBatchIdList_dl">
+                                    <c:forEach items="${uWscBatchIdList}" var="item">
+                                        <dd><a href="javascript:;">${item.batchID}</a></dd>
+                                    </c:forEach>
+                                </dl>
+                            </li>
+                        </dl>
+                    </li>
+
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">报表查询</a>
+                        <dl class="layui-nav-child">
+                            <li class="layui-nav-item">
+                                <a href="javascript:;">M类</a>
+                                <dl class="layui-nav-child" id="mYscGlueTypeList_dl"></dl>
+                            </li>
+                            <li class="layui-nav-item">
+                                <a href="javascript:;">U类</a>
+                                <dl class="layui-nav-child" id="uYscGlueTypeList_dl"></dl>
+                            </li>
+                        </dl>
+                    </li>
+
             </ul>
+<%--之前的菜单栏--%>
+<%--            <ul class="layui-nav layui-nav-tree" lay-filter="test">--%>
+<%--                &lt;%&ndash;layui-nav-itemed 自动展开&ndash;%&gt;--%>
+<%--                <li class="layui-nav-item">--%>
+<%--                    <a href="javascript:;">M类报表生成</a>--%>
+<%--                    <dl class="layui-nav-child" id="mWscBatchIdList_dl" style="color: #79e6e8">--%>
+<%--                        <c:forEach items="${mWscBatchIdList}" var="item">--%>
+<%--                            <dd><a href="javascript:;">${item.batchID}</a></dd>--%>
+<%--                        </c:forEach>--%>
+<%--                    </dl>--%>
+<%--                </li>--%>
+<%--                <li class="layui-nav-item">--%>
+<%--                    <a href="javascript:;">U类报表生成</a>--%>
+<%--                    <dl class="layui-nav-child" id="uWscBatchIdList_dl">--%>
+<%--                        <c:forEach items="${uWscBatchIdList}" var="item">--%>
+<%--                            <dd><a href="javascript:;">${item.batchID}</a></dd>--%>
+<%--                        </c:forEach>--%>
+<%--                    </dl>--%>
+<%--                </li>--%>
+<%--                <li class="layui-nav-item">--%>
+<%--                    <a href="javascript:;">M类报表查询</a>--%>
+<%--                    <dl class="layui-nav-child" id="mYscGlueTypeList_dl"></dl>--%>
+<%--                </li>--%>
+<%--                <li class="layui-nav-item">--%>
+<%--                    <a href="javascript:;">U类报表查询</a>--%>
+<%--                    <dl class="layui-nav-child" id="uYscGlueTypeList_dl"></dl>--%>
+<%--                </li>--%>
+<%--            </ul>--%>
         </div>
         <div class="home-right-body">
             <%--右部分标题头--%>
