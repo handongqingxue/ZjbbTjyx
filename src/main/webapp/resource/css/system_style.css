@@ -157,3 +157,50 @@ body, html {
 .left-menu-a{
     cursor:pointer;
 }
+
+.father{
+    display: inline-block;
+    /*relative生成相对定位的元素，相对于其正常位置进行定位。*/
+    position: relative;
+    /*上下边距为10px，左右边距为50px*/
+    /*padding: 10px 50px;*/
+
+}
+
+.son{
+    width: 80px;
+    height: 70px;
+    position: absolute;
+    display: none;
+    background-color: #c8c8d0;
+    top: 23px;
+    left: 55px;
+    right: 10px;
+    padding-left: 0px;
+    /*将方框的角变为圆角框*/
+    border-radius: 5px;
+}
+
+.son>li{
+    padding: 5px;
+    text-align: center;
+}
+
+/*hover是指当鼠标移动到上面是才有响应*/
+.father:hover{
+    /*background-color: #4d7afa;*/
+}
+
+.son li:hover
+{
+    background-color: #aaafb4;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+.son li a:hover
+{
+    color: #FFFFFF;
+}
+.father:hover .son{
+    display: block;
+}

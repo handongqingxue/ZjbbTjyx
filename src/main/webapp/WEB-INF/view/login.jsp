@@ -4,6 +4,9 @@
     <title>登陆</title>
     <%@include file="report/inc/js.jsp"%>
 </head>
+<script>
+
+</script>
 <body>
     <div class="login">
         <div class="login_box">
@@ -23,7 +26,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <button onclick="checkInfo()" id="login_button" onmouseover="mouseover()" onmouseleave="mouseleave()" class="login_button">登陆</button>
+                        <button onclick="checkInfo()" onkeydown="keyLogin()" id="login_button" onmouseover="mouseover()" onmouseleave="mouseleave()" class="login_button">登陆</button>
                     </td>
                 </tr>
             </table>
