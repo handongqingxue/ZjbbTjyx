@@ -252,7 +252,6 @@ function showCreateArea(batchID){
   		searchMDisplay="none";
   		searchUDisplay="none"
         getUnCreRepVarMList(batchID);
-
     }
     if (recType=="U"){
         createMDisplay="none";
@@ -260,7 +259,6 @@ function showCreateArea(batchID){
         searchMDisplay="none";
         searchUDisplay="none"
         getUnCreRepVarUList(batchID);
-
     }
 	$("#createM").css("display",createMDisplay);
     $("#createU").css("display",createUDisplay);
