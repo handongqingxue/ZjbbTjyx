@@ -204,3 +204,22 @@ body, html {
 .father:hover .son{
     display: block;
 }
+.user_table{
+    width: 100%;
+    text-align: center;
+}
+.user_table tr{
+    height: 50px;
+}
+.user_table tr th{
+    font: none 600 24px '微软雅黑';
+    background-color: #c7c7c7;
+    border: 1px saddlebrown solid;
+
+}
+.user_table tr td{
+    border: 1px saddlebrown solid;
+
+    font: none 400 22px '微软雅黑';
+    background-color: #f3f3ec;
+}

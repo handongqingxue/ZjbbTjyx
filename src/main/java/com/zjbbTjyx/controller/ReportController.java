@@ -41,7 +41,11 @@ public class ReportController {
         
         return MODULE_NAME+"/index";
     }
+	@RequestMapping("/goTest2")
+	public String goTest2(HttpServletRequest request){
 
+		return MODULE_NAME+"/test2";
+	}
     @RequestMapping("/goCreateM")
     public String goCreateM(HttpServletRequest request){
         

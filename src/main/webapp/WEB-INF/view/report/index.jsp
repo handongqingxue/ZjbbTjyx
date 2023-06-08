@@ -74,7 +74,7 @@
                     <a href="javascript:;">系统管理</a>
                     <dl class="layui-nav-child">
                         <li class="layui-nav-item">
-                            <a href="javascript:;">用户管理</a>
+                            <a href="javascript:;" onclick="showUserArea('yonghu')">用户管理</a>
                         </li>
                         <li class="layui-nav-item">
                             <a href="javascript:;">角色管理</a>
@@ -134,6 +134,9 @@
                 <div id="searchU">
                     <%@include file="../report/inc/searchU.jsp"%>
                 </div>
+                <di id="userList">
+                    <%@include file="../report/system/userList.jsp"%>
+                </di>
             </div>
         </div>
     </div>
@@ -244,6 +247,7 @@ function showCreateArea(batchID){
   	var createUDisplay;
   	var searchMDisplay;
   	var searchUDisplay;
+    var userListDisplay;
   	
   	var recType=batchID.substring(0,1);
   	if (recType=="M"){
@@ -251,20 +255,22 @@ function showCreateArea(batchID){
   		createUDisplay="none";
   		searchMDisplay="none";
   		searchUDisplay="none"
+        userListDisplay="none";
         getUnCreRepVarMList(batchID);
     }
-    if (recType=="U"){
+    if (recType=="U"){//
         createMDisplay="none";
         createUDisplay="block";
         searchMDisplay="none";
         searchUDisplay="none"
+        userListDisplay="none";
         getUnCreRepVarUList(batchID);
     }
 	$("#createM").css("display",createMDisplay);
     $("#createU").css("display",createUDisplay);
     $("#searchM").css("display",searchMDisplay);
     $("#searchU").css("display",searchUDisplay);
-      
+    $("#userList").css("display",userListDisplay);
     $("#right-body-head-span2").text("报表生成页面");
     document.getElementById("right-body-head-icon").classList.add("layui-icon-add-circle");
 }
@@ -274,31 +280,62 @@ function showSearchArea(glueType){
   	var createUDisplay;
   	var searchMDisplay;
   	var searchUDisplay;
-  	
+    var userListDisplay;
+
   	var recType=glueType.substring(0,1);
   	if (recType=="M"){
   		createMDisplay="none";
   		createUDisplay="none";
   		searchMDisplay="block";
-  		searchUDisplay="none"
+  		searchUDisplay="none";
+        userListDisplay="none";
   	}
     if (recType=="U"){
         createMDisplay="none";
         createUDisplay="none";
         searchMDisplay="none";
         searchUDisplay="block"
+        userListDisplay="none";
     }
 	$("#createM").css("display",createMDisplay);
     $("#createU").css("display",createUDisplay);
     $("#searchM").css("display",searchMDisplay);
     $("#searchU").css("display",searchUDisplay);
-      
+    $("#userList").css("display",userListDisplay);
+
     $("#right-body-head-span2").text("报表查询页面");
     document.getElementById("right-body-head-icon").classList.replace("layui-icon-add-circle","layui-icon-search");
       
     getPcjlListByType(glueType);
 }
 
+function showUserArea(glueType){
+    console.log("jin"+glueType);
+    var createMDisplay;
+    var createUDisplay;
+    var searchMDisplay;
+    var searchUDisplay;
+    var userListDisplay;
+
+    var recType=glueType.substring(0,1);
+    if (recType=="y"){
+        createMDisplay="none";
+        createUDisplay="none";
+        searchMDisplay="none";
+        searchUDisplay="none"
+        userListDisplay="block";
+    }
+
+    $("#createM").css("display",createMDisplay);
+    $("#createU").css("display",createUDisplay);
+    $("#searchM").css("display",searchMDisplay);
+    $("#searchU").css("display",searchUDisplay);
+    $("#userList").css("display",userListDisplay);
+
+    $("#right-body-head-span2").text("用户管理页面");
+    // document.getElementById("right-body-head-icon").classList.replace("layui-icon-add-circle","layui-icon-username");
+
+}
 function getPcjlListByType(type) {
     $.post("<%=basePath%>report/getPcjlListByType",
         {type:type},
