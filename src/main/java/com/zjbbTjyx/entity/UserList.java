@@ -3,7 +3,7 @@ package com.zjbbTjyx.entity;
 import java.io.Serializable;
 
 public class UserList implements Serializable {
-    private Integer id;
+    private Integer Id;
     private String UserName;
     private String Psd;
     private String CTime;
@@ -19,20 +19,13 @@ public class UserList implements Serializable {
     public UserList() {
     }
 
-    public UserList(Integer id, String userName, String psd, String CTime, Integer type) {
-        this.id = id;
-        UserName = userName;
-        Psd = psd;
-        this.CTime = CTime;
-        Type = type;
-    }
 
     public Integer getId() {
-        return id;
+        return Id;
     }
 
     public void setId(Integer id) {
-        this.id = id;
+        Id = id;
     }
 
     public String getUserName() {
@@ -70,7 +63,7 @@ public class UserList implements Serializable {
     @Override
     public String toString() {
         return "UserList{" +
-                "id=" + id +
+                "Id=" + Id +
                 ", UserName='" + UserName + '\'' +
                 ", Psd='" + Psd + '\'' +
                 ", CTime='" + CTime + '\'' +
