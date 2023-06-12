@@ -12,5 +12,14 @@
         INSERT into UserList (UserName,Psd,CTime,Type) VALUES (#{userName},#{psd},getDate(),1)
     </insert>
 
+    <delete id="delUser">
+        delete from UserList where 1=1
+        <foreach collection="idList" item="id" open=" and cast(id as char) in (" separator="," close=")">
+            Id=#{id}
+        </foreach>
+    </delete>
 
+    <select id="getUserList" resultType="com.zjbbTjyx.entity.UserList">
+        select * from UserList
+    </select>
 </mapper>

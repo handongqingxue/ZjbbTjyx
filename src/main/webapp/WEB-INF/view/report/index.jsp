@@ -310,7 +310,6 @@ function showSearchArea(glueType){
 }
 
 function showUserArea(glueType){
-    console.log("jin"+glueType);
     var createMDisplay;
     var createUDisplay;
     var searchMDisplay;
