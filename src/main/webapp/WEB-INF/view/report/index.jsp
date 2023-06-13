@@ -19,7 +19,7 @@
             <li>|</li>
             <li id="system-time"></li>
             <li>|</li>
-            <li class="father"><span>欢迎您 !&nbsp;&nbsp;</span><a style="cursor:pointer;">${sessionScope.user.userName}</a>
+            <li class="father"><span>欢迎您 !&nbsp;&nbsp;</span><a style="cursor:pointer;">${sessionScope.user.realName}</a>
                 <ul class="son">
                     <li>个人中心</li>
                     <li>
@@ -27,8 +27,6 @@
                     </li>
                 </ul>
             </li>
-<%--            <li>|</li>--%>
-<%--            <li><a href="#" onclick="exit()">退出</a></li>--%>
         </ul>
     </div>
     <%--身体--%>
@@ -135,7 +133,7 @@
                     <%@include file="../report/inc/searchU.jsp"%>
                 </div>
                 <di id="userList">
-                    <%@include file="../report/system/userList.jsp"%>
+                    <%@include file="../report/system/user/userList.jsp"%>
                 </di>
             </div>
         </div>
@@ -148,13 +146,16 @@ $(function () {
 })
 
 function exit() {
-    if (confirm('是否要退出当前用户？')){
+    layer.confirm("是否要退出当前用户？", {
+        btn: ["确定", "取消"] //按钮
+    }, function (index) {
         $.post(path+"main/exit",
             function (result) {
                 window.location.href=path+result;
             }
         )
-    }
+        layer.close(index);
+    });
 }
 
 function getLeftMenuData(type){

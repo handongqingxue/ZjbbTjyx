@@ -29,7 +29,7 @@ public class UserListServiceImpl implements UserListService {
     }
 
     @Override
-    public List<UserList> getUserList() {
-        return userListMapper.getUserList();
+    public List<UserList> getUserList(String UserName,String RealName) {
+        return userListMapper.getUserList(UserName,RealName);
     }
 }

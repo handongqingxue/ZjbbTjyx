@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class UserList implements Serializable {
     private Integer Id;
     private String UserName;
+    private String RealName;
     private String Psd;
     private String CTime;
     private Integer Type;
@@ -18,7 +19,6 @@ public class UserList implements Serializable {
 
     public UserList() {
     }
-
 
     public Integer getId() {
         return Id;
@@ -34,6 +34,14 @@ public class UserList implements Serializable {
 
     public void setUserName(String userName) {
         UserName = userName;
+    }
+
+    public String getRealName() {
+        return RealName;
+    }
+
+    public void setRealName(String realName) {
+        RealName = realName;
     }
 
     public String getPsd() {

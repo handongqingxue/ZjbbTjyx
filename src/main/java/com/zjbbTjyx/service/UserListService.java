@@ -15,5 +15,5 @@ public interface UserListService {
     int delUser(List<Integer> IdList);
 
     //全部用户
-    List<UserList> getUserList();
+    List<UserList> getUserList(String UserName,String RealName);
 }

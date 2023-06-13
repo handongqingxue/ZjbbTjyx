@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>登陆</title>
+    <title>登录</title>
     <%@include file="report/inc/js.jsp"%>
 </head>
 <body>

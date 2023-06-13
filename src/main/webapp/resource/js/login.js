@@ -23,20 +23,24 @@ function checkUserName(){
     var userName=$("#userName").val();
     if(userName==null||userName==""||userName=="请填写用户名"){
         // layer.msg('请填写用户名', {icon: 5});
-        $("#userName").css("color","#f00");
-        $("#userName").val("请填写用户名");
+        // $("#userName").css("color","#f00");
+        // $("#userName").val("请填写用户名");
+    // ,offset:['55%','45%'],time:1000,area:['80px','66px']
+        layer.msg('请填写用户名', {icon: 5},);
         return false;
     }
     else if (!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(userName)) {
         // layer.msg('用户名不能有特殊字符', {icon: 5});
-        $("#userName").css("color","#f00");
-        $("#userName").val("用户名不能有特殊字符");
+        // $("#userName").css("color","#f00");
+        // $("#userName").val("用户名不能有特殊字符");
+        layer.msg('用户名不能有特殊字符', {icon: 5});
         return false;
     }
     else if (/(^\_)|(\__)|(\_+$)/.test(userName)) {
         // layer.msg('用户名首尾不能出现下划线\'_\'', {icon: 5});
-        $("#userName").css("color","#f00");
-        $("#userName").val("用户名首尾不能出现下划线\'_\'");
+        // $("#userName").css("color","#f00");
+        // $("#userName").val("用户名首尾不能出现下划线\'_\'");
+        layer.msg('用户名首尾不能出现下划线\'_\'', {icon: 5});
         return false;
     }
     else
@@ -46,7 +50,7 @@ function checkUserName(){
 function checkPassword(){
     var password=$("#password").val();
     if(password==null||password==""||password=="请填写密码"){
-        alert("请填写密码");
+        layer.msg('请填写密码',{icon: 5});
         return false;
     }
     else
@@ -64,6 +68,10 @@ function checkInfo(){
 }
 
 function login(userName,password){
+    layer.load(2);
+    setTimeout(function(){
+        layer.closeAll('loading');
+    }, 1500);
     $.post(baseUrl + "/main/login",
         {
             userName:userName,
@@ -71,27 +79,29 @@ function login(userName,password){
         },
         function(json){
             if(json.status==1){
+                layer.msg('登入成功', {icon: 1});
                 window.location.href=baseUrl+json.url;
             }else if(json.status==0){
-                alert(json.msg);
+                layer.msg(json.msg, {icon: 5});
             }
         }
         ,"json");
 }
-// function insertUser() {
-//     var pass=MD5("12345678").toUpperCase();
-//     $.post(baseUrl + "/user/addUser",
-//         {
-//             UserName:'lilekang',
-//             Psd:pass
-//         },
-//         function(json){
-//             alert(json)
-//             // if(json.status==0){
-//             //     window.location.href=baseUrl+json.url;
-//             // }else if(json.status==1){
-//             //     alert(json.msg);
-//             // }
-//         }
-//         ,"json");
-// }
+function insertUser() {
+
+    var pass=MD5("12345678").toUpperCase();
+    $.post(baseUrl + "/main/addUser",
+        {
+            UserName:'lilekang1',
+            Psd:pass
+        },
+        function(json){
+            alert(json)
+            // if(json.status==0){
+            //     window.location.href=baseUrl+json.url;
+            // }else if(json.status==1){
+            //     alert(json.msg);
+            // }
+        }
+        ,"json");
+}

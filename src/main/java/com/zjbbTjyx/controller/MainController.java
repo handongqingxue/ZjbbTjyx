@@ -9,11 +9,13 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +23,7 @@ import java.util.Map;
 @Controller
 @RequestMapping("/main")
 public class MainController {
+    public static final String MODULE_NAME="report";
 
     @Autowired
     private UserListService userListService;
@@ -67,6 +70,12 @@ public class MainController {
         return "main/goLogin";
     }
 
+    //添加用户页面
+    @RequestMapping("/goAddUserPage")
+    public String goAddUserPage(HttpServletRequest request){
+
+        return MODULE_NAME+"/system/user/addUser";
+    }
     //注册用户
     @RequestMapping("/addUser")
     public void addUser(UserList user){
@@ -75,17 +84,21 @@ public class MainController {
 
     //删除用户
     @RequestMapping("/delUser")
-    public PlanResult delUser(List<Integer> idList){
+    @ResponseBody
+    public PlanResult delUser(Integer id){
+        System.out.println(id+"p");
+        List<Integer> idList=new ArrayList<Integer>();
+        idList.add(id);
         PlanResult planResult=new PlanResult();
         int i = 0;
         try {
             i = userListService.delUser(idList);
-            planResult.setMsg("删除成功!");
+            planResult.setMsg("ok");
             planResult.setStatus(1);
             planResult.setData(i);
         } catch (Exception e) {
             e.printStackTrace();
-            planResult.setMsg("删除失败!");
+            planResult.setMsg("no");
             planResult.setStatus(0);
         } finally {
             return planResult;
@@ -94,15 +107,14 @@ public class MainController {
     //查询全部用户
     @RequestMapping("/getUserList")
     @ResponseBody
-    public PlanResult getUserList(HttpServletRequest request){
+    public PlanResult getUserList(String UserName,String RealName){
         PlanResult planResult=new PlanResult();
-        List<UserList> userList = null;
+        List<UserList> users = null;
         try {
-            userList = userListService.getUserList();
-            request.setAttribute("userList",userList);
+            users = userListService.getUserList(UserName,RealName);
             planResult.setMsg("查询成功!");
             planResult.setStatus(1);
-            planResult.setData(userList);
+            planResult.setData(users);
         } catch (Exception e) {
             e.printStackTrace();
             planResult.setMsg("查询失败!");

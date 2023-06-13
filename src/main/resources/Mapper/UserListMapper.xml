@@ -14,12 +14,20 @@
 
     <delete id="delUser">
         delete from UserList where 1=1
-        <foreach collection="idList" item="id" open=" and cast(id as char) in (" separator="," close=")">
-            Id=#{id}
+        <foreach collection="idList" item="id" open=" and cast(Id as char) in (" separator="," close=")">
+            #{id}
         </foreach>
     </delete>
 
     <select id="getUserList" resultType="com.zjbbTjyx.entity.UserList">
         select * from UserList
+        <where>
+            <if test="UserName!='' and UserName!=null">
+                and UserName like '%'+#{UserName}+'%'
+            </if>
+            <if test="RealName!='' and RealName!=null">
+                and RealName like '%'+#{RealName}+'%'
+            </if>
+        </where>
     </select>
 </mapper>
