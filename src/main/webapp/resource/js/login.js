@@ -8,7 +8,7 @@ var localhostPaht=curWwwPath.substring(0,pos);
 //获取带"/"的项目名，如：/ahha
 var projectName=pathName.substring(0,pathName.substr(1).indexOf('/')+1);
 //得到了 服务器名称和项目名称
-var baseUrl=localhostPaht+projectName;
+var path=localhostPaht+projectName;
 // var baseUrl="${pageContext.request.contextPath}";
 
 
@@ -72,7 +72,7 @@ function login(userName,password){
     setTimeout(function(){
         layer.closeAll('loading');
     }, 1500);
-    $.post(baseUrl + "/main/login",
+    $.post(path + "/main/login",
         {
             userName:userName,
             Psd:password
@@ -80,28 +80,11 @@ function login(userName,password){
         function(json){
             if(json.status==1){
                 layer.msg('登入成功', {icon: 1});
-                window.location.href=baseUrl+json.url;
+                window.location.href=path+json.url;
             }else if(json.status==0){
-                layer.msg(json.msg, {icon: 5});
+                layer.msg('账号或密码不正确!', {icon: 5});
             }
         }
         ,"json");
 }
-function insertUser() {
 
-    var pass=MD5("12345678").toUpperCase();
-    $.post(baseUrl + "/main/addUser",
-        {
-            UserName:'lilekang1',
-            Psd:pass
-        },
-        function(json){
-            alert(json)
-            // if(json.status==0){
-            //     window.location.href=baseUrl+json.url;
-            // }else if(json.status==1){
-            //     alert(json.msg);
-            // }
-        }
-        ,"json");
-}

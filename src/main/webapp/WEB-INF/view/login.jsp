@@ -9,7 +9,7 @@
         <div class="login_box">
             <table>
                 <tr>
-                    <td class="login_page_title" onclick="insertUser()">永兴制胶数据报表系统</td>
+                    <td class="login_page_title">永兴制胶数据报表系统</td>
                 </tr>
                 <tr>
                     <td>

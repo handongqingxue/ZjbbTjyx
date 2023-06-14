@@ -18,4 +18,13 @@ public interface UserListMapper {
 
     //全部用户
     List<UserList> getUserList(@Param("UserName") String UserName,@Param("RealName") String RealName);
+
+    //通过用户名查询改用户
+    UserList getUserByUserName(@Param("UserName") String UserName);
+
+    //添加用户和角色的关系表
+    int addUserRole(@Param("UId") Integer UId,@Param("RId") Integer RId);
+
+    //删除用户和角色的关系表
+    int delUserRole(@Param("UId") Integer UId);
 }

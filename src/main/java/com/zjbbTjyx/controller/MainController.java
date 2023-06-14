@@ -1,6 +1,8 @@
 package com.zjbbTjyx.controller;
 
+import com.zjbbTjyx.entity.Role;
 import com.zjbbTjyx.entity.UserList;
+import com.zjbbTjyx.service.RoleService;
 import com.zjbbTjyx.service.UserListService;
 import com.zjbbTjyx.util.PlanResult;
 
@@ -27,6 +29,9 @@ public class MainController {
 
     @Autowired
     private UserListService userListService;
+
+    @Autowired
+    private RoleService roleService;
 
     @RequestMapping("/goLogin")
     public String goLogin(){
@@ -78,21 +83,58 @@ public class MainController {
     }
     //注册用户
     @RequestMapping("/addUser")
-    public void addUser(UserList user){
-        userListService.addUser(user);
+    @ResponseBody
+    public PlanResult addUser(UserList user){
+        PlanResult planResult=new PlanResult();
+        try {
+            int i = userListService.addUser(user);//执行添加用户表操作
+            UserList userName = userListService.getUserByUserName(user.getUserName());//查询这个用户的id
+            int i1 = userListService.addUserRole(userName.getId(), user.getType());
+            planResult.setStatus(1);
+            planResult.setMsg("ok");
+        } catch (Exception e) {
+            e.printStackTrace();
+            planResult.setStatus(0);
+            planResult.setMsg("no");
+        } finally {
+            return planResult;
+        }
+    }
+
+    //判断该用户名是否存在
+    @RequestMapping("/checkUserName")
+    @ResponseBody
+    public PlanResult checkUserName(String UserName){
+       PlanResult planResult=new PlanResult();
+        try {
+            UserList user = userListService.getUserByUserName(UserName);
+            if (user!=null){
+              planResult.setMsg("no");
+              planResult.setStatus(1);
+            }else {
+                planResult.setMsg("ok");
+                planResult.setStatus(1);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            planResult.setMsg("no");
+            planResult.setStatus(0);
+        } finally {
+            return planResult;
+        }
     }
 
     //删除用户
     @RequestMapping("/delUser")
     @ResponseBody
     public PlanResult delUser(Integer id){
-        System.out.println(id+"p");
         List<Integer> idList=new ArrayList<Integer>();
         idList.add(id);
         PlanResult planResult=new PlanResult();
         int i = 0;
         try {
-            i = userListService.delUser(idList);
+            i = userListService.delUser(idList);//删除该用户在用户表的数据
+            int i1 = userListService.delUserRole(id);//删除用户和角色关系表里面的数据
             planResult.setMsg("ok");
             planResult.setStatus(1);
             planResult.setData(i);
@@ -123,6 +165,41 @@ public class MainController {
             return planResult;
         }
     }
+    //查询全部角色
+    @RequestMapping("/getRoleList")
+    @ResponseBody
+    public PlanResult getRoleList(String RoleName,String Detail){
+        PlanResult planResult=new PlanResult();
+        try {
+            List<Role> roleList = roleService.getRoleList(RoleName, Detail);
+            planResult.setStatus(1);
+            planResult.setMsg("ok");
+            planResult.setData(roleList);
+        } catch (Exception e) {
+            e.printStackTrace();
+            planResult.setStatus(0);
+            planResult.setMsg("no");
+        } finally {
+           return planResult;
+        }
+    }
 
-
+    //通过id查询角色
+    @RequestMapping("/getRoleById")
+    @ResponseBody
+    public PlanResult getRoleById(Integer Id){
+        PlanResult planResult=new PlanResult();
+        try {
+            Role role = roleService.getRoleById(Id);
+            planResult.setStatus(1);
+            planResult.setMsg("ok");
+            planResult.setData(role);
+        } catch (Exception e) {
+            e.printStackTrace();
+            planResult.setStatus(0);
+            planResult.setMsg("no");
+        } finally {
+            return planResult;
+        }
+    }
 }

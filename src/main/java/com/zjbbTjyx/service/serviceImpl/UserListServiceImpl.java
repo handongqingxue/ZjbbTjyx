@@ -32,4 +32,20 @@ public class UserListServiceImpl implements UserListService {
     public List<UserList> getUserList(String UserName,String RealName) {
         return userListMapper.getUserList(UserName,RealName);
     }
+
+    @Override
+    public UserList getUserByUserName(String UserName) {
+        return userListMapper.getUserByUserName(UserName);
+    }
+
+    @Override
+    public int addUserRole(Integer UId, Integer RId) {
+        return userListMapper.addUserRole(UId,RId);
+    }
+
+    @Override
+    public int delUserRole(Integer UId) {
+        return userListMapper.delUserRole(UId);
+    }
+
 }

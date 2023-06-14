@@ -9,58 +9,51 @@
 <html>
 <head>
     <title>添加用户</title>
-    <style>
-        .add_user_div{
-            margin: 0px auto;
-        }
-    </style>
 </head>
 <body>
 <%@include file="../../../report/inc/js.jsp"%>
     <div class="add_user_div">
-        <table>
+        <table class="add_user_table">
             <tr>
-                <td>用户名</td>
+                <td>&nbsp;用户名</td>
                 <td>
-                    <input type="text" placeholder="请输入用户名" id="add_username">
+                    <input class="add_user_input" type="text" placeholder="请输入用户名" id="add_username">
                 </td>
             </tr>
             <tr>
-                <td>密码</td>
+                <td>&nbsp;&nbsp;&nbsp;密码</td>
                 <td>
-                    <input type="password" placeholder="请输入用户名">
+                    <input class="add_user_input" type="password" placeholder="请输入用户名" id="add_password">
                 </td>
             </tr>
             <tr>
                 <td>真实姓名</td>
                 <td>
-                    <input type="password" placeholder="请输入真实姓名">
+                    <input class="add_user_input" type="text" placeholder="请输入真实姓名" id="add_realname">
                 </td>
             </tr>
             <tr>
                 <td>分配角色</td>
                 <td>
-                    <select id="user_role">
-                        <option>请选择</option>
-                    </select>
+                    <select class="add_user_input" id="add_user_role"></select>
                 </td>
             </tr>
             <tr>
+                <td></td>
                 <td>
-                    <button>清空</button>
-                </td>
-                <td>
-                    <button onclick="a()">添加</button>
+                    <button onclick="emptyAddPageInput()" class="add_user_empty_button">
+                        <i class="layui-icon layui-icon-refresh" style="font-size: 16px; color: #fcfdfd;"></i>
+                        清空</button>
+                    <button onclick="check_Info()" class="add_user_insert_button">
+                        <i class="layui-icon layui-icon-ok-circle" style="font-size: 16px; color: #fcfdfd;"></i>
+                        添加</button>
                 </td>
             </tr>
         </table>
     </div>
 </body>
-<script>
-    function a() {
-        var user = $("#add_username").val();
-        console.log(user+";")
-    }
+<%--<script>--%>
+<%--    var path='<%=basePath%>';--%>
 
-</script>
+<%--</script>--%>
 </html>

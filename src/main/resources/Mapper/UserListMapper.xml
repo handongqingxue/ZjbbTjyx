@@ -9,8 +9,40 @@
     </select>
 
     <insert id="addUser" parameterType="com.zjbbTjyx.entity.UserList">
-        INSERT into UserList (UserName,Psd,CTime,Type) VALUES (#{userName},#{psd},getDate(),1)
+        INSERT into UserList
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="UserName!=null">
+                UserName,
+            </if>
+            <if test="Psd!=null">
+                Psd,
+            </if>
+            CTime,
+            <if test="Type!=null">
+                Type,
+            </if>
+            <if test="RealName!=null">
+                RealName,
+            </if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="UserName!=null">
+                #{UserName},
+            </if>
+            <if test="Psd!=null">
+                #{Psd},
+            </if>
+            getDate(),
+            <if test="Type!=null">
+                #{Type},
+            </if>
+            <if test="RealName!=null">
+                #{RealName},
+            </if>
+        </trim>
     </insert>
+<!--    (UserName,Psd,CTime,Type) VALUES (#{userName},#{psd},getDate(),1)-->
 
     <delete id="delUser">
         delete from UserList where 1=1
@@ -30,4 +62,38 @@
             </if>
         </where>
     </select>
+
+    <select id="getUserByUserName" resultType="com.zjbbTjyx.entity.UserList">
+        select * from UserList
+        <where>
+            <if test="UserName!='' and UserName!=null">
+                and UserName=#{UserName}
+            </if>
+        </where>
+    </select>
+
+    <insert id="addUserRole" parameterType="java.lang.Integer">
+        insert into User_Role
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="UId!=null">
+                UId,
+            </if>
+            <if test="RId!=null">
+                RId,
+            </if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="UId!=null">
+                #{UId},
+            </if>
+            <if test="RId!=null">
+                #{RId},
+            </if>
+        </trim>
+    </insert>
+
+    <delete id="delUserRole">
+    	delete from User_Role where UId=#{UId}
+    </delete>
 </mapper>
