@@ -40,7 +40,7 @@
             <table class="user_table" id="user_table">
                 <thead class="user_thead">
                     <tr>
-                        <th style="width: 10%"><input id="check" onclick="choice()" type="checkbox"></th>
+                        <th style="width: 10%">序号</th>
                         <th style="width: 25%">用户名</th>
                         <th style="width: 25%">真实姓名</th>
                         <th style="width: 25%">创建时间</th>

@@ -144,25 +144,6 @@
     height: 55px;
     font: normal 400 14px "微软雅黑";
 }
-
-.user_head_row1_div{
-    color: #6d6d6d;
-    overflow: auto;
-    display: flex;
-    align-items:center;/*上下居中*/
-    width: 100%;
-    height: 70px;
-    font: normal 400 14px "微软雅黑";
-    border-bottom: 2px #d0cece solid;
-}
-.user_head_row2_div{
-    color: #6d6d6d;
-    display: flex;
-    align-items:center;/*上下居中*/
-    width: 100%;
-    height: 40px;
-    font: normal 400 14px "微软雅黑";
-}
 .jqcjxx_span{
 	margin-left:55px;
     color: #242424;

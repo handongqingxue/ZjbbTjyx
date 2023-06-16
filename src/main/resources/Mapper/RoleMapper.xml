@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zjbbTjyx.dao.RoleMapper">
-
+<!--    查询全部角色(多条件模糊查询)-->
   <select id="getRoleList" resultType="com.zjbbTjyx.entity.Role">
   		select * from Role
   		<where>
@@ -16,8 +16,90 @@
         </where>
   	</select>
 
+<!--    通过id查询单个角色-->
     <select id="getRoleById" resultType="com.zjbbTjyx.entity.Role">
         select * from Role where Id=#{Id}
     </select>
 
+<!--    通过名称查询角色-->
+    <select id="getRoleByName" resultType="com.zjbbTjyx.entity.Role">
+        SELECT * FROM Role WHERE RoleName=#{RoleName}
+    </select>
+
+<!--    删除角色-->
+    <delete id="delRole">
+        delete from Role where 1=1
+        <foreach collection="idList" item="id" open=" and cast(Id as char) in (" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+<!--    修改角色-->
+    <update id="editRole" parameterType="com.zjbbTjyx.entity.Role">
+        update Role set
+        <trim suffixOverrides=",">
+            <if test="RoleName!='' and RoleName!=null">
+                RoleName=#{RoleName},
+            </if>
+            <if test="Detail!='' and Detail!=null">
+                Detail=#{Detail},
+            </if>
+        </trim>
+        where Id=#{Id}
+    </update>
+
+<!--    添加角色-->
+    <insert id="addRole" parameterType="com.zjbbTjyx.entity.Role">
+        INSERT into Role
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="RoleName!=null">
+                RoleName,
+            </if>
+            <if test="Detail!=null">
+                Detail,
+            </if>
+            CTime,
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="RoleName!=null">
+                #{RoleName},
+            </if>
+            <if test="Detail!=null">
+                #{Detail},
+            </if>
+            getDate(),
+        </trim>
+    </insert>
+
+<!--    通过userid获取该用户有哪些用户-->
+    <select id="getRoleByUserId" resultType="com.zjbbTjyx.entity.Role">
+        SELECT r.Id FROM User_Role ur LEFT JOIN UserList u ON ur.uId=u.Id LEFT JOIN Role r ON ur.rId=r.Id WHERE u.Id=#{Id}
+    </select>
+
+<!--    通过userid删除user_role关系表里面的信息-->
+    <delete id="delUserRoleByUserId">
+    	delete from User_Role where UId=#{Id}
+    </delete>
+
+    <insert id="addUserRole" parameterType="java.lang.Integer">
+    		insert into User_Role
+    		<trim prefix="(" suffix=")" suffixOverrides=",">
+    			<if test="UId!='' and UId!=null">
+                    UId,
+    			</if>
+    			<if test="RId!='' and RId!=null">
+                    RId,
+    			</if>
+    		</trim>
+    		values
+    		<trim prefix="(" suffix=")" suffixOverrides=",">
+    			<if test="UId!='' and UId!=null">
+    				#{UId},
+    			</if>
+    			<if test="RId!='' and RId!=null">
+    				#{RId},
+    			</if>
+    		</trim>
+    	</insert>
 </mapper>

@@ -22,6 +22,18 @@ function addUserPage() {
         content: path+'main/goAddUserPage'
     });
 }
+
+//编辑用户信息页面
+function editUserPage(Id) {
+    layer.open({
+        type: 2,
+        area: ['700px', '450px'],
+        fixed: false, //不固定
+        maxmin: true,
+        title:"添加用户",
+        content: path+'main/goEditUserPage?Id='+Id
+    });
+}
 //清空输入框
 function emptyUserInput() {
     $("#userName").val("");
@@ -64,8 +76,8 @@ function initPagerUserList(userList){
                         arr=[];
                         if (userList.length>0){
                             for (var i = 0; i < userList.length; i++) {
-                                arr.push("<tr><td style=\"width: 10%\"><input class='son-check' type=\"checkbox\"></td><td style=\"width: 25%\">"+userList[i].userName+"</td><td style=\"width: 25%\">"+userList[i].realName+"</td><td style=\"width: 25%\">"+userList[i].ctime+"</td><td style=\"width: 15%\">\n" +
-                                    "                                <button class=\"user_edit_button\">\n" +
+                                arr.push("<tr><td style=\"width: 10%\">"+(i+1)+"</td><td style=\"width: 25%\">"+userList[i].userName+"</td><td style=\"width: 25%\">"+userList[i].realName+"</td><td style=\"width: 25%\">"+userList[i].ctime+"</td><td style=\"width: 15%\">\n" +
+                                    "                                <button class=\"user_edit_button\" onclick='editUserPage("+userList[i].id+")'>\n" +
                                     "                                    <i class=\"layui-icon layui-icon-edit\" style=\"font-size: 16px; color: #ffffff;\"></i>\n" +
                                     "                                    编辑\n" +
                                     "                                </button>\n" +

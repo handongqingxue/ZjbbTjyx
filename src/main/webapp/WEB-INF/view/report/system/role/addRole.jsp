@@ -12,39 +12,33 @@
 </head>
 <body>
 <%@include file="../../../report/inc/js.jsp"%>
-    <div class="add_user_div">
-        <table class="add_user_table">
+    <div class="add_role_div">
+        <table class="add_role_table">
             <tr>
                 <td>&nbsp;用户名</td>
                 <td>
-                    <input class="add_user_input" type="text" placeholder="请输入用户名" id="add_username">
+                    <input class="add_role_input" type="text" placeholder="请输入角色名称" id="add_rolename">
                 </td>
             </tr>
             <tr>
-                <td>&nbsp;&nbsp;&nbsp;密码</td>
+                <td>角色描述</td>
                 <td>
-                    <input class="add_user_input" type="password" placeholder="请输入用户名" id="add_password">
+                    <input class="add_role_input" type="text" placeholder="请输入角色详情" id="add_roledetail">
                 </td>
             </tr>
             <tr>
-                <td>真实姓名</td>
+                <td>分配权限</td>
                 <td>
-                    <input class="add_user_input" type="text" placeholder="请输入真实姓名" id="add_realname">
-                </td>
-            </tr>
-            <tr>
-                <td>分配角色</td>
-                <td>
-                    <select class="add_user_input" id="add_user_role"></select>
+                    <select class="add_role_input" id="add_role_permission"></select>
                 </td>
             </tr>
             <tr>
                 <td></td>
                 <td>
-                    <button onclick="emptyAddUserPageInput()" class="add_user_empty_button">
+                    <button onclick="emptyAddRolePageInput()" class="add_role_empty_button">
                         <i class="layui-icon layui-icon-refresh" style="font-size: 16px; color: #fcfdfd;"></i>
                         清空</button>
-                    <button onclick="check_user_Info()" class="add_user_insert_button">
+                    <button onclick="check_role_Info()" class="add_role_insert_button">
                         <i class="layui-icon layui-icon-ok-circle" style="font-size: 16px; color: #fcfdfd;"></i>
                         添加</button>
                 </td>

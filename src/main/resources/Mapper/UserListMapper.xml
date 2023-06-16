@@ -96,4 +96,27 @@
     <delete id="delUserRole">
     	delete from User_Role where UId=#{UId}
     </delete>
+
+    <select id="getUserById" resultType="com.zjbbTjyx.entity.UserList">
+        select * from UserList where Id=#{Id}
+    </select>
+
+    <update id="editUser" parameterType="com.zjbbTjyx.entity.UserList">
+        update UserList set
+        <trim suffixOverrides=",">
+            <if test="UserName!='' and UserName!=null">
+                UserName=#{UserName},
+            </if>
+            <if test="Psd!='' and Psd!=null">
+                Psd=#{Psd},
+            </if>
+            <if test="Type!='' and Type!=null">
+                Type=#{Type},
+            </if>
+            <if test="RealName!='' and RealName!=null">
+                RealName=#{RealName},
+            </if>
+        </trim>
+        where Id=#{Id}
+    </update>
 </mapper>

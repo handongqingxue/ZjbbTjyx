@@ -14,5 +14,8 @@
 <script type="text/javascript" src="<%=basePath%>resource/js/calendar/WdatePicker.js"></script>
 <script type="text/javascript" src="<%=basePath%>resource/js/login.js"></script>
 <script type="text/javascript" src="<%=basePath%>resource/js/MD5.js"></script>
-<script type="text/javascript" src="<%=basePath%>resource/js/system/user/user.js"></script>
+<script type="text/javascript" src="<%=basePath%>resource/js/system/user/userList.js"></script>
 <script type="text/javascript" src="<%=basePath%>resource/js/system/user/addUser.js"></script>
+<script type="text/javascript" src="<%=basePath%>resource/js/system/user/editUser.js"></script>
+<script type="text/javascript" src="<%=basePath%>resource/js/system/role/roleList.js"></script>
+<script type="text/javascript" src="<%=basePath%>resource/js/system/role/addRole.js"></script>

@@ -26,4 +26,10 @@ public interface UserListService {
 
     //删除用户和角色的关系表
     int delUserRole(Integer UId);
+
+    //通过id查询用户
+    UserList getUserById(Integer Id);
+
+    //修改用户信息
+    int editUser(UserList user);
 }

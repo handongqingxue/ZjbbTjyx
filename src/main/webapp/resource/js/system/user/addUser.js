@@ -62,7 +62,7 @@ function check_Role() {
         return true;
 }
 //检查信息
-function check_Info() {
+function check_user_Info() {
     if (check_UserName()){
         if (check_Password()){
             if (check_RealName()){
@@ -75,7 +75,6 @@ function check_Info() {
 }
 //检查用户名是否存在
 function checkUserNameDoesItExist() {
-    var flag=false;
     var userName=$("#add_username").val();
     $.post(path+"/main/checkUserName",
         {UserName:userName},
@@ -105,7 +104,7 @@ function insertUser(userName,passWord,realName,role) {
         },
         function(result){
             if (result.msg=="ok"){
-                emptyAddPageInput();//清空输入框
+                emptyAddUserPageInput();//清空输入框
                 // getUserList();//刷新用户列表
                 layer.msg('添加成功!', {icon: 1});
             }else {
@@ -115,7 +114,7 @@ function insertUser(userName,passWord,realName,role) {
         ,"json");
 }
 //清空添加用户页面的input
-function emptyAddPageInput() {
+function emptyAddUserPageInput() {
     $("#add_username").val("");
     $("#add_password").val("");
     $("#add_realname").val("");

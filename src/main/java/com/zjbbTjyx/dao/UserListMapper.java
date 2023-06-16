@@ -2,6 +2,7 @@ package com.zjbbTjyx.dao;
 
 import com.zjbbTjyx.entity.UserList;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -27,4 +28,10 @@ public interface UserListMapper {
 
     //删除用户和角色的关系表
     int delUserRole(@Param("UId") Integer UId);
+
+    //通过id查询用户
+    UserList getUserById(@Param("Id") Integer Id);
+
+    //修改用户信息
+    int editUser(UserList user);
 }
