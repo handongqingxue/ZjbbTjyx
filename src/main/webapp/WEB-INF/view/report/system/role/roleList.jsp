@@ -52,7 +52,6 @@
     </div>
 </body>
 <script>
-    <%--var path='<%=basePath%>';--%>
     $(function () {
         getRoleList();
     })

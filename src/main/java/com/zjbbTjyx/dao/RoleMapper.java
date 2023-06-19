@@ -27,9 +27,4 @@ public interface RoleMapper {
     //通过用户id查询用户的角色
     List<Role> getRoleByUserId(@Param("Id") Integer Id);
 
-    //通过userid删除user_role关系表里面的信息
-    int delUserRoleByUserId(@Param("Id") Integer Id);
-
-    //添加用户id和角色id到关系表
-    int addUserRole(@Param("UId") Integer UId,@Param("RId") Integer RId);
 }

@@ -49,13 +49,4 @@ public class RoleServiceImpl implements RoleService {
         return roleMapper.getRoleByUserId(Id);
     }
 
-    @Override
-    public int delUserRoleByUserId(Integer Id) {
-        return roleMapper.delUserRoleByUserId(Id);
-    }
-
-    @Override
-    public int addUserRole(Integer UId, Integer RId) {
-        return roleMapper.addUserRole(UId,RId);
-    }
 }

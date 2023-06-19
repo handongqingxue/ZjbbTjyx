@@ -62,7 +62,7 @@
 </div>
 <script>
     $(function () {
-        <%--var getAllRoleByUserId = '<%=request.getAttribute("getAllRoleByUserId")%>'--%>
+        var getAllRoleByUserId = '<%=request.getAttribute("getAllRoleByUserId")%>'
         var roleList = $("#requestRoleList").val();
 
         edit_roleAll(roleList);

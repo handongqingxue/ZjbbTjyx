@@ -96,13 +96,17 @@ public class MainController {
     //修改用户信息
     @RequestMapping("/editUser")
     @ResponseBody
-    public PlanResult editUser(UserList user,Integer RId){
-        System.out.println(user+";"+RId);
+    public PlanResult editUser(UserList user,String roles){
         PlanResult planResult=new PlanResult();
+        String[] split = roles.split(",");//将roles转为数组
+        Integer[] roleAll=new Integer[split.length];
+        for (int i=0;i<split.length;i++){//将string数组转为integer数组
+            roleAll[i]=Integer.parseInt(split[i]);
+        }
         try {
-            int i = userListService.editUser(user);//修改用户信息
-            int i1 = roleService.delUserRoleByUserId(user.getId());//通过userid删除关系表的数据
-            int i2 = roleService.addUserRole(user.getId(), RId);//重新写入用户和角色的关系
+            int editUser = userListService.editUser(user);//修改用户信息
+            int delUserRoleByUserId = userListService.delUserRoleByUserId(user.getId());//通过userid删除关系表的数据
+            int addUserRole = userListService.addUserRole(user.getId(), roleAll);//重新写入用户和角色的关系
             planResult.setMsg("ok");
             planResult.setStatus(1);
         } catch (Exception e) {
@@ -137,9 +141,9 @@ public class MainController {
             roleAll[i]=Integer.parseInt(split[i]);
         }
         try {
-            int i = userListService.addUser(user);//执行添加用户表操作
+            int addUser = userListService.addUser(user);//执行添加用户表操作
             UserList userName = userListService.getUserByUserName(user.getUserName());//查询这个用户的id
-            int i1 = userListService.addUserRole(userName.getId(),roleAll);
+            int addUserRole = userListService.addUserRole(userName.getId(),roleAll);
             planResult.setStatus(1);
             planResult.setMsg("ok");
         } catch (Exception e) {

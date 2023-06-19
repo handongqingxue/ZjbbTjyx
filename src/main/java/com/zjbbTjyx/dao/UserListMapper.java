@@ -34,4 +34,7 @@ public interface UserListMapper {
 
     //修改用户信息
     int editUser(UserList user);
+
+    //通过userid删除user_role关系表里面的信息
+    int delUserRoleByUserId(@Param("Id") Integer Id);
 }

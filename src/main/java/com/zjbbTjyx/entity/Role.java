@@ -47,5 +47,4 @@ public class Role {
         Detail = detail;
         this.CTime = CTime;
     }
-
 }

@@ -58,4 +58,9 @@ public class UserListServiceImpl implements UserListService {
         return userListMapper.editUser(user);
     }
 
+    @Override
+    public int delUserRoleByUserId(Integer Id) {
+        return userListMapper.delUserRoleByUserId(Id);
+    }
+
 }
