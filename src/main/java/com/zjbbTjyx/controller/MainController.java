@@ -87,10 +87,10 @@ public class MainController {
     public String goEditUserPage(HttpServletRequest request,Integer Id){
         UserList user = userListService.getUserById(Id);//通过id查询当前用户
         List<Role> roleList = roleService.getRoleList(null, null);//查询全部的角色
-        List<Role> roleByUserId = roleService.getRoleByUserId(Id); //查询用户id判断出他的角色id
+        List<Role> getAllRoleByUserId = roleService.getRoleByUserId(Id); //查询用户id判断出他的角色id
         request.setAttribute("user",user);//当前用户信息
         request.setAttribute("roleList",roleList);//所有角色的集合
-        request.setAttribute("roleByUserId",roleByUserId);//用户已有的角色id
+        request.setAttribute("getAllRoleByUserId",getAllRoleByUserId);//用户已有的角色id
         return MODULE_NAME+"/system/user/editUser";
     }
 

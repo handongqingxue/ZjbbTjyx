@@ -132,11 +132,6 @@ function roleList() {
             if(result.msg=="ok"){
                 var roleList=result.data;
                 roleAll(roleList);
-                // userRoleSelect.empty();
-                // userRoleSelect.append("<option value=\"\">请选择</option>")
-                // for (var r of roleList) {
-                //     userRoleSelect.append("<option value=\""+r.id+"\">"+r.roleName+"</option>")
-                // }
             }
         }
         ,"json");
@@ -154,5 +149,4 @@ function roleAll(roleList) {
             toolbar: { show: true },
             data: roleAll
         })
-
 }

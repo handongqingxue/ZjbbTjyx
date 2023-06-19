@@ -47,4 +47,14 @@ public class Role {
         Detail = detail;
         this.CTime = CTime;
     }
+
+//    @Override
+//    public String toString() {
+//        return "Role{" +
+//                "Id=" + Id +
+//                ", RoleName='" + RoleName + '\'' +
+//                ", Detail='" + Detail + '\'' +
+//                ", CTime='" + CTime + '\'' +
+//                '}';
+//    }
 }

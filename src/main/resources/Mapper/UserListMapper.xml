@@ -42,7 +42,6 @@
             </if>
         </trim>
     </insert>
-<!--    (UserName,Psd,CTime,Type) VALUES (#{userName},#{psd},getDate(),1)-->
 
     <delete id="delUser">
         delete from UserList where 1=1
@@ -73,24 +72,17 @@
     </select>
 
     <insert id="addUserRole" parameterType="java.lang.Integer">
-        insert into User_Role
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="UId!=null">
-                UId,
-            </if>
-            <if test="RId!=null">
-                RId,
-            </if>
-        </trim>
+        insert into User_Role (
+        UId,
+        RId
+        )
         values
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="UId!=null">
-                #{UId},
-            </if>
-            <if test="RId!=null">
-                #{RId},
-            </if>
-        </trim>
+        <foreach collection="list" item="item" index="index" separator="," >
+            (
+            #{UId},
+            #{item}
+            )
+        </foreach>
     </insert>
 
 

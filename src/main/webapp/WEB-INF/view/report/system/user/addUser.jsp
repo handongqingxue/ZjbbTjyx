@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: lilekang
-  Date: 2023/6/13
-  Time: 4:20 下午
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -35,7 +28,6 @@
             <tr>
                 <td>分配角色</td>
                 <td>
-<%--                    <select class="add_user_input" id="add_user_role"></select>--%>
                     <div style="width: 300px">
                         <div id="add_user_role" class="xm-select-demo"></div>
                     </div>
@@ -55,7 +47,4 @@
         </table>
     </div>
 </body>
-<script>
-
-</script>
 </html>
