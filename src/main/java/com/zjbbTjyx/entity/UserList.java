@@ -70,6 +70,15 @@ public class UserList implements Serializable {
         Type = type;
     }
 
+    public UserList(Integer id, String userName, String realName, String psd, String CTime, Integer type) {
+        Id = id;
+        UserName = userName;
+        RealName = realName;
+        Psd = psd;
+        this.CTime = CTime;
+        Type = type;
+    }
+
     @Override
     public String toString() {
         return "UserList{" +
