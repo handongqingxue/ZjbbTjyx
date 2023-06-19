@@ -20,6 +20,7 @@
                 <input type="hidden" value="${user.id}" id="userId">
                 <input type="hidden" value="${user.psd}" id="requestPassWord">
                 <input type="hidden" value="${user.userName}" id="requestUserName">
+                <input type="hidden" value="${roleList}" id="requestRoleList">
                 <input class="edit_user_input" type="text" placeholder="请输入用户名" id="edit_username" value="${user.userName}"/>
             </td>
         </tr>
@@ -61,32 +62,26 @@
 </div>
 <script>
     $(function () {
-        var getAllRoleByUserId = '<%=request.getAttribute("getAllRoleByUserId")%>';
-        var roleList = '<%=request.getAttribute("roleList")%>';
-        roleAll(roleList,getAllRoleByUserId);
+        <%--var getAllRoleByUserId = '<%=request.getAttribute("getAllRoleByUserId")%>'--%>
+        var roleList = $("#requestRoleList").val();
+
+        edit_roleAll(roleList);
     })
 
     var edit_user_role;
 
-    function roleAll(roleList,getAllRoleByUserId) {
-
-        var flag=false;
+    function edit_roleAll(roleList) {
         var roleAll=[];
-        // for (var i=0;i<roleList.length;i++){
-        //     // for (var j=0;getAllRoleByUserId.length;j++){
-        //     //     if (roleList[i].id==getAllRoleByUserId[j].id){
-        //     //         flag=true;
-        //     //     }
-        //         roleAll.push({name:roleList[i].roleName,value:roleList[i].id,mutex: 1, selected: true})
-        //     //     flag=false;
-        //     // }
-        // }
-        // edit_user_role=xmSelect.render(
-        //     {
-        //         el: '#edit_user_role',
-        //         toolbar: { show: true },
-        //         data: roleAll
-        //     })
+        for (var i=0;i<roleList.length;i++){
+            // roleAll.push({name:roleList[i].roleName,value:roleList[i].id,mutex: 1, selected: true})
+            roleAll.push({name:roleList[i].roleName,value:roleList[i].id})
+        }
+        edit_user_role=xmSelect.render(
+            {
+                el: '#edit_user_role',
+                toolbar: { show: true },
+                data: roleAll
+            })
     }
 </script>
 </body>
