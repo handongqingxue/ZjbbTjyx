@@ -1,5 +1,6 @@
 package com.zjbbTjyx.controller;
 
+import com.sun.tools.javac.util.Convert;
 import com.zjbbTjyx.entity.Role;
 import com.zjbbTjyx.entity.UserList;
 import com.zjbbTjyx.service.RoleService;
@@ -129,12 +130,17 @@ public class MainController {
     //注册用户
     @RequestMapping("/addUser")
     @ResponseBody
-    public PlanResult addUser(UserList user){
+    public PlanResult addUser(UserList user,String roles){
         PlanResult planResult=new PlanResult();
+        String[] split = roles.split(",");//将roles转为数组
+        Integer[] roleAll=new Integer[split.length];
+        for (int i=0;i<split.length;i++){//将string数组转为integer数组
+            roleAll[i]=Integer.parseInt(split[i]);
+        }
         try {
             int i = userListService.addUser(user);//执行添加用户表操作
             UserList userName = userListService.getUserByUserName(user.getUserName());//查询这个用户的id
-            int i1 = userListService.addUserRole(userName.getId(), user.getType());
+            int i1 = userListService.addUserRole(userName.getId(),roleAll);
             planResult.setStatus(1);
             planResult.setMsg("ok");
         } catch (Exception e) {
@@ -199,6 +205,7 @@ public class MainController {
         List<UserList> users = null;
         try {
             users = userListService.getUserList(UserName,RealName);
+            System.out.println(users.toString());
             planResult.setMsg("查询成功!");
             planResult.setStatus(1);
             planResult.setData(users);

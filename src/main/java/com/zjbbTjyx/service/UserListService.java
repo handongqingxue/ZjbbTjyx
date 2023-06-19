@@ -22,7 +22,7 @@ public interface UserListService {
     UserList getUserByUserName(String UserName);
 
     //添加用户和角色的关系表
-    int addUserRole(Integer UId,Integer RId);
+    int addUserRole(Integer UId,Integer[] RIds);
 
     //删除用户和角色的关系表
     int delUserRole(Integer UId);

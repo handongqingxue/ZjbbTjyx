@@ -36,7 +36,7 @@
             <table class="role_table" id="role_table">
                 <thead class="role_thead">
                     <tr>
-                        <th style="width: 10%">序号</th>
+                        <th style="width: 10%">角色编号</th>
                         <th style="width: 25%">角色名称</th>
                         <th style="width: 25%">具体描述</th>
                         <th style="width: 25%">创建时间</th>
@@ -46,9 +46,8 @@
                 <tbody class="role_tbody" id="role_tbody"></tbody>
             </table>
         </div>
-            <div class="home_right_bottom_div">
-                <div id="role-paging"></div>
-            </div>
+        <div class="home_right_bottom_div">
+            <div id="role-paging"></div>
         </div>
     </div>
 </body>

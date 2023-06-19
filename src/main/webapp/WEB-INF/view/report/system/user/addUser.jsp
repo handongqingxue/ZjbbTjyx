@@ -35,7 +35,10 @@
             <tr>
                 <td>分配角色</td>
                 <td>
-                    <select class="add_user_input" id="add_user_role"></select>
+<%--                    <select class="add_user_input" id="add_user_role"></select>--%>
+                    <div style="width: 300px">
+                        <div id="add_user_role" class="xm-select-demo"></div>
+                    </div>
                 </td>
             </tr>
             <tr>
@@ -52,4 +55,7 @@
         </table>
     </div>
 </body>
+<script>
+
+</script>
 </html>

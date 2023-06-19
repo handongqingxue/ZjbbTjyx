@@ -40,7 +40,7 @@
             <table class="user_table" id="user_table">
                 <thead class="user_thead">
                     <tr>
-                        <th style="width: 10%">序号</th>
+                        <th style="width: 10%">用户编号</th>
                         <th style="width: 25%">用户名</th>
                         <th style="width: 25%">真实姓名</th>
                         <th style="width: 25%">创建时间</th>
@@ -50,9 +50,8 @@
                 <tbody class="user_tbody" id="user_tbody"></tbody>
             </table>
         </div>
-            <div class="home_right_bottom_div">
-                <div id="user-paging"></div>
-            </div>
+        <div class="home_right_bottom_div">
+            <div id="user-paging"></div>
         </div>
     </div>
 </body>

@@ -7,6 +7,7 @@
 <script type="text/javascript" src="<%=basePath%>resource/js/jquery-3.3.1.js"></script>
 <link rel="stylesheet" href="<%=basePath%>resource/css/system_style.css">
 <script type="text/javascript" src="<%=basePath%>resource/js/layui.js"></script>
+<script type="text/javascript" src="<%=basePath%>resource/js/xm-select.js"></script>
 <link rel="stylesheet" href="<%=basePath%>resource/css/layui.css">
 <script type="text/javascript" src="<%=basePath%>resource/js/pdf/jspdf.debug.js"></script>
 <script type="text/javascript" src="<%=basePath%>resource/js/pdf/html2canvas.min.js"></script>

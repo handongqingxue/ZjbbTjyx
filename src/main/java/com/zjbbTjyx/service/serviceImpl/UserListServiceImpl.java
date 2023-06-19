@@ -39,8 +39,8 @@ public class UserListServiceImpl implements UserListService {
     }
 
     @Override
-    public int addUserRole(Integer UId, Integer RId) {
-        return userListMapper.addUserRole(UId,RId);
+    public int addUserRole(Integer UId, Integer[] RIds) {
+        return userListMapper.addUserRole(UId,RIds);
     }
 
     @Override

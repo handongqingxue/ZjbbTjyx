@@ -93,6 +93,7 @@
         </trim>
     </insert>
 
+
     <delete id="delUserRole">
     	delete from User_Role where UId=#{UId}
     </delete>
