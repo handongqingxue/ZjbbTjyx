@@ -1,5 +1,7 @@
 package com.zjbbTjyx.service.serviceImpl;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import org.apache.commons.lang.StringUtils;
@@ -2991,9 +2993,16 @@ public class ERecordServiceImpl implements ERecordService {
 		List<String> uYscGlueTypeList = new ArrayList<String>();//U类已生成的胶种集合
 		List<ERecord> pcjlList = eRecordMapper.getListByPcjl();//查询全部批次记录
 		
+		String nowDateStr = DateUtil.getTimeStrByFormatStr(new Date(),DateUtil.YEAR_TO_SECOND);
+		
 		if(Constant.M_WSC.equals(type)) {
 			for (ERecord pcjl : pcjlList) {
 				if (pcjl.getRemark().equals(ERecord.WSCBB+"")){
+					if (pcjl.getRecType().equals(ERecord.M)){
+						mWscBatchIdList.add(pcjl.getBatchID());
+					}
+				}
+				else {
 					if (pcjl.getRecType().equals(ERecord.M)){
 						mWscBatchIdList.add(pcjl.getBatchID());
 					}
@@ -3018,7 +3027,8 @@ public class ERecordServiceImpl implements ERecordService {
 				if (pcjl.getRemark().equals(ERecord.WSCBB+"")){
 					if (pcjl.getRecType().equals(ERecord.M)){
 						mWscBatchIdList.add(pcjl.getBatchID());
-					}else if(pcjl.getRecType().equals(ERecord.U)){
+					}
+					else if(pcjl.getRecType().equals(ERecord.U)){
 						uWscBatchIdList.add(pcjl.getBatchID());
 					}
 				}
@@ -3026,11 +3036,18 @@ public class ERecordServiceImpl implements ERecordService {
 					String batchID = pcjl.getBatchID();
 					String glueType = batchID.substring(0, 2);
 					if (pcjl.getRecType().equals(ERecord.M)){
+						String recordTime = pcjl.getRecordTime();
+						
+						long daySpace = DateUtil.betweenTime(DateUtil.convertStrToLong(recordTime),DateUtil.convertStrToLong(nowDateStr),DateUtil.TIAN);
+						if(daySpace<7)
+							mWscBatchIdList.add(pcjl.getBatchID());
+						
 						//查找m类胶种
 						boolean exist = checkGlueTypeIfExistInList(glueType, mYscGlueTypeList);
 						if(!exist)
 							mYscGlueTypeList.add(glueType);
-					}else if(pcjl.getRecType().equals(ERecord.U)){
+					}
+					else if(pcjl.getRecType().equals(ERecord.U)){
 						//查找u类胶种
 						boolean exist = checkGlueTypeIfExistInList(glueType, uYscGlueTypeList);
 						if(!exist)

@@ -9,6 +9,8 @@ public class DateUtil {
 	public static final int HAO_MIAO=1;
 	public static final int MIAO=2;
 	public static final int FEN=3;
+	public static final int SHI=4;
+	public static final int TIAN=5;
 	
 	public static final String YEAR="yyyy";
 	public static final String YEAR_TO_SECOND="yyyy-MM-dd HH:mm:ss";
@@ -44,6 +46,12 @@ public class DateUtil {
 			break;
 		case FEN:
 			ptnTime=ptnTime/1000/60;
+			break;
+		case SHI:
+			ptnTime=ptnTime/1000/60/60;
+			break;
+		case TIAN:
+			ptnTime=ptnTime/1000/60/60/24;
 			break;
 		}
 		return ptnTime;
