@@ -93,7 +93,7 @@
 		update ERecord set Remark=${@com.zjbbTjyx.entity.ERecord@YSCBB} where VarName='${@com.zjbbTjyx.util.Constant@PI_CI_JI_LU}' and BatchID=#{batchID}
 	</update>
 	<select id="getListByPcjl" resultType="com.zjbbTjyx.entity.ERecord">
-		SELECT * FROM ERecord WHERE VarName='批次记录'
+		SELECT * FROM ERecord WHERE VarName='批次记录' order by RecordTime desc
 	</select>
 
 	<select id="getYscPcjlListByType" resultType="com.zjbbTjyx.entity.ERecord">
