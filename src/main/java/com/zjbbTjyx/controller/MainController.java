@@ -1,5 +1,6 @@
 package com.zjbbTjyx.controller;
 
+import com.sun.tools.javac.util.Convert;
 import com.zjbbTjyx.entity.Role;
 import com.zjbbTjyx.entity.UserList;
 import com.zjbbTjyx.service.RoleService;
@@ -86,10 +87,10 @@ public class MainController {
     public String goEditUserPage(HttpServletRequest request,Integer Id){
         UserList user = userListService.getUserById(Id);//通过id查询当前用户
         List<Role> roleList = roleService.getRoleList(null, null);//查询全部的角色
-        List<Role> roleByUserId = roleService.getRoleByUserId(Id); //查询用户id判断出他的角色id
+        List<Role> getAllRoleByUserId = roleService.getRoleByUserId(Id); //查询用户id判断出他的角色id
         request.setAttribute("user",user);//当前用户信息
         request.setAttribute("roleList",roleList);//所有角色的集合
-        request.setAttribute("roleByUserId",roleByUserId);//用户已有的角色id
+        request.setAttribute("getAllRoleByUserId",getAllRoleByUserId);//用户已有的角色id
         return MODULE_NAME+"/system/user/editUser";
     }
 
@@ -129,12 +130,17 @@ public class MainController {
     //注册用户
     @RequestMapping("/addUser")
     @ResponseBody
-    public PlanResult addUser(UserList user){
+    public PlanResult addUser(UserList user,String roles){
         PlanResult planResult=new PlanResult();
+        String[] split = roles.split(",");//将roles转为数组
+        Integer[] roleAll=new Integer[split.length];
+        for (int i=0;i<split.length;i++){//将string数组转为integer数组
+            roleAll[i]=Integer.parseInt(split[i]);
+        }
         try {
             int i = userListService.addUser(user);//执行添加用户表操作
             UserList userName = userListService.getUserByUserName(user.getUserName());//查询这个用户的id
-            int i1 = userListService.addUserRole(userName.getId(), user.getType());
+            int i1 = userListService.addUserRole(userName.getId(),roleAll);
             planResult.setStatus(1);
             planResult.setMsg("ok");
         } catch (Exception e) {
@@ -199,6 +205,7 @@ public class MainController {
         List<UserList> users = null;
         try {
             users = userListService.getUserList(UserName,RealName);
+            System.out.println(users.toString());
             planResult.setMsg("查询成功!");
             planResult.setStatus(1);
             planResult.setData(users);

@@ -23,7 +23,6 @@ function checkEditUserNameDoesItExist() {
             var passWord=$("#edit_password").val();
             var realName = $("#edit_realname").val();
             var role = $("#edit_user_role").val();
-
             if (requestUserName==userName){
                 editUser(userId,userName,passWord,realName,role);
             }else {

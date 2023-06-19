@@ -11,8 +11,10 @@ var projectName=pathName.substring(0,pathName.substr(1).indexOf('/')+1);
 var path=localhostPaht+projectName;
 // var baseUrl="${pageContext.request.contextPath}";
 $(function () {
+
     roleList();
 })
+
 //检查用户名
 function check_UserName() {
     var userName = $("#add_username").val();
@@ -53,8 +55,8 @@ function check_RealName() {
 }
 //检查角色
 function check_Role() {
-    var role = $("#add_user_role").val();
-    if(role==null||role==""){
+    var roles = add_user_role.getValue("value");
+    if(roles.length<0||roles==""){
         layer.msg('请选择角色',{icon: 5});
         return false;
     }
@@ -83,8 +85,8 @@ function checkUserNameDoesItExist() {
                 var userName=$("#add_username").val();
                 var passWord=MD5($("#add_password").val()).toUpperCase();
                 var realName = $("#add_realname").val();
-                var role = $("#add_user_role").val();
-                insertUser(userName,passWord,realName,role);
+                var roles = add_user_role.getValue("value");
+                insertUser(userName,passWord,realName,roles);
             }else {
                 layer.msg('该用户已存在,请重新输入',{icon: 5});
             }
@@ -93,14 +95,14 @@ function checkUserNameDoesItExist() {
 }
 
 //添加用户操作
-function insertUser(userName,passWord,realName,role) {
+function insertUser(userName,passWord,realName,roles) {
     var pass=MD5(passWord).toUpperCase();
     $.post(path + "/main/addUser",
         {
             UserName:userName,
             Psd:pass,
             RealName:realName,
-            Type:role
+            roles:roles.toString()
         },
         function(result){
             if (result.msg=="ok"){
@@ -129,12 +131,22 @@ function roleList() {
         function(result){
             if(result.msg=="ok"){
                 var roleList=result.data;
-                userRoleSelect.empty();
-                userRoleSelect.append("<option value=\"\">请选择</option>")
-                for (var r of roleList) {
-                    userRoleSelect.append("<option value=\""+r.id+"\">"+r.roleName+"</option>")
-                }
+                roleAll(roleList);
             }
         }
         ,"json");
+}
+
+var add_user_role;
+function roleAll(roleList) {
+    var roleAll=[];
+    for (var i=0;i<roleList.length;i++){
+        roleAll.push({name:roleList[i].roleName,value:roleList[i].id})
+    }
+    add_user_role=xmSelect.render(
+        {
+            el: '#add_user_role',
+            toolbar: { show: true },
+            data: roleAll
+        })
 }

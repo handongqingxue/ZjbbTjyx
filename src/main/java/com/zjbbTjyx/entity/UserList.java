@@ -1,6 +1,8 @@
 package com.zjbbTjyx.entity;
 
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.List;
 
 public class UserList implements Serializable {
     private Integer Id;
@@ -73,6 +75,7 @@ public class UserList implements Serializable {
         return "UserList{" +
                 "Id=" + Id +
                 ", UserName='" + UserName + '\'' +
+                ", RealName='" + RealName + '\'' +
                 ", Psd='" + Psd + '\'' +
                 ", CTime='" + CTime + '\'' +
                 ", Type=" + Type +

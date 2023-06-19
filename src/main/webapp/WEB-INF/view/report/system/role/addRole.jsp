@@ -29,11 +29,14 @@
             <tr>
                 <td>分配权限</td>
                 <td>
-                    <select class="add_role_input" id="add_role_permission"></select>
+                    <div style="width: 300px">
+                        <div id="add_role_permission" class="xm-select-demo"></div>
+                    </div>
                 </td>
             </tr>
             <tr>
-                <td></td>
+                <td>
+                </td>
                 <td>
                     <button onclick="emptyAddRolePageInput()" class="add_role_empty_button">
                         <i class="layui-icon layui-icon-refresh" style="font-size: 16px; color: #fcfdfd;"></i>
@@ -46,4 +49,23 @@
         </table>
     </div>
 </body>
+<script>
+    $(function () {
+        add_role_permission();
+    })
+    function add_role_permission() {
+
+        var add_role_permission = xmSelect.render(
+            {
+                el: '#add_role_permission',
+                toolbar: { show: true },
+                data: [
+                    {name: '北京', value: 1, mutex: 1, selected: true},
+                    {name: '上海', value: 2, mutex: 1},
+                    {name: '广州', value: 3},
+                ]
+            })
+    }
+
+</script>
 </html>

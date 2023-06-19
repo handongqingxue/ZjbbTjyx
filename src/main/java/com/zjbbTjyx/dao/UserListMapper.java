@@ -24,7 +24,7 @@ public interface UserListMapper {
     UserList getUserByUserName(@Param("UserName") String UserName);
 
     //添加用户和角色的关系表
-    int addUserRole(@Param("UId") Integer UId,@Param("RId") Integer RId);
+    int addUserRole(@Param("UId") Integer UId,@Param("list") Integer[] RIds);
 
     //删除用户和角色的关系表
     int delUserRole(@Param("UId") Integer UId);

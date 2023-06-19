@@ -38,12 +38,15 @@
         <tr>
             <td>分配角色</td>
             <td>
-                <select class="edit_user_input" id="edit_user_role">
-                    <option value="">请选择</option>
-                    <c:forEach var="r" items="${roleList}">
-                    <option value="${r.id}" <c:if test="${r.id==roleByUserId[0].id}">selected</c:if>>${r.roleName}</option>
-                    </c:forEach>
-                </select>
+<%--                <select class="edit_user_input" id="edit_user_role">--%>
+<%--                    <option value="">请选择</option>--%>
+<%--                    <c:forEach var="r" items="${roleList}">--%>
+<%--                    <option value="${r.id}" <c:if test="${r.id==roleByUserId[0].id}">selected</c:if>>${r.roleName}</option>--%>
+<%--                    </c:forEach>--%>
+<%--                </select>--%>
+                <div style="width: 300px">
+                    <div id="edit_user_role" class="xm-select-demo"></div>
+                </div>
             </td>
         </tr>
         <tr>
@@ -56,6 +59,35 @@
         </tr>
     </table>
 </div>
+<script>
+    $(function () {
+        var getAllRoleByUserId = '<%=request.getAttribute("getAllRoleByUserId")%>';
+        var roleList = '<%=request.getAttribute("roleList")%>';
+        roleAll(roleList,getAllRoleByUserId);
+    })
 
+    var edit_user_role;
+
+    function roleAll(roleList,getAllRoleByUserId) {
+
+        var flag=false;
+        var roleAll=[];
+        // for (var i=0;i<roleList.length;i++){
+        //     // for (var j=0;getAllRoleByUserId.length;j++){
+        //     //     if (roleList[i].id==getAllRoleByUserId[j].id){
+        //     //         flag=true;
+        //     //     }
+        //         roleAll.push({name:roleList[i].roleName,value:roleList[i].id,mutex: 1, selected: true})
+        //     //     flag=false;
+        //     // }
+        // }
+        // edit_user_role=xmSelect.render(
+        //     {
+        //         el: '#edit_user_role',
+        //         toolbar: { show: true },
+        //         data: roleAll
+        //     })
+    }
+</script>
 </body>
 </html>
