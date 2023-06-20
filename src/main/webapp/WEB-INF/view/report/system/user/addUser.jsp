@@ -28,9 +28,7 @@
             <tr>
                 <td>分配角色</td>
                 <td>
-                    <div style="width: 300px">
-                        <div id="add_user_role" class="xm-select-demo"></div>
-                    </div>
+                    <select id="add_user_role" class="add_user_input"></select>
                 </td>
             </tr>
             <tr>

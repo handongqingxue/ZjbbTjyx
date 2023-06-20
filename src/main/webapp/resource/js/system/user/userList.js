@@ -13,13 +13,13 @@ var path=localhostPaht+projectName;
 
 //添加用户页面
 function addUserPage() {
-    layer.open({
+    var addUserPage=layer.open({
         type: 2,
         area: ['700px', '450px'],
         fixed: false, //不固定
         maxmin: true,
         title:"添加用户",
-        content: path+'main/goAddUserPage'
+        content: path+'main/goAddUserPage',
     });
 }
 
@@ -30,7 +30,7 @@ function editUserPage(Id) {
         area: ['700px', '450px'],
         fixed: false, //不固定
         maxmin: true,
-        title:"添加用户",
+        title:"编辑用户",
         content: path+'main/goEditUserPage?Id='+Id
     });
 }

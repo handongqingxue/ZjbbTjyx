@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: lilekang
-  Date: 2023/6/13
-  Time: 4:20 下午
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -27,14 +20,6 @@
                 </td>
             </tr>
             <tr>
-                <td>分配权限</td>
-                <td>
-                    <div style="width: 300px">
-                        <div id="add_role_permission" class="xm-select-demo"></div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
                 <td>
                 </td>
                 <td>
@@ -49,23 +34,4 @@
         </table>
     </div>
 </body>
-<script>
-    $(function () {
-        add_role_permission();
-    })
-    function add_role_permission() {
-
-        var add_role_permission = xmSelect.render(
-            {
-                el: '#add_role_permission',
-                toolbar: { show: true },
-                data: [
-                    {name: '北京', value: 1, mutex: 1, selected: true},
-                    {name: '上海', value: 2, mutex: 1},
-                    {name: '广州', value: 3},
-                ]
-            })
-    }
-
-</script>
 </html>

@@ -113,8 +113,10 @@ function manuallyEnteringInformationU(){
 
                 <span class="jbczy_span">接班操作员</span>
                 <select class="m_create_head_input" id="successionOperatorSelectU" onchange="manuallyEnteringInformationU()"></select>
-                <div class="but_div scbb_but_div" onclick="addReportF_UByBatchID()">生成报表</div>
-                <div class="but_div sjfw_but_div" onclick="dataResetU()">数据复位</div>
+                <c:if test="${userAllRole[0].id==1||userAllRole[0].id==2||userAllRole[0].id==3}">
+                    <div class="but_div scbb_but_div" onclick="addReportF_UByBatchID()">生成报表</div>
+                    <div class="but_div sjfw_but_div" onclick="dataResetU()">数据复位</div>
+                </c:if>
             </div>
         </div>
         <div class="home_right_cbody_div">
