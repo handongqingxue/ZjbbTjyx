@@ -38,7 +38,7 @@
                 <c:if test="${sessionScope.user.realName==null}">
                     <ul class="son2">
                         <li>
-                            <a href="">登录页面</a>
+                            <a href="<%=basePath%>/main/goLogin">登录页面</a>
                         </li>
                     </ul>
                 </c:if>
