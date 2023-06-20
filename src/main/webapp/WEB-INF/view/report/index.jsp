@@ -69,7 +69,9 @@
                     </dl>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="javascript:;">系统管理</a>
+                    <c:if test="${userAllRole[0].id==1||userAllRole[0].id==2}">
+                        <a href="javascript:;">系统管理</a>
+                    </c:if>
                     <dl class="layui-nav-child">
                         <li class="layui-nav-item">
                             <a href="javascript:;" onclick="showUserArea('yonghu')">用户管理</a>

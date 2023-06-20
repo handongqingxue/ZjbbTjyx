@@ -30,10 +30,6 @@
                     <i class="layui-icon layui-icon-add-1" style="font-size: 16px; color: #ffffff;"></i>
                     添加
                 </button>
-<%--                <button class="user_head_del_button" onclick="delUser()">--%>
-<%--                    <i class="layui-icon layui-icon-delete" style="font-size: 16px; color: #ffffff;"></i>--%>
-<%--                    删除--%>
-<%--                </button>--%>
             </div>
         </div>
         <div class="home_right_user_div">

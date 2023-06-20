@@ -112,8 +112,7 @@ function editUser(userId,userName,passWord,realName,role) {
          	    UserName:userName,
                 Psd:pass,
                 RealName:realName,
-                Type:role,
-                RId:role
+                role:role.toString()
             },
          	function(result){
                 if (result.msg=="ok"){

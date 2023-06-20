@@ -110,8 +110,10 @@ function initPagerHtml(reportFMPageList){
                     <select class="m_query_head_input" id="typeSelectM"></select>
                 </td>
                 <td>
-                    <button class="printing_button" onclick="prePreExcelM()">导出Excel</button>
-                    <button class="printing_button" onclick="prePdfM()">导出PDF</button>
+                    <c:if test="${userAllRole[0].id==1||userAllRole[0].id==2||userAllRole[0].id==3}">
+                        <button class="printing_button" onclick="prePreExcelM()">导出Excel</button>
+                        <button class="printing_button" onclick="prePdfM()">导出PDF</button>
+                    </c:if>
                 </td>
             </tr>
             <tr>
@@ -127,10 +129,12 @@ function initPagerHtml(reportFMPageList){
                         <i class="layui-icon layui-icon-search" style="font-size: 16px; color: #ffffff;"></i>
                         查询
                     </button>
-                    <button class="printing_button" onclick="doPrint()">
-                        <i class="layui-icon layui-icon-print" style="font-size: 16px; color: #ffffff;"></i>
-                        打印
-                    </button>
+                    <c:if test="${userAllRole[0].id==1||userAllRole[0].id==2||userAllRole[0].id==3}">
+                        <button class="printing_button" onclick="doPrint()">
+                            <i class="layui-icon layui-icon-print" style="font-size: 16px; color: #ffffff;"></i>
+                            打印
+                        </button>
+                    </c:if>
                 </td>
             </tr>
         </table>

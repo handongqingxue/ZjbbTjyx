@@ -55,8 +55,9 @@ function check_RealName() {
 }
 //检查角色
 function check_Role() {
-    var roles = add_user_role.getValue("value");
-    if(roles.length<0||roles==""){
+    // var roles = add_user_role.getValue("value");
+    var roles = $("#add_user_role").val();
+    if(roles==null||roles==""){
         layer.msg('请选择角色',{icon: 5});
         return false;
     }
@@ -85,7 +86,8 @@ function checkUserNameDoesItExist() {
                 var userName=$("#add_username").val();
                 var passWord=MD5($("#add_password").val()).toUpperCase();
                 var realName = $("#add_realname").val();
-                var roles = add_user_role.getValue("value");
+                // var roles = add_user_role.getValue("value");
+                var roles = $("#add_user_role").val();
                 insertUser(userName,passWord,realName,roles);
             }else {
                 layer.msg('该用户已存在,请重新输入',{icon: 5});
@@ -95,14 +97,14 @@ function checkUserNameDoesItExist() {
 }
 
 //添加用户操作
-function insertUser(userName,passWord,realName,roles) {
+function insertUser(userName,passWord,realName,role) {
     var pass=MD5(passWord).toUpperCase();
     $.post(path + "/main/addUser",
         {
             UserName:userName,
             Psd:pass,
             RealName:realName,
-            roles:roles.toString()
+            role:role
         },
         function(result){
             if (result.msg=="ok"){
@@ -131,22 +133,26 @@ function roleList() {
         function(result){
             if(result.msg=="ok"){
                 var roleList=result.data;
-                roleAll(roleList);
+                userRoleSelect.empty();
+                userRoleSelect.append("<option value=''>请选择</option>")
+                for (var i=0;i<roleList.length;i++){
+                    userRoleSelect.append("<option value=\""+roleList[i].id+"\">"+roleList[i].roleName+"</option>")
+                }
             }
         }
         ,"json");
 }
 
-var add_user_role;
-function roleAll(roleList) {
-    var roleAll=[];
-    for (var i=0;i<roleList.length;i++){
-        roleAll.push({name:roleList[i].roleName,value:roleList[i].id})
-    }
-    add_user_role=xmSelect.render(
-        {
-            el: '#add_user_role',
-            toolbar: { show: true },
-            data: roleAll
-        })
-}
+// var add_user_role;
+// function roleAll(roleList) {
+//     var roleAll=[];
+//     for (var i=0;i<roleList.length;i++){
+//         roleAll.push({name:roleList[i].roleName,value:roleList[i].id})
+//     }
+//     add_user_role=xmSelect.render(
+//         {
+//             el: '#add_user_role',
+//             toolbar: { show: true },
+//             data: roleAll
+//         })
+// }

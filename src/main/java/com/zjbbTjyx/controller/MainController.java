@@ -59,7 +59,10 @@ public class MainController {
             return result;
         }
         UserList principal = (UserList) SecurityUtils.getSubject().getPrincipal();
+        UserList userByUserName = userListService.getUserByUserName(user.getUserName());
+        List<Role> userAllRole = roleService.getRoleByUserId(userByUserName.getId());
         session.setAttribute("user",principal);
+        session.setAttribute("userAllRole",userAllRole);
         result.setStatus(1);
         result.setMsg("验证成功");
         result.setUrl("/report/goIndex");
@@ -96,9 +99,9 @@ public class MainController {
     //修改用户信息
     @RequestMapping("/editUser")
     @ResponseBody
-    public PlanResult editUser(UserList user,String roles){
+    public PlanResult editUser(UserList user,String role){
         PlanResult planResult=new PlanResult();
-        String[] split = roles.split(",");//将roles转为数组
+        String[] split = role.split(",");//将roles转为数组
         Integer[] roleAll=new Integer[split.length];
         for (int i=0;i<split.length;i++){//将string数组转为integer数组
             roleAll[i]=Integer.parseInt(split[i]);
@@ -133,9 +136,9 @@ public class MainController {
     //注册用户
     @RequestMapping("/addUser")
     @ResponseBody
-    public PlanResult addUser(UserList user,String roles){
+    public PlanResult addUser(UserList user,String role){
         PlanResult planResult=new PlanResult();
-        String[] split = roles.split(",");//将roles转为数组
+        String[] split = role.split(",");//将roles转为数组
         Integer[] roleAll=new Integer[split.length];
         for (int i=0;i<split.length;i++){//将string数组转为integer数组
             roleAll[i]=Integer.parseInt(split[i]);

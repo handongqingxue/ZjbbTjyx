@@ -10,9 +10,6 @@ var projectName=pathName.substring(0,pathName.substr(1).indexOf('/')+1);
 //得到了 服务器名称和项目名称
 var path=localhostPaht+projectName;
 // var baseUrl="${pageContext.request.contextPath}";
-$(function () {
-    permissionList();
-})
 //检查角色名
 function check_RoleName() {
     var roleName = $("#add_rolename").val();
@@ -92,23 +89,5 @@ function emptyAddRolePageInput() {
     $("#add_rolename").val("");
     $("#add_detail").val("");
     permissionList();
-}
-
-//查询全部权限
-function permissionList() {
-    var rolePermissionSelect = $("#add_role_permission");
-    $.post(path+"/main/getPermissionList",
-        {},
-        function(result){
-            if(result.msg=="ok"){
-                var permissionList=result.data;
-                rolePermissionSelect.empty();
-                rolePermissionSelect.append("<option value=\"\">请选择</option>")
-                for (var p of permissionList) {
-                    rolePermissionSelect.append("<option value=\""+p.id+"\">"+p.permName+"</option>")
-                }
-            }
-        }
-        ,"json");
 }
 

@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: lilekang
-  Date: 2023/6/8
-  Time: 12:09 下午
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -26,10 +19,10 @@
                 </button>
             </div>
             <div class="role_head_row2_div">
-                <button class="role_head_add_button" onclick="addRolePage()">
-                    <i class="layui-icon layui-icon-add-1" style="font-size: 16px; color: #ffffff;"></i>
-                    添加
-                </button>
+<%--                <button class="role_head_add_button" onclick="addRolePage()">--%>
+<%--                    <i class="layui-icon layui-icon-add-1" style="font-size: 16px; color: #ffffff;"></i>--%>
+<%--                    添加--%>
+<%--                </button>--%>
             </div>
         </div>
         <div class="home_right_role_div">

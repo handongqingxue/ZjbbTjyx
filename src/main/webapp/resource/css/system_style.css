@@ -140,7 +140,7 @@ body, html {
 .login_input::placeholder{
     font: normal 400 14px "微软雅黑";
     color: #7e8286;
-    margin-left: 10px;
+    /*margin-left: 10px;*/
     position:relative;
     left:10px;
 }

@@ -104,8 +104,10 @@ function manuallyEnteringInformationM(){
 
             <span class="jbczy_span">接班操作员</span>
             <select class="m_create_head_input" id="successionOperatorSelectM" onchange="manuallyEnteringInformationM()"></select>
-            <div class="but_div scbb_but_div" onclick="addReportF_MByBatchID()">生成报表</div>
-            <div class="but_div sjfw_but_div" onclick="dataResetM()">数据复位</div>
+            <c:if test="${userAllRole[0].id==1||userAllRole[0].id==2||userAllRole[0].id==3}">
+                <div class="but_div scbb_but_div" onclick="addReportF_MByBatchID()">生成报表</div>
+                <div class="but_div sjfw_but_div" onclick="dataResetM()">数据复位</div>
+            </c:if>
         </div>
     </div>
     <div class="home_right_cbody_div">
