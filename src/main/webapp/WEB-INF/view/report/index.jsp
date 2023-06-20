@@ -19,13 +19,29 @@
             <li>|</li>
             <li id="system-time"></li>
             <li>|</li>
-            <li class="father"><span>欢迎您 !&nbsp;&nbsp;</span><a style="cursor:pointer;">${sessionScope.user.realName}</a>
-                <ul class="son">
-                    <li>个人中心</li>
-                    <li>
-                        <a href="#" onclick="exit()">退出登录</a>
-                    </li>
-                </ul>
+            <li class="father"><span>欢迎您 !&nbsp;&nbsp;</span><a style="cursor:pointer;">
+                <c:if test="${sessionScope.user.realName==null}">
+                    <span>游客</span>
+                </c:if>
+                <c:if test="${sessionScope.user.realName!=null}">
+                    ${sessionScope.user.realName}
+                </c:if>
+            </a>
+                <c:if test="${sessionScope.user.realName!=null}">
+                    <ul class="son">
+                        <li>个人中心</li>
+                        <li>
+                            <a href="#" onclick="exit()">退出登录</a>
+                        </li>
+                    </ul>
+                </c:if>
+                <c:if test="${sessionScope.user.realName==null}">
+                    <ul class="son2">
+                        <li>
+                            <a href="<%=basePath%>/main/goLogin">登录页面</a>
+                        </li>
+                    </ul>
+                </c:if>
             </li>
         </ul>
     </div>
@@ -410,8 +426,6 @@ function getPcjlListByType(type) {
         }
      ,"json");
 }
-
-
 </script>
 </body>
 </html>
