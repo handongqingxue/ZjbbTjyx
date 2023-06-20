@@ -145,6 +145,11 @@ public class ReportController {
         }
     }
 
+    /**
+     * 获得未创建的报表变量(这个方法不用了)
+     * @param batchID
+     * @return
+     */
     @RequestMapping("/getUnCreRepVarList")
     @ResponseBody
     public Map<String,Object> getUnCreRepVarList(String batchID) {

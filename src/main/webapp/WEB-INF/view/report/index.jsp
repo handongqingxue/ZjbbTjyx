@@ -173,7 +173,7 @@ function getLeftMenuData(type){
 				var defaultBatchID=defaultBatch.batchID;
 				var defaultRemark=defaultBatch.remark;
 				showCreateArea(defaultBatchID,defaultRemark);
-				getUnCreRepVarMList(defaultBatchID);
+				//getUnCreRepVarMList(defaultBatchID);
 			}
 			else if(type=="mWsc"){
 				var mWscBatchList=result.mWscBatchList;
@@ -188,7 +188,7 @@ function getLeftMenuData(type){
 				
 				var defaultBatch=mWscBatchList[0];
 				var defaultBatchID=defaultBatch.batchID;
-				getUnCreRepVarMList(defaultBatchID);
+				//getUnCreRepVarMList(defaultBatchID);
 			}
 			else if(type=="mYsc"){
 				var mYscGlueTypeList=result.mYscGlueTypeList;
@@ -251,7 +251,8 @@ function showCreateArea(batchID,remark){
   		searchUDisplay="none"
         userListDisplay="none";
         roleListDisplay="none";
-        getUnCreRepVarMList(batchID);
+        
+        //getUnCreRepVarMList(batchID);
     }
     if (recType=="U"){//
         createMDisplay="none";
@@ -264,7 +265,7 @@ function showCreateArea(batchID,remark){
         searchUDisplay="none"
         userListDisplay="none";
         roleListDisplay="none";
-        getUnCreRepVarUList(batchID);
+        //getUnCreRepVarUList(batchID);
     }
 	$("#createM").css("display",createMDisplay);
     $("#m_wsc_span").text(mWscText);
