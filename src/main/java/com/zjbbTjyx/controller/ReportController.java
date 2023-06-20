@@ -103,19 +103,19 @@ public class ReportController {
     	Map<String, Object> pcjlMap = eRecordService.getListByPcjl(type);
     	
     	if(Constant.M_WSC.equals(type)) {
-    		List<String> mWscBatchIdList = (List<String>)pcjlMap.get("mWscBatchIdList");
-    		map.put("mWscBatchIdList", mWscBatchIdList);
+    		List<ERecord> mWscBatchList = (List<ERecord>)pcjlMap.get("mWscBatchList");
+    		map.put("mWscBatchList", mWscBatchList);
     	}
     	else if(Constant.U_WSC.equals(type)) {
-    		List<String> uWscBatchIdList = (List<String>)pcjlMap.get("uWscBatchIdList");
-    		map.put("uWscBatchIdList", uWscBatchIdList);
+    		List<ERecord> uWscBatchList = (List<ERecord>)pcjlMap.get("uWscBatchList");
+    		map.put("uWscBatchList", uWscBatchList);
     	}
     	else if(StringUtils.isEmpty(type)) {
-    		List<String> mWscBatchIdList = (List<String>)pcjlMap.get("mWscBatchIdList");
-    		map.put("mWscBatchIdList", mWscBatchIdList);
+    		List<ERecord> mWscBatchList = (List<ERecord>)pcjlMap.get("mWscBatchList");
+    		map.put("mWscBatchList", mWscBatchList);
     		
-    		List<String> uWscBatchIdList = (List<String>)pcjlMap.get("uWscBatchIdList");
-    		map.put("uWscBatchIdList", uWscBatchIdList);
+    		List<ERecord> uWscBatchList = (List<ERecord>)pcjlMap.get("uWscBatchList");
+    		map.put("uWscBatchList", uWscBatchList);
     		
     		List<String> mYscGlueTypeList = (List<String>)pcjlMap.get("mYscGlueTypeList");
     		map.put("mYscGlueTypeList", mYscGlueTypeList);

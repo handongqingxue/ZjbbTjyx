@@ -39,18 +39,12 @@
                     <dl class="layui-nav-child" style="color: #79e6e8">
                         <li class="layui-nav-item">
                             <a href="javascript:;">M类</a>
-                            <dl class="layui-nav-child" id="mWscBatchIdList_dl" style="color: #79e6e8">
-                                <c:forEach items="${mWscBatchIdList}" var="item">
-                                    <dd><a href="javascript:;">${item.batchID}</a></dd>
-                                </c:forEach>
+                            <dl class="layui-nav-child" id="mWscBatchList_dl" style="color: #79e6e8">
                             </dl>
                         </li>
                         <li class="layui-nav-item">
                             <a href="javascript:;">U类</a>
-                            <dl class="layui-nav-child" id="uWscBatchIdList_dl">
-                                <c:forEach items="${uWscBatchIdList}" var="item">
-                                    <dd><a href="javascript:;">${item.batchID}</a></dd>
-                                </c:forEach>
+                            <dl class="layui-nav-child" id="uWscBatchList_dl">
                             </dl>
                         </li>
                     </dl>
@@ -80,35 +74,6 @@
                     </dl>
                 </li>
             </ul>
-
-<%--之前的菜单栏--%>
-<%--            <ul class="layui-nav layui-nav-tree" lay-filter="test">--%>
-<%--                &lt;%&ndash;layui-nav-itemed 自动展开&ndash;%&gt;--%>
-<%--                <li class="layui-nav-item">--%>
-<%--                    <a href="javascript:;">M类报表生成</a>--%>
-<%--                    <dl class="layui-nav-child" id="mWscBatchIdList_dl" style="color: #79e6e8">--%>
-<%--                        <c:forEach items="${mWscBatchIdList}" var="item">--%>
-<%--                            <dd><a href="javascript:;">${item.batchID}</a></dd>--%>
-<%--                        </c:forEach>--%>
-<%--                    </dl>--%>
-<%--                </li>--%>
-<%--                <li class="layui-nav-item">--%>
-<%--                    <a href="javascript:;">U类报表生成</a>--%>
-<%--                    <dl class="layui-nav-child" id="uWscBatchIdList_dl">--%>
-<%--                        <c:forEach items="${uWscBatchIdList}" var="item">--%>
-<%--                            <dd><a href="javascript:;">${item.batchID}</a></dd>--%>
-<%--                        </c:forEach>--%>
-<%--                    </dl>--%>
-<%--                </li>--%>
-<%--                <li class="layui-nav-item">--%>
-<%--                    <a href="javascript:;">M类报表查询</a>--%>
-<%--                    <dl class="layui-nav-child" id="mYscGlueTypeList_dl"></dl>--%>
-<%--                </li>--%>
-<%--                <li class="layui-nav-item">--%>
-<%--                    <a href="javascript:;">U类报表查询</a>--%>
-<%--                    <dl class="layui-nav-child" id="uYscGlueTypeList_dl"></dl>--%>
-<%--                </li>--%>
-<%--            </ul>--%>
         </div>
         <div class="home-right-body">
             <%--右部分标题头--%>
@@ -168,12 +133,14 @@ function getLeftMenuData(type){
 		{type:type},
 		function(result){
 			if(type==""){
-				var mWscBatchIdList=result.mWscBatchIdList;
-				var mWscBatchIdListDl=$("#mWscBatchIdList_dl");
-				mWscBatchIdListDl.empty();
-				for (var i = 0; i < mWscBatchIdList.length; i++) {
-					var mWscBatchId=mWscBatchIdList[i];
-	   				mWscBatchIdListDl.append("<dd><a onclick=\"showCreateArea('"+mWscBatchId+"')\">"+mWscBatchId+"</a></dd>");
+				var mWscBatchList=result.mWscBatchList;
+				var mWscBatchListDl=$("#mWscBatchList_dl");
+				mWscBatchListDl.empty();
+				for (var i = 0; i < mWscBatchList.length; i++) {
+					var mWscBatch=mWscBatchList[i];
+					var mWscBatchID=mWscBatch.batchID;
+					var mWscRemark=mWscBatch.remark;
+	   				mWscBatchListDl.append("<dd><a onclick=\"showCreateArea('"+mWscBatchID+"','"+mWscRemark+"')\">"+mWscBatchID+"</a></dd>");
 				}
 				
 				var mYscGlueTypeList=result.mYscGlueTypeList;
@@ -183,12 +150,14 @@ function getLeftMenuData(type){
 					var mYscGlueType=mYscGlueTypeList[i];
 					mYscGlueTypeListDl.append("<dd><a onclick=\"showSearchArea('"+mYscGlueType+"')\">"+mYscGlueType+"</a></dd>");
 				}
-                var uWscBatchIdList=result.uWscBatchIdList;
-                var uWscBatchIdListDl=$("#uWscBatchIdList_dl");
-                uWscBatchIdListDl.empty();
-                for (var i = 0; i < uWscBatchIdList.length; i++) {
-                	var uWscBatchId=uWscBatchIdList[i];
-                	uWscBatchIdListDl.append("<dd><a onclick=\"showCreateArea('"+uWscBatchId+"')\">"+uWscBatchId+"</a></dd>");
+                var uWscBatchList=result.uWscBatchList;
+                var uWscBatchListDl=$("#uWscBatchList_dl");
+                uWscBatchListDl.empty();
+                for (var i = 0; i < uWscBatchList.length; i++) {
+                	var uWscBatch=uWscBatchList[i];
+                	var uWscBatchID=uWscBatch.batchID;
+					var uWscRemark=uWscBatch.remark;
+                	uWscBatchListDl.append("<dd><a onclick=\"showCreateArea('"+uWscBatchID+"','"+uWscRemark+"')\">"+uWscBatchID+"</a></dd>");
                 }
 
                 var uYscGlueTypeList=result.uYscGlueTypeList;
@@ -198,20 +167,25 @@ function getLeftMenuData(type){
                     var uYscGlueType=uYscGlueTypeList[i];
                     uYscGlueTypeListDl.append("<dd><a onclick=\"showSearchArea('"+uYscGlueType+"')\">"+uYscGlueType+"</a></dd>");
                 }
-				var defaultBatchID=mWscBatchIdList[0];
-				showCreateArea(defaultBatchID);
+				var defaultBatch=mWscBatchList[0];
+				var defaultBatchID=defaultBatch.batchID;
+				var defaultRemark=defaultBatch.remark;
+				showCreateArea(defaultBatchID,defaultRemark);
 				getUnCreRepVarMList(defaultBatchID);
 			}
 			else if(type=="mWsc"){
-				var mWscBatchIdList=result.mWscBatchIdList;
-				var mWscBatchIdListDl=$("#mWscBatchIdList_dl");
-				mWscBatchIdListDl.empty();
-				for (var i = 0; i < mWscBatchIdList.length; i++) {
-					var mWscBatchId=mWscBatchIdList[i];
-	   				mWscBatchIdListDl.append("<dd><a onclick=\"showCreateArea('"+mWscBatchId+"')\">"+mWscBatchId+"</a></dd>");
+				var mWscBatchList=result.mWscBatchList;
+				var mWscBatchListDl=$("#mWscBatchList_dl");
+				mWscBatchListDl.empty();
+				for (var i = 0; i < mWscBatchList.length; i++) {
+					var mWscBatch=mWscBatchList[i];
+					var mWscBatchID=mWscBatch.batchID;
+					var mWscRemark=mWscBatch.remark;
+	   				mWscBatchListDl.append("<dd><a onclick=\"showCreateArea('"+mWscBatchID+"','"+mWscRemark+"')\">"+mWscBatchID+"</a></dd>");
 				}
 				
-				var defaultBatchID=mWscBatchIdList[0];
+				var defaultBatch=mWscBatchList[0];
+				var defaultBatchID=defaultBatch.batchID;
 				getUnCreRepVarMList(defaultBatchID);
 			}
 			else if(type=="mYsc"){
@@ -224,15 +198,18 @@ function getLeftMenuData(type){
 				}
 			}
             else if(type=="uWsc"){
-                var uWscBatchIdList=result.uWscBatchIdList;
-                var uWscBatchIdListDl=$("#uWscBatchIdList_dl");
-                uWscBatchIdListDl.empty();
-                for (var i = 0; i < uWscBatchIdList.length; i++) {
-                    var uWscBatchId=uWscBatchIdList[i];
-                    uWscBatchIdListDl.append("<dd><a onclick=\"showCreateArea('"+uWscBatchId+"')\">"+uWscBatchId+"</a></dd>");
+                var uWscBatchList=result.uWscBatchList;
+                var uWscBatchListDl=$("#uWscBatchList_dl");
+                uWscBatchListDl.empty();
+                for (var i = 0; i < uWscBatchList.length; i++) {
+                    var uWscBatch=uWscBatchList[i];
+                    var uWscBatchID=uWscBatch.batchID;
+					var uWscRemark=uWscBatch.remark;
+                    uWscBatchIdListDl.append("<dd><a onclick=\"showCreateArea('"+uWscBatchID+"','"+uWscRemark+"')\">"+uWscBatchID+"</a></dd>");
                 }
 
-                var defaultBatchID=uWscBatchIdList[0];
+                var defaultBatch=uWscBatchIdList[0];
+                var defaultBatchID=defaultBatch.batchID;
                 getUnCreRepVarUList(defaultBatchID);
             }
             else if(type=="uYsc"){
@@ -248,9 +225,14 @@ function getLeftMenuData(type){
 	,"json");
 }
 
-function showCreateArea(batchID){
+function showCreateArea(batchID,remark){
+	//alert($("#opcMCTable").length)
   	var createMDisplay;
+	var mWscText;
+	
   	var createUDisplay;
+	var uWscText;
+	
   	var searchMDisplay;
   	var searchUDisplay;
     var userListDisplay;
@@ -258,7 +240,11 @@ function showCreateArea(batchID){
   	var recType=batchID.substring(0,1);
   	if (recType=="M"){
   		createMDisplay="block";
+  		mWscText=remark=="0"?"未生成":"已生成";
+  		
   		createUDisplay="none";
+        uWscText="";
+        
   		searchMDisplay="none";
   		searchUDisplay="none"
         userListDisplay="none";
@@ -267,7 +253,11 @@ function showCreateArea(batchID){
     }
     if (recType=="U"){//
         createMDisplay="none";
+        mWscText="";
+    
         createUDisplay="block";
+        uWscText=remark=="0"?"未生成":"已生成";
+        
         searchMDisplay="none";
         searchUDisplay="none"
         userListDisplay="none";
@@ -275,7 +265,11 @@ function showCreateArea(batchID){
         getUnCreRepVarUList(batchID);
     }
 	$("#createM").css("display",createMDisplay);
+    $("#m_wsc_span").text(mWscText);
+    
     $("#createU").css("display",createUDisplay);
+    $("#u_wsc_span").text(uWscText);
+    
     $("#searchM").css("display",searchMDisplay);
     $("#searchU").css("display",searchUDisplay);
     $("#userList").css("display",userListDisplay);

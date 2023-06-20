@@ -102,7 +102,7 @@ function manuallyEnteringInformationU(){
                 <span class="dbczy_span">当班操作员</span>
                 <select class="u_create_head_input" id="onDutyOperatorSelectU" onchange="manuallyEnteringInformationU()"></select>
                 <span class="bbzt_span">报表状态:</span>
-                <span class="wsc_span">未生成</span>
+                <span class="wsc_span" id="u_wsc_span">未生成</span>
             </div>
             <div class="u_create_head_row2_div">
                 <span class="gzlcssr1_span">1号罐重量初始输入</span>
