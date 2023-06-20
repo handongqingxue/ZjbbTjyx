@@ -2987,8 +2987,8 @@ public class ERecordServiceImpl implements ERecordService {
 
 	public Map<String,Object> getListByPcjl(String type) {
 		Map<String,Object> map = new HashMap<String, Object>();
-		List<String> mWscBatchIdList = new ArrayList<String>();//M类未生成的批次记录集合
-		List<String> uWscBatchIdList = new ArrayList<String>();//U类未生成的批次记录集合
+		List<ERecord> mWscBatchList = new ArrayList<ERecord>();//M类未生成的批次记录集合
+		List<ERecord> uWscBatchList = new ArrayList<ERecord>();//U类未生成的批次记录集合
 		List<String> mYscGlueTypeList = new ArrayList<String>();//M类已生成的胶种集合
 		List<String> uYscGlueTypeList = new ArrayList<String>();//U类已生成的胶种集合
 		List<ERecord> pcjlList = eRecordMapper.getListByPcjl();//查询全部批次记录
@@ -2999,37 +2999,37 @@ public class ERecordServiceImpl implements ERecordService {
 			for (ERecord pcjl : pcjlList) {
 				if (pcjl.getRemark().equals(ERecord.WSCBB+"")){
 					if (pcjl.getRecType().equals(ERecord.M)){
-						mWscBatchIdList.add(pcjl.getBatchID());
+						mWscBatchList.add(pcjl);
 					}
 				}
 				else {
 					if (pcjl.getRecType().equals(ERecord.M)){
-						mWscBatchIdList.add(pcjl.getBatchID());
+						mWscBatchList.add(pcjl);
 					}
 				}
 			}
 			
-			map.put("mWscBatchIdList",mWscBatchIdList);
+			map.put("mWscBatchList",mWscBatchList);
 		}
 		else if(Constant.U_WSC.equals(type)) {
 			for (ERecord pcjl : pcjlList) {
 				if (pcjl.getRemark().equals(ERecord.WSCBB+"")){
 					if (pcjl.getRecType().equals(ERecord.U)){
-						uWscBatchIdList.add(pcjl.getBatchID());
+						uWscBatchList.add(pcjl);
 					}
 				}
 			}
 			
-			map.put("uWscBatchIdList",uWscBatchIdList);
+			map.put("uWscBatchList",uWscBatchList);
 		}
 		else if(StringUtils.isEmpty(type)) {
 			for (ERecord pcjl : pcjlList) {
 				if (pcjl.getRemark().equals(ERecord.WSCBB+"")){
 					if (pcjl.getRecType().equals(ERecord.M)){
-						mWscBatchIdList.add(pcjl.getBatchID());
+						mWscBatchList.add(pcjl);
 					}
 					else if(pcjl.getRecType().equals(ERecord.U)){
-						uWscBatchIdList.add(pcjl.getBatchID());
+						uWscBatchList.add(pcjl);
 					}
 				}
 				else if (pcjl.getRemark().equals(ERecord.YSCBB+"")){
@@ -3039,8 +3039,8 @@ public class ERecordServiceImpl implements ERecordService {
 						String recordTime = pcjl.getRecordTime();
 						
 						long daySpace = DateUtil.betweenTime(DateUtil.convertStrToLong(recordTime),DateUtil.convertStrToLong(nowDateStr),DateUtil.TIAN);
-						if(daySpace<7)
-							mWscBatchIdList.add(pcjl.getBatchID());
+						//if(daySpace<7)
+							mWscBatchList.add(pcjl);
 						
 						//查找m类胶种
 						boolean exist = checkGlueTypeIfExistInList(glueType, mYscGlueTypeList);
@@ -3048,6 +3048,8 @@ public class ERecordServiceImpl implements ERecordService {
 							mYscGlueTypeList.add(glueType);
 					}
 					else if(pcjl.getRecType().equals(ERecord.U)){
+						uWscBatchList.add(pcjl);
+						
 						//查找u类胶种
 						boolean exist = checkGlueTypeIfExistInList(glueType, uYscGlueTypeList);
 						if(!exist)
@@ -3055,8 +3057,8 @@ public class ERecordServiceImpl implements ERecordService {
 					}
 				}
 			}
-			map.put("mWscBatchIdList",mWscBatchIdList);
-			map.put("uWscBatchIdList",uWscBatchIdList);
+			map.put("mWscBatchList",mWscBatchList);
+			map.put("uWscBatchList",uWscBatchList);
 			map.put("mYscGlueTypeList",mYscGlueTypeList);
 			map.put("uYscGlueTypeList",uYscGlueTypeList);
 		}
