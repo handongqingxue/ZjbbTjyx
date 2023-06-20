@@ -172,7 +172,7 @@ body, html {
     height: 70px;
     position: absolute;
     display: none;
-    background-color: #c8c8d0;
+    background-color: #e2e2e6;
     top: 22px;
     left: 55px;
     right: 10px;
@@ -182,6 +182,25 @@ body, html {
 }
 
 .son>li{
+    padding: 5px;
+    text-align: center;
+}
+
+.son2{
+    width: 80px;
+    height: 40px;
+    position: absolute;
+    display: none;
+    background-color: #e2e2e6;
+    top: 22px;
+    left: 55px;
+    right: 10px;
+    padding-left: 0px;
+    /*将方框的角变为圆角框*/
+    border-radius: 5px;
+}
+
+.son2>li{
     padding: 5px;
     text-align: center;
 }
@@ -202,6 +221,20 @@ body, html {
     color: #FFFFFF;
 }
 .father:hover .son{
+    display: block;
+}
+
+.son2 li:hover
+{
+    background-color: #dcdfe3;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+.son2 li a:hover
+{
+    color: #FFFFFF;
+}
+.father:hover .son2{
     display: block;
 }
 .user_table{
