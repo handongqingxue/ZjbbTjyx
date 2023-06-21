@@ -17,4 +17,6 @@ public interface ReportF_MMapper {
 	int getCount(@Param("rowNumber") int rowNumber, @Param("colNumber") int colNumber, @Param("batchID") String batchID);
 
 	int edit(ReportF_M reportF_M);
+
+	int resetCTabInp(@Param("reportF_MList") List<ReportF_M> reportF_MList, @Param("batchID") String batchID);
 }

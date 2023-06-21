@@ -247,10 +247,12 @@ function showCreateArea(batchID,remark){
   	var createMDisplay;
 	var mWscText;
   	var opcMCTableDisplay;
+  	var opcMCTableBatchID;
 	
   	var createUDisplay;
 	var uWscText;
   	var opcUCTableDisplay;
+  	var opcUCTableBatchID;
 	
   	var searchMDisplay;
   	var searchUDisplay;
@@ -261,10 +263,12 @@ function showCreateArea(batchID,remark){
   		createMDisplay="block";
   		mWscText=remark=="0"?"未生成":"已生成";
   		opcMCTableDisplay=remark==1?"block":"none";
+  		opcMCTableBatchID=batchID;
   		
   		createUDisplay="none";
         uWscText="";
   		opcUCTableDisplay="none";
+  		opcUCTableBatchID="";
         
   		searchMDisplay="none";
   		searchUDisplay="none"
@@ -272,15 +276,18 @@ function showCreateArea(batchID,remark){
         roleListDisplay="none";
         
         //getUnCreRepVarMList(batchID);
+        preCreateMTab();
     }
     if (recType=="U"){//
         createMDisplay="none";
         mWscText="";
   		opcMCTableDisplay="none";
+  		opcMCTableBatchID="";
     
         createUDisplay="block";
         uWscText=remark=="0"?"未生成":"已生成";
   		opcUCTableDisplay=remark==1?"block":"none";
+  		opcUCTableBatchID=batchID;
         
         searchMDisplay="none";
         searchUDisplay="none"
@@ -291,10 +298,12 @@ function showCreateArea(batchID,remark){
 	$("#createM").css("display",createMDisplay);
     $("#m_wsc_span").text(mWscText);
     $("#opcMCTable").css("display",opcMCTableDisplay);
+	$("#opcMCTable #batchID_hid").val(opcMCTableBatchID);//设置表格里的批次id
     
     $("#createU").css("display",createUDisplay);
     $("#u_wsc_span").text(uWscText);
     $("#opcUCTable").css("display",opcUCTableDisplay);
+	$("#opcUCTable #batchID_hid").val(opcUCTableBatchID);//设置表格里的批次id
     
     $("#searchM").css("display",searchMDisplay);
     $("#searchU").css("display",searchUDisplay);

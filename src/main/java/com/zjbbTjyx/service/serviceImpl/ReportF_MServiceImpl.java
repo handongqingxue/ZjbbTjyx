@@ -38,6 +38,21 @@ public class ReportF_MServiceImpl implements ReportF_MService {
 				int colNumber=ReportF_M.JQCJXX_CN;
 				reportF_MList.add(createByParams(rowNumber, colNumber, varValue, batchID));
 			}
+			else if(Constant.SAN_AN_CHANG_JIA_XIN_XI.equals(varName)) {//三安厂家信息
+				int rowNumber=ReportF_M.SACJXX_RN;
+				int colNumber=ReportF_M.SACJXX_CN;
+				reportF_MList.add(createByParams(rowNumber, colNumber, varValue, batchID));
+			}
+			else if(Constant.DANG_BAN_CAO_ZUO_YUAN.equals(varName)) {//当班操作员
+				int rowNumber=ReportF_M.DBCZY_RN;
+				int colNumber=ReportF_M.DBCZY_CN;
+				reportF_MList.add(createByParams(rowNumber, colNumber, varValue, batchID));
+			}
+			else if(Constant.JIE_BAN_CAO_ZUO_YUAN.equals(varName)) {//接班操作员
+				int rowNumber=ReportF_M.JBCZY_RN;
+				int colNumber=ReportF_M.JBCZY_CN;
+				reportF_MList.add(createByParams(rowNumber, colNumber, varValue, batchID));
+			}
 			else if(Constant.SHENG_CHAN_BIAN_HAO.equals(varName)) {//生产编号
 				int rowNumber=ReportF_M.SCBH_RN;
 				int colNumber=ReportF_M.SCBH_CN;
@@ -294,7 +309,10 @@ public class ReportF_MServiceImpl implements ReportF_MService {
 			int colNumber=Integer.valueOf(reportF_M.getColNumber());
 			String batchID = reportF_M.getBatchID();
 			int existCount=reportF_MMapper.getCount(rowNumber,colNumber,batchID);
-			if(rowNumber==ReportF_M.JQCJXX_RN&&colNumber==ReportF_M.JQCJXX_CN) {
+			if(rowNumber==ReportF_M.JQCJXX_RN&&colNumber==ReportF_M.JQCJXX_CN
+			 ||rowNumber==ReportF_M.SACJXX_RN&&colNumber==ReportF_M.SACJXX_CN
+			 ||rowNumber==ReportF_M.DBCZY_RN&&colNumber==ReportF_M.DBCZY_CN
+			 ||rowNumber==ReportF_M.JBCZY_RN&&colNumber==ReportF_M.JBCZY_CN) {
 				if(existCount==0)
 					count+=reportF_MMapper.add(reportF_M);
 				else {
@@ -391,4 +409,31 @@ public class ReportF_MServiceImpl implements ReportF_MService {
 		return reportF_M;
 	}
 
+	@Override
+	public int resetCTabInp(String batchID) {
+		// TODO Auto-generated method stub
+		List<ReportF_M> rFMList=new ArrayList<ReportF_M>();
+		
+		ReportF_M jqcjxxRFM=new ReportF_M();
+		jqcjxxRFM.setRowNumber(ReportF_M.JQCJXX_RN+"");
+		jqcjxxRFM.setColNumber(ReportF_M.JQCJXX_CN+"");
+		rFMList.add(jqcjxxRFM);
+
+		ReportF_M sacjxxRFM=new ReportF_M();
+		sacjxxRFM.setRowNumber(ReportF_M.SACJXX_RN+"");
+		sacjxxRFM.setColNumber(ReportF_M.SACJXX_CN+"");
+		rFMList.add(sacjxxRFM);
+
+		ReportF_M dbczyRFM=new ReportF_M();
+		dbczyRFM.setRowNumber(ReportF_M.DBCZY_RN+"");
+		dbczyRFM.setColNumber(ReportF_M.DBCZY_CN+"");
+		rFMList.add(dbczyRFM);
+
+		ReportF_M jbczyRFM=new ReportF_M();
+		jbczyRFM.setRowNumber(ReportF_M.JBCZY_RN+"");
+		jbczyRFM.setColNumber(ReportF_M.JBCZY_CN+"");
+		rFMList.add(jbczyRFM);
+		
+		return reportF_MMapper.resetCTabInp(rFMList,batchID);
+	}
 }

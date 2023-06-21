@@ -25,10 +25,6 @@ function initDataResetMButDiv() {
     
     $("#tank1DataM").val('');//初始化罐1数据信息
     $("#tank2DataM").val('');//初始化罐2数据信息
-    $("#jqInformationM").html("");
-    $("#onDutyOperatorM").html("");
-    $("#successionOperatorM").html("");
-    $("#saInformationM").html("");
     $("#tank1AgoM").html("");
     $("#tank2AgoM").html("");
 }
@@ -60,7 +56,7 @@ function checkInputInfo(){
 		if(checkSACJXXM()){
 			if(checkDBCZY()){
 				if(checkJBCZY()){
-					
+					addReportF_MByBatchID();
 				}
 			}
 		}
@@ -111,16 +107,53 @@ function addReportF_MByBatchID(){
     if(confirm('是否要生成报表 ?')) {
         var batchID = $("#opcMCTable #batchID_hid").val();
     	var jqcjxx=$("#jqcjxx_m_inp").val();
-        var inputJOStr="{\"甲醛厂家信息\":\""+jqcjxx+"\"}";
+    	var sacjxx=$("#sacjxx_m_inp").val();
+    	var dbczy=$("#dbczy_sel").val();
+    	var jbczy=$("#jbczy_sel").val();
+        var inputJOStr="{\"甲醛厂家信息\":\""+jqcjxx+"\",\"三安厂家信息\":\""+sacjxx+"\",\"当班操作员\":\""+dbczy+"\",\"接班操作员\":\""+jbczy+"\"}";
         $.post(path + "report/addReportFByBatchID",
             {batchID: batchID,inputJOStr:inputJOStr},
             function (result) {
                 if (result.message == "ok") {
                     alert(result.info);
                     getLeftMenuData("mWsc");
+                    preCreateMTab();
                 }
             }
             , "json");
+    }
+}
+
+function preCreateMTab(){
+	var batchID=$("#opcMCTable #batchID_hid").val();
+	$.post(path+"report/getReportFMByBatchID",
+        {batchID:batchID},
+        function(result){
+            var repFMList=result.data;
+            var opcMCTable=$("#opcMCTable");
+            for (var i = 0; i < repFMList.length; i++) {
+                var repFM=repFMList[i];
+                var rowNumber=repFM.rowNumber;
+                var colNumber=repFM.colNumber;
+                var value=repFM.value;
+                opcMCTable.find("#td"+rowNumber+"_"+colNumber).text(value);//暂时把变量添加到未显示变量的报表模版里
+            }
+        }
+    ,"json");
+}
+
+function resetMCTabInp(){
+    if(confirm('是否要复位数据 ?')) {
+		var batchID=$("#opcMCTable #batchID_hid").val();
+		$.post(path+"report/resetCTabInp",
+	        {batchID:batchID},
+	        function(result){
+	        	if(result.status=="ok"){
+	        		alert(result.info);
+	        		preCreateMTab();
+	        	}
+	        }
+	    ,"json");
     }
 }
 </script>
@@ -149,7 +182,7 @@ function addReportF_MByBatchID(){
             <select class="m_create_head_input" id="jbczy_sel"></select>
             <c:if test="${userAllRole[0].id==1||userAllRole[0].id==2||userAllRole[0].id==3}">
                 <div class="but_div scbb_but_div" onclick="checkInputInfo()">生成报表</div>
-                <div class="but_div sjfw_but_div" onclick="dataResetM()">数据复位</div>
+                <div class="but_div sjfw_but_div" onclick="resetMCTabInp()">数据复位</div>
             </c:if>
         </div>
     </div>
@@ -165,20 +198,20 @@ function addReportF_MByBatchID(){
             <%--第二行--%>
             <tr class="tr2">
                 <td class="td2_1">YSD101信息</td>
-                <td class="td2_2 blue" id="jqInformationM">
+                <td class="td2_2 blue" id="td2_2">
                     <%--甲醛厂家信息，可后期录入--%>
                 </td>
                 <td class="td2_3">YSD102信息</td>
-                <td class="td2_4 blue" id="saInformationM">
+                <td class="td2_4 blue" id="td2_4">
                     <%--三安厂家信息可后期录入--%>
                 </td>
                 <td class="td2_5"></td>
                 <td class="td2_6" colspan="2">当班操作员：</td>
-                <td class="td2_7 green" colspan="2" id="onDutyOperatorM">
+                <td class="td2_7 green" colspan="2" id="td2_7">
                     <%--直接摘抄登录名--%>
                 </td>
                 <td class="td2_8" colspan="2">接班操作员：</td>
-                <td class="td2_9 green" colspan="2" id="successionOperatorM">
+                <td class="td2_9 green" colspan="2" id="td2_9">
                     <%--直接摘抄登录名--%>
                 </td>
             </tr>

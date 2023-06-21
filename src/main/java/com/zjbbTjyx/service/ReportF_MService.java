@@ -25,4 +25,6 @@ public interface ReportF_MService {
 	 * @return
 	 */
 	List<ReportF_M> getReportFMByBatchID( String batchID);
+
+	int resetCTabInp(String batchID);
 }
