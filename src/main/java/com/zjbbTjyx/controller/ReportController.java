@@ -1,5 +1,7 @@
 package com.zjbbTjyx.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.zjbbTjyx.entity.*;
 import com.zjbbTjyx.service.*;
 import com.zjbbTjyx.util.*;
@@ -145,6 +147,11 @@ public class ReportController {
         }
     }
 
+    /**
+     * 获得未创建的报表变量(这个方法不用了)
+     * @param batchID
+     * @return
+     */
     @RequestMapping("/getUnCreRepVarList")
     @ResponseBody
     public Map<String,Object> getUnCreRepVarList(String batchID) {
@@ -200,14 +207,66 @@ public class ReportController {
 			return result;
 		}
 	}
+	
+	@RequestMapping(value = "/resetCTabInp", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> resetCTabInp(String batchID) {
+
+		Map<String,Object> json=new HashMap<String, Object>();
+		
+		String recType = batchID.substring(0,1);
+		if(ERecord.M.equals(recType)) {
+			reportF_MService.resetCTabInp(batchID);
+		}
+		
+		json.put("status","ok");
+		json.put("info","复位成功");
+		
+		return json;
+	}
+	
 	@RequestMapping(value = "/addReportFByBatchID", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> addResportFByBatchID(String batchID) {
+	public Map<String, Object> addReportFByBatchID(String batchID, String inputJOStr) {
 
 		Map<String,Object> json=new HashMap<String, Object>();
 		
 		int count=0;
 		List<ERecord> eRecordList=eRecordService.getListByBatchID(batchID);
+		
+		JSONObject inputJO = JSONObject.parseObject(inputJOStr);
+		
+		ERecord jqcjxxER=new ERecord();
+		String jqcjxx = inputJO.getString("甲醛厂家信息");
+		jqcjxxER.setVarName("甲醛厂家信息");
+		jqcjxxER.setVarValue(jqcjxx);
+		jqcjxxER.setBatchID(batchID);
+		
+		eRecordList.add(jqcjxxER);
+
+		ERecord sacjxxER=new ERecord();
+		String sacjxx = inputJO.getString("三安厂家信息");
+		sacjxxER.setVarName("三安厂家信息");
+		sacjxxER.setVarValue(sacjxx);
+		sacjxxER.setBatchID(batchID);
+		
+		eRecordList.add(sacjxxER);
+
+		ERecord dbczyER=new ERecord();
+		String dbczy = inputJO.getString("当班操作员");
+		dbczyER.setVarName("当班操作员");
+		dbczyER.setVarValue(dbczy);
+		dbczyER.setBatchID(batchID);
+		
+		eRecordList.add(dbczyER);
+
+		ERecord jbczyER=new ERecord();
+		String jbczy = inputJO.getString("接班操作员");
+		jbczyER.setVarName("接班操作员");
+		jbczyER.setVarValue(jbczy);
+		jbczyER.setBatchID(batchID);
+		
+		eRecordList.add(jbczyER);
 		
 		String recType = batchID.substring(0,1);
 		if(ERecord.M.equals(recType)) {

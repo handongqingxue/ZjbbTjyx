@@ -20,6 +20,43 @@ public class ReportF_M {
 	 */
 	public static final int SJH_CN=2;
 	
+	//甲醛厂家信息-2
+	/**
+	 * 甲醛厂家信息行号
+	 */
+	public static final int JQCJXX_RN=2;
+	/**
+	 * 甲醛厂家信息列号
+	 */
+	public static final int JQCJXX_CN=2;
+	
+	/**
+	 * 三安厂家信息行号
+	 */
+	public static final int SACJXX_RN=2;
+	/**
+	 * 三安厂家信息列号
+	 */
+	public static final int SACJXX_CN=4;
+	
+	/**
+	 * 当班操作员行号
+	 */
+	public static final int DBCZY_RN=2;
+	/**
+	 * 当班操作员列号
+	 */
+	public static final int DBCZY_CN=7;
+	
+	/**
+	 * 接班操作员行号
+	 */
+	public static final int JBCZY_RN=2;
+	/**
+	 * 接班操作员列号
+	 */
+	public static final int JBCZY_CN=9;
+	
 	//生产编号-3
 	/**
 	 * 生产编号行号

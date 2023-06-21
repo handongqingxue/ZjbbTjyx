@@ -41,7 +41,7 @@
                         noVarRepTab.find("#td"+rowNumber+"_"+colNumber).text(value);//暂时把变量添加到未显示变量的报表模版里
                     }
                 }
-                ,"json");
+            ,"json");
         }
 
         function base64 (content) {

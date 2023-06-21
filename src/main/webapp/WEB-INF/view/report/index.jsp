@@ -189,7 +189,7 @@ function getLeftMenuData(type){
 				var defaultBatchID=defaultBatch.batchID;
 				var defaultRemark=defaultBatch.remark;
 				showCreateArea(defaultBatchID,defaultRemark);
-				getUnCreRepVarMList(defaultBatchID);
+				//getUnCreRepVarMList(defaultBatchID);
 			}
 			else if(type=="mWsc"){
 				var mWscBatchList=result.mWscBatchList;
@@ -204,7 +204,7 @@ function getLeftMenuData(type){
 				
 				var defaultBatch=mWscBatchList[0];
 				var defaultBatchID=defaultBatch.batchID;
-				getUnCreRepVarMList(defaultBatchID);
+				//getUnCreRepVarMList(defaultBatchID);
 			}
 			else if(type=="mYsc"){
 				var mYscGlueTypeList=result.mYscGlueTypeList;
@@ -244,12 +244,15 @@ function getLeftMenuData(type){
 }
 
 function showCreateArea(batchID,remark){
-	//alert($("#opcMCTable").length)
   	var createMDisplay;
 	var mWscText;
+  	var opcMCTableDisplay;
+  	var opcMCTableBatchID;
 	
   	var createUDisplay;
 	var uWscText;
+  	var opcUCTableDisplay;
+  	var opcUCTableBatchID;
 	
   	var searchMDisplay;
   	var searchUDisplay;
@@ -259,34 +262,48 @@ function showCreateArea(batchID,remark){
   	if (recType=="M"){
   		createMDisplay="block";
   		mWscText=remark=="0"?"未生成":"已生成";
+  		opcMCTableDisplay=remark==1?"block":"none";
+  		opcMCTableBatchID=batchID;
   		
   		createUDisplay="none";
         uWscText="";
+  		opcUCTableDisplay="none";
+  		opcUCTableBatchID="";
         
   		searchMDisplay="none";
   		searchUDisplay="none"
         userListDisplay="none";
         roleListDisplay="none";
-        getUnCreRepVarMList(batchID);
+        
+        //getUnCreRepVarMList(batchID);
+        preCreateMTab();
     }
     if (recType=="U"){//
         createMDisplay="none";
         mWscText="";
+  		opcMCTableDisplay="none";
+  		opcMCTableBatchID="";
     
         createUDisplay="block";
         uWscText=remark=="0"?"未生成":"已生成";
+  		opcUCTableDisplay=remark==1?"block":"none";
+  		opcUCTableBatchID=batchID;
         
         searchMDisplay="none";
         searchUDisplay="none"
         userListDisplay="none";
         roleListDisplay="none";
-        getUnCreRepVarUList(batchID);
+        //getUnCreRepVarUList(batchID);
     }
 	$("#createM").css("display",createMDisplay);
     $("#m_wsc_span").text(mWscText);
+    $("#opcMCTable").css("display",opcMCTableDisplay);
+	$("#opcMCTable #batchID_hid").val(opcMCTableBatchID);//设置表格里的批次id
     
     $("#createU").css("display",createUDisplay);
     $("#u_wsc_span").text(uWscText);
+    $("#opcUCTable").css("display",opcUCTableDisplay);
+	$("#opcUCTable #batchID_hid").val(opcUCTableBatchID);//设置表格里的批次id
     
     $("#searchM").css("display",searchMDisplay);
     $("#searchU").css("display",searchUDisplay);
