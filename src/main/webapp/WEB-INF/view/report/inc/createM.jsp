@@ -56,18 +56,64 @@ function getUnCreRepVarMList(batchID){
 */
 
 function checkInputInfo(){
-	
+	if(checkJQCJXXM()){
+		if(checkSACJXXM()){
+			if(checkDBCZY()){
+				if(checkJBCZY()){
+					
+				}
+			}
+		}
+	}
 }
 
-function checkYSD101Input(){
-	
+function checkJQCJXXM(){
+	var jqcjxx=$("#jqcjxx_m_inp").val();
+	if(jqcjxx==""||jqcjxx==null){
+		alert("请输入甲醛厂家信息");
+		return false;
+	}
+	else
+		return true;
+}
+
+function checkSACJXXM(){
+	var sacjxx=$("#sacjxx_m_inp").val();
+	if(sacjxx==""||sacjxx==null){
+		alert("请输入三安厂家信息");
+		return false;
+	}
+	else
+		return true;
+}
+
+function checkDBCZY(){
+	var dbczy=$("#dbczy_sel").val();
+	if(dbczy==""||dbczy==null){
+		alert("请选择当班操作员");
+		return false;
+	}
+	else
+		return true;
+}
+
+function checkJBCZY(){
+	var jbczy=$("#jbczy_sel").val();
+	if(jbczy==""||jbczy==null){
+		alert("请选择接班操作员");
+		return false;
+	}
+	else
+		return true;
 }
 
 function addReportF_MByBatchID(){
     if(confirm('是否要生成报表 ?')) {
         var batchID = $("#opcMCTable #batchID_hid").val();
+    	var jqcjxx=$("#jqcjxx_m_inp").val();
+        var inputJOStr="{\"甲醛厂家信息\":\""+jqcjxx+"\"}";
         $.post(path + "report/addReportFByBatchID",
-            {batchID: batchID},
+            {batchID: batchID,inputJOStr:inputJOStr},
             function (result) {
                 if (result.message == "ok") {
                     alert(result.info);
@@ -102,7 +148,7 @@ function addReportF_MByBatchID(){
             <span class="jbczy_span">接班操作员</span>
             <select class="m_create_head_input" id="jbczy_sel"></select>
             <c:if test="${userAllRole[0].id==1||userAllRole[0].id==2||userAllRole[0].id==3}">
-                <div class="but_div scbb_but_div" onclick="addReportF_MByBatchID()">生成报表</div>
+                <div class="but_div scbb_but_div" onclick="checkInputInfo()">生成报表</div>
                 <div class="but_div sjfw_but_div" onclick="dataResetM()">数据复位</div>
             </c:if>
         </div>

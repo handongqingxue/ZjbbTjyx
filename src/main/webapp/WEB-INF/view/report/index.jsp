@@ -244,12 +244,13 @@ function getLeftMenuData(type){
 }
 
 function showCreateArea(batchID,remark){
-	//alert($("#opcMCTable").length)
   	var createMDisplay;
 	var mWscText;
+  	var opcMCTableDisplay;
 	
   	var createUDisplay;
 	var uWscText;
+  	var opcUCTableDisplay;
 	
   	var searchMDisplay;
   	var searchUDisplay;
@@ -259,9 +260,11 @@ function showCreateArea(batchID,remark){
   	if (recType=="M"){
   		createMDisplay="block";
   		mWscText=remark=="0"?"未生成":"已生成";
+  		opcMCTableDisplay=remark==1?"block":"none";
   		
   		createUDisplay="none";
         uWscText="";
+  		opcUCTableDisplay="none";
         
   		searchMDisplay="none";
   		searchUDisplay="none"
@@ -273,9 +276,11 @@ function showCreateArea(batchID,remark){
     if (recType=="U"){//
         createMDisplay="none";
         mWscText="";
+  		opcMCTableDisplay="none";
     
         createUDisplay="block";
         uWscText=remark=="0"?"未生成":"已生成";
+  		opcUCTableDisplay=remark==1?"block":"none";
         
         searchMDisplay="none";
         searchUDisplay="none"
@@ -285,9 +290,11 @@ function showCreateArea(batchID,remark){
     }
 	$("#createM").css("display",createMDisplay);
     $("#m_wsc_span").text(mWscText);
+    $("#opcMCTable").css("display",opcMCTableDisplay);
     
     $("#createU").css("display",createUDisplay);
     $("#u_wsc_span").text(uWscText);
+    $("#opcUCTable").css("display",opcUCTableDisplay);
     
     $("#searchM").css("display",searchMDisplay);
     $("#searchU").css("display",searchUDisplay);

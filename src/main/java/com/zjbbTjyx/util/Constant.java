@@ -241,6 +241,26 @@ public class Constant {
 	public static final int[] BSF_JG_ARR=new int[] {BSF_JG1,BSF_JG2,BSF_JG3,BSF_JG4,BSF_JG5,BSF_JG6,BSF_JG7,BSF_JG8,BSF_JG9};
 
 	/**
+	 * 甲醛厂家信息
+	 */
+	public static final String JIA_QUAN_CHANG_JIA_XIN_XI="甲醛厂家信息";
+	
+	/**
+	 * 三安厂家信息
+	 */
+	public static final String SAN_AN_CHANG_JIA_XIN_XI="三安厂家信息";
+	
+	/**
+	 * 当班操作员
+	 */
+	public static final String DANG_BAN_CAO_ZUO_YUAN="当班操作员";
+	
+	/**
+	 * 接班操作员
+	 */
+	public static final String JIE_BAN_CAO_ZUO_YUAN="接班操作员";
+	
+	/**
 	 * 至
 	 */
 	public static final String ZHI="至";

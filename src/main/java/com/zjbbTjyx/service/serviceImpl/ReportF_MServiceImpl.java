@@ -33,7 +33,12 @@ public class ReportF_MServiceImpl implements ReportF_MService {
 			String ptnValue = eRecord.getPtnValue();
 			String batchID = eRecord.getBatchID();
 			
-			if(Constant.SHENG_CHAN_BIAN_HAO.equals(varName)) {//生产编号
+			if(Constant.JIA_QUAN_CHANG_JIA_XIN_XI.equals(varName)) {//甲醛厂家信息
+				int rowNumber=ReportF_M.JQCJXX_RN;
+				int colNumber=ReportF_M.JQCJXX_CN;
+				reportF_MList.add(createByParams(rowNumber, colNumber, varValue, batchID));
+			}
+			else if(Constant.SHENG_CHAN_BIAN_HAO.equals(varName)) {//生产编号
 				int rowNumber=ReportF_M.SCBH_RN;
 				int colNumber=ReportF_M.SCBH_CN;
 				reportF_MList.add(createByParams(rowNumber, colNumber, varValue, batchID));
@@ -285,7 +290,21 @@ public class ReportF_MServiceImpl implements ReportF_MService {
 		}
 		
 		for (ReportF_M reportF_M : reportF_MList) {
-			count+=reportF_MMapper.add(reportF_M);
+			int rowNumber=Integer.valueOf(reportF_M.getRowNumber());
+			int colNumber=Integer.valueOf(reportF_M.getColNumber());
+			String batchID = reportF_M.getBatchID();
+			int existCount=reportF_MMapper.getCount(rowNumber,colNumber,batchID);
+			if(rowNumber==ReportF_M.JQCJXX_RN&&colNumber==ReportF_M.JQCJXX_CN) {
+				if(existCount==0)
+					count+=reportF_MMapper.add(reportF_M);
+				else {
+					count+=reportF_MMapper.edit(reportF_M);
+				}
+			}
+			else {
+				if(existCount==0)
+					count+=reportF_MMapper.add(reportF_M);
+			}
 		}
 		return count;
 	}

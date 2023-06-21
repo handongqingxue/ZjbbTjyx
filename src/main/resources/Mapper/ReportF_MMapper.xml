@@ -43,7 +43,6 @@
 			</if>
 		</trim>
 	</insert>
-
 	<select id="getReportFMList" resultType="com.zjbbTjyx.entity.ReportF_M">
 		select * from ReportF_M where LEFT(BatchID,2)=#{type}
 		<if test="startTime!=''&amp;endTime!=null">
@@ -54,8 +53,13 @@
 		</if>
 		order by createTime
 	</select>
-
 	<select id="getReportFMByBatchID" resultType="com.zjbbTjyx.entity.ReportF_M">
-		select * from ReportF_M where BatchID=#{batchId}
+		select * from ReportF_M where BatchID=#{batchID}
 	</select>
+	<select id="getCount" resultType="java.lang.Integer">
+		select count(*) from ReportF_M where RowNumber=#{rowNumber} and ColNumber=#{colNumber} and BatchID=#{batchID}
+	</select>
+	<update id="edit">
+		update ReportF_M set Value=#{value} where RowNumber=#{rowNumber} and ColNumber=#{colNumber} and BatchID=#{batchID}
+	</update>
 </mapper>

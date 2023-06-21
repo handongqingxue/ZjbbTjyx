@@ -1,5 +1,7 @@
 package com.zjbbTjyx.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.zjbbTjyx.entity.*;
 import com.zjbbTjyx.service.*;
 import com.zjbbTjyx.util.*;
@@ -207,12 +209,22 @@ public class ReportController {
 	}
 	@RequestMapping(value = "/addReportFByBatchID", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> addResportFByBatchID(String batchID) {
+	public Map<String, Object> addReportFByBatchID(String batchID, String inputJOStr) {
 
 		Map<String,Object> json=new HashMap<String, Object>();
 		
 		int count=0;
 		List<ERecord> eRecordList=eRecordService.getListByBatchID(batchID);
+		
+		JSONObject inputJO = JSONObject.parseObject(inputJOStr);
+		
+		ERecord jqcjxxER=new ERecord();
+		String jqcjxx = inputJO.getString("甲醛厂家信息");
+		jqcjxxER.setVarName("甲醛厂家信息");
+		jqcjxxER.setVarValue(jqcjxx);
+		jqcjxxER.setBatchID(batchID);
+		
+		eRecordList.add(jqcjxxER);
 		
 		String recType = batchID.substring(0,1);
 		if(ERecord.M.equals(recType)) {
