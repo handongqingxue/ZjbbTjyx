@@ -13,29 +13,31 @@
 <script type="text/javascript">
 var path='<%=basePath%>';
 $(function () {
-    dataResetU();
+	initDataResetUButDiv();
 })
 
-function dataResetU() {
-    $("#formaldehydeInformationU").val('');//初始化甲醛厂家信息
-    $("#sanAnInformationU").val('');//初始化三安厂家信息
-    var onDutyOperatorSelectU=$("#onDutyOperatorSelectU");//初始化当班操作员信息
-    onDutyOperatorSelectU.empty();
-    onDutyOperatorSelectU.append("<option value=''>请选择</option>")
-    onDutyOperatorSelectU.append("<option value='张三'>张三</option>")
-    var successionOperatorSelectU=$("#successionOperatorSelectU");//初始化接班操作员信息
-    successionOperatorSelectU.empty();
-    successionOperatorSelectU.append("<option value=''>请选择</option>")
-    successionOperatorSelectU.append("<option value='张三'>张三</option>")
+function initDataResetUButDiv() {
+    $("#jqcjxx_u_inp").val('');//初始化甲醛厂家信息
+    $("#sacjxx_u_inp").val('');//初始化三安厂家信息
+    
+    var dbczySel=$("#dbczy_u_sel");//初始化当班操作员信息
+    dbczySel.empty();
+    dbczySel.append("<option value=''>请选择</option>")
+    dbczySel.append("<option value='张三'>张三</option>")
+    
+    var jbczySel=$("#jbczy_u_sel");//初始化接班操作员信息
+    jbczySel.empty();
+    jbczySel.append("<option value=''>请选择</option>")
+    jbczySel.append("<option value='张三'>张三</option>")
+    
     $("#tank1DataU").val('');//初始化罐1数据信息
     $("#tank2DataU").val('');//初始化罐2数据信息
-    $("#jqInformationU").html("");
-    $("#onDutyOperatorU").html("");
-    $("#successionOperatorU").html("");
-    $("#saInformationU").html("");
+    
     $("#tank1AgoU").html("");
     $("#tank2AgoU").html("");
 }
+
+/*
 function getUnCreRepVarUList(batchID){
 
     $.post(path+"report/getUnCreRepVarList",
@@ -56,38 +58,114 @@ function getUnCreRepVarUList(batchID){
             }
         }
     ,"json");
-    dataResetU();//初始化输入框
+}
+*/
+
+function checkInputInfoU(){
+	if(checkJQCJXXU()){
+		if(checkSACJXXU()){
+			if(checkDBCZYU()){
+				if(checkJBCZYU()){
+					addReportF_UByBatchID();
+				}
+			}
+		}
+	}
+}
+
+function checkJQCJXXU(){
+	var jqcjxx=$("#jqcjxx_u_inp").val();
+	if(jqcjxx==""||jqcjxx==null){
+		alert("请输入甲醛厂家信息");
+		return false;
+	}
+	else
+		return true;
+}
+
+function checkSACJXXU(){
+	var sacjxx=$("#sacjxx_u_inp").val();
+	if(sacjxx==""||sacjxx==null){
+		alert("请输入三安厂家信息");
+		return false;
+	}
+	else
+		return true;
+}
+
+function checkDBCZYU(){
+	var dbczy=$("#dbczy_u_sel").val();
+	if(dbczy==""||dbczy==null){
+		alert("请选择当班操作员");
+		return false;
+	}
+	else
+		return true;
+}
+
+function checkJBCZYU(){
+	var jbczy=$("#jbczy_u_sel").val();
+	if(jbczy==""||jbczy==null){
+		alert("请选择接班操作员");
+		return false;
+	}
+	else
+		return true;
 }
 
 function addReportF_UByBatchID(){
     if(confirm('是否要生成报表 ?')) {
         var batchID = $("#opcUCTable #batchID_hid").val();
+    	var jqcjxx=$("#jqcjxx_u_inp").val();
+    	var sacjxx=$("#sacjxx_u_inp").val();
+    	var dbczy=$("#dbczy_u_sel").val();
+    	var jbczy=$("#jbczy_u_sel").val();
+        var inputJOStr="{\""+jqcjxxKey+"\":\""+jqcjxx+"\",\""+sacjxxKey+"\":\""+sacjxx+"\",\""+dbczyKey+"\":\""+dbczy+"\",\""+jbczyKey+"\":\""+jbczy+"\"}";
         $.post(path + "report/addReportFByBatchID",
-            {batchID: batchID},
+            {batchID: batchID,inputJOStr:inputJOStr},
             function (result) {
                 if (result.message == "ok") {
                     alert(result.info);
                     getLeftMenuData("uWsc");
+                    preCreateUTab();
                 }
             }
             , "json");
     }
 }
-function manuallyEnteringInformationU(){
-    //获取值步骤
-    var formaldehydeInformationU = $("#formaldehydeInformationU").val();
-    var sanAnInformationU = $("#sanAnInformationU").val();
-    var onDutyOperatorSelectU = $("#onDutyOperatorSelectU").val();
-    var successionOperatorSelectU = $("#successionOperatorSelectU").val();
-    var tank1DataU = $("#tank1DataU").val();
-    var tank2DataU = $("#tank2DataU").val();
-    //插入表格步骤
-    $("#jqInformationU").html(formaldehydeInformationU);
-    $("#saInformationU").html(sanAnInformationU);
-    $("#onDutyOperatorU").html(onDutyOperatorSelectU);
-    $("#successionOperatorU").html(successionOperatorSelectU);
-    $("#tank1AgoU").html(tank1DataU);
-    $("#tank2AgoU").html(tank2DataU);
+
+function preCreateUTab(){
+	var batchID=$("#opcUCTable #batchID_hid").val();
+	$.post(path+"report/getReportFUByBatchID",
+        {batchID:batchID},
+        function(result){
+            var repFUList=result.data;
+            var opcUCTable=$("#opcUCTable");
+            opcUCTable.find("td[id^='td']").text("");
+            for (var i = 0; i < repFUList.length; i++) {
+                var repFU=repFUList[i];
+                var rowNumber=repFU.rowNumber;
+                var colNumber=repFU.colNumber;
+                var value=repFU.value;
+                opcUCTable.find("#td"+rowNumber+"_"+colNumber).text(value);//暂时把变量添加到未显示变量的报表模版里
+            }
+        }
+    ,"json");
+}
+
+function resetUCTabInp(){
+    if(confirm('是否要复位数据 ?')) {
+		var batchID=$("#opcUCTable #batchID_hid").val();
+		$.post(path+"report/resetCTabInp",
+	        {batchID:batchID},
+	        function(result){
+	        	if(result.status=="ok"){
+	        		alert(result.info);
+	        		preCreateUTab();
+	        	}
+	        }
+	    ,"json");
+    }
 }
 </script>
 </head>
@@ -96,26 +174,26 @@ function manuallyEnteringInformationU(){
         <div class="home_right_head_div">
             <div class="u_create_head_row1_div">
                 <span class="jqcjxx_span">甲醛厂家信息</span>
-                <input type="text" placeholder="录入甲醛厂家信息"oninput="manuallyEnteringInformationU()" id="formaldehydeInformationU" class="u_create_head_input"/>
+                <input type="text" placeholder="录入甲醛厂家信息" id="jqcjxx_u_inp" class="u_create_head_input"/>
                 <span class="sacjxx_span">三安厂家信息</span>
-                <input type="text" placeholder="录入三安厂家信息"oninput="manuallyEnteringInformationU()" id="sanAnInformationU" class="u_create_head_input"/>
+                <input type="text" placeholder="录入三安厂家信息" id="sacjxx_u_inp" class="u_create_head_input"/>
                 <span class="dbczy_span">当班操作员</span>
-                <select class="u_create_head_input" id="onDutyOperatorSelectU" onchange="manuallyEnteringInformationU()"></select>
+                <select class="u_create_head_input" id="dbczy_u_sel"></select>
                 <span class="bbzt_span">报表状态:</span>
                 <span class="wsc_span" id="u_wsc_span">未生成</span>
             </div>
             <div class="u_create_head_row2_div">
                 <span class="gzlcssr1_span">1号罐重量初始输入</span>
-                <input type="text" size="5" id="tank1DataU" class="u_create_head_input" oninput="manuallyEnteringInformationU()"/>
+                <input type="text" size="5" id="tank1DataU" class="u_create_head_input"/>
 
                 <span class="gzlcssr2_span">2号罐重量初始输入</span>
-                <input type="text" size="5" id="tank2DataU" class="u_create_head_input" oninput="manuallyEnteringInformationU()"/>
+                <input type="text" size="5" id="tank2DataU" class="u_create_head_input"/>
 
                 <span class="jbczy_span">接班操作员</span>
-                <select class="m_create_head_input" id="successionOperatorSelectU" onchange="manuallyEnteringInformationU()"></select>
+                <select class="m_create_head_input" id="jbczy_u_sel"></select>
                 <c:if test="${userAllRole[0].id==1||userAllRole[0].id==2||userAllRole[0].id==3}">
-                    <div class="but_div scbb_but_div" onclick="addReportF_UByBatchID()">生成报表</div>
-                    <div class="but_div sjfw_but_div" onclick="dataResetU()">数据复位</div>
+                    <div class="but_div scbb_but_div" onclick="checkInputInfoU()">生成报表</div>
+                    <div class="but_div sjfw_but_div" onclick="resetUCTabInp()">数据复位</div>
                 </c:if>
             </div>
         </div>
@@ -131,14 +209,14 @@ function manuallyEnteringInformationU(){
                 <!--第二行-->
                 <tr class="tr2">
                     <td class="td2_1">YSD101信息</td>
-                    <td class="td2_2 blue" id="jqInformationU"></td>
+                    <td class="td2_2 blue" id="td2_2"></td>
                     <td class="td2_3">YSD102信息</td>
-                    <td class="td2_4 blue" id="saInformationU"></td>
+                    <td class="td2_4 blue" id="td2_4"></td>
                     <td id="td2_5" class="td2_5"></td>
                     <td colspan="2" class="td2_6">当班操作员：</td>
-                    <td colspan="2" class="td2_7 green" id="onDutyOperatorU"></td>
+                    <td colspan="2" class="td2_7 green" id="td2_7"></td>
                     <td colspan="2" class="td2_8">接班操作员：</td>
-                    <td colspan="2" class="td2_9 green" id="successionOperatorU"></td>
+                    <td colspan="2" class="td2_9 green" id="td2_9"></td>
                 </tr>
                 <!--第三行-->
                 <tr class="tr3">
