@@ -130,7 +130,7 @@ function initPagerHtml(reportFMPageList){
                         查询
                     </button>
                     <c:if test="${userAllRole[0].id==1||userAllRole[0].id==2||userAllRole[0].id==3}">
-                        <button class="printing_button" onclick="doPrint()">
+                        <button class="printing_button" onclick="doPrintM()">
                             <i class="layui-icon layui-icon-print" style="font-size: 16px; color: #ffffff;"></i>
                             打印
                         </button>
@@ -519,7 +519,7 @@ function initPagerHtml(reportFMPageList){
 </div>
 </body>
 <script>
-    function doPrint() {
+    function doPrintM() {
         bdhtml=window.document.body.innerHTML;
         sprnstr="<!--startprint-->"; //开始打印标识字符串有17个字符
         eprnstr="<!--endprint-->"; //结束打印标识字符串
@@ -528,6 +528,7 @@ function initPagerHtml(reportFMPageList){
         window.document.body.innerHTML=prnhtml; //把需要打印的指定内容赋给body.innerHTML
         window.print(); //调用浏览器的打印功能打印指定区域
         window.document.body.innerHTML=bdhtml; // 最后还原页面
+        window.close();
     }
 </script>
 </html>

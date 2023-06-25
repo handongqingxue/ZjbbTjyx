@@ -127,7 +127,7 @@ function initPagerHtmlU(reportFUPageList){
                         查询
                     </button>
                     <c:if test="${userAllRole[0].id==1||userAllRole[0].id==2||userAllRole[0].id==3}">
-                        <button class="printing_button">
+                        <button class="printing_button" onclick="doPrintU()">
                             <i class="layui-icon layui-icon-print" style="font-size: 16px; color: #ffffff;"></i>
                             打印
                         </button>
@@ -146,6 +146,7 @@ function initPagerHtmlU(reportFUPageList){
 
 <%--&lt;%&ndash;未显示变量的报表模版&ndash;%&gt;--%>
 <div id="noVarRepU_div" style="display: none;">
+    <!--startprint-->
     <table class="u_body_table" border="1px" id="opcUSTable">
         <tr class="tr1">
             <th colspan="13">
@@ -591,6 +592,20 @@ function initPagerHtmlU(reportFUPageList){
             <td id="td36_10"></td>
         </tr>
     </table>
+    <!--endprint-->
 </div>
+<script>
+    function doPrintU() {
+        bdhtml=window.document.body.innerHTML;
+        sprnstr="<!--startprint-->"; //开始打印标识字符串有17个字符
+        eprnstr="<!--endprint-->"; //结束打印标识字符串
+        prnhtml=bdhtml.substr(bdhtml.indexOf(sprnstr)+17); //从开始打印标识之后的内容
+        prnhtml=prnhtml.substring(0,prnhtml.indexOf(eprnstr)); //截取开始标识和结束标识之间的内容
+        window.document.body.innerHTML=prnhtml; //把需要打印的指定内容赋给body.innerHTML
+        window.print(); //调用浏览器的打印功能打印指定区域
+        window.document.body.innerHTML=bdhtml; // 最后还原页面
+        window.close();
+    }
+</script>
 </body>
 </html>
