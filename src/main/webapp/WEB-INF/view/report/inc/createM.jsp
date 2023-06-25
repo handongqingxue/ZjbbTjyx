@@ -158,19 +158,22 @@ function preCreateMTab(){
 }
 
 function resetMCTabInp(){
-    if(confirm('是否要复位数据 ?')) {
-		var batchID=$("#opcMCTable #batchID_hid").val();
-		$.post(path+"report/resetCTabInp",
-	        {batchID:batchID},
-	        function(result){
-	        	if(result.status=="ok"){
-	        		alert(result.info);
-	        		preCreateMTab();
+    layer.confirm("是否要复位数据 ？", {
+        btn: ["确定", "取消"] //按钮
+    }, function (index) {
+        var batchID=$("#opcMCTable #batchID_hid").val();
+        $.post(path+"report/resetCTabInp",
+            {batchID:batchID},
+            function(result){
+                if(result.status=="ok"){
+                    layer.msg(result.info, {icon: 1});
+                    preCreateMTab();
                     initDataResetMButDiv();
-	        	}
-	        }
-	    ,"json");
-    }
+                }
+            }
+            ,"json");
+        layer.close(index);
+    });
 }
 </script>
 </head>

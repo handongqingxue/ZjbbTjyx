@@ -161,19 +161,22 @@ function preCreateUTab(){
 }
 
 function resetUCTabInp(){
-    if(confirm('是否要复位数据 ?')) {
-		var batchID=$("#opcUCTable #batchID_hid").val();
-		$.post(path+"report/resetCTabInp",
-	        {batchID:batchID},
-	        function(result){
-	        	if(result.status=="ok"){
-	        		alert(result.info);
-	        		preCreateUTab();
+    layer.confirm("是否要复位数据 ？", {
+        btn: ["确定", "取消"] //按钮
+    }, function (index) {
+        var batchID=$("#opcUCTable #batchID_hid").val();
+        $.post(path+"report/resetCTabInp",
+            {batchID:batchID},
+            function(result){
+                if(result.status=="ok"){
+                    layer.msg(result.info, {icon: 1});
+                    preCreateUTab();
                     initDataResetUButDiv();
-	        	}
-	        }
-	    ,"json");
-    }
+                }
+            }
+            ,"json");
+        layer.close(index);
+    });
 }
 </script>
 </head>
