@@ -124,24 +124,28 @@ function checkJBCZYU(){
 }
 
 function addReportF_UByBatchID(){
-    if(confirm('是否要生成报表 ?')) {
+    layer.confirm("是否要生成报表 ？", {
+        btn: ["确定", "取消"] //按钮
+    }, function (index) {
         var batchID = $("#opcUCTable #batchID_hid").val();
-    	var jqcjxx=$("#jqcjxx_u_inp").val();
-    	var sacjxx=$("#sacjxx_u_inp").val();
-    	var dbczy=$("#dbczy_u_sel").val();
-    	var jbczy=$("#jbczy_u_sel").val();
+        var jqcjxx=$("#jqcjxx_u_inp").val();
+        var sacjxx=$("#sacjxx_u_inp").val();
+        var dbczy=$("#dbczy_u_sel").val();
+        var jbczy=$("#jbczy_u_sel").val();
         var inputJOStr="{\""+jqcjxxKey+"\":\""+jqcjxx+"\",\""+sacjxxKey+"\":\""+sacjxx+"\",\""+dbczyKey+"\":\""+dbczy+"\",\""+jbczyKey+"\":\""+jbczy+"\"}";
         $.post(path + "report/addReportFByBatchID",
             {batchID: batchID,inputJOStr:inputJOStr},
             function (result) {
                 if (result.message == "ok") {
-                    alert(result.info);
+                    layer.msg(result.info, {icon: 1});
                     getLeftMenuData("uWsc");
                     preCreateUTab();
+                    initDataResetUButDiv();//清空输入框
                 }
             }
             , "json");
-    }
+        layer.close(index);
+    });
 }
 
 function preCreateUTab(){

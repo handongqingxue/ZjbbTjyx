@@ -114,24 +114,28 @@ function checkJBCZYM(){
 }
 
 function addReportF_MByBatchID(){
-    if(confirm('是否要生成报表 ?')) {
+    layer.confirm("是否要生成报表 ？", {
+        btn: ["确定", "取消"] //按钮
+    }, function (index) {
         var batchID = $("#opcMCTable #batchID_hid").val();
-    	var jqcjxx=$("#jqcjxx_m_inp").val();
-    	var sacjxx=$("#sacjxx_m_inp").val();
-    	var dbczy=$("#dbczy_m_sel").val();
-    	var jbczy=$("#jbczy_m_sel").val();
+        var jqcjxx=$("#jqcjxx_m_inp").val();
+        var sacjxx=$("#sacjxx_m_inp").val();
+        var dbczy=$("#dbczy_m_sel").find("option:selected").text();
+        var jbczy=$("#jbczy_m_sel").find("option:selected").text();
         var inputJOStr="{\""+jqcjxxKey+"\":\""+jqcjxx+"\",\""+sacjxxKey+"\":\""+sacjxx+"\",\""+dbczyKey+"\":\""+dbczy+"\",\""+jbczyKey+"\":\""+jbczy+"\"}";
         $.post(path + "report/addReportFByBatchID",
             {batchID: batchID,inputJOStr:inputJOStr},
             function (result) {
                 if (result.message == "ok") {
-                    alert(result.info);
+                    layer.msg(result.info, {icon: 1});
                     getLeftMenuData("mWsc");
                     preCreateMTab();
+                    initDataResetMButDiv();//清空输入框
                 }
             }
             , "json");
-    }
+        layer.close(index);
+    });
 }
 
 function preCreateMTab(){
