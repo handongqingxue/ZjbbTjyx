@@ -40,6 +40,11 @@ public class ReportController {
 
     @RequestMapping("/goIndex")
     public String goIndex(HttpServletRequest request){
+    	
+    	request.setAttribute("jqcjxxKey", Constant.JIA_QUAN_CHANG_JIA_XIN_XI);
+    	request.setAttribute("sacjxxKey", Constant.SAN_AN_CHANG_JIA_XIN_XI);
+    	request.setAttribute("dbczyKey", Constant.DANG_BAN_CAO_ZUO_YUAN);
+    	request.setAttribute("jbczyKey", Constant.JIE_BAN_CAO_ZUO_YUAN);
         
         return MODULE_NAME+"/index";
     }
@@ -218,6 +223,9 @@ public class ReportController {
 		if(ERecord.M.equals(recType)) {
 			reportF_MService.resetCTabInp(batchID);
 		}
+		else if(ERecord.U.equals(recType)) {
+			reportF_UService.resetCTabInp(batchID);
+		}
 		
 		json.put("status","ok");
 		json.put("info","复位成功");
@@ -237,32 +245,32 @@ public class ReportController {
 		JSONObject inputJO = JSONObject.parseObject(inputJOStr);
 		
 		ERecord jqcjxxER=new ERecord();
-		String jqcjxx = inputJO.getString("甲醛厂家信息");
-		jqcjxxER.setVarName("甲醛厂家信息");
+		String jqcjxx = inputJO.getString(Constant.JIA_QUAN_CHANG_JIA_XIN_XI);
+		jqcjxxER.setVarName(Constant.JIA_QUAN_CHANG_JIA_XIN_XI);
 		jqcjxxER.setVarValue(jqcjxx);
 		jqcjxxER.setBatchID(batchID);
 		
 		eRecordList.add(jqcjxxER);
 
 		ERecord sacjxxER=new ERecord();
-		String sacjxx = inputJO.getString("三安厂家信息");
-		sacjxxER.setVarName("三安厂家信息");
+		String sacjxx = inputJO.getString(Constant.SAN_AN_CHANG_JIA_XIN_XI);
+		sacjxxER.setVarName(Constant.SAN_AN_CHANG_JIA_XIN_XI);
 		sacjxxER.setVarValue(sacjxx);
 		sacjxxER.setBatchID(batchID);
 		
 		eRecordList.add(sacjxxER);
 
 		ERecord dbczyER=new ERecord();
-		String dbczy = inputJO.getString("当班操作员");
-		dbczyER.setVarName("当班操作员");
+		String dbczy = inputJO.getString(Constant.DANG_BAN_CAO_ZUO_YUAN);
+		dbczyER.setVarName(Constant.DANG_BAN_CAO_ZUO_YUAN);
 		dbczyER.setVarValue(dbczy);
 		dbczyER.setBatchID(batchID);
 		
 		eRecordList.add(dbczyER);
 
 		ERecord jbczyER=new ERecord();
-		String jbczy = inputJO.getString("接班操作员");
-		jbczyER.setVarName("接班操作员");
+		String jbczy = inputJO.getString(Constant.JIE_BAN_CAO_ZUO_YUAN);
+		jbczyER.setVarName(Constant.JIE_BAN_CAO_ZUO_YUAN);
 		jbczyER.setVarValue(jbczy);
 		jbczyER.setBatchID(batchID);
 		

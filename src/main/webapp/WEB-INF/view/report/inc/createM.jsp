@@ -13,18 +13,19 @@ function initDataResetMButDiv() {
     $("#jqcjxx_m_inp").val('');//初始化甲醛厂家信息
     $("#sacjxx_m_inp").val('');//初始化三安厂家信息
     
-    var dbczySel=$("#dbczy_sel");//初始化当班操作员信息
+    var dbczySel=$("#dbczy_m_sel");//初始化当班操作员信息
     dbczySel.empty();
     dbczySel.append("<option value=''>请选择</option>")
     dbczySel.append("<option value='张三'>张三</option>")
     
-    var jbczySel=$("#jbczy_sel");//初始化接班操作员信息
+    var jbczySel=$("#jbczy_m_sel");//初始化接班操作员信息
     jbczySel.empty();
     jbczySel.append("<option value=''>请选择</option>")
     jbczySel.append("<option value='张三'>张三</option>")
     
     $("#tank1DataM").val('');//初始化罐1数据信息
     $("#tank2DataM").val('');//初始化罐2数据信息
+    
     $("#tank1AgoM").html("");
     $("#tank2AgoM").html("");
 }
@@ -51,11 +52,11 @@ function getUnCreRepVarMList(batchID){
 }
 */
 
-function checkInputInfo(){
+function checkInputInfoM(){
 	if(checkJQCJXXM()){
 		if(checkSACJXXM()){
-			if(checkDBCZY()){
-				if(checkJBCZY()){
+			if(checkDBCZYM()){
+				if(checkJBCZYM()){
 					addReportF_MByBatchID();
 				}
 			}
@@ -83,8 +84,8 @@ function checkSACJXXM(){
 		return true;
 }
 
-function checkDBCZY(){
-	var dbczy=$("#dbczy_sel").val();
+function checkDBCZYM(){
+	var dbczy=$("#dbczy_m_sel").val();
 	if(dbczy==""||dbczy==null){
 		alert("请选择当班操作员");
 		return false;
@@ -93,8 +94,8 @@ function checkDBCZY(){
 		return true;
 }
 
-function checkJBCZY(){
-	var jbczy=$("#jbczy_sel").val();
+function checkJBCZYM(){
+	var jbczy=$("#jbczy_m_sel").val();
 	if(jbczy==""||jbczy==null){
 		alert("请选择接班操作员");
 		return false;
@@ -108,9 +109,9 @@ function addReportF_MByBatchID(){
         var batchID = $("#opcMCTable #batchID_hid").val();
     	var jqcjxx=$("#jqcjxx_m_inp").val();
     	var sacjxx=$("#sacjxx_m_inp").val();
-    	var dbczy=$("#dbczy_sel").val();
-    	var jbczy=$("#jbczy_sel").val();
-        var inputJOStr="{\"甲醛厂家信息\":\""+jqcjxx+"\",\"三安厂家信息\":\""+sacjxx+"\",\"当班操作员\":\""+dbczy+"\",\"接班操作员\":\""+jbczy+"\"}";
+    	var dbczy=$("#dbczy_m_sel").val();
+    	var jbczy=$("#jbczy_m_sel").val();
+        var inputJOStr="{\""+jqcjxxKey+"\":\""+jqcjxx+"\",\""+sacjxxKey+"\":\""+sacjxx+"\",\""+dbczyKey+"\":\""+dbczy+"\",\""+jbczyKey+"\":\""+jbczy+"\"}";
         $.post(path + "report/addReportFByBatchID",
             {batchID: batchID,inputJOStr:inputJOStr},
             function (result) {
@@ -131,6 +132,7 @@ function preCreateMTab(){
         function(result){
             var repFMList=result.data;
             var opcMCTable=$("#opcMCTable");
+            opcMCTable.find("td[id^='td']").text("");
             for (var i = 0; i < repFMList.length; i++) {
                 var repFM=repFMList[i];
                 var rowNumber=repFM.rowNumber;
@@ -167,7 +169,7 @@ function resetMCTabInp(){
             <span class="sacjxx_span">三安厂家信息</span>
             <input type="text" placeholder="录入三安厂家信息" id="sacjxx_m_inp" class="m_create_head_input"/>
             <span class="dbczy_span">当班操作员</span>
-            <select class="m_create_head_input" id="dbczy_sel"></select>
+            <select class="m_create_head_input" id="dbczy_m_sel"></select>
             <span class="bbzt_span">报表状态:</span>
             <span class="wsc_span" id="m_wsc_span"></span>
         </div>
@@ -179,9 +181,9 @@ function resetMCTabInp(){
             <input type="text" size="5" id="tank2DataM" class="m_create_head_input"/>
 
             <span class="jbczy_span">接班操作员</span>
-            <select class="m_create_head_input" id="jbczy_sel"></select>
+            <select class="m_create_head_input" id="jbczy_m_sel"></select>
             <c:if test="${userAllRole[0].id==1||userAllRole[0].id==2||userAllRole[0].id==3}">
-                <div class="but_div scbb_but_div" onclick="checkInputInfo()">生成报表</div>
+                <div class="but_div scbb_but_div" onclick="checkInputInfoM()">生成报表</div>
                 <div class="but_div sjfw_but_div" onclick="resetMCTabInp()">数据复位</div>
             </c:if>
         </div>

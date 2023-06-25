@@ -53,8 +53,19 @@
         </if>
         order by createTime
     </select>
-
     <select id="getReportFUByBatchID" resultType="com.zjbbTjyx.entity.ReportF_U">
-		select * from ReportF_U where BatchID=#{batchId}
+		select * from ReportF_U where BatchID=#{batchID}
 	</select>
+	<select id="getCount" resultType="java.lang.Integer">
+		select count(*) from ReportF_U where RowNumber=#{rowNumber} and ColNumber=#{colNumber} and BatchID=#{batchID}
+	</select>
+	<update id="edit">
+		update ReportF_U set Value=#{value} where RowNumber=#{rowNumber} and ColNumber=#{colNumber} and BatchID=#{batchID}
+	</update>
+	<update id="resetCTabInp">
+		update ReportF_U set Value='' where BatchID=#{batchID}
+		<foreach collection="reportF_UList" item="reportF_U" open=" and (" separator=" or " close=")">
+			(RowNumber=#{reportF_U.rowNumber} and ColNumber=#{reportF_U.colNumber})
+		</foreach>
+	</update>
 </mapper>
