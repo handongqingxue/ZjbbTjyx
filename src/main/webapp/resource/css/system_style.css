@@ -131,7 +131,7 @@ body, html {
 /*    left: 0;*/
 /*}*/
 .login_input{
-    padding-left: 10px;
+    padding-left: 12px;
     border: 0px;
     width: 230px;
     height: 40px;
@@ -142,7 +142,7 @@ body, html {
     color: #7e8286;
     /*margin-left: 10px;*/
     position:relative;
-    left:10px;
+    /*left:10px;*/
 }
 .login_button{
     border-radius: 5px;

@@ -37,4 +37,7 @@ public interface UserListMapper {
 
     //通过userid删除user_role关系表里面的信息
     int delUserRoleByUserId(@Param("Id") Integer Id);
+
+    //获得全部操作员
+    List<UserList> getOperatorList();
 }

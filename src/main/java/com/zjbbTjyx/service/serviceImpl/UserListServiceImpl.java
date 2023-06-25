@@ -63,4 +63,9 @@ public class UserListServiceImpl implements UserListService {
         return userListMapper.delUserRoleByUserId(Id);
     }
 
+    @Override
+    public List<UserList> getOperatorList() {
+        return userListMapper.getOperatorList();
+    }
+
 }

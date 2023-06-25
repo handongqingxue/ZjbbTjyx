@@ -327,5 +327,22 @@ public class MainController {
 //        }
 //    }
 
-
+    //获得全部操作员
+    @RequestMapping("/getOperatorList")
+    @ResponseBody
+    public PlanResult getOperatorList(){
+        PlanResult planResult=new PlanResult();
+        try {
+            List<UserList> operatorList = userListService.getOperatorList();
+            planResult.setStatus(1);
+            planResult.setMsg("ok");
+            planResult.setData(operatorList);
+        } catch (Exception e) {
+            e.printStackTrace();
+            planResult.setStatus(0);
+            planResult.setMsg("no");
+        } finally {
+            return planResult;
+        }
+    }
 }

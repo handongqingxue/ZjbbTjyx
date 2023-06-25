@@ -14,15 +14,24 @@ function initDataResetMButDiv() {
     $("#sacjxx_m_inp").val('');//初始化三安厂家信息
     
     var dbczySel=$("#dbczy_m_sel");//初始化当班操作员信息
+    var jbczySel=$("#jbczy_m_sel");//初始化接班操作员信息
     dbczySel.empty();
     dbczySel.append("<option value=''>请选择</option>")
-    dbczySel.append("<option value='张三'>张三</option>")
-    
-    var jbczySel=$("#jbczy_m_sel");//初始化接班操作员信息
     jbczySel.empty();
     jbczySel.append("<option value=''>请选择</option>")
-    jbczySel.append("<option value='张三'>张三</option>")
-    
+    //获取全部操作员
+    $.post(path+"/main/getOperatorList",
+        {},
+        function(request){
+            if(request.msg=="ok"){
+                var list=request.data;
+                for (var i=0;i<list.length;i++){
+                    dbczySel.append("<option value=\""+list[i].id+"\">"+list[i].realName+"</option>")
+                    jbczySel.append("<option value=\""+list[i].id+"\">"+list[i].realName+"</option>")
+                }
+            }
+        }
+        ,"json");
     $("#tank1DataM").val('');//初始化罐1数据信息
     $("#tank2DataM").val('');//初始化罐2数据信息
     
@@ -153,6 +162,7 @@ function resetMCTabInp(){
 	        	if(result.status=="ok"){
 	        		alert(result.info);
 	        		preCreateMTab();
+                    initDataResetMButDiv();
 	        	}
 	        }
 	    ,"json");

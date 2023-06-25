@@ -118,4 +118,7 @@
     	delete from User_Role where UId=#{Id}
     </delete>
 
+    <select id="getOperatorList" resultType="com.zjbbTjyx.entity.UserList">
+        SELECT u.Id,u.RealName,u.UserName FROM User_Role ur LEFT JOIN UserList u ON ur.uId=u.Id LEFT JOIN Role r ON ur.rId=r.Id WHERE r.Id IN(1,2,3)
+    </select>
 </mapper>
