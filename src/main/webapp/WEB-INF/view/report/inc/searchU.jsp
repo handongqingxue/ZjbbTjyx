@@ -158,14 +158,14 @@ function initPagerHtmlU(reportFUPageList){
         <!--第二行-->
         <tr class="tr2">
             <td class="td2_1">YSD101信息</td>
-            <td class="td2_2 blue"></td>
+            <td class="td2_2 blue" id="td2_2"></td>
             <td class="td2_3">YSD102信息</td>
-            <td class="td2_4 blue"></td>
+            <td class="td2_4 blue" id="td2_4"></td>
             <td class="td2_5"></td>
             <td class="td2_6" colspan="2">当班操作员：</td>
-            <td class="td2_7 green" colspan="2"></td>
+            <td class="td2_7 green" colspan="2" id="td2_7"></td>
             <td class="td2_8" colspan="2">接班操作员：</td>
-            <td class="td2_9 green" colspan="2"></td>
+            <td class="td2_9 green" colspan="2" id="td2_9"></td>
         </tr>
         <!--第三行-->
         <tr class="tr3">
