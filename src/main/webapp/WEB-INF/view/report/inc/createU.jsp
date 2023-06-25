@@ -123,8 +123,8 @@ function addReportF_UByBatchID(){
         var batchID = $("#opcUCTable #batchID_hid").val();
         var jqcjxx=$("#jqcjxx_u_inp").val();
         var sacjxx=$("#sacjxx_u_inp").val();
-        var dbczy=$("#dbczy_u_sel").val();
-        var jbczy=$("#jbczy_u_sel").val();
+        var dbczy=$("#dbczy_u_sel").find("option:selected").text();
+        var jbczy=$("#jbczy_u_sel").find("option:selected").text();
         var inputJOStr="{\""+jqcjxxKey+"\":\""+jqcjxx+"\",\""+sacjxxKey+"\":\""+sacjxx+"\",\""+dbczyKey+"\":\""+dbczy+"\",\""+jbczyKey+"\":\""+jbczy+"\"}";
         $.post(path + "report/addReportFByBatchID",
             {batchID: batchID,inputJOStr:inputJOStr},
