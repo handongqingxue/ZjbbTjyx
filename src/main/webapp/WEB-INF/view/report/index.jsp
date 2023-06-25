@@ -317,7 +317,7 @@ function showCreateArea(batchID,remark){
     $("#userList").css("display",userListDisplay);
     $("#roleList").css("display",roleListDisplay);
     $("#right-body-head-span2").text("报表生成页面");
-    document.getElementById("right-body-head-icon").classList.add("layui-icon-add-circle");
+    // document.getElementById("right-body-head-icon").classList.add("layui-icon-add-circle");
 }
     
 function showSearchArea(glueType){
@@ -355,7 +355,7 @@ function showSearchArea(glueType){
     $("#roleList").css("display",roleListDisplay);
 
     $("#right-body-head-span2").text("报表查询页面");
-    document.getElementById("right-body-head-icon").classList.replace("layui-icon-add-circle","layui-icon-search");
+    // document.getElementById("right-body-head-icon").classList.replace("layui-icon-add-circle","layui-icon-search");
       
     getPcjlListByType(glueType);
 }
