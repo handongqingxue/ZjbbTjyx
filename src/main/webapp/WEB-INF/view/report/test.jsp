@@ -32,8 +32,8 @@ $(function(){
 function initJOpcTV(){
 	$.post(path+"opc/initJOpcTV",
 		function(result){
-			//if(result.status=="ok")
-				//setInterval("syncTriggerVar()",3000);
+			if(result.status=="ok")
+				setInterval("syncTriggerVar()",3000);
 		}
 	,"json");
 }

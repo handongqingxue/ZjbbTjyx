@@ -163,6 +163,7 @@ public class OPCController {
 		//1号釜
 		HashMap<String,Object> f1MMap=new HashMap<String, Object>();
 		HashMap<String,Object> f1UMap=new HashMap<String, Object>();
+		
 		//初始化run标识位、M类哈希表、U类哈希表
 		//1号釜
 		f1Map=new HashMap<String, Object>();
@@ -173,6 +174,7 @@ public class OPCController {
 		//2号釜
 		HashMap<String,Object> f2MMap=new HashMap<String, Object>();
 		HashMap<String,Object> f2UMap=new HashMap<String, Object>();
+		
 		//初始化run标识位、M类哈希表、U类哈希表
 		f2Map=new HashMap<String, Object>();
 		f2Map.put("run",false);
@@ -182,6 +184,7 @@ public class OPCController {
 		//3号釜
 		HashMap<String,Object> f3MMap=new HashMap<String, Object>();
 		HashMap<String,Object> f3UMap=new HashMap<String, Object>();
+		
 		//初始化run标识位、M类哈希表、U类哈希表
 		f3Map=new HashMap<String, Object>();
 		f3Map.put("run",false);
@@ -191,6 +194,7 @@ public class OPCController {
 		//4号釜
 		HashMap<String,Object> f4MMap=new HashMap<String, Object>();
 		HashMap<String,Object> f4UMap=new HashMap<String, Object>();
+		
 		//初始化run标识位、M类哈希表、U类哈希表
 		f4Map=new HashMap<String, Object>();
 		f4Map.put("run",false);
@@ -200,6 +204,7 @@ public class OPCController {
 		//5号釜
 		HashMap<String,Object> f5MMap=new HashMap<String, Object>();
 		HashMap<String,Object> f5UMap=new HashMap<String, Object>();
+		
 		//初始化run标识位、M类哈希表、U类哈希表
 		f5Map=new HashMap<String, Object>();
 		f5Map.put("run",false);
@@ -263,8 +268,8 @@ public class OPCController {
 				initFMap("");
 				initFMap=true;
 				
-				initJOpcTV();
-				initJOpcPV();
+				//initJOpcTV();
+				//initJOpcPV();
 			}
 
 			List<Integer> runFIdList=new ArrayList<Integer>();//用于存放运行的反应釜号的集合
