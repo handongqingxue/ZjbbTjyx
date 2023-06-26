@@ -163,6 +163,7 @@ public class OPCController {
 		//1号釜
 		HashMap<String,Object> f1MMap=new HashMap<String, Object>();
 		HashMap<String,Object> f1UMap=new HashMap<String, Object>();
+		
 		//初始化run标识位、M类哈希表、U类哈希表
 		//1号釜
 		f1Map=new HashMap<String, Object>();
@@ -173,36 +174,40 @@ public class OPCController {
 		//2号釜
 		HashMap<String,Object> f2MMap=new HashMap<String, Object>();
 		HashMap<String,Object> f2UMap=new HashMap<String, Object>();
+		
 		//初始化run标识位、M类哈希表、U类哈希表
 		f2Map=new HashMap<String, Object>();
-		f2Map.put("run",false);
+		f2Map.put("run",true);
 		f2Map.put("f2MMap",f2MMap);
 		f2Map.put("f2UMap",f2UMap);
 
 		//3号釜
 		HashMap<String,Object> f3MMap=new HashMap<String, Object>();
 		HashMap<String,Object> f3UMap=new HashMap<String, Object>();
+		
 		//初始化run标识位、M类哈希表、U类哈希表
 		f3Map=new HashMap<String, Object>();
-		f3Map.put("run",false);
+		f3Map.put("run",true);
 		f3Map.put("f3MMap",f3MMap);
 		f3Map.put("f3UMap",f3UMap);
 
 		//4号釜
 		HashMap<String,Object> f4MMap=new HashMap<String, Object>();
 		HashMap<String,Object> f4UMap=new HashMap<String, Object>();
+		
 		//初始化run标识位、M类哈希表、U类哈希表
 		f4Map=new HashMap<String, Object>();
-		f4Map.put("run",false);
+		f4Map.put("run",true);
 		f4Map.put("f4MMap",f4MMap);
 		f4Map.put("f4UMap",f4UMap);
 
 		//5号釜
 		HashMap<String,Object> f5MMap=new HashMap<String, Object>();
 		HashMap<String,Object> f5UMap=new HashMap<String, Object>();
+		
 		//初始化run标识位、M类哈希表、U类哈希表
 		f5Map=new HashMap<String, Object>();
-		f5Map.put("run",false);
+		f5Map.put("run",true);
 		f5Map.put("f5MMap",f5MMap);
 		f5Map.put("f5UMap",f5UMap);
 
