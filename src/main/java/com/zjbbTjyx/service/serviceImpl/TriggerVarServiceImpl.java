@@ -67,8 +67,16 @@ public class TriggerVarServiceImpl implements TriggerVarService {
 					}
 					tv.setRecType(recType);
 					
+					//System.out.println("varName==="+varName);
 					int fWz = varName.lastIndexOf("F");//F的位置
-					char f = varName.charAt(fWz + 1);//获得反应釜号
+					int uWz = varName.lastIndexOf("U");//U的位置
+					//System.out.println("fWz==="+fWz);
+					//System.out.println("uWz==="+uWz);
+					char f;
+					if(fWz+1==uWz)
+						f = varName.charAt(fWz + 2);//获得反应釜号
+					else
+						f = varName.charAt(fWz + 1);//获得反应釜号
 					int fyfh=Integer.parseInt(String.valueOf(f));
 					tv.setFId(fyfh);
 				}

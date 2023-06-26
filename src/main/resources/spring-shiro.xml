@@ -25,7 +25,7 @@
 		<property name="filterChainDefinitions">
 			<value>
 				/main/**=anon
-<!--				/report/**=anon-->
+				/report/goTest=anon
 				/opc/**=anon
 				/demo/**=anon
 				/resource/**=anon
