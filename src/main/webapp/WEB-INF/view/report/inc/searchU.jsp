@@ -604,6 +604,8 @@ function initPagerHtmlU(reportFUPageList){
         window.document.body.innerHTML=prnhtml; //把需要打印的指定内容赋给body.innerHTML
         window.print(); //调用浏览器的打印功能打印指定区域
         window.document.body.innerHTML=bdhtml; // 最后还原页面
+        window.opener=null;
+        window.open(' ', '_self', ' ');
         window.close();
     }
 </script>
