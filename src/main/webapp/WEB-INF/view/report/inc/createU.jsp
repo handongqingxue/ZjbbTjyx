@@ -20,7 +20,7 @@ function initDataResetUButDiv() {
     jbczySel.empty();
     jbczySel.append("<option value=''>请选择</option>")
     //获取全部操作员
-    $.post(path+"/main/getOperatorList",
+    $.post(path+"/report/getOperatorList",
         {},
         function(request){
             if(request.msg=="ok"){

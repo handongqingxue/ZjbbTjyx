@@ -14,7 +14,7 @@ var path=localhostPaht+projectName;
 //检查用户名是否存在
 function checkEditUserNameDoesItExist() {
     var userName=$("#edit_username").val();
-    $.post(path+"/main/checkUserName",
+    $.post(path+"/report/checkUserName",
         {UserName:userName},
         function(result){
             var requestUserName=$("#requestUserName").val();
@@ -106,7 +106,7 @@ function editUser(userId,userName,passWord,realName,role) {
     }else {
         pass=MD5(passWord).toUpperCase();
     }
-     $.post(path+"/main/editUser",
+     $.post(path+"/report/editUser",
          	{
          	    Id:userId,
          	    UserName:userName,

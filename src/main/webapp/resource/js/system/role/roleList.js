@@ -19,7 +19,7 @@ function addRolePage() {
         fixed: false, //不固定
         maxmin: true,
         title:"添加角色",
-        content: path+'main/goAddRolePage'
+        content: path+'report/goAddRolePage'
     });
 }
 //清空输入框
@@ -29,7 +29,7 @@ function emptyRoleInput() {
 }
 //查询全部用户+模糊查询
 function getRoleList() {
-    $.post(path+"main/getRoleList",
+    $.post(path+"report/getRoleList",
         {
             RoleName:$("#roleName").val(),
             Detail:$("#roleDetail").val()
@@ -90,7 +90,7 @@ function delRole(id){
         if (pass=="tjyx"){
             layer.close(index);
             layer.msg('验证成功!');
-            $.post(path+"main/delRole",
+            $.post(path+"report/delRole",
                 {id:id},
                 function(result){
                     if(result.msg=="ok"){

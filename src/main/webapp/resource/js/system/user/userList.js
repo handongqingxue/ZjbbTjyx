@@ -19,7 +19,7 @@ function addUserPage() {
         fixed: false, //不固定
         maxmin: true,
         title:"添加用户",
-        content: path+'main/goAddUserPage',
+        content: path+'report/goAddUserPage',
     });
 }
 
@@ -31,7 +31,7 @@ function editUserPage(Id) {
         fixed: false, //不固定
         maxmin: true,
         title:"编辑用户",
-        content: path+'main/goEditUserPage?Id='+Id
+        content: path+'report/goEditUserPage?Id='+Id
     });
 }
 //清空输入框
@@ -41,7 +41,7 @@ function emptyUserInput() {
 }
 //查询全部用户+模糊查询
 function getUserList() {
-     $.post(path+"main/getUserList",
+     $.post(path+"report/getUserList",
          	{
                 UserName:$("#userName").val(),
                 RealName:$("#realName").val()
@@ -114,7 +114,7 @@ function delUser(id){
         if (pass=="tjyx"){
             layer.close(index);
             layer.msg('验证成功!');
-            $.post(path+"main/delUser",
+            $.post(path+"report/delUser",
                 {id:id},
                 function(result){
                     if(result.msg=="ok"){

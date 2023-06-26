@@ -79,7 +79,7 @@ function check_user_Info() {
 //检查用户名是否存在
 function checkUserNameDoesItExist() {
     var userName=$("#add_username").val();
-    $.post(path+"/main/checkUserName",
+    $.post(path+"/report/checkUserName",
         {UserName:userName},
         function(result){
             if(result.msg=="ok"){//ok不存在,no以存在
@@ -99,7 +99,7 @@ function checkUserNameDoesItExist() {
 //添加用户操作
 function insertUser(userName,passWord,realName,role) {
     var pass=MD5(passWord).toUpperCase();
-    $.post(path + "/main/addUser",
+    $.post(path + "/report/addUser",
         {
             UserName:userName,
             Psd:pass,
@@ -128,7 +128,7 @@ function emptyAddUserPageInput() {
 //查询全部角色
 function roleList() {
     var userRoleSelect = $("#add_user_role");
-    $.post(path+"/main/getRoleList",
+    $.post(path+"/report/getRoleList",
         {},
         function(result){
             if(result.msg=="ok"){

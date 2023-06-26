@@ -50,7 +50,7 @@ function check_role_Info() {
 //检查用户名是否存在
 function checkRoleNameDoesItExist() {
     var roleName=$("#add_rolename").val();
-    $.post(path+"/main/checkRoleName",
+    $.post(path+"/report/checkRoleName",
         {RoleName:roleName},
         function(result){
             if(result.msg=="ok"){//ok不存在,no以存在
@@ -67,7 +67,7 @@ function checkRoleNameDoesItExist() {
 
 //添加角色操作
 function insertRole(roleName,roleDetail,permission) {
-    $.post(path + "/main/addRole",
+    $.post(path + "/report/addRole",
         {
             RoleName:roleName,
             Detail:roleDetail,
