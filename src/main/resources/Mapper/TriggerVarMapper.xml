@@ -54,12 +54,18 @@
 				<if test="triggerVar.varValue!=null">
 					#{triggerVar.varValue},
 				</if>
+				<!-- 
 				<if test="triggerVar.recType!=null">
+				 -->
 					#{triggerVar.recType},
+				<!-- 
 				</if>
 				<if test="triggerVar.FId!=null">
+				 -->
 					#{triggerVar.FId},
+				<!-- 
 				</if>
+				 -->
 			</trim>
 		</foreach>
 	</insert>
@@ -78,6 +84,7 @@
 		<foreach collection="runFIdList" item="runFId" open=" and cast(FId as char) in (" separator="," close=")">
 			#{runFId}
 		</foreach>
+		 or VarName='红色报警消音_AV'
 		 order by Sort
 	</select>
 	<select id="getListByVarNameList" resultType="com.zjbbTjyx.entity.TriggerVar">

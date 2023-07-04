@@ -1625,9 +1625,10 @@ public class OpcUtil {
     		opcTVNameList.add("_System._DateTime");
     	}
     	*/
-    	
+
     	List<String> opcTVNamePreMList=new ArrayList<String>();//前缀集合
     	opcTVNamePreMList.add(Constant.BEI_LIAO_KAI_SHI);//备料开始前缀
+    	/*
     	opcTVNamePreMList.add(Constant.FAN_YING_JIE_SHU);//反应结束
     	opcTVNamePreMList.add(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI);//甲醛备料开始
         opcTVNamePreMList.add(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG);//甲醛放料完成
@@ -1651,6 +1652,7 @@ public class OpcUtil {
         opcTVNamePreMList.add(Constant.ZHONG_JIAN_SHUI_PH_TI_XING);//终检水PH提醒
         opcTVNamePreMList.add(Constant.YUN_XU_KAI_SHI_PAI_JIAO);//允许开始排胶
         opcTVNamePreMList.add(Constant.PAI_JIAO_WAN_CHENG);//排胶完成---F5没有
+        */
         
 
     	for (String opcTVNamePreM : opcTVNamePreMList) {//循环拼接上反应釜号作为完整的变量
@@ -1665,6 +1667,7 @@ public class OpcUtil {
 			}
 		}
     	
+    	/*
     	List<String> opcTVNamePhPreMList=new ArrayList<String>();
 
     	for (String opcTVNamePhPreM : opcTVNamePhPreMList) {//循环拼接上反应釜号作为完整的变量
@@ -1674,7 +1677,10 @@ public class OpcUtil {
 			}
     		
 		}
+		*/
     	
+    	
+    	/*
     	List<String> opcTVNamePreUList=new ArrayList<String>();//前缀集合
     	opcTVNamePreUList.add(Constant.BEI_LIAO_KAI_SHI);//备料开始前缀
     	opcTVNamePreUList.add(Constant.FAN_YING_JIE_SHU);//反应结束
@@ -1724,6 +1730,10 @@ public class OpcUtil {
     			opcTVNameList.add(opcTVName);
 			}
     	}
+    	*/
+    	
+    	opcTVNameList.add("红色报警消音_AV");
+		//System.out.println("opcTVNameList==="+opcTVNameList.toString());
     	
     	return opcTVNameList;
 	}
@@ -1858,6 +1868,7 @@ public class OpcUtil {
 		        
 		        jOpcTVNameMap.put(opcTVName, jOpcTVMap);
 			}
+			//System.out.println("opcTVNameExistList==="+opcTVNameExistList.toString());
         } catch (Exception e) {
 			// TODO Auto-generated catch block
 			//e.printStackTrace();

@@ -86,7 +86,6 @@ public class OPCController {
 		Map<String,Object> json=new HashMap<String, Object>();
 
 		List<String> opcTVNameList=OpcUtil.getOpcTVNameList();
-		//System.out.println("opcTVNameListaaa==="+opcTVNameList.toString());
 		
 		OpcUtil.initJOpcTVMap(opcTVNameList);
 		
@@ -106,7 +105,7 @@ public class OPCController {
 		Map<String,Object> json=new HashMap<String, Object>();
 
 		List<String> opcPVNameList=OpcUtil.getOpcPVNameList();
-		System.out.println("opcPVNameList==="+opcPVNameList.toString());
+		//System.out.println("opcPVNameList==="+opcPVNameList.toString());
 		
 		OpcUtil.initJOpcPVMap(opcPVNameList);
 		
@@ -126,7 +125,6 @@ public class OPCController {
 		Map<String,Object> json=new HashMap<String, Object>();
 		
 		ArrayList<OpcItem> opcItemList = OpcUtil.readJOpcTVMap();
-		//System.out.println("opcItemList111==="+opcItemList.toString());
 
 		APIUtil.addVar("addTriggerVarFromOpc",opcItemList);
 		
@@ -314,13 +312,18 @@ public class OPCController {
 			List<TriggerVar> triggerVarList = triggerVarService.getListByFIdList(runFIdList);//先获取所有运行的反应釜触发量,不管是否是上升沿
 	
 			Map<String,List<TriggerVar>> triggerVarMap=getTriVarListGroupMap(triggerVarList);//将获取的变量分组
-			
+
+			//红色报警消音触发量
+			String hsbjxyTVVarNamePre="红色报警消音";
+			List<TriggerVar> hsbjxyTVList = (List<TriggerVar>)triggerVarMap.get(hsbjxyTVVarNamePre);//获取红色报警消音触发变量,不管是否是上升沿
+			List<TriggerVar> upHsbjxyTVList = getUpDownVarValueListFromList(hsbjxyTVList, TriggerVar.UP);//获取上升的红色报警消音变量
+			System.out.println("upHsbjxyTVList==="+upHsbjxyTVList.size());
 			
 			//李工的代码逻辑从这里开始写
 			//if(false) {
 			//备料开始触发量
 			String blksTVVarNamePre=Constant.BEI_LIAO_KAI_SHI;
-			List<TriggerVar> blksTVList = (List<TriggerVar>)triggerVarMap.get(blksTVVarNamePre);//获取备料开始触发变量,不管是否是上升沿
+			List<TriggerVar> blksTVList = triggerVarMap.get(blksTVVarNamePre);//获取备料开始触发变量,不管是否是上升沿
 			List<TriggerVar> upBlksTVList = getUpDownVarValueListFromList(blksTVList, TriggerVar.UP);//获取上升的备料开始变量
 			System.out.println("upBlksTVList的长度"+upBlksTVList.size());
 			System.out.println("upBlksTVList"+upBlksTVList.toString());
@@ -3819,6 +3822,7 @@ public class OPCController {
 	private Map<String, List<TriggerVar>> getTriVarListGroupMap(List<TriggerVar> triggerVarList) {
 
 		Map<String, List<TriggerVar>> tvGroupMap=new HashMap<String, List<TriggerVar>>();
+		List<TriggerVar> hsbjxyTVList=new ArrayList<TriggerVar>();//红色报警消音新集合,用来存放对象
 		List<TriggerVar> blksTVList=new ArrayList<TriggerVar>();//备料开始新集合,用来存放对象
 		List<TriggerVar> fyjsTVList=new ArrayList<TriggerVar>();//反应结束新集合,用来存放对象
 		List<TriggerVar> jqblksTVList=new ArrayList<TriggerVar>();//甲醛备料开始新集合,用来存放对象
@@ -3898,7 +3902,10 @@ public class OPCController {
 				break;
 			}
 			
-			if((Constant.BEI_LIAO_KAI_SHI+"_"+fyfh+"_AV").equals(varName)) {//备料开始
+			if(varName.equals("红色报警消音_AV")) {//红色报警消音
+				hsbjxyTVList.add(triggerVar);
+			}
+			else if((Constant.BEI_LIAO_KAI_SHI+"_"+fyfh+"_AV").equals(varName)) {//备料开始
 				blksTVList.add(triggerVar);
 			}
 			else if((Constant.FAN_YING_JIE_SHU+fyfh+"_AV").equals(varName)) {//反应结束
@@ -4011,6 +4018,8 @@ public class OPCController {
 			}
 		}
 		
+		tvGroupMap.put("红色报警消音", hsbjxyTVList);//红色报警消音
+		
 		tvGroupMap.put(Constant.BEI_LIAO_KAI_SHI, blksTVList);//备料开始
 		tvGroupMap.put(Constant.FAN_YING_JIE_SHU, fyjsTVList);//反应结束
 		tvGroupMap.put(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI, jqblksTVList);//甲醛备料开始
@@ -4054,7 +4063,7 @@ public class OPCController {
 	@RequestMapping(value = "/addTriggerVarFromOpc", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> addTriggerVarFromOpc(@RequestBody String bodyStr){
-		System.out.println(bodyStr);
+		//System.out.println(bodyStr);
 		Map<String,Object> json=new HashMap<String, Object>();
 		//List<TriggerVar> triggerVarList = JSON.parseArray(bodyStr, TriggerVar.class);
 		List<TriggerVar> triggerVarList=com.alibaba.fastjson.JSONArray.parseArray(bodyStr,TriggerVar.class);
@@ -4175,9 +4184,12 @@ public class OPCController {
 			for (TriggerVar triggerVar : triggerVarList) {
 				String varName = triggerVar.getVarName();
 				Float varValue = triggerVar.getVarValue();
-				System.out.println("varName==="+varName+",varValue==="+varValue);
-				if(varValue==flag) {
-					upDownVarValueTVList.add(triggerVar);
+				if(varName.startsWith("红色报警消音"))
+					System.out.println("varName==="+varName+",varValue==="+varValue);
+				if(varValue!=null) {
+					if(varValue==flag) {
+						upDownVarValueTVList.add(triggerVar);
+					}
 				}
 			}
 		}
