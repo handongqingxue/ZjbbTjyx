@@ -89,7 +89,7 @@ public class APIUtil {
 			OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream(),"UTF-8"); 
 			//body参数放这里
 			String bodyParamStr = bodyParamJA.toString();
-			System.out.println("bodyParamStr==="+bodyParamStr);
+			//System.out.println("bodyParamStr==="+bodyParamStr);
 			writer.write(bodyParamStr);
 			writer.flush();
 			InputStream is = connection.getInputStream(); 
@@ -137,7 +137,8 @@ public class APIUtil {
 			for (OpcItem opcItem : opcItemList) {
 				String itemName = opcItem.getItemName();
 				String value = opcItem.getValue().toString();
-				if(itemName.startsWith(Constant.FAN_YING_JIE_SHU)) {
+				if(itemName.startsWith(Constant.FAN_YING_JIE_SHU)||
+				   itemName.startsWith("红色报警消音")) {
 					boolean boolVal = Boolean.parseBoolean(value);
 					value = boolVal?"1":"0";
 				}
