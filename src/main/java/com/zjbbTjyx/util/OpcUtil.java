@@ -1836,13 +1836,40 @@ public class OpcUtil {
 			    	
 			        OpcGroup group = new OpcGroup(Constant.OPC_GROUP_NAME, true, 500, 0.0f);
 			        group.addItem(new OpcItem(opcTVName, true, ""));
-			        group.addItem(new OpcItem("备料开始_F1_AV", true, ""));
-			        group.addItem(new OpcItem("备料开始_F2_AV", true, ""));
-			        group.addItem(new OpcItem("备料开始_F3_AV", true, ""));
-			        group.addItem(new OpcItem("备料开始_F4_AV", true, ""));
-			        group.addItem(new OpcItem("备料开始_F5_AV", true, ""));
-			        //OpcItem aaa = new OpcItem("aaaaaaaaaaa", true, "");
-			        //group.addItem(aaa);
+			        for (int i = 1; i <= 5; i++) {
+				        group.addItem(new OpcItem("备料开始_F"+i+"_AV", true, ""));
+				        group.addItem(new OpcItem("升温完成_F"+i+"_AV", true, ""));
+				        group.addItem(new OpcItem("备料开始_F"+i+"_AV", true, ""));
+				        group.addItem(new OpcItem("升温完成_F"+i+"_AV", true, ""));
+				        group.addItem(new OpcItem("备料开始_F"+i+"_AV", true, ""));
+				        group.addItem(new OpcItem("升温完成_F"+i+"_AV", true, ""));
+				        group.addItem(new OpcItem("备料开始_F"+i+"_AV", true, ""));
+				        group.addItem(new OpcItem("升温完成_F"+i+"_AV", true, ""));
+				        group.addItem(new OpcItem("备料开始_F"+i+"_AV", true, ""));
+				        group.addItem(new OpcItem("升温完成_F"+i+"_AV", true, ""));
+				        group.addItem(new OpcItem("备料开始_F"+i+"_AV", true, ""));
+				        group.addItem(new OpcItem("升温完成_F"+i+"_AV", true, ""));
+				        group.addItem(new OpcItem("备料开始_F"+i+"_AV", true, ""));
+				        group.addItem(new OpcItem("升温完成_F"+i+"_AV", true, ""));
+				        group.addItem(new OpcItem("备料开始_F"+i+"_AV", true, ""));
+				        group.addItem(new OpcItem("升温完成_F"+i+"_AV", true, ""));
+				        group.addItem(new OpcItem("备料开始_F"+i+"_AV", true, ""));
+				        group.addItem(new OpcItem("升温完成_F"+i+"_AV", true, ""));
+				        group.addItem(new OpcItem("备料开始_F"+i+"_AV", true, ""));
+				        group.addItem(new OpcItem("升温完成_F"+i+"_AV", true, ""));
+				        group.addItem(new OpcItem("备料开始_F"+i+"_AV", true, ""));
+				        group.addItem(new OpcItem("升温完成_F"+i+"_AV", true, ""));
+				        group.addItem(new OpcItem("备料开始_F"+i+"_AV", true, ""));
+				        group.addItem(new OpcItem("升温完成_F"+i+"_AV", true, ""));
+				        group.addItem(new OpcItem("备料开始_F"+i+"_AV", true, ""));
+				        group.addItem(new OpcItem("升温完成_F"+i+"_AV", true, ""));
+				        group.addItem(new OpcItem("备料开始_F"+i+"_AV", true, ""));
+				        group.addItem(new OpcItem("升温完成_F"+i+"_AV", true, ""));
+					}
+			        OpcItem aaa = new OpcItem("aaaaaaaaaaa", true, "");
+			        group.addItem(aaa);
+			        OpcItem bbb = new OpcItem("bbbbbbbbbbb", true, "");
+			        group.addItem(bbb);
 			
 			        jopc.addGroup(group);   //添加组
 			
@@ -1862,7 +1889,8 @@ public class OpcUtil {
 			            //logger.error(e.getMessage());
 			            ArrayList<OpcItem> its = group.getItems();
 			            System.out.println("its1==="+its.size());
-			            //group.removeItem(aaa);
+			            group.removeItem(aaa);
+			            group.removeItem(bbb);
 			            its = group.getItems();
 			            System.out.println("its2==="+its.size());
 			            jopc.removeGroup(group);
@@ -1878,7 +1906,7 @@ public class OpcUtil {
 			            test.wait(50);
 			        }
 			        
-			        if(tvExist) {
+			        //if(tvExist) {
 			        	opcTVNameExistList.add(opcTVName);
 			        
 	
@@ -1897,7 +1925,7 @@ public class OpcUtil {
 				        jOpcTVMap.put("synchReadItemExample", test);
 				        
 				        jOpcTVNameMap.put(opcTVName, jOpcTVMap);
-			        }
+			        //}
 				}
 		        
 			}
