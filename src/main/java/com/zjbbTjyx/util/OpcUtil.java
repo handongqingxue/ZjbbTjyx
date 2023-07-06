@@ -30,6 +30,7 @@ public class OpcUtil {
 	private static List<OpcItem> imiOpcItemTVList,imiOpcItemPVList;
 	private static List<String> opcTVNameExistList,opcPVNameExistList;
 	
+	
     public static void main(String[] args) {
         SynchReadItemExample test = new SynchReadItemExample();
 
@@ -1628,7 +1629,6 @@ public class OpcUtil {
 
     	List<String> opcTVNamePreMList=new ArrayList<String>();//前缀集合
     	opcTVNamePreMList.add(Constant.BEI_LIAO_KAI_SHI);//备料开始前缀
-    	/*
     	opcTVNamePreMList.add(Constant.FAN_YING_JIE_SHU);//反应结束
     	opcTVNamePreMList.add(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI);//甲醛备料开始
         opcTVNamePreMList.add(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG);//甲醛放料完成
@@ -1652,7 +1652,6 @@ public class OpcUtil {
         opcTVNamePreMList.add(Constant.ZHONG_JIAN_SHUI_PH_TI_XING);//终检水PH提醒
         opcTVNamePreMList.add(Constant.YUN_XU_KAI_SHI_PAI_JIAO);//允许开始排胶
         opcTVNamePreMList.add(Constant.PAI_JIAO_WAN_CHENG);//排胶完成---F5没有
-        */
         
 
     	for (String opcTVNamePreM : opcTVNamePreMList) {//循环拼接上反应釜号作为完整的变量
@@ -1666,6 +1665,8 @@ public class OpcUtil {
     			opcTVNameList.add(opcTVName);
 			}
 		}
+    	/*
+        */
     	
     	/*
     	List<String> opcTVNamePhPreMList=new ArrayList<String>();
@@ -1679,8 +1680,7 @@ public class OpcUtil {
 		}
 		*/
     	
-    	
-    	/*
+
     	List<String> opcTVNamePreUList=new ArrayList<String>();//前缀集合
     	opcTVNamePreUList.add(Constant.BEI_LIAO_KAI_SHI);//备料开始前缀
     	opcTVNamePreUList.add(Constant.FAN_YING_JIE_SHU);//反应结束
@@ -1722,7 +1722,7 @@ public class OpcUtil {
     			opcTVNameList.add(opcTVName);
 			}
         }
-    	
+
     	List<String> opcTVNamePhPreUList=new ArrayList<String>();
     	for (String opcTVNamePhPreU : opcTVNamePhPreUList) {
     		for (String fUName : Constant.BSF_PF_U_ARR) {
@@ -1730,6 +1730,7 @@ public class OpcUtil {
     			opcTVNameList.add(opcTVName);
 			}
     	}
+    	/*
     	*/
     	
     	opcTVNameList.add("红色报警消音_AV");
@@ -1815,63 +1816,98 @@ public class OpcUtil {
         	
         	Map<String,Object> jOpcTVMap=null;
 			for (String opcTVName : opcTVNameList) {
-				if(opcTVName.endsWith(TriggerVar.U+Constant.XHX+Constant.AV)) {
-					if(
-						opcTVName.startsWith(Constant.ZHU_JI_LIU_YI_CI_TIAN_JIA_WAN_CHENG)||//助剂六一次添加完成
-						opcTVName.startsWith(Constant.ZHU_JI_LIU_ER_CI_TIAN_JIA_WAN_CHENG)||//助剂六二次添加完成
-						opcTVName.startsWith(Constant.JIA_JIAN_LIANG_FAN_WEI_XIA_XIAN)||//加碱量范围下限
-						opcTVName.startsWith(Constant.ER_CI_JIA_215_WAN_CHENG)||//二次加215完成
-						opcTVName.startsWith(Constant.ER_CI_JIA_SHUI_QI_DONG)||//二次加水启动
-						opcTVName.startsWith(Constant.ER_CI_JIA_SHUI_WAN_CHENG)//二次加水完成
-					) {
-						opcTVName=reverseVarSuffix(opcTVName);
+				if(opcTVName.startsWith("红色报警消音")) {
+					if(opcTVName.endsWith(TriggerVar.U+Constant.XHX+Constant.AV)) {
+						if(
+							opcTVName.startsWith(Constant.ZHU_JI_LIU_YI_CI_TIAN_JIA_WAN_CHENG)||//助剂六一次添加完成
+							opcTVName.startsWith(Constant.ZHU_JI_LIU_ER_CI_TIAN_JIA_WAN_CHENG)||//助剂六二次添加完成
+							opcTVName.startsWith(Constant.JIA_JIAN_LIANG_FAN_WEI_XIA_XIAN)||//加碱量范围下限
+							opcTVName.startsWith(Constant.ER_CI_JIA_215_WAN_CHENG)||//二次加215完成
+							opcTVName.startsWith(Constant.ER_CI_JIA_SHUI_QI_DONG)||//二次加水启动
+							opcTVName.startsWith(Constant.ER_CI_JIA_SHUI_WAN_CHENG)//二次加水完成
+						) {
+							opcTVName=reverseVarSuffix(opcTVName);
+						}
 					}
+					
+					SynchReadItemExample test = new SynchReadItemExample();
+			    	JOpc.coInitialize();   //初始化JOpc        JOpc继承父类JCustomOpc
+					JOpc jopc = new JOpc(Constant.OPC_HOST, Constant.OPC_SERVER_PROG_ID, Constant.OPC_SERVER_CLIENT_HANDLE);
+			    	
+			        OpcGroup group = new OpcGroup(Constant.OPC_GROUP_NAME, true, 500, 0.0f);
+			        group.addItem(new OpcItem(opcTVName, true, ""));
+			        group.addItem(new OpcItem("备料开始_F1_AV", true, ""));
+			        group.addItem(new OpcItem("备料开始_F2_AV", true, ""));
+			        group.addItem(new OpcItem("备料开始_F3_AV", true, ""));
+			        group.addItem(new OpcItem("备料开始_F4_AV", true, ""));
+			        group.addItem(new OpcItem("备料开始_F5_AV", true, ""));
+			        //OpcItem aaa = new OpcItem("aaaaaaaaaaa", true, "");
+			        //group.addItem(aaa);
+			
+			        jopc.addGroup(group);   //添加组
+			
+			        boolean tvExist=true;
+			        try {
+			            jopc.connect();   //连接
+			            jopc.registerGroups();  //注册组
+			        } catch (ConnectivityException e1) {
+			            System.out.println("ConnectivityException="+e1.getMessage());
+			            //logger.error(e1.getMessage());
+			        } catch (UnableAddGroupException e) {
+			        	System.out.println("GroupName===="+group.getGroupName());
+			            System.out.println("UnableAddGroupException="+e.getMessage());
+			            //logger.error(e.getMessage());
+			        } catch (UnableAddItemException e) {
+			            System.out.println("UnableAddItemException="+e.getMessage());
+			            //logger.error(e.getMessage());
+			            ArrayList<OpcItem> its = group.getItems();
+			            System.out.println("its1==="+its.size());
+			            //group.removeItem(aaa);
+			            its = group.getItems();
+			            System.out.println("its2==="+its.size());
+			            jopc.removeGroup(group);
+			            jopc.addGroup(group);
+			            jopc.connect();   //连接
+			            jopc.registerGroups();  //注册组
+			            
+			            OpcItem opcItem = getImiOpcItem(opcTVName);
+			            imiOpcItemTVList.add(opcItem);
+			            tvExist=false;
+			        }
+			        synchronized(test) {
+			            test.wait(50);
+			        }
+			        
+			        if(tvExist) {
+			        	opcTVNameExistList.add(opcTVName);
+			        
+	
+				        //System.out.println("opcTVName======"+opcTVName);
+				        if(opcTVName.startsWith("红色报警消音")) {
+							OpcGroup responseGroup = jopc.synchReadGroup(group);
+					        ArrayList<OpcItem> opcItems = responseGroup.getItems();
+					        OpcItem opcItem = opcItems.get(0);
+					        String valueStr = opcItem.getValue().toString();
+					        System.out.println(opcItem.getItemName()+",valueStr==="+valueStr);
+				        }
+				        
+				        jOpcTVMap=new HashMap<String,Object>();
+				        jOpcTVMap.put("jopc", jopc);
+				        jOpcTVMap.put("group", group);
+				        jOpcTVMap.put("synchReadItemExample", test);
+				        
+				        jOpcTVNameMap.put(opcTVName, jOpcTVMap);
+			        }
 				}
-				
-				SynchReadItemExample test = new SynchReadItemExample();
-		    	JOpc.coInitialize();   //初始化JOpc        JOpc继承父类JCustomOpc
-				JOpc jopc = new JOpc(Constant.OPC_HOST, Constant.OPC_SERVER_PROG_ID, Constant.OPC_SERVER_CLIENT_HANDLE);
-		    	
-		        OpcGroup group = new OpcGroup(Constant.OPC_GROUP_NAME, true, 500, 0.0f);
-		        group.addItem(new OpcItem(opcTVName, true, ""));
-		
-		        jopc.addGroup(group);   //添加组
-		
-		        boolean tvExist=true;
-		        try {
-		            jopc.connect();   //连接
-		            jopc.registerGroups();  //注册组
-		        } catch (ConnectivityException e1) {
-		            System.out.println("ConnectivityException="+e1.getMessage());
-		            //logger.error(e1.getMessage());
-		        } catch (UnableAddGroupException e) {
-		        	System.out.println("GroupName===="+group.getGroupName());
-		            System.out.println("UnableAddGroupException="+e.getMessage());
-		            //logger.error(e.getMessage());
-		        } catch (UnableAddItemException e) {
-		            System.out.println("UnableAddItemException="+e.getMessage());
-		            //logger.error(e.getMessage());
-		            OpcItem opcItem = getImiOpcItem(opcTVName);
-		            imiOpcItemTVList.add(opcItem);
-		            tvExist=false;
-		        }
-		        synchronized(test) {
-		            test.wait(50);
-		        }
 		        
-		        if(tvExist)
-		        	opcTVNameExistList.add(opcTVName);
-		        
-		        jOpcTVMap=new HashMap<String,Object>();
-		        jOpcTVMap.put("jopc", jopc);
-		        jOpcTVMap.put("group", group);
-		        
-		        jOpcTVNameMap.put(opcTVName, jOpcTVMap);
 			}
 			//System.out.println("opcTVNameExistList==="+opcTVNameExistList.toString());
+        	
+			
+			//initNewJOpc(opcTVNameList);
         } catch (Exception e) {
 			// TODO Auto-generated catch block
-			//e.printStackTrace();
+			e.printStackTrace();
 		}
 	}
 	
@@ -1945,6 +1981,39 @@ public class OpcUtil {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void initNewJOpc(List<String> list) {
+		System.out.println("initNewJOpc...");
+		try {
+	        SynchReadItemExample test = new SynchReadItemExample();
+			JOpc newJopc = new JOpc(Constant.OPC_HOST, Constant.OPC_SERVER_PROG_ID, Constant.OPC_SERVER_CLIENT_HANDLE);
+			OpcGroup newGroup = new OpcGroup(Constant.OPC_GROUP_NAME, true, 500, 0.0f);
+			for (String opcTVNameExist : list) {
+				newGroup.addItem(new OpcItem(opcTVNameExist, true, ""));
+			}
+			
+			newJopc.addGroup(newGroup);   //添加组
+			newJopc.connect();   //连接
+			newJopc.registerGroups();  //注册组
+
+	        while (true) {
+				synchronized(test) {
+					test.wait(500);
+				}
+				OpcGroup responseGroup = newJopc.synchReadGroup(newGroup);
+		        ArrayList<OpcItem> opcItems = responseGroup.getItems();
+		        for (OpcItem opcItem : opcItems) {
+		        	System.out.println("getItemName==="+opcItem.getItemName());
+		        	if(opcItem.getItemName().startsWith("红色报警消音"))
+		        		System.out.println("getItemName==="+opcItem.getItemName()+",getValue==="+opcItem.getValue().toString());
+				}
+		        Thread.sleep(2000);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
     
 	/**
 	 * 读取opc服务器端触发器变量
@@ -1952,23 +2021,56 @@ public class OpcUtil {
 	 */
 	public static ArrayList<OpcItem> readJOpcTVMap() {
 		ArrayList<OpcItem> opcItemList = new ArrayList<OpcItem>();
+
+		/*
+		try {
+		OpcGroup responseGroup;
+			responseGroup = newJopc.synchReadGroup(newGroup);
+        ArrayList<OpcItem> opcItems = responseGroup.getItems();
+        for (OpcItem opcItem : opcItems) {
+        	if(opcItem.getItemName().startsWith("红色报警消音"))
+        		System.out.println("getItemName==="+opcItem.getItemName()+",getValue==="+opcItem.getValue().toString());
+		}
+		} catch (ComponentNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SynchReadException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	return opcItemList;
+    	*/
+		
+		
 		OpcItem opcItem = null;
         try {
 	        OpcGroup responseGroup = null;
         	Map<String,Object> jOpcTVMap=null;
 			for (String opcTVName : opcTVNameExistList) {
-        		jOpcTVMap=(Map<String,Object>)jOpcTVNameMap.get(opcTVName);
-        		JOpc jOpc=(JOpc)jOpcTVMap.get("jopc");
-        		OpcGroup group=(OpcGroup)jOpcTVMap.get("group");
-				responseGroup = jOpc.synchReadGroup(group);
-		        ArrayList<OpcItem> opcItems = responseGroup.getItems();
-		        opcItem = opcItems.get(0);
-		        String valueStr = opcItem.getValue().toString();
-		        if(StringUtils.isEmpty(valueStr)) {
-		        	opcItem.setValue(new Variant(0));
-		        }
-		        System.out.println("getItemName==="+opcItem.getItemName()+",getValue==="+opcItem.getValue().toString());
-				opcItemList.add(opcItem);
+				System.out.println("readJOpcTVMap:opcTVName==="+opcTVName);
+				if(opcTVName.startsWith("红色报警消音")) {
+	        		jOpcTVMap=(Map<String,Object>)jOpcTVNameMap.get(opcTVName);
+					System.out.println("jOpcTVMap==="+jOpcTVMap);
+	        		SynchReadItemExample test=(SynchReadItemExample)jOpcTVMap.get("synchReadItemExample");
+					synchronized(test) {
+						test.wait(500);
+					}
+	        		JOpc jOpc=(JOpc)jOpcTVMap.get("jopc");
+					System.out.println("jOpc==="+jOpc);
+	        		OpcGroup group=(OpcGroup)jOpcTVMap.get("group");
+					System.out.println("group==="+group);
+					responseGroup = jOpc.synchReadGroup(group);
+			        ArrayList<OpcItem> opcItems = responseGroup.getItems();
+			        opcItem = opcItems.get(0);
+			        String valueStr = opcItem.getValue().toString();
+			        /*
+			        if(StringUtils.isEmpty(valueStr)) {
+			        	opcItem.setValue(new Variant(0));
+			        }
+			        */
+			        System.out.println("getItemName==="+opcItem.getItemName()+",getValue==="+opcItem.getValue().toString());
+					opcItemList.add(opcItem);
+				}
 			}
 			
 			opcItemList.addAll(imiOpcItemTVList);
@@ -1989,8 +2091,15 @@ public class OpcUtil {
 					}
 				}
 			}
-        } catch (Exception e) {
-			// TODO Auto-generated catch block
+        }catch (ComponentNotFoundException e) {
+			//logger.error(e.getMessage()); //获取responseGroup错误
+			JOpc.coUninitialize();     //错误关闭连接
+			e.printStackTrace();
+		}catch (InterruptedException e) {
+			//logger.error(e.getMessage());
+			JOpc.coUninitialize(); //错误关闭连接
+			e.printStackTrace();
+		}catch (SynchReadException e) {
 			e.printStackTrace();
 		}
         finally {
