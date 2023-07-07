@@ -137,8 +137,7 @@ public class APIUtil {
 			for (OpcItem opcItem : opcItemList) {
 				String itemName = opcItem.getItemName();
 				String value = opcItem.getValue().toString();
-				if(itemName.startsWith(Constant.FAN_YING_JIE_SHU)||
-				   itemName.startsWith("红色报警消音")) {
+				if("true".equals(value)||"false".equals(value)) {
 					boolean boolVal = Boolean.parseBoolean(value);
 					value = boolVal?"1":"0";
 				}
