@@ -26,12 +26,11 @@ import com.zjbbTjyx.entity.*;
 public class OpcUtil {
 	
 	private static boolean IS_TEST=false;
-	private static Map<String,Object> jOpcPVNameMap;
 	private static List<OpcItem> imiOpcItemTVList,imiOpcItemPVList;
-	private static List<String> opcPVNameExistList;
-	private static JOpc jopcTV;
-	private static OpcGroup opcGroupTV;
+	private static JOpc jopcTV,jopcPV;
+	private static OpcGroup opcGroupTV,opcGroupPV;
 	private static SynchReadItemExample srieTV=new SynchReadItemExample();
+	private static SynchReadItemExample sriePV=new SynchReadItemExample();
 	
 	
     public static void main(String[] args) {
@@ -1841,9 +1840,7 @@ public class OpcUtil {
 				if(jopcTV.getGroupsAsArray().length==0)
 					jopcTV.addGroup(opcGroupTV);   //添加组
 				System.out.println("aaa==="+jopcTV.getGroupsAsArray().length);
-			
-			        
-			        
+
 		        try {
 		        	jopcTV.connect();   //连接
 		        	jopcTV.registerGroups();  //注册组
@@ -1872,12 +1869,10 @@ public class OpcUtil {
 		            //imiOpcItemTVList.add(ImiOpcItem);
 		        }
 			}
-			
 			/*
 	        synchronized(test) {
 	            test.wait(50);
 	        }
-			
 			OpcGroup responseGroup = jopcTV.synchReadGroup(opcGroupTV);
 	        ArrayList<OpcItem> opcItems = responseGroup.getItems();
 	        for (OpcItem opcItem1 : opcItems) {
@@ -1885,9 +1880,6 @@ public class OpcUtil {
 		        System.out.println(opcItem1.getItemName()+",valueStr==="+valueStr);
 			}
 			*/
-			
-        	
-			
         } catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -1900,11 +1892,16 @@ public class OpcUtil {
 	 */
 	public static void initJOpcPVMap(List<String> opcPVNameList) {
         try {
-        	jOpcPVNameMap=new HashMap<String,Object>();
         	imiOpcItemPVList=new ArrayList<OpcItem>();
-        	opcPVNameExistList=new ArrayList<String>();
-        	
-        	Map<String,Object> jOpcPVMap=null;
+
+			SynchReadItemExample test = new SynchReadItemExample();
+			JOpc.coInitialize();   //初始化JOpc        JOpc继承父类JCustomOpc
+
+			jopcPV = new JOpc(Constant.OPC_HOST, Constant.OPC_SERVER_PROG_ID, Constant.OPC_SERVER_CLIENT_HANDLE);
+			opcGroupPV = new OpcGroup(Constant.OPC_GROUP_NAME, true, 500, 0.0f);
+
+			OpcItem opcItem=null;
+
 			for (String opcPVName : opcPVNameList) {
 				if(opcPVName.endsWith(TriggerVar.U+Constant.XHX+Constant.AV)) {
 					if(
@@ -1918,46 +1915,39 @@ public class OpcUtil {
 						opcPVName=reverseVarSuffix(opcPVName);
 					}
 				}
-				
-				SynchReadItemExample test = new SynchReadItemExample();
-		    	JOpc.coInitialize();   //初始化JOpc        JOpc继承父类JCustomOpc
-				JOpc jopc = new JOpc(Constant.OPC_HOST, Constant.OPC_SERVER_PROG_ID, Constant.OPC_SERVER_CLIENT_HANDLE);
-		    	
-		        OpcGroup group = new OpcGroup(Constant.OPC_GROUP_NAME, true, 500, 0.0f);
-		        group.addItem(new OpcItem(opcPVName, true, ""));
-		
-		        jopc.addGroup(group);   //添加组
-		
-		        boolean pvExist=true;
-		        try {
-		            jopc.connect();   //连接
-		            jopc.registerGroups();  //注册组
-		        } catch (ConnectivityException e1) {
-		            System.out.println("ConnectivityException="+e1.getMessage());
-		            //logger.error(e1.getMessage());
-		        } catch (UnableAddGroupException e) {
-		        	System.out.println("GroupName===="+group.getGroupName());
-		            System.out.println("UnableAddGroupException="+e.getMessage());
-		            //logger.error(e.getMessage());
-		        } catch (UnableAddItemException e) {
-		            //System.out.println("UnableAddItemException="+e.getMessage());
-		            //logger.error(e.getMessage());
-		            OpcItem opcItem = getImiOpcItem(opcPVName);
-		            imiOpcItemPVList.add(opcItem);
-		            pvExist=false;
-		        }
-		        synchronized(test) {
-		            test.wait(50);
-		        }
-		        
-		        if(pvExist)
-		        	opcPVNameExistList.add(opcPVName);
-		        
-		        jOpcPVMap=new HashMap<String,Object>();
-		        jOpcPVMap.put("jopc", jopc);
-		        jOpcPVMap.put("group", group);
-		        
-		        jOpcPVNameMap.put(opcPVName, jOpcPVMap);
+				opcItem=new OpcItem(opcPVName, true, "");
+				opcGroupPV.addItem(opcItem);
+				if(jopcPV.getGroupsAsArray().length==0)
+					jopcPV.addGroup(opcGroupPV);   //添加组
+				System.out.println("aaa==="+jopcPV.getGroupsAsArray().length);
+
+				try {
+					jopcPV.connect();   //连接
+					jopcPV.registerGroups();  //注册组
+				} catch (ConnectivityException e1) {
+					System.out.println("ConnectivityException="+e1.getMessage());
+					//logger.error(e1.getMessage());
+				} catch (UnableAddGroupException e) {
+					//System.out.println("GroupName===="+opcGroupTV.getGroupName());
+					System.out.println("UnableAddGroupException="+e.getMessage());
+					//logger.error(e.getMessage());
+				} catch (UnableAddItemException e) {
+					System.out.println("UnableAddItemException="+e.getMessage());
+					//logger.error(e.getMessage());
+					//ArrayList<OpcItem> its = opcGroupTV.getItems();
+					//System.out.println("its1==="+its.size());
+					opcGroupPV.removeItem(opcItem);
+					//its = opcGroupTV.getItems();
+					//System.out.println("its2==="+its.size());
+
+					jopcPV.removeGroup(opcGroupPV);
+					jopcPV.addGroup(opcGroupPV);
+					jopcPV.connect();   //连接
+					jopcPV.registerGroups();  //注册组
+
+					//OpcItem ImiOpcItem = getImiOpcItem(opcTVName);
+					//imiOpcItemTVList.add(ImiOpcItem);
+				}
 			}
         } catch (Exception e) {
 			// TODO Auto-generated catch block
