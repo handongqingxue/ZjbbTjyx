@@ -124,7 +124,7 @@ public class OPCController {
 
 		Map<String,Object> json=new HashMap<String, Object>();
 		
-		ArrayList<OpcItem> opcItemList = OpcUtil.readJOpcTVMap();
+		ArrayList<OpcItem> opcItemList = OpcUtil.readJOpcTV();
 
 		APIUtil.addVar("addTriggerVarFromOpc",opcItemList);
 		
