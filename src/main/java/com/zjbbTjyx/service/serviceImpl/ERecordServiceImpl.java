@@ -124,6 +124,7 @@ public class ERecordServiceImpl implements ERecordService {
 					}
 					eRecord1.setNxtValue(updateTime);//反应结束时间是数据采集过程中记录的，与记录时间不是一回事
 					
+					/*
 					ERecord eRecord2=getFromList(Constant.PI_CI_JI_LU, batchID, eRecordList);
 					if(eRecord2==null) {
 						eRecord2=new ERecord();
@@ -137,6 +138,7 @@ public class ERecordServiceImpl implements ERecordService {
 						eRecordList.add(eRecord2);
 					}
 					eRecord2.setNxtValue(updateTime);
+					*/
 					
 					pvIdList.add(pvId);
 				}
@@ -161,6 +163,7 @@ public class ERecordServiceImpl implements ERecordService {
 					eRecord1.setPtnValue(varValue+"");
 					eRecord1.setUnit(unit);
 					
+					/*
 					ERecord eRecord2=getFromList(Constant.PI_CI_JI_LU, batchID, eRecordList);
 					if(eRecord2==null) {
 						eRecord2=new ERecord();
@@ -175,6 +178,7 @@ public class ERecordServiceImpl implements ERecordService {
 					}
 					eRecord2.setPtnValue(varValue+"");
 					eRecord2.setUnit(unit);
+					*/
 
 					pvIdList.add(pvId);
 				}
@@ -1356,19 +1360,33 @@ public class ERecordServiceImpl implements ERecordService {
 					String batchID = batchIDMap.get(pvFId).toString();
 					String updateTime = processVar.getUpdateTime();
 	
-					eRecord=getFromList(ERecord.YXKSPJDPJWCSJ, batchID, eRecordList);
-					if(eRecord==null) {
-						eRecord=new ERecord();
-						eRecord.setVarName(ERecord.YXKSPJDPJWCSJ);
-						eRecord.setRecType(pvRecType);
-						eRecord.setFId(pvFId);
-						eRecord.setRecordTime(recordTime);
-						eRecord.setBatchID(batchID);
-						eRecord.setPhaseName(Constant.PAI_JIAO);
+					ERecord eRecord1=getFromList(ERecord.YXKSPJDPJWCSJ, batchID, eRecordList);
+					if(eRecord1==null) {
+						eRecord1=new ERecord();
+						eRecord1.setVarName(ERecord.YXKSPJDPJWCSJ);
+						eRecord1.setRecType(pvRecType);
+						eRecord1.setFId(pvFId);
+						eRecord1.setRecordTime(recordTime);
+						eRecord1.setBatchID(batchID);
+						eRecord1.setPhaseName(Constant.PAI_JIAO);
 						
-						eRecordList.add(eRecord);
+						eRecordList.add(eRecord1);
 					}
-					eRecord.setNxtValue(updateTime);
+					eRecord1.setNxtValue(updateTime);
+					
+					ERecord eRecord2=getFromList(Constant.PI_CI_JI_LU, batchID, eRecordList);
+					if(eRecord2==null) {
+						eRecord2=new ERecord();
+						eRecord2.setVarName(Constant.PI_CI_JI_LU);
+						eRecord2.setRecType(pvRecType);
+						eRecord2.setFId(pvFId);
+						eRecord2.setRecordTime(recordTime);
+						eRecord2.setBatchID(batchID);
+						eRecord2.setRemark(ERecord.WSCBB+"");
+						
+						eRecordList.add(eRecord2);
+					}
+					eRecord2.setNxtValue(updateTime);
 
 					pvIdList.add(pvId);
 				}
@@ -1378,20 +1396,35 @@ public class ERecordServiceImpl implements ERecordService {
 					Float varValue = processVar.getVarValue();
 					String unit = processVar.getUnit();
 	
-					eRecord=getFromList(ERecord.YXKSPJDPJWCSJC, batchID, eRecordList);
-					if(eRecord==null) {
-						eRecord=new ERecord();
-						eRecord.setVarName(pvVarName);
-						eRecord.setRecType(pvRecType);
-						eRecord.setFId(pvFId);
-						eRecord.setRecordTime(recordTime);
-						eRecord.setBatchID(batchID);
-						eRecord.setPhaseName(Constant.PAI_JIAO);
+					ERecord eRecord1=getFromList(ERecord.YXKSPJDPJWCSJC, batchID, eRecordList);
+					if(eRecord1==null) {
+						eRecord1=new ERecord();
+						eRecord1.setVarName(pvVarName);
+						eRecord1.setRecType(pvRecType);
+						eRecord1.setFId(pvFId);
+						eRecord1.setRecordTime(recordTime);
+						eRecord1.setBatchID(batchID);
+						eRecord1.setPhaseName(Constant.PAI_JIAO);
 						
-						eRecordList.add(eRecord);
+						eRecordList.add(eRecord1);
 					}
-					eRecord.setPtnValue(varValue+"");
-					eRecord.setUnit(unit);
+					eRecord1.setPtnValue(varValue+"");
+					eRecord1.setUnit(unit);
+					
+					ERecord eRecord2=getFromList(Constant.PI_CI_JI_LU, batchID, eRecordList);
+					if(eRecord2==null) {
+						eRecord2=new ERecord();
+						eRecord2.setVarName(Constant.PI_CI_JI_LU);
+						eRecord2.setRecType(pvRecType);
+						eRecord2.setFId(pvFId);
+						eRecord2.setRecordTime(recordTime);
+						eRecord2.setBatchID(batchID);
+						eRecord2.setRemark(ERecord.WSCBB+"");
+						
+						eRecordList.add(eRecord2);
+					}
+					eRecord2.setPtnValue(varValue+"");
+					eRecord2.setUnit(unit);
 
 					pvIdList.add(pvId);
 				}
@@ -1539,6 +1572,7 @@ public class ERecordServiceImpl implements ERecordService {
 					}
 					eRecord1.setNxtValue(updateTime);//反应结束时间是数据采集过程中记录的，与记录时间不是一回事
 					
+					/*
 					ERecord eRecord2=getFromList(Constant.PI_CI_JI_LU, batchID, eRecordList);
 					if(eRecord2==null) {
 						eRecord2=new ERecord();
@@ -1552,6 +1586,7 @@ public class ERecordServiceImpl implements ERecordService {
 						eRecordList.add(eRecord2);
 					}
 					eRecord2.setNxtValue(updateTime);
+					*/
 
 					pvIdList.add(pvId);
 				}
@@ -1576,6 +1611,7 @@ public class ERecordServiceImpl implements ERecordService {
 					eRecord1.setPtnValue(varValue+"");
 					eRecord1.setUnit(unit);
 					
+					/*
 					ERecord eRecord2=getFromList(Constant.PI_CI_JI_LU, batchID, eRecordList);
 					if(eRecord2==null) {
 						eRecord2=new ERecord();
@@ -1590,6 +1626,7 @@ public class ERecordServiceImpl implements ERecordService {
 					}
 					eRecord2.setPtnValue(varValue+"");
 					eRecord2.setUnit(unit);
+					*/
 
 					pvIdList.add(pvId);
 				}
@@ -3011,6 +3048,7 @@ public class ERecordServiceImpl implements ERecordService {
 					}
 				}
 			}
+			//System.out.println("mWscBatchListSize===="+mWscBatchList.size());
 			
 			map.put("mWscBatchList",mWscBatchList);
 		}
@@ -3060,6 +3098,7 @@ public class ERecordServiceImpl implements ERecordService {
 					}
 				}
 			}
+			//System.out.println("mWscBatchListSize===="+mWscBatchList.size());
 			map.put("mWscBatchList",mWscBatchList);
 			map.put("uWscBatchList",uWscBatchList);
 			map.put("mYscGlueTypeList",mYscGlueTypeList);
