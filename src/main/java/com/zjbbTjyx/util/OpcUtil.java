@@ -799,7 +799,7 @@ public class OpcUtil {
 	            }
 	        }
 	        else {
-	    		opcItems = readJOpcPVInMap(opcVarNameList);
+	    		opcItems = readJOpcPV(opcVarNameList);
 	        }
 
 	        List<ProcessVar> proVarList=new ArrayList<ProcessVar>();
@@ -1868,8 +1868,8 @@ public class OpcUtil {
 		            jopcTV.connect();   //连接
 		            jopcTV.registerGroups();  //注册组
 		            
-		            //OpcItem ImiOpcItem = getImiOpcItem(opcTVName);
-		            //imiOpcItemTVList.add(ImiOpcItem);
+		            OpcItem ImiOpcItem = getImiOpcItem(opcTVName);
+		            imiOpcItemTVList.add(ImiOpcItem);
 		        }
 			}
 			
@@ -1969,7 +1969,7 @@ public class OpcUtil {
 	 * 读取opc服务器端触发器变量
 	 * @return
 	 */
-	public static ArrayList<OpcItem> readJOpcTVMap() {
+	public static ArrayList<OpcItem> readJOpcTV() {
 		ArrayList<OpcItem> opcItemList = new ArrayList<OpcItem>();
 		
         try {
@@ -2026,39 +2026,35 @@ public class OpcUtil {
 	 * @param opcPVNameList
 	 * @return
 	 */
-	public static ArrayList<OpcItem> readJOpcPVInMap(List<String> opcPVNameList) {
+	public static ArrayList<OpcItem> readJOpcPV(List<String> opcPVNameList) {
 		ArrayList<OpcItem> opcItemList = new ArrayList<OpcItem>();
-		OpcItem opcItem = null;
         try {
-	        OpcGroup responseGroup = null;
-        	Map<String,Object> jOpcPVMap=null;
+			synchronized(sriePV) {
+				sriePV.wait(50);
+			}
+			
+	        OpcGroup responseGroup = jopcPV.synchReadGroup(opcGroupPV);
+	        ArrayList<OpcItem> opcItems = responseGroup.getItems();
         	
         	for (String opcPVName : opcPVNameList) {//遍历变量名集合，判断变量是否存在
             	boolean exist=false;
-            	if(opcPVNameExistList!=null) {
-	        		for (String opcPVNameExist : opcPVNameExistList) {
-	        			if(opcPVNameExist.equals(opcPVName)) {
-	        				exist=true;
-	        				break;
-	        			}
-	        		}
-            	}
-        		
-        		if(exist) {//存在的话则直接从jopcmap里读取
-            		jOpcPVMap=(Map<String,Object>)jOpcPVNameMap.get(opcPVName);
-            		JOpc jOpc=(JOpc)jOpcPVMap.get("jopc");
-            		OpcGroup group=(OpcGroup)jOpcPVMap.get("group");
-    				responseGroup = jOpc.synchReadGroup(group);
-    		        ArrayList<OpcItem> opcItems = responseGroup.getItems();
-    		        opcItem = opcItems.get(0);
-    		        String valueStr = opcItem.getValue().toString();
-    		        if(StringUtils.isEmpty(valueStr)) {
-    		        	opcItem.setValue(new Variant(0));
-    		        }
-    		        System.out.println("getItemName==="+opcItem.getItemName()+",getValue==="+opcItem.getValue().toString());
-    				opcItemList.add(opcItem);
-        		}
-        		else {//不存在则从模拟变量集合里获取
+            	
+            	for (OpcItem opcItem : opcItems) {
+    	        	String itemName = opcItem.getItemName();
+    	        	if(itemName.equals(opcPVName)) {
+    	        		String valueStr = opcItem.getValue().toString();
+        		        if(StringUtils.isEmpty(valueStr)) {
+        		        	opcItem.setValue(new Variant(0));
+        		        }
+        		        System.out.println("getItemName==="+itemName+",getValue==="+valueStr);
+        				opcItemList.add(opcItem);
+        				
+        				exist=true;
+        				break;
+    	        	}
+    			}
+            	
+        		if(!exist) {//不存在则从模拟变量集合里获取
         			for (OpcItem imiOpcItemPV : imiOpcItemPVList) {
 						if(imiOpcItemPV.getItemName().equals(opcPVName)) {
 							opcItemList.add(imiOpcItemPV);
