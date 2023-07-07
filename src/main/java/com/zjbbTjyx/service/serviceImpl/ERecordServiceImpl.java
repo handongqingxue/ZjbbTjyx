@@ -2979,7 +2979,8 @@ public class ERecordServiceImpl implements ERecordService {
 					batchNumStr="0"+batchNum;
 				else
 					batchNumStr=""+batchNum;
-				String batchID=recType+"A"+year+batchNumStr;
+				String jzlx=OpcUtil.readJZLXByFId(fId);
+				String batchID=recType+jzlx+year+batchNumStr;
 				
 				batchIDMap.put(fId, batchID);
 			}

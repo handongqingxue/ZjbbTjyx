@@ -619,6 +619,11 @@ public class Constant {
 	public static final String CHENG_ZHONG="称重";
 	
 	/**
+	 * 胶种类型
+	 */
+	public static final String JIAO_ZHONG_LEI_XING="胶种类型";
+	
+	/**
 	 * 反应釜
 	 */
 	public static final String FAN_YING_FU="反应釜";
