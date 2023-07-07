@@ -87,7 +87,7 @@ public class OPCController {
 
 		List<String> opcTVNameList=OpcUtil.getOpcTVNameList();
 		
-		OpcUtil.initJOpcTVMap(opcTVNameList);
+		OpcUtil.initJOpcTV(opcTVNameList);
 		
 		json.put("status", "ok");
 		
@@ -107,7 +107,7 @@ public class OPCController {
 		List<String> opcPVNameList=OpcUtil.getOpcPVNameList();
 		//System.out.println("opcPVNameList==="+opcPVNameList.toString());
 		
-		OpcUtil.initJOpcPVMap(opcPVNameList);
+		OpcUtil.initJOpcPV(opcPVNameList);
 		
 		json.put("status", "ok");
 		
@@ -138,8 +138,8 @@ public class OPCController {
 		Map<String,Object> json=new HashMap<String, Object>();
 		
 		List<String> opcPVNameList=OpcUtil.getOpcPVNameList();
-		OpcUtil.initJOpcPVMap(opcPVNameList);
-		OpcUtil.readJOpcPVInMap(opcPVNameList);
+		OpcUtil.initJOpcPV(opcPVNameList);
+		OpcUtil.readJOpcPV(opcPVNameList);
 		
 		return json;
 	}
@@ -432,11 +432,13 @@ public class OPCController {
 				}
 			}
 	
+			/*
 			if (fyjsFIdList.size() > 0) {//若有需要处理的反应结束节点的反应釜，说明这些反应釜的批次执行完成，就从过程变量表(ProcessVar)里读取已采集好的变量，经过加工处理存入批记录表(ERecord)里
 				List<ProcessVar> udProVarList = processVarService.getUnDealListByFIdList(fyjsFIdList);
 				int c = eRecordService.addFromProVarList(udProVarList);
 				eRecordService.clearBatchIDMap(fyjsFIdList);
 			}
+			*/
 
 			
 			//甲醛备料开始
@@ -2233,6 +2235,7 @@ public class OPCController {
 		
 		
 			//排胶完成
+			List<Integer> pjwcFIdList = new ArrayList<Integer>();//排胶完成反应釜号集合(M类和U类共用)
 			String pjwcTVVarNamePre=Constant.PAI_JIAO_WAN_CHENG;
 			List<TriggerVar> pjwcTVList = (List<TriggerVar>) triggerVarMap.get(pjwcTVVarNamePre);//先获取所有反应釜排胶完成触发量,不管是否是上升沿
 			List<TriggerVar> upPjwcTVList = getUpDownVarValueListFromList(pjwcTVList, TriggerVar.UP);//获取上升的排胶完成变量
@@ -2245,6 +2248,7 @@ public class OPCController {
 						paramF1Map.put("upPjwcTV",upPjwcTV);
 						paramF1Map.put("preValueFMMap",preValueF1MMap);
 						paramF1Map.put("preValueFUMap",preValueF1UMap);
+						paramF1Map.put("pjwcFIdList",pjwcFIdList);
 						addProVarByParamMap(paramF1Map);
 						break;
 					case Constant.F2_ID:
@@ -2253,6 +2257,7 @@ public class OPCController {
 						paramF2Map.put("upPjwcTV",upPjwcTV);
 						paramF2Map.put("preValueFMMap",preValueF2MMap);
 						paramF2Map.put("preValueFUMap",preValueF2UMap);
+						paramF2Map.put("pjwcFIdList",pjwcFIdList);
 						addProVarByParamMap(paramF2Map);
 						break;
 					case Constant.F3_ID:
@@ -2261,6 +2266,7 @@ public class OPCController {
 						paramF3Map.put("upPjwcTV",upPjwcTV);
 						paramF3Map.put("preValueFMMap",preValueF3MMap);
 						paramF3Map.put("preValueFUMap",preValueF3UMap);
+						paramF3Map.put("pjwcFIdList",pjwcFIdList);
 						addProVarByParamMap(paramF3Map);
 						break;
 					case Constant.F4_ID:
@@ -2269,6 +2275,7 @@ public class OPCController {
 						paramF4Map.put("upPjwcTV",upPjwcTV);
 						paramF4Map.put("preValueFMMap",preValueF4MMap);
 						paramF4Map.put("preValueFUMap",preValueF4UMap);
+						paramF4Map.put("pjwcFIdList",pjwcFIdList);
 						addProVarByParamMap(paramF4Map);
 						break;
 					case Constant.F5_ID:
@@ -2277,10 +2284,18 @@ public class OPCController {
 						paramF5Map.put("upPjwcTV",upPjwcTV);
 						paramF5Map.put("preValueFMMap",preValueF5MMap);
 						paramF5Map.put("preValueFUMap",preValueF5UMap);
+						paramF5Map.put("pjwcFIdList",pjwcFIdList);
 						addProVarByParamMap(paramF5Map);
 						break;
 				}
 			}
+			
+			System.out.println("pjwcFIdListSize==="+pjwcFIdList.size());
+			if (pjwcFIdList.size() > 0) {//若有需要处理的排胶完成节点的反应釜，说明这些反应釜的批次执行完成，就从过程变量表(ProcessVar)里读取已采集好的变量，经过加工处理存入批记录表(ERecord)里
+				List<ProcessVar> udProVarList = processVarService.getUnDealListByFIdList(pjwcFIdList);
+				int c = eRecordService.addFromProVarList(udProVarList);
+				eRecordService.clearBatchIDMap(pjwcFIdList);
+			}			
 		
 			updateProTVListByCurrList(triggerVarList);//这个方法用来存储本次变量值，作为下次检索里的上次变量值来使用。每次检索结束后都要记录一下
 	
@@ -3343,13 +3358,16 @@ public class OPCController {
 			}
 		}
 		else if(Constant.PAI_JIAO_WAN_CHENG.equals(tvVarNamePre)) {
+			List<Integer> pjwcFIdList=(List<Integer>)paramMap.get("pjwcFIdList");
 			TriggerVar upPjwcTV = (TriggerVar)paramMap.get("upPjwcTV");
+			Integer upFId = upPjwcTV.getFId();
 			String upRecType = upPjwcTV.getRecType();//获取配方类型
 			if(TriggerVar.M.equals(upRecType)) {
 				HashMap<String, Object> preValueFMMap = (HashMap<String,Object>)paramMap.get("preValueFMMap");
 				String upVarName = upPjwcTV.getVarName();
 				Float preValue = Float.valueOf(preValueFMMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
+					pjwcFIdList.add(upFId);
 					List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
 					opcTVList.add(upPjwcTV);
 					Map<String, Object> pjwcMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据排胶完成变量从opc端查找对应的过程变量
@@ -3381,6 +3399,7 @@ public class OPCController {
 				String upVarName = upPjwcTV.getVarName();
 				Float preValue = Float.valueOf(preValueFUMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
+					pjwcFIdList.add(upFId);
 					List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
 					opcTVList.add(upPjwcTV);
 					Map<String, Object> pjwcUResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据排胶完成变量从opc端查找对应的过程变量

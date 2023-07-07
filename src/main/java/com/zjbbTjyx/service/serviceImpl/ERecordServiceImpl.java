@@ -2846,11 +2846,14 @@ public class ERecordServiceImpl implements ERecordService {
 			}
 		}
 		
+		System.out.println("eRecordListSize==="+eRecordList.size());
+		
 		//处理完批记录集合的信息后，通过循环一起插入数据库表
 		for (ERecord eRecordItem : eRecordList) {
 			count+=eRecordMapper.add(eRecordItem);
 		}
 		
+		System.out.println("pvIdListSize"+pvIdList.size());
 		if(pvIdList.size()>0) {
 			processVarMapper.updateDealBzByIdList(ProcessVar.YCL,pvIdList);
 		}

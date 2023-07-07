@@ -1810,7 +1810,7 @@ public class OpcUtil {
 	 * 初始化opc服务器端触发器变量map(为了判断变量是否存在与opc服务器上，只能单个读取,包括触发器变量和过程变量.若opc端不存在某个变量,就用模拟变量代替.读取完单个变量后,一个个放进map里)
 	 * @param opcTVNameList
 	 */
-	public static void initJOpcTVMap(List<String> opcTVNameList) {
+	public static void initJOpcTV(List<String> opcTVNameList) {
         try {
         	imiOpcItemTVList=new ArrayList<OpcItem>();
 
@@ -1839,7 +1839,7 @@ public class OpcUtil {
 				opcGroupTV.addItem(opcItem);
 				if(jopcTV.getGroupsAsArray().length==0)
 					jopcTV.addGroup(opcGroupTV);   //添加组
-				System.out.println("aaa==="+jopcTV.getGroupsAsArray().length);
+				//System.out.println("aaa==="+jopcTV.getGroupsAsArray().length);
 
 		        try {
 		        	jopcTV.connect();   //连接
@@ -1890,7 +1890,7 @@ public class OpcUtil {
 	 * 根据变量名集合，初始化jopc过程变量map
 	 * @param opcPVNameList
 	 */
-	public static void initJOpcPVMap(List<String> opcPVNameList) {
+	public static void initJOpcPV(List<String> opcPVNameList) {
         try {
         	imiOpcItemPVList=new ArrayList<OpcItem>();
 
@@ -1919,7 +1919,7 @@ public class OpcUtil {
 				opcGroupPV.addItem(opcItem);
 				if(jopcPV.getGroupsAsArray().length==0)
 					jopcPV.addGroup(opcGroupPV);   //添加组
-				System.out.println("aaa==="+jopcPV.getGroupsAsArray().length);
+				//System.out.println("aaa==="+jopcPV.getGroupsAsArray().length);
 
 				try {
 					jopcPV.connect();   //连接
@@ -1934,10 +1934,10 @@ public class OpcUtil {
 				} catch (UnableAddItemException e) {
 					System.out.println("UnableAddItemException="+e.getMessage());
 					//logger.error(e.getMessage());
-					//ArrayList<OpcItem> its = opcGroupTV.getItems();
+					//ArrayList<OpcItem> its = opcGroupPV.getItems();
 					//System.out.println("its1==="+its.size());
 					opcGroupPV.removeItem(opcItem);
-					//its = opcGroupTV.getItems();
+					//its = opcGroupPV.getItems();
 					//System.out.println("its2==="+its.size());
 
 					jopcPV.removeGroup(opcGroupPV);
@@ -1945,8 +1945,8 @@ public class OpcUtil {
 					jopcPV.connect();   //连接
 					jopcPV.registerGroups();  //注册组
 
-					//OpcItem ImiOpcItem = getImiOpcItem(opcTVName);
-					//imiOpcItemTVList.add(ImiOpcItem);
+					OpcItem ImiOpcItem = getImiOpcItem(opcPVName);
+					imiOpcItemPVList.add(ImiOpcItem);
 				}
 			}
         } catch (Exception e) {
