@@ -548,7 +548,7 @@ public class OpcUtil {
 					
 					opcVarNameList.add(fhczOpcVarName);
 				}
-				else if (tv1VarName.startsWith(Constant.ZHU_JI_LIU_ER_CI_BEI_LIAO_WAN_CHENG+Constant.XHX)){//助剂六二次备料完成
+				else if (tv1VarName.startsWith(Constant.ZHU_JI_6_ER_CI_BEI_LIAO_WAN_CHENG+Constant.XHX)){//助剂6二次备料完成
 					Integer tvFId = triggerVar1.getFId();
 					String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
 					
@@ -1108,12 +1108,12 @@ public class OpcUtil {
 			                    varName=ERecord.ZJLYCTJWCSSYFCZ;//助剂6一次添加完成上升沿釜称重
 			                }
 			            }
-			        	else if(tv1VarName.startsWith(Constant.ZHU_JI_LIU_ER_CI_BEI_LIAO_WAN_CHENG+Constant.XHX)) {//助剂六二次备料完成
+			        	else if(tv1VarName.startsWith(Constant.ZHU_JI_6_ER_CI_BEI_LIAO_WAN_CHENG+Constant.XHX)) {//助剂6二次备料完成
 			        		if (itemName.startsWith(Constant.SUAN_JI_LIANG_TONG_CHENG_ZHONG)){
-			                    varName=ERecord.ZJLECBLWCSSYSJLTCZ;//助剂六二次备料完成上升沿酸计量筒称重
+			                    varName=ERecord.ZJLECBLWCSSYSJLTCZ;//助剂6二次备料完成上升沿酸计量筒称重
 			                }
 			                else if (itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)){
-			                    varName=ERecord.ZJLECBLWCSSYFCZ;//助剂六二次备料完成上升沿釜称重
+			                    varName=ERecord.ZJLECBLWCSSYFCZ;//助剂6二次备料完成上升沿釜称重
 			                }
 			        	}
 						else if(tv1VarName.startsWith(Constant.ZHU_JI_6_ER_CI_TIAN_JIA_WAN_CHENG+Constant.XHX)){//助剂6二次添加完成
@@ -1421,8 +1421,8 @@ public class OpcUtil {
 				else if(tv1VarName.startsWith(Constant.ZHU_JI_6_YI_CI_TIAN_JIA_WAN_CHENG+Constant.XHX)) { //助剂6一次添加完成
 					itemName = ERecord.ZJLYCTJWCSSYSJ;//助剂6一次添加完成上升沿时间
 				}
-				else if(tv1VarName.startsWith(Constant.ZHU_JI_LIU_ER_CI_BEI_LIAO_WAN_CHENG+Constant.XHX)) { //助剂六二次备料完成
-					itemName = ERecord.ZJLECBLWCSSYSJ;//助剂六二次备料完成上升沿时间
+				else if(tv1VarName.startsWith(Constant.ZHU_JI_6_ER_CI_BEI_LIAO_WAN_CHENG+Constant.XHX)) { //助剂6二次备料完成
+					itemName = ERecord.ZJLECBLWCSSYSJ;//助剂6二次备料完成上升沿时间
 				}
 				else if(tv1VarName.startsWith(Constant.ZHU_JI_6_ER_CI_TIAN_JIA_WAN_CHENG+Constant.XHX)) { //助剂6二次添加完成
 					itemName = ERecord.ZJLECTJWCSSYSJ;//助剂6二次添加完成上升沿时间
@@ -1494,7 +1494,7 @@ public class OpcUtil {
 				   tv1VarName.startsWith(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.XHX)||
 				   tv1VarName.startsWith(Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+Constant.XHX)||
 				   tv1VarName.startsWith(Constant.ZHU_JI_6_YI_CI_TIAN_JIA_WAN_CHENG+Constant.XHX)||
-				   tv1VarName.startsWith(Constant.ZHU_JI_LIU_ER_CI_BEI_LIAO_WAN_CHENG+Constant.XHX)||
+				   tv1VarName.startsWith(Constant.ZHU_JI_6_ER_CI_BEI_LIAO_WAN_CHENG+Constant.XHX)||
 				   tv1VarName.startsWith(Constant.ZHU_JI_6_ER_CI_TIAN_JIA_WAN_CHENG+Constant.XHX)||
 				   tv1VarName.startsWith(Constant.JIA_FEN_LIAO_TI_XING+Constant.XHX)&&tv2VarName!=null&&itemName.contains(Constant.SHI_JIAN)||
 				   tv1VarName.startsWith(Constant.SHENG_WEN_KAI_SHI+Constant.XHX)||
@@ -1726,7 +1726,7 @@ public class OpcUtil {
     	opcTVNamePreUList.add(Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG);//加碱PH值正常
     	opcTVNamePreUList.add(Constant.KAI_SHI_JIA_LIAO);//开始加料
     	opcTVNamePreUList.add(Constant.ZHU_JI_6_YI_CI_TIAN_JIA_WAN_CHENG);//助剂6一次添加完成
-    	opcTVNamePreUList.add(Constant.ZHU_JI_LIU_ER_CI_BEI_LIAO_WAN_CHENG);//助剂六二次备料完成
+    	opcTVNamePreUList.add(Constant.ZHU_JI_6_ER_CI_BEI_LIAO_WAN_CHENG);//助剂6二次备料完成
     	opcTVNamePreUList.add(Constant.ZHU_JI_6_ER_CI_TIAN_JIA_WAN_CHENG);//助剂6二次添加完成
     	opcTVNamePreUList.add(Constant.JIA_FEN_LIAO_TI_XING);//加粉料提醒
     	opcTVNamePreUList.add(Constant.SHENG_WEN_KAI_SHI);//升温开始
@@ -1792,8 +1792,8 @@ public class OpcUtil {
 		}
 		
 		for (String pFM : Constant.BSF_PF_M_ARR) {
-			opcPVNameList.add(Constant.JIA_JIAN_LIANG_TI_SHI+Constant.XHX+pFM+Constant.XHX+Constant.AV);//加碱量提示---F2找不到
-			opcPVNameList.add("加碱量范围上限"+Constant.XHX+pFM+Constant.XHX+Constant.AV);//加碱量范围上限----这个F3-F5没有变量
+			opcPVNameList.add(Constant.JIA_JIAN_LIANG_TI_SHI+Constant.XHX+pFM+Constant.XHX+Constant.AV);//加碱量提示
+			opcPVNameList.add(Constant.JIA_JIAN_LIANG_FAN_WEI_XIA_XIAN+Constant.XHX+pFM+Constant.XHX+Constant.AV);//加碱量范围下限
 			opcPVNameList.add(Constant.FEN_LIAO_ZHONG_LIANG_SHE_DING+Constant.XHX+pFM+Constant.XHX+Constant.AV);//粉料重量设定
 		}
 		
@@ -1801,7 +1801,6 @@ public class OpcUtil {
 		
     	List<String> opcPVNamePreList=new ArrayList<String>();//前缀集合
 
-    	opcPVNamePreList.add(Constant.DANG_QIAN_JIAO_ZHONG_XIAN_SHI);//当前胶种显示---这个变量的值是0.0
     	opcPVNamePreList.add(Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG);//甲醛实际进料重量前缀
     	opcPVNamePreList.add(Constant.JIA_SHUI_SHI_JI_ZHONG_LIANG);//加水实际重量
     	opcPVNamePreList.add(Constant.JIA_JIAN_QIAN_PH_SHU_RU_ZHI);//加碱前PH输入值
@@ -1861,6 +1860,7 @@ public class OpcUtil {
 						opcTVName.startsWith(Constant.ZHU_JI_6_YI_CI_TIAN_JIA_WAN_CHENG)||//助剂6一次添加完成
 						opcTVName.startsWith(Constant.JIA_JIAN_LIANG_FAN_WEI_XIA_XIAN)||//加碱量范围下限
 						opcTVName.startsWith(Constant.ER_CI_JIA_215_WAN_CHENG)||//二次加215完成
+						opcTVName.startsWith(Constant.ER_CI_JIA_SHUI_HE_XIAO_LIAO_TI_XING)||//二次加水和小料提醒
 						opcTVName.startsWith(Constant.ER_CI_JIA_SHUI_QI_DONG)||//二次加水启动
 						opcTVName.startsWith(Constant.ER_CI_JIA_SHUI_WAN_CHENG)//二次加水完成
 					) {
@@ -1941,6 +1941,7 @@ public class OpcUtil {
 						opcPVName.startsWith(Constant.ZHU_JI_6_YI_CI_TIAN_JIA_WAN_CHENG)||//助剂6一次添加完成
 						opcPVName.startsWith(Constant.JIA_JIAN_LIANG_FAN_WEI_XIA_XIAN)||//加碱量范围下限
 						opcPVName.startsWith(Constant.ER_CI_JIA_215_WAN_CHENG)||//二次加215完成
+						opcPVName.startsWith(Constant.ER_CI_JIA_SHUI_HE_XIAO_LIAO_TI_XING)||//二次加水和小料提醒
 						opcPVName.startsWith(Constant.ER_CI_JIA_SHUI_QI_DONG)||//二次加水启动
 						opcPVName.startsWith(Constant.ER_CI_JIA_SHUI_WAN_CHENG)//二次加水完成
 					) {
@@ -2018,6 +2019,7 @@ public class OpcUtil {
 						itemName.startsWith(Constant.ZHU_JI_6_YI_CI_TIAN_JIA_WAN_CHENG)||//助剂6一次添加完成
 						itemName.startsWith(Constant.JIA_JIAN_LIANG_FAN_WEI_XIA_XIAN)||//加碱量范围下限
 						itemName.startsWith(Constant.ER_CI_JIA_215_WAN_CHENG)||//二次加215完成
+						itemName.startsWith(Constant.ER_CI_JIA_SHUI_HE_XIAO_LIAO_TI_XING)||//二次加水和小料提醒
 						itemName.startsWith(Constant.ER_CI_JIA_SHUI_QI_DONG)||//二次加水启动
 						itemName.startsWith(Constant.ER_CI_JIA_SHUI_WAN_CHENG)//二次加水完成
 					) {
@@ -2119,7 +2121,7 @@ public class OpcUtil {
 		char preChar = varName.charAt(varName.length()-5);
 		char nxtChar = varName.charAt(varName.length()-4);
 		//System.out.println("preChar==="+preChar+",nxtChar==="+nxtChar);
-		varName=varName.replace(preChar, nxtChar);
+		varName=varName.replace(preChar+""+nxtChar+"_AV", nxtChar+""+nxtChar+"_AV");
 		//System.out.println("varName==="+varName);
 		varName=varName.replace(nxtChar+""+nxtChar, nxtChar+""+preChar);
 		//System.out.println("itemName==="+varName);
@@ -2161,7 +2163,7 @@ public class OpcUtil {
 		   itemName.startsWith(Constant.PAI_JIAO_WAN_CHENG)||//排胶完成
 		   itemName.startsWith(Constant.KAI_SHI_JIA_LIAO)||//开始加料
 		   itemName.startsWith(Constant.ZHU_JI_6_YI_CI_TIAN_JIA_WAN_CHENG)||//助剂6一次添加完成
-		   itemName.startsWith(Constant.ZHU_JI_LIU_ER_CI_BEI_LIAO_WAN_CHENG)||//助剂六二次备料完成
+		   itemName.startsWith(Constant.ZHU_JI_6_ER_CI_BEI_LIAO_WAN_CHENG)||//助剂6二次备料完成
 		   itemName.startsWith(Constant.ZHU_JI_6_ER_CI_TIAN_JIA_WAN_CHENG)||//助剂6二次添加完成
 		   itemName.startsWith(Constant.DI_YI_CI_BAO_WEN_QI_DONG)||//第一次保温启动
 		   itemName.startsWith(Constant.DI_YI_CI_BAO_WEN_HE_GE)||//第一次保温合格
@@ -2176,11 +2178,9 @@ public class OpcUtil {
 		   itemName.startsWith(Constant.FAN_YING_FU)&&itemName.endsWith(Constant.WEN_DU+Constant.XHX+Constant.AV)||//反应釜温度
 		   itemName.startsWith(Constant.FU)&&itemName.endsWith(Constant.CHENG_ZHONG+Constant.XHX+Constant.AV)||//釜称重
 		   itemName.startsWith(Constant.JIA_JIAN_LIANG_TI_SHI)||//加碱量提示
-		   itemName.startsWith("加碱量范围上限")||
+		   itemName.startsWith(Constant.JIA_JIAN_LIANG_FAN_WEI_XIA_XIAN)||//加碱量范围下限
 		   itemName.startsWith(Constant.FEN_LIAO_ZHONG_LIANG_SHE_DING)||//粉料重量设定
 		   itemName.startsWith(Constant.ZHENG_QI_YA_LI)||//蒸汽压力
-		   itemName.startsWith("反应釜1胶种类型")||
-		   itemName.startsWith(Constant.DANG_QIAN_JIAO_ZHONG_XIAN_SHI)||//当前胶种显示
 		   itemName.startsWith(Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG)||//甲醛实际进料重量
 		   itemName.startsWith(Constant.JIA_SHUI_SHI_JI_ZHONG_LIANG)||//加水实际重量
 		   itemName.startsWith(Constant.JIA_JIAN_QIAN_PH_SHU_RU_ZHI)||//加碱前PH输入值

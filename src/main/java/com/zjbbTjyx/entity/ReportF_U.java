@@ -331,20 +331,20 @@ public class ReportF_U {
 
     //YSD215二次-11
     /**
-     * 助剂六二次备料完成酸计量筒称重行号
+     * 助剂6二次备料完成酸计量筒称重行号
      */
     public static final int ZJLECBLWCSJLTCZ_RN=12;
     /**
-     * 助剂六二次备料完成酸计量筒称重列号
+     * 助剂6二次备料完成酸计量筒称重列号
      */
     public static final int ZJLECBLWCSJLTCZ_CN=3;
 
     /**
-     * 助剂六二次备料完成时间行号
+     * 助剂6二次备料完成时间行号
      */
     public static final int ZJLECBLWCSJ_RN=12;
     /**
-     * 助剂六二次备料完成时间列号
+     * 助剂6二次备料完成时间列号
      */
     public static final int ZJLECBLWCSJ_CN=4;
     /**
@@ -364,11 +364,11 @@ public class ReportF_U {
      */
     public static final int ZJLECTJWCFYFWD_CN=6;
     /**
-     * 助剂六二次备料完成釜称重行号
+     * 助剂6二次备料完成釜称重行号
      */
     public static final int ZJLECBLWCFCZ_RN=12;
     /**
-     * 助剂六二次备料完成釜称重列号
+     * 助剂6二次备料完成釜称重列号
      */
     public static final int ZJLECBLWCFCZ_CN=8;
     /**
@@ -380,11 +380,11 @@ public class ReportF_U {
      */
     public static final int ZJLECTJWCFCZ_CN=9;
     /**
-     * 助剂六二次备料完成到添加完成重量差行号
+     * 助剂6二次备料完成到添加完成重量差行号
      */
     public static final int ZJLECBLWCDTJWCZLC_RN=12;
     /**
-     * 助剂六二次备料完成到添加完成重量差列号
+     * 助剂6二次备料完成到添加完成重量差列号
      */
     public static final int ZJLECBLWCDTJWCZLC_CN=10;
     /**
@@ -392,7 +392,7 @@ public class ReportF_U {
      */
     public static final int ZJLECBLWCDTJWCSJC_RN=12;
     /**
-     * 助剂六二次备料完成到添加完成时间差列号
+     * 助剂6二次备料完成到添加完成时间差列号
      */
     public static final int ZJLECBLWCDTJWCSJC_CN=11;
     

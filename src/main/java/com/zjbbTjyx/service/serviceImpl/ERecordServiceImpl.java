@@ -21,7 +21,7 @@ public class ERecordServiceImpl implements ERecordService {
     @Autowired
     private ERecordMapper eRecordMapper;
     private HashMap<Integer,String> batchIDMap=new HashMap<Integer,String>();
-
+    
 	public int addFromProVarList(List<ProcessVar> processVarList) {
 		// TODO Auto-generated method stub
 		int count=0;
@@ -2062,7 +2062,7 @@ public class ERecordServiceImpl implements ERecordService {
 
 					pvIdList.add(pvId);
 				}//YSD215一次阶段结束
-				else if(pvVarName.startsWith(ERecord.ZJLECBLWCSSYSJLTCZ)) {//助剂六二次备料完成上升沿酸计量筒称重   //YSD215二次阶段开始
+				else if(pvVarName.startsWith(ERecord.ZJLECBLWCSSYSJLTCZ)) {//助剂6二次备料完成上升沿酸计量筒称重   //YSD215二次阶段开始
 					Float pvVarValue = processVar.getVarValue();
 					Integer pvFId = processVar.getFId();
 					String batchID = batchIDMap.get(pvFId).toString();
@@ -2080,7 +2080,7 @@ public class ERecordServiceImpl implements ERecordService {
 
 					pvIdList.add(pvId);
 				}
-				else if(pvVarName.startsWith(ERecord.ZJLECBLWCSSYSJ)) {//助剂六二次备料完成上升沿时间
+				else if(pvVarName.startsWith(ERecord.ZJLECBLWCSSYSJ)) {//助剂6二次备料完成上升沿时间
 					Integer pvFId = processVar.getFId();
 					String batchID = batchIDMap.get(pvFId).toString();
 					String updateTime = processVar.getUpdateTime();
@@ -2142,7 +2142,7 @@ public class ERecordServiceImpl implements ERecordService {
 
 					pvIdList.add(pvId);
 				}
-				else if(pvVarName.startsWith(ERecord.ZJLECBLWCSSYFCZ)) {//助剂六二次备料完成上升沿釜称重
+				else if(pvVarName.startsWith(ERecord.ZJLECBLWCSSYFCZ)) {//助剂6二次备料完成上升沿釜称重
 					Integer pvFId = processVar.getFId();
 					String batchID = batchIDMap.get(pvFId).toString();
 					Float varValue = processVar.getVarValue();
@@ -2186,7 +2186,7 @@ public class ERecordServiceImpl implements ERecordService {
 
 					pvIdList.add(pvId);
 				}
-				else if(pvVarName.startsWith(ERecord.ZJLECBLWCDZJLECTJWCFZLC)) {//助剂六二次备料完成到助剂6二次添加完成釜重量差
+				else if(pvVarName.startsWith(ERecord.ZJLECBLWCDZJLECTJWCFZLC)) {//助剂6二次备料完成到助剂6二次添加完成釜重量差
 					Integer pvFId = processVar.getFId();
 					String batchID = batchIDMap.get(pvFId).toString();
 					Float varValue = processVar.getVarValue();
@@ -2209,7 +2209,7 @@ public class ERecordServiceImpl implements ERecordService {
 
 					pvIdList.add(pvId);
 				}
-				else if(pvVarName.startsWith(ERecord.ZJLECBLWCDZJLECTJWCSJC)) {//助剂六二次备料完成到助剂6二次添加完成时间差
+				else if(pvVarName.startsWith(ERecord.ZJLECBLWCDZJLECTJWCSJC)) {//助剂6二次备料完成到助剂6二次添加完成时间差
 					Integer pvFId = processVar.getFId();
 					String batchID = batchIDMap.get(pvFId).toString();
 					Float varValue = processVar.getVarValue();
@@ -2798,7 +2798,7 @@ public class ERecordServiceImpl implements ERecordService {
 
 					pvIdList.add(pvId);
 				}//二次降温阶段结束
-				else if(pvVarName.startsWith(Constant.JIA_JIA_LIANG_FAN_WEI_XIA_XIAN)) {//加碱量范围下限   //加碱阶段开始
+				else if(pvVarName.startsWith(Constant.JIA_JIAN_LIANG_FAN_WEI_XIA_XIAN)) {//加碱量范围下限   //加碱阶段开始
 					Float pvVarValue = processVar.getVarValue();
 					String pvUnit = processVar.getUnit();
 					Integer pvFId = processVar.getFId();
@@ -2887,18 +2887,24 @@ public class ERecordServiceImpl implements ERecordService {
 		
 		//处理完批记录集合的信息后，通过循环一起插入数据库表
 		for (ERecord eRecordItem : eRecordList) {
+			
 			//在这里写逻辑，凡是batchid第二位是C的说明是U类胶。徐龙那边写的有点问题，咱这边暂时处理下，验证下第一位是不是U，不是的话就把M替换为U,替换之后再验证下RecType是不是U，不是的话也把M替换为U
 			String batchID = eRecordItem.getBatchID();
 			String index2 = batchID.substring(1,2);
 			String index1 = batchID.substring(0,1);
-			if (index2=="C"){
-				if (index1=="M"){
+			if ("C".equals(index2)){
+				if ("M".equals(index1)){
 					String substring = batchID.substring(1);
 					String newBatchID = "U" + substring;
 					eRecordItem.setBatchID(newBatchID);
+					
+				}
+				String recType = eRecordItem.getRecType();
+				if("M".equals(recType)) {
 					eRecordItem.setRecType("U");
 				}
 			}
+			
 			count+=eRecordMapper.add(eRecordItem);
 		}
 		
@@ -3931,7 +3937,7 @@ public class ERecordServiceImpl implements ERecordService {
 					ptnVarMap.put(Constant.COL_NUMBER, ReportF_U.JJPHZZCDZJLYCTJWCSJC_CN);
 					varMapList.add(ptnVarMap);
 				}
-				else if (ERecord.ZJLECBLWCSSYSJLTCZ.equals(varName)){//助剂六二次备料完成酸计量筒称重
+				else if (ERecord.ZJLECBLWCSSYSJLTCZ.equals(varName)){//助剂6二次备料完成酸计量筒称重
 					String varValue = eRecord.getVarValue();
 					String unit = eRecord.getUnit();
 
@@ -3941,7 +3947,7 @@ public class ERecordServiceImpl implements ERecordService {
 					varMap.put(Constant.COL_NUMBER, ReportF_U.ZJLECBLWCSJLTCZ_CN);
 					varMapList.add(varMap);
 				}
-				else if(ERecord.ZJLECBLWCDZJLECTJWCSJ.equals(varName)) {//助剂六二次备料完成到助剂6二次添加完成时间
+				else if(ERecord.ZJLECBLWCDZJLECTJWCSJ.equals(varName)) {//助剂6二次备料完成到助剂6二次添加完成时间
 					String preValue = eRecord.getPreValue();
 					String nxtValue = eRecord.getNxtValue();
 					String ptnValue = eRecord.getPtnValue();
@@ -3965,7 +3971,7 @@ public class ERecordServiceImpl implements ERecordService {
 					ptnVarMap.put(Constant.COL_NUMBER, ReportF_U.ZJLECBLWCDTJWCSJC_CN);
 					varMapList.add(ptnVarMap);
 				}
-				else if(ERecord.ZJLECBLWCDZJLECTJWCFZL.equals(varName)) {//助剂六二次备料完成到助剂6二次添加完成釜称重
+				else if(ERecord.ZJLECBLWCDZJLECTJWCFZL.equals(varName)) {//助剂6二次备料完成到助剂6二次添加完成釜称重
 					String preValue = eRecord.getPreValue();
 					String nxtValue = eRecord.getNxtValue();
 					String ptnValue = eRecord.getPtnValue();

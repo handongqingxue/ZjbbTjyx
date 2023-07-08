@@ -167,12 +167,12 @@ public class ReportF_UServiceImpl implements ReportF_UService {
 				int zjlyctjwcfyfwdColNumber=ReportF_U.ZJLYCTJWCFYFWD_CN;
 				reportF_UList.add(createByParams(zjlyctjwcfyfwdRowNumber, zjlyctjwcfyfwdColNumber, varValue+unit, batchID));
 			}
-			else if((Constant.ZHU_JI_LIU_ER_CI_BEI_LIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SUAN_JI_LIANG_TONG_CHENG_ZHONG).equals(varName)) {//剂六二次备料完成酸计量筒称重
+			else if((Constant.ZHU_JI_6_ER_CI_BEI_LIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SUAN_JI_LIANG_TONG_CHENG_ZHONG).equals(varName)) {//剂六二次备料完成酸计量筒称重
 				int zjlecblwcsjltczRowNumber=ReportF_U.ZJLECBLWCSJLTCZ_RN;
 				int zjlecblwcsjltczColNumber=ReportF_U.ZJLECBLWCSJLTCZ_CN;
 				reportF_UList.add(createByParams(zjlecblwcsjltczRowNumber, zjlecblwcsjltczColNumber, varValue, batchID));
 			}
-			else if((Constant.ZHU_JI_LIU_ER_CI_BEI_LIAO_WAN_CHENG+Constant.DAO+Constant.ZHU_JI_6_ER_CI_TIAN_JIA_WAN_CHENG+Constant.SHI_JIAN).equals(varName)) {//剂六二次备料完成到剂六二次添加完成时间
+			else if((Constant.ZHU_JI_6_ER_CI_BEI_LIAO_WAN_CHENG+Constant.DAO+Constant.ZHU_JI_6_ER_CI_TIAN_JIA_WAN_CHENG+Constant.SHI_JIAN).equals(varName)) {//剂六二次备料完成到剂六二次添加完成时间
 				int zjlecblwcsjRowNumber=ReportF_U.ZJLECBLWCSJ_RN;
 				int zjlecblwcsjColNumber=ReportF_U.ZJLECBLWCSJ_CN;
 				reportF_UList.add(createByParams(zjlecblwcsjRowNumber, zjlecblwcsjColNumber, preValue, batchID));
@@ -185,7 +185,7 @@ public class ReportF_UServiceImpl implements ReportF_UService {
 				int zjlectjwcdblwcsjcColNumber=ReportF_U.ZJLECBLWCDTJWCSJC_CN;
 				reportF_UList.add(createByParams(zjlectjwcdblwcsjcRowNumber, zjlectjwcdblwcsjcColNumber, ptnValue+unit, batchID));
 			}
-			else if((Constant.ZHU_JI_LIU_ER_CI_BEI_LIAO_WAN_CHENG+Constant.DAO+Constant.ZHU_JI_6_ER_CI_TIAN_JIA_WAN_CHENG+Constant.FU+Constant.CHENG_ZHONG).equals(varName)) {//剂六二次备料完成到剂六二次添加完成釜称重
+			else if((Constant.ZHU_JI_6_ER_CI_BEI_LIAO_WAN_CHENG+Constant.DAO+Constant.ZHU_JI_6_ER_CI_TIAN_JIA_WAN_CHENG+Constant.FU+Constant.CHENG_ZHONG).equals(varName)) {//剂六二次备料完成到剂六二次添加完成釜称重
 				int zjlecblwcfczRowNumber=ReportF_U.ZJLECBLWCFCZ_RN;
 				int zjlecblwcfczColNumber=ReportF_U.ZJLECBLWCFCZ_CN;
 				reportF_UList.add(createByParams(zjlecblwcfczRowNumber, zjlecblwcfczColNumber, preValue, batchID));
