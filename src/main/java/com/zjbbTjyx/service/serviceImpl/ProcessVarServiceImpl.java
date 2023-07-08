@@ -100,19 +100,19 @@ public class ProcessVarServiceImpl implements ProcessVarService {
 			ptnName=ERecord.BLKSDFYJSSJC;
 
 		}
-		else if((ERecord.ZJLYCTJWCSSYFCZ).equals(nxtName)){//助剂六一次添加完成上升沿釜称重
+		else if((ERecord.ZJLYCTJWCSSYFCZ).equals(nxtName)){//助剂6一次添加完成上升沿釜称重
 			preName=ERecord.JJPHZZCSSYFCZ;
 			ptnName=ERecord.JJPHZZCDZJLYCTJWCFZLC;
 		}
-		else if((ERecord.ZJLYCTJWCSSYSJ).equals(nxtName)){//助剂六一次添加完成上升沿时间
+		else if((ERecord.ZJLYCTJWCSSYSJ).equals(nxtName)){//助剂6一次添加完成上升沿时间
 			preName=ERecord.JJPHZZCSSYSJ;
 			ptnName=ERecord.JJPHZZCDZJLYCTJWCSJC;
 		}
-		else if((ERecord.ZJLECTJWCSSYFCZ).equals(nxtName)){//助剂六二次添加完成上升沿时间
+		else if((ERecord.ZJLECTJWCSSYFCZ).equals(nxtName)){//助剂6二次添加完成上升沿时间
 			preName=ERecord.ZJLECBLWCSSYFCZ;
 			ptnName=ERecord.ZJLECBLWCDZJLECTJWCFZLC;
 		}
-		else if((ERecord.ZJLECTJWCSSYSJ).equals(nxtName)){//助剂六二次添加完成上升沿时间
+		else if((ERecord.ZJLECTJWCSSYSJ).equals(nxtName)){//助剂6二次添加完成上升沿时间
 			preName=ERecord.ZJLECBLWCSSYSJ;
 			ptnName=ERecord.ZJLECBLWCDZJLECTJWCSJC;
 		}

@@ -486,9 +486,9 @@ public class Constant {
 	public static final String KAI_SHI_JIA_LIAO="开始加料";
 
 	/**
-	 * 助剂六一次添加完成
+	 * 助剂6一次添加完成
 	 */
-	public static final String ZHU_JI_LIU_YI_CI_TIAN_JIA_WAN_CHENG="助剂六一次添加完成";
+	public static final String ZHU_JI_6_YI_CI_TIAN_JIA_WAN_CHENG="助剂6一次添加完成";
 
 	/**
 	 * 助剂六二次备料完成
@@ -496,9 +496,9 @@ public class Constant {
 	public static final String ZHU_JI_LIU_ER_CI_BEI_LIAO_WAN_CHENG="助剂六二次备料完成";
 
 	/**
-	 * 助剂六二次添加完成
+	 * 助剂6二次添加完成
 	 */
-	public static final String ZHU_JI_LIU_ER_CI_TIAN_JIA_WAN_CHENG="助剂六二次添加完成";
+	public static final String ZHU_JI_6_ER_CI_TIAN_JIA_WAN_CHENG="助剂6二次添加完成";
 	
 	/**
 	 * 第一次保温启动
@@ -617,6 +617,11 @@ public class Constant {
 	 * 称重
 	 */
 	public static final String CHENG_ZHONG="称重";
+	
+	/**
+	 * 胶种类型
+	 */
+	public static final String JIAO_ZHONG_LEI_XING="胶种类型";
 	
 	/**
 	 * 反应釜
