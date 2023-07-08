@@ -691,10 +691,10 @@ public class OPCController {
 			}
 
 			
-			//助剂六二次备料完成
-			String zjlecblwcTVVarNamePre=Constant.ZHU_JI_LIU_ER_CI_BEI_LIAO_WAN_CHENG;
-			List<TriggerVar> zjlecblwcTVList = (List<TriggerVar>)triggerVarMap.get(zjlecblwcTVVarNamePre);//获取助剂六二次备料完成变量,不管是否是上升沿
-			List<TriggerVar> upZjlecblwcTVList = getUpDownVarValueListFromList(zjlecblwcTVList, TriggerVar.UP);//获取上升的助剂六二次备料完成变量
+			//助剂6二次备料完成
+			String zjlecblwcTVVarNamePre=Constant.ZHU_JI_6_ER_CI_BEI_LIAO_WAN_CHENG;
+			List<TriggerVar> zjlecblwcTVList = (List<TriggerVar>)triggerVarMap.get(zjlecblwcTVVarNamePre);//获取助剂6二次备料完成变量,不管是否是上升沿
+			List<TriggerVar> upZjlecblwcTVList = getUpDownVarValueListFromList(zjlecblwcTVList, TriggerVar.UP);//获取上升的助剂6二次备料完成变量
 			for (TriggerVar upZjlecblwcTV : upZjlecblwcTVList) {
 				Integer upFId = upZjlecblwcTV.getFId();//获取反应釜号
 				switch (upFId) {//匹配反应釜号
@@ -3473,7 +3473,7 @@ public class OPCController {
 				}
 			}
 		}
-		else if(Constant.ZHU_JI_LIU_ER_CI_BEI_LIAO_WAN_CHENG.equals(tvVarNamePre)) {//助剂六二次备料完成
+		else if(Constant.ZHU_JI_6_ER_CI_BEI_LIAO_WAN_CHENG.equals(tvVarNamePre)) {//助剂6二次备料完成
 			TriggerVar upZjlecblwcTV = (TriggerVar)paramMap.get("upZjlecblwcTV");
 			String upRecType = upZjlecblwcTV.getRecType();//获取配方类型
 			if(TriggerVar.U.equals(upRecType)) {
@@ -3483,7 +3483,7 @@ public class OPCController {
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
 					List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
 					opcTVList.add(upZjlecblwcTV);
-					Map<String, Object> zjlecblwcUResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据助剂六二次备料完成变量从opc端查找对应的过程变量
+					Map<String, Object> zjlecblwcUResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据助剂6二次备料完成变量从opc端查找对应的过程变量
 					String status = zjlecblwcUResMap.get("status").toString();
 					if("ok".equals(status)) {
 						List<ProcessVar> ksjlUResPVList = (List<ProcessVar>) zjlecblwcUResMap.get("proVarList");
@@ -3868,7 +3868,7 @@ public class OPCController {
 		List<TriggerVar> pjwcTVList=new ArrayList<TriggerVar>();//排胶完成
 		List<TriggerVar> ksjlTVList=new ArrayList<TriggerVar>();//开始加料
 		List<TriggerVar> zjlyctjwcTVList=new ArrayList<TriggerVar>();//助剂6一次添加完成
-		List<TriggerVar> zjlecblwcTVList=new ArrayList<TriggerVar>();//助剂六二次备料完成
+		List<TriggerVar> zjlecblwcTVList=new ArrayList<TriggerVar>();//助剂6二次备料完成
 		List<TriggerVar> zjlectjwcTVList=new ArrayList<TriggerVar>();//助剂6二次添加完成
 		List<TriggerVar> dycbwqdTVList=new ArrayList<TriggerVar>();//第一次保温启动
 		List<TriggerVar> dycbwhgTVList=new ArrayList<TriggerVar>();//第一次保温合格
@@ -4002,7 +4002,7 @@ public class OPCController {
 			else if ((Constant.ZHU_JI_6_YI_CI_TIAN_JIA_WAN_CHENG+"_"+fyfh+"_AV").equals(varName)){//助剂6一次添加完成
 				zjlyctjwcTVList.add(triggerVar);
 			}
-			else if ((Constant.ZHU_JI_LIU_ER_CI_BEI_LIAO_WAN_CHENG+"_"+fyfh+"_AV").equals(varName)){//助剂六二次备料完成
+			else if ((Constant.ZHU_JI_6_ER_CI_BEI_LIAO_WAN_CHENG+"_"+fyfh+"_AV").equals(varName)){//助剂6二次备料完成
 				zjlecblwcTVList.add(triggerVar);
 			}
 			else if ((Constant.ZHU_JI_6_ER_CI_TIAN_JIA_WAN_CHENG+"_"+fyfh+"_AV").equals(varName)){//助剂6二次添加完成
@@ -4065,7 +4065,7 @@ public class OPCController {
 		tvGroupMap.put(Constant.PAI_JIAO_WAN_CHENG, pjwcTVList);//排胶完成
 		tvGroupMap.put(Constant.KAI_SHI_JIA_LIAO,ksjlTVList);//开始加料
 		tvGroupMap.put(Constant.ZHU_JI_6_YI_CI_TIAN_JIA_WAN_CHENG,zjlyctjwcTVList);//助剂6一次添加完成
-		tvGroupMap.put(Constant.ZHU_JI_LIU_ER_CI_BEI_LIAO_WAN_CHENG,zjlecblwcTVList);//助剂六二次备料完成
+		tvGroupMap.put(Constant.ZHU_JI_6_ER_CI_BEI_LIAO_WAN_CHENG,zjlecblwcTVList);//助剂6二次备料完成
 		tvGroupMap.put(Constant.ZHU_JI_6_ER_CI_TIAN_JIA_WAN_CHENG,zjlectjwcTVList);//助剂6二次添加完成
 		tvGroupMap.put(Constant.DI_YI_CI_BAO_WEN_QI_DONG,dycbwqdTVList);//第一次保温启动
 		tvGroupMap.put(Constant.DI_YI_CI_BAO_WEN_HE_GE,dycbwhgTVList);//第一次保温合格

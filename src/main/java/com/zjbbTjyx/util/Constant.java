@@ -487,9 +487,9 @@ public class Constant {
 	public static final String ZHU_JI_6_YI_CI_TIAN_JIA_WAN_CHENG="助剂6一次添加完成";
 
 	/**
-	 * 助剂六二次备料完成
+	 * 助剂6二次备料完成
 	 */
-	public static final String ZHU_JI_LIU_ER_CI_BEI_LIAO_WAN_CHENG="助剂六二次备料完成";
+	public static final String ZHU_JI_6_ER_CI_BEI_LIAO_WAN_CHENG="助剂6二次备料完成";
 
 	/**
 	 * 助剂6二次添加完成
