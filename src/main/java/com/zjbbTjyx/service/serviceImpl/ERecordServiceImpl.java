@@ -2887,6 +2887,9 @@ public class ERecordServiceImpl implements ERecordService {
 		
 		//处理完批记录集合的信息后，通过循环一起插入数据库表
 		for (ERecord eRecordItem : eRecordList) {
+			//在这里写逻辑，凡是batchid第二位是C的说明是U类胶。徐龙那边写的有点问题，咱这边暂时处理下，验证下第一位是不是U，不是的话就把M替换为U,替换之后再验证下RecType是不是U，不是的话也把M替换为U
+			
+			
 			count+=eRecordMapper.add(eRecordItem);
 		}
 		
@@ -4315,13 +4318,13 @@ public class ERecordServiceImpl implements ERecordService {
 					varMap.put(Constant.COL_NUMBER, ReportF_U.ECJ215WCSJ_CN);
 					varMapList.add(varMap);
 				}
-				else if((Constant.ER_CI_JIA_XIAO_LIAO_HE_SHUI_TI_XING).equals(varName)) {//二次加小料和水提醒
+				else if((Constant.ER_CI_JIA_SHUI_HE_XIAO_LIAO_TI_XING).equals(varName)) {//二次加水和小料提醒
 					String varValue = eRecord.getVarValue();
 
 					varMap = new HashMap<String, Object>();
 					varMap.put(Constant.VALUE, varValue);
-					varMap.put(Constant.ROW_NUMBER, ReportF_U.ECJXLHSTXXJYFYFWD_RN);
-					varMap.put(Constant.COL_NUMBER, ReportF_U.ECJXLHSTXXJYFYFWD_CN);
+					varMap.put(Constant.ROW_NUMBER, ReportF_U.ECJSHXLTXXJYFYFWD_RN);
+					varMap.put(Constant.COL_NUMBER, ReportF_U.ECJSHXLTXXJYFYFWD_CN);
 					varMapList.add(varMap);
 				}
 				else if((Constant.ER_CI_JIA_SHUI_QI_DONG).equals(varName)) {//二次加水启动上升沿记录系统时间

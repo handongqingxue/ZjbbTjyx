@@ -768,13 +768,13 @@ public class ReportF_U {
      */
     public static final int ECJ215WCSJ_CN=5;
     /**
-     * 二次加小料和水提醒下降沿反应釜温度行号
+     * 二次加水和小料提醒下降沿反应釜温度行号
      */
-    public static final int ECJXLHSTXXJYFYFWD_RN=29;
+    public static final int ECJSHXLTXXJYFYFWD_RN=29;
     /**
-     * 二次加小料和水提醒下降沿反应釜温度列号
+     * 二次加水和小料提醒下降沿反应釜温度列号
      */
-    public static final int ECJXLHSTXXJYFYFWD_CN=6;
+    public static final int ECJSHXLTXXJYFYFWD_CN=6;
     
     //水加入-29
     /**

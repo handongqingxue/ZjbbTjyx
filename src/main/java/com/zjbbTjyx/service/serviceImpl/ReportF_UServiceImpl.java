@@ -394,9 +394,9 @@ public class ReportF_UServiceImpl implements ReportF_UService {
 				int ecj215wcsjColNumber=ReportF_U.ECJ215WCSJ_CN;
 				reportF_UList.add(createByParams(ecj215wcsjRowNumber, ecj215wcsjColNumber, preValue, batchID));
 			}
-			else if((Constant.ER_CI_JIA_XIAO_LIAO_HE_SHUI_TI_XING+Constant.XIA_JIANG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU).equals(varName)) {//次加小料和水提醒下降沿反应釜温度
-				int ecjxlhstxxjyfyfwdRowNumber=ReportF_U.ECJXLHSTXXJYFYFWD_RN;
-				int ecjxlhstxxjyfyfwdColNumber=ReportF_U.ECJXLHSTXXJYFYFWD_CN;
+			else if((Constant.ER_CI_JIA_SHUI_HE_XIAO_LIAO_TI_XING+Constant.XIA_JIANG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU).equals(varName)) {//二次加水和小料提醒下降沿反应釜温度
+				int ecjxlhstxxjyfyfwdRowNumber=ReportF_U.ECJSHXLTXXJYFYFWD_RN;
+				int ecjxlhstxxjyfyfwdColNumber=ReportF_U.ECJSHXLTXXJYFYFWD_CN;
 				reportF_UList.add(createByParams(ecjxlhstxxjyfyfwdRowNumber, ecjxlhstxxjyfyfwdColNumber, preValue, batchID));
 			}
 			else if((Constant.BAO_WEN_HOU_JIA_SHUI_LIANG_SHE_DING).equals(varName)) {//保温后加水量设定
