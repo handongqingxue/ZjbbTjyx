@@ -2896,6 +2896,7 @@ public class ERecordServiceImpl implements ERecordService {
 					String substring = batchID.substring(1);
 					String newBatchID = "U" + substring;
 					eRecordItem.setBatchID(newBatchID);
+					eRecordItem.setRecType("U");
 				}
 			}
 			count+=eRecordMapper.add(eRecordItem);
