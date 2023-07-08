@@ -1202,10 +1202,10 @@ public class OPCController {
 				}
 			}
 
-			//二次加小料和水提醒
-			String ecjxlhstxTVVarNamePre=Constant.ER_CI_JIA_XIAO_LIAO_HE_SHUI_TI_XING;
-			List<TriggerVar> ecjxlhstxTVList = (List<TriggerVar>)triggerVarMap.get(ecjxlhstxTVVarNamePre);//获取二次加小料和水提醒,不管是否是上升沿
-			List<TriggerVar> downEcjxlhstxTVList = getUpDownVarValueListFromList(ecjxlhstxTVList, TriggerVar.DOWN);//获取下降的二次加小料和水提醒变量
+			//二次加水和小料提醒
+			String ecjxlhstxTVVarNamePre=Constant.ER_CI_JIA_SHUI_HE_XIAO_LIAO_TI_XING;
+			List<TriggerVar> ecjxlhstxTVList = (List<TriggerVar>)triggerVarMap.get(ecjxlhstxTVVarNamePre);//获取二次加水和小料提醒,不管是否是上升沿
+			List<TriggerVar> downEcjxlhstxTVList = getUpDownVarValueListFromList(ecjxlhstxTVList, TriggerVar.DOWN);//获取下降的二次加水和小料提醒变量
 			for (TriggerVar downEcjxlhstxTV : downEcjxlhstxTVList) {
 				Integer downFId = downEcjxlhstxTV.getFId();//获取反应釜号
 				switch (downFId) {//匹配反应釜号
@@ -3810,7 +3810,7 @@ public class OPCController {
 				}
 			}
 		}
-		else if(Constant.ER_CI_JIA_XIAO_LIAO_HE_SHUI_TI_XING.equals(tvVarNamePre)) {//二次加小料和水提醒
+		else if(Constant.ER_CI_JIA_SHUI_HE_XIAO_LIAO_TI_XING.equals(tvVarNamePre)) {//二次加水和小料提醒
 			TriggerVar downEcjxlhstxTV = (TriggerVar)paramMap.get("downEcjxlhstxTV");
 			String downRecType = downEcjxlhstxTV.getRecType();//获取配方类型
 			if(TriggerVar.U.equals(downRecType)) {
@@ -3820,7 +3820,7 @@ public class OPCController {
 				if(preValue==TriggerVar.UP) {//当上一次的变量值为1，说明这次刚下降，变量刚从1变为0，就记录一下反应釜id
 					List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
 					opcTVList.add(downEcjxlhstxTV);
-					Map<String, Object> ecjxlhstxUResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据二次加小料和水提醒变量从opc端查找对应的过程变量
+					Map<String, Object> ecjxlhstxUResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据二次加水和小料提醒变量从opc端查找对应的过程变量
 					String status = ecjxlhstxUResMap.get("status").toString();
 					if("ok".equals(status)) {
 						List<ProcessVar> ecjxlhstxUResPVList = (List<ProcessVar>) ecjxlhstxUResMap.get("proVarList");
@@ -3878,7 +3878,7 @@ public class OPCController {
 		List<TriggerVar> ectfTVList=new ArrayList<TriggerVar>();//二次投粉
 		List<TriggerVar> ecj215qdTVList=new ArrayList<TriggerVar>();//二次加215启动
 		List<TriggerVar> ecjsqdTVList=new ArrayList<TriggerVar>();//二次加水启动
-		List<TriggerVar> ecjxlhstxTVList=new ArrayList<TriggerVar>();//二次加小料和水提醒
+		List<TriggerVar> ecjxlhstxTVList=new ArrayList<TriggerVar>();//二次加水和小料提醒
 
 
 
@@ -4032,7 +4032,7 @@ public class OPCController {
 			else if ((Constant.ER_CI_JIA_SHUI_QI_DONG+"_"+fyfh+"_AV").equals(varName)){//二次加水启动
 				ecjsqdTVList.add(triggerVar);
 			}
-			else if ((Constant.ER_CI_JIA_XIAO_LIAO_HE_SHUI_TI_XING+"_"+fyfh+"_AV").equals(varName)){//二次加小料和水提醒
+			else if ((Constant.ER_CI_JIA_SHUI_HE_XIAO_LIAO_TI_XING+"_"+fyfh+"_AV").equals(varName)){//二次加水和小料提醒
 				ecjxlhstxTVList.add(triggerVar);
 			}
 		}
@@ -4075,7 +4075,7 @@ public class OPCController {
 		tvGroupMap.put(Constant.ER_CI_TOU_FEN,ectfTVList);//二次投粉
 		tvGroupMap.put(Constant.ER_CI_JIA_215_QI_DONG,ecj215qdTVList);//二次加215启动
 		tvGroupMap.put(Constant.ER_CI_JIA_SHUI_QI_DONG,ecjsqdTVList);//二次加水启动
-		tvGroupMap.put(Constant.ER_CI_JIA_XIAO_LIAO_HE_SHUI_TI_XING,ecjxlhstxTVList);//二次加小料和水提醒
+		tvGroupMap.put(Constant.ER_CI_JIA_SHUI_HE_XIAO_LIAO_TI_XING,ecjxlhstxTVList);//二次加水和小料提醒
 		return tvGroupMap;
 	}
 

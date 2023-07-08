@@ -764,7 +764,7 @@ public class OpcUtil {
 					
 					opcVarNameList.add(bwhjslsdOpcVarName);
 				}
-				else if (tv1VarName.startsWith(Constant.ER_CI_JIA_XIAO_LIAO_HE_SHUI_TI_XING+Constant.XHX)){//二次加小料和水提醒
+				else if (tv1VarName.startsWith(Constant.ER_CI_JIA_SHUI_HE_XIAO_LIAO_TI_XING+Constant.XHX)){//二次加水和小料提醒
 					Integer tvFId = triggerVar1.getFId();
 					String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
 					
@@ -1238,9 +1238,9 @@ public class OpcUtil {
 								}
 							}
 						}
-						else if(tv1VarName.startsWith(Constant.ER_CI_JIA_XIAO_LIAO_HE_SHUI_TI_XING+Constant.XHX)){//二次加小料和水提醒
+						else if(tv1VarName.startsWith(Constant.ER_CI_JIA_SHUI_HE_XIAO_LIAO_TI_XING+Constant.XHX)){//二次加水和小料提醒
 							if (itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)){
-								varName=ERecord.ECJXLHSTXXJYFYHWD;//二次加小料和水提醒下降沿反应釜温度
+								varName=ERecord.ECJXLHSTXXJYFYHWD;//二次加水和小料提醒下降沿反应釜温度
 							}
 						}
 						else if(tv1VarName.startsWith(Constant.FAN_YING_JIE_SHU)){//反应结束
@@ -1741,7 +1741,7 @@ public class OpcUtil {
     	opcTVNamePreUList.add(Constant.ER_CI_TOU_FEN);//二次投粉
     	opcTVNamePreUList.add(Constant.ER_CI_JIA_215_QI_DONG);//二次加215启动
     	opcTVNamePreUList.add(Constant.ER_CI_JIA_215_WAN_CHENG);//二次加215完成
-    	opcTVNamePreUList.add(Constant.ER_CI_JIA_XIAO_LIAO_HE_SHUI_TI_XING);//二次加小料和水提醒
+    	opcTVNamePreUList.add(Constant.ER_CI_JIA_SHUI_HE_XIAO_LIAO_TI_XING);//二次加水和小料提醒
     	opcTVNamePreUList.add(Constant.ER_CI_JIA_SHUI_QI_DONG);//二次加水启动
     	opcTVNamePreUList.add(Constant.ER_CI_JIA_SHUI_WAN_CHENG);//二次加水完成
         opcTVNamePreUList.add(Constant.ZHONG_JIAN_SHUI_PH_TI_XING);//终检水PH提醒
@@ -1859,7 +1859,6 @@ public class OpcUtil {
 				if(opcTVName.endsWith(TriggerVar.U+Constant.XHX+Constant.AV)) {
 					if(
 						opcTVName.startsWith(Constant.ZHU_JI_6_YI_CI_TIAN_JIA_WAN_CHENG)||//助剂6一次添加完成
-						opcTVName.startsWith(Constant.ZHU_JI_6_ER_CI_TIAN_JIA_WAN_CHENG)||//助剂6二次添加完成
 						opcTVName.startsWith(Constant.JIA_JIAN_LIANG_FAN_WEI_XIA_XIAN)||//加碱量范围下限
 						opcTVName.startsWith(Constant.ER_CI_JIA_215_WAN_CHENG)||//二次加215完成
 						opcTVName.startsWith(Constant.ER_CI_JIA_SHUI_QI_DONG)||//二次加水启动
@@ -1940,7 +1939,6 @@ public class OpcUtil {
 				if(opcPVName.endsWith(TriggerVar.U+Constant.XHX+Constant.AV)) {
 					if(
 						opcPVName.startsWith(Constant.ZHU_JI_6_YI_CI_TIAN_JIA_WAN_CHENG)||//助剂6一次添加完成
-						opcPVName.startsWith(Constant.ZHU_JI_6_ER_CI_TIAN_JIA_WAN_CHENG)||//助剂6二次添加完成
 						opcPVName.startsWith(Constant.JIA_JIAN_LIANG_FAN_WEI_XIA_XIAN)||//加碱量范围下限
 						opcPVName.startsWith(Constant.ER_CI_JIA_215_WAN_CHENG)||//二次加215完成
 						opcPVName.startsWith(Constant.ER_CI_JIA_SHUI_QI_DONG)||//二次加水启动
@@ -2018,7 +2016,6 @@ public class OpcUtil {
 				if(itemName.contains("FU")) {
 					if(
 						itemName.startsWith(Constant.ZHU_JI_6_YI_CI_TIAN_JIA_WAN_CHENG)||//助剂6一次添加完成
-						itemName.startsWith(Constant.ZHU_JI_6_ER_CI_TIAN_JIA_WAN_CHENG)||//助剂6二次添加完成
 						itemName.startsWith(Constant.JIA_JIAN_LIANG_FAN_WEI_XIA_XIAN)||//加碱量范围下限
 						itemName.startsWith(Constant.ER_CI_JIA_215_WAN_CHENG)||//二次加215完成
 						itemName.startsWith(Constant.ER_CI_JIA_SHUI_QI_DONG)||//二次加水启动
@@ -2093,7 +2090,6 @@ public class OpcUtil {
 				if(itemName.contains("FU")) {//下列U类变量后缀是FUX结尾的，为了在java端方便处理，需要转换为FXU后缀
 					if(
 						itemName.startsWith(Constant.ZHU_JI_6_YI_CI_TIAN_JIA_WAN_CHENG)||//助剂6一次添加完成
-						itemName.startsWith(Constant.ZHU_JI_6_ER_CI_TIAN_JIA_WAN_CHENG)||//助剂6二次添加完成
 						itemName.startsWith(Constant.JIA_JIAN_LIANG_FAN_WEI_XIA_XIAN)||//加碱量范围下限
 						itemName.startsWith(Constant.ER_CI_JIA_215_WAN_CHENG)||//二次加215完成
 						itemName.startsWith(Constant.ER_CI_JIA_SHUI_QI_DONG)||//二次加水启动

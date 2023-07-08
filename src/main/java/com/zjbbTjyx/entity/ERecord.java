@@ -444,9 +444,9 @@ public class ERecord {
 	 */
 	public static final String ECJSWCSSYSJ=Constant.ER_CI_JIA_SHUI_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
 	/**
-	 * 二次加小料和水提醒下降沿反应釜温度
+	 * 二次加水和小料提醒下降沿反应釜温度
 	 */
-	public static final String ECJXLHSTXXJYFYHWD=Constant.ER_CI_JIA_XIAO_LIAO_HE_SHUI_TI_XING+Constant.XIA_JIANG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
+	public static final String ECJXLHSTXXJYFYHWD=Constant.ER_CI_JIA_SHUI_HE_XIAO_LIAO_TI_XING+Constant.XIA_JIANG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
 	/**
 	 * 反应结束上升沿反应釜温度
 	 */

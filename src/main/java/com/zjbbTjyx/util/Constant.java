@@ -539,9 +539,9 @@ public class Constant {
 	public static final String ER_CI_JIA_215_WAN_CHENG="二次加215完成";
 
 	/**
-	 * 二次加小料和水提醒
+	 * 二次加水和小料提醒
 	 */
-	public static final String ER_CI_JIA_XIAO_LIAO_HE_SHUI_TI_XING="二次加小料和水提醒";
+	public static final String ER_CI_JIA_SHUI_HE_XIAO_LIAO_TI_XING="二次加水和小料提醒";
 
 	/**
 	 * 二次加水启动
