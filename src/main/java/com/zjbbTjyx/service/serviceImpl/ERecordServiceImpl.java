@@ -2887,18 +2887,24 @@ public class ERecordServiceImpl implements ERecordService {
 		
 		//处理完批记录集合的信息后，通过循环一起插入数据库表
 		for (ERecord eRecordItem : eRecordList) {
+			
 			//在这里写逻辑，凡是batchid第二位是C的说明是U类胶。徐龙那边写的有点问题，咱这边暂时处理下，验证下第一位是不是U，不是的话就把M替换为U,替换之后再验证下RecType是不是U，不是的话也把M替换为U
 			String batchID = eRecordItem.getBatchID();
 			String index2 = batchID.substring(1,2);
 			String index1 = batchID.substring(0,1);
-			if (index2=="C"){
-				if (index1=="M"){
+			if ("C".equals(index2)){
+				if ("M".equals(index1)){
 					String substring = batchID.substring(1);
 					String newBatchID = "U" + substring;
 					eRecordItem.setBatchID(newBatchID);
+					
+				}
+				String recType = eRecordItem.getRecType();
+				if("M".equals(recType)) {
 					eRecordItem.setRecType("U");
 				}
 			}
+			
 			count+=eRecordMapper.add(eRecordItem);
 		}
 		
