@@ -278,19 +278,19 @@ public class ReportF_U {
      */
     public static final int JJPHZCSJ_CN=4;
     /**
-     * 助剂六一次添加完成时间行号
+     * 助剂6一次添加完成时间行号
      */
     public static final int ZJLYCTJWCSJ_RN=11;
     /**
-     * 助剂六一次添加完成时间列号
+     * 助剂6一次添加完成时间列号
      */
     public static final int ZJLYCTJWCSJ_CN=5;
     /**
-     * 助剂六一次添加完成反应釜温度行号
+     * 助剂6一次添加完成反应釜温度行号
      */
     public static final int ZJLYCTJWCFYFWD_RN=11;
     /**
-     * 助剂六一次添加完成反应釜温度列号
+     * 助剂6一次添加完成反应釜温度列号
      */
     public static final int ZJLYCTJWCFYFWD_CN=6;
 
@@ -304,28 +304,28 @@ public class ReportF_U {
     public static final int JJPHZZCFCZ_CN=8;
 
     /**
-     * 助剂六一次添加完成釜称重行号
+     * 助剂6一次添加完成釜称重行号
      */
     public static final int ZJLYCTJWCFCZ_RN=11;
     /**
-     * 助剂六一次添加完成釜称重列号
+     * 助剂6一次添加完成釜称重列号
      */
     public static final int ZJLYCTJWCFCZ_CN=9;
 
     /**
-     * 加碱PH值正常到助剂六一次添加完成重量差行号
+     * 加碱PH值正常到助剂6一次添加完成重量差行号
      */
     public static final int JJPHZZCDZJLYCTJWCZLC_RN=11;
     /**
-     * 加碱PH值正常到助剂六一次添加完成重量差列号
+     * 加碱PH值正常到助剂6一次添加完成重量差列号
      */
     public static final int JJPHZZCDZJLYCTJWCZLC_CN=10;
     /**
-     * 加碱PH值正常到助剂六一次添加完成时间差行号
+     * 加碱PH值正常到助剂6一次添加完成时间差行号
      */
     public static final int JJPHZZCDZJLYCTJWCSJC_RN=11;
     /**
-     * 加碱PH值正常到助剂六一次添加完成时间差列号
+     * 加碱PH值正常到助剂6一次添加完成时间差列号
      */
     public static final int JJPHZZCDZJLYCTJWCSJC_CN=11;
 
@@ -348,19 +348,19 @@ public class ReportF_U {
      */
     public static final int ZJLECBLWCSJ_CN=4;
     /**
-     * 助剂六二次添加完成时间行号
+     * 助剂6二次添加完成时间行号
      */
     public static final int ZJLECTJWCSJ_RN=12;
     /**
-     * 助剂六二次添加完成时间列号
+     * 助剂6二次添加完成时间列号
      */
     public static final int ZJLECTJWCSJ_CN=5;
     /**
-     * 助剂六二次添加完成反应釜温度行号
+     * 助剂6二次添加完成反应釜温度行号
      */
     public static final int ZJLECTJWCFYFWD_RN=12;
     /**
-     * 助剂六二次添加完成反应釜温度列号
+     * 助剂6二次添加完成反应釜温度列号
      */
     public static final int ZJLECTJWCFYFWD_CN=6;
     /**
@@ -372,11 +372,11 @@ public class ReportF_U {
      */
     public static final int ZJLECBLWCFCZ_CN=8;
     /**
-     * 助剂六二次添加完成釜称重行号
+     * 助剂6二次添加完成釜称重行号
      */
     public static final int ZJLECTJWCFCZ_RN=12;
     /**
-     * 助剂六二次添加完成釜称重列号
+     * 助剂6二次添加完成釜称重列号
      */
     public static final int ZJLECTJWCFCZ_CN=9;
     /**
@@ -388,7 +388,7 @@ public class ReportF_U {
      */
     public static final int ZJLECBLWCDTJWCZLC_CN=10;
     /**
-     * 助剂六二次添加完成到备料完成时间差行号
+     * 助剂6二次添加完成到备料完成时间差行号
      */
     public static final int ZJLECBLWCDTJWCSJC_RN=12;
     /**
