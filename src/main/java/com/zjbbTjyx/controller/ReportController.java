@@ -108,7 +108,7 @@ public class ReportController {
     	Map<String,Object> map = new HashMap<String, Object>();
     	
     	Map<String, Object> pcjlMap = eRecordService.getListByPcjl(type);
-    	
+
     	if(Constant.M_WSC.equals(type)) {
     		List<ERecord> mWscBatchList = (List<ERecord>)pcjlMap.get("mWscBatchList");
     		map.put("mWscBatchList", mWscBatchList);
