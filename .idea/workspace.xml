@@ -303,14 +303,7 @@
       <workItem from="1687679099388" duration="6290000" />
       <workItem from="1687744755464" duration="36371000" />
       <workItem from="1688090918732" duration="1312000" />
-      <workItem from="1688092276068" duration="42256000" />
-    </task>
-    <task id="LOCAL-00130" summary="11">
-      <created>1684143252633</created>
-      <option name="number" value="00130" />
-      <option name="presentableId" value="LOCAL-00130" />
-      <option name="project" value="LOCAL" />
-      <updated>1684143252634</updated>
+      <workItem from="1688092276068" duration="47813000" />
     </task>
     <task id="LOCAL-00131" summary="11">
       <created>1684220808302</created>
@@ -648,7 +641,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688696779208</updated>
     </task>
-    <option name="localTasksCounter" value="179" />
+    <task id="LOCAL-00179" summary="11">
+      <created>1688707607797</created>
+      <option name="number" value="00179" />
+      <option name="presentableId" value="LOCAL-00179" />
+      <option name="project" value="LOCAL" />
+      <updated>1688707607798</updated>
+    </task>
+    <option name="localTasksCounter" value="180" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1037,7 +1037,7 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="712" y="262" key="git4idea.merge.GitMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1681725750849" />
-    <state x="474" y="265" key="git4idea.merge.GitPullDialog" timestamp="1688696786127">
+    <state x="474" y="265" key="git4idea.merge.GitPullDialog" timestamp="1688707623085">
       <screen x="0" y="23" width="1440" height="823" />
     </state>
     <state x="632" y="306" key="git4idea.merge.GitPullDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1681796468754" />
@@ -1052,7 +1052,7 @@
     <state x="421" y="238" key="git4idea.merge.GitPullDialog/0.23.1280.732@0.23.1280.732" timestamp="1684220813529" />
     <state x="421" y="239" key="git4idea.merge.GitPullDialog/0.23.1280.734@0.23.1280.734" timestamp="1682387707480" />
     <state x="421" y="251" key="git4idea.merge.GitPullDialog/0.23.1280.777@0.23.1280.777" timestamp="1682325067103" />
-    <state x="474" y="265" key="git4idea.merge.GitPullDialog/0.23.1440.823@0.23.1440.823" timestamp="1688696786127" />
+    <state x="474" y="265" key="git4idea.merge.GitPullDialog/0.23.1440.823@0.23.1440.823" timestamp="1688707623085" />
     <state x="430" y="284" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1684311038232">
       <screen x="0" y="23" width="1280" height="731" />
     </state>
