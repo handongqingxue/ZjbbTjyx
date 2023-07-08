@@ -16,11 +16,58 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9bfab7cf-a4c1-4d31-9c53-df2a94b39f3e" name="Default Changelist" comment="11">
-      <change beforePath="$PROJECT_DIR$/.idea/ZjbbTjyx.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ZjbbTjyx.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/zjbbTjyx/controller/ReportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zjbbTjyx/controller/ReportController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/zjbbTjyx/service/serviceImpl/ERecordServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zjbbTjyx/service/serviceImpl/ERecordServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/JCustomOpc.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/JCustomOpc.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/JEasyOpc.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/JEasyOpc.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/JOpc.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/JOpc.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/SynchReadItemExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/SynchReadItemExample.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/asynch/AsynchEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/asynch/AsynchEvent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/asynch/OpcAsynchGroupListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/asynch/OpcAsynchGroupListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/browser/JOpcBrowser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/browser/JOpcBrowser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/component/OpcGroup.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/component/OpcGroup.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/component/OpcItem.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/component/OpcItem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/connect/ReaderOpc.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/connect/ReaderOpc.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/connect/WriterOpc.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/connect/WriterOpc.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/Asynch10ReadException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/Asynch10ReadException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/Asynch10UnadviseException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/Asynch10UnadviseException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/Asynch20ReadException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/Asynch20ReadException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/Asynch20UnadviseException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/Asynch20UnadviseException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/CoInitializeException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/CoInitializeException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/CoUninitializeException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/CoUninitializeException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/ComponentNotFoundException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/ComponentNotFoundException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/ConnectivityException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/ConnectivityException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/GroupActivityException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/GroupActivityException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/GroupExistsException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/GroupExistsException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/GroupUpdateTimeException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/GroupUpdateTimeException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/HostException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/HostException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/ItemActivityException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/ItemActivityException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/ItemExistsException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/ItemExistsException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/NotFoundServersException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/NotFoundServersException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/OpcActivityException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/OpcActivityException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/OpcAsynchException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/OpcAsynchException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/OpcBrowserException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/OpcBrowserException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/OpcException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/OpcException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/OpcExistsException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/OpcExistsException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/OpcRuntimeException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/OpcRuntimeException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/OpcSignException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/OpcSignException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/OpcSynchException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/OpcSynchException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/SynchReadException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/SynchReadException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/SynchWriteException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/SynchWriteException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/UnableAddGroupException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/UnableAddGroupException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/UnableAddItemException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/UnableAddItemException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/UnableBrowseBranchException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/UnableBrowseBranchException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/UnableBrowseLeafException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/UnableBrowseLeafException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/UnableIBrowseException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/UnableIBrowseException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/UnableRemoveGroupException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/UnableRemoveGroupException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/UnableRemoveItemException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/UnableRemoveItemException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/VariantInternalException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/VariantInternalException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/VariantTypeException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/exception/VariantTypeException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/lang/Translate.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/lang/Translate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/property/PropertyLoader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/property/PropertyLoader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/variant/Variant.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/variant/Variant.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/variant/VariantList.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/variant/VariantList.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafish/clients/opc/variant/VariantTypes.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/javafish/clients/opc/variant/VariantTypes.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -309,14 +356,7 @@
       <workItem from="1688090918732" duration="1312000" />
       <workItem from="1688092276068" duration="48268000" />
       <workItem from="1688781999491" duration="925000" />
-      <workItem from="1688782971749" duration="7444000" />
-    </task>
-    <task id="LOCAL-00132" summary="11">
-      <created>1684307203413</created>
-      <option name="number" value="00132" />
-      <option name="presentableId" value="LOCAL-00132" />
-      <option name="project" value="LOCAL" />
-      <updated>1684307203413</updated>
+      <workItem from="1688782971749" duration="9721000" />
     </task>
     <task id="LOCAL-00133" summary="11">
       <created>1684387281081</created>
@@ -654,7 +694,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688781504967</updated>
     </task>
-    <option name="localTasksCounter" value="181" />
+    <task id="LOCAL-00181" summary="11">
+      <created>1688799873419</created>
+      <option name="number" value="00181" />
+      <option name="presentableId" value="LOCAL-00181" />
+      <option name="project" value="LOCAL" />
+      <updated>1688799873420</updated>
+    </task>
+    <option name="localTasksCounter" value="182" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1004,7 +1051,7 @@
     <state x="488" y="288" key="MultipleFileMergeDialog/0.23.1280.726@0.23.1280.726" timestamp="1683355235160" />
     <state x="397" y="220" key="MultipleFileMergeDialog/0.23.1280.732@0.23.1280.732" timestamp="1682576931166" />
     <state x="397" y="221" key="MultipleFileMergeDialog/0.23.1280.734@0.23.1280.734" timestamp="1682066662966" />
-    <state x="288" y="23" width="1024" height="823" key="SettingsEditor" timestamp="1688782924278">
+    <state x="288" y="23" width="1024" height="823" key="SettingsEditor" timestamp="1688801857838">
       <screen x="0" y="23" width="1440" height="823" />
     </state>
     <state x="212" y="0" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1681352975802" />
@@ -1013,7 +1060,7 @@
     <state x="256" y="23" key="SettingsEditor/0.23.1280.726@0.23.1280.726" timestamp="1687232850936" />
     <state x="256" y="23" key="SettingsEditor/0.23.1280.732@0.23.1280.732" timestamp="1682646520938" />
     <state x="256" y="23" key="SettingsEditor/0.23.1280.734@0.23.1280.734" timestamp="1682132899150" />
-    <state x="288" y="23" width="1024" height="823" key="SettingsEditor/0.23.1440.823@0.23.1440.823" timestamp="1688782924278" />
+    <state x="288" y="23" width="1024" height="823" key="SettingsEditor/0.23.1440.823@0.23.1440.823" timestamp="1688801857838" />
     <state x="414" y="222" key="Vcs.Push.Dialog.v2" timestamp="1688696937781">
       <screen x="0" y="23" width="1440" height="823" />
     </state>
@@ -1044,7 +1091,7 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="712" y="262" key="git4idea.merge.GitMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1681725750849" />
-    <state x="474" y="265" key="git4idea.merge.GitPullDialog" timestamp="1688781510819">
+    <state x="474" y="265" key="git4idea.merge.GitPullDialog" timestamp="1688799945381">
       <screen x="0" y="23" width="1440" height="823" />
     </state>
     <state x="632" y="306" key="git4idea.merge.GitPullDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1681796468754" />
@@ -1059,7 +1106,7 @@
     <state x="421" y="238" key="git4idea.merge.GitPullDialog/0.23.1280.732@0.23.1280.732" timestamp="1684220813529" />
     <state x="421" y="239" key="git4idea.merge.GitPullDialog/0.23.1280.734@0.23.1280.734" timestamp="1682387707480" />
     <state x="421" y="251" key="git4idea.merge.GitPullDialog/0.23.1280.777@0.23.1280.777" timestamp="1682325067103" />
-    <state x="474" y="265" key="git4idea.merge.GitPullDialog/0.23.1440.823@0.23.1440.823" timestamp="1688781510819" />
+    <state x="474" y="265" key="git4idea.merge.GitPullDialog/0.23.1440.823@0.23.1440.823" timestamp="1688799945381" />
     <state x="430" y="284" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1684311038232">
       <screen x="0" y="23" width="1280" height="731" />
     </state>
