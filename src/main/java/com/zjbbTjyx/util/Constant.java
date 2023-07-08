@@ -302,10 +302,6 @@ public class Constant {
 	 */
 	public static final String SHENG_CHAN_RI_QI="生产日期";
 	/**
-	 * 当前胶种显示
-	 */
-	public static final String DANG_QIAN_JIAO_ZHONG_XIAN_SHI="当前胶种显示";
-	/**
 	 * 甲醛实际进料重量
 	 */
 	public static final String JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG="甲醛实际进料重量";
@@ -575,10 +571,6 @@ public class Constant {
 	 * 一次降温加酸PH输入
 	 */
 	public static final String YI_CI_JIANG_WEN_JIA_SUAN_PH_SHU_RU="一次降温加酸PH输入";
-	/**
-	 * 加碱量范围下限
-	 */
-	public static final String JIA_JIA_LIANG_FAN_WEI_XIA_XIAN="加碱量范围下限";
 	/**
 	 * 加碱PH输入
 	 */

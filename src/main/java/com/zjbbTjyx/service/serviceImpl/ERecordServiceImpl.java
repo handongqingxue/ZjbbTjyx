@@ -21,7 +21,7 @@ public class ERecordServiceImpl implements ERecordService {
     @Autowired
     private ERecordMapper eRecordMapper;
     private HashMap<Integer,String> batchIDMap=new HashMap<Integer,String>();
-
+    
 	public int addFromProVarList(List<ProcessVar> processVarList) {
 		// TODO Auto-generated method stub
 		int count=0;
@@ -2798,7 +2798,7 @@ public class ERecordServiceImpl implements ERecordService {
 
 					pvIdList.add(pvId);
 				}//二次降温阶段结束
-				else if(pvVarName.startsWith(Constant.JIA_JIA_LIANG_FAN_WEI_XIA_XIAN)) {//加碱量范围下限   //加碱阶段开始
+				else if(pvVarName.startsWith(Constant.JIA_JIAN_LIANG_FAN_WEI_XIA_XIAN)) {//加碱量范围下限   //加碱阶段开始
 					Float pvVarValue = processVar.getVarValue();
 					String pvUnit = processVar.getUnit();
 					Integer pvFId = processVar.getFId();

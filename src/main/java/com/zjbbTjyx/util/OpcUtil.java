@@ -1801,7 +1801,6 @@ public class OpcUtil {
 		
     	List<String> opcPVNamePreList=new ArrayList<String>();//前缀集合
 
-    	opcPVNamePreList.add(Constant.DANG_QIAN_JIAO_ZHONG_XIAN_SHI);//当前胶种显示---这个变量的值是0.0
     	opcPVNamePreList.add(Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG);//甲醛实际进料重量前缀
     	opcPVNamePreList.add(Constant.JIA_SHUI_SHI_JI_ZHONG_LIANG);//加水实际重量
     	opcPVNamePreList.add(Constant.JIA_JIAN_QIAN_PH_SHU_RU_ZHI);//加碱前PH输入值
@@ -2119,7 +2118,7 @@ public class OpcUtil {
 		char preChar = varName.charAt(varName.length()-5);
 		char nxtChar = varName.charAt(varName.length()-4);
 		//System.out.println("preChar==="+preChar+",nxtChar==="+nxtChar);
-		varName=varName.replace(preChar, nxtChar);
+		varName=varName.replace(preChar+""+nxtChar+"_AV", nxtChar+""+nxtChar+"_AV");
 		//System.out.println("varName==="+varName);
 		varName=varName.replace(nxtChar+""+nxtChar, nxtChar+""+preChar);
 		//System.out.println("itemName==="+varName);
@@ -2180,7 +2179,6 @@ public class OpcUtil {
 		   itemName.startsWith(Constant.FEN_LIAO_ZHONG_LIANG_SHE_DING)||//粉料重量设定
 		   itemName.startsWith(Constant.ZHENG_QI_YA_LI)||//蒸汽压力
 		   itemName.startsWith("反应釜1胶种类型")||
-		   itemName.startsWith(Constant.DANG_QIAN_JIAO_ZHONG_XIAN_SHI)||//当前胶种显示
 		   itemName.startsWith(Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG)||//甲醛实际进料重量
 		   itemName.startsWith(Constant.JIA_SHUI_SHI_JI_ZHONG_LIANG)||//加水实际重量
 		   itemName.startsWith(Constant.JIA_JIAN_QIAN_PH_SHU_RU_ZHI)||//加碱前PH输入值
