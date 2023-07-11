@@ -78,7 +78,7 @@
 		</foreach>
 	</update>
 	<select id="getPreValueByPreName" resultType="java.lang.String">
-		select 
+		select top 1 
 		<if test="preName.contains(@com.zjbbTjyx.util.Constant@CHENG_ZHONG)">
 		VarValue 
 		</if>
