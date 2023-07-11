@@ -99,36 +99,41 @@ public class OpcUtil {
     
     public static String readJZLXByFId(int fId) {
     	//反应釜胶种类型:1:A、2:B、3:G、4:F、5:H、6:C（U类）
-    	List<String> opcVarNameList=new ArrayList<String>();
-    	opcVarNameList.add(Constant.FAN_YING_FU+fId+Constant.JIAO_ZHONG_LEI_XING+Constant.XHX+Constant.AV);//反应釜胶种类型
-    	ArrayList<OpcItem> opcItems = readJOpcPV(opcVarNameList);
-    	OpcItem opcItem = opcItems.get(0);
-    	String valueStr = opcItem.getValue().toString();
-    	System.out.println("valueStr==="+valueStr);
     	String valueTxt=null;
-    	switch (valueStr) {
-		case "0.0":
-			valueTxt="";
-			break;
-		case "1.0":
-			valueTxt="A";
-			break;
-		case "2.0":
-			valueTxt="B";
-			break;
-		case "3.0":
-			valueTxt="G";
-			break;
-		case "4.0":
-			valueTxt="F";
-			break;
-		case "5.0":
-			valueTxt="H";
-			break;
-		case "6.0":
-			valueTxt="C";
-			break;
-		}
+    	if(IS_TEST) {
+    		valueTxt="A";
+    	}
+    	else {
+	    	List<String> opcVarNameList=new ArrayList<String>();
+	    	opcVarNameList.add(Constant.FAN_YING_FU+fId+Constant.JIAO_ZHONG_LEI_XING+Constant.XHX+Constant.AV);//反应釜胶种类型
+	    	ArrayList<OpcItem> opcItems = readJOpcPV(opcVarNameList);
+	    	OpcItem opcItem = opcItems.get(0);
+	    	String valueStr = opcItem.getValue().toString();
+	    	System.out.println("valueStr==="+valueStr);
+	    	switch (valueStr) {
+			case "0.0":
+				valueTxt="";
+				break;
+			case "1.0":
+				valueTxt="A";
+				break;
+			case "2.0":
+				valueTxt="B";
+				break;
+			case "3.0":
+				valueTxt="G";
+				break;
+			case "4.0":
+				valueTxt="F";
+				break;
+			case "5.0":
+				valueTxt="H";
+				break;
+			case "6.0":
+				valueTxt="C";
+				break;
+			}
+    	}
     	return valueTxt;
     }
     

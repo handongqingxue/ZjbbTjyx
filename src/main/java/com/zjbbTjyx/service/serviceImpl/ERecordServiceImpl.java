@@ -2908,9 +2908,22 @@ public class ERecordServiceImpl implements ERecordService {
 			count+=eRecordMapper.add(eRecordItem);
 		}
 		
-		System.out.println("pvIdListSize"+pvIdList.size());
-		if(pvIdList.size()>0) {
-			processVarMapper.updateDealBzByIdList(ProcessVar.YCL,pvIdList);
+		int pvIdListSize = pvIdList.size();
+		System.out.println("pvIdListSize"+pvIdListSize);
+		if(pvIdListSize>0) {
+			List<Integer> pvIdTmpList=new ArrayList<Integer>();
+			for (int i = 0; i < pvIdListSize; i++) {
+				Integer pvId = pvIdList.get(i);
+				pvIdTmpList.add(pvId);
+				if(i%2000==0) {
+					processVarMapper.updateDealBzByIdList(ProcessVar.YCL,pvIdTmpList);
+					pvIdTmpList.clear();
+				}
+			}
+			if(pvIdTmpList.size()>0) {
+				processVarMapper.updateDealBzByIdList(ProcessVar.YCL,pvIdTmpList);
+				pvIdTmpList.clear();
+			}
 		}
 		
 		return count;
