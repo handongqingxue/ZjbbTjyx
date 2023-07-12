@@ -266,10 +266,9 @@ function showCreateArea(batchID,remark){
   	if (recType=="M"){
   		createMDisplay="block";
   		mWscText=remark=="0"?"未生成":"已生成";
-  		opcMCTableDisplay=remark==1?"block":"none";
+  		opcMCTableDisplay=remark==1?"block":"block";
   		opcMCTableBatchID=batchID;
   		$("#opcMCTable #batchID_hid").val(opcMCTableBatchID);//设置表格里的批次id
-  		
   		createUDisplay="none";
         uWscText="";
   		opcUCTableDisplay="none";
@@ -280,11 +279,9 @@ function showCreateArea(batchID,remark){
   		searchUDisplay="none"
         userListDisplay="none";
         roleListDisplay="none";
-        
-        //getUnCreRepVarMList(batchID);
-        preCreateMTab();
+        getUnCreRepVarMList(batchID);
     }
-    if (recType=="U"){//
+    if (recType=="U"){
         createMDisplay="none";
         mWscText="";
   		opcMCTableDisplay="none";
@@ -293,7 +290,7 @@ function showCreateArea(batchID,remark){
     
         createUDisplay="block";
         uWscText=remark=="0"?"未生成":"已生成";
-  		opcUCTableDisplay=remark==1?"block":"none";
+  		opcUCTableDisplay=remark==1?"block":"block";
   		opcUCTableBatchID=batchID;
   		$("#opcUCTable #batchID_hid").val(opcUCTableBatchID);//设置表格里的批次id
         
@@ -301,8 +298,7 @@ function showCreateArea(batchID,remark){
         searchUDisplay="none"
         userListDisplay="none";
         roleListDisplay="none";
-        //getUnCreRepVarUList(batchID);
-        preCreateUTab();
+        getUnCreRepVarUList(batchID);
     }
 	$("#createM").css("display",createMDisplay);
     $("#m_wsc_span").text(mWscText);

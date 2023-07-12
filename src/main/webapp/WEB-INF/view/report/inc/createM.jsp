@@ -39,27 +39,14 @@ function initDataResetMButDiv() {
     $("#tank2AgoM").html("");
 }
 
-/*
 function getUnCreRepVarMList(batchID){
-	$.post(path+"report/getUnCreRepVarList",
-		{batchID:batchID},
-		function(result){
-			$("#opcMCTable td[id^='td']").text("");//先清除表格里的数据
-			$("#opcMCTable #batchID_hid").val(batchID);//设置表格里的批次id
-            var glueM=batchID.substring(1,2);
-            $("#glueM").html(glueM);
-			var varMapList=result.varMapList;
-			for (var i = 0; i < varMapList.length; i++) {
-				var varMap=varMapList[i];
-				var rowNumber=varMap.rowNumber;
-				var colNumber=varMap.colNumber;
-				var value=varMap.value;
-				$("#opcMCTable #td"+rowNumber+"_"+colNumber).text(value);
-			}
-		}
-	,"json");
+    $("#opcMCTable td[id^='td']").text("");//先清除表格里的数据
+    $("#opcMCTable #batchID_hid").val(batchID);//设置表格里的批次id
+    var glueM=batchID.substring(1,2);
+    $("#glueM").html(glueM);
+
+    preCreateMTab();
 }
-*/
 
 function checkInputInfoM(){
 	if(checkJQCJXXM()){
@@ -129,8 +116,9 @@ function addReportF_MByBatchID(){
                 if (result.message == "ok") {
                     layer.msg(result.info, {icon: 1});
                     getLeftMenuData("mWsc");
-                    preCreateMTab();
+                    preCreateMTab();//刷新页面数据
                     initDataResetMButDiv();//清空输入框
+                    $("#m_wsc_span").text("已生成");
                 }
             }
             , "json");
