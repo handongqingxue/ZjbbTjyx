@@ -20,7 +20,7 @@ function initDataResetUButDiv() {
     jbczySel.empty();
     jbczySel.append("<option value=''>请选择</option>")
     //获取全部操作员
-    $.post(path+"/report/getOperatorList",
+    $.post(path+"/repgetUnCreRepVarUListort/getOperatorList",
         {},
         function(request){
             if(request.msg=="ok"){
@@ -40,29 +40,14 @@ function initDataResetUButDiv() {
     $("#tank2AgoU").html("");
 }
 
-/*
 function getUnCreRepVarUList(batchID){
+    $("#opcUCTable td[id^='td']").text("");//先清除表格里的数据
+    $("#opcUCTable #batchID_hid").val(batchID);//设置表格里的批次id
+    var glueU=batchID.substring(1,2);
+    $("#glueU").html(glueU);
 
-    $.post(path+"report/getUnCreRepVarList",
-        //{batchID:"MA202300000018"},
-        {batchID:batchID},
-        function(result){
-            $("#opcUCTable td[id^='td']").text("");//先清除表格里的数据
-            $("#opcUCTable #batchID_hid").val(batchID);//设置表格里的批次id
-            var glueU=batchID.substring(1,2);
-            $("#glueU").html(glueU);
-            var varMapList=result.varMapList;
-            for (var i = 0; i < varMapList.length; i++) {
-                var varMap=varMapList[i];
-                var rowNumber=varMap.rowNumber;
-                var colNumber=varMap.colNumber;
-                var value=varMap.value;
-                $("#opcUCTable #td"+rowNumber+"_"+colNumber).text(value);
-            }
-        }
-    ,"json");
+    preCreateUTab();
 }
-*/
 
 function checkInputInfoU(){
 	if(checkJQCJXXU()){
@@ -172,6 +157,7 @@ function resetUCTabInp(){
                     layer.msg(result.info, {icon: 1});
                     preCreateUTab();
                     initDataResetUButDiv();
+                    preCreateUTab();//刷新页面数据
                 }
             }
             ,"json");
