@@ -116,8 +116,9 @@ function addReportF_MByBatchID(){
                 if (result.message == "ok") {
                     layer.msg(result.info, {icon: 1});
                     getLeftMenuData("mWsc");
-                    preCreateMTab();
+                    preCreateMTab();//刷新页面数据
                     initDataResetMButDiv();//清空输入框
+                    $("#m_wsc_span").text("已生成");
                 }
             }
             , "json");

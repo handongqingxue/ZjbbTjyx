@@ -20,7 +20,7 @@ function initDataResetUButDiv() {
     jbczySel.empty();
     jbczySel.append("<option value=''>请选择</option>")
     //获取全部操作员
-    $.post(path+"/repgetUnCreRepVarUListort/getOperatorList",
+    $.post(path+"/report/getOperatorList",
         {},
         function(request){
             if(request.msg=="ok"){
@@ -117,8 +117,9 @@ function addReportF_UByBatchID(){
                 if (result.message == "ok") {
                     layer.msg(result.info, {icon: 1});
                     getLeftMenuData("uWsc");
-                    preCreateUTab();
+                    preCreateUTab();//刷新页面数据
                     initDataResetUButDiv();//清空输入框
+                    $("#u_wsc_span").text("已生成");
                 }
             }
             , "json");
@@ -157,7 +158,6 @@ function resetUCTabInp(){
                     layer.msg(result.info, {icon: 1});
                     preCreateUTab();
                     initDataResetUButDiv();
-                    preCreateUTab();//刷新页面数据
                 }
             }
             ,"json");
