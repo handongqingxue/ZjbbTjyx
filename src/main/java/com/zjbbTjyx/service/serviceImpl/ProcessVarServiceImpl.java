@@ -167,42 +167,48 @@ public class ProcessVarServiceImpl implements ProcessVarService {
 	}
 
 	@Override
-	public boolean checkAllowAdd(List<String> tvVarNamePreList, Integer upFId) {
+	public boolean checkAllowAdd(List<TriggerVar> triggerVarList) {
 		// TODO Auto-generated method stub
 		boolean allowAdd=false;
 		String pvVarName=null;
-		String tvVarName1Pre = null;
-		String tvVarName2Pre = null;
-        for (int i = 0; i < tvVarNamePreList.size(); i++) {
-        	String tvVarNamePre = tvVarNamePreList.get(i);
+		TriggerVar triggerVar1 = null;
+		TriggerVar triggerVar2 = null;
+        for (int i = 0; i < triggerVarList.size(); i++) {
+            TriggerVar triggerVar = triggerVarList.get(i);
 			if(i==0)
-				tvVarName1Pre = tvVarNamePre;
+				triggerVar1 = triggerVar;
 			else if(i==1)
-				tvVarName1Pre = tvVarNamePre;
+				triggerVar2 = triggerVar;
 		}
-		if(Constant.BEI_LIAO_KAI_SHI.equals(tvVarName1Pre)) {//备料开始
+        String tv1VarName = triggerVar1.getVarName();
+		if(tv1VarName.startsWith(Constant.BEI_LIAO_KAI_SHI)) {//备料开始
 			pvVarName = ERecord.BLKSSSYSJ;
 		}
-		else if (Constant.FAN_YING_JIE_SHU.equals(tvVarName1Pre)){//反应结束
+		else if (tv1VarName.startsWith(Constant.FAN_YING_JIE_SHU)){//反应结束
 			pvVarName = ERecord.FYJSSSYFYFWD;//反应结束上升沿反应釜温度
 		}
-		else if (Constant.JIA_QUAN_BEI_LIAO_KAI_SHI.equals(tvVarName1Pre)){//甲醛备料开始
+		else if (tv1VarName.startsWith(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI)){//甲醛备料开始
 			pvVarName = ERecord.JQBLKSSSYSJ;//甲醛备料开始上升沿时间
 		}
-		else if (Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG.equals(tvVarName1Pre)){//甲醛放料完成
+		else if (tv1VarName.startsWith(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG)){//甲醛放料完成
 			pvVarName = ERecord.JQFLWCSSYSJ;//甲醛放料完成上升沿时间
 		}
-		else if (Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG.equals(tvVarName1Pre)){//加碱ph正常
+		else if (tv1VarName.startsWith(Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG)){//加碱ph正常
 			pvVarName = ERecord.JJPHZZCSSYSJ;//加碱PH值正常上升沿时间
 		}
-		else if(Constant.YUN_XU_YI_CI_JIA_ZHU_JI.equals(tvVarName1Pre)) {//允许一次加助剂
+		else if(tv1VarName.startsWith(Constant.YUN_XU_YI_CI_JIA_ZHU_JI)) {//允许一次加助剂
 			pvVarName = ERecord.YXYCJZJSSYSJ;//允许一次加助剂上升沿时间
 		}
 		else if (Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1.equals(tvVarName1Pre)){//所有助剂加料完成1
 			pvVarName = ERecord.SYZJJLWC1SSYSJ;//所有助剂加料完成1上升沿时间
 		}
 		else if (Constant.JIA_FEN_LIAO_TI_XING.equals(tvVarName1Pre)){//加粉料提醒？？？？？
-
+			if(StringUtils.isEmpty(tvVarName2Pre)) {
+				pvVarName=Constant.FEN_LIAO_ZHONG_LIANG_SHE_DING;
+			}
+			else {
+				
+			}
 		}
 		else if (Constant.JIA_FEN_LIAO_PH_HE_GE.equals(tvVarName1Pre)){//加粉料PH合格？？？？？
 

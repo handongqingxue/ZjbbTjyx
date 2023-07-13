@@ -2323,14 +2323,12 @@ public class OPCController {
 				String upVarName = upBlksTV.getVarName();
 				Float preValue = Float.valueOf(preValueFMMap.get(upVarName).toString());//可能是F1-F5之间的任何一个反应釜
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					List<String> tvVarNamePreList=new ArrayList<String>();
-					tvVarNamePreList.add(Constant.BEI_LIAO_KAI_SHI);
-					boolean allowAdd=processVarService.checkAllowAdd(tvVarNamePreList,upFId);
+					List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
+					opcTVList.add(upBlksTV);//根据备料开始触发变量从opc端查找对应的过程变量
+					boolean allowAdd=processVarService.checkAllowAdd(opcTVList);
 					if(allowAdd) {
 						//删除ProcessVar表里处理标志为1的数据
 						processVarService.deleteDealed(upFId);
-						List<TriggerVar> opcTVList=new ArrayList<TriggerVar>();
-						opcTVList.add(upBlksTV);//根据备料开始触发变量从opc端查找对应的过程变量
 						
 						Map<String, Object> blksMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);
 						String status = blksMResMap.get("status").toString();

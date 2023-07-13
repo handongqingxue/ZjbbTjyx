@@ -43,5 +43,5 @@ public interface ProcessVarService {
 	 */
 	int deleteDealed(int fId);
 
-	boolean checkAllowAdd(List<String> tvVarNamePreList, Integer upFId);
+	boolean checkAllowAdd(List<TriggerVar> triggerVarList);
 }
