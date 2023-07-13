@@ -42,4 +42,6 @@ public interface ProcessVarService {
 	 * @return
 	 */
 	int deleteDealed(int fId);
+
+	boolean checkAllowAdd(String tvVarNamePre, Integer upFId);
 }

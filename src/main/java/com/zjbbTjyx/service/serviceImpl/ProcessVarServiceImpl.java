@@ -1,5 +1,6 @@
 package com.zjbbTjyx.service.serviceImpl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -163,6 +164,39 @@ public class ProcessVarServiceImpl implements ProcessVarService {
 		if(count>0)
 			count=processVarMapper.deleteDealed(fId);
 		return count;
+	}
+
+	@Override
+	public boolean checkAllowAdd(String tvVarNamePre, Integer upFId) {
+		// TODO Auto-generated method stub
+		boolean allowAdd=false;
+		String pvVarName=null;
+		if(Constant.BEI_LIAO_KAI_SHI.equals(tvVarNamePre)) {
+			pvVarName=ERecord.BLKSSSYSJ;
+		}
+		List<ProcessVar> processVarList=processVarMapper.getByVarNameFId(pvVarName,upFId);
+		if(processVarList.size()==0) {
+			allowAdd=true;
+		}
+		else {
+			ProcessVar processVar = processVarList.get(0);
+			if(Constant.BEI_LIAO_KAI_SHI.equals(tvVarNamePre)) {
+				if(processVar==null) {
+					allowAdd=true;
+				}
+				else {
+					Integer dealBz = processVar.getDealBz();
+					if(ProcessVar.YCL==dealBz)
+						allowAdd=true;
+				}
+			}
+			else {
+				if(processVar==null) {
+					allowAdd=true;
+				}
+			}
+		}
+		return allowAdd;
 	}
 
 }

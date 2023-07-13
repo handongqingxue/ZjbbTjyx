@@ -44,4 +44,6 @@ public interface ProcessVarMapper {
 	 * @return
 	 */
 	int deleteDealed(@Param("fId") int fId);
+
+	List<ProcessVar> getByVarNameFId(@Param("varName") String varName, @Param("fId") Integer fId);
 }
