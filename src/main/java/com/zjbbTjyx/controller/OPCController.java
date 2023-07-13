@@ -2323,7 +2323,9 @@ public class OPCController {
 				String upVarName = upBlksTV.getVarName();
 				Float preValue = Float.valueOf(preValueFMMap.get(upVarName).toString());//可能是F1-F5之间的任何一个反应釜
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd=processVarService.checkAllowAdd(Constant.BEI_LIAO_KAI_SHI,upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.BEI_LIAO_KAI_SHI);
+					boolean allowAdd=processVarService.checkAllowAdd(tvVarNamePreList,upFId);
 					if(allowAdd) {
 						//删除ProcessVar表里处理标志为1的数据
 						processVarService.deleteDealed(upFId);
@@ -3443,8 +3445,8 @@ public class OPCController {
 		}
 		else if(Constant.YUN_XU_KAI_SHI_PAI_JIAO.equals(tvVarNamePre)) {//允许开始排胶
 			TriggerVar upYxkspjTV = (TriggerVar)paramMap.get("upYxkspjTV");
-			String upRecType = upYxkspjTV.getRecType();//获取配方类型
 			Integer upFId = upYxkspjTV.getFId();
+			String upRecType = OpcUtil.readRecTypeByFId(upFId);//获取配方类型
 			if(TriggerVar.M.equals(upRecType)) {
 				HashMap<String, Object> preValueFMMap = (HashMap<String,Object>)paramMap.get("preValueFMMap");
 				String upVarName = upYxkspjTV.getVarName();
@@ -3488,7 +3490,7 @@ public class OPCController {
 			List<Integer> pjwcFIdList=(List<Integer>)paramMap.get("pjwcFIdList");
 			TriggerVar upPjwcTV = (TriggerVar)paramMap.get("upPjwcTV");
 			Integer upFId = upPjwcTV.getFId();
-			String upRecType = upPjwcTV.getRecType();//获取配方类型
+			String upRecType = OpcUtil.readRecTypeByFId(upFId);//获取配方类型
 			if(TriggerVar.M.equals(upRecType)) {
 				HashMap<String, Object> preValueFMMap = (HashMap<String,Object>)paramMap.get("preValueFMMap");
 				String upVarName = upPjwcTV.getVarName();
