@@ -1753,7 +1753,6 @@ public class OpcUtil {
     	
 
     	List<String> opcTVNamePreUList=new ArrayList<String>();//前缀集合
-    	opcTVNamePreUList.add(Constant.BEI_LIAO_KAI_SHI);//备料开始前缀
     	opcTVNamePreUList.add(Constant.FAN_YING_JIE_SHU);//反应结束
     	opcTVNamePreUList.add(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI);//甲醛备料开始
     	opcTVNamePreUList.add(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG);//甲醛放料完成
@@ -1779,8 +1778,6 @@ public class OpcUtil {
     	opcTVNamePreUList.add(Constant.ER_CI_JIA_SHUI_QI_DONG);//二次加水启动
     	opcTVNamePreUList.add(Constant.ER_CI_JIA_SHUI_WAN_CHENG);//二次加水完成
         opcTVNamePreUList.add(Constant.ZHONG_JIAN_SHUI_PH_TI_XING);//终检水PH提醒
-    	opcTVNamePreUList.add(Constant.YUN_XU_KAI_SHI_PAI_JIAO);//允许开始排胶
-    	opcTVNamePreUList.add(Constant.PAI_JIAO_WAN_CHENG);//排胶完成---F5没有
         
         for (String opcTVNamePreU : opcTVNamePreUList) {
     		for (String fUName : Constant.BSF_F_U_ARR) {
