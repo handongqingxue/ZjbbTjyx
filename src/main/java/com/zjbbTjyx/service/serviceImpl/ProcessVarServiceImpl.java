@@ -171,9 +171,116 @@ public class ProcessVarServiceImpl implements ProcessVarService {
 		// TODO Auto-generated method stub
 		boolean allowAdd=false;
 		String pvVarName=null;
-		if(Constant.BEI_LIAO_KAI_SHI.equals(tvVarNamePre)) {
-			pvVarName=ERecord.BLKSSSYSJ;
+		if(Constant.BEI_LIAO_KAI_SHI.equals(tvVarNamePre)) {//备料开始
+			pvVarName = ERecord.BLKSSSYSJ;
 		}
+		else if (Constant.FAN_YING_JIE_SHU.equals(tvVarNamePre)){//反应结束
+			pvVarName = ERecord.FYJSSSYFYFWD;//反应结束上升沿反应釜温度
+		}
+		else if (Constant.JIA_QUAN_BEI_LIAO_KAI_SHI.equals(tvVarNamePre)){//甲醛备料开始
+			pvVarName = ERecord.JQBLKSSSYSJ;//甲醛备料开始上升沿时间
+		}
+		else if (Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG.equals(tvVarNamePre)){//甲醛放料完成
+			pvVarName = ERecord.JQBLKSSSYSJ;//甲醛备料开始上升沿时间
+		}
+		else if (Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG.equals(tvVarNamePre)){//加碱ph正常
+			pvVarName = ERecord.JJPHZZCSSYSJ;//加碱PH值正常上升沿时间
+		}
+		else if(Constant.YUN_XU_YI_CI_JIA_ZHU_JI.equals(tvVarNamePre)) {//允许一次加助剂
+			pvVarName = ERecord.YXYCJZJSSYSJ;//允许一次加助剂上升沿时间
+		}
+		else if (Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1.equals(tvVarNamePre)){//所有助剂加料完成1
+			pvVarName = ERecord.SYZJJLWC1SSYSJ;//所有助剂加料完成1上升沿时间
+		}
+		else if (Constant.JIA_FEN_LIAO_TI_XING.equals(tvVarNamePre)){//加粉料提醒？？？？？
+
+		}
+		else if (Constant.JIA_FEN_LIAO_PH_HE_GE.equals(tvVarNamePre)){//加粉料PH合格？？？？？
+
+		}
+		else if (Constant.ER_CI_ZHU_JI_HOU_CE_PH_TI_XING.equals(tvVarNamePre)){//二次助剂后测PH提醒？？？？？
+
+		}
+		else if (Constant.WEN_DU_98_PH.equals(tvVarNamePre)){//温度98PH？？？？？
+
+		}
+		else if (Constant.CE_LIANG_BING_SHUI_WU_DIAN_TI_XING.equals(tvVarNamePre)){//测量冰水雾点提醒？？？？？
+
+		}
+		else if (Constant.CE_SHUI_SHU_TI_XING.equals(tvVarNamePre)){//测水数提醒？？？？？
+
+		}
+		else if (Constant.ZHONG_JIAN_SHUI_PH_TI_XING.equals(tvVarNamePre)){//终检水PH提醒？？？？？
+
+		}
+		else if (Constant.ZHU_JI_6_ER_CI_TIAN_JIA_WAN_CHENG.equals(tvVarNamePre)){//助剂6二次添加完成？？？？？
+
+		}
+		else if (Constant.DI_YI_CI_BAO_WEN_QI_DONG.equals(tvVarNamePre)){//第一次保温启动？？？？？
+
+		}
+		else if (Constant.DI_YI_CI_BAO_WEN_HE_GE.equals(tvVarNamePre)){//第一次保温合格？？？？？
+
+		}
+		else if (Constant.YI_CI_JIANG_WEN_JIA_SUAN_TI_XING.equals(tvVarNamePre)){//一次降温加酸提醒？？？？？
+
+		}
+		else if (Constant.YI_CI_JIANG_WEN_JIA_SUAN_HE_GE.equals(tvVarNamePre)){//一次降温加酸合格？？？？？
+
+		}
+		else if (Constant.ER_CI_TOU_FEN.equals(tvVarNamePre)){//二次投粉？？？？？
+
+		}
+		else if (Constant.ER_CI_JIA_215_QI_DONG.equals(tvVarNamePre)){//二次加215启动？？？？？
+
+		}
+		else if (Constant.ER_CI_JIA_215_WAN_CHENG.equals(tvVarNamePre)){//二次加215完成？？？？？
+
+		}
+		else if (Constant.ER_CI_JIA_SHUI_QI_DONG.equals(tvVarNamePre)){//二次加水启动？？？？？
+
+		}
+		else if (Constant.ER_CI_JIA_SHUI_WAN_CHENG.equals(tvVarNamePre)){//二次加水完成？？？？？
+
+		}
+		else if (Constant.ER_CI_JIA_SHUI_HE_XIAO_LIAO_TI_XING.equals(tvVarNamePre)){//二次加水和小料提醒？？？？？
+
+		}
+//		else if (){//釜尿素放料阀上升沿时间???????
+//
+//		}
+		else if(Constant.SHENG_WEN_KAI_SHI.equals(tvVarNamePre)){//升温开始
+			pvVarName = ERecord.SWKSSSYSJ;//升温开始上升沿时间
+		}
+		else if (Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING.equals(tvVarNamePre)){//温度85与二次投料提醒
+			pvVarName = ERecord.WD85YECTLTXSSYSJ;//温度85与二次投料提醒上升沿时间
+		}
+		else if (Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2.equals(tvVarNamePre)){//所有助剂加料完成2
+			pvVarName = ERecord.SYZJJLWC2SSYSJ;//所有助剂加料完成2上升沿时间
+		}
+		else if (Constant.YUN_XU_ER_CI_JIA_ZHU_JI.equals(tvVarNamePre)){//允许二次加助剂
+			pvVarName = ERecord.YXECJZJSSYSJ;//允许二次加助剂上升沿时间
+		}
+		else if (Constant.SHENG_WEN_WAN_CHENG.equals(tvVarNamePre)){//升温完成
+			pvVarName = ERecord.SWWCSSYSJ;//升温完成上升沿时间
+		}
+		else if (Constant.JU_HE_ZHONG_DIAN.equals(tvVarNamePre)){//聚合终点
+			pvVarName = ERecord.JHZDSSYSJ;//聚合终点上升沿时间
+		}
+		else if (Constant.JIANG_WEN_WAN_CHENG.equals(tvVarNamePre)){//降温完成
+			pvVarName = ERecord.JWWCSSYSJ;//降温完成上升沿时间
+		}
+		else if(Constant.YUN_XU_KAI_SHI_PAI_JIAO.equals(tvVarNamePre)) {//允许开始排胶
+			pvVarName = ERecord.YXKSPJSSYSJ;//允许开始排胶上升沿时间
+		}
+		else if(Constant.PAI_JIAO_WAN_CHENG.equals(tvVarNamePre)) {//排胶完成
+			pvVarName = ERecord.PJWCSSYSJ;//排胶完成上升沿时间
+		}
+		else if(Constant.KAI_SHI_JIA_LIAO.equals(tvVarNamePre)) {//开始加料？？？？？？
+
+		}
+
+
 		List<ProcessVar> processVarList=processVarMapper.getByVarNameFId(pvVarName,upFId);
 		if(processVarList.size()==0) {
 			allowAdd=true;
