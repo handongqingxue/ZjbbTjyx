@@ -25,7 +25,7 @@ import com.zjbbTjyx.entity.*;
 
 public class OpcUtil {
 	
-	private static boolean IS_TEST=false;
+	private static boolean IS_TEST=true;
 	private static List<OpcItem> imiOpcItemTVList,imiOpcItemPVList;
 	private static JOpc jopcTV,jopcPV;
 	private static OpcGroup opcGroupTV,opcGroupPV;
@@ -96,6 +96,35 @@ public class OpcUtil {
             e.printStackTrace();
         }
     }
+    
+    public static String readRecTypeByFId(int fId) {
+    	String valueTxt=null;
+    	if(IS_TEST) {
+    		valueTxt="M";
+    	}
+    	else {
+	    	List<String> opcVarNameList=new ArrayList<String>();
+	    	opcVarNameList.add(Constant.FAN_YING_FU+fId+Constant.JIAO_ZHONG_LEI_XING+Constant.XHX+Constant.AV);//反应釜胶种类型
+	    	ArrayList<OpcItem> opcItems = readJOpcPV(opcVarNameList);
+	    	OpcItem opcItem = opcItems.get(0);
+	    	String valueStr = opcItem.getValue().toString();
+	    	System.out.println("valueStr==="+valueStr);
+	    	switch (valueStr) {
+			case "0.0":
+			case "1.0":
+			case "2.0":
+			case "3.0":
+			case "4.0":
+			case "5.0":
+				valueTxt="M";
+				break;
+			case "6.0":
+				valueTxt="U";
+				break;
+			}
+    	}
+    	return valueTxt;
+	}
     
     public static String readJZLXByFId(int fId) {
     	//反应釜胶种类型:1:A、2:B、3:G、4:F、5:H、6:C（U类）

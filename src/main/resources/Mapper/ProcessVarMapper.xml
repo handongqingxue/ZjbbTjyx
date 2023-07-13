@@ -93,4 +93,7 @@
 	<delete id="deleteDealed">
 		DELETE FROM ProcessVar WHERE DealBz=${@com.zjbbTjyx.entity.ProcessVar@YCL} and FId=#{fId}
 	</delete>
+	<select id="getByVarNameFId" resultType="com.zjbbTjyx.entity.ProcessVar">
+		select * from ProcessVar where VarName=#{varName} and FId=#{fId}
+	</select>
 </mapper>

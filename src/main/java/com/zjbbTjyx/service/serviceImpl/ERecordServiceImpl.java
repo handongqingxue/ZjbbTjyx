@@ -48,9 +48,9 @@ public class ERecordServiceImpl implements ERecordService {
 					String updateTime = processVar.getUpdateTime();
 
 					//获取反应结束时间变量名
-					String fyjsSjVarName = ERecord.FYJSSSYSJ;
-					ProcessVar fyjsSjPV = OpcUtil.getProVarInListByVarName(fyjsSjVarName, processVarList);
-					if(fyjsSjPV!=null) {
+					//String fyjsSjVarName = ERecord.FYJSSSYSJ;
+					//ProcessVar fyjsSjPV = OpcUtil.getProVarInListByVarName(fyjsSjVarName, processVarList);
+					//if(fyjsSjPV!=null) {
 						ERecord eRecord1=getFromList(Constant.PI_CI_JI_LU, batchID, eRecordList);
 						if(eRecord1==null) {
 							eRecord1=new ERecord();
@@ -66,7 +66,7 @@ public class ERecordServiceImpl implements ERecordService {
 						eRecord1.setPreValue(updateTime);
 						
 						pvIdList.add(pvId);
-					}
+					//}
 					
 					ERecord eRecord2=new ERecord();
 					eRecord2.setVarName(Constant.SHENG_CHAN_BIAN_HAO);
@@ -2991,7 +2991,13 @@ public class ERecordServiceImpl implements ERecordService {
 			for (int i = 0; i < unAddFMapList.size(); i++) {
 				Map<String, Object> fMap = unAddFMapList.get(i);
 				Integer fId = Integer.valueOf(fMap.get("fId").toString());
-				String recType = fMap.get("recType").toString();
+				String jzlx=OpcUtil.readJZLXByFId(fId);
+				String recType = null;
+				//recType = fMap.get("recType").toString();
+				if("C".equals(jzlx))
+					recType = "U";
+				else
+					recType = "M";
 				String batchNumStr=null;
 				int batchNum=maxBatchNum+i+1;
 				if(batchNum<10)
@@ -3010,7 +3016,6 @@ public class ERecordServiceImpl implements ERecordService {
 					batchNumStr="0"+batchNum;
 				else
 					batchNumStr=""+batchNum;
-				String jzlx=OpcUtil.readJZLXByFId(fId);
 				String batchID=recType+jzlx+year+batchNumStr;
 				
 				batchIDMap.put(fId, batchID);
