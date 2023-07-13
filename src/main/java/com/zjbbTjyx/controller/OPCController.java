@@ -2349,7 +2349,9 @@ public class OPCController {
 				String upVarName = upBlksTV.getVarName();
 				Float preValue = Float.valueOf(preValueFUMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd=processVarService.checkAllowAdd(Constant.BEI_LIAO_KAI_SHI,upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.BEI_LIAO_KAI_SHI);
+					boolean allowAdd=processVarService.checkAllowAdd(tvVarNamePreList,upFId);
 					if(allowAdd) {
 						//删除ProcessVar表里处理标志为1的数据
 						processVarService.deleteDealed(upFId);
@@ -2381,7 +2383,9 @@ public class OPCController {
 				String upVarName = upFyjsTV.getVarName();
 				Float preValue = Float.valueOf(preValueFMMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.FAN_YING_JIE_SHU, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.FAN_YING_JIE_SHU);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						fyjsFIdList.add(upFId);
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
@@ -2411,7 +2415,9 @@ public class OPCController {
 				String upVarName = upFyjsTV.getVarName();
 				Float preValue = Float.valueOf(preValueFUMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.FAN_YING_JIE_SHU, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.FAN_YING_JIE_SHU);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						fyjsFIdList.add(upFId);
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
@@ -2446,7 +2452,9 @@ public class OPCController {
 				String upVarName = upJqblksTV.getVarName();
 				Float preValue = Float.valueOf(preValueFMMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(upJqblksTV);
@@ -2468,7 +2476,9 @@ public class OPCController {
 				String upVarName = upJqblksTV.getVarName();
 				Float preValue = Float.valueOf(preValueFUMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(upJqblksTV);
@@ -2495,7 +2505,9 @@ public class OPCController {
 				String upVarName = upJqflwcTV.getVarName();
 				Float preValue = Float.valueOf(preValueFMMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(upJqflwcTV);
@@ -2533,7 +2545,9 @@ public class OPCController {
 				String upVarName = upJqflwcTV.getVarName();
 				Float preValue = Float.valueOf(preValueFUMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(upJqflwcTV);//根据甲醛放料完成触发变量从opc端查找对应的过程变量
@@ -2574,7 +2588,9 @@ public class OPCController {
 				String upVarName = upJjphzzcTV.getVarName();
 				Float preValue = Float.valueOf(preValueFMMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(upJjphzzcTV);
@@ -2597,7 +2613,9 @@ public class OPCController {
 				String upVarName = upJjphzzcTV.getVarName();
 				Float preValue = Float.valueOf(preValueFUMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(upJjphzzcTV);
@@ -2624,7 +2642,9 @@ public class OPCController {
 				String upVarName = upYxycjzjTV.getVarName();
 				Float preValue = Float.valueOf(preValueFMMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.YUN_XU_YI_CI_JIA_ZHU_JI, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.YUN_XU_YI_CI_JIA_ZHU_JI);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(upYxycjzjTV);
@@ -2646,7 +2666,9 @@ public class OPCController {
 				String upVarName = upYxycjzjTV.getVarName();
 				Float preValue = Float.valueOf(preValueFUMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.YUN_XU_YI_CI_JIA_ZHU_JI, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.YUN_XU_YI_CI_JIA_ZHU_JI);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(upYxycjzjTV);
@@ -2673,7 +2695,9 @@ public class OPCController {
 				String upVarName = upSyzjjlwc1TV.getVarName();
 				Float preValue = Float.valueOf(preValueFMMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(upSyzjjlwc1TV);
@@ -2710,7 +2734,9 @@ public class OPCController {
 				String upVarName = upSyzjjlwc1TV.getVarName();
 				Float preValue = Float.valueOf(preValueFUMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(upSyzjjlwc1TV);
@@ -2740,7 +2766,9 @@ public class OPCController {
 				Float preValue = Float.valueOf(preValueFMMap.get(upVarName).toString());
 				JfltxTV=upJfltxTV;//放在判断上次是否是下降值的外面，是因为不管上次是不是，在下面尿素阀的逻辑里都要用到
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.JIA_FEN_LIAO_TI_XING, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.JIA_FEN_LIAO_TI_XING);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(upJfltxTV);
@@ -2763,7 +2791,9 @@ public class OPCController {
 				Float preValue = Float.valueOf(preValueFUMap.get(upVarName).toString());
 				JfltxTV=upJfltxTV;
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.JIA_FEN_LIAO_TI_XING, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.JIA_FEN_LIAO_TI_XING);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(upJfltxTV);
@@ -2840,7 +2870,9 @@ public class OPCController {
 				Integer upFId = upJflphhgTV.getFId();
 				Float preValue = Float.valueOf(preValueFMMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.JIA_FEN_LIAO_PH_HE_GE, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.JIA_FEN_LIAO_PH_HE_GE);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(upJflphhgTV);
@@ -2863,7 +2895,9 @@ public class OPCController {
 				Integer upFId = upJflphhgTV.getFId();
 				Float preValue = Float.valueOf(preValueFUMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.JIA_FEN_LIAO_PH_HE_GE, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.JIA_FEN_LIAO_PH_HE_GE);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(upJflphhgTV);
@@ -2884,7 +2918,9 @@ public class OPCController {
 				String upVarName = upSwksTV.getVarName();
 				Float preValue = Float.valueOf(preValueFMMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.SHENG_WEN_KAI_SHI, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.SHENG_WEN_KAI_SHI);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(upSwksTV);
@@ -2906,7 +2942,9 @@ public class OPCController {
 				String upVarName = upSwksTV.getVarName();
 				Float preValue = Float.valueOf(preValueFUMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.SHENG_WEN_KAI_SHI, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.SHENG_WEN_KAI_SHI);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(upSwksTV);
@@ -2933,7 +2971,9 @@ public class OPCController {
 				String upVarName = upWd85yectltxTV.getVarName();
 				Float preValue = Float.valueOf(preValueFMMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(upWd85yectltxTV);
@@ -2959,7 +2999,9 @@ public class OPCController {
 				String upVarName = upWd85yectltxTV.getVarName();
 				Float preValue = Float.valueOf(preValueFUMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(upWd85yectltxTV);
@@ -2983,7 +3025,9 @@ public class OPCController {
 				String upVarName = upEczjhcphtxTV.getVarName();
 				Float preValue = Float.valueOf(preValueFMMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.ER_CI_ZHU_JI_HOU_CE_PH_TI_XING, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.ER_CI_ZHU_JI_HOU_CE_PH_TI_XING);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(upEczjhcphtxTV);
@@ -3002,7 +3046,9 @@ public class OPCController {
 				String upVarName = upEczjhcphtxTV.getVarName();
 				Float preValue = Float.valueOf(preValueFUMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.ER_CI_ZHU_JI_HOU_CE_PH_TI_XING, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.ER_CI_ZHU_JI_HOU_CE_PH_TI_XING);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(upEczjhcphtxTV);
@@ -3026,7 +3072,9 @@ public class OPCController {
 				String upVarName = upYxecjzjTV.getVarName();
 				Float preValue = Float.valueOf(preValueFMMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.YUN_XU_ER_CI_JIA_ZHU_JI, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.YUN_XU_ER_CI_JIA_ZHU_JI);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(upYxecjzjTV);
@@ -3045,7 +3093,9 @@ public class OPCController {
 				String upVarName = upYxecjzjTV.getVarName();
 				Float preValue = Float.valueOf(preValueFUMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.YUN_XU_ER_CI_JIA_ZHU_JI, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.YUN_XU_ER_CI_JIA_ZHU_JI);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(upYxecjzjTV);
@@ -3069,7 +3119,9 @@ public class OPCController {
 				String upVarName = upSyzjjlwc2TV.getVarName();
 				Float preValue = Float.valueOf(preValueFMMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(upSyzjjlwc2TV);
@@ -3103,7 +3155,9 @@ public class OPCController {
 				String upVarName = upSyzjjlwc2TV.getVarName();
 				Float preValue = Float.valueOf(preValueFUMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(upSyzjjlwc2TV);
@@ -3127,7 +3181,9 @@ public class OPCController {
 				String upVarName = upSwwcTV.getVarName();
 				Float preValue = Float.valueOf(preValueFMMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.SHENG_WEN_WAN_CHENG, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.SHENG_WEN_WAN_CHENG);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(upSwwcTV);
@@ -3152,7 +3208,9 @@ public class OPCController {
 				String upVarName = upSwwcTV.getVarName();
 				Float preValue = Float.valueOf(preValueFUMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.SHENG_WEN_WAN_CHENG, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.SHENG_WEN_WAN_CHENG);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(upSwwcTV);
@@ -3182,7 +3240,9 @@ public class OPCController {
 				String upVarName = upWd98phhgTV.getVarName();
 				Float preValue = Float.valueOf(preValueFMMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.WEN_DU_98_PH, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.WEN_DU_98_PH+Constant.HE_GE);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(upWd98phhgTV);
@@ -3201,7 +3261,9 @@ public class OPCController {
 				String upVarName = upWd98phhgTV.getVarName();
 				Float preValue = Float.valueOf(preValueFUMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.WEN_DU_98_PH, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.WEN_DU_98_PH+Constant.HE_GE);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(upWd98phhgTV);
@@ -3225,7 +3287,9 @@ public class OPCController {
 				String downVarName = downClbswdtxTV.getVarName();
 				Float preValue = Float.valueOf(preValueFMMap.get(downVarName).toString());
 				if(preValue==TriggerVar.UP) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.CE_LIANG_BING_SHUI_WU_DIAN_TI_XING, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.CE_LIANG_BING_SHUI_WU_DIAN_TI_XING);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(downClbswdtxTV);
@@ -3244,7 +3308,9 @@ public class OPCController {
 				String downVarName = downClbswdtxTV.getVarName();
 				Float preValue = Float.valueOf(preValueFUMap.get(downVarName).toString());
 				if(preValue==TriggerVar.UP) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.CE_LIANG_BING_SHUI_WU_DIAN_TI_XING, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.CE_LIANG_BING_SHUI_WU_DIAN_TI_XING);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(downClbswdtxTV);
@@ -3268,7 +3334,9 @@ public class OPCController {
 				String upVarName = upJhzdTV.getVarName();
 				Float preValue = Float.valueOf(preValueFMMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.JU_HE_ZHONG_DIAN, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.JU_HE_ZHONG_DIAN);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(upJhzdTV);
@@ -3287,7 +3355,9 @@ public class OPCController {
 				String upVarName = upJhzdTV.getVarName();
 				Float preValue = Float.valueOf(preValueFUMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.JU_HE_ZHONG_DIAN, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.JU_HE_ZHONG_DIAN);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(upJhzdTV);
@@ -3311,7 +3381,9 @@ public class OPCController {
 				String downVarName = downCsstxTV.getVarName();
 				Float preValue = Float.valueOf(preValueFMMap.get(downVarName).toString());
 				if(preValue==TriggerVar.UP) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.CE_SHUI_SHU_TI_XING, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.CE_SHUI_SHU_TI_XING);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(downCsstxTV);
@@ -3330,7 +3402,9 @@ public class OPCController {
 				String downVarName = downCsstxTV.getVarName();
 				Float preValue = Float.valueOf(preValueFUMap.get(downVarName).toString());
 				if(preValue==TriggerVar.UP) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.CE_SHUI_SHU_TI_XING, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.CE_SHUI_SHU_TI_XING);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(downCsstxTV);
@@ -3355,7 +3429,9 @@ public class OPCController {
 				String upVarName = upJwwcTV.getVarName();
 				Float preValue = Float.valueOf(preValueFMMap.get(upVarName).toString());
 				if (preValue == TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.JIANG_WEN_WAN_CHENG, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.JIANG_WEN_WAN_CHENG);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						jwwcFIdList.add(upFId);
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
@@ -3382,7 +3458,9 @@ public class OPCController {
 				String upVarName = upJwwcTV.getVarName();
 				Float preValue = Float.valueOf(preValueFUMap.get(upVarName).toString());
 				if (preValue == TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.JIANG_WEN_WAN_CHENG, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.JIANG_WEN_WAN_CHENG);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						jwwcFIdList.add(upFId);
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
@@ -3407,7 +3485,9 @@ public class OPCController {
 				String downVarName = downZjsphtxTV.getVarName();
 				Float preValue = Float.valueOf(preValueFMMap.get(downVarName).toString());
 				if(preValue==TriggerVar.UP) {//当上一次的变量值为1，说明这次刚下降，变量刚从1变为0，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.ZHONG_JIAN_SHUI_PH_TI_XING, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.ZHONG_JIAN_SHUI_PH_TI_XING);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(downZjsphtxTV);
@@ -3426,7 +3506,9 @@ public class OPCController {
 				String downVarName = downZjsphtxTV.getVarName();
 				Float preValue = Float.valueOf(preValueFUMap.get(downVarName).toString());
 				if(preValue==TriggerVar.UP) {//当上一次的变量值为1，说明这次刚下降，变量刚从1变为0，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.ZHONG_JIAN_SHUI_PH_TI_XING, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.ZHONG_JIAN_SHUI_PH_TI_XING);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(downZjsphtxTV);
@@ -3450,7 +3532,9 @@ public class OPCController {
 				String upVarName = upYxkspjTV.getVarName();
 				Float preValue = Float.valueOf(preValueFMMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.YUN_XU_KAI_SHI_PAI_JIAO, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.YUN_XU_KAI_SHI_PAI_JIAO);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(upYxkspjTV);
@@ -3469,7 +3553,9 @@ public class OPCController {
 				String upVarName = upYxkspjTV.getVarName();
 				Float preValue = Float.valueOf(preValueFUMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.YUN_XU_KAI_SHI_PAI_JIAO, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.YUN_XU_KAI_SHI_PAI_JIAO);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(upYxkspjTV);
@@ -3494,7 +3580,9 @@ public class OPCController {
 				String upVarName = upPjwcTV.getVarName();
 				Float preValue = Float.valueOf(preValueFMMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.PAI_JIAO_WAN_CHENG, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.PAI_JIAO_WAN_CHENG);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						pjwcFIdList.add(upFId);
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
@@ -3536,7 +3624,9 @@ public class OPCController {
 				String upVarName = upPjwcTV.getVarName();
 				Float preValue = Float.valueOf(preValueFUMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.PAI_JIAO_WAN_CHENG, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.PAI_JIAO_WAN_CHENG);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						pjwcFIdList.add(upFId);
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
@@ -3567,7 +3657,9 @@ public class OPCController {
 				String upVarName = upKsjlTV.getVarName();
 				Float preValue = Float.valueOf(preValueFUMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.KAI_SHI_JIA_LIAO, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.KAI_SHI_JIA_LIAO);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(upKsjlTV);
@@ -3591,7 +3683,9 @@ public class OPCController {
 				String upVarName = upZjlyctjwcTV.getVarName();
 				Float preValue = Float.valueOf(preValueFUMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.ZHU_JI_6_YI_CI_TIAN_JIA_WAN_CHENG, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.ZHU_JI_6_YI_CI_TIAN_JIA_WAN_CHENG);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(upZjlyctjwcTV);
@@ -3630,7 +3724,9 @@ public class OPCController {
 				String upVarName = upZjlecblwcTV.getVarName();
 				Float preValue = Float.valueOf(preValueFUMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.ZHU_JI_6_ER_CI_BEI_LIAO_WAN_CHENG, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.ZHU_JI_6_ER_CI_BEI_LIAO_WAN_CHENG);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(upZjlecblwcTV);
@@ -3654,7 +3750,9 @@ public class OPCController {
 				String upVarName = upZjlectjwcTV.getVarName();
 				Float preValue = Float.valueOf(preValueFUMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.ZHU_JI_6_ER_CI_TIAN_JIA_WAN_CHENG, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.ZHU_JI_6_ER_CI_TIAN_JIA_WAN_CHENG);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(upZjlectjwcTV);
@@ -3693,7 +3791,9 @@ public class OPCController {
 				String upVarName = upDycbwqdTV.getVarName();
 				Float preValue = Float.valueOf(preValueFUMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.DI_YI_CI_BAO_WEN_QI_DONG, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.DI_YI_CI_BAO_WEN_QI_DONG);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(upDycbwqdTV);
@@ -3716,8 +3816,10 @@ public class OPCController {
 				HashMap<String, Object> preValueFUMap = (HashMap<String,Object>)paramMap.get("preValueFUMap");
 				String upVarName = upDycbwhgTV.getVarName();
 				Float preValue = Float.valueOf(preValueFUMap.get(upVarName).toString());
-				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.DI_YI_CI_BAO_WEN_HE_GE, upFId);
+				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变 为1，就记录一下反应釜id
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.DI_YI_CI_BAO_WEN_HE_GE);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(upDycbwhgTV);
@@ -3743,7 +3845,9 @@ public class OPCController {
 					String upVarName = upYcjwjstxTV.getVarName();
 					Float preValue = Float.valueOf(preValueFUMap.get(upVarName).toString());
 					if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-						boolean allowAdd = processVarService.checkAllowAdd(Constant.YI_CI_JIANG_WEN_JIA_SUAN_TI_XING, upFId);
+						List<String> tvVarNamePreList=new ArrayList<String>();
+						tvVarNamePreList.add(Constant.YI_CI_JIANG_WEN_JIA_SUAN_TI_XING);
+						boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 						if (allowAdd) {
 							List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 							opcTVList.add(upYcjwjstxTV);
@@ -3774,7 +3878,9 @@ public class OPCController {
 					String downVarName = downYcjwjstxTV.getVarName();
 					Float preValue = Float.valueOf(preValueFUMap.get(downVarName).toString());
 					if(preValue==TriggerVar.UP) {//当上一次的变量值为1，说明这次刚下降，变量刚从1变为0，就记录一下反应釜id
-						boolean allowAdd = processVarService.checkAllowAdd(Constant.YI_CI_JIANG_WEN_JIA_SUAN_TI_XING, upFId);
+						List<String> tvVarNamePreList=new ArrayList<String>();
+						tvVarNamePreList.add(Constant.YI_CI_JIANG_WEN_JIA_SUAN_TI_XING);
+						boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 						if (allowAdd) {
 							List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 							opcTVList.add(downYcjwjstxTV);
@@ -3799,7 +3905,9 @@ public class OPCController {
 				String upVarName = upYcjwjshgTV.getVarName();
 				Float preValue = Float.valueOf(preValueFUMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.YI_CI_JIANG_WEN_JIA_SUAN_HE_GE, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.YI_CI_JIANG_WEN_JIA_SUAN_HE_GE);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(upYcjwjshgTV);
@@ -3823,7 +3931,9 @@ public class OPCController {
 				String upVarName = upJjphhgTV.getVarName();
 				Float preValue = Float.valueOf(preValueFUMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.JIA_JIAN_PH_HE_GE, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.JIA_JIAN_PH_HE_GE);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(upJjphhgTV);
@@ -3850,7 +3960,9 @@ public class OPCController {
 				Float preValue = Float.valueOf(preValueFUMap.get(upVarName).toString());
 				ectfTV=upEctfTV;
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.ER_CI_TOU_FEN, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.ER_CI_TOU_FEN);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(upEctfTV);
@@ -3921,7 +4033,9 @@ public class OPCController {
 				String upVarName = upEcj215qdTV.getVarName();
 				Float preValue = Float.valueOf(preValueFUMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.ER_CI_JIA_215_QI_DONG, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.ER_CI_JIA_215_QI_DONG);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(upEcj215qdTV);
@@ -3945,7 +4059,9 @@ public class OPCController {
 				String upVarName = upEcj215wcTV.getVarName();
 				Float preValue = Float.valueOf(preValueFUMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.ER_CI_JIA_215_WAN_CHENG, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.ER_CI_JIA_215_WAN_CHENG);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(upEcj215wcTV);
@@ -3969,7 +4085,9 @@ public class OPCController {
 				String upVarName = upEcjsqdTV.getVarName();
 				Float preValue = Float.valueOf(preValueFUMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.ER_CI_JIA_SHUI_QI_DONG, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.ER_CI_JIA_SHUI_QI_DONG);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(upEcjsqdTV);
@@ -3993,7 +4111,9 @@ public class OPCController {
 				String upVarName = upEcjswcTV.getVarName();
 				Float preValue = Float.valueOf(preValueFUMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.ER_CI_JIA_SHUI_WAN_CHENG, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.ER_CI_JIA_SHUI_WAN_CHENG);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(upEcjswcTV);
@@ -4017,7 +4137,9 @@ public class OPCController {
 				String downVarName = downEcjxlhstxTV.getVarName();
 				Float preValue = Float.valueOf(preValueFUMap.get(downVarName).toString());
 				if(preValue==TriggerVar.UP) {//当上一次的变量值为1，说明这次刚下降，变量刚从1变为0，就记录一下反应釜id
-					boolean allowAdd = processVarService.checkAllowAdd(Constant.ER_CI_JIA_SHUI_HE_XIAO_LIAO_TI_XING, upFId);
+					List<String> tvVarNamePreList=new ArrayList<String>();
+					tvVarNamePreList.add(Constant.ER_CI_JIA_SHUI_HE_XIAO_LIAO_TI_XING);
+					boolean allowAdd = processVarService.checkAllowAdd(tvVarNamePreList, upFId);
 					if (allowAdd) {
 						List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 						opcTVList.add(downEcjxlhstxTV);
