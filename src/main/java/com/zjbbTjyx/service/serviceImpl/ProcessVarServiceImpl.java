@@ -279,34 +279,34 @@ public class ProcessVarServiceImpl implements ProcessVarService {
 //		else if (){//釜尿素放料阀上升沿时间???????
 //
 //		}
-		else if(Constant.SHENG_WEN_KAI_SHI.equals(tvVarName1Pre)){//升温开始
+		else if(tv1VarName.startsWith(Constant.SHENG_WEN_KAI_SHI)){//升温开始
 			pvVarName = ERecord.SWKSSSYSJ;//升温开始上升沿时间
 		}
-		else if (Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING.equals(tvVarName1Pre)){//温度85与二次投料提醒
+		else if (tv1VarName.startsWith(Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING)){//温度85与二次投料提醒
 			pvVarName = ERecord.WD85YECTLTXSSYSJ;//温度85与二次投料提醒上升沿时间
 		}
-		else if (Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2.equals(tvVarName1Pre)){//所有助剂加料完成2
+		else if (tv1VarName.startsWith(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2)){//所有助剂加料完成2
 			pvVarName = ERecord.SYZJJLWC2SSYSJ;//所有助剂加料完成2上升沿时间
 		}
-		else if (Constant.YUN_XU_ER_CI_JIA_ZHU_JI.equals(tvVarName1Pre)){//允许二次加助剂
+		else if (tv1VarName.startsWith(Constant.YUN_XU_ER_CI_JIA_ZHU_JI)){//允许二次加助剂
 			pvVarName = ERecord.YXECJZJSSYSJ;//允许二次加助剂上升沿时间
 		}
-		else if (Constant.SHENG_WEN_WAN_CHENG.equals(tvVarName1Pre)){//升温完成
+		else if (tv1VarName.startsWith(Constant.SHENG_WEN_WAN_CHENG)){//升温完成
 			pvVarName = ERecord.SWWCSSYSJ;//升温完成上升沿时间
 		}
-		else if (Constant.JU_HE_ZHONG_DIAN.equals(tvVarName1Pre)){//聚合终点
+		else if (tv1VarName.startsWith(Constant.JU_HE_ZHONG_DIAN)){//聚合终点
 			pvVarName = ERecord.JHZDSSYSJ;//聚合终点上升沿时间
 		}
-		else if (Constant.JIANG_WEN_WAN_CHENG.equals(tvVarName1Pre)){//降温完成
+		else if (tv1VarName.startsWith(Constant.JIANG_WEN_WAN_CHENG)){//降温完成
 			pvVarName = ERecord.JWWCSSYSJ;//降温完成上升沿时间
 		}
-		else if(Constant.YUN_XU_KAI_SHI_PAI_JIAO.equals(tvVarName1Pre)) {//允许开始排胶
+		else if(tv1VarName.startsWith(Constant.YUN_XU_KAI_SHI_PAI_JIAO)) {//允许开始排胶
 			pvVarName = ERecord.YXKSPJSSYSJ;//允许开始排胶上升沿时间
 		}
-		else if(Constant.PAI_JIAO_WAN_CHENG.equals(tvVarName1Pre)) {//排胶完成
+		else if(tv1VarName.startsWith(Constant.PAI_JIAO_WAN_CHENG)) {//排胶完成
 			pvVarName = ERecord.PJWCSSYSJ;//排胶完成上升沿时间
 		}
-		else if(Constant.KAI_SHI_JIA_LIAO.equals(tvVarName1Pre)) {//开始加料？？？？？？
+		else if(tv1VarName.startsWith(Constant.KAI_SHI_JIA_LIAO)) {//开始加料？？？？？？
 
 		}
 
