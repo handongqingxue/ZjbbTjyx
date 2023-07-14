@@ -252,16 +252,16 @@ public class ProcessVarServiceImpl implements ProcessVarService {
 		else if (tv1VarName.startsWith(Constant.DI_YI_CI_BAO_WEN_HE_GE)){//第一次保温合格
 			pvVarName=ERecord.DYCBWHGSSYFYFWD;//第一次保温合格反应釜温度
 		}
-		else if (Constant.YI_CI_JIANG_WEN_JIA_SUAN_TI_XING.equals(tvVarName1Pre)){//一次降温加酸提醒？？？？？
+		else if (tv1VarName.startsWith(Constant.YI_CI_JIANG_WEN_JIA_SUAN_TI_XING)){//一次降温加酸提醒？？？？？
 
 		}
-		else if (Constant.YI_CI_JIANG_WEN_JIA_SUAN_HE_GE.equals(tvVarName1Pre)){//一次降温加酸合格？？？？？
+		else if (tv1VarName.startsWith(Constant.YI_CI_JIANG_WEN_JIA_SUAN_HE_GE)){//一次降温加酸合格？？？？？
 
 		}
-		else if (Constant.ER_CI_TOU_FEN.equals(tvVarName1Pre)){//二次投粉？？？？？
+		else if (tv1VarName.startsWith(Constant.ER_CI_TOU_FEN)){//二次投粉？？？？？
 
 		}
-		else if (Constant.ER_CI_JIA_215_QI_DONG.equals(tvVarName1Pre)){//二次加215启动？？？？？
+		else if (tv1VarName.startsWith(Constant.ER_CI_JIA_215_QI_DONG)){//二次加215启动？？？？？
 
 		}
 		else if (Constant.ER_CI_JIA_215_WAN_CHENG.equals(tvVarName1Pre)){//二次加215完成？？？？？
