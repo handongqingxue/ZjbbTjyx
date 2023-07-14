@@ -203,7 +203,7 @@ public class ProcessVarServiceImpl implements ProcessVarService {
 			pvVarName = ERecord.JQFLWCSSYSJ;//甲醛放料完成上升沿时间
 		}
 		else if (tv1VarName.startsWith(Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG)){//加碱ph正常
-			pvVarName = ERecord.JJPHZZCSSYSJ;//加碱PH值正常上升沿时间
+			pvVarName = Constant.JIA_JIAN_QIAN_PH_SHU_RU_ZHI;//加碱前PH输入值
 		}
 		else if(tv1VarName.startsWith(Constant.YUN_XU_YI_CI_JIA_ZHU_JI)) {//允许一次加助剂
 			pvVarName = ERecord.YXYCJZJSSYSJ;//允许一次加助剂上升沿时间
