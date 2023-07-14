@@ -210,40 +210,47 @@ public class ProcessVarServiceImpl implements ProcessVarService {
 		else if (tv1VarName.startsWith(Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1)){//所有助剂加料完成1
 			pvVarName = ERecord.SYZJJLWC1SSYSJ;//所有助剂加料完成1上升沿时间
 		}
-		else if (tv1VarName.startsWith(Constant.JIA_FEN_LIAO_TI_XING)){//加粉料提醒？？？？？
+		else if (tv1VarName.startsWith(Constant.JIA_FEN_LIAO_TI_XING)){//加粉料提醒
 			if(StringUtils.isEmpty(tv2VarName)) {
 				pvVarName=Constant.FEN_LIAO_ZHONG_LIANG_SHE_DING;
 			}
 			else {
-				
+				if(tv2VarName.contains(Constant.NIAO_SU_FANG_LIAO_FA)) {
+					if(tv2VarValue==TriggerVar.UP) {
+						pvVarName=ERecord.FNSFLFSSYFCZ;//釜尿素放料阀上升沿釜称重
+        			}
+        			else {
+        				pvVarName=ERecord.FNSFLFXJYFCZ;//釜尿素放料阀下降沿釜称重
+        			}
+				}
 			}
 		}
-		else if (tv1VarName.startsWith(Constant.JIA_FEN_LIAO_PH_HE_GE)){//加粉料PH合格？？？？？
-
+		else if (tv1VarName.startsWith(Constant.JIA_FEN_LIAO_PH_HE_GE)){//加粉料PH合格
+			pvVarName=Constant.JIA_FEN_LIAO_PH_SHU_RU_ZHI;
 		}
-		else if (tv1VarName.startsWith(Constant.ER_CI_ZHU_JI_HOU_CE_PH_TI_XING)){//二次助剂后测PH提醒？？？？？
-
+		else if (tv1VarName.startsWith(Constant.ER_CI_ZHU_JI_HOU_CE_PH_TI_XING)){//二次助剂后测PH提醒
+			pvVarName=Constant.ER_CI_TOU_LIAO_PH_SHU_RU;
 		}
-		else if (tv1VarName.startsWith(Constant.WEN_DU_98_PH)){//温度98PH？？？？？
-
+		else if (tv1VarName.startsWith(Constant.WEN_DU_98_PH+Constant.HE_GE)){//温度98PH合格
+			pvVarName=Constant.WEN_DU_98_PH;
 		}
-		else if (Constant.CE_LIANG_BING_SHUI_WU_DIAN_TI_XING.equals(tvVarName1Pre)){//测量冰水雾点提醒？？？？？
-
+		else if (tv1VarName.startsWith(Constant.CE_LIANG_BING_SHUI_WU_DIAN_TI_XING)){//测量冰水雾点提醒
+			pvVarName=Constant.CE_LIANG_BSWD_SRZ;
 		}
-		else if (Constant.CE_SHUI_SHU_TI_XING.equals(tvVarName1Pre)){//测水数提醒？？？？？
-
+		else if (tv1VarName.startsWith(Constant.CE_SHUI_SHU_TI_XING)){//测水数提醒
+			pvVarName=Constant.TING_RE_JIANG_WEN_SHUI_SHU_SRZ;
 		}
-		else if (Constant.ZHONG_JIAN_SHUI_PH_TI_XING.equals(tvVarName1Pre)){//终检水PH提醒？？？？？
-
+		else if (tv1VarName.startsWith(Constant.ZHONG_JIAN_SHUI_PH_TI_XING)){//终检水PH提醒
+			pvVarName=Constant.ZHONG_JIAN_SHUI_SHU;
 		}
-		else if (Constant.ZHU_JI_6_ER_CI_TIAN_JIA_WAN_CHENG.equals(tvVarName1Pre)){//助剂6二次添加完成？？？？？
-
+		else if (tv1VarName.startsWith(Constant.ZHU_JI_6_ER_CI_TIAN_JIA_WAN_CHENG)){//助剂6二次添加完成
+			pvVarName=ERecord.ZJLECTJWCSSYFYFWD;//助剂6二次添加完成上升沿反应釜温度
 		}
-		else if (Constant.DI_YI_CI_BAO_WEN_QI_DONG.equals(tvVarName1Pre)){//第一次保温启动？？？？？
-
+		else if (tv1VarName.startsWith(Constant.DI_YI_CI_BAO_WEN_QI_DONG)){//第一次保温启动
+			pvVarName=ERecord.DYCBWQDSSYFYFWD;//第一次保温启动反应釜温度
 		}
-		else if (Constant.DI_YI_CI_BAO_WEN_HE_GE.equals(tvVarName1Pre)){//第一次保温合格？？？？？
-
+		else if (tv1VarName.startsWith(Constant.DI_YI_CI_BAO_WEN_HE_GE)){//第一次保温合格
+			pvVarName=ERecord.DYCBWHGSSYFYFWD;//第一次保温合格反应釜温度
 		}
 		else if (Constant.YI_CI_JIANG_WEN_JIA_SUAN_TI_XING.equals(tvVarName1Pre)){//一次降温加酸提醒？？？？？
 
