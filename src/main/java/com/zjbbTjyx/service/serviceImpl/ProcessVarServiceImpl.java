@@ -181,6 +181,7 @@ public class ProcessVarServiceImpl implements ProcessVarService {
 				triggerVar2 = triggerVar;
 		}
         String tv1VarName = triggerVar1.getVarName();
+        Integer tv1FId=Integer.valueOf(triggerVar1.getFId());
         
         String tv2VarName = null;
         Float tv2VarValue = null;
@@ -252,33 +253,30 @@ public class ProcessVarServiceImpl implements ProcessVarService {
 		else if (tv1VarName.startsWith(Constant.DI_YI_CI_BAO_WEN_HE_GE)){//第一次保温合格
 			pvVarName=ERecord.DYCBWHGSSYFYFWD;//第一次保温合格反应釜温度
 		}
-		else if (tv1VarName.startsWith(Constant.YI_CI_JIANG_WEN_JIA_SUAN_TI_XING)){//一次降温加酸提醒？？？？？
-
+		else if (tv1VarName.startsWith(Constant.YI_CI_JIANG_WEN_JIA_SUAN_TI_XING)){//一次降温加酸提醒
+			pvVarName=ERecord.YCJWJSTXSSYFYFWD;//一次降温加酸提醒反应釜温度
 		}
-		else if (tv1VarName.startsWith(Constant.YI_CI_JIANG_WEN_JIA_SUAN_HE_GE)){//一次降温加酸合格？？？？？
-
+		else if (tv1VarName.startsWith(Constant.YI_CI_JIANG_WEN_JIA_SUAN_HE_GE)){//一次降温加酸合格
+			pvVarName=ERecord.YCJWJSL;//一次降温加酸量
 		}
-		else if (tv1VarName.startsWith(Constant.ER_CI_TOU_FEN)){//二次投粉？？？？？
-
+		else if (tv1VarName.startsWith(Constant.ER_CI_TOU_FEN)){//二次投粉
+			pvVarName=Constant.ER_CI_JIA_FEN_LIAO_1_ZHONG_LIANG_SHE_DING;//二次加料粉料1重量设定
 		}
-		else if (tv1VarName.startsWith(Constant.ER_CI_JIA_215_QI_DONG)){//二次加215启动？？？？？
-
+		else if (tv1VarName.startsWith(Constant.ER_CI_JIA_215_QI_DONG)){//二次加215启动
+			pvVarName = ERecord.ECJ215QDSSYSJ;//二次加215启动上升沿时间
 		}
-		else if (Constant.ER_CI_JIA_215_WAN_CHENG.equals(tvVarName1Pre)){//二次加215完成？？？？？
-
+		else if (tv1VarName.startsWith(Constant.ER_CI_JIA_215_WAN_CHENG)){//二次加215完成
+			pvVarName = ERecord.ECJ215WCSSYSJ;//二次加215完成上升沿时间
 		}
-		else if (Constant.ER_CI_JIA_SHUI_QI_DONG.equals(tvVarName1Pre)){//二次加水启动？？？？？
-
+		else if (tv1VarName.startsWith(Constant.ER_CI_JIA_SHUI_QI_DONG)){//二次加水启动
+			pvVarName = ERecord.ECJSQDSSYSJ;//二次加水启动上升沿时间
 		}
-		else if (Constant.ER_CI_JIA_SHUI_WAN_CHENG.equals(tvVarName1Pre)){//二次加水完成？？？？？
-
+		else if (tv1VarName.startsWith(Constant.ER_CI_JIA_SHUI_WAN_CHENG)){//二次加水完成
+			pvVarName = ERecord.ECJSWCSSYSJ;//二次加水完成上升沿时间
 		}
-		else if (Constant.ER_CI_JIA_SHUI_HE_XIAO_LIAO_TI_XING.equals(tvVarName1Pre)){//二次加水和小料提醒？？？？？
-
+		else if (tv1VarName.startsWith(Constant.ER_CI_JIA_SHUI_HE_XIAO_LIAO_TI_XING)){//二次加水和小料提醒
+			pvVarName=ERecord.ECJXLHSTXXJYFYHWD;//二次加水和小料提醒下降沿反应釜温度
 		}
-//		else if (){//釜尿素放料阀上升沿时间???????
-//
-//		}
 		else if(tv1VarName.startsWith(Constant.SHENG_WEN_KAI_SHI)){//升温开始
 			pvVarName = ERecord.SWKSSSYSJ;//升温开始上升沿时间
 		}
@@ -311,13 +309,13 @@ public class ProcessVarServiceImpl implements ProcessVarService {
 		}
 
 
-		List<ProcessVar> processVarList=processVarMapper.getByVarNameFId(pvVarName,upFId);
+		List<ProcessVar> processVarList=processVarMapper.getByVarNameFId(pvVarName,tv1FId);
 		if(processVarList.size()==0) {
 			allowAdd=true;
 		}
 		else {
 			ProcessVar processVar = processVarList.get(0);
-			if(Constant.BEI_LIAO_KAI_SHI.equals(tvVarName1Pre)) {
+			if(tv1VarName.startsWith(Constant.BEI_LIAO_KAI_SHI)) {
 				if(processVar==null) {
 					allowAdd=true;
 				}
