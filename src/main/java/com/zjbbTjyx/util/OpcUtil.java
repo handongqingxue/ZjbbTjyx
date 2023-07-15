@@ -100,7 +100,7 @@ public class OpcUtil {
     public static String readRecTypeByFId(int fId) {
     	String valueTxt=null;
     	if(IS_TEST) {
-    		valueTxt="M";
+    		valueTxt="U";
     	}
     	else {
 	    	List<String> opcVarNameList=new ArrayList<String>();
@@ -1160,7 +1160,7 @@ public class OpcUtil {
 						}
 						else if(tv1VarName.startsWith(Constant.JIA_FEN_LIAO_TI_XING+Constant.XHX)&&tv2VarName==null){//加粉料提醒(无尿素放料阀变量)
 							if (itemName.startsWith(Constant.FEN_LIAO_1_ZHONG_LIANG_SHE_DING)){
-								varName=ERecord.KSJLSSYSJLTCZ;//粉料1重量设定
+								varName=ERecord.JFLTXSSYFL1ZLSD;//粉料1重量设定
 							}
 							else if (itemName.startsWith(Constant.JIA_FEN_LIAO_PH_SHU_RU_ZHI)){
 								varName=Constant.JIA_FEN_LIAO_PH_SHU_RU_ZHI;//加粉料PH输入值
@@ -1259,10 +1259,10 @@ public class OpcUtil {
 							if(tv2VarName.contains(Constant.NIAO_SU_FANG_LIAO_FA)) {
 								if (itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)){
 									if(tv2VarValue==TriggerVar.UP) {
-										varName=ERecord.FNSFLFSSYFCZ;//釜尿素放料阀上升沿釜称重
+										varName=Constant.ER_CI_TOU_FEN+Constant.SHANG_SHENG_YAN+ERecord.FNSFLFSSYFCZ;//釜尿素放料阀上升沿釜称重
 									}
 									else {
-										varName=ERecord.FNSFLFXJYFCZ;//釜尿素放料阀下降沿釜称重
+										varName=Constant.ER_CI_TOU_FEN+Constant.SHANG_SHENG_YAN+ERecord.FNSFLFXJYFCZ;//釜尿素放料阀下降沿釜称重
 									}
 								}
 								else if (itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)){
@@ -1494,10 +1494,10 @@ public class OpcUtil {
 				else if(tv1VarName.startsWith(Constant.ER_CI_TOU_FEN+Constant.XHX)&&tv2VarName!=null) {//二次投粉
 					if(tv2VarName.contains(Constant.NIAO_SU_FANG_LIAO_FA)) {
 						if(tv2VarValue==TriggerVar.UP) {
-							itemName=ERecord.FNSFLFSSYSJ;//釜尿素放料阀上升沿时间
+							itemName=Constant.ER_CI_TOU_FEN+Constant.SHANG_SHENG_YAN+ERecord.FNSFLFSSYSJ;//釜尿素放料阀上升沿时间
 						}
 						else {
-							itemName=ERecord.FNSFLFXJYSJ;//釜尿素放料阀下降沿时间
+							itemName=Constant.ER_CI_TOU_FEN+Constant.SHANG_SHENG_YAN+ERecord.FNSFLFXJYSJ;//釜尿素放料阀下降沿时间
 						}
 					}
 				}

@@ -124,7 +124,6 @@ public class ERecordServiceImpl implements ERecordService {
 					}
 					eRecord1.setNxtValue(updateTime);//反应结束时间是数据采集过程中记录的，与记录时间不是一回事
 					
-					/*
 					ERecord eRecord2=getFromList(Constant.PI_CI_JI_LU, batchID, eRecordList);
 					if(eRecord2==null) {
 						eRecord2=new ERecord();
@@ -138,7 +137,6 @@ public class ERecordServiceImpl implements ERecordService {
 						eRecordList.add(eRecord2);
 					}
 					eRecord2.setNxtValue(updateTime);
-					*/
 					
 					pvIdList.add(pvId);
 				}
@@ -163,7 +161,6 @@ public class ERecordServiceImpl implements ERecordService {
 					eRecord1.setPtnValue(varValue+"");
 					eRecord1.setUnit(unit);
 					
-					/*
 					ERecord eRecord2=getFromList(Constant.PI_CI_JI_LU, batchID, eRecordList);
 					if(eRecord2==null) {
 						eRecord2=new ERecord();
@@ -178,7 +175,6 @@ public class ERecordServiceImpl implements ERecordService {
 					}
 					eRecord2.setPtnValue(varValue+"");
 					eRecord2.setUnit(unit);
-					*/
 
 					pvIdList.add(pvId);
 				}
@@ -1374,6 +1370,7 @@ public class ERecordServiceImpl implements ERecordService {
 					}
 					eRecord1.setNxtValue(updateTime);
 					
+					/*
 					ERecord eRecord2=getFromList(Constant.PI_CI_JI_LU, batchID, eRecordList);
 					if(eRecord2==null) {
 						eRecord2=new ERecord();
@@ -1387,6 +1384,7 @@ public class ERecordServiceImpl implements ERecordService {
 						eRecordList.add(eRecord2);
 					}
 					eRecord2.setNxtValue(updateTime);
+					*/
 
 					pvIdList.add(pvId);
 				}
@@ -1411,6 +1409,7 @@ public class ERecordServiceImpl implements ERecordService {
 					eRecord1.setPtnValue(varValue+"");
 					eRecord1.setUnit(unit);
 					
+					/*
 					ERecord eRecord2=getFromList(Constant.PI_CI_JI_LU, batchID, eRecordList);
 					if(eRecord2==null) {
 						eRecord2=new ERecord();
@@ -1425,6 +1424,7 @@ public class ERecordServiceImpl implements ERecordService {
 					}
 					eRecord2.setPtnValue(varValue+"");
 					eRecord2.setUnit(unit);
+					*/
 
 					pvIdList.add(pvId);
 				}
