@@ -25,7 +25,7 @@ import com.zjbbTjyx.entity.*;
 
 public class OpcUtil {
 	
-	private static boolean IS_TEST=true;
+	private static boolean IS_TEST=false;
 	private static List<OpcItem> imiOpcItemTVList,imiOpcItemPVList;
 	private static JOpc jopcTV,jopcPV;
 	private static OpcGroup opcGroupTV,opcGroupPV;

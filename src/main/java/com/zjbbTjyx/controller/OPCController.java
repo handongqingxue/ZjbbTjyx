@@ -2350,7 +2350,7 @@ public class OPCController {
 				}
 			}
 			else if(TriggerVar.U.equals(upRecType)) {
-				HashMap<String, Object> preValueFUMap = (HashMap<String,Object>)paramMap.get("preValueFUMap");
+				HashMap<String, Object> preValueFUMap = (HashMap<String,Object>)paramMap.get("preValueFMMap");
 				String upVarName = upBlksTV.getVarName();
 				Float preValue = Float.valueOf(preValueFUMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
@@ -3571,7 +3571,7 @@ public class OPCController {
 				}
 			}
 			else if(TriggerVar.U.equals(upRecType)) {
-				HashMap<String, Object> preValueFUMap = (HashMap<String,Object>)paramMap.get("preValueFUMap");
+				HashMap<String, Object> preValueFUMap = (HashMap<String,Object>)paramMap.get("preValueFMMap");
 				String upVarName = upPjwcTV.getVarName();
 				Float preValue = Float.valueOf(preValueFUMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
