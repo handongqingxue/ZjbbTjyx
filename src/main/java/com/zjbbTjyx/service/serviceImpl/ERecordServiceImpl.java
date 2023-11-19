@@ -51,58 +51,58 @@ public class ERecordServiceImpl implements ERecordService {
 					//String fyjsSjVarName = ERecord.FYJSSSYSJ;
 					//ProcessVar fyjsSjPV = OpcUtil.getProVarInListByVarName(fyjsSjVarName, processVarList);
 					//if(fyjsSjPV!=null) {
-						ERecord eRecord1=getFromList(Constant.PI_CI_JI_LU, batchID, eRecordList);
-						if(eRecord1==null) {
-							eRecord1=new ERecord();
-							eRecord1.setVarName(Constant.PI_CI_JI_LU);
-							eRecord1.setRecType(pvRecType);
-							eRecord1.setFId(pvFId);
-							eRecord1.setRecordTime(recordTime);
-							eRecord1.setBatchID(batchID);
-							eRecord1.setRemark(ERecord.WSCBB+"");
+						ERecord eRecordPcjl=getFromList(Constant.PI_CI_JI_LU, batchID, eRecordList);
+						if(eRecordPcjl==null) {
+							eRecordPcjl=new ERecord();
+							eRecordPcjl.setVarName(Constant.PI_CI_JI_LU);
+							eRecordPcjl.setRecType(pvRecType);
+							eRecordPcjl.setFId(pvFId);
+							eRecordPcjl.setRecordTime(recordTime);
+							eRecordPcjl.setBatchID(batchID);
+							eRecordPcjl.setRemark(ERecord.WSCBB+"");
 							
-							eRecordList.add(eRecord1);
+							eRecordList.add(eRecordPcjl);
 						}
-						eRecord1.setPreValue(updateTime);
+						eRecordPcjl.setPreValue(updateTime);
 						
 						pvIdList.add(pvId);
 					//}
 					
-					ERecord eRecord2=new ERecord();
-					eRecord2.setVarName(Constant.SHENG_CHAN_BIAN_HAO);
-					eRecord2.setVarValue(batchID.substring(8));
-					eRecord2.setRecType(pvRecType);
-					eRecord2.setFId(pvFId);
-					eRecord2.setRecordTime(recordTime);
-					eRecord2.setBatchID(batchID);
-					eRecord2.setPhaseName(Constant.SHENG_CHAN_BIAN_HAO);
+					ERecord eRecordScbh=new ERecord();
+					eRecordScbh.setVarName(Constant.SHENG_CHAN_BIAN_HAO);
+					eRecordScbh.setVarValue(batchID.substring(8));
+					eRecordScbh.setRecType(pvRecType);
+					eRecordScbh.setFId(pvFId);
+					eRecordScbh.setRecordTime(recordTime);
+					eRecordScbh.setBatchID(batchID);
+					eRecordScbh.setPhaseName(Constant.SHENG_CHAN_BIAN_HAO);
 					
-					eRecordList.add(eRecord2);
+					eRecordList.add(eRecordScbh);
 					
-					ERecord eRecord3=new ERecord();
-					eRecord3.setVarName(Constant.FAN_YING_FU);
-					eRecord3.setVarValue(pvFName);
-					eRecord3.setRecType(pvRecType);
-					eRecord3.setFId(pvFId);
-					eRecord3.setRecordTime(recordTime);
-					eRecord3.setBatchID(batchID);
-					eRecord3.setPhaseName(Constant.SHENG_CHAN_BIAN_HAO);
+					ERecord eRecordFyf=new ERecord();
+					eRecordFyf.setVarName(Constant.FAN_YING_FU);
+					eRecordFyf.setVarValue(pvFName);
+					eRecordFyf.setRecType(pvRecType);
+					eRecordFyf.setFId(pvFId);
+					eRecordFyf.setRecordTime(recordTime);
+					eRecordFyf.setBatchID(batchID);
+					eRecordFyf.setPhaseName(Constant.SHENG_CHAN_BIAN_HAO);
 					
-					eRecordList.add(eRecord3);
+					eRecordList.add(eRecordFyf);
 	
-					ERecord eRecord4=getFromList(ERecord.KSDJSSJ, batchID, eRecordList);//开始到结束时间
-					if(eRecord4==null) {
-						eRecord4=new ERecord();
-						eRecord4.setVarName(ERecord.KSDJSSJ);
-						eRecord4.setRecType(pvRecType);
-						eRecord4.setFId(pvFId);
-						eRecord4.setRecordTime(recordTime);
-						eRecord4.setBatchID(batchID);
-						eRecord4.setPhaseName(Constant.SHENG_CHAN_BIAN_HAO);
+					ERecord eRecordKsdjssj=getFromList(ERecord.KSDJSSJ, batchID, eRecordList);//开始到结束时间
+					if(eRecordKsdjssj==null) {
+						eRecordKsdjssj=new ERecord();
+						eRecordKsdjssj.setVarName(ERecord.KSDJSSJ);
+						eRecordKsdjssj.setRecType(pvRecType);
+						eRecordKsdjssj.setFId(pvFId);
+						eRecordKsdjssj.setRecordTime(recordTime);
+						eRecordKsdjssj.setBatchID(batchID);
+						eRecordKsdjssj.setPhaseName(Constant.SHENG_CHAN_BIAN_HAO);
 						
-						eRecordList.add(eRecord4);
+						eRecordList.add(eRecordKsdjssj);
 					}
-					eRecord4.setPreValue(updateTime);//备料开始时间是数据采集过程中记录的，与记录时间不是一回事
+					eRecordKsdjssj.setPreValue(updateTime);//备料开始时间是数据采集过程中记录的，与记录时间不是一回事
 					
 				}
 				else if(pvVarName.startsWith(ERecord.FYJSSSYSJ)) {//反应结束上升沿时间
@@ -110,33 +110,33 @@ public class ERecordServiceImpl implements ERecordService {
 					Integer pvFId = processVar.getFId();
 					String batchID = batchIDMap.get(pvFId).toString();
 					
-					ERecord eRecord1=getFromList(ERecord.KSDJSSJ, batchID, eRecordList);
-					if(eRecord1==null) {
-						eRecord1=new ERecord();
-						eRecord1.setVarName(ERecord.KSDJSSJ);
-						eRecord1.setRecType(pvRecType);
-						eRecord1.setFId(pvFId);
-						eRecord1.setRecordTime(recordTime);
-						eRecord1.setBatchID(batchID);
-						eRecord1.setPhaseName(Constant.SHENG_CHAN_BIAN_HAO);
+					ERecord eRecordKsdjssj=getFromList(ERecord.KSDJSSJ, batchID, eRecordList);
+					if(eRecordKsdjssj==null) {
+						eRecordKsdjssj=new ERecord();
+						eRecordKsdjssj.setVarName(ERecord.KSDJSSJ);
+						eRecordKsdjssj.setRecType(pvRecType);
+						eRecordKsdjssj.setFId(pvFId);
+						eRecordKsdjssj.setRecordTime(recordTime);
+						eRecordKsdjssj.setBatchID(batchID);
+						eRecordKsdjssj.setPhaseName(Constant.SHENG_CHAN_BIAN_HAO);
 						
-						eRecordList.add(eRecord1);
+						eRecordList.add(eRecordKsdjssj);
 					}
-					eRecord1.setNxtValue(updateTime);//反应结束时间是数据采集过程中记录的，与记录时间不是一回事
+					eRecordKsdjssj.setNxtValue(updateTime);//反应结束时间是数据采集过程中记录的，与记录时间不是一回事
 					
-					ERecord eRecord2=getFromList(Constant.PI_CI_JI_LU, batchID, eRecordList);
-					if(eRecord2==null) {
-						eRecord2=new ERecord();
-						eRecord2.setVarName(Constant.PI_CI_JI_LU);
-						eRecord2.setRecType(pvRecType);
-						eRecord2.setFId(pvFId);
-						eRecord2.setRecordTime(recordTime);
-						eRecord2.setBatchID(batchID);
-						eRecord2.setRemark(ERecord.WSCBB+"");
+					ERecord eRecordPcjl=getFromList(Constant.PI_CI_JI_LU, batchID, eRecordList);
+					if(eRecordPcjl==null) {
+						eRecordPcjl=new ERecord();
+						eRecordPcjl.setVarName(Constant.PI_CI_JI_LU);
+						eRecordPcjl.setRecType(pvRecType);
+						eRecordPcjl.setFId(pvFId);
+						eRecordPcjl.setRecordTime(recordTime);
+						eRecordPcjl.setBatchID(batchID);
+						eRecordPcjl.setRemark(ERecord.WSCBB+"");
 						
-						eRecordList.add(eRecord2);
+						eRecordList.add(eRecordPcjl);
 					}
-					eRecord2.setNxtValue(updateTime);
+					eRecordPcjl.setNxtValue(updateTime);
 					
 					pvIdList.add(pvId);
 				}
@@ -146,35 +146,35 @@ public class ERecordServiceImpl implements ERecordService {
 					Float varValue = processVar.getVarValue();
 					String unit = processVar.getUnit();
 					
-					ERecord eRecord1=getFromList(ERecord.KSDJSSJ, batchID, eRecordList);
-					if(eRecord1==null) {
-						eRecord1=new ERecord();
-						eRecord1.setVarName(ERecord.KSDJSSJ);
-						eRecord1.setRecType(pvRecType);
-						eRecord1.setFId(pvFId);
-						eRecord1.setRecordTime(recordTime);
-						eRecord1.setBatchID(batchID);
-						eRecord1.setPhaseName(Constant.SHENG_CHAN_BIAN_HAO);
+					ERecord eRecordKsdjssj=getFromList(ERecord.KSDJSSJ, batchID, eRecordList);
+					if(eRecordKsdjssj==null) {
+						eRecordKsdjssj=new ERecord();
+						eRecordKsdjssj.setVarName(ERecord.KSDJSSJ);
+						eRecordKsdjssj.setRecType(pvRecType);
+						eRecordKsdjssj.setFId(pvFId);
+						eRecordKsdjssj.setRecordTime(recordTime);
+						eRecordKsdjssj.setBatchID(batchID);
+						eRecordKsdjssj.setPhaseName(Constant.SHENG_CHAN_BIAN_HAO);
 						
-						eRecordList.add(eRecord1);
+						eRecordList.add(eRecordKsdjssj);
 					}
-					eRecord1.setPtnValue(varValue+"");
-					eRecord1.setUnit(unit);
+					eRecordKsdjssj.setPtnValue(varValue+"");
+					eRecordKsdjssj.setUnit(unit);
 					
-					ERecord eRecord2=getFromList(Constant.PI_CI_JI_LU, batchID, eRecordList);
-					if(eRecord2==null) {
-						eRecord2=new ERecord();
-						eRecord2.setVarName(Constant.PI_CI_JI_LU);
-						eRecord2.setRecType(pvRecType);
-						eRecord2.setFId(pvFId);
-						eRecord2.setRecordTime(recordTime);
-						eRecord2.setBatchID(batchID);
-						eRecord2.setRemark(ERecord.WSCBB+"");
+					ERecord eRecordPcjl=getFromList(Constant.PI_CI_JI_LU, batchID, eRecordList);
+					if(eRecordPcjl==null) {
+						eRecordPcjl=new ERecord();
+						eRecordPcjl.setVarName(Constant.PI_CI_JI_LU);
+						eRecordPcjl.setRecType(pvRecType);
+						eRecordPcjl.setFId(pvFId);
+						eRecordPcjl.setRecordTime(recordTime);
+						eRecordPcjl.setBatchID(batchID);
+						eRecordPcjl.setRemark(ERecord.WSCBB+"");
 						
-						eRecordList.add(eRecord2);
+						eRecordList.add(eRecordPcjl);
 					}
-					eRecord2.setPtnValue(varValue+"");
-					eRecord2.setUnit(unit);
+					eRecordPcjl.setPtnValue(varValue+"");
+					eRecordPcjl.setUnit(unit);
 
 					pvIdList.add(pvId);
 				}
@@ -807,33 +807,33 @@ public class ERecordServiceImpl implements ERecordService {
 					String batchID = batchIDMap.get(pvFId).toString();
 					String updateTime = processVar.getUpdateTime();
 	
-					ERecord eRecord1 = getFromList(ERecord.SWKSDWD85YECTLTXSJ, batchID, eRecordList);
-					if(eRecord1==null) {
-						eRecord1=new ERecord();
-						eRecord1.setVarName(ERecord.SWKSDWD85YECTLTXSJ);
-						eRecord1.setRecType(pvRecType);
-						eRecord1.setFId(pvFId);
-						eRecord1.setRecordTime(recordTime);
-						eRecord1.setBatchID(batchID);
-						eRecord1.setPhaseName(Constant.KAI_SHI_SHENG_WEN);
+					ERecord eRecordSwksdwd = getFromList(ERecord.SWKSDWD85YECTLTXSJ, batchID, eRecordList);
+					if(eRecordSwksdwd==null) {
+						eRecordSwksdwd=new ERecord();
+						eRecordSwksdwd.setVarName(ERecord.SWKSDWD85YECTLTXSJ);
+						eRecordSwksdwd.setRecType(pvRecType);
+						eRecordSwksdwd.setFId(pvFId);
+						eRecordSwksdwd.setRecordTime(recordTime);
+						eRecordSwksdwd.setBatchID(batchID);
+						eRecordSwksdwd.setPhaseName(Constant.KAI_SHI_SHENG_WEN);
 	
-						eRecordList.add(eRecord1);
+						eRecordList.add(eRecordSwksdwd);
 					}
-					eRecord1.setPreValue(updateTime);
+					eRecordSwksdwd.setPreValue(updateTime);
 					
-					ERecord eRecord2 = getFromList(ERecord.SWKSDSWWCSJ, batchID, eRecordList);
-					if(eRecord2==null) {
-						eRecord2=new ERecord();
-						eRecord2.setVarName(ERecord.SWKSDSWWCSJ);
-						eRecord2.setRecType(pvRecType);
-						eRecord2.setFId(pvFId);
-						eRecord2.setRecordTime(recordTime);
-						eRecord2.setBatchID(batchID);
-						eRecord2.setPhaseName(Constant.TING_QI);
+					ERecord eRecordSwksdswwcsj = getFromList(ERecord.SWKSDSWWCSJ, batchID, eRecordList);
+					if(eRecordSwksdswwcsj==null) {
+						eRecordSwksdswwcsj=new ERecord();
+						eRecordSwksdswwcsj.setVarName(ERecord.SWKSDSWWCSJ);
+						eRecordSwksdswwcsj.setRecType(pvRecType);
+						eRecordSwksdswwcsj.setFId(pvFId);
+						eRecordSwksdswwcsj.setRecordTime(recordTime);
+						eRecordSwksdswwcsj.setBatchID(batchID);
+						eRecordSwksdswwcsj.setPhaseName(Constant.TING_QI);
 	
-						eRecordList.add(eRecord2);
+						eRecordList.add(eRecordSwksdswwcsj);
 					}
-					eRecord2.setPreValue(updateTime);
+					eRecordSwksdswwcsj.setPreValue(updateTime);
 
 					pvIdList.add(pvId);
 				}
@@ -1253,19 +1253,19 @@ public class ERecordServiceImpl implements ERecordService {
 					String batchID = batchIDMap.get(pvFId).toString();
 					String updateTime = processVar.getUpdateTime();
 					
-					ERecord eRecord1=getFromList(ERecord.KSJWDTZJWSJ, batchID, eRecordList);
-					if(eRecord1==null) {
-						eRecord1=new ERecord();
-						eRecord1.setVarName(ERecord.KSJWDTZJWSJ);
-						eRecord1.setRecType(pvRecType);
-						eRecord1.setFId(pvFId);
-						eRecord1.setRecordTime(recordTime);
-						eRecord1.setBatchID(batchID);
-						eRecord1.setPhaseName(Constant.LENG_QUE);
+					ERecord eRecordKsjwdtzjwsj=getFromList(ERecord.KSJWDTZJWSJ, batchID, eRecordList);
+					if(eRecordKsjwdtzjwsj==null) {
+						eRecordKsjwdtzjwsj=new ERecord();
+						eRecordKsjwdtzjwsj.setVarName(ERecord.KSJWDTZJWSJ);
+						eRecordKsjwdtzjwsj.setRecType(pvRecType);
+						eRecordKsjwdtzjwsj.setFId(pvFId);
+						eRecordKsjwdtzjwsj.setRecordTime(recordTime);
+						eRecordKsjwdtzjwsj.setBatchID(batchID);
+						eRecordKsjwdtzjwsj.setPhaseName(Constant.LENG_QUE);
 						
-						eRecordList.add(eRecord1);
+						eRecordList.add(eRecordKsjwdtzjwsj);
 					}
-					eRecord1.setNxtValue(updateTime);
+					eRecordKsjwdtzjwsj.setNxtValue(updateTime);
 
 					pvIdList.add(pvId);
 				}
@@ -1356,19 +1356,19 @@ public class ERecordServiceImpl implements ERecordService {
 					String batchID = batchIDMap.get(pvFId).toString();
 					String updateTime = processVar.getUpdateTime();
 	
-					ERecord eRecord1=getFromList(ERecord.YXKSPJDPJWCSJ, batchID, eRecordList);
-					if(eRecord1==null) {
-						eRecord1=new ERecord();
-						eRecord1.setVarName(ERecord.YXKSPJDPJWCSJ);
-						eRecord1.setRecType(pvRecType);
-						eRecord1.setFId(pvFId);
-						eRecord1.setRecordTime(recordTime);
-						eRecord1.setBatchID(batchID);
-						eRecord1.setPhaseName(Constant.PAI_JIAO);
+					ERecord eRecordYxkspjdpjwcsj=getFromList(ERecord.YXKSPJDPJWCSJ, batchID, eRecordList);
+					if(eRecordYxkspjdpjwcsj==null) {
+						eRecordYxkspjdpjwcsj=new ERecord();
+						eRecordYxkspjdpjwcsj.setVarName(ERecord.YXKSPJDPJWCSJ);
+						eRecordYxkspjdpjwcsj.setRecType(pvRecType);
+						eRecordYxkspjdpjwcsj.setFId(pvFId);
+						eRecordYxkspjdpjwcsj.setRecordTime(recordTime);
+						eRecordYxkspjdpjwcsj.setBatchID(batchID);
+						eRecordYxkspjdpjwcsj.setPhaseName(Constant.PAI_JIAO);
 						
-						eRecordList.add(eRecord1);
+						eRecordList.add(eRecordYxkspjdpjwcsj);
 					}
-					eRecord1.setNxtValue(updateTime);
+					eRecordYxkspjdpjwcsj.setNxtValue(updateTime);
 					
 					/*
 					ERecord eRecord2=getFromList(Constant.PI_CI_JI_LU, batchID, eRecordList);
@@ -1394,20 +1394,20 @@ public class ERecordServiceImpl implements ERecordService {
 					Float varValue = processVar.getVarValue();
 					String unit = processVar.getUnit();
 	
-					ERecord eRecord1=getFromList(ERecord.YXKSPJDPJWCSJC, batchID, eRecordList);
-					if(eRecord1==null) {
-						eRecord1=new ERecord();
-						eRecord1.setVarName(pvVarName);
-						eRecord1.setRecType(pvRecType);
-						eRecord1.setFId(pvFId);
-						eRecord1.setRecordTime(recordTime);
-						eRecord1.setBatchID(batchID);
-						eRecord1.setPhaseName(Constant.PAI_JIAO);
+					ERecord eRecordYxkspjdpjwcsjc=getFromList(ERecord.YXKSPJDPJWCSJC, batchID, eRecordList);
+					if(eRecordYxkspjdpjwcsjc==null) {
+						eRecordYxkspjdpjwcsjc=new ERecord();
+						eRecordYxkspjdpjwcsjc.setVarName(pvVarName);
+						eRecordYxkspjdpjwcsjc.setRecType(pvRecType);
+						eRecordYxkspjdpjwcsjc.setFId(pvFId);
+						eRecordYxkspjdpjwcsjc.setRecordTime(recordTime);
+						eRecordYxkspjdpjwcsjc.setBatchID(batchID);
+						eRecordYxkspjdpjwcsjc.setPhaseName(Constant.PAI_JIAO);
 						
-						eRecordList.add(eRecord1);
+						eRecordList.add(eRecordYxkspjdpjwcsjc);
 					}
-					eRecord1.setPtnValue(varValue+"");
-					eRecord1.setUnit(unit);
+					eRecordYxkspjdpjwcsjc.setPtnValue(varValue+"");
+					eRecordYxkspjdpjwcsjc.setUnit(unit);
 					
 					/*
 					ERecord eRecord2=getFromList(Constant.PI_CI_JI_LU, batchID, eRecordList);
@@ -1501,55 +1501,55 @@ public class ERecordServiceImpl implements ERecordService {
 					String batchID = batchIDMap.get(pvFId).toString();
 					String updateTime = processVar.getUpdateTime();
 	
-					ERecord eRecord1=getFromList(Constant.PI_CI_JI_LU, batchID, eRecordList);
-					if(eRecord1==null) {
-						eRecord1=new ERecord();
-						eRecord1.setVarName(Constant.PI_CI_JI_LU);
-						eRecord1.setRecType(pvRecType);
-						eRecord1.setFId(pvFId);
-						eRecord1.setRecordTime(recordTime);
-						eRecord1.setBatchID(batchID);
-						eRecord1.setRemark(ERecord.WSCBB+"");
+					ERecord eRecordPcjl=getFromList(Constant.PI_CI_JI_LU, batchID, eRecordList);
+					if(eRecordPcjl==null) {
+						eRecordPcjl=new ERecord();
+						eRecordPcjl.setVarName(Constant.PI_CI_JI_LU);
+						eRecordPcjl.setRecType(pvRecType);
+						eRecordPcjl.setFId(pvFId);
+						eRecordPcjl.setRecordTime(recordTime);
+						eRecordPcjl.setBatchID(batchID);
+						eRecordPcjl.setRemark(ERecord.WSCBB+"");
 						
-						eRecordList.add(eRecord1);
+						eRecordList.add(eRecordPcjl);
 					}
-					eRecord1.setPreValue(updateTime);
+					eRecordPcjl.setPreValue(updateTime);
 					
-					ERecord eRecord2=new ERecord();
-					eRecord2.setVarName(Constant.SHENG_CHAN_BIAN_HAO);
-					eRecord2.setVarValue(batchID.substring(8));
-					eRecord2.setRecType(pvRecType);
-					eRecord2.setFId(pvFId);
-					eRecord2.setRecordTime(recordTime);
-					eRecord2.setBatchID(batchID);
-					eRecord2.setPhaseName(Constant.SHENG_CHAN_BIAN_HAO);
+					ERecord eRecordScbh=new ERecord();
+					eRecordScbh.setVarName(Constant.SHENG_CHAN_BIAN_HAO);
+					eRecordScbh.setVarValue(batchID.substring(8));
+					eRecordScbh.setRecType(pvRecType);
+					eRecordScbh.setFId(pvFId);
+					eRecordScbh.setRecordTime(recordTime);
+					eRecordScbh.setBatchID(batchID);
+					eRecordScbh.setPhaseName(Constant.SHENG_CHAN_BIAN_HAO);
 					
-					eRecordList.add(eRecord2);
+					eRecordList.add(eRecordScbh);
 					
-					ERecord eRecord3=new ERecord();
-					eRecord3.setVarName(Constant.FAN_YING_FU);
-					eRecord3.setVarValue(pvFName);
-					eRecord3.setRecType(pvRecType);
-					eRecord3.setFId(pvFId);
-					eRecord3.setRecordTime(recordTime);
-					eRecord3.setBatchID(batchID);
-					eRecord3.setPhaseName(Constant.SHENG_CHAN_BIAN_HAO);
+					ERecord eRecordFyf=new ERecord();
+					eRecordFyf.setVarName(Constant.FAN_YING_FU);
+					eRecordFyf.setVarValue(pvFName);
+					eRecordFyf.setRecType(pvRecType);
+					eRecordFyf.setFId(pvFId);
+					eRecordFyf.setRecordTime(recordTime);
+					eRecordFyf.setBatchID(batchID);
+					eRecordFyf.setPhaseName(Constant.SHENG_CHAN_BIAN_HAO);
 					
-					eRecordList.add(eRecord3);
+					eRecordList.add(eRecordFyf);
 	
-					ERecord eRecord4=getFromList(ERecord.KSDJSSJ, batchID, eRecordList);//开始到结束时间
-					if(eRecord4==null) {
-						eRecord4=new ERecord();
-						eRecord4.setVarName(ERecord.KSDJSSJ);
-						eRecord4.setRecType(pvRecType);
-						eRecord4.setFId(pvFId);
-						eRecord4.setRecordTime(recordTime);
-						eRecord4.setBatchID(batchID);
-						eRecord4.setPhaseName(Constant.SHENG_CHAN_BIAN_HAO);
+					ERecord eRecordKsdjssj=getFromList(ERecord.KSDJSSJ, batchID, eRecordList);//开始到结束时间
+					if(eRecordKsdjssj==null) {
+						eRecordKsdjssj=new ERecord();
+						eRecordKsdjssj.setVarName(ERecord.KSDJSSJ);
+						eRecordKsdjssj.setRecType(pvRecType);
+						eRecordKsdjssj.setFId(pvFId);
+						eRecordKsdjssj.setRecordTime(recordTime);
+						eRecordKsdjssj.setBatchID(batchID);
+						eRecordKsdjssj.setPhaseName(Constant.SHENG_CHAN_BIAN_HAO);
 						
-						eRecordList.add(eRecord4);
+						eRecordList.add(eRecordKsdjssj);
 					}
-					eRecord4.setPreValue(updateTime);//备料开始时间是数据采集过程中记录的，与记录时间不是一回事
+					eRecordKsdjssj.setPreValue(updateTime);//备料开始时间是数据采集过程中记录的，与记录时间不是一回事
 
 					pvIdList.add(pvId);
 				}
@@ -1558,19 +1558,19 @@ public class ERecordServiceImpl implements ERecordService {
 					Integer pvFId = processVar.getFId();
 					String batchID = batchIDMap.get(pvFId).toString();
 					
-					ERecord eRecord1=getFromList(ERecord.KSDJSSJ, batchID, eRecordList);
-					if(eRecord1==null) {
-						eRecord1=new ERecord();
-						eRecord1.setVarName(ERecord.KSDJSSJ);
-						eRecord1.setRecType(pvRecType);
-						eRecord1.setFId(pvFId);
-						eRecord1.setRecordTime(recordTime);
-						eRecord1.setBatchID(batchID);
-						eRecord1.setPhaseName(Constant.SHENG_CHAN_BIAN_HAO);
+					ERecord eRecordKsdjssj=getFromList(ERecord.KSDJSSJ, batchID, eRecordList);
+					if(eRecordKsdjssj==null) {
+						eRecordKsdjssj=new ERecord();
+						eRecordKsdjssj.setVarName(ERecord.KSDJSSJ);
+						eRecordKsdjssj.setRecType(pvRecType);
+						eRecordKsdjssj.setFId(pvFId);
+						eRecordKsdjssj.setRecordTime(recordTime);
+						eRecordKsdjssj.setBatchID(batchID);
+						eRecordKsdjssj.setPhaseName(Constant.SHENG_CHAN_BIAN_HAO);
 						
-						eRecordList.add(eRecord1);
+						eRecordList.add(eRecordKsdjssj);
 					}
-					eRecord1.setNxtValue(updateTime);//反应结束时间是数据采集过程中记录的，与记录时间不是一回事
+					eRecordKsdjssj.setNxtValue(updateTime);//反应结束时间是数据采集过程中记录的，与记录时间不是一回事
 					
 					/*
 					ERecord eRecord2=getFromList(Constant.PI_CI_JI_LU, batchID, eRecordList);
@@ -1596,20 +1596,20 @@ public class ERecordServiceImpl implements ERecordService {
 					Float varValue = processVar.getVarValue();
 					String unit = processVar.getUnit();
 					
-					ERecord eRecord1=getFromList(ERecord.KSDJSSJ, batchID, eRecordList);
-					if(eRecord1==null) {
-						eRecord1=new ERecord();
-						eRecord1.setVarName(ERecord.KSDJSSJ);
-						eRecord1.setRecType(pvRecType);
-						eRecord1.setFId(pvFId);
-						eRecord1.setRecordTime(recordTime);
-						eRecord1.setBatchID(batchID);
-						eRecord1.setPhaseName(Constant.SHENG_CHAN_BIAN_HAO);
+					ERecord eRecordKsdjssj=getFromList(ERecord.KSDJSSJ, batchID, eRecordList);
+					if(eRecordKsdjssj==null) {
+						eRecordKsdjssj=new ERecord();
+						eRecordKsdjssj.setVarName(ERecord.KSDJSSJ);
+						eRecordKsdjssj.setRecType(pvRecType);
+						eRecordKsdjssj.setFId(pvFId);
+						eRecordKsdjssj.setRecordTime(recordTime);
+						eRecordKsdjssj.setBatchID(batchID);
+						eRecordKsdjssj.setPhaseName(Constant.SHENG_CHAN_BIAN_HAO);
 						
-						eRecordList.add(eRecord1);
+						eRecordList.add(eRecordKsdjssj);
 					}
-					eRecord1.setPtnValue(varValue+"");
-					eRecord1.setUnit(unit);
+					eRecordKsdjssj.setPtnValue(varValue+"");
+					eRecordKsdjssj.setUnit(unit);
 					
 					/*
 					ERecord eRecord2=getFromList(Constant.PI_CI_JI_LU, batchID, eRecordList);
