@@ -119,6 +119,7 @@ public class OpcUtil {
 				valueTxt="M";
 				break;
 			case "6.0":
+			case "7.0":
 				valueTxt="U";
 				break;
 			}
@@ -127,7 +128,7 @@ public class OpcUtil {
 	}
     
     public static String readJZLXByFId(int fId) {
-    	//反应釜胶种类型:1:A、2:B、3:G、4:F、5:H、6:C（U类）
+    	//反应釜胶种类型:1:A、2:B、3:G、4:F、5:H、6:C（U类）、7:C#（U类）
     	String valueTxt=null;
     	if(IS_TEST) {
     		valueTxt="A";
@@ -160,6 +161,9 @@ public class OpcUtil {
 				break;
 			case "6.0":
 				valueTxt="C";
+				break;
+			case "7.0":
+				valueTxt="C#";
 				break;
 			}
     	}

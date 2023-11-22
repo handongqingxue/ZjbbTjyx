@@ -2994,7 +2994,8 @@ public class ERecordServiceImpl implements ERecordService {
 				String jzlx=OpcUtil.readJZLXByFId(fId);
 				String recType = null;
 				//recType = fMap.get("recType").toString();
-				if("C".equals(jzlx))
+				if("C".equals(jzlx)||
+				   "C#".equals(jzlx))
 					recType = "U";
 				else
 					recType = "M";
