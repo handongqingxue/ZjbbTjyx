@@ -204,6 +204,10 @@ public class Constant {
 	 * 胶罐9
 	 */
 	public static final int BSF_JG9=9;
+	/**
+	 * 胶罐10
+	 */
+	public static final int BSF_JG10=10;
 
 	/**
 	 * 反应釜号数组
@@ -238,7 +242,7 @@ public class Constant {
 	 */
 	public static final int[] BSF_ZJJLG_3_5_M_ARR=new int[] {BSF_ZJJLG3,BSF_ZJJLG4,BSF_ZJJLG5};
 	
-	public static final int[] BSF_JG_ARR=new int[] {BSF_JG1,BSF_JG2,BSF_JG3,BSF_JG4,BSF_JG5,BSF_JG6,BSF_JG7,BSF_JG8,BSF_JG9};
+	public static final int[] BSF_JG_ARR=new int[] {BSF_JG1,BSF_JG2,BSF_JG3,BSF_JG4,BSF_JG5,BSF_JG6,BSF_JG7,BSF_JG8,BSF_JG9,BSF_JG10};
 
 	/**
 	 * 甲醛厂家信息
@@ -595,6 +599,7 @@ public class Constant {
 	 * 保温后加水量设定
 	 */
 	public static final String BAO_WEN_HOU_JIA_SHUI_LIANG_SHE_DING="保温后加水量设定";
+	
 	/**
 	 * 打入
 	 */
@@ -615,6 +620,16 @@ public class Constant {
 	 * 胶罐号
 	 */
 	public static final String JIAO_GUAN_HAO="胶罐号";
+
+	/**
+	 * 与
+	 */
+	public static final String YU="与";
+	
+	/**
+	 * 比值
+	 */
+	public static final String BI_ZHI="比值";
 	
 	/**
 	 * 百分号

@@ -473,7 +473,7 @@ public class OpcUtil {
 		            
 		            opcVarNameList.add(zjphOpcVarName);
 		        }
-		        else if (tv1VarName.startsWith(Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.XHX)) {//允许开始排胶
+		        else if (tv1VarName.startsWith(Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.XHX)&&tv2VarName==null) {//允许开始排胶(无胶罐选择变量)
 		        	Integer tvFId = triggerVar1.getFId();
 		            
 		            //釜(反应釜号)称重
@@ -483,11 +483,19 @@ public class OpcUtil {
 		            opcVarNameList.add(fhczOpcVarName);
 		            
 		            String jgxzPvVarNameQz=Constant.JIAO_GUAN+Constant.XUAN_ZE;
-		            for (int i = 1; i <= 10; i++) {
-			            String jgxzPvVarName=jgxzPvVarNameQz+i+Constant.XHX+Constant.AV;
-			            System.out.println("jgxzPvVarName==="+jgxzPvVarName);
-			            opcVarNameList.add(jgxzPvVarName);
-					}
+		            
+		            addVarNameInList(opcVarNameList,jgxzPvVarNameQz);
+		        }
+		        else if (tv1VarName.startsWith(Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.XHX)&&tv2VarName!=null) {//允许开始排胶(有胶罐选择变量)
+		        	if(tv2VarName.startsWith(Constant.JIAO_GUAN+Constant.XUAN_ZE)) {
+			        	String jgcbzPvVarNameQz=Constant.JIAO_GUAN_CBZ;
+			        	
+	                	int jghStart=tv2VarName.indexOf(Constant.JIAO_GUAN+Constant.XUAN_ZE)+4;
+	                	int jghEnd=tv2VarName.indexOf(Constant.XHX+Constant.AV);
+	                	Integer jgh = Integer.valueOf(tv2VarName.substring(jghStart,jghEnd));
+			        	
+			        	addVarNameInList(opcVarNameList,jgcbzPvVarNameQz+jgh+Constant.CHENG_ZHONG);
+		        	}
 		        }
 		        else if (tv1VarName.startsWith(Constant.PAI_JIAO_WAN_CHENG+Constant.XHX)) {//排胶完成
 		        	Integer tvFId = triggerVar1.getFId();
@@ -829,7 +837,7 @@ public class OpcUtil {
 					
 					opcVarNameList.add(fyfwdOpcVarName);
 				}
-				else if (tv1VarName.startsWith(Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.XHX)){//允许开始排胶
+				else if (tv1VarName.startsWith(Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.XHX)&&tv2VarName==null){//允许开始排胶(无胶罐选择变量)
 					Integer tvFId = triggerVar1.getFId();
 					String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
 					
@@ -840,11 +848,15 @@ public class OpcUtil {
 					opcVarNameList.add(fhczOpcVarName);
 		            
 		            String jgxzPvVarNameQz=Constant.JIAO_GUAN+Constant.XUAN_ZE;
-		            for (int i = 1; i <= 10; i++) {
-			            String jgxzPvVarName=jgxzPvVarNameQz+i+Constant.XHX+Constant.AV;
-			            opcVarNameList.add(jgxzPvVarName);
-					}
+		            
+		            addVarNameInList(opcVarNameList,jgxzPvVarNameQz);
 				}
+		        else if (tv1VarName.startsWith(Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.XHX)&&tv2VarName!=null) {//允许开始排胶(有胶罐选择变量)
+
+		        	String jgcbzPvVarNameQz=Constant.JIAO_GUAN_CBZ;
+		            
+		        	addVarNameInList(opcVarNameList,jgcbzPvVarNameQz+Constant.CHENG_ZHONG);
+		        }
 				else if (tv1VarName.startsWith(Constant.ZHONG_JIAN_SHUI_PH_TI_XING+Constant.XHX)){//终检水PH提醒
 					Integer tvFId = triggerVar1.getFId();
 					String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
@@ -949,7 +961,7 @@ public class OpcUtil {
 			                    varName=ERecord.SYZJJLWC1SSYFYFWD;//所有助剂加料完成1上升沿反应釜温度
 			                }
 			            }
-			        	else if(tv1VarName.startsWith(Constant.JIA_FEN_LIAO_TI_XING+Constant.XHX)&&tv2VarName==null){//加粉料提醒(无尿素放料阀变量)
+			        	else if(tv1VarName.startsWith(Constant.JIA_FEN_LIAO_TI_XING+Constant.XHX)){//加粉料提醒(无尿素放料阀变量)
 			                if (itemName.startsWith(Constant.FEN_LIAO_ZHONG_LIANG_SHE_DING+Constant.XHX)){
 			                    varName=Constant.FEN_LIAO_ZHONG_LIANG_SHE_DING;
 			                }
@@ -1045,7 +1057,7 @@ public class OpcUtil {
 			                    varName=Constant.ZHONG_JIAN_PH;
 			                }
 			            }
-			            else if(tv1VarName.startsWith(Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.XHX)) {//允许开始排胶
+			            else if(tv1VarName.startsWith(Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.XHX)&&tv2VarName==null) {//允许开始排胶
 			            	if (itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)) {
 			            		varName=ERecord.YXKSPJSSYFCZ;
 			            	}
@@ -1357,11 +1369,11 @@ public class OpcUtil {
 							}
 						}
 						else if(tv1VarName.startsWith(Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.XHX)){//允许开始排胶
-							if (itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)){
-								varName=ERecord.YXKSPJSSYFYFWD;//反应结束上升沿反应釜温度
-							}
+			            	if (itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)) {
+			            		varName=ERecord.YXKSPJSSYFCZ;
+			            	}
 			                else if(itemName.startsWith(Constant.JIAO_GUAN+Constant.XUAN_ZE)&&itemName.endsWith(Constant.XHX+Constant.AV)){
-				            	if(itemName.equals("胶罐选择3_AV"))
+				            	if(itemName.equals("胶罐选择1_AV"))
 				            		value=(float)1;
 				            	
 			                	if(value==TriggerVar.UP) {
@@ -1667,6 +1679,65 @@ public class OpcUtil {
     }
     
     /**
+     * 根据变量名从过程变量集合里查找变量值
+     * @param processVarList
+     * @param varName
+     * @return
+     */
+    public static Float getVarValueFromPVListByName(List<ProcessVar> processVarList,String varName) {
+    	Float varValue=null;
+    	for (ProcessVar processVar : processVarList) {
+    		String pvVarName = processVar.getVarName();
+    		if(pvVarName.equals(varName)) {
+    			varValue = processVar.getVarValue();
+    			break;
+    		}
+		}
+    	return varValue;
+	}
+    
+    /**
+     * 根据变量名往变量集合里添加待查询的变量
+     * @param opcVarNameList
+     * @param varName
+     */
+    public static void addVarNameInList(List<String> opcVarNameList, String varName) {
+		// TODO Auto-generated method stub
+		if(varName.equals(Constant.JIAO_GUAN+Constant.XUAN_ZE)) {
+            for (int jgId : Constant.BSF_JG_ARR) {
+	            String jgxzPvVarName=varName+jgId+Constant.XHX+Constant.AV;
+	            opcVarNameList.add(jgxzPvVarName);
+            }
+		}
+		else if(varName.startsWith(Constant.JIAO_GUAN_CBZ)&&varName.endsWith(Constant.CHENG_ZHONG)) {
+            String zhjgPvVarNameQz=Constant.ZHONG_ZHUAN+Constant.JIAO_GUAN;
+            
+        	int jghStart=varName.indexOf(Constant.JIAO_GUAN+Constant.XUAN_ZE)+4;
+        	int jghEnd=varName.indexOf(Constant.CHENG_ZHONG);
+        	Integer jgh = Integer.valueOf(varName.substring(jghStart,jghEnd));
+        	
+        	String jgcbzPvVarName=null;
+        	switch (jgh) {
+			case Constant.BSF_JG1:
+			case Constant.BSF_JG2:
+			case Constant.BSF_JG3:
+			case Constant.BSF_JG4:
+			case Constant.BSF_JG5:
+			case Constant.BSF_JG6:
+			case Constant.BSF_JG7:
+			case Constant.BSF_JG8:
+			case Constant.BSF_JG9:
+				jgcbzPvVarName=varName+Constant.XHX+Constant.AV;
+				opcVarNameList.add(jgcbzPvVarName);
+				break;
+			case Constant.BSF_JG10:
+				opcVarNameList.add(zhjgPvVarNameQz+Constant.CHENG_ZHONG+Constant.XHX+Constant.AV);
+				break;
+			}
+		}
+	}
+    
+    /**
      * 根据变量名从过程变量集合里获取过程变量
      * @param varName
      * @param proVarList
@@ -1932,7 +2003,22 @@ public class OpcUtil {
 		}
     	
     	for (int jgId : Constant.BSF_JG_ARR) {
-    		opcPVNameList.add(Constant.JIAO_GUAN_CBZ+jgId+Constant.CHENG_ZHONG+Constant.XHX+Constant.AV);
+    		switch (jgId) {
+			case Constant.BSF_JG1:
+			case Constant.BSF_JG2:
+			case Constant.BSF_JG3:
+			case Constant.BSF_JG4:
+			case Constant.BSF_JG5:
+			case Constant.BSF_JG6:
+			case Constant.BSF_JG7:
+			case Constant.BSF_JG8:
+			case Constant.BSF_JG9:
+	    		opcPVNameList.add(Constant.JIAO_GUAN_CBZ+jgId+Constant.CHENG_ZHONG+Constant.XHX+Constant.AV);
+				break;
+			case Constant.BSF_JG10:
+	    		opcPVNameList.add(Constant.ZHONG_ZHUAN+Constant.JIAO_GUAN+Constant.CHENG_ZHONG+Constant.XHX+Constant.AV);
+				break;
+			}
     	}
     	
 		opcPVNameList.add(Constant.ZHONG_ZHUAN+Constant.JIAO_GUAN+Constant.CHENG_ZHONG+Constant.XHX+Constant.AV);
@@ -1956,12 +2042,32 @@ public class OpcUtil {
     	}
         
         String jgxzPvVarNameQz=Constant.JIAO_GUAN+Constant.XUAN_ZE;
-        opcPVNamePreList.add(jgxzPvVarNameQz);
-        for (int i = 1; i <= 10; i++) {
-            String jgxzPvVarName=jgxzPvVarNameQz+i+Constant.XHX+Constant.AV;
+        String jgcbzPvVarNameQz=Constant.JIAO_GUAN_CBZ;
+        String zhjgPvVarNameQz=Constant.ZHONG_ZHUAN+Constant.JIAO_GUAN;
+        for (int jgId : Constant.BSF_JG_ARR) {
+        	String jgxzPvVarName=jgxzPvVarNameQz+jgId+Constant.XHX+Constant.AV;
 			opcPVNameList.add(jgxzPvVarName);
+
+        	String jgcbzPvVarName=null;
+        	switch (jgId) {
+			case Constant.BSF_JG1:
+			case Constant.BSF_JG2:
+			case Constant.BSF_JG3:
+			case Constant.BSF_JG4:
+			case Constant.BSF_JG5:
+			case Constant.BSF_JG6:
+			case Constant.BSF_JG7:
+			case Constant.BSF_JG8:
+			case Constant.BSF_JG9:
+				jgcbzPvVarName=jgcbzPvVarNameQz+jgId+Constant.CHENG_ZHONG+Constant.XHX+Constant.AV;
+	    		opcPVNameList.add(jgcbzPvVarName);
+				break;
+			case Constant.BSF_JG10:
+	    		opcPVNameList.add(zhjgPvVarNameQz+Constant.CHENG_ZHONG+Constant.XHX+Constant.AV);
+				break;
+			}
 		}
-    	
+        
 		return opcPVNameList;
 	}
 	
@@ -2184,10 +2290,6 @@ public class OpcUtil {
 			
 	        OpcGroup responseGroup = jopcPV.synchReadGroup(opcGroupPV);
 	        ArrayList<OpcItem> opcItems = responseGroup.getItems();
-	        for (OpcItem opcItem : opcItems) {
-	        	String itemName = opcItem.getItemName();
-	        	System.out.println("itemName111==="+itemName);
-	        }
         	
         	for (String opcPVName : opcPVNameList) {//遍历变量名集合，判断变量是否存在
             	boolean exist=false;

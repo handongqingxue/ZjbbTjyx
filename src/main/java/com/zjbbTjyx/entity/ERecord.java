@@ -246,35 +246,11 @@ public class ERecord {
 	 * 从开始降温到停止降温时间差
 	 */
 	public static final String KSJWDTZJWSJC=Constant.KAI_SHI_JIANG_WEN+Constant.DAO+Constant.TING_ZHI_JIANG_WEN+Constant.SHI_JIAN+Constant.CHA;
-	/**
-	 * 允许开始排胶上升沿釜称重
-	 */
-	public static final String YXKSPJSSYFCZ=Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
-	/**
-	 * 排胶完成上升沿釜称重
-	 */
-	public static final String PJWCSSYFCZ=Constant.PAI_JIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
-	/**
-	 * 允许开始排胶到排胶完成釜称重
-	 */
-	public static final String YXKSPJDPJWCFCZ=Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.DAO+Constant.PAI_JIAO_WAN_CHENG+Constant.FU+Constant.CHENG_ZHONG;
 
-	/**
-	 * 允许开始排胶到排胶完成釜重量差
-	 */
-	public static final String YXKSPJDPJWCFZLC=Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.DAO+Constant.PAI_JIAO_WAN_CHENG+Constant.FU+Constant.ZHONG_LIANG+Constant.CHA;
 	/**
 	 * 允许开始排胶上升沿时间
 	 */
 	public static final String YXKSPJSSYSJ=Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
-	/**
-	 * 打入胶罐1胶罐号
-	 */
-	public static final String DRJG1JGH=Constant.DA_RU+Constant.JIAO_GUAN+Constant.BSF_JG1+Constant.JIAO_GUAN_HAO;
-	/**
-	 * 打入胶罐2胶罐号
-	 */
-	public static final String DRJG2JGH=Constant.DA_RU+Constant.JIAO_GUAN+Constant.BSF_JG2+Constant.JIAO_GUAN_HAO;
 	/**
 	 * 排胶完成上升沿时间
 	 */
@@ -287,6 +263,72 @@ public class ERecord {
 	 * 允许开始排胶到排胶完成时间差
 	 */
 	public static final String YXKSPJDPJWCSJC=Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.DAO+Constant.PAI_JIAO_WAN_CHENG+Constant.SHI_JIAN+Constant.CHA;
+	
+	/**
+	 * 允许开始排胶上升沿釜称重
+	 */
+	public static final String YXKSPJSSYFCZ=Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
+	/**
+	 * 排胶完成上升沿釜称重
+	 */
+	public static final String PJWCSSYFCZ=Constant.PAI_JIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG;
+	/**
+	 * 允许开始排胶到排胶完成釜称重
+	 */
+	public static final String YXKSPJDPJWCFCZ=Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.DAO+Constant.PAI_JIAO_WAN_CHENG+Constant.FU+Constant.CHENG_ZHONG;
+	/**
+	 * 允许开始排胶到排胶完成釜重量差
+	 */
+	public static final String YXKSPJDPJWCFZLC=Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.DAO+Constant.PAI_JIAO_WAN_CHENG+Constant.FU+Constant.ZHONG_LIANG+Constant.CHA;
+	
+	/**
+	 * 打入胶罐1胶罐号
+	 */
+	public static final String DRJG1JGH=Constant.DA_RU+Constant.JIAO_GUAN+Constant.BSF_JG1+Constant.JIAO_GUAN_HAO;
+	/**
+	 * 打入胶罐2胶罐号
+	 */
+	public static final String DRJG2JGH=Constant.DA_RU+Constant.JIAO_GUAN+Constant.BSF_JG2+Constant.JIAO_GUAN_HAO;
+	/**
+	 * 允许开始排胶胶罐1重量
+	 */
+	public static final String YXKSPJJG1ZL=Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.JIAO_GUAN+Constant.BSF_JG1+Constant.ZHONG_LIANG;
+	/**
+	 * 允许开始排胶胶罐2重量
+	 */
+	public static final String YXKSPJJG2ZL=Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.JIAO_GUAN+Constant.BSF_JG2+Constant.ZHONG_LIANG;
+	/**
+	 * 排胶完成胶罐1重量
+	 */
+	public static final String PJWCJG1ZL=Constant.PAI_JIAO_WAN_CHENG+Constant.JIAO_GUAN+Constant.BSF_JG1+Constant.ZHONG_LIANG;
+	/**
+	 * 排胶完成胶罐2重量
+	 */
+	public static final String PJWCJG2ZL=Constant.PAI_JIAO_WAN_CHENG+Constant.JIAO_GUAN+Constant.BSF_JG2+Constant.ZHONG_LIANG;
+	/**
+	 * 允许开始排胶到排胶完成胶罐1称重
+	 */
+	public static final String YXKSPJDPJWCJG1CZ=Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.DAO+Constant.PAI_JIAO_WAN_CHENG+Constant.JIAO_GUAN+Constant.BSF_JG1+Constant.CHENG_ZHONG;
+	/**
+	 * 允许开始排胶到排胶完成胶罐1重量差
+	 */
+	public static final String YXKSPJDPJWCJG1ZLC=Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.DAO+Constant.PAI_JIAO_WAN_CHENG+Constant.JIAO_GUAN+Constant.BSF_JG1+Constant.ZHONG_LIANG+Constant.CHA;
+	/**
+	 * 允许开始排胶到排胶完成胶罐2称重
+	 */
+	public static final String YXKSPJDPJWCJG2CZ=Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.DAO+Constant.PAI_JIAO_WAN_CHENG+Constant.JIAO_GUAN+Constant.BSF_JG2+Constant.CHENG_ZHONG;
+	/**
+	 * 允许开始排胶到排胶完成胶罐2重量差
+	 */
+	public static final String YXKSPJDPJWCJG2ZLC=Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.DAO+Constant.PAI_JIAO_WAN_CHENG+Constant.JIAO_GUAN+Constant.BSF_JG2+Constant.ZHONG_LIANG+Constant.CHA;
+	/**
+	 * 反应釜与胶罐1重量差比值
+	 */
+	public static final String FYFYJG1ZLCBZ=Constant.FAN_YING_FU+Constant.YU+Constant.JIAO_GUAN+Constant.BSF_JG1+Constant.ZHONG_LIANG+Constant.CHA+Constant.BI_ZHI;
+	/**
+	 * 反应釜与胶罐2重量差比值
+	 */
+	public static final String FYFYJG2ZLCBZ=Constant.FAN_YING_FU+Constant.YU+Constant.JIAO_GUAN+Constant.BSF_JG2+Constant.ZHONG_LIANG+Constant.CHA+Constant.BI_ZHI;
 
 	//U类
 	/**
