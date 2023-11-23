@@ -492,7 +492,7 @@ public class OpcUtil {
 			        	
 	                	int jghStart=tv2VarName.indexOf(Constant.JIAO_GUAN+Constant.XUAN_ZE)+4;
 	                	int jghEnd=tv2VarName.indexOf(Constant.XHX+Constant.AV);
-	                	Integer jgh = Integer.valueOf(tv2VarName.substring(jghStart,jghEnd));
+	                	int jgh = Float.valueOf(tv2VarName.substring(jghStart,jghEnd)).intValue();
 			        	
 			        	addVarNameInList(opcVarNameList,jgcbzPvVarNameQz+jgh+Constant.CHENG_ZHONG);
 		        	}
@@ -852,10 +852,15 @@ public class OpcUtil {
 		            addVarNameInList(opcVarNameList,jgxzPvVarNameQz);
 				}
 		        else if (tv1VarName.startsWith(Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.XHX)&&tv2VarName!=null) {//允许开始排胶(有胶罐选择变量)
-
-		        	String jgcbzPvVarNameQz=Constant.JIAO_GUAN_CBZ;
-		            
-		        	addVarNameInList(opcVarNameList,jgcbzPvVarNameQz+Constant.CHENG_ZHONG);
+		        	if(tv2VarName.startsWith(Constant.JIAO_GUAN+Constant.XUAN_ZE)) {
+			        	String jgcbzPvVarNameQz=Constant.JIAO_GUAN_CBZ;
+			        	
+	                	int jghStart=tv2VarName.indexOf(Constant.JIAO_GUAN+Constant.XUAN_ZE)+4;
+	                	int jghEnd=tv2VarName.indexOf(Constant.XHX+Constant.AV);
+	                	int jgh = Float.valueOf(tv2VarName.substring(jghStart,jghEnd)).intValue();
+			        	
+			        	addVarNameInList(opcVarNameList,jgcbzPvVarNameQz+jgh+Constant.CHENG_ZHONG);
+		        	}
 		        }
 				else if (tv1VarName.startsWith(Constant.ZHONG_JIAN_SHUI_PH_TI_XING+Constant.XHX)){//终检水PH提醒
 					Integer tvFId = triggerVar1.getFId();
@@ -1105,6 +1110,11 @@ public class OpcUtil {
 			                	}
 			                }
 			            }
+				        else if (tv1VarName.startsWith(Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.XHX)&&tv2VarName!=null) {//允许开始排胶(有胶罐选择变量)
+				        	if(tv2VarName.startsWith(Constant.JIAO_GUAN+Constant.XUAN_ZE)) {
+				        		varName=ERecord.YXKSPJJG1ZL;
+				        	}
+				        }
 			            else if(tv1VarName.startsWith(Constant.PAI_JIAO_WAN_CHENG+Constant.XHX)) {//排胶完成
 			            	if (itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)) {
 			            		varName=ERecord.PJWCSSYFCZ;
@@ -1368,7 +1378,7 @@ public class OpcUtil {
 								varName=ERecord.FYJSSSYFYFWD;//反应结束上升沿反应釜温度
 							}
 						}
-						else if(tv1VarName.startsWith(Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.XHX)){//允许开始排胶
+						else if(tv1VarName.startsWith(Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.XHX)&&tv2VarName==null){//允许开始排胶
 			            	if (itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)) {
 			            		varName=ERecord.YXKSPJSSYFCZ;
 			            	}
@@ -1385,6 +1395,11 @@ public class OpcUtil {
 			                	}
 			                }
 						}
+				        else if (tv1VarName.startsWith(Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.XHX)&&tv2VarName!=null) {//允许开始排胶(有胶罐选择变量)
+				        	if(tv2VarName.startsWith(Constant.JIAO_GUAN+Constant.XUAN_ZE)) {
+				        		varName=ERecord.YXKSPJJG1ZL;
+				        	}
+				        }
 						else if(tv1VarName.startsWith(Constant.ZHONG_JIAN_SHUI_PH_TI_XING+Constant.XHX)){//终检水PH提醒
 							if (itemName.startsWith(Constant.ZHONG_JIAN_SHUI_SHU)){
 								varName=Constant.ZHONG_JIAN_SHUI_SHU;//终检水数
@@ -1498,7 +1513,7 @@ public class OpcUtil {
 		        else if (tv1VarName.startsWith(Constant.JIANG_WEN_WAN_CHENG+Constant.XHX)){//降温完成
 		            itemName = ERecord.JWWCSSYSJ;//降温完成上升沿时间
 		        }
-		        else if(tv1VarName.startsWith(Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.XHX)) {//允许开始排胶
+		        else if(tv1VarName.startsWith(Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.XHX)&&tv2VarName==null) {//允许开始排胶
 		        	itemName = ERecord.YXKSPJSSYSJ;//允许开始排胶上升沿时间
 		        }
 		        else if(tv1VarName.startsWith(Constant.PAI_JIAO_WAN_CHENG+Constant.XHX)) {//排胶完成
@@ -1507,6 +1522,7 @@ public class OpcUtil {
 		        else if (tv1VarName.startsWith(Constant.FAN_YING_JIE_SHU)){//反应结束
 		            itemName = ERecord.FYJSSSYSJ;//反应结束上升沿时间
 		        }
+		        
         
 		        //触发器变量1在满足以上几种情况时，说明需要添加系统时间，就调用下面这个逻辑。若加在上面代码量太多，就简化一下加在下面
 		        if(tv1VarName.startsWith(Constant.BEI_LIAO_KAI_SHI+Constant.XHX)||
@@ -1522,7 +1538,7 @@ public class OpcUtil {
 		           tv1VarName.startsWith(Constant.SHENG_WEN_WAN_CHENG+Constant.XHX)||
 		           tv1VarName.startsWith(Constant.JU_HE_ZHONG_DIAN+Constant.XHX)||
 		           tv1VarName.startsWith(Constant.JIANG_WEN_WAN_CHENG+Constant.XHX)||
-				   tv1VarName.startsWith(Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.XHX)||
+				   tv1VarName.startsWith(Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.XHX)&&tv2VarName==null||
 				   tv1VarName.startsWith(Constant.PAI_JIAO_WAN_CHENG+Constant.XHX)||
 		           tv1VarName.startsWith(Constant.FAN_YING_JIE_SHU)) {
 		        	String sysTime = DateUtil.getTimeStrByFormatStr(new Date(),DateUtil.YEAR_TO_SECOND);//系统时间
@@ -1614,7 +1630,7 @@ public class OpcUtil {
 		        else if (tv1VarName.startsWith(Constant.FAN_YING_JIE_SHU)){//反应结束
 		            itemName = ERecord.FYJSSSYSJ;//反应结束上升沿时间
 		        }
-				else if (tv1VarName.startsWith(Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.XHX)){//允许开始排胶
+				else if (tv1VarName.startsWith(Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.XHX)&&tv2VarName==null){//允许开始排胶
 					itemName = ERecord.YXKSPJSSYSJ;//允许开始排胶上升沿时间
 				}
 				else if (tv1VarName.startsWith(Constant.PAI_JIAO_WAN_CHENG+Constant.XHX)){//排胶完成
@@ -1641,7 +1657,7 @@ public class OpcUtil {
 				   tv1VarName.startsWith(Constant.ER_CI_JIA_SHUI_QI_DONG+Constant.XHX)||
 				   tv1VarName.startsWith(Constant.ER_CI_JIA_SHUI_WAN_CHENG+Constant.XHX)||
 				   tv1VarName.startsWith(Constant.FAN_YING_JIE_SHU)||
-				   tv1VarName.startsWith(Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.XHX)||
+				   tv1VarName.startsWith(Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.XHX)&&tv2VarName==null||
 				   tv1VarName.startsWith(Constant.PAI_JIAO_WAN_CHENG+Constant.XHX)) {
 		        	String sysTime = DateUtil.getTimeStrByFormatStr(new Date(),DateUtil.YEAR_TO_SECOND);//系统时间
 		        	
@@ -1712,9 +1728,9 @@ public class OpcUtil {
 		else if(varName.startsWith(Constant.JIAO_GUAN_CBZ)&&varName.endsWith(Constant.CHENG_ZHONG)) {
             String zhjgPvVarNameQz=Constant.ZHONG_ZHUAN+Constant.JIAO_GUAN;
             
-        	int jghStart=varName.indexOf(Constant.JIAO_GUAN+Constant.XUAN_ZE)+4;
+        	int jghStart=varName.indexOf(Constant.JIAO_GUAN_CBZ)+2;
         	int jghEnd=varName.indexOf(Constant.CHENG_ZHONG);
-        	Integer jgh = Integer.valueOf(varName.substring(jghStart,jghEnd));
+        	int jgh = Float.valueOf(varName.substring(jghStart,jghEnd)).intValue();
         	
         	String jgcbzPvVarName=null;
         	switch (jgh) {
