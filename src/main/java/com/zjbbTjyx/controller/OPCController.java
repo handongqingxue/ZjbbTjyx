@@ -2266,7 +2266,7 @@ public class OPCController {
 			}
 			
 
-			//if(false) {
+			if(false) {
 			//允许开始排胶
 			String yxkspjTVVarNamePre=Constant.YUN_XU_KAI_SHI_PAI_JIAO;
 			List<TriggerVar> yxkspjTVList = (List<TriggerVar>) triggerVarMap.get(yxkspjTVVarNamePre);//先获取所有反应釜允许开始排胶触发量,不管是否是上升沿
@@ -2316,10 +2316,10 @@ public class OPCController {
 						break;
 				}
 			}
-			//}
+			}
 		
 
-			if(false) {
+			//if(false) {
 			//排胶完成
 			List<Integer> pjwcFIdList = new ArrayList<Integer>();//排胶完成反应釜号集合(M类和U类共用)
 			String pjwcTVVarNamePre=Constant.PAI_JIAO_WAN_CHENG;
@@ -2375,7 +2375,7 @@ public class OPCController {
 						break;
 				}
 			}
-			}
+			//}
 		
 			updateProTVListByCurrList(triggerVarList);//这个方法用来存储本次变量值，作为下次检索里的上次变量值来使用。每次检索结束后都要记录一下
 	
@@ -3682,9 +3682,11 @@ public class OPCController {
 				}
 			}
 			else if(TriggerVar.U.equals(upRecType)) {
-				HashMap<String, Object> preValueFUMap = (HashMap<String,Object>)paramMap.get("preValueFMMap");
+				HashMap<String, Object> preValueFUMap = (HashMap<String,Object>)paramMap.get("preValueFUMap");
 				String upVarName = upPjwcTV.getVarName();
-				Float preValue = Float.valueOf(preValueFUMap.get(upVarName).toString());
+				Object preValueFUObj = preValueFUMap.get(upVarName);
+				String preValueFUStr = preValueFUObj.toString();
+				Float preValue = Float.valueOf(preValueFUStr);
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
 					List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 					opcTVList.add(upPjwcTV);
@@ -3703,6 +3705,41 @@ public class OPCController {
 							pjwcUResPVList.add(ptnFczPV);//将重量差对象添加到集合里
 							int i = processVarService.addFromList(pjwcUResPVList);//调用添加过程接口
 							System.out.println("添加" + i);
+							
+							boolean drjg1Boolen=false;
+							boolean drjg2Boolen=false;
+							
+							ProcessVar drjg1PV=processVarService.getByVarNameFId(ERecord.DRJG1JGH,upFId);
+							if(drjg1PV!=null) {
+								Float jgh1 = drjg1PV.getVarValue();
+								TriggerVar jgxz1Tv=new TriggerVar();
+								jgxz1Tv.setVarName(Constant.JIAO_GUAN+Constant.XUAN_ZE+jgh1+Constant.XHX+Constant.AV);
+								opcTVList.add(jgxz1Tv);
+								
+								drjg1Boolen=true;
+							}
+
+							ProcessVar drjg2PV=processVarService.getByVarNameFId(ERecord.DRJG2JGH,upFId);
+							if(drjg2PV!=null) {
+								Float jgh2 = drjg2PV.getVarValue();
+								TriggerVar jgxz2Tv=new TriggerVar();
+								jgxz2Tv.setVarName(Constant.JIAO_GUAN+Constant.XUAN_ZE+jgh2+Constant.XHX+Constant.AV);
+								opcTVList.add(jgxz2Tv);
+								
+								drjg2Boolen=true;
+							}
+							System.out.println("drjg1Boolen="+drjg1Boolen);
+							System.out.println("drjg2Boolen="+drjg2Boolen);
+							
+							if(drjg1Boolen||drjg2Boolen) {
+								pjwcUResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);
+								status = pjwcUResMap.get("status").toString();
+								if ("ok".equals(status)) {
+									pjwcUResPVList = (List<ProcessVar>) pjwcUResMap.get("proVarList");
+									i = processVarService.addFromList(pjwcUResPVList);//调用添加过程接口
+									System.out.println("添加" + i);
+								}
+							}
 						}
 					}
 				}

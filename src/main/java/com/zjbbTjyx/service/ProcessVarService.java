@@ -44,4 +44,6 @@ public interface ProcessVarService {
 	int deleteDealed(int fId);
 
 	boolean checkAllowAdd(List<TriggerVar> triggerVarList);
+
+	ProcessVar getByVarNameFId(String varName, Integer fId);
 }

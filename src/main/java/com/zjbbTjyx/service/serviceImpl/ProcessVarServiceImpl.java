@@ -360,4 +360,11 @@ public class ProcessVarServiceImpl implements ProcessVarService {
 		return allowAdd;
 	}
 
+	@Override
+	public ProcessVar getByVarNameFId(String varName, Integer fId) {
+		// TODO Auto-generated method stub
+		ProcessVar processVar = processVarMapper.getUnDealByVarNameFId(varName,fId);
+		return processVar;
+	}
+
 }

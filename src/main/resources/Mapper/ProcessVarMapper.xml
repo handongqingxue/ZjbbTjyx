@@ -96,4 +96,7 @@
 	<select id="getByVarNameFId" resultType="com.zjbbTjyx.entity.ProcessVar">
 		select * from ProcessVar where VarName=#{varName} and FId=#{fId}
 	</select>
+	<select id="getUnDealByVarNameFId" resultType="com.zjbbTjyx.entity.ProcessVar">
+		select * from ProcessVar where VarName=#{varName} and FId=#{fId} and DealBz=${@com.zjbbTjyx.entity.ProcessVar@WCL}
+	</select>
 </mapper>
