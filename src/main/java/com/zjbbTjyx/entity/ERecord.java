@@ -268,6 +268,14 @@ public class ERecord {
 	 */
 	public static final String YXKSPJSSYSJ=Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
 	/**
+	 * 打入胶罐1胶罐号
+	 */
+	public static final String DRJG1JGH=Constant.DA_RU+Constant.JIAO_GUAN+Constant.BSF_JG1+Constant.JIAO_GUAN_HAO;
+	/**
+	 * 打入胶罐2胶罐号
+	 */
+	public static final String DRJG2JGH=Constant.DA_RU+Constant.JIAO_GUAN+Constant.BSF_JG2+Constant.JIAO_GUAN_HAO;
+	/**
 	 * 排胶完成上升沿时间
 	 */
 	public static final String PJWCSSYSJ=Constant.PAI_JIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;

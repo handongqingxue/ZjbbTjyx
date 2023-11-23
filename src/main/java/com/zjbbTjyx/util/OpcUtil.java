@@ -481,6 +481,13 @@ public class OpcUtil {
 		            String fhczOpcVarName=fhczPvVarNameQz+Constant.XHX+Constant.AV;
 		            
 		            opcVarNameList.add(fhczOpcVarName);
+		            
+		            String jgxzPvVarNameQz=Constant.JIAO_GUAN+Constant.XUAN_ZE;
+		            for (int i = 1; i <= 10; i++) {
+			            String jgxzPvVarName=jgxzPvVarNameQz+i+Constant.XHX+Constant.AV;
+			            System.out.println("jgxzPvVarName==="+jgxzPvVarName);
+			            opcVarNameList.add(jgxzPvVarName);
+					}
 		        }
 		        else if (tv1VarName.startsWith(Constant.PAI_JIAO_WAN_CHENG+Constant.XHX)) {//排胶完成
 		        	Integer tvFId = triggerVar1.getFId();
@@ -831,6 +838,12 @@ public class OpcUtil {
 					String fhczOpcVarName=fczPvVarNameQz+Constant.XHX+Constant.AV;
 					
 					opcVarNameList.add(fhczOpcVarName);
+		            
+		            String jgxzPvVarNameQz=Constant.JIAO_GUAN+Constant.XUAN_ZE;
+		            for (int i = 1; i <= 10; i++) {
+			            String jgxzPvVarName=jgxzPvVarNameQz+i+Constant.XHX+Constant.AV;
+			            opcVarNameList.add(jgxzPvVarName);
+					}
 				}
 				else if (tv1VarName.startsWith(Constant.ZHONG_JIAN_SHUI_PH_TI_XING+Constant.XHX)){//终检水PH提醒
 					Integer tvFId = triggerVar1.getFId();
@@ -880,7 +893,14 @@ public class OpcUtil {
 	        	if(TriggerVar.M.equals(tvRecType)) {
 			        for (OpcItem opcItem : opcItems) {//一个触发变量可能会查询多个过程变量，得用集合存储
 			        	String itemName = opcItem.getItemName();
-			        	Float value = Float.valueOf(opcItem.getValue().toString());
+			        	String valueStr = opcItem.getValue().toString();
+			        	Float value = null;
+			        	if(itemName.startsWith(Constant.JIAO_GUAN+Constant.XUAN_ZE)) {
+			        		Boolean valueBool = Boolean.valueOf(valueStr);
+			        		value = (float)(valueBool?1:0);
+			        	}
+			        	else
+			        		value = Float.valueOf(valueStr);
 			        	String sysTime = DateUtil.getTimeStrByFormatStr(new Date(),DateUtil.YEAR_TO_SECOND);//系统时间
 			        	
 			        	String varName=null;
@@ -1029,6 +1049,49 @@ public class OpcUtil {
 			            	if (itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)) {
 			            		varName=ERecord.YXKSPJSSYFCZ;
 			            	}
+			                else if(itemName.startsWith(Constant.JIAO_GUAN+Constant.XUAN_ZE)&&itemName.endsWith(Constant.XHX+Constant.AV)){
+			                	if(value==TriggerVar.UP) {
+				                	int jghStart=itemName.indexOf(Constant.JIAO_GUAN+Constant.XUAN_ZE)+4;
+				                	int jghEnd=itemName.indexOf(Constant.XHX+Constant.AV);
+				                	Integer jgh = Integer.valueOf(itemName.substring(jghStart,jghEnd));
+				                	/*
+				                	switch (jgh) {
+									case 1:
+										jgmcQz="A1";
+										break;
+									case 2:
+										jgmcQz="A2";
+										break;
+									case 3:
+										jgmcQz="B1";
+										break;
+									case 4:
+										jgmcQz="B2";
+										break;
+									case 5:
+										jgmcQz="C1";
+										break;
+									case 6:
+										jgmcQz="C2";
+										break;
+									case 7:
+										jgmcQz="D1";
+										break;
+									case 8:
+										jgmcQz="D2";
+										break;
+									case 9:
+										jgmcQz="D3";
+										break;
+									case 10:
+										jgmcQz="中转";
+										break;
+									}
+									*/
+				                	varName=ERecord.DRJG1JGH;
+				                	value=(float)jgh;
+			                	}
+			                }
 			            }
 			            else if(tv1VarName.startsWith(Constant.PAI_JIAO_WAN_CHENG+Constant.XHX)) {//排胶完成
 			            	if (itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)) {
@@ -1096,7 +1159,14 @@ public class OpcUtil {
 	        	else if(TriggerVar.U.equals(tvRecType)) {
 	        		for (OpcItem opcItem : opcItems) {//一个触发变量可能会查询多个过程变量，得用集合存储
 			        	String itemName = opcItem.getItemName();
-			        	Float value = Float.valueOf(opcItem.getValue().toString());
+			        	String valueStr = opcItem.getValue().toString();
+			        	Float value = null;
+			        	if(itemName.startsWith(Constant.JIAO_GUAN+Constant.XUAN_ZE)) {
+			        		Boolean valueBool = Boolean.valueOf(valueStr);
+			        		value = (float)(valueBool?1:0);
+			        	}
+			        	else
+			        		value = Float.valueOf(valueStr);
 			        	String sysTime = DateUtil.getTimeStrByFormatStr(new Date(),DateUtil.YEAR_TO_SECOND);//系统时间
 			        	
 			        	String varName=null;
@@ -1290,6 +1360,18 @@ public class OpcUtil {
 							if (itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)){
 								varName=ERecord.YXKSPJSSYFYFWD;//反应结束上升沿反应釜温度
 							}
+			                else if(itemName.startsWith(Constant.JIAO_GUAN+Constant.XUAN_ZE)&&itemName.endsWith(Constant.XHX+Constant.AV)){
+				            	if(itemName.equals("胶罐选择3_AV"))
+				            		value=(float)1;
+				            	
+			                	if(value==TriggerVar.UP) {
+				                	int jghStart=itemName.indexOf(Constant.JIAO_GUAN+Constant.XUAN_ZE)+4;
+				                	int jghEnd=itemName.indexOf(Constant.XHX+Constant.AV);
+				                	Integer jgh = Integer.valueOf(itemName.substring(jghStart,jghEnd));
+				                	varName=ERecord.DRJG1JGH;
+				                	value=(float)jgh;
+			                	}
+			                }
 						}
 						else if(tv1VarName.startsWith(Constant.ZHONG_JIAN_SHUI_PH_TI_XING+Constant.XHX)){//终检水PH提醒
 							if (itemName.startsWith(Constant.ZHONG_JIAN_SHUI_SHU)){
@@ -1850,8 +1932,10 @@ public class OpcUtil {
 		}
     	
     	for (int jgId : Constant.BSF_JG_ARR) {
-    		opcPVNameList.add(Constant.JIAO_GUAN+jgId+Constant.CHENG_ZHONG+Constant.XHX+Constant.AV);
+    		opcPVNameList.add(Constant.JIAO_GUAN_CBZ+jgId+Constant.CHENG_ZHONG+Constant.XHX+Constant.AV);
     	}
+    	
+		opcPVNameList.add(Constant.ZHONG_ZHUAN+Constant.JIAO_GUAN+Constant.CHENG_ZHONG+Constant.XHX+Constant.AV);
 
     	opcPVNamePreList.add(Constant.JIA_FEN_LIAO_PH_SHU_RU_ZHI);//加粉料PH输入值
     	opcPVNamePreList.add(Constant.ER_CI_TOU_LIAO_PH_SHU_RU);//二次投料PH输入
@@ -1870,6 +1954,13 @@ public class OpcUtil {
     			opcPVNameList.add(opcPVName);
 			}
     	}
+        
+        String jgxzPvVarNameQz=Constant.JIAO_GUAN+Constant.XUAN_ZE;
+        opcPVNamePreList.add(jgxzPvVarNameQz);
+        for (int i = 1; i <= 10; i++) {
+            String jgxzPvVarName=jgxzPvVarNameQz+i+Constant.XHX+Constant.AV;
+			opcPVNameList.add(jgxzPvVarName);
+		}
     	
 		return opcPVNameList;
 	}
@@ -2093,6 +2184,10 @@ public class OpcUtil {
 			
 	        OpcGroup responseGroup = jopcPV.synchReadGroup(opcGroupPV);
 	        ArrayList<OpcItem> opcItems = responseGroup.getItems();
+	        for (OpcItem opcItem : opcItems) {
+	        	String itemName = opcItem.getItemName();
+	        	System.out.println("itemName111==="+itemName);
+	        }
         	
         	for (String opcPVName : opcPVNameList) {//遍历变量名集合，判断变量是否存在
             	boolean exist=false;
@@ -2221,7 +2316,8 @@ public class OpcUtil {
 		   itemName.startsWith(Constant.JIA_JIAN_QIAN_PH_SHU_RU_ZHI)||//加碱前PH输入值
 		   itemName.startsWith(Constant.JIA_JIAN_HOU_PH_SHU_RU_ZHI)||//加碱后PH输入值
 		   itemName.startsWith(Constant.ZHU_JI_JI_LIANG_GUAN)&&itemName.endsWith(Constant.CHENG_ZHONG+Constant.XHX+Constant.AV)||//助剂计量罐称重
-		   itemName.startsWith(Constant.JIAO_GUAN)&&itemName.endsWith(Constant.CHENG_ZHONG+Constant.XHX+Constant.AV)||//胶灌称重
+		   itemName.startsWith(Constant.JIAO_GUAN_CBZ)&&itemName.endsWith(Constant.CHENG_ZHONG+Constant.XHX+Constant.AV)||//胶灌称重
+		   itemName.equals(Constant.ZHONG_ZHUAN+Constant.JIAO_GUAN+Constant.CHENG_ZHONG+Constant.XHX+Constant.AV)||//中转胶罐称重
 		   itemName.startsWith(Constant.JIA_FEN_LIAO_PH_SHU_RU_ZHI)||//加粉料PH输入值
 		   itemName.startsWith(Constant.ER_CI_TOU_LIAO_PH_SHU_RU)||//二次投料PH输入
 		   itemName.startsWith(Constant.WEN_DU_98_PH)||//温度98PH

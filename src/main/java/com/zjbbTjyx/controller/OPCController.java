@@ -376,6 +376,7 @@ public class OPCController {
 			//}
 			
 
+			//if(false) {
 			//反应结束
 			List<Integer> fyjsFIdList = new ArrayList<Integer>();//反应结束反应釜号集合(M类和U类共用)
 			String fyjsTVVarNamePre=Constant.FAN_YING_JIE_SHU;
@@ -432,7 +433,7 @@ public class OPCController {
 	
 				}
 			}
-	
+
 			/*
 			if (fyjsFIdList.size() > 0) {//若有需要处理的反应结束节点的反应釜，说明这些反应釜的批次执行完成，就从过程变量表(ProcessVar)里读取已采集好的变量，经过加工处理存入批记录表(ERecord)里
 				List<ProcessVar> udProVarList = processVarService.getUnDealListByFIdList(fyjsFIdList);
@@ -440,8 +441,10 @@ public class OPCController {
 				eRecordService.clearBatchIDMap(fyjsFIdList);
 			}
 			*/
+			//}
 
-			
+
+			//if(false) {
 			//甲醛备料开始
 			String jqblksTVVarNamePre=Constant.JIA_QUAN_BEI_LIAO_KAI_SHI;
 			List<TriggerVar> jqblksTVList = (List<TriggerVar>)triggerVarMap.get(jqblksTVVarNamePre);//获取甲醛备料开始变量,不管是否是上升沿
@@ -492,7 +495,7 @@ public class OPCController {
 	
 				}
 			}
-
+			//}
 
 			
 			//if(false) {
@@ -548,7 +551,8 @@ public class OPCController {
 			}
 			//}
 	
-			
+
+			//if(false) {
 			//加碱PH值正常
 			String jjphzzcTVVarNamePre=Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG;
 			List<TriggerVar> jjphzzcTVList = (List<TriggerVar>)triggerVarMap.get(jjphzzcTVVarNamePre);//获取加碱PH值正常变量,不管是否是上升沿
@@ -598,8 +602,10 @@ public class OPCController {
 						break;
 				}
 			}
+			//}
 
-			
+
+			//if(false) {
 			//开始加料
 			String ksjlTVVarNamePre=Constant.KAI_SHI_JIA_LIAO;
 			List<TriggerVar> ksjlTVList = (List<TriggerVar>)triggerVarMap.get(ksjlTVVarNamePre);//获取开始加料变量,不管是否是上升沿
@@ -644,8 +650,10 @@ public class OPCController {
 						break;
 				}
 			}
+			//}
 
 
+			//if(false) {
 			//助剂6一次添加完成
 			String zjlyctjwcTVVarNamePre=Constant.ZHU_JI_6_YI_CI_TIAN_JIA_WAN_CHENG;
 			List<TriggerVar> zjlyctjwcTVList = (List<TriggerVar>)triggerVarMap.get(zjlyctjwcTVVarNamePre);//获取助剂6一次添加完成变量,不管是否是上升沿
@@ -690,8 +698,10 @@ public class OPCController {
 						break;
 				}
 			}
+			//}
 
-			
+
+			//if(false) {
 			//助剂6二次备料完成
 			String zjlecblwcTVVarNamePre=Constant.ZHU_JI_6_ER_CI_BEI_LIAO_WAN_CHENG;
 			List<TriggerVar> zjlecblwcTVList = (List<TriggerVar>)triggerVarMap.get(zjlecblwcTVVarNamePre);//获取助剂6二次备料完成变量,不管是否是上升沿
@@ -736,8 +746,10 @@ public class OPCController {
 						break;
 				}
 			}
+			//}
 
-			
+
+			//if(false) {
 			//助剂6二次添加完成
 			String zjlectjwcTVVarNamePre=Constant.ZHU_JI_6_ER_CI_TIAN_JIA_WAN_CHENG;
 			List<TriggerVar> zjlectjwcTVList = (List<TriggerVar>)triggerVarMap.get(zjlectjwcTVVarNamePre);//获取助剂6二次添加完成变量,不管是否是上升沿
@@ -782,8 +794,10 @@ public class OPCController {
 						break;
 				}
 			}
+			//}
 
-			
+
+			//if(false) {
 			//第一次保温启动
 			String dycbwqdTVVarNamePre=Constant.DI_YI_CI_BAO_WEN_QI_DONG;
 			List<TriggerVar> dycbwqdTVList = (List<TriggerVar>)triggerVarMap.get(dycbwqdTVVarNamePre);//获取第一次保温启动变量,不管是否是上升沿
@@ -828,8 +842,10 @@ public class OPCController {
 						break;
 				}
 			}
+			//}
 
-			
+
+			//if(false) {
 			//第一次保温合格
 			String dycbwhgTVVarNamePre=Constant.DI_YI_CI_BAO_WEN_HE_GE;
 			List<TriggerVar> dycbwhgTVList = (List<TriggerVar>)triggerVarMap.get(dycbwhgTVVarNamePre);//获取第一次保温合格变量,不管是否是上升沿
@@ -874,8 +890,10 @@ public class OPCController {
 						break;
 				}
 			}
+			//}
 			
-			
+
+			//if(false) {
 			//一次降温加酸提醒
 			String ycjwjstxTVVarNamePre=Constant.YI_CI_JIANG_WEN_JIA_SUAN_TI_XING;
 			List<TriggerVar> ycjwjstxTVList = (List<TriggerVar>)triggerVarMap.get(ycjwjstxTVVarNamePre);//获取一次降温加酸提醒变量,不管是否是上升沿
@@ -926,6 +944,7 @@ public class OPCController {
 				}
 			}
 			
+			
 			List<TriggerVar> downYcjwjstxTVList = getUpDownVarValueListFromList(ycjwjstxTVList, TriggerVar.DOWN);//获取下降的第一次降温加酸提醒变量
 			for (TriggerVar downYcjwjstxTV : downYcjwjstxTVList) {
 				Integer downFId = downYcjwjstxTV.getFId();//获取反应釜号
@@ -972,8 +991,10 @@ public class OPCController {
 						break;
 				}
 			}
+			//}
 
-			
+
+			//if(false) {
 			//一次降温加酸合格
 			String ycjwjshgTVVarNamePre=Constant.YI_CI_JIANG_WEN_JIA_SUAN_HE_GE;
 			List<TriggerVar> ycjwjshgTVList = (List<TriggerVar>)triggerVarMap.get(ycjwjshgTVVarNamePre);//获取一次降温加酸合格变量,不管是否是上升沿
@@ -1018,8 +1039,10 @@ public class OPCController {
 						break;
 				}
 			}
+			//}
 			
-			
+
+			//if(false) {
 			//加碱PH合格
 			String jjphhgTVVarNamePre=Constant.JIA_JIAN_PH_HE_GE;
 			List<TriggerVar> jjphhgTVList = (List<TriggerVar>)triggerVarMap.get(jjphhgTVVarNamePre);//获取加碱PH合格变量,不管是否是上升沿
@@ -1064,8 +1087,10 @@ public class OPCController {
 						break;
 				}
 			}
+			//}
 
-			
+
+			//if(false) {
 			//二次投粉
 			String ectfTVVarNamePre=Constant.ER_CI_TOU_FEN;
 			List<TriggerVar> ectfTVList = (List<TriggerVar>)triggerVarMap.get(ectfTVVarNamePre);//获取二次投粉变量,不管是否是上升沿
@@ -1116,8 +1141,10 @@ public class OPCController {
 						break;
 				}
 			}
+			//}
 
-			
+
+			//if(false) {
 			//二次加215启动
 			String ecj215qdTVVarNamePre=Constant.ER_CI_JIA_215_QI_DONG;
 			List<TriggerVar> ecj215qdTVList = (List<TriggerVar>)triggerVarMap.get(ecj215qdTVVarNamePre);//获取二次加215启动,不管是否是上升沿
@@ -1162,8 +1189,10 @@ public class OPCController {
 						break;
 				}
 			}
+			//}
 
 
+			//if(false) {
 			//二次加215完成
 			String ecj215wcTVVarNamePre=Constant.ER_CI_JIA_215_WAN_CHENG;
 			List<TriggerVar> ecj215wcTVList = (List<TriggerVar>)triggerVarMap.get(ecj215wcTVVarNamePre);//获取二次加215完成,不管是否是上升沿
@@ -1208,7 +1237,10 @@ public class OPCController {
 						break;
 				}
 			}
+			//}
 
+			
+			//if(false) {
 			//二次加水和小料提醒
 			String ecjxlhstxTVVarNamePre=Constant.ER_CI_JIA_SHUI_HE_XIAO_LIAO_TI_XING;
 			List<TriggerVar> ecjxlhstxTVList = (List<TriggerVar>)triggerVarMap.get(ecjxlhstxTVVarNamePre);//获取二次加水和小料提醒,不管是否是上升沿
@@ -1253,8 +1285,10 @@ public class OPCController {
 						break;
 				}
 			}
+			//}
 
-			
+
+			//if(false) {
 			//二次加水启动
 			String ecjsqdTVVarNamePre=Constant.ER_CI_JIA_SHUI_QI_DONG;
 			List<TriggerVar> ecjsqdTVList = (List<TriggerVar>)triggerVarMap.get(ecjsqdTVVarNamePre);//获取二次加水启动,不管是否是上升沿
@@ -1299,7 +1333,10 @@ public class OPCController {
 						break;
 				}
 			}
+			//}
 
+			
+			//if(false) {
 			//二次加水完成
 			String ecjswcTVVarNamePre=Constant.ER_CI_JIA_SHUI_WAN_CHENG;
 			List<TriggerVar> ecjswcTVList = (List<TriggerVar>)triggerVarMap.get(ecjswcTVVarNamePre);//获取二次加水完成,不管是否是上升沿
@@ -1344,8 +1381,10 @@ public class OPCController {
 						break;
 				}
 			}
+			//}
 
 
+			//if(false) {
 			//允许一次加助剂
 			String yxycjzjTVVarNamePre=Constant.YUN_XU_YI_CI_JIA_ZHU_JI;
 			List<TriggerVar> yxycjzjTVList = (List<TriggerVar>)triggerVarMap.get(yxycjzjTVVarNamePre);//获取允许一次加助剂变量,不管是否是上升沿
@@ -1395,8 +1434,10 @@ public class OPCController {
 						break;
 				}
 			}
+			//}
 
-		
+
+			//if(false) {
 			//所有助剂加料完成1
 			String syzjjlwc1TVVarNamePre=Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1;
 			List<TriggerVar> syzjjlwc1TVList = (List<TriggerVar>)triggerVarMap.get(syzjjlwc1TVVarNamePre);//获取所有助剂加料完成1变量,不管是否是上升沿
@@ -1446,8 +1487,10 @@ public class OPCController {
 						break;
 				}
 			}
+			//}
 			
-	
+
+			//if(false) {
 			//int jfltxSign=TriggerVar.DOWN;//加粉料提醒标志
 			//int jfltxFId=0;//加粉料提醒釜id
 			//加粉料提醒
@@ -1507,8 +1550,10 @@ public class OPCController {
 						break;
 				}
 			}
+			//}
 	
-			
+
+			//if(false) {
 			//加粉料PH合格
 			String jflphhgTVVarNamePre=Constant.JIA_FEN_LIAO_PH_HE_GE;
 			List<TriggerVar> jflphhgTVList = (List<TriggerVar>)triggerVarMap.get(jflphhgTVVarNamePre);//获取加粉料PH合格变量,不管是否是上升沿
@@ -1558,8 +1603,10 @@ public class OPCController {
 						break;
 				}
 			}
+			//}
 
-		
+
+			//if(false) {
 			//升温开始
 			String swksTVVarNamePre=Constant.SHENG_WEN_KAI_SHI;
 			List<TriggerVar> swksTVList = (List<TriggerVar>)triggerVarMap.get(swksTVVarNamePre);//获取升温开始变量,不管是否是上升沿
@@ -1609,8 +1656,10 @@ public class OPCController {
 						break;
 				}
 			}
+			//}
 			
-	
+
+			//if(false) {
 			//温度85与二次投料提醒
 			String wd85yectltxTVVarNamePre=Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING;
 			List<TriggerVar> wd85yectltxTVList = (List<TriggerVar>)triggerVarMap.get(wd85yectltxTVVarNamePre);//获取温度85与二次投料提醒变量,不管是否是上升沿
@@ -1660,8 +1709,10 @@ public class OPCController {
 						break;
 				}
 			}
+			//}
 	
-			
+
+			//if(false) {
 			//二次助剂后测PH提醒
 			String eczjhcphtxTVVarNamePre=Constant.ER_CI_ZHU_JI_HOU_CE_PH_TI_XING;
 			List<TriggerVar> eczjhcphtxTVList = (List<TriggerVar>)triggerVarMap.get(eczjhcphtxTVVarNamePre);//获取二次助剂后测PH提醒变量,不管是否是上升沿
@@ -1711,8 +1762,10 @@ public class OPCController {
 						break;
 				}
 			}
+			//}
 
-		
+
+			//if(false) {
 			//允许二次加助剂
 			String yxecjzjTVVarNamePre=Constant.YUN_XU_ER_CI_JIA_ZHU_JI;
 			List<TriggerVar> yxecjzjTVList = (List<TriggerVar>)triggerVarMap.get(yxecjzjTVVarNamePre);//获取二次加助剂变量,不管是否是上升沿
@@ -1762,8 +1815,10 @@ public class OPCController {
 						break;
 				}
 			}
+			//}
 	
-			
+
+			//if(false) {
 			//所有助剂加料完成2
 			String syzjjlwcTVVarNamePre=Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2;
 			List<TriggerVar> syzjjlwc2TVList = (List<TriggerVar>)triggerVarMap.get(syzjjlwcTVVarNamePre);//获取所有助剂加料完成2变量,不管是否是上升沿
@@ -1813,8 +1868,10 @@ public class OPCController {
 						break;
 				}
 			}
+			//}
 	
-			
+
+			//if(false) {
 			//升温完成
 			String swwcTVVarNamePre=Constant.SHENG_WEN_WAN_CHENG;
 			List<TriggerVar> swwcTVList = (List<TriggerVar>)triggerVarMap.get(swwcTVVarNamePre);//获取升温完成变量,不管是否是上升沿
@@ -1864,6 +1921,7 @@ public class OPCController {
 						break;
 				}
 			}
+			//}
 	
 			
 			//if(false) {
@@ -1918,7 +1976,8 @@ public class OPCController {
 			}
 			//}
 	
-			
+
+			//if(false) {
 			//测量冰水雾点提醒
 			String clbswdtxTVVarNamePre=Constant.CE_LIANG_BING_SHUI_WU_DIAN_TI_XING;
 			List<TriggerVar> clbswdtxTVList = (List<TriggerVar>)triggerVarMap.get(clbswdtxTVVarNamePre);//获取测量冰水雾点提醒变量,不管是否是上升沿
@@ -1968,8 +2027,10 @@ public class OPCController {
 						break;
 				}
 			}
+			//}
 	
-			
+
+			//if(false) {
 			//聚合终点
 			String jhzdTVVarNamePre=Constant.JU_HE_ZHONG_DIAN;
 			List<TriggerVar> jhzdTVList = (List<TriggerVar>)triggerVarMap.get(jhzdTVVarNamePre);//获取聚合终点变量,不管是否是上升沿
@@ -2019,9 +2080,11 @@ public class OPCController {
 						break;
 				}
 			}
+			//}
 		
 		
-		
+
+			//if(false) {
 			//测水数提醒
 			String csstxTVVarNamePre=Constant.CE_SHUI_SHU_TI_XING;
 			List<TriggerVar> csstxTVList = (List<TriggerVar>)triggerVarMap.get(csstxTVVarNamePre);//获取测水数提醒变量,不管是否是上升沿
@@ -2072,6 +2135,7 @@ public class OPCController {
 	
 				}
 			}
+			//}
 	
 			
 			//if(false) {
@@ -2139,7 +2203,8 @@ public class OPCController {
 			*/
 			//}
 			
-			
+
+			//if(false) {
 			//终检水PH提醒
 			String zjsphtxTVVarNamePre=Constant.ZHONG_JIAN_SHUI_PH_TI_XING;
 			List<TriggerVar> zjsphtxTVList = (List<TriggerVar>) triggerVarMap.get(zjsphtxTVVarNamePre);//先获取所有反应釜终检水PH提醒触发量,不管是否是上升沿
@@ -2190,8 +2255,10 @@ public class OPCController {
 	
 				}
 			}
+			//}
 			
-			
+
+			//if(false) {
 			//允许开始排胶
 			String yxkspjTVVarNamePre=Constant.YUN_XU_KAI_SHI_PAI_JIAO;
 			List<TriggerVar> yxkspjTVList = (List<TriggerVar>) triggerVarMap.get(yxkspjTVVarNamePre);//先获取所有反应釜允许开始排胶触发量,不管是否是上升沿
@@ -2241,8 +2308,10 @@ public class OPCController {
 						break;
 				}
 			}
+			//}
 		
-		
+
+			//if(false) {
 			//排胶完成
 			List<Integer> pjwcFIdList = new ArrayList<Integer>();//排胶完成反应釜号集合(M类和U类共用)
 			String pjwcTVVarNamePre=Constant.PAI_JIAO_WAN_CHENG;
@@ -2298,6 +2367,7 @@ public class OPCController {
 						break;
 				}
 			}
+			//}
 		
 			updateProTVListByCurrList(triggerVarList);//这个方法用来存储本次变量值，作为下次检索里的上次变量值来使用。每次检索结束后都要记录一下
 	

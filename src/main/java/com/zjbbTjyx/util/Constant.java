@@ -474,6 +474,10 @@ public class Constant {
 	 * 排胶完成
 	 */
 	public static final String PAI_JIAO_WAN_CHENG="排胶完成";
+	/**
+	 * 选择
+	 */
+	public static final String XUAN_ZE="选择";
 
 
 	/**
@@ -592,9 +596,25 @@ public class Constant {
 	 */
 	public static final String BAO_WEN_HOU_JIA_SHUI_LIANG_SHE_DING="保温后加水量设定";
 	/**
+	 * 打入
+	 */
+	public static final String DA_RU="打入";
+	/**
 	 * 胶罐
 	 */
-	public static final String JIAO_GUAN="胶灌";
+	public static final String JIAO_GUAN="胶罐";
+	/**
+	 * 胶灌(错别字)
+	 */
+	public static final String JIAO_GUAN_CBZ="胶灌";
+	/**
+	 * 中转
+	 */
+	public static final String ZHONG_ZHUAN="中转";
+	/**
+	 * 胶罐号
+	 */
+	public static final String JIAO_GUAN_HAO="胶罐号";
 	
 	/**
 	 * 百分号
