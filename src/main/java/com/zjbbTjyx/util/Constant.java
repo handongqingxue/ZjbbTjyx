@@ -128,6 +128,54 @@ public class Constant {
 	 * 允许运行温度85与二次投料提醒触发变量
 	 */
 	public static final boolean ALLOW_RUN_WD85YECTLTX_TV=false;
+	/**
+	 * 允许运行二次助剂后测PH提醒触发变量
+	 */
+	public static final boolean ALLOW_RUN_ECZJHCPHTX_TV=false;
+	/**
+	 * 允许运行二次加助剂触发变量
+	 */
+	public static final boolean ALLOW_RUN_YXECJZJ_TV=false;
+	/**
+	 * 允许运行所有助剂加料完成2触发变量
+	 */
+	public static final boolean ALLOW_RUN_SYZJJLWC2_TV=false;
+	/**
+	 * 允许运行升温完成触发变量
+	 */
+	public static final boolean ALLOW_RUN_SWWC_TV=false;
+	/**
+	 * 允许运行温度98PH合格触发变量
+	 */
+	public static final boolean ALLOW_RUN_WD98PHHG_TV=false;
+	/**
+	 * 允许运行测量冰水雾点提醒触发变量
+	 */
+	public static final boolean ALLOW_RUN_CLBSWD_TV=false;
+	/**
+	 * 允许运行聚合终点提醒触发变量
+	 */
+	public static final boolean ALLOW_RUN_JHZD_TV=false;
+	/**
+	 * 允许运行测水数提醒触发变量
+	 */
+	public static final boolean ALLOW_RUN_CSSTX_TV=false;
+	/**
+	 * 允许运行降温完成触发变量
+	 */
+	public static final boolean ALLOW_RUN_JWWC_TV=false;
+	/**
+	 * 允许运行终检水PH提醒触发变量
+	 */
+	public static final boolean ALLOW_RUN_ZJSPHTX_TV=false;
+	/**
+	 * 允许运行允许开始排胶触发变量
+	 */
+	public static final boolean ALLOW_RUN_YXKSPJ_TV=false;
+	/**
+	 * 允许运行排胶完成触发变量
+	 */
+	public static final boolean ALLOW_RUN_PJWC_TV=true;
 	
 	/**
 	 * 下划线
