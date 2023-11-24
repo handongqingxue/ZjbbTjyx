@@ -1134,7 +1134,7 @@ public class OpcUtil {
 			            }
 				        else if (tv1VarName.startsWith(Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.XHX)&&tv2VarName!=null) {//允许开始排胶(有胶罐选择变量)
 				        	if(tv2VarName.startsWith(Constant.JIAO_GUAN+Constant.XUAN_ZE)) {
-				        		varName=ERecord.YXKSPJJG1ZL;
+				        		varName=ERecord.YXKSPJSSYJG1ZL;
 				        	}
 				        }
 			            else if(tv1VarName.startsWith(Constant.PAI_JIAO_WAN_CHENG+Constant.XHX)&&tv2VarName==null) {//排胶完成
@@ -1144,7 +1144,7 @@ public class OpcUtil {
 			            }
 			            else if(tv1VarName.startsWith(Constant.PAI_JIAO_WAN_CHENG+Constant.XHX)&&tv2VarName!=null) {//排胶完成(有胶罐选择变量)
 			            	if(tv2VarName.startsWith(Constant.JIAO_GUAN+Constant.XUAN_ZE)) {
-				        		varName=ERecord.PJWCJG1ZL;
+				        		varName=ERecord.PJWCSSYJG1ZL;
 				        	}
 			            }
 			
@@ -1424,7 +1424,7 @@ public class OpcUtil {
 						}
 				        else if (tv1VarName.startsWith(Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.XHX)&&tv2VarName!=null) {//允许开始排胶(有胶罐选择变量)
 				        	if(tv2VarName.startsWith(Constant.JIAO_GUAN+Constant.XUAN_ZE)) {
-				        		varName=ERecord.YXKSPJJG1ZL;
+				        		varName=ERecord.YXKSPJSSYJG1ZL;
 				        	}
 				        }
 						else if(tv1VarName.startsWith(Constant.ZHONG_JIAN_SHUI_PH_TI_XING+Constant.XHX)){//终检水PH提醒
@@ -1442,7 +1442,7 @@ public class OpcUtil {
 			            else if(tv1VarName.startsWith(Constant.PAI_JIAO_WAN_CHENG+Constant.XHX)&&tv2VarName!=null) {//排胶完成(有胶罐选择变量)
 			            	System.out.println("tv2VarName="+tv2VarName);
 			            	if(tv2VarName.startsWith(Constant.JIAO_GUAN+Constant.XUAN_ZE)) {
-				        		varName=ERecord.PJWCJG1ZL;
+				        		varName=ERecord.PJWCSSYJG1ZL;
 				        	}
 			            }
 			        	

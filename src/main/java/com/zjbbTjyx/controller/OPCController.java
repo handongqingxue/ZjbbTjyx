@@ -3736,6 +3736,17 @@ public class OPCController {
 								status = pjwcUResMap.get("status").toString();
 								if ("ok".equals(status)) {
 									pjwcUResPVList = (List<ProcessVar>) pjwcUResMap.get("proVarList");
+
+									//获取排胶完成上升沿胶罐1重量变量名
+									String pjwcssyjg1zlVarName = ERecord.PJWCSSYJG1ZL;
+									ProcessVar pjwcssyjg1zlPV = OpcUtil.getProVarInListByVarName(pjwcssyjg1zlVarName, pjwcUResPVList);
+									Float pjwcssyjg1zlVarValue = pjwcssyjg1zlPV.getVarValue();
+									ProcessVar ptnJg1zlPV = processVarService.getPtnValuePV(pjwcssyjg1zlVarName, pjwcssyjg1zlVarValue + "", pjwcssyjg1zlPV);
+									pjwcUResPVList.add(ptnJg1zlPV);//将重量差对象添加到集合里
+									
+									ProcessVar ratJg1zlcPV = processVarService.getRatValuePV(ERecord.YXKSPJDPJWCFZLC,ptnJg1zlPV);
+									pjwcUResPVList.add(ratJg1zlcPV);//将重量对比对象添加到集合里
+									
 									i = processVarService.addFromList(pjwcUResPVList);//调用添加过程接口
 									System.out.println("添加" + i);
 								}

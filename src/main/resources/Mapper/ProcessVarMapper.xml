@@ -79,13 +79,13 @@
 	</update>
 	<select id="getPreValueByPreName" resultType="java.lang.String">
 		select top 1 
-		<if test="preName.contains(@com.zjbbTjyx.util.Constant@CHENG_ZHONG)">
+		<if test="preName.contains(@com.zjbbTjyx.util.Constant@CHENG_ZHONG)||preName.contains(@com.zjbbTjyx.util.Constant@JIAO_GUAN)&amp;preName.contains(@com.zjbbTjyx.util.Constant@ZHONG_LIANG)">
 		VarValue 
 		</if>
 		<if test="preName.contains(@com.zjbbTjyx.util.Constant@SHI_JIAN)">
 		UpdateTime 
 		</if>
-		from ProcessVar where VarName=#{preName} and DealBz=${@com.zjbbTjyx.entity.ProcessVar@WCL}
+		from ProcessVar where VarName=#{preName} and DealBz=${@com.zjbbTjyx.entity.ProcessVar@WCL} order by UpdateTime desc
 	</select>
 	<select id="getDealedCount" resultType="java.lang.Integer">
 		select count(*) from ProcessVar WHERE DealBz=${@com.zjbbTjyx.entity.ProcessVar@YCL} and FId=#{fId}

@@ -171,7 +171,7 @@ public class Constant {
 	/**
 	 * 允许运行允许开始排胶触发变量
 	 */
-	public static final boolean ALLOW_RUN_YXKSPJ_TV=false;
+	public static final boolean ALLOW_RUN_YXKSPJ_TV=true;
 	/**
 	 * 允许运行排胶完成触发变量
 	 */

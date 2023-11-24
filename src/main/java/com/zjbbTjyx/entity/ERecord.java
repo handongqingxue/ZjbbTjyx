@@ -290,21 +290,21 @@ public class ERecord {
 	 */
 	public static final String DRJG2JGH=Constant.DA_RU+Constant.JIAO_GUAN+Constant.BSF_JG2+Constant.JIAO_GUAN_HAO;
 	/**
-	 * 允许开始排胶胶罐1重量
+	 * 允许开始排胶上升沿胶罐1重量
 	 */
-	public static final String YXKSPJJG1ZL=Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.JIAO_GUAN+Constant.BSF_JG1+Constant.ZHONG_LIANG;
+	public static final String YXKSPJSSYJG1ZL=Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.SHANG_SHENG_YAN+Constant.JIAO_GUAN+Constant.BSF_JG1+Constant.ZHONG_LIANG;
 	/**
-	 * 允许开始排胶胶罐2重量
+	 * 允许开始排胶上升沿胶罐2重量
 	 */
-	public static final String YXKSPJJG2ZL=Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.JIAO_GUAN+Constant.BSF_JG2+Constant.ZHONG_LIANG;
+	public static final String YXKSPJSSYJG2ZL=Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.SHANG_SHENG_YAN+Constant.JIAO_GUAN+Constant.BSF_JG2+Constant.ZHONG_LIANG;
 	/**
-	 * 排胶完成胶罐1重量
+	 * 排胶完成上升沿胶罐1重量
 	 */
-	public static final String PJWCJG1ZL=Constant.PAI_JIAO_WAN_CHENG+Constant.JIAO_GUAN+Constant.BSF_JG1+Constant.ZHONG_LIANG;
+	public static final String PJWCSSYJG1ZL=Constant.PAI_JIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.JIAO_GUAN+Constant.BSF_JG1+Constant.ZHONG_LIANG;
 	/**
-	 * 排胶完成胶罐2重量
+	 * 排胶完成上升沿胶罐2重量
 	 */
-	public static final String PJWCJG2ZL=Constant.PAI_JIAO_WAN_CHENG+Constant.JIAO_GUAN+Constant.BSF_JG2+Constant.ZHONG_LIANG;
+	public static final String PJWCSSYJG2ZL=Constant.PAI_JIAO_WAN_CHENG+Constant.SHANG_SHENG_YAN+Constant.JIAO_GUAN+Constant.BSF_JG2+Constant.ZHONG_LIANG;
 	/**
 	 * 允许开始排胶到排胶完成胶罐1称重
 	 */

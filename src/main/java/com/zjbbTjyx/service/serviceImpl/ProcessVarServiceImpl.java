@@ -95,6 +95,10 @@ public class ProcessVarServiceImpl implements ProcessVarService {
 			preName=ERecord.YXKSPJSSYSJ;
 			ptnName=ERecord.YXKSPJDPJWCSJC;//允许开始排胶到排胶完成时间差
 		}
+		else if((ERecord.PJWCSSYJG1ZL).equals(nxtName)) {//排胶完成上升沿胶罐1重量
+			preName=ERecord.YXKSPJSSYJG1ZL;
+			ptnName=ERecord.YXKSPJDPJWCJG1ZLC;//允许开始排胶到排胶完成胶罐1重量差
+		}
 		else if((ERecord.FYJSSSYSJ).equals(nxtName)){//反应结束上升沿时间
 
 			preName=ERecord.BLKSSSYSJ;
@@ -129,7 +133,8 @@ public class ProcessVarServiceImpl implements ProcessVarService {
 		String ptnUnit = null;
 		preValue=processVarMapper.getPreValueByPreName(preName);
 		if(!StringUtils.isEmpty(preValue)) {
-			if(nxtName.contains(Constant.FU+Constant.CHENG_ZHONG)) {//计算重量差
+			if(nxtName.contains(Constant.FU+Constant.CHENG_ZHONG)||
+			   nxtName.contains(Constant.JIAO_GUAN)&&nxtName.contains(Constant.ZHONG_LIANG)) {//计算重量差
 				ptnValue=Float.valueOf(nxtValue)-Float.valueOf(preValue);
 				ptnUnit = nxtPV.getUnit();
 			}
@@ -157,6 +162,39 @@ public class ProcessVarServiceImpl implements ProcessVarService {
     	ptnValuePV.setParaType(nxtParaType);
     	
 		return ptnValuePV;
+	}
+
+	@Override
+	public ProcessVar getRatValuePV(String numVarName, ProcessVar denPV) {
+		// TODO Auto-generated method stub
+		String ratVarName=null;
+		Float ratVarValue=null;
+		String denVarName = denPV.getVarName();
+		Float denVarValue = denPV.getVarValue();
+		Integer denFId = denPV.getFId();
+		String denUpdateTime = denPV.getUpdateTime();
+		String denRecType = denPV.getRecType();
+		Integer denParaType = denPV.getParaType();
+		
+		if((ERecord.YXKSPJDPJWCFZLC).equals(numVarName)&&(ERecord.YXKSPJDPJWCJG1ZLC).equals(denVarName)) {
+			ratVarName=ERecord.FYFYJG1ZLCBZ;
+		}
+		ProcessVar numPV = processVarMapper.getUnDealByVarNameFId(numVarName,denFId);
+		if(numPV!=null) {
+			Float numValue = numPV.getVarValue();
+			ratVarValue=numValue/denVarValue;
+		}
+		
+    	ProcessVar ratValuePV = new ProcessVar();
+    	ratValuePV.setVarName(ratVarName);
+    	ratValuePV.setVarValue(ratVarValue);
+    	ratValuePV.setDealBz(ProcessVar.WCL);
+    	ratValuePV.setUpdateTime(denUpdateTime);
+    	ratValuePV.setFId(denFId);
+    	ratValuePV.setRecType(denRecType);
+    	ratValuePV.setParaType(denParaType);
+    	
+		return ratValuePV;
 	}
 
 	public int deleteDealed(int fId) {
