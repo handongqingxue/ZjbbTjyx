@@ -25,6 +25,111 @@ public class Constant {
 	//public static final String OPC_GROUP_NAME="_System";
 
 	/**
+	 * 允许运行备料开始触发变量
+	 */
+	public static final boolean ALLOW_RUN_BLKS_TV=false;
+	/**
+	 * 允许运行反应结束触发变量
+	 */
+	public static final boolean ALLOW_RUN_FYJS_TV=false;
+	/**
+	 * 允许运行甲醛备料开始触发变量
+	 */
+	public static final boolean ALLOW_RUN_JQBLKS_TV=false;
+	/**
+	 * 允许运行甲醛放料完成触发变量
+	 */
+	public static final boolean ALLOW_RUN_JQFLWC_TV=false;
+	/**
+	 * 允许运行加碱PH值正常触发变量
+	 */
+	public static final boolean ALLOW_RUN_JJPHZZC_TV=false;
+	/**
+	 * 允许运行开始加料触发变量
+	 */
+	public static final boolean ALLOW_RUN_KSJL_TV=false;
+	/**
+	 * 允许运行助剂6一次添加完成触发变量
+	 */
+	public static final boolean ALLOW_RUN_ZJ6YCTJWC_TV=false;
+	/**
+	 * 允许运行助剂6二次备料完成触发变量
+	 */
+	public static final boolean ALLOW_RUN_ZJ6ECBLWC_TV=false;
+	/**
+	 * 允许运行助剂6二次添加完成触发变量
+	 */
+	public static final boolean ALLOW_RUN_ZJ6ECTJWC_TV=false;
+	/**
+	 * 允许运行第一次保温启动触发变量
+	 */
+	public static final boolean ALLOW_RUN_DYCBWQD_TV=false;
+	/**
+	 * 允许运行第一次保温合格触发变量
+	 */
+	public static final boolean ALLOW_RUN_DYCBWHG_TV=false;
+	/**
+	 * 允许运行一次降温加酸提醒触发变量
+	 */
+	public static final boolean ALLOW_RUN_YCJWJSTX_TV=false;
+	/**
+	 * 允许运行一次降温加酸合格触发变量
+	 */
+	public static final boolean ALLOW_RUN_YCJWJSHG_TV=false;
+	/**
+	 * 允许运行加碱PH合格触发变量
+	 */
+	public static final boolean ALLOW_RUN_JJPHHG_TV=false;
+	/**
+	 * 允许运行二次投粉触发变量
+	 */
+	public static final boolean ALLOW_RUN_ECTF_TV=false;
+	/**
+	 * 允许运行二次加215启动触发变量
+	 */
+	public static final boolean ALLOW_RUN_ECJ215QD_TV=false;
+	/**
+	 * 允许运行二次加215完成触发变量
+	 */
+	public static final boolean ALLOW_RUN_ECJ215WC_TV=false;
+	/**
+	 * 允许运行二次加水和小料提醒触发变量
+	 */
+	public static final boolean ALLOW_RUN_ECJSHXLTX_TV=false;
+	/**
+	 * 允许运行二次加水启动触发变量
+	 */
+	public static final boolean ALLOW_RUN_ECJSQD_TV=false;
+	/**
+	 * 允许运行二次加水完成触发变量
+	 */
+	public static final boolean ALLOW_RUN_ECJSWC_TV=false;
+	/**
+	 * 允许运行允许一次加助剂触发变量
+	 */
+	public static final boolean ALLOW_RUN_YXYCJZJ_TV=false;
+	/**
+	 * 允许运行所有助剂加料完成1触发变量
+	 */
+	public static final boolean ALLOW_RUN_SYZJJLWC1_TV=false;
+	/**
+	 * 允许运行加粉料提醒触发变量
+	 */
+	public static final boolean ALLOW_RUN_JFLTX_TV=false;
+	/**
+	 * 允许运行加粉料PH合格触发变量
+	 */
+	public static final boolean ALLOW_RUN_JFLPHHG_TV=false;
+	/**
+	 * 允许运行升温开始触发变量
+	 */
+	public static final boolean ALLOW_RUN_SWKS_TV=false;
+	/**
+	 * 允许运行温度85与二次投料提醒触发变量
+	 */
+	public static final boolean ALLOW_RUN_WD85YECTLTX_TV=false;
+	
+	/**
 	 * 下划线
 	 */
 	public static final String XHX="_";
