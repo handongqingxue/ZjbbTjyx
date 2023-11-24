@@ -175,7 +175,7 @@ public class Constant {
 	/**
 	 * 允许运行排胶完成触发变量
 	 */
-	public static final boolean ALLOW_RUN_PJWC_TV=true;
+	public static final boolean ALLOW_RUN_PJWC_TV=false;
 	
 	/**
 	 * 下划线

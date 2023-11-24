@@ -1134,7 +1134,17 @@ public class OpcUtil {
 			            }
 				        else if (tv1VarName.startsWith(Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.XHX)&&tv2VarName!=null) {//允许开始排胶(有胶罐选择变量)
 				        	if(tv2VarName.startsWith(Constant.JIAO_GUAN+Constant.XUAN_ZE)) {
-				        		varName=ERecord.YXKSPJSSYJG1ZL;
+				        		int lastXhxLoc = tv2VarName.indexOf(Constant.XHX);
+				        		String rujgFlagStr = tv2VarName.substring(lastXhxLoc, tv2VarName.length());
+				        		int rujgFlag = Integer.valueOf(rujgFlagStr);
+				        		switch (rujgFlag) {
+								case Constant.BSF_JG1:
+					        		varName=ERecord.YXKSPJSSYJG1ZL;
+									break;
+								case Constant.BSF_JG2:
+					        		varName=ERecord.YXKSPJSSYJG2ZL;
+									break;
+								}
 				        	}
 				        }
 			            else if(tv1VarName.startsWith(Constant.PAI_JIAO_WAN_CHENG+Constant.XHX)&&tv2VarName==null) {//排胶完成
@@ -1414,17 +1424,40 @@ public class OpcUtil {
 				            		value=(float)1;
 				            	
 			                	if(value==TriggerVar.UP) {
+					        		int lastXhxLoc = tv1VarName.lastIndexOf(Constant.XHX)+1;
+					        		String rujgFlagStr = tv1VarName.substring(lastXhxLoc, tv1VarName.length());
+					        		System.out.println("rujgFlagStr="+rujgFlagStr);
+					        		int rujgFlag = Integer.valueOf(rujgFlagStr);
+					        		switch (rujgFlag) {
+									case Constant.BSF_JG1:
+						        		varName=ERecord.DRJG1JGH;
+										break;
+									case Constant.BSF_JG2:
+						        		varName=ERecord.DRJG2JGH;
+										break;
+									}
+					        		
 				                	int jghStart=itemName.indexOf(Constant.JIAO_GUAN+Constant.XUAN_ZE)+4;
 				                	int jghEnd=itemName.indexOf(Constant.XHX+Constant.AV);
 				                	Integer jgh = Integer.valueOf(itemName.substring(jghStart,jghEnd));
-				                	varName=ERecord.DRJG1JGH;
 				                	value=(float)jgh;
 			                	}
 			                }
 						}
 				        else if (tv1VarName.startsWith(Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.XHX)&&tv2VarName!=null) {//允许开始排胶(有胶罐选择变量)
 				        	if(tv2VarName.startsWith(Constant.JIAO_GUAN+Constant.XUAN_ZE)) {
-				        		varName=ERecord.YXKSPJSSYJG1ZL;
+				        		int lastXhxLoc = tv1VarName.lastIndexOf(Constant.XHX)+1;
+				        		String rujgFlagStr = tv1VarName.substring(lastXhxLoc, tv1VarName.length());
+				        		System.out.println("rujgFlagStr="+rujgFlagStr);
+				        		int rujgFlag = Integer.valueOf(rujgFlagStr);
+				        		switch (rujgFlag) {
+								case Constant.BSF_JG1:
+					        		varName=ERecord.YXKSPJSSYJG1ZL;
+									break;
+								case Constant.BSF_JG2:
+					        		varName=ERecord.YXKSPJSSYJG2ZL;
+									break;
+								}
 				        	}
 				        }
 						else if(tv1VarName.startsWith(Constant.ZHONG_JIAN_SHUI_PH_TI_XING+Constant.XHX)){//终检水PH提醒
