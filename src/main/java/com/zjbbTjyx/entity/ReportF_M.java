@@ -702,6 +702,60 @@ public class ReportF_M {
 	 * 排胶时间差列号
 	 */
 	public static final int PJSJC_CN=5;
+	
+    /**
+     * 打入胶罐1胶罐号行号
+     */
+    public static final int DRJG1JGH_RN=24;
+    /**
+     * 打入胶罐1胶罐号列号
+     */
+    public static final int DRJG1JGH_CN=7;
+    
+    /**
+     * 允许开始排胶胶罐1重量行号
+     */
+    public static final int YXKSPJJG1ZL_RN=24;
+    /**
+     * 允许开始排胶胶罐1重量列号
+     */
+    public static final int YXKSPJJG1ZL_CN=8;
+    
+    /**
+     * 排胶完成胶罐1重量行号
+     */
+    public static final int PJWCJG1ZL_RN=24;
+    /**
+     * 排胶完成胶罐1重量列号
+     */
+    public static final int PJWCJG1ZL_CN=9;
+    
+    /**
+     * 允许开始排胶到排胶完成胶罐1重量差行号
+     */
+    public static final int YXKSPJDPJWCJG1ZLC_RN=24;
+    /**
+     * 允许开始排胶到排胶完成胶罐1重量差列号
+     */
+    public static final int YXKSPJDPJWCJG1ZLC_CN=10;
+
+    /**
+     * 反应釜与胶罐1重量差比值行号
+     */
+    public static final int FYFYJG1ZLCBZ_RN=24;
+    /**
+     * 反应釜与胶罐1重量差比值列号
+     */
+    public static final int FYFYJG1ZLCBZ_CN=11;
+    
+    /**
+     * 反应釜与胶罐2重量差比值行号
+     */
+    public static final int FYFYJG2ZLCBZ_RN=24;
+    /**
+     * 反应釜与胶罐2重量差比值列号
+     */
+    public static final int FYFYJG2ZLCBZ_CN=12;
 
 	/**
 	 * 允许开始排胶釜称重行号
@@ -722,14 +776,49 @@ public class ReportF_M {
 	public static final int PJWCFCZ_CN=4;
 	
 	/**
-	 * 排胶重量差行号
+	 * 排胶釜重量差行号
 	 */
-	public static final int PJZLC_RN=25;
+	public static final int PJFZLC_RN=25;
 	/**
-	 * 排胶重量差列号
+	 * 排胶釜重量差列号
 	 */
-	public static final int PJZLC_CN=5;
-	
+	public static final int PJFZLC_CN=5;
+
+    /**
+     * 打入胶罐2胶罐号行号
+     */
+    public static final int DRJG2JGH_RN=25;
+    /**
+     * 打入胶罐2胶罐号列号
+     */
+    public static final int DRJG2JGH_CN=7;
+    
+    /**
+     * 允许开始排胶胶罐2重量行号
+     */
+    public static final int YXKSPJJG2ZL_RN=25;
+    /**
+     * 允许开始排胶胶罐2重量列号
+     */
+    public static final int YXKSPJJG2ZL_CN=8;
+    
+    /**
+     * 排胶完成胶罐2重量行号
+     */
+    public static final int PJWCJG2ZL_RN=25;
+    /**
+     * 排胶完成胶罐2重量列号
+     */
+    public static final int PJWCJG2ZL_CN=9;
+    
+    /**
+     * 允许开始排胶到排胶完成胶罐2重量差行号
+     */
+    public static final int YXKSPJDPJWCJG2ZLC_RN=25;
+    /**
+     * 允许开始排胶到排胶完成胶罐2重量差列号
+     */
+    public static final int YXKSPJDPJWCJG2ZLC_CN=10;
 	
     private Integer Id;
     private String RowNumber;//行号
