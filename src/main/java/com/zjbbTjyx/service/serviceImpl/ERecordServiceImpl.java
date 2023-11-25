@@ -1492,6 +1492,174 @@ public class ERecordServiceImpl implements ERecordService {
 					eRecord.setUnit(unit);
 
 					pvIdList.add(pvId);
+				}
+				else if(pvVarName.startsWith(ERecord.DRJG1JGH)||//打入胶罐1胶罐号
+						pvVarName.startsWith(ERecord.DRJG2JGH)){//打入胶罐2胶罐号
+					Float pvVarValue = processVar.getVarValue();
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+	
+					eRecord=new ERecord();
+					eRecord.setVarName(pvVarName);
+					eRecord.setVarValue(pvVarValue+"");
+					eRecord.setRecType(pvRecType);
+					eRecord.setFId(pvFId);
+					eRecord.setRecordTime(recordTime);
+					eRecord.setBatchID(batchID);
+					eRecord.setPhaseName(Constant.PAI_JIAO);
+					
+					eRecordList.add(eRecord);
+
+					pvIdList.add(pvId);
+				}
+				else if(pvVarName.startsWith(ERecord.YXKSPJSSYJG1ZL)) {//允许开始排胶上升沿胶罐1重量
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+					Float varValue = processVar.getVarValue();
+	
+					eRecord=getFromList(ERecord.YXKSPJDPJWCJG1CZ, batchID, eRecordList);
+					if(eRecord==null) {
+						eRecord=new ERecord();
+						eRecord.setVarName(ERecord.YXKSPJDPJWCJG1CZ);
+						eRecord.setRecType(pvRecType);
+						eRecord.setFId(pvFId);
+						eRecord.setRecordTime(recordTime);
+						eRecord.setBatchID(batchID);
+						eRecord.setPhaseName(Constant.PAI_JIAO);
+						
+						eRecordList.add(eRecord);
+					}
+					eRecord.setPreValue(varValue+"");
+
+					pvIdList.add(pvId);
+				}
+				else if(pvVarName.startsWith(ERecord.PJWCSSYJG1ZL)) {//排胶完成上升沿胶罐1重量
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+					Float varValue = processVar.getVarValue();
+	
+					eRecord=getFromList(ERecord.YXKSPJDPJWCJG1CZ, batchID, eRecordList);
+					if(eRecord==null) {
+						eRecord=new ERecord();
+						eRecord.setVarName(ERecord.YXKSPJDPJWCJG1CZ);
+						eRecord.setRecType(pvRecType);
+						eRecord.setFId(pvFId);
+						eRecord.setRecordTime(recordTime);
+						eRecord.setBatchID(batchID);
+						eRecord.setPhaseName(Constant.PAI_JIAO);
+						
+						eRecordList.add(eRecord);
+					}
+					eRecord.setNxtValue(varValue+"");
+
+					pvIdList.add(pvId);
+				}
+				else if(pvVarName.startsWith(ERecord.YXKSPJDPJWCJG1ZLC)) {//允许开始排胶到排胶完成胶罐1重量差
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+					Float varValue = processVar.getVarValue();
+					String unit = processVar.getUnit();
+	
+					eRecord=getFromList(ERecord.YXKSPJDPJWCJG1CZ, batchID, eRecordList);
+					if(eRecord==null) {
+						eRecord=new ERecord();
+						eRecord.setVarName(ERecord.YXKSPJDPJWCJG1CZ);
+						eRecord.setRecType(pvRecType);
+						eRecord.setFId(pvFId);
+						eRecord.setRecordTime(recordTime);
+						eRecord.setBatchID(batchID);
+						eRecord.setPhaseName(Constant.PAI_JIAO);
+						
+						eRecordList.add(eRecord);
+					}
+					eRecord.setPtnValue(varValue+"");
+					eRecord.setUnit(unit);
+
+					pvIdList.add(pvId);
+				}
+				else if(pvVarName.startsWith(ERecord.YXKSPJSSYJG2ZL)) {//允许开始排胶上升沿胶罐2重量
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+					Float varValue = processVar.getVarValue();
+	
+					eRecord=getFromList(ERecord.YXKSPJDPJWCJG2CZ, batchID, eRecordList);
+					if(eRecord==null) {
+						eRecord=new ERecord();
+						eRecord.setVarName(ERecord.YXKSPJDPJWCJG2CZ);
+						eRecord.setRecType(pvRecType);
+						eRecord.setFId(pvFId);
+						eRecord.setRecordTime(recordTime);
+						eRecord.setBatchID(batchID);
+						eRecord.setPhaseName(Constant.PAI_JIAO);
+						
+						eRecordList.add(eRecord);
+					}
+					eRecord.setPreValue(varValue+"");
+
+					pvIdList.add(pvId);
+				}
+				else if(pvVarName.startsWith(ERecord.PJWCSSYJG2ZL)) {//排胶完成上升沿胶罐2重量
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+					Float varValue = processVar.getVarValue();
+	
+					eRecord=getFromList(ERecord.YXKSPJDPJWCJG2CZ, batchID, eRecordList);
+					if(eRecord==null) {
+						eRecord=new ERecord();
+						eRecord.setVarName(ERecord.YXKSPJDPJWCJG2CZ);
+						eRecord.setRecType(pvRecType);
+						eRecord.setFId(pvFId);
+						eRecord.setRecordTime(recordTime);
+						eRecord.setBatchID(batchID);
+						eRecord.setPhaseName(Constant.PAI_JIAO);
+						
+						eRecordList.add(eRecord);
+					}
+					eRecord.setNxtValue(varValue+"");
+
+					pvIdList.add(pvId);
+				}
+				else if(pvVarName.startsWith(ERecord.YXKSPJDPJWCJG2ZLC)) {//允许开始排胶到排胶完成胶罐2重量差
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+					Float varValue = processVar.getVarValue();
+					String unit = processVar.getUnit();
+	
+					eRecord=getFromList(ERecord.YXKSPJDPJWCJG2CZ, batchID, eRecordList);
+					if(eRecord==null) {
+						eRecord=new ERecord();
+						eRecord.setVarName(ERecord.YXKSPJDPJWCJG2CZ);
+						eRecord.setRecType(pvRecType);
+						eRecord.setFId(pvFId);
+						eRecord.setRecordTime(recordTime);
+						eRecord.setBatchID(batchID);
+						eRecord.setPhaseName(Constant.PAI_JIAO);
+						
+						eRecordList.add(eRecord);
+					}
+					eRecord.setPtnValue(varValue+"");
+					eRecord.setUnit(unit);
+
+					pvIdList.add(pvId);
+				}
+				else if(pvVarName.startsWith(ERecord.FYFYJG1ZLCBZ)||//反应釜与胶罐1重量差比值
+						pvVarName.startsWith(ERecord.FYFYJG2ZLCBZ)){//反应釜与胶罐2重量差比值
+					Float pvVarValue = processVar.getVarValue();
+					Integer pvFId = processVar.getFId();
+					String batchID = batchIDMap.get(pvFId).toString();
+	
+					eRecord=new ERecord();
+					eRecord.setVarName(pvVarName);
+					eRecord.setVarValue(pvVarValue+"");
+					eRecord.setRecType(pvRecType);
+					eRecord.setFId(pvFId);
+					eRecord.setRecordTime(recordTime);
+					eRecord.setBatchID(batchID);
+					eRecord.setPhaseName(Constant.PAI_JIAO);
+					
+					eRecordList.add(eRecord);
+
+					pvIdList.add(pvId);
 				}//排胶阶段结束
 			}
 			else if(ERecord.U.equals(pvRecType)) {

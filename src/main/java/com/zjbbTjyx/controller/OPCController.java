@@ -3610,12 +3610,7 @@ public class OPCController {
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
 					List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 					
-					TriggerVar currYxkspjTV = new TriggerVar();
-					currYxkspjTV.setVarName(upYxkspjTV.getVarName()+Constant.XHX+Constant.BSF_JG1);
-					currYxkspjTV.setVarValue(upYxkspjTV.getVarValue());
-					currYxkspjTV.setRecType(upYxkspjTV.getRecType());
-					currYxkspjTV.setFId(upYxkspjTV.getFId());
-					opcTVList.add(currYxkspjTV);
+					opcTVList.add(OpcUtil.createNewVarNameTV(upYxkspjTV, Constant.BSF_JG1+""));
 					
 					boolean allowAdd = processVarService.checkAllowAdd(opcTVList);
 					if (allowAdd) {
@@ -3628,7 +3623,7 @@ public class OPCController {
 							
 							Float jgh = OpcUtil.getVarValueFromPVListByName(yxkspjUResPVList,ERecord.DRJG1JGH);
 							TriggerVar jgxzTv=new TriggerVar();
-							jgxzTv.setVarName(Constant.JIAO_GUAN+Constant.XUAN_ZE+jgh+Constant.XHX+Constant.AV+Constant.XHX+Constant.BSF_JG1);
+							jgxzTv.setVarName(Constant.JIAO_GUAN+Constant.XUAN_ZE+jgh+Constant.XHX+Constant.AV);
 							opcTVList.add(jgxzTv);
 							
 							yxkspjUResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);
@@ -3644,12 +3639,8 @@ public class OPCController {
 				else {
 					List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 
-					TriggerVar currYxkspjTV = new TriggerVar();
-					currYxkspjTV.setVarName(upYxkspjTV.getVarName()+Constant.XHX+Constant.BSF_JG1);
-					currYxkspjTV.setVarValue(upYxkspjTV.getVarValue());
-					currYxkspjTV.setRecType(upYxkspjTV.getRecType());
-					currYxkspjTV.setFId(upYxkspjTV.getFId());
-					opcTVList.add(currYxkspjTV);
+					TriggerVar newUpYxkspjTV = OpcUtil.createNewVarNameTV(upYxkspjTV,Constant.BSF_JG1+"");
+					opcTVList.add(newUpYxkspjTV);
 
 					System.out.println("222222222");
 					Map<String, Object> yxkspjUResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);
@@ -3662,9 +3653,6 @@ public class OPCController {
 						System.out.println("添加" + i);
 						
 						yxkspjUResPVList = (List<ProcessVar>) yxkspjUResMap.get("proVarList");
-						for(ProcessVar yxkspjUResPV:yxkspjUResPVList) {
-							System.out.println("getVarName==="+yxkspjUResPV.getVarName()+",getVarValue="+yxkspjUResPV.getVarValue());
-						}
 						Float currJgh = OpcUtil.getVarValueFromPVListByName(yxkspjUResPVList,ERecord.DRJG1JGH);
 						System.out.println("currJgh==="+currJgh);
 						ProcessVar useJgPV = processVarService.getByVarNameFId(ERecord.DRJG1JGH,preFId);//正在使用的胶罐号
@@ -3675,6 +3663,11 @@ public class OPCController {
 							System.out.println("胶罐号不同");
 							if(currJgh==null)
 								currJgh=(float)3;
+							
+							opcTVList.remove(newUpYxkspjTV);//移除上一个胶罐号对象
+							newUpYxkspjTV = OpcUtil.createNewVarNameTV(upYxkspjTV,Constant.BSF_JG2+"");
+							opcTVList.add(newUpYxkspjTV);
+							
 							TriggerVar jgxzTv=new TriggerVar();
 							jgxzTv.setVarName(Constant.JIAO_GUAN+Constant.XUAN_ZE+currJgh+Constant.XHX+Constant.AV);
 							opcTVList.add(jgxzTv);
@@ -3768,7 +3761,7 @@ public class OPCController {
 							System.out.println("drjg1Boolen="+drjg1Boolen);
 							System.out.println("drjg2Boolen="+drjg2Boolen);
 							
-							if(drjg1Boolen||drjg2Boolen) {
+							if(drjg1Boolen) {
 								pjwcMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);
 								status = pjwcMResMap.get("status").toString();
 								if ("ok".equals(status)) {
@@ -3783,6 +3776,18 @@ public class OPCController {
 									
 									ProcessVar ratJg1zlcPV = processVarService.getRatValuePV(ERecord.YXKSPJDPJWCFZLC,ptnJg1zlPV);
 									pjwcMResPVList.add(ratJg1zlcPV);//将重量对比对象添加到集合里
+									
+									if(drjg2Boolen) {
+										//获取排胶完成上升沿胶罐2重量变量名
+										String pjwcssyjg2zlVarName = ERecord.PJWCSSYJG2ZL;
+										ProcessVar pjwcssyjg2zlPV = OpcUtil.getProVarInListByVarName(pjwcssyjg2zlVarName, pjwcMResPVList);
+										Float pjwcssyjg2zlVarValue = pjwcssyjg2zlPV.getVarValue();
+										ProcessVar ptnJg2zlPV = processVarService.getPtnValuePV(pjwcssyjg2zlVarName, pjwcssyjg2zlVarValue + "", pjwcssyjg1zlPV);
+										pjwcMResPVList.add(ptnJg2zlPV);//将重量差对象添加到集合里
+										
+										ProcessVar ratJg2zlcPV = processVarService.getRatValuePV(ERecord.YXKSPJDPJWCFZLC,ptnJg2zlPV);
+										pjwcMResPVList.add(ratJg2zlcPV);//将重量对比对象添加到集合里
+									}
 									
 									i = processVarService.addFromList(pjwcMResPVList);//调用添加过程接口
 									System.out.println("添加" + i);
@@ -3863,7 +3868,7 @@ public class OPCController {
 							System.out.println("drjg1Boolen="+drjg1Boolen);
 							System.out.println("drjg2Boolen="+drjg2Boolen);
 							
-							if(drjg1Boolen||drjg2Boolen) {
+							if(drjg1Boolen) {
 								pjwcUResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);
 								status = pjwcUResMap.get("status").toString();
 								if ("ok".equals(status)) {
@@ -3878,6 +3883,18 @@ public class OPCController {
 									
 									ProcessVar ratJg1zlcPV = processVarService.getRatValuePV(ERecord.YXKSPJDPJWCFZLC,ptnJg1zlPV);
 									pjwcUResPVList.add(ratJg1zlcPV);//将重量对比对象添加到集合里
+									
+									if(drjg2Boolen) {
+										//获取排胶完成上升沿胶罐2重量变量名
+										String pjwcssyjg2zlVarName = ERecord.PJWCSSYJG2ZL;
+										ProcessVar pjwcssyjg2zlPV = OpcUtil.getProVarInListByVarName(pjwcssyjg2zlVarName, pjwcUResPVList);
+										Float pjwcssyjg2zlVarValue = pjwcssyjg2zlPV.getVarValue();
+										ProcessVar ptnJg2zlPV = processVarService.getPtnValuePV(pjwcssyjg2zlVarName, pjwcssyjg2zlVarValue + "", pjwcssyjg1zlPV);
+										pjwcUResPVList.add(ptnJg2zlPV);//将重量差对象添加到集合里
+										
+										ProcessVar ratJg2zlcPV = processVarService.getRatValuePV(ERecord.YXKSPJDPJWCFZLC,ptnJg2zlPV);
+										pjwcUResPVList.add(ratJg2zlcPV);//将重量对比对象添加到集合里
+									}
 									
 									i = processVarService.addFromList(pjwcUResPVList);//调用添加过程接口
 									System.out.println("添加" + i);

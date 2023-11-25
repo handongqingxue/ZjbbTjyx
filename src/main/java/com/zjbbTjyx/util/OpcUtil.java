@@ -490,7 +490,8 @@ public class OpcUtil {
 		        	if(tv2VarName.startsWith(Constant.JIAO_GUAN+Constant.XUAN_ZE)) {
 			        	String jgcbzPvVarNameQz=Constant.JIAO_GUAN_CBZ;
 			        	
-	                	int jghStart=tv2VarName.indexOf(Constant.JIAO_GUAN+Constant.XUAN_ZE)+4;
+			        	String jgxzPvVarNameQz=Constant.JIAO_GUAN+Constant.XUAN_ZE;
+	                	int jghStart=tv2VarName.indexOf(jgxzPvVarNameQz)+jgxzPvVarNameQz.length();
 	                	int jghEnd=tv2VarName.indexOf(Constant.XHX+Constant.AV);
 	                	int jgh = Float.valueOf(tv2VarName.substring(jghStart,jghEnd)).intValue();
 			        	
@@ -510,7 +511,8 @@ public class OpcUtil {
 		        	if(tv2VarName.startsWith(Constant.JIAO_GUAN+Constant.XUAN_ZE)) {
 			        	String jgcbzPvVarNameQz=Constant.JIAO_GUAN_CBZ;
 			        	
-	                	int jghStart=tv2VarName.indexOf(Constant.JIAO_GUAN+Constant.XUAN_ZE)+4;
+			        	String jgxzPvVarNameQz=Constant.JIAO_GUAN+Constant.XUAN_ZE;//胶罐选择
+	                	int jghStart=tv2VarName.indexOf(jgxzPvVarNameQz)+jgxzPvVarNameQz.length();
 	                	int jghEnd=tv2VarName.indexOf(Constant.XHX+Constant.AV);
 	                	int jgh = Float.valueOf(tv2VarName.substring(jghStart,jghEnd)).intValue();
 			        	
@@ -1090,7 +1092,21 @@ public class OpcUtil {
 			            	}
 			                else if(itemName.startsWith(Constant.JIAO_GUAN+Constant.XUAN_ZE)&&itemName.endsWith(Constant.XHX+Constant.AV)){
 			                	if(value==TriggerVar.UP) {
-				                	int jghStart=itemName.indexOf(Constant.JIAO_GUAN+Constant.XUAN_ZE)+4;
+					        		int lastXhxLoc = tv1VarName.lastIndexOf(Constant.XHX)+Constant.XHX.length();
+					        		String rujgFlagStr = tv1VarName.substring(lastXhxLoc, tv1VarName.length());
+					        		System.out.println("rujgFlagStr="+rujgFlagStr);
+					        		int rujgFlag = Integer.valueOf(rujgFlagStr);
+					        		switch (rujgFlag) {
+									case Constant.BSF_JG1:
+						        		varName=ERecord.DRJG1JGH;
+										break;
+									case Constant.BSF_JG2:
+						        		varName=ERecord.DRJG2JGH;
+										break;
+									}
+				                	
+			                		String jgxzPvVarNameQz = Constant.JIAO_GUAN+Constant.XUAN_ZE;
+				                	int jghStart=itemName.indexOf(jgxzPvVarNameQz)+jgxzPvVarNameQz.length();
 				                	int jghEnd=itemName.indexOf(Constant.XHX+Constant.AV);
 				                	Integer jgh = Integer.valueOf(itemName.substring(jghStart,jghEnd));
 				                	/*
@@ -1127,7 +1143,6 @@ public class OpcUtil {
 										break;
 									}
 									*/
-				                	varName=ERecord.DRJG1JGH;
 				                	value=(float)jgh;
 			                	}
 			                }
@@ -1424,7 +1439,7 @@ public class OpcUtil {
 				            		value=(float)1;
 				            	
 			                	if(value==TriggerVar.UP) {
-					        		int lastXhxLoc = tv1VarName.lastIndexOf(Constant.XHX)+1;
+					        		int lastXhxLoc = tv1VarName.lastIndexOf(Constant.XHX)+Constant.XHX.length();
 					        		String rujgFlagStr = tv1VarName.substring(lastXhxLoc, tv1VarName.length());
 					        		System.out.println("rujgFlagStr="+rujgFlagStr);
 					        		int rujgFlag = Integer.valueOf(rujgFlagStr);
@@ -1437,7 +1452,8 @@ public class OpcUtil {
 										break;
 									}
 					        		
-				                	int jghStart=itemName.indexOf(Constant.JIAO_GUAN+Constant.XUAN_ZE)+4;
+					        		String jgxzPvVarNameQz=Constant.JIAO_GUAN+Constant.XUAN_ZE;
+				                	int jghStart=itemName.indexOf(jgxzPvVarNameQz)+jgxzPvVarNameQz.length();
 				                	int jghEnd=itemName.indexOf(Constant.XHX+Constant.AV);
 				                	Integer jgh = Integer.valueOf(itemName.substring(jghStart,jghEnd));
 				                	value=(float)jgh;
@@ -2518,5 +2534,22 @@ public class OpcUtil {
 		opcItem.setValue(new Variant(value));
         System.out.println("getItemName1==="+opcItem.getItemName()+",getValue1==="+opcItem.getValue().toString());
 		return opcItem;
+	}
+	
+	/**
+	 * 创建带有新名字的触发器变量
+	 * @param oldTV
+	 * @param joinStr
+	 * @return
+	 */
+	public static TriggerVar createNewVarNameTV(TriggerVar oldTV,String joinStr) {
+		
+		TriggerVar newTV = new TriggerVar();
+		newTV.setVarName(oldTV.getVarName()+Constant.XHX+joinStr);
+		newTV.setVarValue(oldTV.getVarValue());
+		newTV.setRecType(oldTV.getRecType());
+		newTV.setFId(oldTV.getFId());
+		
+		return newTV;
 	}
 }
