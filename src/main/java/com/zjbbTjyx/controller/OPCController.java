@@ -3649,20 +3649,21 @@ public class OPCController {
 					System.out.println("status==="+status);
 					if ("ok".equals(status)) {
 						List<ProcessVar> yxkspjUResPVList = (List<ProcessVar>) yxkspjUResMap.get("proVarList");
-						int i = processVarService.addFromList(yxkspjUResPVList);//调用添加过程接口
-						System.out.println("添加" + i);
+						//int i = processVarService.addFromList(yxkspjUResPVList);//调用添加过程接口
+						//System.out.println("添加" + i);
 						
 						yxkspjUResPVList = (List<ProcessVar>) yxkspjUResMap.get("proVarList");
-						Float currJgh = OpcUtil.getVarValueFromPVListByName(yxkspjUResPVList,ERecord.DRJG1JGH);
+						float currJgh = OpcUtil.getVarValueFromPVListByName(yxkspjUResPVList,ERecord.DRJG1JGH);
 						System.out.println("currJgh==="+currJgh);
 						ProcessVar useJgPV = processVarService.getByVarNameFId(ERecord.DRJG1JGH,preFId);//正在使用的胶罐号
-						Float useJgh = useJgPV.getVarValue();
+						float useJgh = useJgPV.getVarValue();
+						System.out.println("useJgh==="+useJgh);
 						if(currJgh==useJgh)
 							System.out.println("胶罐号相同");
 						else {
 							System.out.println("胶罐号不同");
-							if(currJgh==null)
-								currJgh=(float)3;
+							//if(currJgh==null)
+								//currJgh=(float)3;
 							
 							opcTVList.remove(newUpYxkspjTV);//移除上一个胶罐号对象
 							newUpYxkspjTV = OpcUtil.createNewVarNameTV(upYxkspjTV,Constant.BSF_JG2+"");
@@ -3671,12 +3672,15 @@ public class OPCController {
 							TriggerVar jgxzTv=new TriggerVar();
 							jgxzTv.setVarName(Constant.JIAO_GUAN+Constant.XUAN_ZE+currJgh+Constant.XHX+Constant.AV);
 							opcTVList.add(jgxzTv);
-							
+
+							for (TriggerVar triggerVar : opcTVList) {
+								System.out.println("==="+triggerVar.getVarName());
+							}
 							yxkspjUResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);
 							status = yxkspjUResMap.get("status").toString();
 							if ("ok".equals(status)) {
 								yxkspjUResPVList = (List<ProcessVar>) yxkspjUResMap.get("proVarList");
-								i = processVarService.addFromList(yxkspjUResPVList);//调用添加过程接口
+								int i = processVarService.addFromList(yxkspjUResPVList);//调用添加过程接口
 								System.out.println("添加" + i);
 							}
 						}

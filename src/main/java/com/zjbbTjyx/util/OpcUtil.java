@@ -873,6 +873,20 @@ public class OpcUtil {
 	                	int jgh = Float.valueOf(tv2VarName.substring(jghStart,jghEnd)).intValue();
 			        	
 			        	addVarNameInList(opcVarNameList,jgcbzPvVarNameQz+jgh+Constant.CHENG_ZHONG);
+			        	
+
+		        		int lastXhxLoc = tv1VarName.lastIndexOf(Constant.XHX)+Constant.XHX.length();
+		        		String rujgFlagStr = tv1VarName.substring(lastXhxLoc, tv1VarName.length());
+		        		System.out.println("rujgFlagStr="+rujgFlagStr);
+		        		int rujgFlag = Integer.valueOf(rujgFlagStr);
+		        		switch (rujgFlag) {
+						case Constant.BSF_JG2:
+
+				            String jgxzPvVarNameQz=Constant.JIAO_GUAN+Constant.XUAN_ZE;
+				            
+				            addVarNameInList(opcVarNameList,jgxzPvVarNameQz);
+							break;
+						}
 		        	}
 		        }
 				else if (tv1VarName.startsWith(Constant.ZHONG_JIAN_SHUI_PH_TI_XING+Constant.XHX)){//终检水PH提醒
@@ -1462,18 +1476,35 @@ public class OpcUtil {
 						}
 				        else if (tv1VarName.startsWith(Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.XHX)&&tv2VarName!=null) {//允许开始排胶(有胶罐选择变量)
 				        	if(tv2VarName.startsWith(Constant.JIAO_GUAN+Constant.XUAN_ZE)) {
-				        		int lastXhxLoc = tv1VarName.lastIndexOf(Constant.XHX)+1;
-				        		String rujgFlagStr = tv1VarName.substring(lastXhxLoc, tv1VarName.length());
-				        		System.out.println("rujgFlagStr="+rujgFlagStr);
-				        		int rujgFlag = Integer.valueOf(rujgFlagStr);
-				        		switch (rujgFlag) {
-								case Constant.BSF_JG1:
-					        		varName=ERecord.YXKSPJSSYJG1ZL;
-									break;
-								case Constant.BSF_JG2:
-					        		varName=ERecord.YXKSPJSSYJG2ZL;
-									break;
-								}
+				        		System.out.println("itemName???="+itemName);
+				        		if (itemName.startsWith(Constant.JIAO_GUAN_CBZ)&&itemName.endsWith(Constant.CHENG_ZHONG+Constant.XHX+Constant.AV)) {
+					        		int lastXhxLoc = tv1VarName.lastIndexOf(Constant.XHX)+1;
+					        		String rujgFlagStr = tv1VarName.substring(lastXhxLoc, tv1VarName.length());
+					        		System.out.println("rujgFlagStr="+rujgFlagStr);
+					        		int rujgFlag = Integer.valueOf(rujgFlagStr);
+					        		switch (rujgFlag) {
+									case Constant.BSF_JG1:
+						        		varName=ERecord.YXKSPJSSYJG1ZL;
+										break;
+									case Constant.BSF_JG2:
+						        		varName=ERecord.YXKSPJSSYJG2ZL;
+										break;
+									}
+				        		}
+				                else if(itemName.startsWith(Constant.JIAO_GUAN+Constant.XUAN_ZE)&&itemName.endsWith(Constant.XHX+Constant.AV)){
+					            	if(itemName.equals("胶罐选择1_AV"))
+					            		value=(float)1;
+					            	
+				                	if(value==TriggerVar.UP) {
+							        	varName=ERecord.DRJG2JGH;
+						        		
+						        		String jgxzPvVarNameQz=Constant.JIAO_GUAN+Constant.XUAN_ZE;
+					                	int jghStart=itemName.indexOf(jgxzPvVarNameQz)+jgxzPvVarNameQz.length();
+					                	int jghEnd=itemName.indexOf(Constant.XHX+Constant.AV);
+					                	Integer jgh = Integer.valueOf(itemName.substring(jghStart,jghEnd));
+					                	value=(float)jgh;
+				                	}
+				                }
 				        	}
 				        }
 						else if(tv1VarName.startsWith(Constant.ZHONG_JIAN_SHUI_PH_TI_XING+Constant.XHX)){//终检水PH提醒
