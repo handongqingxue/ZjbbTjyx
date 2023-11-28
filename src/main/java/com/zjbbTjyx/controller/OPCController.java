@@ -3610,7 +3610,7 @@ public class OPCController {
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
 					List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 					
-					opcTVList.add(OpcUtil.createNewVarNameTV(upYxkspjTV, Constant.BSF_JG1+""));
+					opcTVList.add(OpcUtil.createNewVarNameTV(upYxkspjTV, Constant.BSF_JG1+""));//在触发器变量后拼接胶罐标识，为了避免影响判断上一次触发器变量是上升还是下降，就得生成新触发器变量
 					
 					boolean allowAdd = processVarService.checkAllowAdd(opcTVList);
 					if (allowAdd) {
@@ -3621,10 +3621,11 @@ public class OPCController {
 							int i = processVarService.addFromList(yxkspjUResPVList);//调用添加过程接口
 							System.out.println("添加" + i);
 							
-							Float jgh = OpcUtil.getVarValueFromPVListByName(yxkspjUResPVList,ERecord.DRJG1JGH);
+							Float jgh = OpcUtil.getVarValueFromPVListByName(yxkspjUResPVList,ERecord.DRJG1JGH);//根据打入胶罐1胶罐号变量名,获取胶罐号
 							TriggerVar jgxzTv=new TriggerVar();
-							jgxzTv.setVarName(Constant.JIAO_GUAN+Constant.XUAN_ZE+jgh+Constant.XHX+Constant.AV);
-							opcTVList.add(jgxzTv);
+							String jgxzQz=Constant.JIAO_GUAN+Constant.XUAN_ZE;
+							jgxzTv.setVarName(jgxzQz+jgh+Constant.XHX+Constant.AV);
+							opcTVList.add(jgxzTv);//把胶罐选择的过程变量当作触发器变量使用
 							
 							yxkspjUResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);
 							status = yxkspjUResMap.get("status").toString();
@@ -3636,21 +3637,16 @@ public class OPCController {
 						}
 					}
 				}
-				else {
+				else {//不是上升沿情况下也得检测下胶罐的情况
 					List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 
-					TriggerVar newUpYxkspjTV = OpcUtil.createNewVarNameTV(upYxkspjTV,Constant.BSF_JG1+"");
-					opcTVList.add(newUpYxkspjTV);
+					TriggerVar preUpYxkspjTV = OpcUtil.createNewVarNameTV(upYxkspjTV,Constant.BSF_JG1+"");
+					opcTVList.add(preUpYxkspjTV);
 
-					System.out.println("222222222");
 					Map<String, Object> yxkspjUResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);
-					System.out.println("3333333333");
 					String status = yxkspjUResMap.get("status").toString();
-					System.out.println("status==="+status);
 					if ("ok".equals(status)) {
 						List<ProcessVar> yxkspjUResPVList = (List<ProcessVar>) yxkspjUResMap.get("proVarList");
-						//int i = processVarService.addFromList(yxkspjUResPVList);//调用添加过程接口
-						//System.out.println("添加" + i);
 						
 						yxkspjUResPVList = (List<ProcessVar>) yxkspjUResMap.get("proVarList");
 						float currJgh = OpcUtil.getVarValueFromPVListByName(yxkspjUResPVList,ERecord.DRJG1JGH);
@@ -3665,17 +3661,14 @@ public class OPCController {
 							//if(currJgh==null)
 								//currJgh=(float)3;
 							
-							opcTVList.remove(newUpYxkspjTV);//移除上一个胶罐号对象
-							newUpYxkspjTV = OpcUtil.createNewVarNameTV(upYxkspjTV,Constant.BSF_JG2+"");
-							opcTVList.add(newUpYxkspjTV);
+							opcTVList.remove(preUpYxkspjTV);//在换胶罐的情况下,移除上一个胶罐号对象
+							TriggerVar currUpYxkspjTV = OpcUtil.createNewVarNameTV(upYxkspjTV,Constant.BSF_JG2+"");
+							opcTVList.add(currUpYxkspjTV);//添加胶罐2标识作为新的胶罐对象
 							
 							TriggerVar jgxzTv=new TriggerVar();
 							jgxzTv.setVarName(Constant.JIAO_GUAN+Constant.XUAN_ZE+currJgh+Constant.XHX+Constant.AV);
 							opcTVList.add(jgxzTv);
 
-							for (TriggerVar triggerVar : opcTVList) {
-								System.out.println("==="+triggerVar.getVarName());
-							}
 							yxkspjUResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);
 							status = yxkspjUResMap.get("status").toString();
 							if ("ok".equals(status)) {
@@ -3685,21 +3678,6 @@ public class OPCController {
 							}
 						}
 					}
-					
-					/*
-					ProcessVar drjg1PV=processVarService.getByVarNameFId(ERecord.DRJG1JGH,upFId);
-					if(drjg1PV!=null) {
-						Float jgh1 = drjg1PV.getVarValue();
-						TriggerVar jgxz1Tv=new TriggerVar();
-						jgxz1Tv.setVarName(Constant.JIAO_GUAN+Constant.XUAN_ZE+jgh1+Constant.XHX+Constant.AV);
-						opcTVList.add(jgxz1Tv);
-						String status = yxkspjUResMap.get("status").toString();
-						if ("ok".equals(status)) {
-							List<ProcessVar> yxkspjUResPVList = (List<ProcessVar>) yxkspjUResMap.get("proVarList");
-						
-						drjg1Boolen=true;
-					}
-					*/
 				}
 			}
 		}
@@ -3817,6 +3795,7 @@ public class OPCController {
 			else if(TriggerVar.U.equals(upRecType)) {
 				HashMap<String, Object> preValueFUMap = (HashMap<String,Object>)paramMap.get("preValueFUMap");
 				String upVarName = upPjwcTV.getVarName();
+				System.out.println("upVarName++==="+upVarName);
 				Object preValueFUObj = preValueFUMap.get(upVarName);
 				String preValueFUStr = preValueFUObj.toString();
 				Float preValue = Float.valueOf(preValueFUStr);

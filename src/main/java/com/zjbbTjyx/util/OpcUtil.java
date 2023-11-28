@@ -868,23 +868,24 @@ public class OpcUtil {
 		        	if(tv2VarName.startsWith(Constant.JIAO_GUAN+Constant.XUAN_ZE)) {
 			        	String jgcbzPvVarNameQz=Constant.JIAO_GUAN_CBZ;
 			        	
-	                	int jghStart=tv2VarName.indexOf(Constant.JIAO_GUAN+Constant.XUAN_ZE)+4;
+			        	String jgxzTvVarNameQz=Constant.JIAO_GUAN+Constant.XUAN_ZE;
+	                	int jghStart=tv2VarName.indexOf(jgxzTvVarNameQz)+jgxzTvVarNameQz.length();
 	                	int jghEnd=tv2VarName.indexOf(Constant.XHX+Constant.AV);
-	                	int jgh = Float.valueOf(tv2VarName.substring(jghStart,jghEnd)).intValue();
+	                	int jgh = Float.valueOf(tv2VarName.substring(jghStart,jghEnd)).intValue();//从胶罐选择变量里截取胶罐号
 			        	
-			        	addVarNameInList(opcVarNameList,jgcbzPvVarNameQz+jgh+Constant.CHENG_ZHONG);
+			        	addVarNameInList(opcVarNameList,jgcbzPvVarNameQz+jgh+Constant.CHENG_ZHONG);//根据胶罐号拼接出胶罐称重的变量，为后面从opc端获取变量值做好准备
 			        	
 
 		        		int lastXhxLoc = tv1VarName.lastIndexOf(Constant.XHX)+Constant.XHX.length();
-		        		String rujgFlagStr = tv1VarName.substring(lastXhxLoc, tv1VarName.length());
-		        		System.out.println("rujgFlagStr="+rujgFlagStr);
-		        		int rujgFlag = Integer.valueOf(rujgFlagStr);
-		        		switch (rujgFlag) {
-						case Constant.BSF_JG2:
+		        		String drjgbsFlagStr = tv1VarName.substring(lastXhxLoc, tv1VarName.length());//从第一个触发器变量末尾截取打入胶罐标识
+		        		System.out.println("drjgbsFlagStr="+drjgbsFlagStr);
+		        		int drjgbsFlag = Integer.valueOf(drjgbsFlagStr);
+		        		switch (drjgbsFlag) {
+						case Constant.BSF_JG2://若是第二个打入胶罐的话,则需要获取胶罐号作为第二次的胶罐号
 
 				            String jgxzPvVarNameQz=Constant.JIAO_GUAN+Constant.XUAN_ZE;
 				            
-				            addVarNameInList(opcVarNameList,jgxzPvVarNameQz);
+				            addVarNameInList(opcVarNameList,jgxzPvVarNameQz);//需要添加一个待从opc端获取的变量(胶罐选择)
 							break;
 						}
 		        	}
@@ -1445,15 +1446,15 @@ public class OpcUtil {
 							}
 						}
 						else if(tv1VarName.startsWith(Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.XHX)&&tv2VarName==null){//允许开始排胶
-			            	if (itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)) {
-			            		varName=ERecord.YXKSPJSSYFCZ;
+			            	if (itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)) {//若从opc端获取的变量名是釜称重
+			            		varName=ERecord.YXKSPJSSYFCZ;//存入数据表里的变量就叫允许开始排胶上升沿釜称重
 			            	}
-			                else if(itemName.startsWith(Constant.JIAO_GUAN+Constant.XUAN_ZE)&&itemName.endsWith(Constant.XHX+Constant.AV)){
+			                else if(itemName.startsWith(Constant.JIAO_GUAN+Constant.XUAN_ZE)&&itemName.endsWith(Constant.XHX+Constant.AV)){//若从opc端获取的变量名是胶罐X选择
 				            	if(itemName.equals("胶罐选择1_AV"))
 				            		value=(float)1;
 				            	
-			                	if(value==TriggerVar.UP) {
-					        		int lastXhxLoc = tv1VarName.lastIndexOf(Constant.XHX)+Constant.XHX.length();
+			                	if(value==TriggerVar.UP) {//判断哪个胶罐选择变量是上升沿
+					        		int lastXhxLoc = tv1VarName.lastIndexOf(Constant.XHX)+Constant.XHX.length();//根据第一个触发器变量末尾的标识,判断应该选择哪个胶罐标识作为变量名
 					        		String rujgFlagStr = tv1VarName.substring(lastXhxLoc, tv1VarName.length());
 					        		System.out.println("rujgFlagStr="+rujgFlagStr);
 					        		int rujgFlag = Integer.valueOf(rujgFlagStr);
@@ -1466,7 +1467,7 @@ public class OpcUtil {
 										break;
 									}
 					        		
-					        		String jgxzPvVarNameQz=Constant.JIAO_GUAN+Constant.XUAN_ZE;
+					        		String jgxzPvVarNameQz=Constant.JIAO_GUAN+Constant.XUAN_ZE;//从胶罐选择变量里截取胶罐号
 				                	int jghStart=itemName.indexOf(jgxzPvVarNameQz)+jgxzPvVarNameQz.length();
 				                	int jghEnd=itemName.indexOf(Constant.XHX+Constant.AV);
 				                	Integer jgh = Integer.valueOf(itemName.substring(jghStart,jghEnd));
@@ -1475,14 +1476,14 @@ public class OpcUtil {
 			                }
 						}
 				        else if (tv1VarName.startsWith(Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.XHX)&&tv2VarName!=null) {//允许开始排胶(有胶罐选择变量)
-				        	if(tv2VarName.startsWith(Constant.JIAO_GUAN+Constant.XUAN_ZE)) {
+				        	if(tv2VarName.startsWith(Constant.JIAO_GUAN+Constant.XUAN_ZE)) {//第二个触发器变量是胶罐选择变量
 				        		System.out.println("itemName???="+itemName);
-				        		if (itemName.startsWith(Constant.JIAO_GUAN_CBZ)&&itemName.endsWith(Constant.CHENG_ZHONG+Constant.XHX+Constant.AV)) {
-					        		int lastXhxLoc = tv1VarName.lastIndexOf(Constant.XHX)+1;
-					        		String rujgFlagStr = tv1VarName.substring(lastXhxLoc, tv1VarName.length());
-					        		System.out.println("rujgFlagStr="+rujgFlagStr);
-					        		int rujgFlag = Integer.valueOf(rujgFlagStr);
-					        		switch (rujgFlag) {
+				        		if (itemName.startsWith(Constant.JIAO_GUAN_CBZ)&&itemName.endsWith(Constant.CHENG_ZHONG+Constant.XHX+Constant.AV)) {//若从opc端获取的变量名是胶罐称重
+					        		int lastXhxLoc = tv1VarName.lastIndexOf(Constant.XHX)+Constant.XHX.length();
+					        		String drjgbsFlagStr = tv1VarName.substring(lastXhxLoc, tv1VarName.length());//从第一个触发器变量名末尾截取胶罐标识
+					        		System.out.println("drjgbsFlagStr="+drjgbsFlagStr);
+					        		int drjgbsFlag = Integer.valueOf(drjgbsFlagStr);
+					        		switch (drjgbsFlag) {//根据胶罐标识判断写入数据表里的变量名应该是第一个胶罐还是第二个胶罐
 									case Constant.BSF_JG1:
 						        		varName=ERecord.YXKSPJSSYJG1ZL;
 										break;
@@ -1491,17 +1492,17 @@ public class OpcUtil {
 										break;
 									}
 				        		}
-				                else if(itemName.startsWith(Constant.JIAO_GUAN+Constant.XUAN_ZE)&&itemName.endsWith(Constant.XHX+Constant.AV)){
+				                else if(itemName.startsWith(Constant.JIAO_GUAN+Constant.XUAN_ZE)&&itemName.endsWith(Constant.XHX+Constant.AV)){//若从opc端获取的变量名是胶罐选择,说明前面添加了两个待从opc端查询的变量(胶罐选择、胶罐称重),这种情况说明是换胶罐了,肯定是到了第二个胶罐
 					            	if(itemName.equals("胶罐选择1_AV"))
 					            		value=(float)1;
 					            	
 				                	if(value==TriggerVar.UP) {
-							        	varName=ERecord.DRJG2JGH;
+							        	varName=ERecord.DRJG2JGH;//肯定是到了第二个胶罐
 						        		
 						        		String jgxzPvVarNameQz=Constant.JIAO_GUAN+Constant.XUAN_ZE;
 					                	int jghStart=itemName.indexOf(jgxzPvVarNameQz)+jgxzPvVarNameQz.length();
 					                	int jghEnd=itemName.indexOf(Constant.XHX+Constant.AV);
-					                	Integer jgh = Integer.valueOf(itemName.substring(jghStart,jghEnd));
+					                	Integer jgh = Integer.valueOf(itemName.substring(jghStart,jghEnd));//从胶罐选择变量里截取胶罐号
 					                	value=(float)jgh;
 				                	}
 				                }
@@ -1834,8 +1835,8 @@ public class OpcUtil {
     public static void addVarNameInList(List<String> opcVarNameList, String varName) {
 		// TODO Auto-generated method stub
 		if(varName.equals(Constant.JIAO_GUAN+Constant.XUAN_ZE)) {
-            for (int jgId : Constant.BSF_JG_ARR) {
-	            String jgxzPvVarName=varName+jgId+Constant.XHX+Constant.AV;
+            for (int jgId : Constant.BSF_JG_ARR) {//遍历胶罐号数组
+	            String jgxzPvVarName=varName+jgId+Constant.XHX+Constant.AV;//把胶罐选择前缀拼接上胶罐号，作为变量名
 	            opcVarNameList.add(jgxzPvVarName);
             }
 		}
