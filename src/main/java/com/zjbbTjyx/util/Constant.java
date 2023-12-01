@@ -434,6 +434,11 @@ public class Constant {
 	 * 结束
 	 */
 	public static final String JIE_SHU="结束";
+	
+	/**
+	 * 红色报警消音
+	 */
+	public static final String HONG_SE_BAO_JING_XIAO_YIN="红色报警消音";
 	/**
 	 * 备料开始
 	 */

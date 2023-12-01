@@ -25,7 +25,7 @@ import com.zjbbTjyx.entity.*;
 
 public class OpcUtil {
 	
-	private static boolean IS_TEST=false;
+	private static boolean IS_TEST=true;
 	private static List<OpcItem> imiOpcItemTVList,imiOpcItemPVList;
 	private static JOpc jopcTV,jopcPV;
 	private static OpcGroup opcGroupTV,opcGroupPV;
@@ -100,7 +100,7 @@ public class OpcUtil {
     public static String readRecTypeByFId(int fId) {
     	String valueTxt=null;
     	if(IS_TEST) {
-    		valueTxt="U";
+    		valueTxt="M";
     	}
     	else {
 	    	List<String> opcVarNameList=new ArrayList<String>();
@@ -1120,6 +1120,9 @@ public class OpcUtil {
 			            		varName=ERecord.YXKSPJSSYFCZ;
 			            	}
 			                else if(itemName.startsWith(Constant.JIAO_GUAN+Constant.XUAN_ZE)&&itemName.endsWith(Constant.XHX+Constant.AV)){//若从opc端获取的变量名是胶罐X选择
+			                	if(itemName.equals("胶罐选择1_AV"))
+			                		value=(float)1.0;
+			                	
 			                	if(value==TriggerVar.UP) {//判断哪个胶罐选择变量是上升沿
 					        		int lastXhxLoc = tv1VarName.lastIndexOf(Constant.XHX)+Constant.XHX.length();//根据第一个触发器变量末尾的标识,判断应该选择哪个胶罐标识作为变量名
 					        		String rujgFlagStr = tv1VarName.substring(lastXhxLoc, tv1VarName.length());
@@ -1181,7 +1184,20 @@ public class OpcUtil {
 			            }
 			            else if(tv1VarName.startsWith(Constant.PAI_JIAO_WAN_CHENG+Constant.XHX)&&tv2VarName!=null) {//排胶完成(有胶罐选择变量)
 			            	if(tv2VarName.startsWith(Constant.JIAO_GUAN+Constant.XUAN_ZE)) {
-				        		varName=ERecord.PJWCSSYJG1ZL;
+			            		if (itemName.startsWith(Constant.JIAO_GUAN_CBZ)&&itemName.endsWith(Constant.CHENG_ZHONG+Constant.XHX+Constant.AV)) {//若从opc端获取的变量名是胶罐称重
+					        		int lastXhxLoc = tv1VarName.lastIndexOf(Constant.XHX)+Constant.XHX.length();
+					        		String drjgbsFlagStr = tv1VarName.substring(lastXhxLoc, tv1VarName.length());//从第一个触发器变量名末尾截取胶罐标识
+					        		System.out.println("drjgbsFlagStr="+drjgbsFlagStr);
+					        		int drjgbsFlag = Integer.valueOf(drjgbsFlagStr);
+					        		switch (drjgbsFlag) {//根据胶罐标识判断写入数据表里的变量名应该是第一个胶罐还是第二个胶罐
+									case Constant.BSF_JG1:
+						        		varName=ERecord.PJWCSSYJG1ZL;
+										break;
+									case Constant.BSF_JG2:
+						        		varName=ERecord.PJWCSSYJG2ZL;
+										break;
+									}
+			            		}
 				        	}
 			            }
 			
@@ -1193,6 +1209,7 @@ public class OpcUtil {
 			        	if (itemName.startsWith(Constant.JIA_QUAN_SHI_JI_JIN_LIAO_ZHONG_LIANG)||
 			                itemName.startsWith(Constant.JIA_SHUI_SHI_JI_ZHONG_LIANG)||
 			                itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)||
+			                itemName.startsWith(Constant.JIAO_GUAN_CBZ)&&itemName.endsWith(Constant.CHENG_ZHONG+Constant.XHX+Constant.AV)||
 			                itemName.startsWith(Constant.FEN_LIAO_ZHONG_LIANG_SHE_DING)||
 			                itemName.startsWith(Constant.ZHU_JI_JI_LIANG_GUAN+Constant.BSF_ZJJLG1+Constant.CHENG_ZHONG)||
 			                itemName.startsWith(Constant.ZHU_JI_JI_LIANG_GUAN+Constant.BSF_ZJJLG2+Constant.CHENG_ZHONG)||
@@ -1520,7 +1537,18 @@ public class OpcUtil {
 			            else if(tv1VarName.startsWith(Constant.PAI_JIAO_WAN_CHENG+Constant.XHX)&&tv2VarName!=null) {//排胶完成(有胶罐选择变量)
 			            	System.out.println("tv2VarName="+tv2VarName);
 			            	if(tv2VarName.startsWith(Constant.JIAO_GUAN+Constant.XUAN_ZE)) {
-				        		varName=ERecord.PJWCSSYJG1ZL;
+				        		int lastXhxLoc = tv1VarName.lastIndexOf(Constant.XHX)+Constant.XHX.length();
+				        		String drjgbsFlagStr = tv1VarName.substring(lastXhxLoc, tv1VarName.length());//从第一个触发器变量名末尾截取胶罐标识
+				        		System.out.println("drjgbsFlagStr="+drjgbsFlagStr);
+				        		int drjgbsFlag = Integer.valueOf(drjgbsFlagStr);
+				        		switch (drjgbsFlag) {//根据胶罐标识判断写入数据表里的变量名应该是第一个胶罐还是第二个胶罐
+								case Constant.BSF_JG1:
+					        		varName=ERecord.PJWCSSYJG1ZL;
+									break;
+								case Constant.BSF_JG2:
+					        		varName=ERecord.PJWCSSYJG2ZL;
+									break;
+								}
 				        	}
 			            }
 			        	

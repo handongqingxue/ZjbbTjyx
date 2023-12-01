@@ -269,8 +269,8 @@ public class OPCController {
 				initFMap("");
 				initFMap=true;
 				
-				initJOpcTV();
-				initJOpcPV();
+				//initJOpcTV();
+				//initJOpcPV();
 			}
 
 			List<Integer> runFIdList=new ArrayList<Integer>();//用于存放运行的反应釜号的集合
@@ -2378,10 +2378,6 @@ public class OPCController {
 				}
 			}
 		
-			for (TriggerVar triggerVar : triggerVarList) {
-				if(triggerVar.getVarName().startsWith("允许开始排胶_F1U"))
-					System.out.println("qqq==="+triggerVar.getVarValue());
-			}
 			updateProTVListByCurrList(triggerVarList);//这个方法用来存储本次变量值，作为下次检索里的上次变量值来使用。每次检索结束后都要记录一下
 	
 			json.put("message","ok");
@@ -3738,7 +3734,8 @@ public class OPCController {
 				Float preValue = Float.valueOf(preValueFMMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
 					List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
-					opcTVList.add(upPjwcTV);
+					TriggerVar preUpPjwcTV = OpcUtil.createNewVarNameTV(upPjwcTV, Constant.BSF_JG1+"");
+					opcTVList.add(preUpPjwcTV);
 					boolean allowAdd = processVarService.checkAllowAdd(opcTVList);
 					if (allowAdd) {
 						pjwcFIdList.add(upFId);
@@ -3764,32 +3761,14 @@ public class OPCController {
 							int i = processVarService.addFromList(pjwcMResPVList);//调用添加过程接口
 							System.out.println("添加" + i);
 							
-							boolean drjg1Boolen=false;
-							boolean drjg2Boolen=false;
-							
+							TriggerVar jgxz1Tv=null;
 							ProcessVar drjg1PV=processVarService.getByVarNameFId(ERecord.DRJG1JGH,upFId);
 							if(drjg1PV!=null) {
 								Float jgh1 = drjg1PV.getVarValue();
-								TriggerVar jgxz1Tv=new TriggerVar();
+								jgxz1Tv=new TriggerVar();
 								jgxz1Tv.setVarName(Constant.JIAO_GUAN+Constant.XUAN_ZE+jgh1+Constant.XHX+Constant.AV);
 								opcTVList.add(jgxz1Tv);
 								
-								drjg1Boolen=true;
-							}
-
-							ProcessVar drjg2PV=processVarService.getByVarNameFId(ERecord.DRJG2JGH,upFId);
-							if(drjg2PV!=null) {
-								Float jgh2 = drjg2PV.getVarValue();
-								TriggerVar jgxz2Tv=new TriggerVar();
-								jgxz2Tv.setVarName(Constant.JIAO_GUAN+Constant.XUAN_ZE+jgh2+Constant.XHX+Constant.AV);
-								opcTVList.add(jgxz2Tv);
-								
-								drjg2Boolen=true;
-							}
-							System.out.println("drjg1Boolen="+drjg1Boolen);
-							System.out.println("drjg2Boolen="+drjg2Boolen);
-							
-							if(drjg1Boolen) {
 								pjwcMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);
 								status = pjwcMResMap.get("status").toString();
 								if ("ok".equals(status)) {
@@ -3804,24 +3783,44 @@ public class OPCController {
 									
 									ProcessVar ratJg1zlcPV = processVarService.getRatValuePV(ERecord.YXKSPJDPJWCFZLC,ptnJg1zlPV);
 									pjwcMResPVList.add(ratJg1zlcPV);//将重量对比对象添加到集合里
-									
-									if(drjg2Boolen) {
-										//获取排胶完成上升沿胶罐2重量变量名
-										String pjwcssyjg2zlVarName = ERecord.PJWCSSYJG2ZL;
-										ProcessVar pjwcssyjg2zlPV = OpcUtil.getProVarInListByVarName(pjwcssyjg2zlVarName, pjwcMResPVList);
-										Float pjwcssyjg2zlVarValue = pjwcssyjg2zlPV.getVarValue();
-										ProcessVar ptnJg2zlPV = processVarService.getPtnValuePV(pjwcssyjg2zlVarName, pjwcssyjg2zlVarValue + "", pjwcssyjg1zlPV);
-										pjwcMResPVList.add(ptnJg2zlPV);//将重量差对象添加到集合里
-										
-										ProcessVar ratJg2zlcPV = processVarService.getRatValuePV(ERecord.YXKSPJDPJWCFZLC,ptnJg2zlPV);
-										pjwcMResPVList.add(ratJg2zlcPV);//将重量对比对象添加到集合里
-									}
-									
+
 									i = processVarService.addFromList(pjwcMResPVList);//调用添加过程接口
 									System.out.println("添加" + i);
 								}
 							}
 
+							ProcessVar drjg2PV=processVarService.getByVarNameFId(ERecord.DRJG2JGH,upFId);
+							if(drjg2PV!=null) {
+								opcTVList.remove(preUpPjwcTV);
+								opcTVList.remove(jgxz1Tv);
+								
+								opcTVList.add(OpcUtil.createNewVarNameTV(upPjwcTV, Constant.BSF_JG2+""));
+								
+								Float jgh2 = drjg2PV.getVarValue();
+								TriggerVar jgxz2Tv=new TriggerVar();
+								jgxz2Tv.setVarName(Constant.JIAO_GUAN+Constant.XUAN_ZE+jgh2+Constant.XHX+Constant.AV);
+								opcTVList.add(jgxz2Tv);
+								
+								pjwcMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);//根据排胶完成变量从opc端查找对应的过程变量
+								status = pjwcMResMap.get("status").toString();
+								if ("ok".equals(status)) {
+									pjwcMResPVList = (List<ProcessVar>) pjwcMResMap.get("proVarList");
+
+									//获取排胶完成上升沿胶罐2重量变量名
+									String pjwcssyjg2zlVarName = ERecord.PJWCSSYJG2ZL;
+									ProcessVar pjwcssyjg2zlPV = OpcUtil.getProVarInListByVarName(pjwcssyjg2zlVarName, pjwcMResPVList);
+									Float pjwcssyjg2zlVarValue = pjwcssyjg2zlPV.getVarValue();
+									ProcessVar ptnJg2zlPV = processVarService.getPtnValuePV(pjwcssyjg2zlVarName, pjwcssyjg2zlVarValue + "", pjwcssyjg2zlPV);
+									pjwcMResPVList.add(ptnJg2zlPV);//将重量差对象添加到集合里
+									
+									ProcessVar ratJg2zlcPV = processVarService.getRatValuePV(ERecord.YXKSPJDPJWCFZLC,ptnJg2zlPV);
+									pjwcMResPVList.add(ratJg2zlcPV);//将重量对比对象添加到集合里
+									
+									i = processVarService.addFromList(pjwcMResPVList);//调用添加过程接口
+									System.out.println("添加" + i);
+								}
+							}
+							
 							/*
 							System.out.println("pjwcFIdListSize===" + pjwcFIdList.size());
 							if (pjwcFIdList.size() > 0) {//若有需要处理的排胶完成节点的反应釜，说明这些反应釜的批次执行完成，就从过程变量表(ProcessVar)里读取已采集好的变量，经过加工处理存入批记录表(ERecord)里
@@ -3847,7 +3846,7 @@ public class OPCController {
 				Float preValue = Float.valueOf(preValueFUStr);
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
 					List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
-					opcTVList.add(upPjwcTV);
+					opcTVList.add(OpcUtil.createNewVarNameTV(upPjwcTV, Constant.BSF_JG1+""));
 					boolean allowAdd = processVarService.checkAllowAdd(opcTVList);
 					if (allowAdd) {
 						pjwcFIdList.add(upFId);
@@ -3872,36 +3871,20 @@ public class OPCController {
 							int i = processVarService.addFromList(pjwcUResPVList);//调用添加过程接口
 							System.out.println("添加" + i);
 							
-							boolean drjg1Boolen=false;
-							boolean drjg2Boolen=false;
-							
+							TriggerVar jgxz1Tv=null;
 							ProcessVar drjg1PV=processVarService.getByVarNameFId(ERecord.DRJG1JGH,upFId);
 							if(drjg1PV!=null) {
 								Float jgh1 = drjg1PV.getVarValue();
-								TriggerVar jgxz1Tv=new TriggerVar();
+								jgxz1Tv=new TriggerVar();
 								jgxz1Tv.setVarName(Constant.JIAO_GUAN+Constant.XUAN_ZE+jgh1+Constant.XHX+Constant.AV);
 								opcTVList.add(jgxz1Tv);
 								
-								drjg1Boolen=true;
-							}
-
-							ProcessVar drjg2PV=processVarService.getByVarNameFId(ERecord.DRJG2JGH,upFId);
-							if(drjg2PV!=null) {
-								Float jgh2 = drjg2PV.getVarValue();
-								TriggerVar jgxz2Tv=new TriggerVar();
-								jgxz2Tv.setVarName(Constant.JIAO_GUAN+Constant.XUAN_ZE+jgh2+Constant.XHX+Constant.AV);
-								opcTVList.add(jgxz2Tv);
-								
-								drjg2Boolen=true;
-							}
-							System.out.println("drjg1Boolen="+drjg1Boolen);
-							System.out.println("drjg2Boolen="+drjg2Boolen);
-							
-							if(drjg1Boolen) {
 								pjwcUResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);
 								status = pjwcUResMap.get("status").toString();
 								if ("ok".equals(status)) {
 									pjwcUResPVList = (List<ProcessVar>) pjwcUResMap.get("proVarList");
+									i = processVarService.addFromList(pjwcUResPVList);//调用添加过程接口
+									System.out.println("添加" + i);
 
 									//获取排胶完成上升沿胶罐1重量变量名
 									String pjwcssyjg1zlVarName = ERecord.PJWCSSYJG1ZL;
@@ -3913,17 +3896,35 @@ public class OPCController {
 									ProcessVar ratJg1zlcPV = processVarService.getRatValuePV(ERecord.YXKSPJDPJWCFZLC,ptnJg1zlPV);
 									pjwcUResPVList.add(ratJg1zlcPV);//将重量对比对象添加到集合里
 									
-									if(drjg2Boolen) {
-										//获取排胶完成上升沿胶罐2重量变量名
-										String pjwcssyjg2zlVarName = ERecord.PJWCSSYJG2ZL;
-										ProcessVar pjwcssyjg2zlPV = OpcUtil.getProVarInListByVarName(pjwcssyjg2zlVarName, pjwcUResPVList);
-										Float pjwcssyjg2zlVarValue = pjwcssyjg2zlPV.getVarValue();
-										ProcessVar ptnJg2zlPV = processVarService.getPtnValuePV(pjwcssyjg2zlVarName, pjwcssyjg2zlVarValue + "", pjwcssyjg1zlPV);
-										pjwcUResPVList.add(ptnJg2zlPV);//将重量差对象添加到集合里
-										
-										ProcessVar ratJg2zlcPV = processVarService.getRatValuePV(ERecord.YXKSPJDPJWCFZLC,ptnJg2zlPV);
-										pjwcUResPVList.add(ratJg2zlcPV);//将重量对比对象添加到集合里
-									}
+									i = processVarService.addFromList(pjwcUResPVList);//调用添加过程接口
+									System.out.println("添加" + i);
+								}
+							}
+
+							ProcessVar drjg2PV=processVarService.getByVarNameFId(ERecord.DRJG2JGH,upFId);
+							if(drjg2PV!=null) {
+								opcTVList.remove(jgxz1Tv);
+								Float jgh2 = drjg2PV.getVarValue();
+								TriggerVar jgxz2Tv=new TriggerVar();
+								jgxz2Tv.setVarName(Constant.JIAO_GUAN+Constant.XUAN_ZE+jgh2+Constant.XHX+Constant.AV);
+								opcTVList.add(jgxz2Tv);
+								
+								pjwcUResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);
+								status = pjwcUResMap.get("status").toString();
+								if ("ok".equals(status)) {
+									pjwcUResPVList = (List<ProcessVar>) pjwcUResMap.get("proVarList");
+									i = processVarService.addFromList(pjwcUResPVList);//调用添加过程接口
+									System.out.println("添加" + i);
+									
+									//获取排胶完成上升沿胶罐2重量变量名
+									String pjwcssyjg2zlVarName = ERecord.PJWCSSYJG2ZL;
+									ProcessVar pjwcssyjg2zlPV = OpcUtil.getProVarInListByVarName(pjwcssyjg2zlVarName, pjwcUResPVList);
+									Float pjwcssyjg2zlVarValue = pjwcssyjg2zlPV.getVarValue();
+									ProcessVar ptnJg2zlPV = processVarService.getPtnValuePV(pjwcssyjg2zlVarName, pjwcssyjg2zlVarValue + "", pjwcssyjg2zlPV);
+									pjwcUResPVList.add(ptnJg2zlPV);//将重量差对象添加到集合里
+									
+									ProcessVar ratJg2zlcPV = processVarService.getRatValuePV(ERecord.YXKSPJDPJWCFZLC,ptnJg2zlPV);
+									pjwcUResPVList.add(ratJg2zlcPV);//将重量对比对象添加到集合里
 									
 									i = processVarService.addFromList(pjwcUResPVList);//调用添加过程接口
 									System.out.println("添加" + i);
@@ -4511,129 +4512,129 @@ public class OPCController {
 				break;
 			}
 			
-			if(varName.equals("红色报警消音_AV")) {//红色报警消音
+			if(varName.equals(Constant.HONG_SE_BAO_JING_XIAO_YIN+Constant.XHX+Constant.AV)) {//红色报警消音
 				hsbjxyTVList.add(triggerVar);
 			}
-			else if((Constant.BEI_LIAO_KAI_SHI+"_"+fyfh+"_AV").equals(varName)) {//备料开始
+			else if((Constant.BEI_LIAO_KAI_SHI+Constant.XHX+fyfh+Constant.XHX+Constant.AV).equals(varName)) {//备料开始
 				blksTVList.add(triggerVar);
 			}
-			else if((Constant.FAN_YING_JIE_SHU+fyfh+"_AV").equals(varName)) {//反应结束
+			else if((Constant.FAN_YING_JIE_SHU+fyfh+Constant.XHX+Constant.AV).equals(varName)) {//反应结束
 				fyjsTVList.add(triggerVar);
 			}
-			else if((Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+"_"+fyfh+"_AV").equals(varName)) {//甲醛备料开始
+			else if((Constant.JIA_QUAN_BEI_LIAO_KAI_SHI+Constant.XHX+fyfh+Constant.XHX+Constant.AV).equals(varName)) {//甲醛备料开始
 				jqblksTVList.add(triggerVar);
 			}
-			else if((Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+"_"+fyfh+"_AV").equals(varName)){//甲醛放料完成
+			else if((Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG+Constant.XHX+fyfh+Constant.XHX+"AV").equals(varName)){//甲醛放料完成
 				jqflwcTVList.add(triggerVar);
 			}
-			else if((Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+"_"+fyfh+"_AV").equals(varName)){//加碱PH值正常
+			else if((Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG+Constant.XHX+fyfh+Constant.XHX+"AV").equals(varName)){//加碱PH值正常
 				jjphzzcTVList.add(triggerVar);
 			}
-			else if((Constant.YUN_XU_YI_CI_JIA_ZHU_JI+"_"+fyfh+"_AV").equals(varName)){//允许一次加助剂
+			else if((Constant.YUN_XU_YI_CI_JIA_ZHU_JI+Constant.XHX+fyfh+Constant.XHX+"AV").equals(varName)){//允许一次加助剂
 				yxycjzjTVList.add(triggerVar);
 			}
-			else if((Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+"_"+fyfh+"_AV").equals(varName)){//所有助剂加料完成1
+			else if((Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_1+Constant.XHX+fyfh+Constant.XHX+Constant.AV).equals(varName)){//所有助剂加料完成1
 				syzjjlwc1TVList.add(triggerVar);
 			}
-			else if((Constant.JIA_FEN_LIAO_TI_XING+"_"+fyfh+"_AV").equals(varName)){//加粉料提醒
+			else if((Constant.JIA_FEN_LIAO_TI_XING+Constant.XHX+fyfh+Constant.XHX+Constant.AV).equals(varName)){//加粉料提醒
 				jfltxTVList.add(triggerVar);
 			}
-			else if((Constant.FU+fId+Constant.NIAO_SU_FANG_LIAO_FA+"_AV").equals(varName)){//釜号尿素放料阀
+			else if((Constant.FU+fId+Constant.NIAO_SU_FANG_LIAO_FA+Constant.XHX+Constant.AV).equals(varName)){//釜号尿素放料阀
 				fhnsflfTVList.add(triggerVar);
 			}
-			else if((Constant.JIA_FEN_LIAO_PH_HE_GE+"_"+fyfh+"_AV").equals(varName)){//加粉料PH合格
+			else if((Constant.JIA_FEN_LIAO_PH_HE_GE+Constant.XHX+fyfh+Constant.XHX+Constant.AV).equals(varName)){//加粉料PH合格
 				jflphhgTVList.add(triggerVar);
 			}
-			else if((Constant.SHENG_WEN_KAI_SHI+"_"+fyfh+"_AV").equals(varName)){//升温开始
+			else if((Constant.SHENG_WEN_KAI_SHI+Constant.XHX+fyfh+Constant.XHX+Constant.AV).equals(varName)){//升温开始
 				swksTVList.add(triggerVar);
 			}
-			else if((Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING+"_"+fyfh+"_AV").equals(varName)){//温度85与二次投料提醒
+			else if((Constant.WEN_DU_85_YU_ER_CI_TOU_LIAO_TI_XING+Constant.XHX+fyfh+Constant.XHX+Constant.AV).equals(varName)){//温度85与二次投料提醒
 				wd85yectltxTVList.add(triggerVar);
 			}
-			else if((Constant.ER_CI_ZHU_JI_HOU_CE_PH_TI_XING+"_"+fyfh+"_AV").equals(varName)){//二次助剂后测PH提醒
+			else if((Constant.ER_CI_ZHU_JI_HOU_CE_PH_TI_XING+Constant.XHX+fyfh+Constant.XHX+Constant.AV).equals(varName)){//二次助剂后测PH提醒
 				eczjhcphtxTVList.add(triggerVar);
 			}
-			else if((Constant.YUN_XU_ER_CI_JIA_ZHU_JI+"_"+fyfh+"_AV").equals(varName)){//允许二次加助剂
+			else if((Constant.YUN_XU_ER_CI_JIA_ZHU_JI+Constant.XHX+fyfh+Constant.XHX+Constant.AV).equals(varName)){//允许二次加助剂
 				yxecjzjTVList.add(triggerVar);
 			}
-			else if((Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+"_"+fyfh+"_AV").equals(varName)){//所有助剂加料完成2
+			else if((Constant.SUO_YOU_ZHU_JI_JIA_LIAO_WAN_CHENG_2+Constant.XHX+fyfh+Constant.XHX+Constant.AV).equals(varName)){//所有助剂加料完成2
 				syzjjlwc2TVList.add(triggerVar);
 			}
-			else if((Constant.SHENG_WEN_WAN_CHENG+"_"+fyfh+"_AV").equals(varName)){//升温完成
+			else if((Constant.SHENG_WEN_WAN_CHENG+Constant.XHX+fyfh+Constant.XHX+Constant.AV).equals(varName)){//升温完成
 				swwcTVList.add(triggerVar);
 			}
-			else if((Constant.WEN_DU_98_PH+Constant.HE_GE+"_"+fyfh+"_AV").equals(varName)){//温度98PH合格
+			else if((Constant.WEN_DU_98_PH+Constant.HE_GE+Constant.XHX+fyfh+Constant.XHX+Constant.AV).equals(varName)){//温度98PH合格
 				wd98phhgTVList.add(triggerVar);
 			}
-			else if((Constant.CE_LIANG_BING_SHUI_WU_DIAN_TI_XING+"_"+fyfh+"_AV").equals(varName)){//测量冰水雾点提醒
+			else if((Constant.CE_LIANG_BING_SHUI_WU_DIAN_TI_XING+Constant.XHX+fyfh+Constant.XHX+Constant.AV).equals(varName)){//测量冰水雾点提醒
 				clbswdtxTVList.add(triggerVar);
 			}
-			else if((Constant.CE_SHUI_SHU_TI_XING+"_"+fyfh+"_AV").equals(varName)){//测水数提醒
+			else if((Constant.CE_SHUI_SHU_TI_XING+Constant.XHX+fyfh+Constant.XHX+Constant.AV).equals(varName)){//测水数提醒
 				csstxTVList.add(triggerVar);
 			}
-			else if((Constant.JU_HE_ZHONG_DIAN+"_"+fyfh+"_AV").equals(varName)){//聚合终点
+			else if((Constant.JU_HE_ZHONG_DIAN+Constant.XHX+fyfh+Constant.XHX+Constant.AV).equals(varName)){//聚合终点
 				jhzdTVList.add(triggerVar);
 			}
-			else if((Constant.JIANG_WEN_WAN_CHENG+"_"+fyfh+"_AV").equals(varName)) {//降温完成
+			else if((Constant.JIANG_WEN_WAN_CHENG+Constant.XHX+fyfh+Constant.XHX+Constant.AV).equals(varName)) {//降温完成
 				jwwcTVList.add(triggerVar);
 			}
-			else if((Constant.ZHONG_JIAN_SHUI_PH_TI_XING+"_"+fyfh+"_AV").equals(varName)) {//终检水PH提醒
+			else if((Constant.ZHONG_JIAN_SHUI_PH_TI_XING+Constant.XHX+fyfh+Constant.XHX+Constant.AV).equals(varName)) {//终检水PH提醒
 				zjsphtxTVList.add(triggerVar);
 			}
-			else if((Constant.YUN_XU_KAI_SHI_PAI_JIAO+"_"+fyfh+"_AV").equals(varName)) {//允许开始排胶
+			else if((Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.XHX+fyfh+Constant.XHX+Constant.AV).equals(varName)) {//允许开始排胶
 				yxkspjTVList.add(triggerVar);
 			}
-			else if((Constant.PAI_JIAO_WAN_CHENG+"_"+fyfh+"_AV").equals(varName)) {//排胶完成
+			else if((Constant.PAI_JIAO_WAN_CHENG+Constant.XHX+fyfh+Constant.XHX+Constant.AV).equals(varName)) {//排胶完成
 				pjwcTVList.add(triggerVar);
 			}
-			else if ((Constant.KAI_SHI_JIA_LIAO+"_"+fyfh+"_AV").equals(varName)){//开始加料
+			else if ((Constant.KAI_SHI_JIA_LIAO+Constant.XHX+fyfh+Constant.XHX+Constant.AV).equals(varName)){//开始加料
 				ksjlTVList.add(triggerVar);
 			}
-			else if ((Constant.ZHU_JI_6_YI_CI_TIAN_JIA_WAN_CHENG+"_"+fyfh+"_AV").equals(varName)){//助剂6一次添加完成
+			else if ((Constant.ZHU_JI_6_YI_CI_TIAN_JIA_WAN_CHENG+Constant.XHX+fyfh+Constant.XHX+Constant.AV).equals(varName)){//助剂6一次添加完成
 				zjlyctjwcTVList.add(triggerVar);
 			}
-			else if ((Constant.ZHU_JI_6_ER_CI_BEI_LIAO_WAN_CHENG+"_"+fyfh+"_AV").equals(varName)){//助剂6二次备料完成
+			else if ((Constant.ZHU_JI_6_ER_CI_BEI_LIAO_WAN_CHENG+Constant.XHX+fyfh+Constant.XHX+Constant.AV).equals(varName)){//助剂6二次备料完成
 				zjlecblwcTVList.add(triggerVar);
 			}
-			else if ((Constant.ZHU_JI_6_ER_CI_TIAN_JIA_WAN_CHENG+"_"+fyfh+"_AV").equals(varName)){//助剂6二次添加完成
+			else if ((Constant.ZHU_JI_6_ER_CI_TIAN_JIA_WAN_CHENG+Constant.XHX+fyfh+Constant.XHX+Constant.AV).equals(varName)){//助剂6二次添加完成
 				zjlectjwcTVList.add(triggerVar);
 			}
-			else if ((Constant.DI_YI_CI_BAO_WEN_QI_DONG+"_"+fyfh+"_AV").equals(varName)){//第一次保温启动
+			else if ((Constant.DI_YI_CI_BAO_WEN_QI_DONG+Constant.XHX+fyfh+Constant.XHX+Constant.AV).equals(varName)){//第一次保温启动
 				dycbwqdTVList.add(triggerVar);
 			}
-			else if ((Constant.DI_YI_CI_BAO_WEN_HE_GE+"_"+fyfh+"_AV").equals(varName)){//第一次保温合格
+			else if ((Constant.DI_YI_CI_BAO_WEN_HE_GE+Constant.XHX+fyfh+Constant.XHX+Constant.AV).equals(varName)){//第一次保温合格
 				dycbwhgTVList.add(triggerVar);
 			}
-			else if ((Constant.YI_CI_JIANG_WEN_JIA_SUAN_TI_XING+"_"+fyfh+"_AV").equals(varName)){//一次降温加酸提醒
+			else if ((Constant.YI_CI_JIANG_WEN_JIA_SUAN_TI_XING+Constant.XHX+fyfh+Constant.XHX+Constant.AV).equals(varName)){//一次降温加酸提醒
 				ycjwjstxTVList.add(triggerVar);
 			}
-			else if ((Constant.YI_CI_JIANG_WEN_JIA_SUAN_HE_GE+"_"+fyfh+"_AV").equals(varName)){//一次降温加酸合格
+			else if ((Constant.YI_CI_JIANG_WEN_JIA_SUAN_HE_GE+Constant.XHX+fyfh+Constant.XHX+Constant.AV).equals(varName)){//一次降温加酸合格
 				ycjwjshgTVList.add(triggerVar);
 			}
-			else if ((Constant.JIA_JIAN_PH_HE_GE+"_"+fyfh+"_AV").equals(varName)){//加碱PH合格
+			else if ((Constant.JIA_JIAN_PH_HE_GE+Constant.XHX+fyfh+Constant.XHX+Constant.AV).equals(varName)){//加碱PH合格
 				jjphhgTVList.add(triggerVar);
 			}
-			else if ((Constant.ER_CI_TOU_FEN+"_"+fyfh+"_AV").equals(varName)){//二次投粉
+			else if ((Constant.ER_CI_TOU_FEN+Constant.XHX+fyfh+Constant.XHX+Constant.AV).equals(varName)){//二次投粉
 				ectfTVList.add(triggerVar);
 			}
-			else if ((Constant.ER_CI_JIA_215_QI_DONG+"_"+fyfh+"_AV").equals(varName)){//二次加215启动
+			else if ((Constant.ER_CI_JIA_215_QI_DONG+Constant.XHX+fyfh+Constant.XHX+Constant.AV).equals(varName)){//二次加215启动
 				ecj215qdTVList.add(triggerVar);
 			}
-			else if ((Constant.ER_CI_JIA_215_WAN_CHENG+"_"+fyfh+"_AV").equals(varName)){//二次加215完成
+			else if ((Constant.ER_CI_JIA_215_WAN_CHENG+Constant.XHX+fyfh+Constant.XHX+Constant.AV).equals(varName)){//二次加215完成
 				ecj215wcTVList.add(triggerVar);
 			}
-			else if ((Constant.ER_CI_JIA_SHUI_QI_DONG+"_"+fyfh+"_AV").equals(varName)){//二次加水启动
+			else if ((Constant.ER_CI_JIA_SHUI_QI_DONG+Constant.XHX+fyfh+Constant.XHX+Constant.AV).equals(varName)){//二次加水启动
 				ecjsqdTVList.add(triggerVar);
 			}
-			else if ((Constant.ER_CI_JIA_SHUI_WAN_CHENG+"_"+fyfh+"_AV").equals(varName)){//二次加水完成
+			else if ((Constant.ER_CI_JIA_SHUI_WAN_CHENG+Constant.XHX+fyfh+Constant.XHX+Constant.AV).equals(varName)){//二次加水完成
 				ecjswcTVList.add(triggerVar);
 			}
-			else if ((Constant.ER_CI_JIA_SHUI_HE_XIAO_LIAO_TI_XING+"_"+fyfh+"_AV").equals(varName)){//二次加水和小料提醒
+			else if ((Constant.ER_CI_JIA_SHUI_HE_XIAO_LIAO_TI_XING+Constant.XHX+fyfh+Constant.XHX+Constant.AV).equals(varName)){//二次加水和小料提醒
 				ecjxlhstxTVList.add(triggerVar);
 			}
 		}
 		
-		tvGroupMap.put("红色报警消音", hsbjxyTVList);//红色报警消音
+		tvGroupMap.put(Constant.HONG_SE_BAO_JING_XIAO_YIN, hsbjxyTVList);//红色报警消音
 		
 		tvGroupMap.put(Constant.BEI_LIAO_KAI_SHI, blksTVList);//备料开始
 		tvGroupMap.put(Constant.FAN_YING_JIE_SHU, fyjsTVList);//反应结束

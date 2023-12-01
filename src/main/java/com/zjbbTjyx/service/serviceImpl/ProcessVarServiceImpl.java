@@ -99,6 +99,10 @@ public class ProcessVarServiceImpl implements ProcessVarService {
 			preName=ERecord.YXKSPJSSYJG1ZL;
 			ptnName=ERecord.YXKSPJDPJWCJG1ZLC;//允许开始排胶到排胶完成胶罐1重量差
 		}
+		else if((ERecord.PJWCSSYJG2ZL).equals(nxtName)) {//排胶完成上升沿胶罐2重量
+			preName=ERecord.YXKSPJSSYJG2ZL;
+			ptnName=ERecord.YXKSPJDPJWCJG2ZLC;//允许开始排胶到排胶完成胶罐2重量差
+		}
 		else if((ERecord.FYJSSSYSJ).equals(nxtName)){//反应结束上升沿时间
 
 			preName=ERecord.BLKSSSYSJ;
@@ -179,10 +183,16 @@ public class ProcessVarServiceImpl implements ProcessVarService {
 		if((ERecord.YXKSPJDPJWCFZLC).equals(numVarName)&&(ERecord.YXKSPJDPJWCJG1ZLC).equals(denVarName)) {
 			ratVarName=ERecord.FYFYJG1ZLCBZ;
 		}
+		else if((ERecord.YXKSPJDPJWCFZLC).equals(numVarName)&&(ERecord.YXKSPJDPJWCJG2ZLC).equals(denVarName)) {
+			ratVarName=ERecord.FYFYJG2ZLCBZ;
+		}
 		ProcessVar numPV = processVarMapper.getUnDealByVarNameFId(numVarName,denFId);
 		if(numPV!=null) {
 			Float numValue = numPV.getVarValue();
-			ratVarValue=numValue/denVarValue;
+			if((float)denVarValue==0)
+				ratVarValue=(float)0;
+			else
+				ratVarValue=numValue/denVarValue;
 		}
 		
     	ProcessVar ratValuePV = new ProcessVar();
