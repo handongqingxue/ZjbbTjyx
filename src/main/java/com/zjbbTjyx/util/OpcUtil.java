@@ -25,7 +25,7 @@ import com.zjbbTjyx.entity.*;
 
 public class OpcUtil {
 	
-	private static boolean IS_TEST=true;
+	private static boolean IS_TEST=false;
 	private static List<OpcItem> imiOpcItemTVList,imiOpcItemPVList;
 	private static JOpc jopcTV,jopcPV;
 	private static OpcGroup opcGroupTV,opcGroupPV;
@@ -1120,8 +1120,8 @@ public class OpcUtil {
 			            		varName=ERecord.YXKSPJSSYFCZ;
 			            	}
 			                else if(itemName.startsWith(Constant.JIAO_GUAN+Constant.XUAN_ZE)&&itemName.endsWith(Constant.XHX+Constant.AV)){//若从opc端获取的变量名是胶罐X选择
-			                	if(itemName.equals("胶罐选择1_AV"))
-			                		value=(float)1.0;
+			                	//if(itemName.equals("胶罐选择1_AV"))
+			                		//value=(float)1.0;
 			                	
 			                	if(value==TriggerVar.UP) {//判断哪个胶罐选择变量是上升沿
 					        		int lastXhxLoc = tv1VarName.lastIndexOf(Constant.XHX)+Constant.XHX.length();//根据第一个触发器变量末尾的标识,判断应该选择哪个胶罐标识作为变量名
@@ -1162,8 +1162,8 @@ public class OpcUtil {
 									}
 				        		}
 				                else if(itemName.startsWith(Constant.JIAO_GUAN+Constant.XUAN_ZE)&&itemName.endsWith(Constant.XHX+Constant.AV)){//若从opc端获取的变量名是胶罐选择,说明前面添加了两个待从opc端查询的变量(胶罐选择、胶罐称重),这种情况说明是换胶罐了,肯定是到了第二个胶罐
-					            	if(itemName.equals("胶罐选择1_AV"))
-					            		value=(float)1;
+					            	//if(itemName.equals("胶罐选择1_AV"))
+					            		//value=(float)1;
 					            	
 				                	if(value==TriggerVar.UP) {
 							        	varName=ERecord.DRJG2JGH;//肯定是到了第二个胶罐
@@ -1464,8 +1464,8 @@ public class OpcUtil {
 			            		varName=ERecord.YXKSPJSSYFCZ;//存入数据表里的变量就叫允许开始排胶上升沿釜称重
 			            	}
 			                else if(itemName.startsWith(Constant.JIAO_GUAN+Constant.XUAN_ZE)&&itemName.endsWith(Constant.XHX+Constant.AV)){//若从opc端获取的变量名是胶罐X选择
-				            	if(itemName.equals("胶罐选择1_AV"))
-				            		value=(float)1;
+				            	//if(itemName.equals("胶罐选择1_AV"))
+				            		//value=(float)1;
 				            	
 			                	if(value==TriggerVar.UP) {//判断哪个胶罐选择变量是上升沿
 					        		int lastXhxLoc = tv1VarName.lastIndexOf(Constant.XHX)+Constant.XHX.length();//根据第一个触发器变量末尾的标识,判断应该选择哪个胶罐标识作为变量名
@@ -1507,8 +1507,8 @@ public class OpcUtil {
 									}
 				        		}
 				                else if(itemName.startsWith(Constant.JIAO_GUAN+Constant.XUAN_ZE)&&itemName.endsWith(Constant.XHX+Constant.AV)){//若从opc端获取的变量名是胶罐选择,说明前面添加了两个待从opc端查询的变量(胶罐选择、胶罐称重),这种情况说明是换胶罐了,肯定是到了第二个胶罐
-					            	if(itemName.equals("胶罐选择1_AV"))
-					            		value=(float)1;
+					            	//if(itemName.equals("胶罐选择1_AV"))
+					            		//value=(float)1;
 					            	
 				                	if(value==TriggerVar.UP) {
 							        	varName=ERecord.DRJG2JGH;//肯定是到了第二个胶罐

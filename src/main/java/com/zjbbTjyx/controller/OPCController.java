@@ -3883,8 +3883,8 @@ public class OPCController {
 								status = pjwcUResMap.get("status").toString();
 								if ("ok".equals(status)) {
 									pjwcUResPVList = (List<ProcessVar>) pjwcUResMap.get("proVarList");
-									i = processVarService.addFromList(pjwcUResPVList);//调用添加过程接口
-									System.out.println("添加" + i);
+									//i = processVarService.addFromList(pjwcUResPVList);//调用添加过程接口
+									//System.out.println("添加" + i);
 
 									//获取排胶完成上升沿胶罐1重量变量名
 									String pjwcssyjg1zlVarName = ERecord.PJWCSSYJG1ZL;
@@ -3913,8 +3913,8 @@ public class OPCController {
 								status = pjwcUResMap.get("status").toString();
 								if ("ok".equals(status)) {
 									pjwcUResPVList = (List<ProcessVar>) pjwcUResMap.get("proVarList");
-									i = processVarService.addFromList(pjwcUResPVList);//调用添加过程接口
-									System.out.println("添加" + i);
+									//i = processVarService.addFromList(pjwcUResPVList);//调用添加过程接口
+									//System.out.println("添加" + i);
 									
 									//获取排胶完成上升沿胶罐2重量变量名
 									String pjwcssyjg2zlVarName = ERecord.PJWCSSYJG2ZL;
