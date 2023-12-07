@@ -1012,4 +1012,36 @@ public class Constant {
 	
 	public static final int OK_STATUS=1;
 	public static final int NO_STATUS=0;
+	
+	/**
+	 * 触发器变量名前缀
+	 */
+	public static final String TV_VAR_NAME_PRE_TEXT="tvVarNamePre";
+	
+	/**
+	 * 备料开始上升沿触发器变量名
+	 */
+	public static final String UP_BLKS_TV_TEXT="upBlksTV";
+	
+	/**
+	 * 反应釜里的上次值
+	 */
+	public static final String PRE_VALUE_F_TEXT="preValueF";
+	/**
+	 * M字符
+	 */
+	public static final String M_TEXT="M";
+	/**
+	 * U字符
+	 */
+	public static final String U_TEXT="U";
+	/**
+	 * Map字符
+	 */
+	public static final String MAP_TEXT="Map";
+	
+	public static final String PRE_VALUE_F_M_MAP_TEXT=PRE_VALUE_F_TEXT+M_TEXT+MAP_TEXT;
+	public static final String PRE_VALUE_U_M_MAP_TEXT=PRE_VALUE_F_TEXT+U_TEXT+MAP_TEXT;
+	
+	public static final String PRO_VAR_LIST_TEXT="proVarList";
 }

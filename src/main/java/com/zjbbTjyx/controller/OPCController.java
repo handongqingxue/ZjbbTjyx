@@ -341,10 +341,10 @@ public class OPCController {
 					switch (upFId) {//匹配反应釜号
 						case Constant.F1_ID:
 							Map<String,Object> paramF1Map=new HashMap<String,Object>();
-							paramF1Map.put("tvVarNamePre",blksTVVarNamePre);
-							paramF1Map.put("upBlksTV",upBlksTV);
-							paramF1Map.put("preValueFMMap",preValueF1MMap);
-							paramF1Map.put("preValueFUMap",preValueF1UMap);
+							paramF1Map.put(Constant.TV_VAR_NAME_PRE_TEXT,blksTVVarNamePre);
+							paramF1Map.put(Constant.UP_BLKS_TV_TEXT,upBlksTV);
+							paramF1Map.put(Constant.PRE_VALUE_F_M_MAP_TEXT,preValueF1MMap);
+							paramF1Map.put(Constant.PRE_VALUE_U_M_MAP_TEXT,preValueF1UMap);
 							addProVarByParamMap(paramF1Map);
 							break;
 						case Constant.F2_ID:
@@ -2399,15 +2399,15 @@ public class OPCController {
 	 * @param paramMap
 	 */
 	private void addProVarByParamMap(Map<String,Object> paramMap) {
-		String tvVarNamePre = paramMap.get("tvVarNamePre").toString();
+		String tvVarNamePre = paramMap.get(Constant.TV_VAR_NAME_PRE_TEXT).toString();
 		//System.out.println("tvVarNamePre="+tvVarNamePre);
 		if(Constant.BEI_LIAO_KAI_SHI.equals(tvVarNamePre)) {//备料开始
-			TriggerVar upBlksTV = (TriggerVar)paramMap.get("upBlksTV");
+			TriggerVar upBlksTV = (TriggerVar)paramMap.get(Constant.UP_BLKS_TV_TEXT);
 			Integer upFId = upBlksTV.getFId();//获取反应釜号
 			String upRecType = OpcUtil.readRecTypeByFId(upFId);//获取配方类型
 			//System.out.println("upRecType="+upRecType);
 			if(TriggerVar.M.equals(upRecType)) {
-				HashMap<String, Object> preValueFMMap = (HashMap<String,Object>)paramMap.get("preValueFMMap");
+				HashMap<String, Object> preValueFMMap = (HashMap<String,Object>)paramMap.get(Constant.PRE_VALUE_F_TEXT+upRecType+Constant.MAP_TEXT);
 				String upVarName = upBlksTV.getVarName();
 				Float preValue = Float.valueOf(preValueFMMap.get(upVarName).toString());//可能是F1-F5之间的任何一个反应釜
 				//System.out.println("preValue="+preValue);
@@ -2422,7 +2422,7 @@ public class OPCController {
 						Map<String, Object> blksMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);
 						String status = blksMResMap.get("status").toString();
 						if("ok".equals(status)) {
-							List<ProcessVar> blksMResPVList = (List<ProcessVar>)blksMResMap.get("proVarList");
+							List<ProcessVar> blksMResPVList = (List<ProcessVar>)blksMResMap.get(Constant.PRO_VAR_LIST_TEXT);
 							int i = processVarService.addFromList(blksMResPVList);//调用添加过程接口
 							System.out.println("添加"+i);
 						}
@@ -2434,7 +2434,7 @@ public class OPCController {
 				}
 			}
 			else if(TriggerVar.U.equals(upRecType)) {
-				HashMap<String, Object> preValueFUMap = (HashMap<String,Object>)paramMap.get("preValueFMMap");
+				HashMap<String, Object> preValueFUMap = (HashMap<String,Object>)paramMap.get(Constant.PRE_VALUE_F_M_MAP_TEXT);
 				String upVarName = upBlksTV.getVarName();
 				Float preValue = Float.valueOf(preValueFUMap.get(upVarName).toString());
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
@@ -2447,7 +2447,7 @@ public class OPCController {
 						Map<String, Object> blksUResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);
 						String status = blksUResMap.get("status").toString();
 						if ("ok".equals(status)) {
-							List<ProcessVar> blksUResPVList = (List<ProcessVar>) blksUResMap.get("proVarList");
+							List<ProcessVar> blksUResPVList = (List<ProcessVar>) blksUResMap.get(Constant.PRO_VAR_LIST_TEXT);
 							int i = processVarService.addFromList(blksUResPVList);//调用添加过程接口
 							System.out.println("添加" + i);
 						} else {
@@ -3840,7 +3840,6 @@ public class OPCController {
 			else if(TriggerVar.U.equals(upRecType)) {
 				HashMap<String, Object> preValueFUMap = (HashMap<String,Object>)paramMap.get("preValueFUMap");
 				String upVarName = upPjwcTV.getVarName();
-				System.out.println("upVarName++==="+upVarName);
 				Object preValueFUObj = preValueFUMap.get(upVarName);
 				String preValueFUStr = preValueFUObj.toString();
 				Float preValue = Float.valueOf(preValueFUStr);
@@ -4805,7 +4804,7 @@ public class OPCController {
 			for (TriggerVar triggerVar : triggerVarList) {
 				String varName = triggerVar.getVarName();
 				Float varValue = triggerVar.getVarValue();
-				if(varName.startsWith("红色报警消音"))
+				if(varName.startsWith(Constant.HONG_SE_BAO_JING_XIAO_YIN))
 					System.out.println("varName==="+varName+",varValue==="+varValue);
 				if(varValue!=null) {
 					if(varValue==flag) {
@@ -4866,7 +4865,7 @@ public class OPCController {
 		TriggerVar triggerVar=null;
 		if((Constant.FU+Constant.NIAO_SU_FANG_LIAO_FA).equals(groupName)) {
 			for (TriggerVar triggerVarItem : triggerVarList) {
-				if((Constant.FU+fId+Constant.NIAO_SU_FANG_LIAO_FA+"_AV").equals(triggerVarItem.getVarName())) {
+				if((Constant.FU+fId+Constant.NIAO_SU_FANG_LIAO_FA+Constant.XHX+Constant.AV).equals(triggerVarItem.getVarName())) {
 					triggerVar=triggerVarItem;
 					break;
 				}
