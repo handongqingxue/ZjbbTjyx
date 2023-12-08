@@ -650,13 +650,13 @@ public class ReportF_M {
 	public static final int KSJWDTZJWSJC_CN=11;
 	
 	/**
-	 * 生产总重釜称重行号
+	 * 允许开始排胶釜称重1行号
 	 */
-	public static final int SCZZFCZ_RN=22;
+	public static final int YXKSPJFCZ1_RN=22;
 	/**
-	 * 生产总重釜称重列号
+	 * 允许开始排胶釜称重1列号
 	 */
-	public static final int SCZZFCZ_CN=3;
+	public static final int YXKSPJFCZ1_CN=3;
 	
 	/**
 	 * 终检水数行号
@@ -758,13 +758,13 @@ public class ReportF_M {
     public static final int FYFYJG2ZLCBZ_CN=12;
 
 	/**
-	 * 允许开始排胶釜称重行号
+	 * 允许开始排胶釜称重2行号
 	 */
-	public static final int YXKSPJFCZ_RN=25;
+	public static final int YXKSPJFCZ2_RN=25;
 	/**
-	 * 允许开始排胶釜称重列号
+	 * 允许开始排胶釜称重2列号
 	 */
-	public static final int YXKSPJFCZ_CN=3;
+	public static final int YXKSPJFCZ2_CN=3;
 
 	/**
 	 * 排胶完成釜称重行号

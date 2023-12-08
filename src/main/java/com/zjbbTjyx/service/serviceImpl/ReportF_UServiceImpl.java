@@ -433,10 +433,23 @@ public class ReportF_UServiceImpl implements ReportF_UService {
 				int zjphColNumber=ReportF_U.ZJPH_CN;
 				reportF_UList.add(createByParams(zjphRowNumber, zjphColNumber, varValue+unit, batchID));
 			}
+			else if(ERecord.YXKSPJDPJWCSJ.equals(varName)) {//允许开始排胶到排胶完成时间
+				int yxkspjsjRowNumber=ReportF_U.YXKSPJSJ_RN;
+				int yxkspjsjColNumber=ReportF_U.YXKSPJSJ_CN;
+				reportF_UList.add(createByParams(yxkspjsjRowNumber, yxkspjsjColNumber, preValue, batchID));
+
+				int pjwcsjRowNumber=ReportF_U.PJWCSJ_RN;
+				int pjwcsjColNumber=ReportF_U.PJWCSJ_CN;
+				reportF_UList.add(createByParams(pjwcsjRowNumber, pjwcsjColNumber, nxtValue, batchID));
+
+				int pjsjcRowNumber=ReportF_U.PJSJC_RN;
+				int pjsjcColNumber=ReportF_U.PJSJC_CN;
+				reportF_UList.add(createByParams(pjsjcRowNumber, pjsjcColNumber, ptnValue+unit, batchID));
+			}
 			else if(ERecord.YXKSPJDPJWCFCZ.equals(varName)) {//允许开始排胶到排胶完成釜称重
-				int yxkspjfczRowNumber=ReportF_U.YXKSPJFCZ_RN;
-				int yxkspjfczColNumber=ReportF_U.YXKSPJFCZ_CN;
-				reportF_UList.add(createByParams(yxkspjfczRowNumber, yxkspjfczColNumber, preValue+unit, batchID));
+				int yxkspjfcz1RowNumber=ReportF_U.YXKSPJFCZ1_RN;
+				int yxkspjfcz1ColNumber=ReportF_U.YXKSPJFCZ1_CN;
+				reportF_UList.add(createByParams(yxkspjfcz1RowNumber, yxkspjfcz1ColNumber, preValue+unit, batchID));
 				
 				int yxkspjfcz2RowNumber=ReportF_U.YXKSPJFCZ2_RN;
 				int yxkspjfcz2ColNumber=ReportF_U.YXKSPJFCZ2_CN;
@@ -449,8 +462,52 @@ public class ReportF_UServiceImpl implements ReportF_UService {
 				int pjfzlcRowNumber=ReportF_U.PJFZLC_RN;
 				int pjfzlcColNumber=ReportF_U.PJFZLC_CN;
 				reportF_UList.add(createByParams(pjfzlcRowNumber, pjfzlcColNumber, ptnValue+unit, batchID));
+			}
+			else if(ERecord.DRJG1JGH.equals(varName)) {//打入胶罐1胶罐号
+				int drjg1jghRowNumber=ReportF_U.DRJG1JGH_RN;
+				int drjg1jghColNumber=ReportF_U.DRJG1JGH_CN;
+				reportF_UList.add(createByParams(drjg1jghRowNumber, drjg1jghColNumber, varValue, batchID));
+			}
+			else if(ERecord.DRJG2JGH.equals(varName)) {//打入胶罐2胶罐号
+				int drjg2jghRowNumber=ReportF_U.DRJG2JGH_RN;
+				int drjg2jghColNumber=ReportF_U.DRJG2JGH_CN;
+				reportF_UList.add(createByParams(drjg2jghRowNumber, drjg2jghColNumber, varValue, batchID));
+			}
+			else if(ERecord.YXKSPJDPJWCJG1CZ.equals(varName)) {//允许开始排胶到排胶完成胶罐1称重
+				int yxkspjjg1zlRowNumber=ReportF_U.YXKSPJJG1ZL_RN;
+				int yxkspjjg1zlColNumber=ReportF_U.YXKSPJJG1ZL_CN;
+				reportF_UList.add(createByParams(yxkspjjg1zlRowNumber, yxkspjjg1zlColNumber, preValue+unit, batchID));
 				
+				int pjwcjg1zlRowNumber=ReportF_U.PJWCJG1ZL_RN;
+				int pjwcjg1zlColNumber=ReportF_U.PJWCJG1ZL_CN;
+				reportF_UList.add(createByParams(pjwcjg1zlRowNumber, pjwcjg1zlColNumber, nxtValue+unit, batchID));
 				
+				int yxkspjdpjwcjg1zlcRowNumber=ReportF_U.YXKSPJDPJWCJG1ZLC_RN;
+				int yxkspjdpjwcjg1zlcColNumber=ReportF_U.YXKSPJDPJWCJG1ZLC_CN;
+				reportF_UList.add(createByParams(yxkspjdpjwcjg1zlcRowNumber, yxkspjdpjwcjg1zlcColNumber, ptnValue+unit, batchID));
+			}
+			else if(ERecord.YXKSPJDPJWCJG2CZ.equals(varName)) {//允许开始排胶到排胶完成胶罐2称重
+				int yxkspjjg2zlRowNumber=ReportF_U.YXKSPJJG2ZL_RN;
+				int yxkspjjg2zlColNumber=ReportF_U.YXKSPJJG2ZL_CN;
+				reportF_UList.add(createByParams(yxkspjjg2zlRowNumber, yxkspjjg2zlColNumber, preValue+unit, batchID));
+				
+				int pjwcjg2zlRowNumber=ReportF_U.PJWCJG2ZL_RN;
+				int pjwcjg2zlColNumber=ReportF_U.PJWCJG2ZL_CN;
+				reportF_UList.add(createByParams(pjwcjg2zlRowNumber, pjwcjg2zlColNumber, nxtValue+unit, batchID));
+				
+				int yxkspjdpjwcjg2zlcRowNumber=ReportF_U.YXKSPJDPJWCJG2ZLC_RN;
+				int yxkspjdpjwcjg2zlcColNumber=ReportF_U.YXKSPJDPJWCJG2ZLC_CN;
+				reportF_UList.add(createByParams(yxkspjdpjwcjg2zlcRowNumber, yxkspjdpjwcjg2zlcColNumber, ptnValue+unit, batchID));
+			}
+			else if(ERecord.FYFYJG1ZLCBZ.equals(varName)) {//反应釜与胶罐1重量差比值
+				int fyfyjg1zlcbzRowNumber=ReportF_U.FYFYJG1ZLCBZ_RN;
+				int fyfyjg1zlcbzColNumber=ReportF_U.FYFYJG1ZLCBZ_CN;
+				reportF_UList.add(createByParams(fyfyjg1zlcbzRowNumber, fyfyjg1zlcbzColNumber, varValue, batchID));
+			}
+			else if(ERecord.FYFYJG2ZLCBZ.equals(varName)) {//反应釜与胶罐2重量差比值
+				int fyfyjg2zlcbzRowNumber=ReportF_U.FYFYJG2ZLCBZ_RN;
+				int fyfyjg2zlcbzColNumber=ReportF_U.FYFYJG2ZLCBZ_CN;
+				reportF_UList.add(createByParams(fyfyjg2zlcbzRowNumber, fyfyjg2zlcbzColNumber, varValue, batchID));
 			}
 		}
 		for (ReportF_U reportF_U : reportF_UList) {
