@@ -25,7 +25,7 @@ import com.zjbbTjyx.entity.*;
 
 public class OpcUtil {
 	
-	private static boolean IS_TEST=false;
+	private static boolean IS_TEST=true;
 	private static List<OpcItem> imiOpcItemTVList,imiOpcItemPVList;
 	private static JOpc jopcTV,jopcPV;
 	private static OpcGroup opcGroupTV,opcGroupPV;
@@ -100,7 +100,7 @@ public class OpcUtil {
     public static String readRecTypeByFId(int fId) {
     	String valueTxt=null;
     	if(IS_TEST) {
-    		valueTxt="M";
+    		valueTxt="U";
     	}
     	else {
 	    	List<String> opcVarNameList=new ArrayList<String>();
@@ -131,7 +131,7 @@ public class OpcUtil {
     	//反应釜胶种类型:1:A、2:B、3:G、4:F、5:H、6:C（U类）、7:C#（U类）
     	String valueTxt=null;
     	if(IS_TEST) {
-    		valueTxt="A";
+    		valueTxt="C";
     	}
     	else {
 	    	List<String> opcVarNameList=new ArrayList<String>();
@@ -966,8 +966,13 @@ public class OpcUtil {
 			        	String valueStr = opcItem.getValue().toString();
 			        	Float value = null;
 			        	if(itemName.startsWith(Constant.JIAO_GUAN+Constant.XUAN_ZE)) {
-			        		Boolean valueBool = Boolean.valueOf(valueStr);
-			        		value = (float)(valueBool?1:0);
+			        		if(IS_TEST) {
+			        			value = Float.valueOf(valueStr);
+			        		}
+			        		else {
+				        		Boolean valueBool = Boolean.valueOf(valueStr);
+				        		value = (float)(valueBool?1:0);
+			        		}
 			        	}
 			        	else
 			        		value = Float.valueOf(valueStr);
@@ -1265,8 +1270,13 @@ public class OpcUtil {
 			        	String valueStr = opcItem.getValue().toString();
 			        	Float value = null;
 			        	if(itemName.startsWith(Constant.JIAO_GUAN+Constant.XUAN_ZE)) {
-			        		Boolean valueBool = Boolean.valueOf(valueStr);
-			        		value = (float)(valueBool?1:0);
+			        		if(IS_TEST) {
+			        			value = Float.valueOf(valueStr);
+			        		}
+			        		else {
+				        		Boolean valueBool = Boolean.valueOf(valueStr);
+				        		value = (float)(valueBool?1:0);
+			        		}
 			        	}
 			        	else
 			        		value = Float.valueOf(valueStr);
@@ -1557,7 +1567,9 @@ public class OpcUtil {
 			        	
 			        	String unit=null;//单位
 			        	if(itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)||
-				           itemName.startsWith(Constant.SUAN_JI_LIANG_TONG_CHENG_ZHONG)) {
+				           itemName.startsWith(Constant.SUAN_JI_LIANG_TONG_CHENG_ZHONG)||
+				           itemName.startsWith(Constant.JIAO_GUAN_CBZ)&&itemName.endsWith(Constant.CHENG_ZHONG+Constant.XHX+Constant.AV)||
+				           itemName.equals(Constant.ZHONG_ZHUAN+Constant.JIAO_GUAN+Constant.CHENG_ZHONG+Constant.XHX+Constant.AV)) {
 			        		unit=Constant.KG;//kg
 			        	}
 			        	else if (itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)){
@@ -2030,7 +2042,7 @@ public class OpcUtil {
         opcTVNamePreMList.add(Constant.WEN_DU_98_PH+Constant.HE_GE);//温度98PH合格
         opcTVNamePreMList.add(Constant.CE_LIANG_BING_SHUI_WU_DIAN_TI_XING);//测量冰水雾点提醒
         opcTVNamePreMList.add(Constant.CE_SHUI_SHU_TI_XING);//测水数提醒----这个只有F2有值
-        opcTVNamePreMList.add("停热降温水数提醒");
+        opcTVNamePreMList.add(Constant.TING_RE_JIANG_WEN_SHUI_SHU_TI_XING);//停热降温水数提醒
         opcTVNamePreMList.add(Constant.JU_HE_ZHONG_DIAN);//聚合终点----这个F5没值,因为5号的生产流程还没有做，报表可以先不做5号的
         opcTVNamePreMList.add(Constant.JIANG_WEN_WAN_CHENG);//降温完成----这个变量F5没有
         opcTVNamePreMList.add(Constant.ZHONG_JIAN_SHUI_PH_TI_XING);//终检水PH提醒
@@ -2066,7 +2078,6 @@ public class OpcUtil {
     	
 
     	List<String> opcTVNamePreUList=new ArrayList<String>();//前缀集合
-    	opcTVNamePreUList.add(Constant.FAN_YING_JIE_SHU);//反应结束
     	opcTVNamePreUList.add(Constant.JIA_QUAN_BEI_LIAO_KAI_SHI);//甲醛备料开始
     	opcTVNamePreUList.add(Constant.JIA_QUAN_FANG_LIAO_WAN_CHENG);//甲醛放料完成
     	opcTVNamePreUList.add(Constant.JIA_JIAN_PH_ZHI_ZHENG_CHANG);//加碱PH值正常

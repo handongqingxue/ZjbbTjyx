@@ -423,11 +423,6 @@ public class ReportF_UServiceImpl implements ReportF_UService {
 				int dycbwhgdfyjssjcColNumber=ReportF_U.DYCBWHGDFYJSSJC_CN;
 				reportF_UList.add(createByParams(dycbwhgdfyjssjcRowNumber, dycbwhgdfyjssjcColNumber, ptnValue+unit, batchID));
 			}
-			else if((Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.SHANG_SHENG_YAN+Constant.FU+Constant.CHENG_ZHONG).equals(varName)) {//允许开始排胶上升沿釜称重
-				int yxkspjfczRowNumber=ReportF_U.YXKSPJFCZ_RN;
-				int yxkspjfczColNumber=ReportF_U.YXKSPJFCZ_CN;
-				reportF_UList.add(createByParams(yxkspjfczRowNumber, yxkspjfczColNumber, varValue+unit, batchID));
-			}
 			else if((Constant.ZHONG_JIAN_SHUI_SHU).equals(varName)) {//终检水数
 				int zjssRowNumber=ReportF_U.ZJSS_RN;
 				int zjssColNumber=ReportF_U.ZJSS_CN;
@@ -437,6 +432,25 @@ public class ReportF_UServiceImpl implements ReportF_UService {
 				int zjphRowNumber=ReportF_U.ZJPH_RN;
 				int zjphColNumber=ReportF_U.ZJPH_CN;
 				reportF_UList.add(createByParams(zjphRowNumber, zjphColNumber, varValue+unit, batchID));
+			}
+			else if(ERecord.YXKSPJDPJWCFCZ.equals(varName)) {//允许开始排胶到排胶完成釜称重
+				int yxkspjfczRowNumber=ReportF_U.YXKSPJFCZ_RN;
+				int yxkspjfczColNumber=ReportF_U.YXKSPJFCZ_CN;
+				reportF_UList.add(createByParams(yxkspjfczRowNumber, yxkspjfczColNumber, preValue+unit, batchID));
+				
+				int yxkspjfcz2RowNumber=ReportF_U.YXKSPJFCZ2_RN;
+				int yxkspjfcz2ColNumber=ReportF_U.YXKSPJFCZ2_CN;
+				reportF_UList.add(createByParams(yxkspjfcz2RowNumber, yxkspjfcz2ColNumber, preValue+unit, batchID));
+				
+				int pjwcfczRowNumber=ReportF_U.PJWCFCZ_RN;
+				int pjwcfczColNumber=ReportF_U.PJWCFCZ_CN;
+				reportF_UList.add(createByParams(pjwcfczRowNumber, pjwcfczColNumber, nxtValue+unit, batchID));
+				
+				int pjfzlcRowNumber=ReportF_U.PJFZLC_RN;
+				int pjfzlcColNumber=ReportF_U.PJFZLC_CN;
+				reportF_UList.add(createByParams(pjfzlcRowNumber, pjfzlcColNumber, ptnValue+unit, batchID));
+				
+				
 			}
 		}
 		for (ReportF_U reportF_U : reportF_UList) {

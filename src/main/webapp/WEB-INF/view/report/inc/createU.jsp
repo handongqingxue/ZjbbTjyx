@@ -616,28 +616,27 @@ function resetUCTabInp(){
                     <td>日期与时间：</td>
                     <td class="green" id="td35_3"></td>
                     <td class="green" id="td35_4"></td>
-                    <td class="yellow" id="td35_5">时间差</td>
-                    <td id="td35_6"></td>
-                    <td class="green" id="td35_7">罐号1</td>
+                    <td class="yellow" id="td35_5"></td>
+                    <td>打入胶罐1</td>
+                    <td class="green" id="td35_7"></td>
                     <td class="green" id="td35_8"></td>
                     <td class="green" id="td35_9"></td>
                     <td class="yellow" id="td35_10"></td>
                     <td rowspan="2" id="td35_11"></td>
-                    <td rowspan="2" id="td35_12" class="yellow"></td>
-                    <td id="td35_13"></td>
+                    <td class="yellow" rowspan="2" id="td35_12"></td>
+                    <td></td>
                 </tr>
                 <!-- 第三十六-->
                 <tr class="tr36">
                     <td>反应釜打胶前后重量</td>
-                    <td class="green" id="td36_2"></td>
                     <td class="green" id="td36_3"></td>
-                    <td class="yellow" id="td36_4">反应釜重量差</td>
-                    <td id="td36_5"></td>
-                    <td class="green" id="td36_6">罐号2</td>
+                    <td class="green" id="td36_4"></td>
+                    <td class="yellow" id="td36_5">反应釜重量差</td>
+                    <td>打入胶罐2</td>
                     <td class="green" id="td36_7"></td>
                     <td class="green" id="td36_8"></td>
-                    <td class="yellow" id="td36_9"></td>
-                    <td id="td36_10"></td>
+                    <td class="green" id="td36_9"></td>
+                    <td class="yellow" id="td36_10"></td>
                 </tr>
             </table>
         </div>

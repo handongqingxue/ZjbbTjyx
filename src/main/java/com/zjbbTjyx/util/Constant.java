@@ -597,6 +597,10 @@ public class Constant {
 	 */
 	public static final String CE_SHUI_SHU_TI_XING="测水数提醒";
 	/**
+	 * 停热降温水数提醒
+	 */
+	public static final String TING_RE_JIANG_WEN_SHUI_SHU_TI_XING="停热降温水数提醒";
+	/**
 	 * 停热降温水数输入值
 	 */
 	public static final String TING_RE_JIANG_WEN_SHUI_SHU_SRZ="停热降温水数输入值";
