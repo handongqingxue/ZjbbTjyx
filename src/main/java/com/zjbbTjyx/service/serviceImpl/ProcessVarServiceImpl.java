@@ -139,7 +139,10 @@ public class ProcessVarServiceImpl implements ProcessVarService {
 		if(!StringUtils.isEmpty(preValue)) {
 			if(nxtName.contains(Constant.FU+Constant.CHENG_ZHONG)||
 			   nxtName.contains(Constant.JIAO_GUAN)&&nxtName.contains(Constant.ZHONG_LIANG)) {//计算重量差
-				ptnValue=Float.valueOf(nxtValue)-Float.valueOf(preValue);
+				if(ERecord.PJWCSSYFCZ.equals(nxtName))
+					ptnValue=Float.valueOf(preValue)-Float.valueOf(nxtValue);//排完胶时之前的釜重量肯定比之后的重，就用之前的-之后的
+				else
+					ptnValue=Float.valueOf(nxtValue)-Float.valueOf(preValue);//除了排胶完成外，其他时候都是往釜里加料，肯定是之前的比之后的重量轻
 				ptnUnit = nxtPV.getUnit();
 			}
 			else if(nxtName.contains(Constant.SHI_JIAN)) {//计算时间差，需要调用日期工具类方法处理下
@@ -262,10 +265,10 @@ public class ProcessVarServiceImpl implements ProcessVarService {
 		}
 		else if (tv1VarName.startsWith(Constant.JIA_FEN_LIAO_TI_XING)){//加粉料提醒
 			if(StringUtils.isEmpty(tv2VarName)) {
-				if("M".equals(tv1RecType))
+				if(TriggerVar.M.equals(tv1RecType))
 					pvVarName=Constant.FEN_LIAO_ZHONG_LIANG_SHE_DING;
 				else
-					pvVarName=ERecord.JFLTXSSYFL1ZLSD;
+					pvVarName=Constant.JIA_FEN_LIAO_PH_SHU_RU_ZHI;//这个上升沿里的其他变量opc端未添加，暂时用这个变量来检测
 			}
 			else {
 				if(tv2VarName.contains(Constant.NIAO_SU_FANG_LIAO_FA)) {

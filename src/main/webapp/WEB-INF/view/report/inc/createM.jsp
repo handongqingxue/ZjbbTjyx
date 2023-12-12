@@ -42,7 +42,7 @@ function initDataResetMButDiv() {
 function getUnCreRepVarMList(batchID){
     $("#opcMCTable td[id^='td']").text("");//先清除表格里的数据
     $("#opcMCTable #batchID_hid").val(batchID);//设置表格里的批次id
-    var glueM=batchID.substring(1,2);
+    var glueM=batchID.substring(1,batchID.length-12);
     $("#glueM").html(glueM);
 
     preCreateMTab();
@@ -536,29 +536,29 @@ function resetMCTabInp(){
             <tr class="tr24">
                 <td rowspan="2">排 胶</td>
                 <td>日期与时间：</td>
-                <td class="green"></td>
-                <td class="green"></td>
-                <td class="yellow"></td>
+                <td class="green" id="td24_3"></td>
+                <td class="green" id="td24_4"></td>
+                <td class="yellow" id="td24_5"></td>
                 <td>打入胶罐1：</td>
-                <td class="green"></td>
-                <td class="green"></td>
-                <td class="green"> </td>
-                <td class="yellow"></td>
-                <td rowspan="2"></td>
-                <td class="yellow" rowspan="2"></td>
+                <td class="green" id="td24_7"></td>
+                <td class="green" id="td24_8"></td>
+                <td class="green" id="td24_9"> </td>
+                <td class="yellow" id="td24_10"></td>
+                <td rowspan="2" id="td24_11"></td>
+                <td class="yellow" rowspan="2" id="td24_12"></td>
                 <td></td>
             </tr>
             <%--第二十五行--%>
             <tr class="tr25">
                 <td>反应釜打胶前后重量</td>
-                <td class="green"></td>
-                <td class="green"> </td>
-                <td class="yellow"></td>
+                <td class="green" id="td25_3"></td>
+                <td class="green" id="td25_4"> </td>
+                <td class="yellow" id="td25_5"></td>
                 <td>打入胶罐2：</td>
-                <td class="green"></td>
-                <td class="green"></td>
-                <td class="green"></td>
-                <td class="yellow"></td>
+                <td class="green" id="td25_7"></td>
+                <td class="green" id="td25_8"></td>
+                <td class="green" id="td25_9"></td>
+                <td class="yellow" id="td25_10"></td>
                 <td></td>
             </tr>
         </table>

@@ -43,7 +43,7 @@ function initDataResetUButDiv() {
 function getUnCreRepVarUList(batchID){
     $("#opcUCTable td[id^='td']").text("");//先清除表格里的数据
     $("#opcUCTable #batchID_hid").val(batchID);//设置表格里的批次id
-    var glueU=batchID.substring(1,2);
+    var glueU=batchID.substring(1,batchID.length-12);
     $("#glueU").html(glueU);
 
     preCreateUTab();

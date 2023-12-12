@@ -1394,7 +1394,7 @@ public class ERecordServiceImpl implements ERecordService {
 					Float varValue = processVar.getVarValue();
 					String unit = processVar.getUnit();
 	
-					ERecord eRecordYxkspjdpjwcsjc=getFromList(ERecord.YXKSPJDPJWCSJC, batchID, eRecordList);
+					ERecord eRecordYxkspjdpjwcsjc=getFromList(ERecord.YXKSPJDPJWCSJ, batchID, eRecordList);
 					if(eRecordYxkspjdpjwcsjc==null) {
 						eRecordYxkspjdpjwcsjc=new ERecord();
 						eRecordYxkspjdpjwcsjc.setVarName(pvVarName);
@@ -3129,7 +3129,7 @@ public class ERecordServiceImpl implements ERecordService {
 					Float varValue = processVar.getVarValue();
 					String unit = processVar.getUnit();
 	
-					ERecord eRecordYxkspjdpjwcsjc=getFromList(ERecord.YXKSPJDPJWCSJC, batchID, eRecordList);
+					ERecord eRecordYxkspjdpjwcsjc=getFromList(ERecord.YXKSPJDPJWCSJ, batchID, eRecordList);
 					if(eRecordYxkspjdpjwcsjc==null) {
 						eRecordYxkspjdpjwcsjc=new ERecord();
 						eRecordYxkspjdpjwcsjc.setVarName(pvVarName);
@@ -4322,14 +4322,14 @@ public class ERecordServiceImpl implements ERecordService {
 					
 					HashMap<String, Object> sczzVarMap = new HashMap<String, Object>();
 					sczzVarMap.put(Constant.VALUE, preValue);
-					sczzVarMap.put(Constant.ROW_NUMBER, ReportF_M.YXKSPJFCZ_RN);
-					sczzVarMap.put(Constant.COL_NUMBER, ReportF_M.YXKSPJFCZ_CN);
+					sczzVarMap.put(Constant.ROW_NUMBER, ReportF_M.YXKSPJFCZ1_RN);
+					sczzVarMap.put(Constant.COL_NUMBER, ReportF_M.YXKSPJFCZ1_CN);
 					varMapList.add(sczzVarMap);
 					
 					HashMap<String, Object> preVarMap = new HashMap<String, Object>();
 					preVarMap.put(Constant.VALUE, preValue);
-					preVarMap.put(Constant.ROW_NUMBER, ReportF_M.YXKSPJFCZ_RN);
-					preVarMap.put(Constant.COL_NUMBER, ReportF_M.YXKSPJFCZ_CN);
+					preVarMap.put(Constant.ROW_NUMBER, ReportF_M.YXKSPJFCZ2_RN);
+					preVarMap.put(Constant.COL_NUMBER, ReportF_M.YXKSPJFCZ2_CN);
 					varMapList.add(preVarMap);
 					
 					HashMap<String, Object> nxtVarMap = new HashMap<String, Object>();
@@ -5052,8 +5052,8 @@ public class ERecordServiceImpl implements ERecordService {
 
 					varMap = new HashMap<String, Object>();
 					varMap.put(Constant.VALUE, varValue);
-					varMap.put(Constant.ROW_NUMBER, ReportF_U.YXKSPJFCZ_RN);
-					varMap.put(Constant.COL_NUMBER, ReportF_U.YXKSPJFCZ_CN);
+					varMap.put(Constant.ROW_NUMBER, ReportF_U.YXKSPJFCZ1_RN);
+					varMap.put(Constant.COL_NUMBER, ReportF_U.YXKSPJFCZ1_CN);
 					varMapList.add(varMap);
 				}
 				else if((ERecord.ZJSPHTXXJYZJSS).equals(varName)) {//终检水PH提醒降沿记录终检水数

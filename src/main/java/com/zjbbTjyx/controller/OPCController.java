@@ -2486,12 +2486,14 @@ public class OPCController {
 							int i = processVarService.addFromList(fyjsMResPVList);//调用添加过程接口
 							System.out.println("添加" + i);
 
+							/*
 							System.out.println("fyjsFIdListSize===" + fyjsFIdList.size());
 							if (fyjsFIdList.size() > 0) {//若有需要处理的反应结束节点的反应釜，说明这些反应釜的批次执行完成，就从过程变量表(ProcessVar)里读取已采集好的变量，经过加工处理存入批记录表(ERecord)里
 								List<ProcessVar> udProVarList = processVarService.getUnDealListByFIdList(fyjsFIdList);
 								int c = eRecordService.addFromProVarList(udProVarList);
 								eRecordService.clearBatchIDMap(fyjsFIdList);
 							}
+							*/
 						} 
 						else {
 							String message = fyjsMResMap.get("message").toString();
@@ -2525,12 +2527,14 @@ public class OPCController {
 							int i = processVarService.addFromList(fyjsUResPVList);//调用添加过程接口
 							System.out.println("添加" + i);
 
+							/*
 							System.out.println("fyjsFIdListSize===" + fyjsFIdList.size());
 							if (fyjsFIdList.size() > 0) {//若有需要处理的反应结束节点的反应釜，说明这些反应釜的批次执行完成，就从过程变量表(ProcessVar)里读取已采集好的变量，经过加工处理存入批记录表(ERecord)里
 								List<ProcessVar> udProVarList = processVarService.getUnDealListByFIdList(fyjsFIdList);
 								int c = eRecordService.addFromProVarList(udProVarList);
 								eRecordService.clearBatchIDMap(fyjsFIdList);
 							}
+							*/
 						} 
 						else {
 							String message = fyjsUResMap.get("message").toString();
@@ -3822,14 +3826,12 @@ public class OPCController {
 								}
 							}
 							
-							/*
 							System.out.println("pjwcFIdListSize===" + pjwcFIdList.size());
 							if (pjwcFIdList.size() > 0) {//若有需要处理的排胶完成节点的反应釜，说明这些反应釜的批次执行完成，就从过程变量表(ProcessVar)里读取已采集好的变量，经过加工处理存入批记录表(ERecord)里
 								List<ProcessVar> udProVarList = processVarService.getUnDealListByFIdList(pjwcFIdList);
 								int c = eRecordService.addFromProVarList(udProVarList);
 								eRecordService.clearBatchIDMap(pjwcFIdList);
 							}
-							*/
 						} 
 						else {
 							String message = pjwcMResMap.get("message").toString();
@@ -3931,6 +3933,17 @@ public class OPCController {
 									System.out.println("添加" + i);
 								}
 							}
+							
+							System.out.println("pjwcFIdListSize===" + pjwcFIdList.size());
+							if (pjwcFIdList.size() > 0) {//若有需要处理的排胶完成节点的反应釜，说明这些反应釜的批次执行完成，就从过程变量表(ProcessVar)里读取已采集好的变量，经过加工处理存入批记录表(ERecord)里
+								List<ProcessVar> udProVarList = processVarService.getUnDealListByFIdList(pjwcFIdList);
+								int c = eRecordService.addFromProVarList(udProVarList);
+								eRecordService.clearBatchIDMap(pjwcFIdList);
+							}
+						}
+						else {
+							String message = pjwcUResMap.get("message").toString();
+							System.out.println("message===" + message);
 						}
 					}
 				}
