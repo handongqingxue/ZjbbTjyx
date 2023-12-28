@@ -3574,7 +3574,8 @@ public class OPCController {
 				if(preValue==TriggerVar.DOWN) {//当上一次的变量值为0，说明这次刚上升，变量刚从0变为1，就记录一下反应釜id
 					List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 
-					opcTVList.add(OpcUtil.createNewVarNameTV(upYxkspjTV, Constant.BSF_JG1+""));//在触发器变量后拼接胶罐标识，为了避免影响判断上一次触发器变量是上升还是下降，就得生成新触发器变量
+					TriggerVar preUpYxkspjTV = OpcUtil.createNewVarNameTV(upYxkspjTV, Constant.BSF_JG1+"");//在触发器变量后拼接胶罐标识，为了避免影响判断上一次触发器变量是上升还是下降，就得生成新触发器变量
+					opcTVList.add(preUpYxkspjTV);
 					
 					boolean allowAdd = processVarService.checkAllowAdd(opcTVList);
 					if (allowAdd) {
@@ -3604,7 +3605,7 @@ public class OPCController {
 				else {//不是上升沿情况下也得检测下胶罐的情况
 					List<TriggerVar> opcTVList = new ArrayList<TriggerVar>();
 
-					TriggerVar preUpYxkspjTV = OpcUtil.createNewVarNameTV(upYxkspjTV,Constant.BSF_JG1+"");
+					TriggerVar preUpYxkspjTV = OpcUtil.createNewVarNameTV(upYxkspjTV, Constant.BSF_JG1+"");
 					opcTVList.add(preUpYxkspjTV);
 
 					Map<String, Object> yxkspjMResMap = OpcUtil.readerOpcProVarByTVList(opcTVList);
