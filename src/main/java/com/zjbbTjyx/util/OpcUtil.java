@@ -457,7 +457,7 @@ public class OpcUtil {
 		            
 		            opcVarNameList.add(fyfwdOpcVarName);
 		        }
-		        else if (tv1VarName.startsWith(Constant.ZHONG_JIAN_SHUI_PH_TI_XING+Constant.XHX)){//终检水PH提醒
+		        else if (tv1VarName.startsWith(Constant.ZHONG_JIAN_KAI_SHI+Constant.XHX)){//终检开始
 		            Integer tvFId = triggerVar1.getFId();
 		            String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
 		            
@@ -761,7 +761,7 @@ public class OpcUtil {
 						opcVarNameList.add(ycjwjsphsrOpcVarName);
 					}
 				}
-				else if (tv1VarName.startsWith(Constant.YI_CI_JIANG_WEN_JIA_SUAN_HE_GE+Constant.XHX)){//一次降温加酸合格
+				else if (tv1VarName.startsWith(Constant.YI_CI_JIANG_WEN_JIA_SUAN_PH_HE_GE+Constant.XHX)){//一次降温加酸PH合格
 					Integer tvFId = triggerVar1.getFId();
 					String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
 					
@@ -821,7 +821,7 @@ public class OpcUtil {
 					
 					opcVarNameList.add(jjphsrOpcVarName);
 				}
-				else if (tv1VarName.startsWith(Constant.ER_CI_TOU_FEN+Constant.XHX)){//二次投粉
+				else if (tv1VarName.startsWith(Constant.ER_CI_TOU_FEN_TI_XING+Constant.XHX)){//二次投粉提醒
 					Integer tvFId = triggerVar1.getFId();
 					String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
 					
@@ -903,7 +903,7 @@ public class OpcUtil {
 						}
 		        	}
 		        }
-				else if (tv1VarName.startsWith(Constant.ZHONG_JIAN_SHUI_PH_TI_XING+Constant.XHX)){//终检水PH提醒
+				else if (tv1VarName.startsWith(Constant.ZHONG_JIAN_KAI_SHI+Constant.XHX)){//终检开始
 					Integer tvFId = triggerVar1.getFId();
 					String opcFName = getFNameByFIdRecType(tvFId,tvRecType);
 					
@@ -913,8 +913,8 @@ public class OpcUtil {
 					
 					opcVarNameList.add(zjssOpcVarName);
 					
-					//终检水PH提醒
-					String zjsphtxPvVarNameQz=Constant.ZHONG_JIAN_SHUI_PH_TI_XING;
+					//终检开始
+					String zjsphtxPvVarNameQz=Constant.ZHONG_JIAN_KAI_SHI;
 					String zjsphtxOpcVarName=zjsphtxPvVarNameQz+Constant.XHX+Constant.AV;
 					
 					opcVarNameList.add(zjsphtxOpcVarName);
@@ -1112,7 +1112,7 @@ public class OpcUtil {
 			                    varName=ERecord.JWWCSSYFYFWD;
 			                }
 			            }
-			            else if(tv1VarName.startsWith(Constant.ZHONG_JIAN_SHUI_PH_TI_XING+Constant.XHX)){//终检水PH提醒
+			            else if(tv1VarName.startsWith(Constant.ZHONG_JIAN_KAI_SHI+Constant.XHX)){//终检开始
 			                if(itemName.startsWith(Constant.ZHONG_JIAN_SHUI_SHU+Constant.XHX)){
 			                    varName=Constant.ZHONG_JIAN_SHUI_SHU;
 			                }
@@ -1403,7 +1403,7 @@ public class OpcUtil {
 								varName=Constant.YI_CI_JIANG_WEN_JIA_SUAN_TI_XING+Constant.XIA_JIANG_YAN+Constant.YI_CI_JIANG_WEN_JIA_SUAN_PH_SHU_RU;//一次降温加酸提醒下降沿一次降温加酸PH输入
 							}
 						}
-						else if(tv1VarName.startsWith(Constant.YI_CI_JIANG_WEN_JIA_SUAN_HE_GE+Constant.XHX)){//一次降温加酸合格
+						else if(tv1VarName.startsWith(Constant.YI_CI_JIANG_WEN_JIA_SUAN_PH_HE_GE+Constant.XHX)){//一次降温加酸PH合格
 							if (itemName.startsWith(Constant.YI_CI_JIANG_WEN_JIA_SUAN_LIANG)){
 								varName=ERecord.YCJWJSL;//一次降温加酸量
 							}
@@ -1411,7 +1411,7 @@ public class OpcUtil {
 								varName=ERecord.YCJWJSHGSSYFYFWD;//一次降温加酸合格反应釜温度
 							}
 							else if (itemName.startsWith(Constant.YI_CI_JIANG_WEN_JIA_SUAN_PH_SHU_RU)){
-								varName=Constant.YI_CI_JIANG_WEN_JIA_SUAN_HE_GE+Constant.SHANG_SHENG_YAN+ERecord.YCJWJSHGSSYYCJWJSPHSR;//一次降温加酸合格上升沿一次降温加酸PH输入
+								varName=Constant.YI_CI_JIANG_WEN_JIA_SUAN_PH_HE_GE+Constant.SHANG_SHENG_YAN+ERecord.YCJWJSPHHGSSYYCJWJSPHSR;//一次降温加酸PH合格上升沿一次降温加酸PH输入
 							}
 						}
 						else if(tv1VarName.startsWith(Constant.CE_LIANG_BING_SHUI_WU_DIAN_TI_XING+Constant.XHX)){//测量冰水雾点提醒
@@ -1433,7 +1433,7 @@ public class OpcUtil {
 								varName=Constant.JIA_JIAN_PH_SHU_RU;//加碱PH输入
 							}
 						}
-						else if(tv1VarName.startsWith(Constant.ER_CI_TOU_FEN+Constant.XHX)){//二次投粉
+						else if(tv1VarName.startsWith(Constant.ER_CI_TOU_FEN_TI_XING+Constant.XHX)){//二次投粉提醒
 							if (itemName.startsWith(Constant.ER_CI_JIA_FEN_LIAO_1_ZHONG_LIANG_SHE_DING)){
 								varName=Constant.ER_CI_JIA_FEN_LIAO_1_ZHONG_LIANG_SHE_DING;//二次加料粉料1重量设定
 							}else if(itemName.startsWith(Constant.BAO_WEN_HOU_JIA_ZHU_JI_6_LIANG_SHE_DING)){
@@ -1442,14 +1442,14 @@ public class OpcUtil {
 								varName=Constant.BAO_WEN_HOU_JIA_SHUI_LIANG_SHE_DING;//保温后加水量设定
 							}
 						}
-						else if(tv1VarName.startsWith(Constant.ER_CI_TOU_FEN+Constant.XHX)&&tv2VarName!=null) {
+						else if(tv1VarName.startsWith(Constant.ER_CI_TOU_FEN_TI_XING+Constant.XHX)&&tv2VarName!=null) {
 							if(tv2VarName.contains(Constant.NIAO_SU_FANG_LIAO_FA)) {
 								if (itemName.startsWith(Constant.FU+tv1FId+Constant.CHENG_ZHONG)){
 									if(tv2VarValue==TriggerVar.UP) {
-										varName=Constant.ER_CI_TOU_FEN+Constant.SHANG_SHENG_YAN+ERecord.FNSFLFSSYFCZ;//釜尿素放料阀上升沿釜称重
+										varName=Constant.ER_CI_TOU_FEN_TI_XING+Constant.SHANG_SHENG_YAN+ERecord.FNSFLFSSYFCZ;//釜尿素放料阀上升沿釜称重
 									}
 									else {
-										varName=Constant.ER_CI_TOU_FEN+Constant.SHANG_SHENG_YAN+ERecord.FNSFLFXJYFCZ;//釜尿素放料阀下降沿釜称重
+										varName=Constant.ER_CI_TOU_FEN_TI_XING+Constant.SHANG_SHENG_YAN+ERecord.FNSFLFXJYFCZ;//釜尿素放料阀下降沿釜称重
 									}
 								}
 								else if (itemName.startsWith(Constant.FAN_YING_FU+tv1FId+Constant.WEN_DU)){
@@ -1532,7 +1532,7 @@ public class OpcUtil {
 				                }
 				        	}
 				        }
-						else if(tv1VarName.startsWith(Constant.ZHONG_JIAN_SHUI_PH_TI_XING+Constant.XHX)){//终检水PH提醒
+						else if(tv1VarName.startsWith(Constant.ZHONG_JIAN_KAI_SHI+Constant.XHX)){//终检开始
 							if (itemName.startsWith(Constant.ZHONG_JIAN_SHUI_SHU)){
 								varName=Constant.ZHONG_JIAN_SHUI_SHU;//终检水数
 							}else if (itemName.startsWith(Constant.ZHONG_JIAN_PH)){
@@ -1754,16 +1754,16 @@ public class OpcUtil {
 					if(TriggerVar.UP==tvVarValue)
 						itemName = ERecord.YCJWJSTXSSYSJ;//一次降温加酸提醒上升沿时间
 				}
-				else if(tv1VarName.startsWith(Constant.ER_CI_TOU_FEN+Constant.XHX)&&tv2VarName==null) {
-					itemName = ERecord.ECTFSSYSJ;//二次投粉上升沿时间
+				else if(tv1VarName.startsWith(Constant.ER_CI_TOU_FEN_TI_XING+Constant.XHX)&&tv2VarName==null) {
+					itemName = ERecord.ECTFTXSSYSJ;//二次投粉提醒上升沿时间
 				}
-				else if(tv1VarName.startsWith(Constant.ER_CI_TOU_FEN+Constant.XHX)&&tv2VarName!=null) {//二次投粉
+				else if(tv1VarName.startsWith(Constant.ER_CI_TOU_FEN_TI_XING+Constant.XHX)&&tv2VarName!=null) {//二次投粉提醒
 					if(tv2VarName.contains(Constant.NIAO_SU_FANG_LIAO_FA)) {
 						if(tv2VarValue==TriggerVar.UP) {
-							itemName=Constant.ER_CI_TOU_FEN+Constant.SHANG_SHENG_YAN+ERecord.FNSFLFSSYSJ;//釜尿素放料阀上升沿时间
+							itemName=Constant.ER_CI_TOU_FEN_TI_XING+Constant.SHANG_SHENG_YAN+ERecord.FNSFLFSSYSJ;//釜尿素放料阀上升沿时间
 						}
 						else {
-							itemName=Constant.ER_CI_TOU_FEN+Constant.SHANG_SHENG_YAN+ERecord.FNSFLFXJYSJ;//釜尿素放料阀下降沿时间
+							itemName=Constant.ER_CI_TOU_FEN_TI_XING+Constant.SHANG_SHENG_YAN+ERecord.FNSFLFXJYSJ;//釜尿素放料阀下降沿时间
 						}
 					}
 				}
@@ -1802,8 +1802,8 @@ public class OpcUtil {
 				   tv1VarName.startsWith(Constant.DI_YI_CI_BAO_WEN_QI_DONG+Constant.XHX)||
 				   tv1VarName.startsWith(Constant.DI_YI_CI_BAO_WEN_HE_GE+Constant.XHX)||
 				   tv1VarName.startsWith(Constant.YI_CI_JIANG_WEN_JIA_SUAN_TI_XING+Constant.XHX)&&(TriggerVar.UP==triggerVar1.getVarValue())||
-				   tv1VarName.startsWith(Constant.ER_CI_TOU_FEN+Constant.XHX)&&tv2VarName==null&&itemName.contains(Constant.SHI_JIAN)||
-				   tv1VarName.startsWith(Constant.ER_CI_TOU_FEN+Constant.XHX)&&tv2VarName!=null&&itemName.contains(Constant.SHI_JIAN)||
+				   tv1VarName.startsWith(Constant.ER_CI_TOU_FEN_TI_XING+Constant.XHX)&&tv2VarName==null&&itemName.contains(Constant.SHI_JIAN)||
+				   tv1VarName.startsWith(Constant.ER_CI_TOU_FEN_TI_XING+Constant.XHX)&&tv2VarName!=null&&itemName.contains(Constant.SHI_JIAN)||
 				   tv1VarName.startsWith(Constant.ER_CI_JIA_215_QI_DONG+Constant.XHX)||
 				   tv1VarName.startsWith(Constant.ER_CI_JIA_215_WAN_CHENG+Constant.XHX)||
 				   tv1VarName.startsWith(Constant.ER_CI_JIA_SHUI_QI_DONG+Constant.XHX)||
@@ -2018,9 +2018,9 @@ public class OpcUtil {
     public static List<String> getOpcTVNameList() {
     	List<String> opcTVNameList=new ArrayList<String>();
     	/*
-    	for(int i=0;i<3;i++) {
-    		opcTVNameList.add("_System._DateTime");
-    	}
+    	二次投粉改为二次投粉提醒
+    	终检水PH提醒改为终检开始
+    	一次降温加酸合格改为一次降温加酸PH合格
     	*/
 
     	List<String> opcTVNamePreMList=new ArrayList<String>();//前缀集合
@@ -2045,7 +2045,7 @@ public class OpcUtil {
         opcTVNamePreMList.add(Constant.TING_RE_JIANG_WEN_SHUI_SHU_TI_XING);//停热降温水数提醒
         opcTVNamePreMList.add(Constant.JU_HE_ZHONG_DIAN);//聚合终点----这个F5没值,因为5号的生产流程还没有做，报表可以先不做5号的
         opcTVNamePreMList.add(Constant.JIANG_WEN_WAN_CHENG);//降温完成----这个变量F5没有
-        opcTVNamePreMList.add(Constant.ZHONG_JIAN_SHUI_PH_TI_XING);//终检水PH提醒
+        opcTVNamePreMList.add(Constant.ZHONG_JIAN_KAI_SHI);//终检开始
         opcTVNamePreMList.add(Constant.YUN_XU_KAI_SHI_PAI_JIAO);//允许开始排胶
         opcTVNamePreMList.add(Constant.PAI_JIAO_WAN_CHENG);//排胶完成---F5没有
         
@@ -2092,16 +2092,16 @@ public class OpcUtil {
     	opcTVNamePreUList.add(Constant.DI_YI_CI_BAO_WEN_QI_DONG);//第一次保温启动
     	opcTVNamePreUList.add(Constant.DI_YI_CI_BAO_WEN_HE_GE);//第一次保温合格
     	opcTVNamePreUList.add(Constant.YI_CI_JIANG_WEN_JIA_SUAN_TI_XING);//一次降温加酸提醒
-    	opcTVNamePreUList.add(Constant.YI_CI_JIANG_WEN_JIA_SUAN_HE_GE);//一次降温加酸合格
+    	opcTVNamePreUList.add(Constant.YI_CI_JIANG_WEN_JIA_SUAN_PH_HE_GE);//一次降温加酸PH合格
     	opcTVNamePreUList.add(Constant.CE_LIANG_BING_SHUI_WU_DIAN_TI_XING);//测量冰水雾点提醒
     	opcTVNamePreUList.add(Constant.JIA_JIAN_PH_HE_GE);//加碱PH合格
-    	opcTVNamePreUList.add(Constant.ER_CI_TOU_FEN);//二次投粉
+    	opcTVNamePreUList.add(Constant.ER_CI_TOU_FEN_TI_XING);//二次投粉提醒
     	opcTVNamePreUList.add(Constant.ER_CI_JIA_215_QI_DONG);//二次加215启动
     	opcTVNamePreUList.add(Constant.ER_CI_JIA_215_WAN_CHENG);//二次加215完成
     	opcTVNamePreUList.add(Constant.ER_CI_JIA_SHUI_HE_XIAO_LIAO_TI_XING);//二次加水和小料提醒
     	opcTVNamePreUList.add(Constant.ER_CI_JIA_SHUI_QI_DONG);//二次加水启动
     	opcTVNamePreUList.add(Constant.ER_CI_JIA_SHUI_WAN_CHENG);//二次加水完成
-        opcTVNamePreUList.add(Constant.ZHONG_JIAN_SHUI_PH_TI_XING);//终检水PH提醒
+        opcTVNamePreUList.add(Constant.ZHONG_JIAN_KAI_SHI);//终检开始
         
         for (String opcTVNamePreU : opcTVNamePreUList) {
     		for (String fUName : Constant.BSF_F_U_ARR) {
@@ -2557,7 +2557,7 @@ public class OpcUtil {
 		   itemName.startsWith("停热降温水数提醒")||//停热降温水数提醒
 		   itemName.startsWith(Constant.JU_HE_ZHONG_DIAN)||//聚合终点
 		   itemName.startsWith(Constant.JIANG_WEN_WAN_CHENG)||//降温完成
-		   itemName.startsWith(Constant.ZHONG_JIAN_SHUI_PH_TI_XING)||//终检水PH提醒
+		   itemName.startsWith(Constant.ZHONG_JIAN_KAI_SHI)||//终检开始
 		   itemName.startsWith(Constant.YUN_XU_KAI_SHI_PAI_JIAO)||//允许开始排胶
 		   itemName.startsWith(Constant.PAI_JIAO_WAN_CHENG)||//排胶完成
 		   itemName.startsWith(Constant.KAI_SHI_JIA_LIAO)||//开始加料
@@ -2567,9 +2567,9 @@ public class OpcUtil {
 		   itemName.startsWith(Constant.DI_YI_CI_BAO_WEN_QI_DONG)||//第一次保温启动
 		   itemName.startsWith(Constant.DI_YI_CI_BAO_WEN_HE_GE)||//第一次保温合格
 		   itemName.startsWith(Constant.YI_CI_JIANG_WEN_JIA_SUAN_TI_XING)||//一次降温加酸提醒
-		   itemName.startsWith(Constant.YI_CI_JIANG_WEN_JIA_SUAN_HE_GE)||//一次降温加酸合格
+		   itemName.startsWith(Constant.YI_CI_JIANG_WEN_JIA_SUAN_PH_HE_GE)||//一次降温加酸PH合格
 		   itemName.startsWith(Constant.JIA_JIAN_PH_HE_GE)||//加碱PH合格
-		   itemName.startsWith(Constant.ER_CI_TOU_FEN)||//二次投粉
+		   itemName.startsWith(Constant.ER_CI_TOU_FEN_TI_XING)||//二次投粉提醒
 		   itemName.startsWith(Constant.ER_CI_JIA_215_QI_DONG)||//二次加215启动
 		   itemName.startsWith(Constant.ER_CI_JIA_215_WAN_CHENG)||//二次加215完成
 		   itemName.startsWith(Constant.ER_CI_JIA_SHUI_QI_DONG)||//二次加水启动

@@ -129,9 +129,9 @@ public class ProcessVarServiceImpl implements ProcessVarService {
 			preName=ERecord.DYCBWHGSSYSJ;
 			ptnName=ERecord.DYCBWHGDYCJWJSTXSJC;
 		}
-		else if((ERecord.ECTFSSYSJ).equals(nxtName)){//二次投粉
+		else if((ERecord.ECTFTXSSYSJ).equals(nxtName)){//二次投粉提醒
 			preName=ERecord.DYCBWHGSSYSJ;
-			ptnName=ERecord.DYCBWHGDECTFSJC;
+			ptnName=ERecord.DYCBWHGDECTFTXSJC;
 		}
 		String preValue=null;
 		String ptnUnit = null;
@@ -296,7 +296,7 @@ public class ProcessVarServiceImpl implements ProcessVarService {
 		else if (tv1VarName.startsWith(Constant.CE_SHUI_SHU_TI_XING)){//测水数提醒
 			pvVarName=Constant.TING_RE_JIANG_WEN_SHUI_SHU_SRZ;
 		}
-		else if (tv1VarName.startsWith(Constant.ZHONG_JIAN_SHUI_PH_TI_XING)){//终检水PH提醒
+		else if (tv1VarName.startsWith(Constant.ZHONG_JIAN_KAI_SHI)){//终检开始
 			pvVarName=Constant.ZHONG_JIAN_SHUI_SHU;
 		}
 		else if (tv1VarName.startsWith(Constant.ZHU_JI_6_YI_CI_TIAN_JIA_WAN_CHENG)){//助剂6一次添加完成
@@ -317,23 +317,23 @@ public class ProcessVarServiceImpl implements ProcessVarService {
 		else if (tv1VarName.startsWith(Constant.YI_CI_JIANG_WEN_JIA_SUAN_TI_XING)){//一次降温加酸提醒
 			pvVarName=ERecord.YCJWJSTXSSYFYFWD;//一次降温加酸提醒反应釜温度
 		}
-		else if (tv1VarName.startsWith(Constant.YI_CI_JIANG_WEN_JIA_SUAN_HE_GE)){//一次降温加酸合格
+		else if (tv1VarName.startsWith(Constant.YI_CI_JIANG_WEN_JIA_SUAN_PH_HE_GE)){//一次降温加酸PH合格
 			pvVarName=ERecord.YCJWJSL;//一次降温加酸量
 		}
 		else if (tv1VarName.startsWith(Constant.JIA_JIAN_PH_HE_GE)){//加碱PH合格
 			pvVarName=Constant.JIA_JIAN_LIANG_FAN_WEI_XIA_XIAN;//加碱量范围下限
 		}
-		else if (tv1VarName.startsWith(Constant.ER_CI_TOU_FEN)){//二次投粉
+		else if (tv1VarName.startsWith(Constant.ER_CI_TOU_FEN_TI_XING)){//二次投粉提醒
 			if(StringUtils.isEmpty(tv2VarName)) {
-				pvVarName=ERecord.ECTFSSYSJ;//二次投粉上升沿时间
+				pvVarName=ERecord.ECTFTXSSYSJ;//二次投粉提醒上升沿时间
 			}
 			else {
 				if(tv2VarName.contains(Constant.NIAO_SU_FANG_LIAO_FA)) {
 					if(tv2VarValue==TriggerVar.UP) {
-						pvVarName=Constant.ER_CI_TOU_FEN+Constant.SHANG_SHENG_YAN+ERecord.FNSFLFSSYSJ;//釜尿素放料阀上升沿时间
+						pvVarName=Constant.ER_CI_TOU_FEN_TI_XING+Constant.SHANG_SHENG_YAN+ERecord.FNSFLFSSYSJ;//釜尿素放料阀上升沿时间
         			}
         			else {
-        				pvVarName=Constant.ER_CI_TOU_FEN+Constant.SHANG_SHENG_YAN+ERecord.FNSFLFXJYSJ;//釜尿素放料阀下降沿时间
+        				pvVarName=Constant.ER_CI_TOU_FEN_TI_XING+Constant.SHANG_SHENG_YAN+ERecord.FNSFLFXJYSJ;//釜尿素放料阀下降沿时间
         			}
 				}
 			}

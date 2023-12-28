@@ -81,9 +81,9 @@ public class Constant {
 	 */
 	public static final boolean ALLOW_RUN_JJPHHG_TV=true;
 	/**
-	 * 允许运行二次投粉触发变量
+	 * 允许运行二次投粉提醒触发变量
 	 */
-	public static final boolean ALLOW_RUN_ECTF_TV=true;
+	public static final boolean ALLOW_RUN_ECTFTX_TV=true;
 	/**
 	 * 允许运行二次加215启动触发变量
 	 */
@@ -165,9 +165,9 @@ public class Constant {
 	 */
 	public static final boolean ALLOW_RUN_JWWC_TV=true;
 	/**
-	 * 允许运行终检水PH提醒触发变量
+	 * 允许运行终检开始触发变量
 	 */
-	public static final boolean ALLOW_RUN_ZJSPHTX_TV=true;
+	public static final boolean ALLOW_RUN_ZJKS_TV=true;
 	/**
 	 * 允许运行允许开始排胶触发变量
 	 */
@@ -370,11 +370,11 @@ public class Constant {
 	/**
 	 * 反应釜标识符数组(M类)
 	 */
-	public static final String[] BSF_F_M_ARR=new String[] {BSF_F1,BSF_F2,BSF_F3,BSF_F4,BSF_F5};
+	public static final String[] BSF_F_M_ARR=new String[] {BSF_F1,BSF_F2,BSF_F3,BSF_F4};
 	/**
 	 * 反应釜标识符数组(U类)
 	 */
-	public static final String[] BSF_F_U_ARR=new String[] {BSF_F1U,BSF_F2U,BSF_F3U,BSF_F4U,BSF_F5U};
+	public static final String[] BSF_F_U_ARR=new String[] {BSF_F1U,BSF_F2U,BSF_F3U,BSF_F4U};
 	
 	/**
 	 * 反应釜Ph标识符数组(M类)
@@ -621,9 +621,9 @@ public class Constant {
 	 */
 	public static final String SHENG_CHAN_ZONG_ZHONG="生产总重";
 	/**
-	 * 终检水PH提醒
+	 * 终检开始
 	 */
-	public static final String ZHONG_JIAN_SHUI_PH_TI_XING="终检水PH提醒";
+	public static final String ZHONG_JIAN_KAI_SHI="终检开始";
 	/**
 	 * 终检水数
 	 */
@@ -682,17 +682,17 @@ public class Constant {
 	public static final String YI_CI_JIANG_WEN_JIA_SUAN_TI_XING="一次降温加酸提醒";
 
 	/**
-	 * 一次降温加酸合格
+	 * 一次降温加酸PH合格
 	 */
-	public static final String YI_CI_JIANG_WEN_JIA_SUAN_HE_GE="一次降温加酸合格";
+	public static final String YI_CI_JIANG_WEN_JIA_SUAN_PH_HE_GE="一次降温加酸PH合格";
 	/**
 	 * 加碱PH合格
 	 */
 	public static final String JIA_JIAN_PH_HE_GE="加碱PH合格";
 	/**
-	 * 二次投粉
+	 * 二次投粉提醒
 	 */
-	public static final String ER_CI_TOU_FEN="二次投粉";
+	public static final String ER_CI_TOU_FEN_TI_XING="二次投粉提醒";
 
 	/**
 	 * 二次加215启动

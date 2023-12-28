@@ -457,25 +457,25 @@ public class ERecord {
 	 */
 	public static final String YCJWJSL=Constant.YI_CI_JIANG_WEN_JIA_SUAN_LIANG;
 	/**
-	 * 一次降温加酸合格上升沿反应釜温度
+	 * 一次降温加酸PH合格上升沿反应釜温度
 	 */
-	public static final String YCJWJSHGSSYFYFWD=Constant.YI_CI_JIANG_WEN_JIA_SUAN_HE_GE+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
+	public static final String YCJWJSHGSSYFYFWD=Constant.YI_CI_JIANG_WEN_JIA_SUAN_PH_HE_GE+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
 	/**
-	 * 一次降温加酸合格上升沿一次降温加酸PH输入
+	 * 一次降温加酸PH合格上升沿一次降温加酸PH输入
 	 */
-	public static final String YCJWJSHGSSYYCJWJSPHSR=Constant.YI_CI_JIANG_WEN_JIA_SUAN_HE_GE+Constant.SHANG_SHENG_YAN+Constant.YI_CI_JIANG_WEN_JIA_SUAN_PH_SHU_RU;
+	public static final String YCJWJSPHHGSSYYCJWJSPHSR=Constant.YI_CI_JIANG_WEN_JIA_SUAN_PH_HE_GE+Constant.SHANG_SHENG_YAN+Constant.YI_CI_JIANG_WEN_JIA_SUAN_PH_SHU_RU;
 	/**
-	 * 二次投粉上升沿时间
+	 * 二次投粉提醒上升沿时间
 	 */
-	public static final String ECTFSSYSJ=Constant.ER_CI_TOU_FEN+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
+	public static final String ECTFTXSSYSJ=Constant.ER_CI_TOU_FEN_TI_XING+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN;
 	/**
-	 * 第一次保温合格到二次投粉时间
+	 * 第一次保温合格到二次投粉提醒时间
 	 */
-	public static final String DYCBWHGDECTFSJ=Constant.DI_YI_CI_BAO_WEN_HE_GE+Constant.DAO+Constant.ER_CI_TOU_FEN+Constant.SHI_JIAN;
+	public static final String DYCBWHGDECTFTXSJ=Constant.DI_YI_CI_BAO_WEN_HE_GE+Constant.DAO+Constant.ER_CI_TOU_FEN_TI_XING+Constant.SHI_JIAN;
 	/**
-	 * 第一次保温合格到二次投粉时间差
+	 * 第一次保温合格到二次投粉提醒时间差
 	 */
-	public static final String DYCBWHGDECTFSJC=Constant.DI_YI_CI_BAO_WEN_HE_GE+Constant.DAO+Constant.ER_CI_TOU_FEN+Constant.SHI_JIAN+Constant.CHA;
+	public static final String DYCBWHGDECTFTXSJC=Constant.DI_YI_CI_BAO_WEN_HE_GE+Constant.DAO+Constant.ER_CI_TOU_FEN_TI_XING+Constant.SHI_JIAN+Constant.CHA;
 	
 	/**
 	 * 二次加215启动上升沿时间
@@ -510,13 +510,13 @@ public class ERecord {
 	 */
 	public static final String YXKSPJSSYFYFWD=Constant.YUN_XU_KAI_SHI_PAI_JIAO+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU;
 	/**
-	 * 终检水PH提醒下降沿终检水数
+	 * 终检开始下降沿终检水数
 	 */
-	public static final String ZJSPHTXXJYZJSS=Constant.ZHONG_JIAN_SHUI_PH_TI_XING+Constant.XIA_JIANG_YAN+Constant.ZHONG_JIAN_SHUI_SHU;
+	public static final String ZJKSXJYZJSS=Constant.ZHONG_JIAN_KAI_SHI+Constant.XIA_JIANG_YAN+Constant.ZHONG_JIAN_SHUI_SHU;
 	/**
-	 * 终检水PH提醒下降沿终检PH
+	 * 终检开始下降沿终检PH
 	 */
-	public static final String ZJSPHTXXJYZJPH=Constant.ZHONG_JIAN_SHUI_PH_TI_XING+Constant.XIA_JIANG_YAN+Constant.ZHONG_JIAN_PH;
+	public static final String ZJKSXJYZJPH=Constant.ZHONG_JIAN_KAI_SHI+Constant.XIA_JIANG_YAN+Constant.ZHONG_JIAN_PH;
 
 	private Integer Id;
 	public Integer getId() {

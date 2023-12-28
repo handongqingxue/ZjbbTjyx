@@ -2909,7 +2909,7 @@ public class ERecordServiceImpl implements ERecordService {
 
 					pvIdList.add(pvId);
 				}
-				else if(pvVarName.startsWith(ERecord.YCJWJSHGSSYYCJWJSPHSR)) {//一次降温加酸合格上升沿一次降温加酸PH输入
+				else if(pvVarName.startsWith(ERecord.YCJWJSPHHGSSYYCJWJSPHSR)) {//一次降温加酸PH合格上升沿一次降温加酸PH输入
 					Float pvVarValue = processVar.getVarValue();
 					Integer pvFId = processVar.getFId();
 					String batchID = batchIDMap.get(pvFId).toString();
@@ -3021,15 +3021,15 @@ public class ERecordServiceImpl implements ERecordService {
 
 					pvIdList.add(pvId);
 				}//加碱阶段结束
-				else if(pvVarName.startsWith(ERecord.ECTFSSYSJ)) {//二次投粉上升沿时间    //70度终止降温阶段开始
+				else if(pvVarName.startsWith(ERecord.ECTFTXSSYSJ)) {//二次投粉提醒上升沿时间    //70度终止降温阶段开始
 					Integer pvFId = processVar.getFId();
 					String batchID = batchIDMap.get(pvFId).toString();
 					String updateTime = processVar.getUpdateTime();
 	
-					eRecord=getFromList(ERecord.DYCBWHGDECTFSJ, batchID, eRecordList);
+					eRecord=getFromList(ERecord.DYCBWHGDECTFTXSJ, batchID, eRecordList);
 					if(eRecord==null) {
 						eRecord=new ERecord();
-						eRecord.setVarName(ERecord.DYCBWHGDECTFSJ);
+						eRecord.setVarName(ERecord.DYCBWHGDECTFTXSJ);
 						eRecord.setRecType(pvRecType);
 						eRecord.setFId(pvFId);
 						eRecord.setRecordTime(recordTime);
@@ -3042,16 +3042,16 @@ public class ERecordServiceImpl implements ERecordService {
 
 					pvIdList.add(pvId);
 				}
-				else if(pvVarName.startsWith(ERecord.DYCBWHGDECTFSJC)) {//第一次保温合格到二次投粉时间差
+				else if(pvVarName.startsWith(ERecord.DYCBWHGDECTFTXSJC)) {//第一次保温合格到二次投粉提醒时间差
 					Integer pvFId = processVar.getFId();
 					String batchID = batchIDMap.get(pvFId).toString();
 					Float varValue = processVar.getVarValue();
 					String unit = processVar.getUnit();
 	
-					eRecord=getFromList(ERecord.DYCBWHGDECTFSJ, batchID, eRecordList);
+					eRecord=getFromList(ERecord.DYCBWHGDECTFTXSJ, batchID, eRecordList);
 					if(eRecord==null) {
 						eRecord=new ERecord();
-						eRecord.setVarName(ERecord.DYCBWHGDECTFSJ);
+						eRecord.setVarName(ERecord.DYCBWHGDECTFTXSJ);
 						eRecord.setRecType(pvRecType);
 						eRecord.setFId(pvFId);
 						eRecord.setRecordTime(recordTime);
@@ -4822,7 +4822,7 @@ public class ERecordServiceImpl implements ERecordService {
 					varMap.put(Constant.COL_NUMBER, ReportF_U.YCJWJSL_CN);
 					varMapList.add(varMap);
 				}
-				else if((Constant.YI_CI_JIANG_WEN_JIA_SUAN_HE_GE+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU).equals(varName)) {//一次降温加酸合格上升沿反应釜温度
+				else if((Constant.YI_CI_JIANG_WEN_JIA_SUAN_PH_HE_GE+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU).equals(varName)) {//一次降温加酸PH合格上升沿反应釜温度
 					String varValue = eRecord.getVarValue();
 
 					varMap = new HashMap<String, Object>();
@@ -4831,7 +4831,7 @@ public class ERecordServiceImpl implements ERecordService {
 					varMap.put(Constant.COL_NUMBER, ReportF_U.YCJWJSHGFYFWD_CN);
 					varMapList.add(varMap);
 				}
-				else if((Constant.YI_CI_JIANG_WEN_JIA_SUAN_HE_GE+Constant.SHANG_SHENG_YAN+Constant.YI_CI_JIANG_WEN_JIA_SUAN_PH_SHU_RU).equals(varName)) {//一次降温加酸合格上升沿一次降温加酸PH输入
+				else if((Constant.YI_CI_JIANG_WEN_JIA_SUAN_PH_HE_GE+Constant.SHANG_SHENG_YAN+Constant.YI_CI_JIANG_WEN_JIA_SUAN_PH_SHU_RU).equals(varName)) {//一次降温加酸PH合格上升沿一次降温加酸PH输入
 					String varValue = eRecord.getVarValue();
 
 					varMap = new HashMap<String, Object>();
@@ -4894,7 +4894,7 @@ public class ERecordServiceImpl implements ERecordService {
 					varMap.put(Constant.COL_NUMBER, ReportF_U.JJPHSR_CN);
 					varMapList.add(varMap);
 				}
-				else if(ERecord.DYCBWHGDECTFSJ.equals(varName)) {//第一次保温合格到二次投粉时间
+				else if(ERecord.DYCBWHGDECTFTXSJ.equals(varName)) {//第一次保温合格到二次投粉提醒时间
 					String preValue = eRecord.getPreValue();
 					String nxtValue = eRecord.getNxtValue();
 					String ptnValue = eRecord.getPtnValue();
@@ -4927,7 +4927,7 @@ public class ERecordServiceImpl implements ERecordService {
 					varMap.put(Constant.COL_NUMBER, ReportF_U.ECJFL1ZLSD_CN);
 					varMapList.add(varMap);
 				}
-				else if((Constant.ER_CI_TOU_FEN+ERecord.FNSFLFSSYDXJYZL).equals(varName)) {//二次投粉釜尿素放料阀上升沿到下降沿时间
+				else if((Constant.ER_CI_TOU_FEN_TI_XING+ERecord.FNSFLFSSYDXJYZL).equals(varName)) {//二次投粉提醒釜尿素放料阀上升沿到下降沿时间
 					String preValue = eRecord.getPreValue();
 					String nxtValue = eRecord.getNxtValue();
 					String ptnValue = eRecord.getPtnValue();
@@ -5056,7 +5056,7 @@ public class ERecordServiceImpl implements ERecordService {
 					varMap.put(Constant.COL_NUMBER, ReportF_U.YXKSPJFCZ1_CN);
 					varMapList.add(varMap);
 				}
-				else if((ERecord.ZJSPHTXXJYZJSS).equals(varName)) {//终检水PH提醒降沿记录终检水数
+				else if((ERecord.ZJKSXJYZJSS).equals(varName)) {//终检开始下降沿记录终检水数
 					String varValue = eRecord.getVarValue();
 
 					varMap = new HashMap<String, Object>();
@@ -5065,7 +5065,7 @@ public class ERecordServiceImpl implements ERecordService {
 					varMap.put(Constant.COL_NUMBER, ReportF_U.ZJSS_CN);
 					varMapList.add(varMap);
 				}
-				else if((ERecord.ZJSPHTXXJYZJPH).equals(varName)) {//终检水PH提醒降沿记录终检PH
+				else if((ERecord.ZJKSXJYZJPH).equals(varName)) {//终检开始下降沿记录终检PH
 					String varValue = eRecord.getVarValue();
 
 					varMap = new HashMap<String, Object>();

@@ -310,12 +310,12 @@ public class ReportF_UServiceImpl implements ReportF_UService {
 				int ycjwjslColNumber=ReportF_U.YCJWJSL_CN;
 				reportF_UList.add(createByParams(ycjwjslRowNumber, ycjwjslColNumber, varValue+unit, batchID));
 			}
-			else if((Constant.YI_CI_JIANG_WEN_JIA_SUAN_HE_GE+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU).equals(varName)) {//一次降温加酸合格上升沿反应釜温度
+			else if((Constant.YI_CI_JIANG_WEN_JIA_SUAN_PH_HE_GE+Constant.SHANG_SHENG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU).equals(varName)) {//一次降温加酸PH合格上升沿反应釜温度
 				int ycjwjshgfyfwdRowNumber=ReportF_U.YCJWJSHGFYFWD_RN;
 				int ycjwjshgfyfwdColNumber=ReportF_U.YCJWJSHGFYFWD_CN;
 				reportF_UList.add(createByParams(ycjwjshgfyfwdRowNumber, ycjwjshgfyfwdColNumber, varValue+unit, batchID));
 			}
-			else if((Constant.YI_CI_JIANG_WEN_JIA_SUAN_HE_GE+Constant.SHANG_SHENG_YAN+Constant.YI_CI_JIANG_WEN_JIA_SUAN_PH_SHU_RU).equals(varName)) {//一次降温加酸合格上升沿一次降温加酸PH输入
+			else if((Constant.YI_CI_JIANG_WEN_JIA_SUAN_PH_HE_GE+Constant.SHANG_SHENG_YAN+Constant.YI_CI_JIANG_WEN_JIA_SUAN_PH_SHU_RU).equals(varName)) {//一次降温加酸PH合格上升沿一次降温加酸PH输入
 				int ycjwjshgssyycjwjsphszRowNumber=ReportF_U.YCJWJSHGSSYYCJWJSPHSZ_RN;
 				int ycjwjshgssyycjwjsphszColNumber=ReportF_U.YCJWJSHGSSYYCJWJSPHSZ_CN;
 				reportF_UList.add(createByParams(ycjwjshgssyycjwjsphszRowNumber, ycjwjshgssyycjwjsphszColNumber, varValue+unit, batchID));
@@ -350,7 +350,7 @@ public class ReportF_UServiceImpl implements ReportF_UService {
 				int jjphsrColNumber=ReportF_U.JJPHSR_CN;
 				reportF_UList.add(createByParams(jjphsrRowNumber, jjphsrColNumber, varValue+unit, batchID));
 			}
-			else if((Constant.DI_YI_CI_BAO_WEN_HE_GE+Constant.DAO+Constant.ER_CI_TOU_FEN+Constant.SHI_JIAN).equals(varName)) {//第一次到保温合格到二次投粉时间
+			else if((Constant.DI_YI_CI_BAO_WEN_HE_GE+Constant.DAO+Constant.ER_CI_TOU_FEN_TI_XING+Constant.SHI_JIAN).equals(varName)) {//第一次到保温合格到二次投粉提醒时间
 				int ectfsjRowNumber=ReportF_U.ECTFSJ_RN;
 				int ectfsjColNumber=ReportF_U.ECTFSJ_CN;
 				reportF_UList.add(createByParams(ectfsjRowNumber, ectfsjColNumber, nxtValue, batchID));
@@ -364,17 +364,17 @@ public class ReportF_UServiceImpl implements ReportF_UService {
 				int ecjfl1zlsdColNumber=ReportF_U.ECJFL1ZLSD_CN;
 				reportF_UList.add(createByParams(ecjfl1zlsdRowNumber, ecjfl1zlsdColNumber, varValue+unit, batchID));
 			}
-			else if((Constant.ER_CI_TOU_FEN+Constant.FU+Constant.NIAO_SU_FANG_LIAO_FA+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN).equals(varName)) {//二次投粉釜尿素放料阀上升沿时间
+			else if((Constant.ER_CI_TOU_FEN_TI_XING+Constant.FU+Constant.NIAO_SU_FANG_LIAO_FA+Constant.SHANG_SHENG_YAN+Constant.SHI_JIAN).equals(varName)) {//二次投粉提醒釜尿素放料阀上升沿时间
 				int ectffnsflfssysjRowNumber=ReportF_U.ECTFFNSFLFSSYSJ_RN;
 				int ectffnsflfssysjColNumber=ReportF_U.ECTFFNSFLFSSYSJ_CN;
 				reportF_UList.add(createByParams(ectffnsflfssysjRowNumber, ectffnsflfssysjColNumber, preValue, batchID));
 			}
-			else if((Constant.ER_CI_TOU_FEN+Constant.FU+Constant.NIAO_SU_FANG_LIAO_FA+Constant.XIA_JIANG_YAN+Constant.SHI_JIAN).equals(varName)) {//二次投粉釜尿素放料阀下降沿时间
+			else if((Constant.ER_CI_TOU_FEN_TI_XING+Constant.FU+Constant.NIAO_SU_FANG_LIAO_FA+Constant.XIA_JIANG_YAN+Constant.SHI_JIAN).equals(varName)) {//二次投粉提醒釜尿素放料阀下降沿时间
 				int ectffnsflfxjysjRowNumber=ReportF_U.ECTFFNSFLFXJYSJ_RN;
 				int ectffnsflfxjysjColNumber=ReportF_U.ECTFFNSFLFXJYSJ_CN;
 				reportF_UList.add(createByParams(ectffnsflfxjysjRowNumber, ectffnsflfxjysjColNumber, preValue, batchID));
 			}
-			else if((Constant.ER_CI_TOU_FEN+Constant.FU+Constant.NIAO_SU_FANG_LIAO_FA+Constant.XIA_JIANG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU).equals(varName)) {//二次投粉釜尿素放料阀下降沿反应釜温度
+			else if((Constant.ER_CI_TOU_FEN_TI_XING+Constant.FU+Constant.NIAO_SU_FANG_LIAO_FA+Constant.XIA_JIANG_YAN+Constant.FAN_YING_FU+Constant.WEN_DU).equals(varName)) {//二次投粉提醒釜尿素放料阀下降沿反应釜温度
 				int ectffnsflfxjyfyfwdRowNumber=ReportF_U.ECTFFNSFLFXJYFYFWD_RN;
 				int ectffnsflfxjyfyfwdColNumber=ReportF_U.ECTFFNSFLFXJYFYFWD_CN;
 				reportF_UList.add(createByParams(ectffnsflfxjyfyfwdRowNumber, ectffnsflfxjyfyfwdColNumber, varValue+unit, batchID));
