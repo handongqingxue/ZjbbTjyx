@@ -42,7 +42,7 @@ function prePdfU(){
 }
 
 function prePreExcelU(){
-    var batchID=$("#opcUSTable #batchID_hid_U").val();
+    var batchID=encodeURIComponent($("#opcUSTable #batchID_hid_U").val());//处理#这类特殊字符
     window.open("goPreExcelU?batchID="+batchID,"newwindow","width=300;");
 }
 

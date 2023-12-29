@@ -48,7 +48,10 @@
                            rowNumber==14&colNumber==4||
                            rowNumber==15&colNumber==3||
                            rowNumber==15&colNumber==4||
-                           rowNumber==20&colNumber==3){
+                           rowNumber==20&colNumber==3||
+                           rowNumber==20&colNumber==4||
+                           rowNumber==24&colNumber==3||
+                           rowNumber==24&colNumber==4){
                         	if(value!=null)
                         		value=value.substring(0,20);
                         }
@@ -425,29 +428,29 @@
         <tr style="height: 80px;">
             <td style="text-align: center;" rowspan="2">排 胶</td>
             <td style="text-align: center;">日期与时间：</td>
-            <td style="text-align: center;background-color: #c6e0b4;"></td>
-            <td style="text-align: center;background-color: #c6e0b4;"></td>
-            <td style="text-align: center;background-color: #fee699;"></td>
+            <td style="text-align: center;background-color: #c6e0b4;" id="td24_3"></td>
+            <td style="text-align: center;background-color: #c6e0b4;" id="td24_4"></td>
+            <td style="text-align: center;background-color: #fee699;" id="td24_5"></td>
             <td style="text-align: center;">打入胶罐1：</td>
-            <td style="text-align: center;background-color: #c6e0b4;"></td>
-            <td style="text-align: center;background-color: #c6e0b4;"></td>
-            <td style="text-align: center;background-color: #c6e0b4;"> </td>
-            <td style="text-align: center;background-color: #fee699;"></td>
-            <td rowspan="2"></td>
-            <td style="text-align: center;background-color: #fee699;" rowspan="2"></td>
+            <td style="text-align: center;background-color: #c6e0b4;" id="td24_7"></td>
+            <td style="text-align: center;background-color: #c6e0b4;" id="td24_8"></td>
+            <td style="text-align: center;background-color: #c6e0b4;" id="td24_9"> </td>
+            <td style="text-align: center;background-color: #fee699;" id="td24_10"></td>
+            <td style="text-align: center;" id="td24_11" rowspan="2"></td>
+            <td style="text-align: center;background-color: #fee699;" id="td24_12" rowspan="2"></td>
             <td></td>
         </tr>
         <%--第二十五行--%>
         <tr style="height: 100px">
             <td style="text-align: center;">反应釜打胶前后重量</td>
-            <td style="text-align: center;background-color: #c6e0b4;"></td>
-            <td style="text-align: center;background-color: #c6e0b4;"> </td>
-            <td style="text-align: center;background-color: #fee699;"></td>
+            <td style="text-align: center;background-color: #c6e0b4;" id="td25_3"></td>
+            <td style="text-align: center;background-color: #c6e0b4;" id="td25_4"> </td>
+            <td style="text-align: center;background-color: #fee699;" id="td25_5"></td>
             <td style="text-align: center;">打入胶罐2：</td>
-            <td style="text-align: center;background-color: #c6e0b4;"></td>
-            <td style="text-align: center;background-color: #c6e0b4;"></td>
-            <td style="text-align: center;background-color: #c6e0b4;"></td>
-            <td style="text-align: center;background-color: #fee699;"></td>
+            <td style="text-align: center;background-color: #c6e0b4;" id="td25_7"></td>
+            <td style="text-align: center;background-color: #c6e0b4;" id="td25_8"></td>
+            <td style="text-align: center;background-color: #c6e0b4;" id="td25_9"></td>
+            <td style="text-align: center;background-color: #fee699;" id="td25_10"></td>
             <td></td>
         </tr>
     </table>

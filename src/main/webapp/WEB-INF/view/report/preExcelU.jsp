@@ -25,7 +25,7 @@
 
         function getPreExcelU(){
             var batchID='${param.batchID}';
-            var typeExcelU=batchID.substring(1,2);
+            var typeExcelU=batchID.substring(1,batchID.length-12);
             $("#typeExcelU").html(typeExcelU);
             $.post(path+"report/getReportFUByBatchID",
                 {batchID:batchID},
@@ -47,7 +47,9 @@
                            rowNumber==12&colNumber==4||
                            rowNumber==12&colNumber==5||
                            rowNumber==16&colNumber==4||
-                           rowNumber==20&colNumber==4){
+                           rowNumber==20&colNumber==4||
+                           rowNumber==35&colNumber==3||
+                           rowNumber==35&colNumber==4){
                         	if(value!=null)
                         		value=value.substring(0,20);
                         }
@@ -508,22 +510,22 @@
             <td style="text-align: center;background-color: #c6e0b4;" id="td35_8"></td>
             <td style="text-align: center;background-color: #c6e0b4;" id="td35_9"></td>
             <td style="text-align: center;background-color: #fee699;" id="td35_10"></td>
-            <td style="text-align: center;" id="td35_11"></td>
+            <td style="text-align: center;" id="td35_11" rowspan="2"></td>
             <td style="text-align: center;background-color: #fee699;" id="td35_12" rowspan="2"></td>
-            <td style="text-align: center;" id="td35_13"></td>
+            <td style="text-align: center;"></td>
         </tr>
         <!-- 第三十六行-->
         <tr style="height: 100px;">
             <td style="text-align: center;">反应釜打胶前后重量</td>
-            <td style="text-align: center;background-color: #c6e0b4;" id="td36_2"></td>
             <td style="text-align: center;background-color: #c6e0b4;" id="td36_3"></td>
-            <td style="text-align: center;background-color: #fee699;" id="td36_4">反应釜重量差</td>
-            <td style="text-align: center;" id="td36_5">打入胶罐2：</td>
-            <td style="text-align: center;background-color: #c6e0b4;" id="td36_6"></td>
+            <td style="text-align: center;background-color: #c6e0b4;" id="td36_4"></td>
+            <td style="text-align: center;background-color: #fee699;" id="td36_5">反应釜重量差</td>
+            <td style="text-align: center;">打入胶罐2：</td>
             <td style="text-align: center;background-color: #c6e0b4;" id="td36_7"></td>
             <td style="text-align: center;background-color: #c6e0b4;" id="td36_8"></td>
-            <td style="text-align: center;background-color: #fee699;" id="td36_9"></td>
-            <td style="text-align: center;" id="td36_10"></td>
+            <td style="text-align: center;background-color: #c6e0b4;" id="td36_9"></td>
+            <td style="text-align: center;background-color: #fee699;" id="td36_10"></td>
+            <td style="text-align: center;"></td>
         </tr>
     </table>
 </div>
