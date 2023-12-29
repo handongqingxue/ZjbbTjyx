@@ -13,6 +13,7 @@ function initDataResetUButDiv() {
     $("#jqcjxx_u_inp").val('');//初始化甲醛厂家信息
     $("#sacjxx_u_inp").val('');//初始化三安厂家信息
     
+    /*
     var dbczySel=$("#dbczy_u_sel");//初始化当班操作员信息
     var jbczySel=$("#jbczy_u_sel");//初始化接班操作员信息
     dbczySel.empty();
@@ -31,7 +32,10 @@ function initDataResetUButDiv() {
                 }
             }
         }
-        ,"json");
+    ,"json");
+    */
+    $("#dbczy_u_inp").val('');
+    $("#jbczy_u_inp").val('');
 
     $("#tank1DataU").val('');//初始化罐1数据信息
     $("#tank2DataU").val('');//初始化罐2数据信息
@@ -82,9 +86,9 @@ function checkSACJXXU(){
 }
 
 function checkDBCZYU(){
-	var dbczy=$("#dbczy_u_sel").val();
+	var dbczy=$("#dbczy_u_inp").val();
 	if(dbczy==""||dbczy==null){
-		alert("请选择当班操作员");
+		alert("请输入当班操作员");
 		return false;
 	}
 	else
@@ -92,9 +96,9 @@ function checkDBCZYU(){
 }
 
 function checkJBCZYU(){
-	var jbczy=$("#jbczy_u_sel").val();
+	var jbczy=$("#jbczy_u_inp").val();
 	if(jbczy==""||jbczy==null){
-		alert("请选择接班操作员");
+		alert("请输入接班操作员");
 		return false;
 	}
 	else
@@ -108,8 +112,10 @@ function addReportF_UByBatchID(){
         var batchID = $("#opcUCTable #batchID_hid").val();
         var jqcjxx=$("#jqcjxx_u_inp").val();
         var sacjxx=$("#sacjxx_u_inp").val();
-        var dbczy=$("#dbczy_u_sel").find("option:selected").text();
-        var jbczy=$("#jbczy_u_sel").find("option:selected").text();
+        //var dbczy=$("#dbczy_u_sel").find("option:selected").text();
+        //var jbczy=$("#jbczy_u_sel").find("option:selected").text();
+        var dbczy=$("#dbczy_u_inp").val();
+        var jbczy=$("#jbczy_u_inp").val();
         var inputJOStr="{\""+jqcjxxKey+"\":\""+jqcjxx+"\",\""+sacjxxKey+"\":\""+sacjxx+"\",\""+dbczyKey+"\":\""+dbczy+"\",\""+jbczyKey+"\":\""+jbczy+"\"}";
         $.post(path + "report/addReportFByBatchID",
             {batchID: batchID,inputJOStr:inputJOStr},
@@ -175,7 +181,10 @@ function resetUCTabInp(){
                 <span class="sacjxx_span">三安厂家信息</span>
                 <input type="text" placeholder="录入三安厂家信息" id="sacjxx_u_inp" class="u_create_head_input"/>
                 <span class="dbczy_span">当班操作员</span>
+                <!-- 
                 <select class="u_create_head_input" id="dbczy_u_sel"></select>
+                 -->
+            	<input type="text" placeholder="录入当班操作员信息" id="dbczy_u_inp" class="u_create_head_input"/>
                 <span class="bbzt_span">报表状态:</span>
                 <span class="wsc_span" id="u_wsc_span">未生成</span>
             </div>
@@ -187,7 +196,10 @@ function resetUCTabInp(){
                 <input type="text" size="5" id="tank2DataU" class="u_create_head_input"/>
 
                 <span class="jbczy_span">接班操作员</span>
+                <!-- 
                 <select class="m_create_head_input" id="jbczy_u_sel"></select>
+                 -->
+            	<input type="text" placeholder="录入接班操作员信息"  id="jbczy_u_inp" class="u_create_head_input"/>
                 <c:if test="${userAllRole[0].id==1||userAllRole[0].id==2||userAllRole[0].id==3}">
                     <div class="but_div scbb_but_div" onclick="checkInputInfoU()">生成报表</div>
                     <div class="but_div sjfw_but_div" onclick="resetUCTabInp()">数据复位</div>

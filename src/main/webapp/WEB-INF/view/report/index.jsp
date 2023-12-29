@@ -227,7 +227,7 @@ function getLeftMenuData(type){
                     var uWscBatch=uWscBatchList[i];
                     var uWscBatchID=uWscBatch.batchID;
 					var uWscRemark=uWscBatch.remark;
-                    uWscBatchIdListDl.append("<dd><a onclick=\"showCreateArea('"+uWscBatchID+"','"+uWscRemark+"')\">"+uWscBatchID+"</a></dd>");
+                    uWscBatchListDl.append("<dd><a onclick=\"showCreateArea('"+uWscBatchID+"','"+uWscRemark+"')\">"+uWscBatchID+"</a></dd>");
                 }
 
                 var defaultBatch=uWscBatchIdList[0];

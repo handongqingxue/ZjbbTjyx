@@ -13,6 +13,7 @@ function initDataResetMButDiv() {
     $("#jqcjxx_m_inp").val('');//初始化甲醛厂家信息
     $("#sacjxx_m_inp").val('');//初始化三安厂家信息
     
+    /*
     var dbczySel=$("#dbczy_m_sel");//初始化当班操作员信息
     var jbczySel=$("#jbczy_m_sel");//初始化接班操作员信息
     dbczySel.empty();
@@ -26,12 +27,16 @@ function initDataResetMButDiv() {
             if(request.msg=="ok"){
                 var list=request.data;
                 for (var i=0;i<list.length;i++){
-                    dbczySel.append("<option value=\""+list[i].id+"\">"+list[i].realName+"</option>")
-                    jbczySel.append("<option value=\""+list[i].id+"\">"+list[i].realName+"</option>")
+                    dbczySel.append("<option value=\""+list[i].id+"\">"+list[i].realName+"</option>");
+                    jbczySel.append("<option value=\""+list[i].id+"\">"+list[i].realName+"</option>");
                 }
             }
         }
-        ,"json");
+    ,"json");
+    */
+    $("#dbczy_m_inp").val('');
+    $("#jbczy_m_inp").val('');
+    
     $("#tank1DataM").val('');//初始化罐1数据信息
     $("#tank2DataM").val('');//初始化罐2数据信息
     
@@ -81,9 +86,10 @@ function checkSACJXXM(){
 }
 
 function checkDBCZYM(){
-	var dbczy=$("#dbczy_m_sel").val();
+	//var dbczy=$("#dbczy_m_sel").val();
+	var dbczy=$("#dbczy_m_inp").val();
 	if(dbczy==""||dbczy==null){
-		alert("请选择当班操作员");
+		alert("请输入当班操作员");
 		return false;
 	}
 	else
@@ -91,9 +97,10 @@ function checkDBCZYM(){
 }
 
 function checkJBCZYM(){
-	var jbczy=$("#jbczy_m_sel").val();
+	//var jbczy=$("#jbczy_m_sel").val();
+	var jbczy=$("#jbczy_m_inp").val();
 	if(jbczy==""||jbczy==null){
-		alert("请选择接班操作员");
+		alert("请输入接班操作员");
 		return false;
 	}
 	else
@@ -103,15 +110,18 @@ function checkJBCZYM(){
 function addReportF_MByBatchID(){
     layer.confirm("是否要生成报表 ？", {
         btn: ["确定", "取消"] //按钮
-    }, function (index) {
+    },
+    function (index) {
         var batchID = $("#opcMCTable #batchID_hid").val();
         var jqcjxx=$("#jqcjxx_m_inp").val();
         var sacjxx=$("#sacjxx_m_inp").val();
-        var dbczy=$("#dbczy_m_sel").find("option:selected").text();
-        var jbczy=$("#jbczy_m_sel").find("option:selected").text();
+        //var dbczy=$("#dbczy_m_sel").find("option:selected").text();
+        //var jbczy=$("#jbczy_m_sel").find("option:selected").text();
+        var dbczy=$("#dbczy_m_inp").val();
+        var jbczy=$("#jbczy_m_inp").val();
         var inputJOStr="{\""+jqcjxxKey+"\":\""+jqcjxx+"\",\""+sacjxxKey+"\":\""+sacjxx+"\",\""+dbczyKey+"\":\""+dbczy+"\",\""+jbczyKey+"\":\""+jbczy+"\"}";
         $.post(path + "report/addReportFByBatchID",
-            {batchID: batchID,inputJOStr:inputJOStr},
+            {batchID:batchID,inputJOStr:inputJOStr},
             function (result) {
                 if (result.message == "ok") {
                     layer.msg(result.info, {icon: 1});
@@ -121,7 +131,7 @@ function addReportF_MByBatchID(){
                     $("#m_wsc_span").text("已生成");
                 }
             }
-            , "json");
+        , "json");
         layer.close(index);
     });
 }
@@ -174,7 +184,10 @@ function resetMCTabInp(){
             <span class="sacjxx_span">三安厂家信息</span>
             <input type="text" placeholder="录入三安厂家信息" id="sacjxx_m_inp" class="m_create_head_input"/>
             <span class="dbczy_span">当班操作员</span>
+            <!-- 
             <select class="m_create_head_input" id="dbczy_m_sel"></select>
+             -->
+            <input type="text" placeholder="录入当班操作员信息" id="dbczy_m_inp" class="m_create_head_input"/>
             <span class="bbzt_span">报表状态:</span>
             <span class="wsc_span" id="m_wsc_span"></span>
         </div>
@@ -186,7 +199,10 @@ function resetMCTabInp(){
             <input type="text" size="5" id="tank2DataM" class="m_create_head_input"/>
 
             <span class="jbczy_span">接班操作员</span>
+            <!-- 
             <select class="m_create_head_input" id="jbczy_m_sel"></select>
+             -->
+            <input type="text" placeholder="录入接班操作员信息"  id="jbczy_m_inp" class="m_create_head_input"/>
             <c:if test="${userAllRole[0].id==1||userAllRole[0].id==2||userAllRole[0].id==3}">
                 <div class="but_div scbb_but_div" onclick="checkInputInfoM()">生成报表</div>
                 <div class="but_div sjfw_but_div" onclick="resetMCTabInp()">数据复位</div>

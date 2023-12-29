@@ -974,8 +974,10 @@ public class OpcUtil {
 				        		value = (float)(valueBool?1:0);
 			        		}
 			        	}
-			        	else
+			        	else {
 			        		value = Float.valueOf(valueStr);
+			        		value = Float.valueOf(String.format("%.2f", value));//保留两位小数参考链接:https://blog.csdn.net/qq_59125846/article/details/134458209
+			        	}
 			        	String sysTime = DateUtil.getTimeStrByFormatStr(new Date(),DateUtil.YEAR_TO_SECOND);//系统时间
 			        	
 			        	String varName=null;
@@ -1278,8 +1280,10 @@ public class OpcUtil {
 				        		value = (float)(valueBool?1:0);
 			        		}
 			        	}
-			        	else
+			        	else {
 			        		value = Float.valueOf(valueStr);
+			        		value = Float.valueOf(String.format("%.2f", value));
+			        	}
 			        	String sysTime = DateUtil.getTimeStrByFormatStr(new Date(),DateUtil.YEAR_TO_SECOND);//系统时间
 			        	
 			        	String varName=null;
