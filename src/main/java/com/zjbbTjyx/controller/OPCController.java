@@ -3785,16 +3785,30 @@ public class OPCController {
 									ProcessVar pjwcssyjg1zlPV = OpcUtil.getProVarInListByVarName(pjwcssyjg1zlVarName, pjwcMResPVList);
 									Float pjwcssyjg1zlVarValue = pjwcssyjg1zlPV.getVarValue();
 									ProcessVar ptnJg1zlPV = processVarService.getPtnValuePV(pjwcssyjg1zlVarName, pjwcssyjg1zlVarValue + "", pjwcssyjg1zlPV);
-									pjwcMResPVList.add(ptnJg1zlPV);//将重量差对象添加到集合里
-									
-									ProcessVar ratJg1zlcPV = processVarService.getRatValuePV(ERecord.YXKSPJDPJWCFZLC,ptnJg1zlPV);
-									pjwcMResPVList.add(ratJg1zlcPV);//将重量对比对象添加到集合里
+									if(ptnJg1zlPV.getVarValue()!=null) {
+										pjwcMResPVList.add(ptnJg1zlPV);//将重量差对象添加到集合里
+										
+										ProcessVar ratJg1zlcPV = processVarService.getRatValuePV(ERecord.YXKSPJDPJWCFZLC,ptnJg1zlPV);
+										pjwcMResPVList.add(ratJg1zlcPV);//将重量对比对象添加到集合里
+									}
+									else {
+										//获取排胶完成上升沿胶罐2重量变量名
+										String pjwcssyjg2zlVarName = ERecord.PJWCSSYJG2ZL;
+										ProcessVar pjwcssyjg2zlPV = OpcUtil.getProVarInListByVarName(pjwcssyjg2zlVarName, pjwcMResPVList);
+										Float pjwcssyjg2zlVarValue = pjwcssyjg1zlPV.getVarValue();
+										ProcessVar ptnJg2zlPV = processVarService.getPtnValuePV(pjwcssyjg2zlVarName, pjwcssyjg2zlVarValue + "", pjwcssyjg1zlPV);
+										pjwcMResPVList.add(ptnJg2zlPV);//将重量差对象添加到集合里
+										
+										ProcessVar ratJg2zlcPV = processVarService.getRatValuePV(ERecord.YXKSPJDPJWCFZLC,ptnJg2zlPV);
+										pjwcMResPVList.add(ratJg2zlcPV);//将重量对比对象添加到集合里
+									}
 
 									i = processVarService.addFromList(pjwcMResPVList);//调用添加过程接口
 									System.out.println("添加" + i);
 								}
 							}
 
+							/*
 							ProcessVar drjg2PV=processVarService.getByVarNameFId(ERecord.DRJG2JGH,upFId);
 							if(drjg2PV!=null) {
 								opcTVList.remove(preUpPjwcTV);
@@ -3826,6 +3840,7 @@ public class OPCController {
 									System.out.println("添加" + i);
 								}
 							}
+							*/
 							
 							System.out.println("pjwcFIdListSize===" + pjwcFIdList.size());
 							if (pjwcFIdList.size() > 0) {//若有需要处理的排胶完成节点的反应釜，说明这些反应釜的批次执行完成，就从过程变量表(ProcessVar)里读取已采集好的变量，经过加工处理存入批记录表(ERecord)里
@@ -3895,16 +3910,30 @@ public class OPCController {
 									ProcessVar pjwcssyjg1zlPV = OpcUtil.getProVarInListByVarName(pjwcssyjg1zlVarName, pjwcUResPVList);
 									Float pjwcssyjg1zlVarValue = pjwcssyjg1zlPV.getVarValue();
 									ProcessVar ptnJg1zlPV = processVarService.getPtnValuePV(pjwcssyjg1zlVarName, pjwcssyjg1zlVarValue + "", pjwcssyjg1zlPV);
-									pjwcUResPVList.add(ptnJg1zlPV);//将重量差对象添加到集合里
-									
-									ProcessVar ratJg1zlcPV = processVarService.getRatValuePV(ERecord.YXKSPJDPJWCFZLC,ptnJg1zlPV);
-									pjwcUResPVList.add(ratJg1zlcPV);//将重量对比对象添加到集合里
+									if(ptnJg1zlPV.getVarValue()!=null) {
+										pjwcUResPVList.add(ptnJg1zlPV);//将重量差对象添加到集合里
+										
+										ProcessVar ratJg1zlcPV = processVarService.getRatValuePV(ERecord.YXKSPJDPJWCFZLC,ptnJg1zlPV);
+										pjwcUResPVList.add(ratJg1zlcPV);//将重量对比对象添加到集合里
+									}
+									else {
+										//获取排胶完成上升沿胶罐2重量变量名
+										String pjwcssyjg2zlVarName = ERecord.PJWCSSYJG2ZL;
+										ProcessVar pjwcssyjg2zlPV = OpcUtil.getProVarInListByVarName(pjwcssyjg2zlVarName, pjwcUResPVList);
+										Float pjwcssyjg2zlVarValue = pjwcssyjg1zlPV.getVarValue();
+										ProcessVar ptnJg2zlPV = processVarService.getPtnValuePV(pjwcssyjg2zlVarName, pjwcssyjg2zlVarValue + "", pjwcssyjg1zlPV);
+										pjwcUResPVList.add(ptnJg2zlPV);//将重量差对象添加到集合里
+										
+										ProcessVar ratJg2zlcPV = processVarService.getRatValuePV(ERecord.YXKSPJDPJWCFZLC,ptnJg2zlPV);
+										pjwcUResPVList.add(ratJg2zlcPV);//将重量对比对象添加到集合里
+									}
 									
 									i = processVarService.addFromList(pjwcUResPVList);//调用添加过程接口
 									System.out.println("添加" + i);
 								}
 							}
 
+							/*
 							ProcessVar drjg2PV=processVarService.getByVarNameFId(ERecord.DRJG2JGH,upFId);
 							if(drjg2PV!=null) {
 								opcTVList.remove(jgxz1Tv);
@@ -3934,6 +3963,7 @@ public class OPCController {
 									System.out.println("添加" + i);
 								}
 							}
+							*/
 							
 							System.out.println("pjwcFIdListSize===" + pjwcFIdList.size());
 							if (pjwcFIdList.size() > 0) {//若有需要处理的排胶完成节点的反应釜，说明这些反应釜的批次执行完成，就从过程变量表(ProcessVar)里读取已采集好的变量，经过加工处理存入批记录表(ERecord)里
