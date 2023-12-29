@@ -3501,8 +3501,9 @@ public class ERecordServiceImpl implements ERecordService {
 		}
 		
 		if(unAddFMapList.size()>0) {
-			String year=DateUtil.getTimeStrByFormatStr(date, DateUtil.YEAR);
-			Integer maxBatchNum = eRecordMapper.getMaxBatchNumByYear(year);
+			String batchIDDate=DateUtil.getTimeStrByFormatStr(date, DateUtil.BATCH_ID_DATE);
+			String batchIDYear = batchIDDate.substring(0, 4);
+			Integer maxBatchNum = eRecordMapper.getMaxBatchNumByYear(batchIDYear);
 			maxBatchNum=maxBatchNum==null?0:maxBatchNum;
 			for (int i = 0; i < unAddFMapList.size(); i++) {
 				Map<String, Object> fMap = unAddFMapList.get(i);
@@ -3518,22 +3519,14 @@ public class ERecordServiceImpl implements ERecordService {
 				String batchNumStr=null;
 				int batchNum=maxBatchNum+i+1;
 				if(batchNum<10)
-					batchNumStr="0000000"+batchNum;
-				else if(batchNum<100)
-					batchNumStr="000000"+batchNum;
-				else if(batchNum<1000)
-					batchNumStr="00000"+batchNum;
-				else if(batchNum<10000)
-					batchNumStr="0000"+batchNum;
-				else if(batchNum<100000)
 					batchNumStr="000"+batchNum;
-				else if(batchNum<1000000)
+				else if(batchNum<100)
 					batchNumStr="00"+batchNum;
-				else if(batchNum<10000000)
+				else if(batchNum<1000)
 					batchNumStr="0"+batchNum;
 				else
 					batchNumStr=""+batchNum;
-				String batchID=recType+jzlx+year+batchNumStr;
+				String batchID=recType+jzlx+batchIDDate+batchNumStr;
 				
 				batchIDMap.put(fId, batchID);
 			}

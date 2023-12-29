@@ -13,6 +13,7 @@ public class DateUtil {
 	public static final int TIAN=5;
 	
 	public static final String YEAR="yyyy";
+	public static final String BATCH_ID_DATE="yyyyMMdd";
 	public static final String YEAR_TO_SECOND="yyyy-MM-dd HH:mm:ss";
 	private static SimpleDateFormat timeSDF = new SimpleDateFormat(YEAR_TO_SECOND);
 

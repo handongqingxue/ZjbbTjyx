@@ -84,7 +84,7 @@
 		</trim>
 	</insert>
 	<select id="getMaxBatchNumByYear" resultType="java.lang.Integer">
-		select max(right(BatchID,8)) from ERecord where VarName='${@com.zjbbTjyx.util.Constant@PI_CI_JI_LU}' and year(RecordTime)=#{year}
+		select max(right(BatchID,4)) from ERecord where VarName='${@com.zjbbTjyx.util.Constant@PI_CI_JI_LU}' and year(RecordTime)=#{year}
 	</select>
 	<select id="getListByBatchID" resultType="com.zjbbTjyx.entity.ERecord">
 		select * from ERecord where BatchID=#{batchID}

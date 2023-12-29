@@ -14,6 +14,7 @@ function initDataResetMButDiv() {
     $("#sacjxx_m_inp").val('');//初始化三安厂家信息
     
     /*
+    操作员下拉框改为输入框模式了，这块逻辑暂时不用了
     var dbczySel=$("#dbczy_m_sel");//初始化当班操作员信息
     var jbczySel=$("#jbczy_m_sel");//初始化接班操作员信息
     dbczySel.empty();
